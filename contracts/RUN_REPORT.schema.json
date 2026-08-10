@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://murat-ai-stack.local/schemas/run-report-v1.json",
+  "title": "Murat Project Engineer Run Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "run_id",
+    "project",
+    "task",
+    "start_timestamp",
+    "end_timestamp",
+    "risk_tier",
+    "playbook",
+    "experts_invoked",
+    "route_profiles",
+    "files_changed",
+    "commands_tools_used",
+    "deterministic_gate_results",
+    "judge_verdict",
+    "approvals",
+    "rework_count",
+    "outcome",
+    "unresolved_risks",
+    "rollback",
+    "approximate_usage_cost"
+  ],
+  "properties": {
+    "schema_version": {"type": "string", "const": "1.0"},
+    "run_id": {"type": "string", "minLength": 1},
+    "project": {"type": "string", "minLength": 1},
+    "task": {"type": "string", "minLength": 1},
+    "start_timestamp": {"type": ["string", "null"], "format": "date-time"},
+    "end_timestamp": {"type": ["string", "null"], "format": "date-time"},
+    "risk_tier": {"type": "string", "enum": ["FAST", "VERIFIED", "DEEP-CHANGE"]},
+    "playbook": {"type": "string", "minLength": 1},
+    "experts_invoked": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "route_profiles": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "files_changed": {"type": "array", "items": {"type": "string"}},
+    "commands_tools_used": {"type": "array", "items": {"type": "string"}},
+    "deterministic_gate_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["gate_id", "result"],
+        "properties": {
+          "gate_id": {"type": "string", "minLength": 1},
+          "result": {"type": "string", "enum": ["PASS", "FAIL", "NOT_APPLICABLE", "NOT_OBSERVABLE"]},
+          "evidence_ref": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "judge_verdict": {"type": ["string", "null"], "enum": ["PASS", "REWORK", "BLOCKED", "HUMAN_REQUIRED", null]},
+    "approvals": {"type": "array", "items": {"type": "string"}},
+    "rework_count": {"type": "integer", "minimum": 0},
+    "outcome": {"type": "string", "enum": ["PASS", "REWORK", "BLOCKED", "HUMAN_REQUIRED"]},
+    "unresolved_risks": {"type": "array", "items": {"type": "string"}},
+    "rollback": {"type": ["string", "null"]},
+    "approximate_usage_cost": {"type": ["string", "number", "null"]},
+    "source_refs": {"type": "array", "items": {"type": "string"}},
+    "artifact_refs": {"type": "array", "items": {"type": "string"}},
+    "handoff_refs": {"type": "array", "items": {"type": "string"}},
+    "baseline_run": {"type": ["string", "boolean", "null"]},
+    "interruption_resume": {"type": ["string", "boolean", "null"]},
+    "architecture_pressure": {"type": "array", "items": {"type": "string"}}
+  }
+}
