@@ -54,7 +54,7 @@
     },
     "judge_verdict": {"type": ["string", "null"], "enum": ["PASS", "REWORK", "BLOCKED", "HUMAN_REQUIRED", null]},
     "approvals": {"type": "array", "items": {"type": "string"}},
-    "rework_count": {"type": "integer", "minimum": 0},
+    "rework_count": {"type": ["integer", "null"], "minimum": 0},
     "outcome": {"type": "string", "enum": ["PASS", "REWORK", "BLOCKED", "HUMAN_REQUIRED"]},
     "unresolved_risks": {"type": "array", "items": {"type": "string"}},
     "rollback": {"type": ["string", "null"]},
