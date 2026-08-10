@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0",
+  "run_id": "stage2a-run-05",
+  "project": "Murkin1980/murat-project-engineer",
+  "task": "Resume Stage 2A from versioned project state; add machine-readable evidence contracts, context-provider documentation, real first-five evidence, review, status and changelog updates without changing Option A+ boundaries.",
+  "start_timestamp": null,
+  "end_timestamp": null,
+  "risk_tier": "VERIFIED",
+  "playbook": "verified",
+  "experts_invoked": ["Architect", "Coder"],
+  "route_profiles": [],
+  "files_changed": [
+    "contracts/RUN_REPORT.schema.json",
+    "contracts/RUN_REPORT.example.json",
+    "contracts/EXPERIMENT_RECORD.schema.json",
+    "contracts/EXPERIMENT_RECORD.example.json",
+    "context/CONTEXT_MAP.md",
+    "docs/CONTEXT_PROVIDERS.md",
+    "evidence/stage2a/run-01/",
+    "evidence/stage2a/run-02/",
+    "evidence/stage2a/run-03/",
+    "evidence/stage2a/run-04/",
+    "evidence/stage2a/run-05/",
+    "STAGE2A_FIRST5_REVIEW.md",
+    "STATUS.md",
+    "CHANGELOG.md"
+  ],
+  "commands_tools_used": [
+    "GitHub connector: fetch/search/create/update",
+    "Murat Project Engineer source-of-truth review",
+    "historical Git commit evidence inspection"
+  ],
+  "deterministic_gate_results": [
+    {"gate_id": "clean_diff_scope", "result": "PASS", "evidence_ref": "all current-session repository changes are scoped to Stage 2A evidence/context/status artifacts"},
+    {"gate_id": "secrets_scan", "result": "NOT_OBSERVABLE", "evidence_ref": "GitHub connector surface does not execute the repository secrets-scan gate"},
+    {"gate_id": "build", "result": "NOT_APPLICABLE", "evidence_ref": "no build step is required for the Stage 2A documentation/evidence-format changes"},
+    {"gate_id": "typecheck", "result": "NOT_APPLICABLE", "evidence_ref": "no typed runtime code was added in this run"},
+    {"gate_id": "lint", "result": "NOT_APPLICABLE", "evidence_ref": "no repository lint command was executed or required for the documentation/JSON evidence artifacts"},
+    {"gate_id": "unit_tests", "result": "NOT_OBSERVABLE", "evidence_ref": "python -m unittest discover -s tests -v cannot be executed through the connected GitHub content API"},
+    {"gate_id": "package_validator", "result": "NOT_OBSERVABLE", "evidence_ref": "python scripts/validate_package.py . cannot be executed through the connected GitHub content API"},
+    {"gate_id": "rollback_available", "result": "PASS", "evidence_ref": "all Stage 2A changes are versioned Git commits after cf253e3"},
+    {"gate_id": "deep_change_check", "result": "PASS", "evidence_ref": "mandatory self-review found no Router authority, daemon, scheduler, workflow engine, persistent agent, autonomous memory, mandatory external provider or deep-change bypass"}
+  ],
+  "judge_verdict": null,
+  "approvals": [],
+  "rework_count": 1,
+  "outcome": "BLOCKED",
+  "unresolved_risks": [
+    "Repository-local package validator has not been executed after Stage 2A changes.",
+    "Repository unit tests have not been executed after Stage 2A changes.",
+    "Run 05 must not be promoted to PASS until those deterministic checks are observed in a local/Codex execution environment."
+  ],
+  "rollback": "Create revert commits for the Stage 2A commits after cf253e3e060890674e2236522ae00e4dc651a73b to return to the pre-Stage-2A state.",
+  "approximate_usage_cost": null,
+  "source_refs": [
+    "STATUS.md",
+    "STAGE2_EXPERIMENT_PLAN.md",
+    "contracts/RUN_REPORT.md",
+    "contracts/EXPERIMENT_RECORD.md",
+    "playbooks/verified.md",
+    "MURAT_PROJECT_ENGINEER_STAGE2A_NEXT_INSTRUCTION_2026-08-11.md"
+  ],
+  "artifact_refs": [
+    "STAGE2A_FIRST5_REVIEW.md",
+    "contracts/RUN_REPORT.schema.json",
+    "contracts/EXPERIMENT_RECORD.schema.json",
+    "context/CONTEXT_MAP.md",
+    "docs/CONTEXT_PROVIDERS.md"
+  ],
+  "handoff_refs": [],
+  "baseline_run": false,
+  "interruption_resume": "PASS: current objective and boundaries were recovered from versioned STATUS/STAGE2 plan plus the Stage 2A continuation instruction; no hidden reasoning or durable runtime state was required.",
+  "architecture_pressure": []
+}
