@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "run_id": "stage2a-run-04",
+  "project": "Murkin1980/mebel-legal-kz",
+  "task": "Add the unified order document workflow around an order aggregate while preserving tenant isolation, audit history and existing legal modules.",
+  "start_timestamp": null,
+  "end_timestamp": "2026-07-24T21:48:26Z",
+  "risk_tier": "DEEP-CHANGE",
+  "playbook": "baseline/no-playbook",
+  "experts_invoked": [],
+  "route_profiles": [],
+  "files_changed": [
+    "ARCHITECTURE.md",
+    "FOUNDATION.md",
+    "MERGE_MEBELDOCS_MEBELLEGAL_INSTRUCTIONS.md",
+    "SESSION_NOTES.md",
+    "docs/MIGRATION_PROVENANCE.md",
+    "docs/adr/002-unified-order-document-workflow.md",
+    "src/app/app/orders/",
+    "src/modules/orders/",
+    "supabase/migrations/",
+    "src/tests/"
+  ],
+  "commands_tools_used": ["historical Git commit evidence", "GitHub connector"],
+  "deterministic_gate_results": [
+    {"gate_id": "deep_change_check", "result": "PASS", "evidence_ref": "ADR 002 is marked accepted by owner for the working prototype and FOUNDATION was versioned to 1.1"},
+    {"gate_id": "lint", "result": "PASS", "evidence_ref": "SESSION_NOTES in commit records npm run lint: 0 errors"},
+    {"gate_id": "typecheck", "result": "PASS", "evidence_ref": "SESSION_NOTES in commit records npm run typecheck: 0 errors"},
+    {"gate_id": "unit_tests", "result": "PASS", "evidence_ref": "SESSION_NOTES in commit records npm run test: 233/233"},
+    {"gate_id": "integration_tests", "result": "PASS", "evidence_ref": "SESSION_NOTES in commit records npm run test:integration: 119/119"},
+    {"gate_id": "security", "result": "PASS", "evidence_ref": "SESSION_NOTES in commit records npm run test:security: 153/153"},
+    {"gate_id": "build", "result": "PASS", "evidence_ref": "SESSION_NOTES in commit records npm run build: 32 routes"},
+    {"gate_id": "realdb_security", "result": "NOT_APPLICABLE", "evidence_ref": "SESSION_NOTES records test:security:realdb not run because external/real-data changes were prohibited"},
+    {"gate_id": "rollback_available", "result": "PASS", "evidence_ref": "historical Git commit and additive migration approach are observable"},
+    {"gate_id": "secrets_scan", "result": "NOT_OBSERVABLE", "evidence_ref": "commit notes state synthetic data/no secrets, but an independent scan artifact was not inspected"}
+  ],
+  "judge_verdict": null,
+  "approvals": ["docs/adr/002-unified-order-document-workflow.md: accepted by owner for working prototype"],
+  "rework_count": null,
+  "outcome": "PASS",
+  "unresolved_risks": [
+    "Real-database security test was intentionally not run under the historical external-change restriction.",
+    "Historical reviewer/rework metrics were not observable."
+  ],
+  "rollback": "Revert commit 5e39ad95f34a2e9caa2a55dac21b58b82f546482 and follow the additive migration rollback/runbook if this historical prototype must be removed.",
+  "approximate_usage_cost": null,
+  "source_refs": [
+    "commit:5e39ad95f34a2e9caa2a55dac21b58b82f546482",
+    "Murkin1980/mebel-legal-kz:docs/adr/002-unified-order-document-workflow.md",
+    "Murkin1980/mebel-legal-kz:SESSION_NOTES.md"
+  ],
+  "artifact_refs": ["github:Murkin1980/mebel-legal-kz@5e39ad95f34a2e9caa2a55dac21b58b82f546482"],
+  "handoff_refs": [],
+  "baseline_run": true,
+  "interruption_resume": false,
+  "architecture_pressure": []
+}
