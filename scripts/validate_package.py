@@ -1,0 +1,117 @@
+from __future__ import annotations
+
+import argparse
+import json
+import re
+import sys
+from pathlib import Path
+
+EXPERT_FIELDS = {"expert_id", "role", "responsibility", "invoke_when", "do_not_invoke_when", "allowed_inputs", "expected_outputs", "required_skills", "capability_profile", "preferred_route_profile", "max_rework_cycles", "forbidden_actions", "handoff_contract"}
+PLAYBOOK_FIELDS = {"playbook_id", "version", "supported_task_classes", "risk_tier", "roles", "sequence", "required_inputs", "deterministic_gates", "optional_semantic_review", "human_gate_conditions", "max_rework_cycles", "terminal_states", "run_report_fields"}
+HANDOFF_FIELDS = {"run_id", "task_id", "producer_role", "consumer_role", "task_summary", "input_refs", "changed_files", "artifact_refs", "assumptions", "unresolved_risks", "checks_already_run", "required_next_checks", "acceptance_criteria", "do_not_change"}
+RUN_REPORT_FIELDS = {"run_id", "project", "task", "start_timestamp", "end_timestamp", "risk_tier", "playbook", "experts_invoked", "route_profiles", "files_changed", "commands_tools_used", "deterministic_gate_results", "judge_verdict", "approvals", "rework_count", "outcome", "unresolved_risks", "rollback", "approximate_usage_cost"}
+EXPERIMENT_FIELDS = {"run_id", "execution_mode", "task_class", "risk_tier", "expert_or_team", "run_duration", "resolved_model_slugs", "tool_calls_observable", "deterministic_gate_failures", "reviewer_findings", "reviewer_false_positives", "rework_count", "human_intervention", "defect_escaped_after_pass", "interruption_recovery_issue", "approximate_token_cost_overhead", "fan_out_fan_in_needed", "notes"}
+
+
+def frontmatter_keys(path: Path) -> set[str]:
+    text = path.read_text(encoding="utf-8")
+    match = re.match(r"^---\s*\n(.*?)\n---", text, re.S)
+    if not match:
+        raise ValueError(f"missing frontmatter: {path}")
+    return {m.group(1) for m in re.finditer(r"^([a-z_]+):", match.group(1), re.M)}
+
+
+def template_fields(path: Path) -> set[str]:
+    return {m.group(1) for m in re.finditer(r"^- ([a-z_]+):", path.read_text(encoding="utf-8"), re.M)}
+
+
+def validate(root: Path) -> list[str]:
+    errors: list[str] = []
+    try:
+        data = json.loads((root / ".codex-plugin" / "plugin.json").read_text(encoding="utf-8"))
+        if data.get("name") != root.name:
+            errors.append("plugin name must match root folder")
+        if not re.fullmatch(r"\d+\.\d+\.\d+", str(data.get("version", ""))):
+            errors.append("plugin version must be strict semver")
+    except Exception as exc:
+        errors.append(f"invalid plugin manifest: {exc}")
+
+    experts = sorted((root / "experts").glob("*.md"))
+    playbooks = sorted((root / "playbooks").glob("*.md"))
+    teams = sorted((root / "teams").glob("*.md"))
+    if len(experts) != 4:
+        errors.append("exactly four Expert definitions are required")
+    if len(teams) != 3:
+        errors.append("exactly three Team definitions are required")
+    if len(playbooks) != 4:
+        errors.append("exactly four Playbooks are required")
+    for path in experts:
+        missing = EXPERT_FIELDS - frontmatter_keys(path)
+        if missing:
+            errors.append(f"{path.name} missing expert fields: {sorted(missing)}")
+    for path in playbooks:
+        missing = PLAYBOOK_FIELDS - frontmatter_keys(path)
+        if missing:
+            errors.append(f"{path.name} missing playbook fields: {sorted(missing)}")
+
+    missing = HANDOFF_FIELDS - template_fields(root / "contracts" / "HANDOFF.md")
+    if missing:
+        errors.append(f"HANDOFF missing fields: {sorted(missing)}")
+    missing = RUN_REPORT_FIELDS - template_fields(root / "contracts" / "RUN_REPORT.md")
+    if missing:
+        errors.append(f"RUN_REPORT missing fields: {sorted(missing)}")
+    missing = EXPERIMENT_FIELDS - template_fields(root / "contracts" / "EXPERIMENT_RECORD.md")
+    if missing:
+        errors.append(f"EXPERIMENT_RECORD missing fields: {sorted(missing)}")
+
+    required_gates = {"clean_diff_scope", "secrets_scan", "build", "typecheck", "lint", "unit_tests", "integration_tests", "acceptance_tests", "artifact_exists", "artifact_hash", "rollback_available", "deep_change_check"}
+    registry = (root / "gates" / "registry.yaml").read_text(encoding="utf-8")
+    present = set(re.findall(r"gate_id:\s*([a-z_]+)", registry))
+    if required_gates - present:
+        errors.append(f"gate registry missing: {sorted(required_gates - present)}")
+
+    route_text = (root / "skills" / "murat-project-engineer" / "references" / "route-profiles.md").read_text(encoding="utf-8")
+    for slug in ("gpt-5.6-sol", "opencode-go/deepseek-v4-flash", "opencode-go/kimi-k2.7-code"):
+        if slug not in route_text:
+            errors.append(f"route profile missing explicit slug: {slug}")
+
+    sample_report = (root / "examples" / "sample-software-project" / "RUN_REPORT_COMPLETED.md").read_text(encoding="utf-8")
+    for required in ("resolved_slug", "evidence/", "review_invocation_id", "git_commit"):
+        if required not in sample_report:
+            errors.append(f"sample report missing operational evidence marker: {required}")
+    if "rework_count: `1`" not in sample_report:
+        errors.append("sample report must record the remediation cycle")
+    final_verdict = root / "examples" / "sample-software-project" / "REVIEWER_VERDICT_FINAL.md"
+    if final_verdict.exists():
+        verdict_text = final_verdict.read_text(encoding="utf-8")
+        if "decision: PASS" not in verdict_text:
+            errors.append("final reviewer artifact exists without PASS")
+        if "outcome: PASS" not in sample_report:
+            errors.append("final PASS reviewer artifact requires report outcome PASS")
+    elif "outcome: PASS" in sample_report:
+        errors.append("sample report cannot claim PASS without final reviewer artifact")
+
+    for path in root.rglob("*"):
+        if path.is_file() and path.suffix.lower() in {".md", ".json", ".yaml", ".yml"}:
+            if "[TODO:" in path.read_text(encoding="utf-8"):
+                errors.append(f"placeholder remains: {path.relative_to(root)}")
+    return errors
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("root", nargs="?", default=".")
+    root = Path(parser.parse_args().root).resolve()
+    errors = validate(root)
+    if errors:
+        print("VALIDATION FAILED")
+        for error in errors:
+            print(f"- {error}")
+        return 1
+    print("VALIDATION PASSED")
+    print("4 experts, 3 teams, 4 playbooks, contracts, and 12 gates present")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

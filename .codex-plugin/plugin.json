@@ -1,0 +1,22 @@
+{
+  "name": "murat-project-engineer",
+  "version": "1.0.0",
+  "description": "Risk-tiered project coordination with bounded experts, playbooks, deterministic gates, and compact run reports.",
+  "author": {
+    "name": "Murat AI Stack"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Murat Project Engineer",
+    "shortDescription": "Governed software and project execution.",
+    "longDescription": "Coordinates bounded Expert roles through risk-tiered Playbooks, deterministic Review Gates, typed handoffs, optional independent review, and compact run reports without changing Codex Router authority.",
+    "developerName": "Murat AI Stack",
+    "category": "Productivity",
+    "capabilities": ["Interactive", "Write"],
+    "defaultPrompt": [
+      "Run this project task with the appropriate risk tier.",
+      "Use the verified software feature playbook.",
+      "Check whether this request is a deep change."
+    ]
+  }
+}

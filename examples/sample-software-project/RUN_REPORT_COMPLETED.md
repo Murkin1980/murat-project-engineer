@@ -1,0 +1,21 @@
+# Compact Run Report v1 — completed sample
+
+- run_id: `mpe-sample-001`
+- project: `sample-software-project`
+- task: Add a bounded `clamp` function and tests.
+- start_timestamp: `2026-08-10T22:00:00+05:00`
+- end_timestamp: `2026-08-10T22:05:00+05:00`
+- risk_tier: `VERIFIED`
+- playbook: `software-feature@1.0.0`
+- experts_invoked: `architect`, `coder`, `reviewer`
+- route_profiles: `default` resolved_slug=`gpt-5.6-sol`; `coding` resolved_slug=`opencode-go/kimi-k2.7-code` by policy but the bounded implementation was produced by the current primary Codex invocation, recorded as an allowed fallback to `gpt-5.6-sol`; `strong-review` resolved_slug=`gpt-5.6-sol`. Router configuration was not changed.
+- files_changed: `.gitignore`; `calculator.py`; `tests/test_calculator.py`; two handoffs; three structured Reviewer verdicts; five files under `evidence/`; this report. Complete scope is recorded in `evidence/git-scope.txt`.
+- commands_tools_used: `git status --short`; `git diff-tree --root --no-commit-id --name-only -r HEAD`; `python -m unittest discover -s tests -v`; `python -m compileall -q .`; redacted-pattern `rg` secrets scan; `Get-FileHash SHA256`.
+- deterministic_gate_results: deep_change_check PASS; clean_diff_scope PASS with `evidence/git-scope.txt`; secrets_scan PASS with `evidence/secrets-scan.txt`; unit_tests PASS 4/4 and compile PASS with `evidence/test-results.txt`; acceptance_tests PASS with `evidence/acceptance-mapping.md`; artifact_exists and artifact_hash PASS with paths, sizes and SHA-256 in `evidence/artifact-integrity.txt`; typecheck/lint/integration tests NOT_APPLICABLE because the dependency-free Python sample defines none; rollback_available PASS using git_commit=`d281b028732f813dc35d54bb3bb31d1403f26ceb` in the isolated repository.
+- judge_verdict: review_invocation_id=`/root/mpe_independent_review`; initial review and first remediation recheck returned `REWORK`; final independent read-only review returned `PASS` with confidence 0.98 and no critical findings; see `REVIEWER_VERDICT_FINAL.md`.
+- approvals: Stage 1 implementation approved by supplied instruction; no deep-change approval used.
+- rework_count: `1`
+- outcome: PASS
+- unresolved_risks: NaN behavior intentionally unspecified; sample is not a production library.
+- rollback: Delete the isolated repository or revert the sample commits beginning at git_commit=`d281b028732f813dc35d54bb3bb31d1403f26ceb`; the evidence update commit is `4aed660500753f3c45a572e8921814ef033b6b15`. Plugin, Router and MASTER are unaffected.
+- approximate_usage_cost: Not observable; no paid mass model run.

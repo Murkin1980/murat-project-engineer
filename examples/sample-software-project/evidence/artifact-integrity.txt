@@ -1,0 +1,7 @@
+artifact=C:\Projects\mpe-sample-software-project\calculator.py
+size_bytes=256
+sha256=B3FEF55A389BFAFD6C77A77E8C889691EE06920ED9638C02CA2C78DFD618D6DD
+
+artifact=C:\Projects\mpe-sample-software-project\tests\test_calculator.py
+size_bytes=495
+sha256=E3E7A7DAA1100DCA300A8CB637DBAE20996854AD9D546B4011D407191E9AB7AD

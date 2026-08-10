@@ -1,0 +1,86 @@
+version: 1.0.0
+gates:
+  - gate_id: clean_diff_scope
+    type: deterministic
+    hard: true
+    applicable_when: repository files may change
+    evidence_required: scoped changed-file list and diff review
+    failure_state: REWORK
+    retry_policy: correct once within approved scope
+  - gate_id: secrets_scan
+    type: deterministic
+    hard: true
+    applicable_when: files or artifacts are created or changed
+    evidence_required: scan result without secret values
+    failure_state: BLOCKED
+    retry_policy: remove exposure and rescan; never print the secret
+  - gate_id: build
+    type: deterministic
+    hard: true
+    applicable_when: project defines a build command
+    evidence_required: command and exit status
+    failure_state: REWORK
+    retry_policy: one bounded correction
+  - gate_id: typecheck
+    type: deterministic
+    hard: true
+    applicable_when: project defines static type checking
+    evidence_required: command and exit status
+    failure_state: REWORK
+    retry_policy: one bounded correction
+  - gate_id: lint
+    type: deterministic
+    hard: true
+    applicable_when: project defines linting
+    evidence_required: command and exit status
+    failure_state: REWORK
+    retry_policy: one bounded correction
+  - gate_id: unit_tests
+    type: deterministic
+    hard: true
+    applicable_when: unit tests exist or are required
+    evidence_required: command, counts, and exit status
+    failure_state: REWORK
+    retry_policy: one bounded correction
+  - gate_id: integration_tests
+    type: deterministic
+    hard: true
+    applicable_when: component boundaries changed
+    evidence_required: command, counts, and exit status
+    failure_state: REWORK
+    retry_policy: one bounded correction
+  - gate_id: acceptance_tests
+    type: deterministic
+    hard: true
+    applicable_when: acceptance criteria are machine-verifiable
+    evidence_required: criterion-to-result mapping
+    failure_state: REWORK
+    retry_policy: one bounded correction
+  - gate_id: artifact_exists
+    type: deterministic
+    hard: true
+    applicable_when: the task promises a deliverable
+    evidence_required: artifact path and size
+    failure_state: BLOCKED
+    retry_policy: create or restore the artifact
+  - gate_id: artifact_hash
+    type: deterministic
+    hard: false
+    applicable_when: integrity or transfer verification is required
+    evidence_required: algorithm and digest
+    failure_state: BLOCKED
+    retry_policy: regenerate after confirming source
+  - gate_id: rollback_available
+    type: deterministic
+    hard: true
+    applicable_when: meaningful project state changes
+    evidence_required: explicit rollback procedure
+    failure_state: BLOCKED
+    retry_policy: define rollback before continuing
+  - gate_id: deep_change_check
+    type: deterministic
+    hard: true
+    applicable_when: every run during classification and before finalization
+    evidence_required: assessment against MASTER and core boundaries
+    failure_state: HUMAN_REQUIRED
+    retry_policy: detection cannot be overridden; a separate explicit human approval may authorize a later run

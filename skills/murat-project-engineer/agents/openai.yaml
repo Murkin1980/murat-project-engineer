@@ -1,0 +1,4 @@
+interface:
+  display_name: "Murat Project Engineer"
+  short_description: "Risk-tiered software project coordination"
+  default_prompt: "Use $murat-project-engineer to coordinate this project task with risk tiers and verification gates."

@@ -1,0 +1,13 @@
+command=python -m unittest discover -s tests -v
+exit_code=0
+tests_run=4
+result=PASS
+tests:
+- test_invalid_range: ok
+- test_value_above_range: ok
+- test_value_below_range: ok
+- test_value_inside_range: ok
+
+command=python -m compileall -q .
+exit_code=0
+result=PASS

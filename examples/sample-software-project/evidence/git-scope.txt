@@ -1,0 +1,21 @@
+repository=C:\Projects\mpe-sample-software-project
+initial_git_commit=d281b028732f813dc35d54bb3bb31d1403f26ceb
+evidence_git_commit=4aed660500753f3c45a572e8921814ef033b6b15
+cleanup_git_commit=ff755f03f7a7cdc92754060bc6fdd25c1a1979f3
+git_status=clean
+complete_final_artifact_set:
+- .gitignore
+- HANDOFF_ARCHITECT_TO_CODER.md
+- HANDOFF_CODER_TO_REVIEWER.md
+- README.md
+- REVIEWER_VERDICT_INITIAL.md
+- REVIEWER_VERDICT_RECHECK.md
+- REVIEWER_VERDICT_FINAL.md
+- RUN_REPORT_COMPLETED.md
+- calculator.py
+- evidence/acceptance-mapping.md
+- evidence/artifact-integrity.txt
+- evidence/git-scope.txt
+- evidence/secrets-scan.txt
+- evidence/test-results.txt
+- tests/test_calculator.py
