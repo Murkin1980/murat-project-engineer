@@ -9,6 +9,7 @@ Updated: 2026-08-13
 - Stage 2: ACTIVE — 20-run evidence experiment
 - Stage 2A: FIRST-FIVE EVIDENCE CAPTURED
 - Run 06: COMPLETE — operating-model/status synchronization
+- Portfolio dashboard: LIVE at https://murat-project-engineer.muriktl.workers.dev
 
 ## Current architecture
 
@@ -33,6 +34,7 @@ Implemented and available:
 - package validator and tests
 - isolated software-feature PoC
 - Stage 2 evidence for Runs 01–06
+- portfolio dashboard (read-only static asset, Workers Static Assets, auto-deploy on configured main push)
 
 ## Stage 2 run status
 
@@ -101,6 +103,7 @@ The experiment must measure quality, rework, reviewer value, interruption recove
 4. Ensure the 20-run set contains at least five baseline runs total; currently Runs 01–04 provide four historical baselines.
 5. Use independent Reviewer on enough VERIFIED runs to measure reviewer usefulness and false positives.
 6. Apply the New Idea Filter before beginning any substantial new project/repository/feature idea.
+7. Maintain portfolio dashboard snapshot as part of the weekly status ritual.
 
 ## Evidence-format finding
 

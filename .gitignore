@@ -1,2 +1,10 @@
 __pycache__/
 *.pyc
+
+# Wrangler / Node
+node_modules/
+.wrangler/
+dist/
+
+# Local environment secrets
+.env

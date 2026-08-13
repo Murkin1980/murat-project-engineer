@@ -1,0 +1,48 @@
+name: Deploy Portfolio Dashboard
+
+# Required repository configuration:
+# - Secrets: CLOUDFLARE_API_TOKEN (Workers Scripts:Edit)
+# - Variables: CLOUDFLARE_ACCOUNT_ID
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      deploy-enabled: ${{ steps.check.outputs.deploy-enabled }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Verify Cloudflare credentials
+        id: check
+        run: |
+          if [ -n "${{ secrets.CLOUDFLARE_API_TOKEN }}" ] && [ -n "${{ vars.CLOUDFLARE_ACCOUNT_ID }}" ]; then
+            echo "deploy-enabled=true" >> "$GITHUB_OUTPUT"
+            echo "Cloudflare credentials are configured. Deploy will run."
+          else
+            echo "deploy-enabled=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Cloudflare credentials are not configured. Auto-deploy is disabled; skipping deploy. Add CLOUDFLARE_API_TOKEN secret and CLOUDFLARE_ACCOUNT_ID variable to enable."
+          fi
+
+      - name: Deploy to Cloudflare Workers Static Assets
+        if: steps.check.outputs.deploy-enabled == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx wrangler@4.110.0 deploy

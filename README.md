@@ -26,6 +26,10 @@ python -m unittest discover -s tests -v
 
 The sample project demonstrates an isolated `software-feature` run with completed handoffs and Run Report.
 
+## Portfolio dashboard
+
+Live project status map: https://murat-project-engineer.muriktl.workers.dev
+
 ## Disable or rollback
 
 Stop invoking this plugin and remove its folder. Existing Codex projects, Router configuration, credentials and MASTER remain unchanged. Project changes use the target project's normal Git rollback.
