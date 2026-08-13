@@ -1,17 +1,18 @@
 # Murat Project Engineer — Status
 
-Updated: 2026-08-11
+Updated: 2026-08-13
 
 ## Current version
 
 - Release: v1.0
 - Stage 1: COMPLETE
 - Stage 2: ACTIVE — 20-run evidence experiment
-- Stage 2A: FIRST-FIVE EVIDENCE CAPTURED; current coordinator run BLOCKED on local validator/unit-test execution
+- Stage 2A: FIRST-FIVE EVIDENCE CAPTURED
+- Run 06: COMPLETE — operating-model/status synchronization
 
 ## Current architecture
 
-Murat Project Engineer remains a bounded coordinator layer for Murat AI Stack Option A+.
+Murat Project Engineer remains a bounded coordinator and policy layer for Murat AI Stack Option A+.
 
 Implemented and available:
 
@@ -27,23 +28,44 @@ Implemented and available:
 - machine-readable Experiment Record schema/example
 - progressive context map
 - context-provider architecture documentation
+- mandatory New Idea Filter Policy
+- operating-model documentation connecting portfolio filtering to risk-tiered execution
 - package validator and tests
 - isolated software-feature PoC
-- Stage 2A evidence for Runs 01–05
+- Stage 2 evidence for Runs 01–06
 
-## Stage 2A first-five status
+## Stage 2 run status
 
 - Run 01 — Murat Project Engineer documentation/status hygiene — FAST baseline — PASS
 - Run 02 — Furniture Configurator parametric/UI/pricing feature — VERIFIED baseline — PASS
 - Run 03 — MebelDocs AI order→invoice→PDF vertical slice — VERIFIED baseline — PASS
 - Run 04 — MebelLegal unified order workflow/domain-boundary change — DEEP-CHANGE baseline — PASS
 - Run 05 — Murat Project Engineer Stage 2A resume/evidence readiness — VERIFIED coordinator — BLOCKED
+- Run 06 — Murat Project Engineer operating-model/status synchronization — FAST coordinator — PASS
 
-Run 05 is blocked only because the repository-local package validator and unit tests are not executable through the current GitHub connector surface. No PASS is claimed without those deterministic checks.
+Run 05 remains historically BLOCKED because repository-local package validator and unit tests were not executable through the GitHub connector execution surface during that run. No PASS is retroactively claimed.
 
-Interruption recovery itself succeeded: the task resumed from `STATUS.md`, `STAGE2_EXPERIMENT_PLAN.md`, current Git history and the Stage 2A continuation instruction without hidden chain-of-thought or durable runtime state.
+Run 06 is a separate FAST documentation/policy synchronization run. It does not replace or rewrite Run 05.
 
-See `STAGE2A_FIRST5_REVIEW.md` and `evidence/stage2a/`.
+## New Idea Filter
+
+`docs/NEW_IDEA_FILTER_POLICY.md` is ACTIVE and MANDATORY.
+
+Every new product, feature, service, agent, plugin, integration, automation, repository, or substantial technical idea must be evaluated through Murat Project Engineer before implementation starts.
+
+The primary disposition must be one of:
+
+- `EXTEND_EXISTING`
+- `REUSE_COMPONENT`
+- `MERGE`
+- `EXPERIMENT`
+- `HOLD`
+- `NEW_REPOSITORY`
+- `REJECT`
+
+`NEW_REPOSITORY` is the exception, not the default.
+
+See `docs/OPERATING_MODEL.md` for how portfolio filtering connects to the existing FAST / VERIFIED / DEEP-CHANGE execution model.
 
 ## Boundaries still in force
 
@@ -69,14 +91,16 @@ Continue the Stage 2 experiment defined in `STAGE2_EXPERIMENT_PLAN.md` toward 20
 
 The experiment must measure quality, rework, reviewer value, interruption recovery, overhead, and genuine architecture pressure before any expansion is proposed.
 
-## Next action
+## Next actions
 
-1. In a local/Codex execution environment, resume Run 05 and execute:
+1. In a local/Codex execution environment, complete the pending Run 05 deterministic validation:
    - `python scripts/validate_package.py .`
    - `python -m unittest discover -s tests -v`
-2. If the checks pass, record the resumed validation as a subsequent evidence update without rewriting history.
-3. Continue Runs 06–20 with fresh real work, prioritizing coordinator runs with observable deterministic gates and at least one more baseline run.
-4. Use independent Reviewer on enough VERIFIED runs to measure reviewer value and false positives.
+2. Preserve Run 05 history and record any resumed validation as a later evidence update.
+3. Continue Runs 07–20 with fresh real work.
+4. Ensure the 20-run set contains at least five baseline runs total; currently Runs 01–04 provide four historical baselines.
+5. Use independent Reviewer on enough VERIFIED runs to measure reviewer usefulness and false positives.
+6. Apply the New Idea Filter before beginning any substantial new project/repository/feature idea.
 
 ## Evidence-format finding
 
