@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0",
+  "run_id": "RUN-06",
+  "project": "Murat Project Engineer",
+  "task": "Synchronize STATUS and CHANGELOG with the mandatory New Idea Filter and document the operating model linking portfolio filtering to FAST/VERIFIED/DEEP-CHANGE execution.",
+  "start_timestamp": null,
+  "end_timestamp": null,
+  "risk_tier": "FAST",
+  "playbook": "fast",
+  "experts_invoked": ["single-suitable-expert"],
+  "route_profiles": [],
+  "files_changed": [
+    "docs/OPERATING_MODEL.md",
+    "STATUS.md",
+    "CHANGELOG.md",
+    "evidence/stage2/RUN-06_REPORT.json",
+    "evidence/stage2/RUN-06_EXPERIMENT_RECORD.json"
+  ],
+  "commands_tools_used": ["GitHub.fetch_file", "GitHub.create_file", "GitHub.update_file", "GitHub.search_commits"],
+  "deterministic_gate_results": [
+    {
+      "gate_id": "clean_diff_scope",
+      "result": "PASS",
+      "evidence_ref": "Run 06 changes are limited to operating-model/status/changelog/evidence documentation."
+    },
+    {
+      "gate_id": "secrets_scan",
+      "result": "PASS",
+      "evidence_ref": "Changed artifacts contain policy/status/evidence text only; no credentials or secret values were introduced."
+    },
+    {
+      "gate_id": "artifact_exists",
+      "result": "PASS",
+      "evidence_ref": "GitHub contents API returned successful commits for OPERATING_MODEL.md, STATUS.md and CHANGELOG.md; Run 06 evidence artifacts are committed in this run."
+    }
+  ],
+  "judge_verdict": null,
+  "approvals": [],
+  "rework_count": 0,
+  "outcome": "PASS",
+  "unresolved_risks": [
+    "Run 05 remains historically BLOCKED until repository-local package validator and unit tests are executed in a local/Codex environment.",
+    "Reviewer usefulness and false-positive rate remain under-measured in the Stage 2 experiment."
+  ],
+  "rollback": "Revert the Run 06 commits affecting docs/OPERATING_MODEL.md, STATUS.md, CHANGELOG.md and evidence/stage2/RUN-06_*.",
+  "approximate_usage_cost": null,
+  "source_refs": [
+    "STATUS.md",
+    "STAGE2_EXPERIMENT_PLAN.md",
+    "docs/NEW_IDEA_FILTER_POLICY.md",
+    "playbooks/fast.md"
+  ],
+  "artifact_refs": [
+    "docs/OPERATING_MODEL.md",
+    "STATUS.md",
+    "CHANGELOG.md",
+    "evidence/stage2/RUN-06_EXPERIMENT_RECORD.json"
+  ],
+  "handoff_refs": [],
+  "baseline_run": false,
+  "interruption_resume": false,
+  "architecture_pressure": []
+}
