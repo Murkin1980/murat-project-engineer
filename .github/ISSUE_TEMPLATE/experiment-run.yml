@@ -1,0 +1,43 @@
+name: Stage 1 experiment run
+description: Record one representative baseline or Murat Project Engineer run.
+title: "[RUN] "
+labels: [experiment]
+body:
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Execution mode
+      options: [baseline, murat-project-engineer]
+    validations:
+      required: true
+  - type: dropdown
+    id: risk
+    attributes:
+      label: Risk tier
+      options: [FAST, VERIFIED, DEEP-CHANGE]
+    validations:
+      required: true
+  - type: textarea
+    id: task
+    attributes:
+      label: Task and acceptance criteria
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Gates, reviewer findings and evidence
+    validations:
+      required: true
+  - type: textarea
+    id: metrics
+    attributes:
+      label: Duration, model routes, rework, intervention and overhead
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Outcome, escaped defects and recovery issues
+    validations:
+      required: true
