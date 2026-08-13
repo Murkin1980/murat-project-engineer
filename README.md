@@ -2,6 +2,16 @@
 
 Minimal coordinator plugin for Murat AI Stack Option A+.
 
+> Status: Stage 1 validated. The project is collecting evidence before any Workflow Engine, persistent-agent, or Prime-runtime expansion.
+
+## For developers
+
+- Start with `AGENTS.md` and `CONTRIBUTING.md`.
+- Read the decision record in `docs/MURAT_AI_STACK_V2_DECISION.md`.
+- Check current scope in `PROJECT_STATUS.md` and `ROADMAP.md`.
+- Use feature branches and pull requests; do not push directly to `main`.
+- CI runs package validation, contract tests, sample tests and Python compilation.
+
 ## Boundaries
 
 This package defines bounded Experts, temporary Expert Teams, human-readable Playbooks, Review Gates, source-of-truth context references, typed handoffs and compact run reports. It does not provide a daemon, scheduler, generic workflow engine, persistent agent runtime, memory service, credentials, MCP server, or Router modification.

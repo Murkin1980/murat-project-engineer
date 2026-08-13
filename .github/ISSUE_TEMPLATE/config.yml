@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security report
+    url: https://github.com/Murkin1980/murat-project-engineer/security
+    about: Report sensitive security issues privately.
