@@ -1,10 +1,10 @@
 # CODEX INSTRUCTION — PERSONALIZED ASSESSMENT ENGINE v0 EXPERIMENT
 ## Outcome-pattern reuse inside existing Murat projects
 
-**Date:** 2026-08-15  
-**Primary governing repository:** `Murkin1980/murat-project-engineer`  
-**Primary decision:** `EXPERIMENT`  
-**New repository:** `NO`  
+**Date:** 2026-08-15
+**Primary governing repository:** `Murkin1980/murat-project-engineer`
+**Primary decision:** `EXPERIMENT`
+**New repository:** `NO`
 **Deep change:** `NOT AUTHORIZED`
 
 ---

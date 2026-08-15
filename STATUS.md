@@ -1,6 +1,6 @@
 # Murat Project Engineer — Status
 
-Updated: 2026-08-13
+Updated: 2026-08-15
 
 ## Current version
 
@@ -8,7 +8,7 @@ Updated: 2026-08-13
 - Stage 1: COMPLETE
 - Stage 2: ACTIVE — 20-run evidence experiment
 - Stage 2A: FIRST-FIVE EVIDENCE CAPTURED
-- Run 06: COMPLETE — operating-model/status synchronization
+- Runs 07–11: EVIDENCE CAPTURED — three PASS, one REWORK, one BLOCKED
 - Portfolio dashboard: LIVE at https://murat-project-engineer.muriktl.workers.dev
 
 ## Current architecture
@@ -33,7 +33,8 @@ Implemented and available:
 - operating-model documentation connecting portfolio filtering to risk-tiered execution
 - package validator and tests
 - isolated software-feature PoC
-- Stage 2 evidence for Runs 01–06
+- Stage 2 evidence for Runs 01–11
+- bounded runtime-coordination contracts and stateless helpers from Run 11
 - portfolio dashboard (read-only static asset, Workers Static Assets, auto-deploy on configured main push)
 
 ## Stage 2 run status
@@ -44,10 +45,19 @@ Implemented and available:
 - Run 04 — MebelLegal unified order workflow/domain-boundary change — DEEP-CHANGE baseline — PASS
 - Run 05 — Murat Project Engineer Stage 2A resume/evidence readiness — VERIFIED coordinator — BLOCKED
 - Run 06 — Murat Project Engineer operating-model/status synchronization — FAST coordinator — PASS
+- Run 07 — Strix/FreeBuff controlled evaluation — VERIFIED coordinator — PASS (evaluation completed; Strix NOT_EXECUTED/HOLD)
+- Run 08 — BrowserAct public-web acquisition evaluation — VERIFIED coordinator — PASS
+- Run 09 — Personalized Assessment Engine v0 — VERIFIED coordinator — REWORK
+- Run 10 — Munder Difflin controlled pilot — VERIFIED coordinator — BLOCKED
+- Run 11 — bounded runtime-coordination patterns — VERIFIED coordinator — PASS
 
 Run 05 remains historically BLOCKED because repository-local package validator and unit tests were not executable through the GitHub connector execution surface during that run. No PASS is retroactively claimed.
 
 Run 06 is a separate FAST documentation/policy synchronization run. It does not replace or rewrite Run 05.
+
+Run 07 PASS applies only to completion of the controlled evaluation. Strix execution is NOT_EXECUTED and its decision remains HOLD. FreeBuff execution is REJECT; selected Codebuff patterns are REUSE_COMPONENT.
+
+Run 09 remains REWORK until its unresolved production-rule, external-LLM, Git-boundary, and source-of-truth findings are addressed. Run 10 remains historically BLOCKED. Run 11 remains inside Option A+ only while its mailbox, JSONL, and lifecycle elements stay bounded, stateless, conditional helpers rather than runtime authority.
 
 ## New Idea Filter
 
@@ -95,15 +105,14 @@ The experiment must measure quality, rework, reviewer value, interruption recove
 
 ## Next actions
 
-1. In a local/Codex execution environment, complete the pending Run 05 deterministic validation:
-   - `python scripts/validate_package.py .`
-   - `python -m unittest discover -s tests -v`
-2. Preserve Run 05 history and record any resumed validation as a later evidence update.
-3. Continue Runs 07–20 with fresh real work.
-4. Ensure the 20-run set contains at least five baseline runs total; currently Runs 01–04 provide four historical baselines.
+1. Preserve the historical Run 05 and Run 10 BLOCKED outcomes; do not retroactively promote them.
+2. Keep Run 09 in REWORK until the recorded findings are resolved or explicitly scoped out.
+3. Continue Runs 12–20 with fresh real work.
+4. Ensure the 20-run set contains at least five baseline runs total; Runs 01–04 currently provide four historical baselines.
 5. Use independent Reviewer on enough VERIFIED runs to measure reviewer usefulness and false positives.
-6. Apply the New Idea Filter before beginning any substantial new project/repository/feature idea.
-7. Maintain portfolio dashboard snapshot as part of the weekly status ritual.
+6. Keep Run 11 helpers conditional and bounded. A poller, daemon, retry worker, router, scheduler, shared state, database, or generic messaging/runtime layer requires a new filter and DEEP-CHANGE review.
+7. Add selected deterministic gates to GitHub CI only through a separate bounded change.
+8. Maintain the portfolio dashboard snapshot as part of the weekly status ritual.
 
 ## Evidence-format finding
 

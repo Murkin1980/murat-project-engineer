@@ -21,4 +21,3 @@ Terminal pilot decision: **REUSE_PATTERN**.
 ## Portfolio decision
 
 No new repository and no deep architectural change are justified. Any implementation of the three reuse patterns should be proposed separately through the New Idea Filter as a small extension to existing MPE contracts/evidence, with measurable reductions in handoff ambiguity or collision rate.
-

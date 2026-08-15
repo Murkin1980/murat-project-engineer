@@ -1,11 +1,11 @@
 # CODEX INSTRUCTION — MUNDER DIFFLIN CONTROLLED ARCHITECTURE PILOT
 ## Murat Project Engineer — Multi-Agent Runtime / Coordination Evaluation
 
-**Date:** 2026-08-15  
-**Primary governing repository:** `Murkin1980/murat-project-engineer`  
-**Decision:** `EXPERIMENT`  
-**Suggested run:** `RUN-10`  
-**New repository:** `NO`  
+**Date:** 2026-08-15
+**Primary governing repository:** `Murkin1980/murat-project-engineer`
+**Decision:** `EXPERIMENT`
+**Suggested run:** `RUN-10`
+**New repository:** `NO`
 **Deep change:** `NOT AUTHORIZED`
 
 ---

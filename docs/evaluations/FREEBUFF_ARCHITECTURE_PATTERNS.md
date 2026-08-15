@@ -1,9 +1,9 @@
 # FreeBuff / Codebuff Architecture Patterns
 
-Date: 2026-08-14  
-Source: read-only clone of `CodebuffAI/codebuff`  
-Extraction route: `opencode-go/deepseek-v4-flash` through Codex Router  
-Critical review route: `gpt-5.6-sol` through Codex Router  
+Date: 2026-08-14
+Source: read-only clone of `CodebuffAI/codebuff`
+Extraction route: `opencode-go/deepseek-v4-flash` through Codex Router
+Critical review route: `gpt-5.6-sol` through Codex Router
 Decision: `REUSE_COMPONENT` (patterns only)
 
 | Pattern | Codebuff evidence | MPE equivalent / duplication | Decision |
@@ -38,4 +38,3 @@ Reuse only human-readable contracts and evidence fields:
 patterns_worth_reusing: 9
 FREEBUFF_PATTERN_DECISION: REUSE_COMPONENT
 ```
-

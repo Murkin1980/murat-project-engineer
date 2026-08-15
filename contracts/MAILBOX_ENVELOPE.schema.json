@@ -7,7 +7,12 @@
   "required": ["schema_version", "message_id", "run_id", "task_id", "sender_role", "recipient_role", "handoff_ref", "created_at", "status"],
   "properties": {
     "schema_version": {"const": "1.0"},
-    "message_id": {"type": "string", "minLength": 1},
+    "message_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"
+    },
     "run_id": {"type": "string", "minLength": 1},
     "task_id": {"type": "string", "minLength": 1},
     "sender_role": {"type": "string", "minLength": 1},

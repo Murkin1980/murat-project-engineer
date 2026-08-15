@@ -37,4 +37,3 @@
 - Scheduler: **REJECT** — outside Option A+ boundaries and enabled unexpectedly during onboarding.
 - GOD orchestrator: **REJECT** — duplicates Codex authority.
 - Desktop runtime: **HOLD** — useful UI, but unsigned and not operational with Codex in this test.
-

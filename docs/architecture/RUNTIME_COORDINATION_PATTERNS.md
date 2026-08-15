@@ -1,7 +1,7 @@
 # Runtime Coordination Patterns
 
-Status: bounded MPE capability  
-Decision: `EXTEND_EXISTING`  
+Status: bounded MPE capability
+Decision: `EXTEND_EXISTING`
 Source experiment: RUN-10
 
 ## Purpose and reuse map
@@ -20,11 +20,11 @@ MPE supplies contracts and a stateless helper. Codex remains the execution autho
 
 ## Mailbox transport
 
-`MAILBOX_ENVELOPE.schema.json` wraps a reference to the authoritative typed HANDOFF. `deliver_atomic` validates the envelope, acquires a message-scoped exclusive lock, writes and fsyncs a temporary file, and atomically renames it into the inbox. Duplicate or concurrently active message IDs fail deterministically. Transient inboxes belong under `.mpe-runtime/mailboxes/`. There is no broker, socket, poller, or daemon.
+`MAILBOX_ENVELOPE.schema.json` wraps a reference to the authoritative typed HANDOFF. `message_id` is restricted to 1–128 ASCII letters, digits, underscores, or hyphens so it cannot become a path. `deliver_atomic` rejects mailbox paths crossing a symlink or Windows junction/reparse point, acquires a message-scoped exclusive lock, writes and fsyncs a temporary file, and atomically renames it into the inbox. Duplicate or concurrently active message IDs fail deterministically, including between processes. Transient inboxes belong under `.mpe-runtime/mailboxes/`. There is no broker, socket, poller, retry worker, or daemon.
 
 ## Event vocabulary
 
-Core factual events are `spawn`, `handoff`, `gate`, and `terminal`; optional bounded events are `claim`, `block`, and `resume`. JSONL is append-only supporting evidence. Events exclude prompts, transcripts, secrets, and chain-of-thought. `summarize_events` maps them into existing Run Report concepts without modifying Run Report semantics.
+Core factual events are `spawn`, `handoff`, `gate`, and `terminal`; optional bounded events are `claim`, `block`, and `resume`. JSONL is append-only supporting evidence owned by exactly one named writer, normally the run coordinator. The helper records that owner beside the log and rejects a different writer; it does not provide multi-writer locking or a broker. The run owner must retain the log only for the evidence period required by the project, then archive a redacted artifact or delete it. Events exclude prompts, transcripts, secrets, and chain-of-thought. `summarize_events` maps them into existing Run Report concepts without modifying Run Report semantics.
 
 ## Lifecycle and worktree ownership
 

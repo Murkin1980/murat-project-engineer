@@ -1,8 +1,8 @@
 # Munder Difflin controlled architecture pilot — RUN-10
 
-Date: 2026-08-15  
-Disposition: **EXPERIMENT**  
-Pilot result: **FAIL**  
+Date: 2026-08-15
+Disposition: **EXPERIMENT**
+Pilot result: **FAIL**
 Overall adoption decision: **REUSE_PATTERN**
 
 ## Executive conclusion
@@ -71,4 +71,3 @@ Focused source tests were attempted after `npm install`. Installation failed bec
 ## Recommended next action
 
 Do not integrate Munder as MPE's orchestrator. Preserve the current MPE boundary. Reuse only selected patterns after independent design review: typed atomic mailbox envelopes, a compact append-only event vocabulary, and explicit per-agent lifecycle/worktree metadata. File a minimal upstream reproduction for the Windows Codex immediate-exit behavior and repeat only a smoke pilot after a fix, with all autonomy, memory, schedules, and telemetry disabled by construction.
-

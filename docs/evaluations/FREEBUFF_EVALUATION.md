@@ -1,8 +1,8 @@
 # FreeBuff Execution Evaluation
 
-Date: 2026-08-14  
-Selected scope: `Murkin1980/murat-project-engineer`  
-Baseline commit: `408f94915f997bf9e9ec87e53987a15e5d09b6af` (`main`)  
+Date: 2026-08-14
+Selected scope: `Murkin1980/murat-project-engineer`
+Baseline commit: `408f94915f997bf9e9ec87e53987a15e5d09b6af` (`main`)
 Decision: `REJECT`
 
 ## Environment and privacy gate
@@ -76,9 +76,9 @@ acceptance_criteria = FAIL
 comparison = WORSE
 ```
 
-Main measurable advantage: one final changed file versus two, but this did not compensate for semantic failure or rework.  
-Main limitation: unreliable scope/contract judgment, required human correction, interactive-only operation, and remote data processing.  
-Operational overhead: MEDIUM (global package plus 47.8 MB launcher download; first start required external local state).  
+Main measurable advantage: one final changed file versus two, but this did not compensate for semantic failure or rework.
+Main limitation: unreliable scope/contract judgment, required human correction, interactive-only operation, and remote data processing.
+Operational overhead: MEDIUM (global package plus 47.8 MB launcher download; first start required external local state).
 Windows compatibility: launcher works through `freebuff.cmd`; PowerShell script invocation is blocked by the machine execution policy.
 
 ## Removal

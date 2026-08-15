@@ -1,4 +1,5 @@
 import importlib.util
+import json
 import unittest
 from pathlib import Path
 
@@ -32,6 +33,17 @@ class PackageContractTests(unittest.TestCase):
         self.assertIn("opencode-go/deepseek-v4-flash", routes)
         self.assertIn("opencode-go/kimi-k2.7-code", routes)
         self.assertTrue((ROOT / "contracts" / "EXPERIMENT_RECORD.md").exists())
+
+    def test_stage2_experiment_records_have_canonical_required_fields(self):
+        schema = json.loads((ROOT / "contracts" / "EXPERIMENT_RECORD.schema.json").read_text(encoding="utf-8"))
+        required = set(schema["required"])
+        for run in range(6, 12):
+            path = ROOT / "evidence" / "stage2" / f"RUN-{run:02d}_EXPERIMENT_RECORD.json"
+            with self.subTest(run=run):
+                self.assertTrue(path.exists(), f"missing canonical record: {path}")
+                record = json.loads(path.read_text(encoding="utf-8"))
+                self.assertEqual(required, set(record), f"schema field mismatch: {path}")
+                self.assertEqual(f"RUN-{run:02d}", record["run_id"])
 
 
 if __name__ == "__main__":

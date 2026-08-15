@@ -1,7 +1,7 @@
 # Strix + FreeBuff Combined Tool Decision
 
-Date: 2026-08-14  
-Primary New Idea Filter disposition: `EXTEND_EXISTING`  
+Date: 2026-08-14
+Primary New Idea Filter disposition: `EXTEND_EXISTING`
 Overall: `CONDITIONAL`
 
 ## Independent decisions

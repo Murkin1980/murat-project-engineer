@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import tempfile
 from datetime import datetime
 from pathlib import Path
@@ -21,6 +22,7 @@ TRANSITIONS = {
     "DONE": set(), "FAILED": set(), "CANCELLED": set(),
 }
 ACTIVE_WRITER_STATES = {"READY", "WORKING", "BLOCKED", "WAITING", "REVIEWING"}
+SAFE_MESSAGE_ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$", re.ASCII)
 
 
 class ContractError(ValueError):
@@ -44,10 +46,33 @@ def _require_datetime(value: object, field: str) -> None:
         raise ContractError(f"invalid {field}: timezone required")
 
 
+def _is_reparse_point(path: Path) -> bool:
+    if path.is_symlink():
+        return True
+    is_junction = getattr(path, "is_junction", None)
+    return bool(is_junction and is_junction())
+
+
+def _require_plain_directory_path(path: Path) -> None:
+    """Reject symlink/junction traversal before using a mailbox directory."""
+    absolute = path.absolute()
+    for candidate in (absolute, *absolute.parents):
+        if candidate.exists() and _is_reparse_point(candidate):
+            raise ContractError(f"mailbox path crosses a reparse point: {candidate}")
+
+
+def _require_plain_file_path(path: Path) -> None:
+    _require_plain_directory_path(path.parent)
+    if path.exists() and _is_reparse_point(path):
+        raise ContractError(f"file path is a reparse point: {path}")
+
+
 def validate_envelope(data: dict) -> None:
     _require(data, {"schema_version", "message_id", "run_id", "task_id", "sender_role", "recipient_role", "handoff_ref", "created_at", "status"})
     if data["schema_version"] != "1.0" or data["status"] not in MAILBOX_STATUSES:
         raise ContractError("invalid mailbox version or status")
+    if not isinstance(data["message_id"], str) or not SAFE_MESSAGE_ID.fullmatch(data["message_id"]):
+        raise ContractError("invalid message_id: use 1-128 ASCII letters, digits, underscores, or hyphens")
     for field in ("message_id", "run_id", "task_id", "sender_role", "recipient_role", "handoff_ref"):
         if not isinstance(data[field], str) or not data[field].strip():
             raise ContractError(f"invalid {field}")
@@ -57,7 +82,9 @@ def validate_envelope(data: dict) -> None:
 def deliver_atomic(inbox: Path, envelope: dict) -> Path:
     """Validate, fsync, then atomically rename a new envelope into an inbox."""
     validate_envelope(envelope)
+    _require_plain_directory_path(inbox)
     inbox.mkdir(parents=True, exist_ok=True)
+    _require_plain_directory_path(inbox)
     target = inbox / f"{envelope['message_id']}.json"
     lock = inbox / f".{envelope['message_id']}.lock"
     try:
@@ -99,9 +126,30 @@ def validate_event(event: dict) -> None:
     _require_datetime(event["timestamp"], "timestamp")
 
 
-def append_event(path: Path, event: dict) -> None:
+def _claim_event_writer(path: Path, writer_id: str) -> None:
+    if not SAFE_MESSAGE_ID.fullmatch(writer_id):
+        raise ContractError("invalid writer_id")
+    owner = path.with_name(f".{path.name}.writer")
+    _require_plain_file_path(owner)
+    try:
+        fd = os.open(owner, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
+    except FileExistsError:
+        current = owner.read_text(encoding="ascii").strip()
+        if current != writer_id:
+            raise ContractError(f"event log already owned by writer: {current}")
+        return
+    with os.fdopen(fd, "w", encoding="ascii", newline="\n") as stream:
+        stream.write(writer_id + "\n")
+        stream.flush()
+        os.fsync(stream.fileno())
+
+
+def append_event(path: Path, event: dict, *, writer_id: str = "coordinator") -> None:
+    """Append one event under a persistent, explicit single-writer contract."""
     validate_event(event)
     path.parent.mkdir(parents=True, exist_ok=True)
+    _require_plain_file_path(path)
+    _claim_event_writer(path, writer_id)
     line = json.dumps(event, ensure_ascii=False, sort_keys=True) + "\n"
     fd = os.open(path, os.O_APPEND | os.O_CREAT | os.O_WRONLY, 0o600)
     try:

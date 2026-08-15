@@ -1,8 +1,8 @@
 # Strix Pilot Evidence
 
-Date: 2026-08-14  
-Target: `Murkin1980/mebeldocs-ai`  
-Baseline commit: `fad30491a851825018cbab6aa1fbae0c60857627` (`main`)  
+Date: 2026-08-14
+Target: `Murkin1980/mebeldocs-ai`
+Baseline commit: `fad30491a851825018cbab6aa1fbae0c60857627` (`main`)
 Decision: `HOLD`
 
 ## New Idea Filter
@@ -71,4 +71,3 @@ STRIX_DECISION: HOLD
 ```
 
 Reason: evidence is insufficient because execution was blocked before scanning. A future retry may use a local Docker-enabled environment, `quick` mode first, an explicit spend limit, and the exact same commit or a newly recorded baseline. Do not run against production or real documents.
-

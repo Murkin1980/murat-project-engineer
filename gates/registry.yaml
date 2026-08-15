@@ -102,7 +102,7 @@ gates:
     type: deterministic
     hard: true
     applicable_when: runtime JSONL evidence is captured
-    evidence_required: valid factual events in append order with allowed event types
+    evidence_required: valid factual events in append order with allowed event types, explicit single-writer ownership, and a retention decision
     failure_state: REWORK
     retry_policy: reject the invalid event; do not rewrite prior events
   - gate_id: worktree_collision_check

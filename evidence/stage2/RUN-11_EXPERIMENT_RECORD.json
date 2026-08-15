@@ -9,10 +9,10 @@
   "route_profile": "independent review -> opencode-go/deepseek-v4-pro via Codex Router",
   "duration": "bounded same-day run",
   "deterministic_failures": 0,
-  "reviewer_findings_useful": 4,
+  "reviewer_findings_useful": 12,
   "reviewer_false_positives": 0,
-  "rework_count": 2,
-  "human_interventions": 1,
+  "rework_count": 3,
+  "human_interventions": 2,
   "escaped_defect_after_pass": false,
   "interruption_recovery_result": "NOT_APPLICABLE: stateless bounded helpers only.",
   "fan_out_fan_in_needed": true,
@@ -20,5 +20,5 @@
   "workflow_engine_pressure": false,
   "persistent_agent_pressure": false,
   "approximate_cost": "Exact Router cost not observable.",
-  "notes": "Metrics: handoff_count=2; handoff_schema_failures=0; duplicate_message_count=1 detected; event_count=10; invalid_event_count=2 rejected in tests; worktree_collisions=1 synthetic collision detected; lifecycle_transition_failures=2 invalid cases rejected; human_interventions=1; rework_count=2. Handoff ambiguity, runtime observability, and collision visibility all improved. RUNTIME_PATTERNS_DECISION=REUSE_COMPONENT."
+  "notes": "Post-review hardening keeps Run 11 inside Option A+: message_id has schema/runtime path-safe parity; mailbox rejects reparse paths; duplicate delivery is tested across processes; JSONL has explicit single-writer ownership and retention guidance; canonical evidence was normalized. Metrics: handoff_count=2; handoff_schema_failures=0; event_count=10; worktree_collisions=1 synthetic collision detected; human_interventions=2; rework_count=3. RUNTIME_PATTERNS_DECISION=REUSE_COMPONENT. A poller, daemon, retry worker, router, scheduler, shared state, database, or generic messaging/runtime layer remains prohibited without a new filter and DEEP-CHANGE review."
 }
