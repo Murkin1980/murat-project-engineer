@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://murat-ai-stack.local/schemas/agent-runtime-state-v1.json",
+  "title": "MPE Ephemeral Agent Runtime State",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["run_id", "role", "task_id", "state", "started_at", "updated_at", "worktree"],
+  "properties": {
+    "run_id": {"type": "string", "minLength": 1},
+    "role": {"type": "string", "minLength": 1},
+    "task_id": {"type": "string", "minLength": 1},
+    "state": {"enum": ["CREATED", "READY", "WORKING", "BLOCKED", "WAITING", "REVIEWING", "DONE", "FAILED", "CANCELLED"]},
+    "started_at": {"type": "string", "format": "date-time"},
+    "updated_at": {"type": "string", "format": "date-time"},
+    "worktree": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["worktree_path", "branch", "base_commit", "owner_role", "task_id", "created_at", "cleanup_status"],
+      "properties": {
+        "worktree_path": {"type": "string", "minLength": 1},
+        "branch": {"type": "string", "minLength": 1},
+        "base_commit": {"type": "string", "minLength": 1},
+        "owner_role": {"type": "string", "minLength": 1},
+        "task_id": {"type": "string", "minLength": 1},
+        "created_at": {"type": "string", "format": "date-time"},
+        "cleanup_status": {"enum": ["ACTIVE", "CLEANED", "FAILED", "NOT_REQUIRED"]}
+      }
+    },
+    "pid": {"type": ["integer", "null"], "minimum": 1}
+  }
+}

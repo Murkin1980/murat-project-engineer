@@ -64,7 +64,7 @@ def validate(root: Path) -> list[str]:
     if missing:
         errors.append(f"EXPERIMENT_RECORD missing fields: {sorted(missing)}")
 
-    required_gates = {"clean_diff_scope", "secrets_scan", "build", "typecheck", "lint", "unit_tests", "integration_tests", "acceptance_tests", "artifact_exists", "artifact_hash", "rollback_available", "deep_change_check"}
+    required_gates = {"clean_diff_scope", "secrets_scan", "build", "typecheck", "lint", "unit_tests", "integration_tests", "acceptance_tests", "artifact_exists", "artifact_hash", "rollback_available", "deep_change_check", "mailbox_schema_valid", "handoff_traceable", "event_log_valid", "worktree_collision_check", "terminal_state_valid"}
     registry = (root / "gates" / "registry.yaml").read_text(encoding="utf-8")
     present = set(re.findall(r"gate_id:\s*([a-z_]+)", registry))
     if required_gates - present:
@@ -109,7 +109,7 @@ def main() -> int:
             print(f"- {error}")
         return 1
     print("VALIDATION PASSED")
-    print("4 experts, 3 teams, 4 playbooks, contracts, and 12 gates present")
+    print("4 experts, 3 teams, 4 playbooks, contracts, and 17 gates present")
     return 0
 
 

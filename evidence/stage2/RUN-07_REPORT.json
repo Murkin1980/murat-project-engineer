@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "run_id": "RUN-07",
+  "project": "Murat Project Engineer",
+  "task": "Controlled Strix and FreeBuff external-capability evaluation with privacy, architecture, and evidence gates.",
+  "start_timestamp": null,
+  "end_timestamp": null,
+  "risk_tier": "VERIFIED",
+  "playbook": "verified",
+  "experts_invoked": ["Researcher", "Reviewer"],
+  "route_profiles": [
+    "cheap-research -> opencode-go/deepseek-v4-flash (no fallback)",
+    "strong-review -> gpt-5.6-sol (no fallback)"
+  ],
+  "files_changed": [
+    "docs/security/STRIX_PILOT.md",
+    "docs/evaluations/FREEBUFF_EVALUATION.md",
+    "docs/evaluations/FREEBUFF_ARCHITECTURE_PATTERNS.md",
+    "docs/evaluations/AGENT_EXECUTION_TOOL_DECISION.md",
+    "evidence/stage2/RUN-07_REPORT.json",
+    "evidence/stage2/RUN-07_EXPERIMENT_RECORD.json"
+  ],
+  "commands_tools_used": ["Agent Reach Jina Reader", "Codex Router", "docker checks", "FreeBuff CLI", "package validator", "unit tests", "typecheck", "build"],
+  "deterministic_gate_results": [
+    {"gate_id": "deep_change_check", "result": "PASS", "evidence_ref": "No runtime, Router authority, new repository, persistent agent, or production change was introduced."},
+    {"gate_id": "secrets_scan", "result": "PASS", "evidence_ref": "No credentials or customer data were read, transmitted, or recorded."},
+    {"gate_id": "unit_tests", "result": "PASS", "evidence_ref": "MPE package validator PASS and unit tests 5/5 PASS; mebeldocs 197/199 with two sandbox EPERM fixture-write failures recorded separately."},
+    {"gate_id": "build", "result": "PASS", "evidence_ref": "mebeldocs Next.js production build and TypeScript check passed."},
+    {"gate_id": "external_capability_execution", "result": "PASS", "evidence_ref": "Strix remained blocked by missing Docker; human-present FreeBuff comparison completed from identical commit in isolated worktrees."},
+    {"gate_id": "artifact_exists", "result": "PASS", "evidence_ref": "Four evaluation reports and two Stage 2 evidence records created."}
+  ],
+  "judge_verdict": "PASS",
+  "approvals": ["User requested execution and explicitly required Codex Router usage."],
+  "rework_count": 1,
+  "outcome": "PASS",
+  "unresolved_risks": ["No Strix scan evidence exists until Docker is available."],
+  "rollback": "Remove the six RUN-07 evaluation/evidence files. FreeBuff package/runtime were removed after FAIL/REJECT; no repository integration exists.",
+  "approximate_usage_cost": null,
+  "source_refs": ["CODEX_STRIX_FREEBUFF_CONTROLLED_EVALUATION_MURAT_PROJECT_ENGINEER.md", "docs/NEW_IDEA_FILTER_POLICY.md", "STAGE2_EXPERIMENT_PLAN.md", "https://docs.strix.ai/usage/cli", "https://freebuff.com/privacy-policy", "https://freebuff.com/terms-of-service", "https://github.com/CodebuffAI/codebuff"],
+  "artifact_refs": ["docs/security/STRIX_PILOT.md", "docs/evaluations/FREEBUFF_EVALUATION.md", "docs/evaluations/FREEBUFF_ARCHITECTURE_PATTERNS.md", "docs/evaluations/AGENT_EXECUTION_TOOL_DECISION.md", "evidence/stage2/RUN-07_EXPERIMENT_RECORD.json"],
+  "handoff_refs": [],
+  "baseline_run": false,
+  "interruption_resume": false,
+  "architecture_pressure": []
+}

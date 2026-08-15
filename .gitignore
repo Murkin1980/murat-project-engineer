@@ -8,3 +8,4 @@ dist/
 
 # Local environment secrets
 .env
+.mpe-runtime/mailboxes/

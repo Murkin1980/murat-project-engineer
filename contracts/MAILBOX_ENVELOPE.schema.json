@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://murat-ai-stack.local/schemas/mailbox-envelope-v1.json",
+  "title": "MPE Mailbox Envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "message_id", "run_id", "task_id", "sender_role", "recipient_role", "handoff_ref", "created_at", "status"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "message_id": {"type": "string", "minLength": 1},
+    "run_id": {"type": "string", "minLength": 1},
+    "task_id": {"type": "string", "minLength": 1},
+    "sender_role": {"type": "string", "minLength": 1},
+    "recipient_role": {"type": "string", "minLength": 1},
+    "handoff_ref": {"type": "string", "minLength": 1},
+    "created_at": {"type": "string", "format": "date-time"},
+    "status": {"enum": ["READY", "CLAIMED", "DELIVERED", "FAILED", "SUPERSEDED"]}
+  }
+}

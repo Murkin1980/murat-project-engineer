@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://murat-ai-stack.local/schemas/runtime-event-v1.json",
+  "title": "MPE Runtime Evidence Event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "event_id", "run_id", "timestamp", "type", "actor", "task_id", "status"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "event_id": {"type": "string", "minLength": 1},
+    "run_id": {"type": "string", "minLength": 1},
+    "timestamp": {"type": "string", "format": "date-time"},
+    "type": {"enum": ["spawn", "handoff", "gate", "terminal", "claim", "block", "resume"]},
+    "actor": {"type": "string", "minLength": 1},
+    "target": {"type": ["string", "null"]},
+    "task_id": {"type": "string", "minLength": 1},
+    "ref": {"type": ["string", "null"]},
+    "status": {"type": "string", "minLength": 1}
+  }
+}

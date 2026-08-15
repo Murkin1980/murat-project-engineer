@@ -84,3 +84,38 @@ gates:
     evidence_required: assessment against MASTER and core boundaries
     failure_state: HUMAN_REQUIRED
     retry_policy: detection cannot be overridden; a separate explicit human approval may authorize a later run
+  - gate_id: mailbox_schema_valid
+    type: deterministic
+    hard: true
+    applicable_when: filesystem mailbox transport is used
+    evidence_required: every envelope validates against MAILBOX_ENVELOPE and has a unique message_id
+    failure_state: REWORK
+    retry_policy: correct the envelope before delivery
+  - gate_id: handoff_traceable
+    type: deterministic
+    hard: true
+    applicable_when: a mailbox handoff is delivered
+    evidence_required: run_id, task_id, sender_role, recipient_role, handoff_ref, and message_id
+    failure_state: REWORK
+    retry_policy: supply the missing trace reference
+  - gate_id: event_log_valid
+    type: deterministic
+    hard: true
+    applicable_when: runtime JSONL evidence is captured
+    evidence_required: valid factual events in append order with allowed event types
+    failure_state: REWORK
+    retry_policy: reject the invalid event; do not rewrite prior events
+  - gate_id: worktree_collision_check
+    type: deterministic
+    hard: true
+    applicable_when: two or more writer roles may be active
+    evidence_required: active writer role to resolved worktree ownership map
+    failure_state: BLOCKED
+    retry_policy: isolate writers in separate worktrees or execute sequentially
+  - gate_id: terminal_state_valid
+    type: deterministic
+    hard: true
+    applicable_when: ephemeral lifecycle metadata is used
+    evidence_required: valid state and allowed transition; a terminal role requires a new invocation to restart
+    failure_state: REWORK
+    retry_policy: correct the transition or create an explicit new invocation
