@@ -1,0 +1,35 @@
+{
+  "case_id": "EXP12-P-002",
+  "registered_at": "2026-08-18T14:00:00+05:00",
+  "baseline_commit": "19b7532",
+  "task": "Generate EXECUTED evidence deterministically and evaluate the frozen execution artifact instead of rerunning the current scorer.",
+  "acceptance_criteria": [
+    "A deterministic CLI creates EXECUTED evidence from an immutable registration and records registration/scorer hashes.",
+    "Evaluation consumes and validates EXECUTED evidence rather than recomputing engine output.",
+    "Registration, execution and evaluation case IDs and hashes must match or evaluation stops.",
+    "P-001 remains reproducible and P-002 records all three states separately.",
+    "Tests, direct CLI scenarios and package validation pass."
+  ],
+  "non_scope": [
+    "No autonomous execution, approvals or routing.",
+    "No database, service, queue, scheduler or mutable registry.",
+    "No scorer weight change or Router authority change."
+  ],
+  "triage_input": {
+    "task_id": "EXP12-P-002",
+    "summary": "Generate immutable execution evidence and evaluate the frozen scorer output",
+    "affected_repositories": ["murat-project-engineer"],
+    "acceptance_criteria_present": true,
+    "rollback_known": true,
+    "ratings": {"complexity": 3, "risk": 2, "architectural_impact": 1, "data_sensitivity": 0, "unknowns": 1},
+    "signals": []
+  },
+  "pre_registered_human_label": {
+    "risk_tier": "VERIFIED",
+    "human_approval_required": false,
+    "rationale": "The change modifies evidence-generation semantics and requires regression tests, but remains stateless, additive and single-repository."
+  },
+  "engine_output": null,
+  "observed_final_classification": null,
+  "state": "REGISTERED"
+}

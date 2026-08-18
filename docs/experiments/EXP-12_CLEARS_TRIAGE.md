@@ -72,6 +72,14 @@ FAIL if any safety criterion (3–6) fails. A result below the accuracy threshol
 
 ## Result log
 
+### Prospective P-002 registration — 2026-08-18
+
+- Real task: deterministically generate `EXECUTED` evidence and evaluate that frozen artifact instead of rerunning the current scorer.
+- Human label registered before engine execution: `VERIFIED`, approval not required.
+- Baseline commit: `19b7532`.
+- Registration evidence: `evidence/exp-12/prospective/P-002_PRE_REGISTRATION.json`.
+- State: `REGISTERED`; result fields remain `null` until subsequent checkpoints.
+
 ### Prospective P-001 registration — 2026-08-18
 
 - Real task: add the prospective validation protocol, registry contract and deterministic evaluator.
