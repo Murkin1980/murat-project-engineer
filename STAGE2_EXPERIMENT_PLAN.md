@@ -1,6 +1,7 @@
 # Murat Project Engineer — Stage 2 Experiment Plan
 
 Date: 2026-08-11  
+Updated: 2026-08-18  
 Status: ACTIVE  
 Purpose: validate whether Murat Project Engineer v1.0 improves real project execution enough to justify keeping or expanding the architecture.
 
@@ -180,3 +181,245 @@ Use these as the starting queue unless real work provides better candidates:
 ## EXP-12 triage sub-experiment
 
 Run 12 introduced a deterministic, stateless triage scorecard as an `EXPERIMENT` within Option A+. The first retrospective backtest validates mechanics only. Prospective tasks must be recorded before execution and compared with final human/observed tiers. Automatic execution, approval, adaptive scoring and Router authority remain out of scope. The living record is `docs/experiments/EXP-12_CLEARS_TRIAGE.md`.
+
+---
+
+# Roadmap alignment update — 2026-08-18
+
+## MPE New Idea Filter decision
+
+**EXTEND_EXISTING**
+
+The recommendations in `mpe_recommendations.md` strengthen the existing MPE direction and do not justify a parallel product, repository, runtime or workflow engine. MPE remains the governance/policy layer; execution remains external and replaceable.
+
+## Architectural position to preserve
+
+MPE should mature toward an enforceable governance core that owns:
+
+- task/risk classification;
+- smallest-sufficient Expert/Team selection;
+- typed contracts and handoffs;
+- deterministic and semantic gates;
+- evidence-backed completion;
+- terminal states;
+- controlled human escalation;
+- auditability and run-level observability.
+
+MPE should **not** own during Stage 2:
+
+- scheduling;
+- persistent runtime agents;
+- generic workflow execution;
+- autonomous memory services;
+- credentials/protocol routing;
+- a custom tracing backend;
+- a custom multi-agent runtime.
+
+This keeps the product differentiated as a governance and engineering-control layer rather than another orchestration framework.
+
+## Updated priority for Runs 13–20
+
+The remaining Stage 2 runs should continue to be real evidence-gathering runs, but their selection should deliberately exercise the governance capabilities that the recommendations identify as highest-value.
+
+### RUN-13 — Goal + Run Contract
+
+Purpose: merge the planned goal-contract experiment with the stronger machine-readable governance direction.
+
+Validate a minimal versioned `Run`/goal contract containing at least:
+
+- goal / acceptance criteria;
+- risk tier;
+- source-of-truth references;
+- selected Expert/Team and playbook;
+- required gates;
+- terminal state;
+- evidence references.
+
+No runtime integration. The experiment succeeds only if the contract reduces ambiguity and can be deterministically validated.
+
+### RUN-14 — Typed Handoff / Gate / Evidence / Terminal State
+
+Formalize and test the smallest useful schemas for:
+
+- `Handoff`;
+- `GateResult`;
+- `EvidenceRecord`;
+- `TerminalState`.
+
+Add explicit contract versioning and stable identifiers. Validate referential integrity between `run_id`, handoffs, gate reports, evidence and terminal state.
+
+This absorbs the useful part of the earlier context-layer plan into a stronger typed-delivery foundation instead of creating a second context subsystem.
+
+### RUN-15 — Validator Hardening + Negative Tests
+
+Promote the validator from a package checker toward the enforcement boundary for MPE artifacts.
+
+Test failure cases such as:
+
+- missing evidence;
+- broken references;
+- invalid state transitions;
+- incompatible contract versions;
+- a green gate without required evidence;
+- contradictory terminal state;
+- incomplete handoff.
+
+This becomes a P0 experiment because enforceability is more valuable than adding more orchestration behavior.
+
+### RUN-16 — Context Provenance, Not Autonomous Memory
+
+Continue the existing context-layer idea only as a provenance experiment:
+
+- what context was read;
+- from which source of truth;
+- freshness/version identity;
+- what evidence was derived from it;
+- whether a resumed run can reconstruct required context.
+
+Do not build a memory service or autonomous memory promotion. The earlier “living memory” idea remains deferred until Stage 2 proves versioned artifacts are insufficient.
+
+### RUN-17 — Review / Approval Contract
+
+Exercise human review as a governance contract without adding a persistent runtime.
+
+Add/validate states and artifacts such as:
+
+- `awaiting_review`;
+- `awaiting_approval`;
+- `rejected`;
+- `returned_for_rework`;
+- approval/rejection record with actor, reason, timestamp and evidence references.
+
+Use a DEEP-CHANGE classification exercise or an already-approved real task. This validates the policy model before choosing any interrupt-capable runtime.
+
+### RUN-18 — Trace ↔ run_id Observability Contract
+
+Define a runtime-neutral trace correlation interface:
+
+- stable `run_id`;
+- external trace/provider ID when available;
+- event/gate/handoff correlation;
+- evidence links;
+- failure reason codes.
+
+Do **not** build a tracing backend. The purpose is to prove that MPE can consume external traces while remaining runtime-independent.
+
+### RUN-19 — Run-Level Audit Dashboard
+
+Extend the dashboard using static/versioned MPE artifacts only.
+
+The run view should expose:
+
+- route / selected team;
+- handoffs;
+- gates;
+- approvals;
+- evidence;
+- terminal state;
+- reason codes and failed-gate drill-down where data exists.
+
+This replaces “status-only dashboard” thinking with an audit interface while staying inside Option A+.
+
+### RUN-20 — Stage 2 Governed Delivery Capstone
+
+Run one representative end-to-end task through the mature Stage 2 governance path:
+
+`New Idea Filter → FAST/VERIFIED/DEEP-CHANGE → Run Contract → Expert/Team → typed handoffs → deterministic gates → review/approval where required → evidence → terminal state → audit view`.
+
+RUN-20 is not a new runtime implementation. It is the final integrated validation of the governance model before the Stage 2 exit review.
+
+## Reordered backlog after Stage 2
+
+The previous long-range experiment list remains useful, but recommendations change its order and merge several items to avoid duplicate infrastructure.
+
+### Tier A — core governance first
+
+Covered or initiated by RUN-13…RUN-20:
+
+1. goal/run contracts;
+2. typed handoff/gate/evidence/terminal-state contracts;
+3. validator and negative tests;
+4. provenance/context integrity;
+5. review/approval policy contracts;
+6. trace correlation contract;
+7. run-level audit dashboard.
+
+These are now ahead of runtime expansion, living memory and generic multi-agent execution.
+
+### Tier B — first external execution adapter, conditional after Stage 2
+
+Only after `STAGE2_EXPERIMENT_REVIEW.md` recommends KEEP A+, ADJUST A+, or an explicitly approved RFC path:
+
+**OpenAI Agents SDK controlled adapter experiment**
+
+Candidate scope:
+
+- `adapters/openai-agents/`;
+- map MPE Expert definitions to external agent definitions;
+- map playbook instructions/routes;
+- translate MPE gates into pre/post validations or guardrails where appropriate;
+- correlate external traces to MPE `run_id`;
+- preserve MPE as policy authority and the SDK as replaceable execution layer.
+
+This is an experiment, not a commitment to make OpenAI Agents SDK the permanent runtime.
+
+### Tier C — human-in-the-loop runtime experiment, deep-change gated
+
+If Stage 2 and the first adapter show a real need for controlled pause/resume, evaluate an interrupt-capable runtime such as LangGraph behind the same MPE governance contracts.
+
+This requires a separate deep-change decision before implementation because it changes execution architecture.
+
+### Tier D — retained experiments, lower priority
+
+Keep, but do not promote ahead of the governance core:
+
+- bounded routing / multi-agent execution patterns;
+- persistent task identity where versioned `run_id` proves insufficient;
+- workspace/worktree isolation patterns;
+- security policy packs;
+- budget controls;
+- circuit breakers;
+- maturity scoring;
+- learning-loop evaluation.
+
+Patterns already learned from BrowserAct, Munder Difflin and bounded fan-out/fan-in should be reused here rather than reimplemented as separate subsystems.
+
+### Deferred / evidence-required
+
+Do not build unless repeated Stage 2 evidence demonstrates the need:
+
+- living autonomous memory;
+- scheduler;
+- daemon;
+- persistent workers/agents;
+- generic workflow engine;
+- custom tracing backend;
+- custom multi-agent runtime;
+- Router orchestration authority.
+
+## Product maturity sequence after alignment
+
+The roadmap now follows this order:
+
+1. **Measure disciplined coordination** — Stage 2 baseline and real runs.
+2. **Make governance machine-enforceable** — contracts + validator + negative tests.
+3. **Make decisions auditable** — evidence + trace correlation + run-level dashboard.
+4. **Prove human control semantics** — review/approval contracts.
+5. **Finish Stage 2 and decide architecture** — KEEP A+ | ADJUST A+ | RFC OPTION B | STOP.
+6. **Only then test one external runtime adapter** — OpenAI Agents SDK first candidate.
+7. **Only with evidence and approval add interrupt/resume runtime capability**.
+8. **Apply mature MPE to Business Discovery and other projects as consumers**, not as competing governance systems.
+
+## Business-value hypothesis
+
+The measurable value of these changes is not “more agents.” It is whether MPE can demonstrate:
+
+- fewer skipped gates;
+- fewer acceptance criteria missed before review;
+- fewer escaped defects;
+- lower ambiguity during handoff/resume;
+- lower reviewer false-positive/rework overhead;
+- faster audit of why a run passed, failed or required human intervention;
+- runtime portability without losing governance.
+
+Any experiment that does not improve one of these measurable outcomes should be deprioritized.
