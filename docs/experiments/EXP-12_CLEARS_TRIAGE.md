@@ -72,6 +72,14 @@ FAIL if any safety criterion (3–6) fails. A result below the accuracy threshol
 
 ## Result log
 
+### Prospective P-001 registration — 2026-08-18
+
+- Real task: add the prospective validation protocol, registry contract and deterministic evaluator.
+- Human label registered before engine execution: `VERIFIED`, approval not required.
+- Baseline commit: `0ef64aa`.
+- Pre-registration evidence: `evidence/exp-12/prospective/P-001_PRE_REGISTRATION.json`.
+- State at registration: `REGISTERED`; engine output and observed final classification intentionally remain `null` until subsequent checkpoints.
+
 ### Backtest v1 — 2026-08-18
 
 - Engine: `0.1.0`; dataset: `exp-12-v1`.

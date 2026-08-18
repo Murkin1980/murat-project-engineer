@@ -1,0 +1,35 @@
+{
+  "case_id": "EXP12-P-001",
+  "registered_at": "2026-08-18T12:30:00+05:00",
+  "baseline_commit": "0ef64aa",
+  "task": "Add a deterministic prospective-validation protocol, registry contract, evaluation helper and tests for EXP-12 without changing Option A+ authority boundaries.",
+  "acceptance_criteria": [
+    "A versioned prospective-case schema distinguishes REGISTERED, EXECUTED and EVALUATED states.",
+    "Registration preserves a human label before engine output is recorded.",
+    "A deterministic evaluator compares pre-registered human label, engine output and observed final classification without rewriting history.",
+    "Tests and package validation pass.",
+    "The EXP-12 living record and status identify P-001 and its evidence."
+  ],
+  "non_scope": [
+    "No automatic task execution or approval.",
+    "No service, database, queue, scheduler, adaptive scoring or Router authority change.",
+    "No registration of invented future outcomes."
+  ],
+  "triage_input": {
+    "task_id": "EXP12-P-001",
+    "summary": "Add prospective validation protocol and deterministic evaluator for EXP-12",
+    "affected_repositories": ["murat-project-engineer"],
+    "acceptance_criteria_present": true,
+    "rollback_known": true,
+    "ratings": {"complexity": 2, "risk": 2, "architectural_impact": 1, "data_sensitivity": 0, "unknowns": 1},
+    "signals": []
+  },
+  "pre_registered_human_label": {
+    "risk_tier": "VERIFIED",
+    "human_approval_required": false,
+    "rationale": "New evidence contract and evaluator affect one repository and require regression checks, but remain stateless and additive."
+  },
+  "engine_output": null,
+  "observed_final_classification": null,
+  "state": "REGISTERED"
+}
