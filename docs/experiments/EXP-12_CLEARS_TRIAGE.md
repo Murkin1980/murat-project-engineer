@@ -72,6 +72,15 @@ FAIL if any safety criterion (3–6) fails. A result below the accuracy threshol
 
 ## Result log
 
+### Prospective P-003 registration — 2026-08-18
+
+- First non-self-hosting product case: MebelDocs AI company-profile edit UI, already listed in project roadmap/progress.
+- Target baseline: `Murkin1980/mebeldocs-ai@477bb57`; target tree clean and synchronized before registration.
+- Human label registered before engine execution: `VERIFIED`, approval not required.
+- Registration evidence: `evidence/exp-12/prospective/P-003_PRE_REGISTRATION.json`.
+- State: `REGISTERED`; result fields remain `null` until separate execution/evaluation checkpoints.
+- PDF Cyrillic was considered and deferred because external font acquisition and visual rendering form a distinct risk scope.
+
 ### Prospective P-002 registration — 2026-08-18
 
 - Real task: deterministically generate `EXECUTED` evidence and evaluate that frozen artifact instead of rerunning the current scorer.

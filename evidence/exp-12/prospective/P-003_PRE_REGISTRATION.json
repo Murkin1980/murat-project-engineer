@@ -1,0 +1,35 @@
+{
+  "case_id": "EXP12-P-003",
+  "registered_at": "2026-08-18T16:00:00+05:00",
+  "baseline_commit": "477bb57",
+  "task": "Add a company-profile edit UI to MebelDocs AI using the existing GET/PUT API and preserve immutable/system fields.",
+  "acceptance_criteria": [
+    "A profile page loads the existing company profile and handles the not-found state.",
+    "The operator can edit the allowed business fields and save them through PUT /api/company-profile.",
+    "System fields and invoice numbering are not sent or silently overwritten by the UI.",
+    "Loading, validation, error and saved states are visible in Russian on desktop and mobile.",
+    "Tests, TypeScript check and production build pass; ROADMAP and SESSION_NOTES are updated."
+  ],
+  "non_scope": [
+    "No API, domain schema, storage or authentication redesign.",
+    "No production deployment or real company-data mutation.",
+    "No new dependency, external service, tax rule or multi-tenant change."
+  ],
+  "triage_input": {
+    "task_id": "EXP12-P-003",
+    "summary": "Implement the existing MebelDocs AI company-profile edit UI roadmap item",
+    "affected_repositories": ["mebeldocs-ai"],
+    "acceptance_criteria_present": true,
+    "rollback_known": true,
+    "ratings": {"complexity": 3, "risk": 2, "architectural_impact": 1, "data_sensitivity": 3, "unknowns": 1},
+    "signals": []
+  },
+  "pre_registered_human_label": {
+    "risk_tier": "VERIFIED",
+    "human_approval_required": false,
+    "rationale": "The UI handles sensitive business-profile fields but changes no real data during validation, uses an existing local API and remains a bounded single-repository feature."
+  },
+  "engine_output": null,
+  "observed_final_classification": null,
+  "state": "REGISTERED"
+}
