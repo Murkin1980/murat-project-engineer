@@ -79,6 +79,12 @@ FAIL if any safety criterion (3–6) fails. A result below the accuracy threshol
 - Baseline commit: `19b7532`.
 - Registration evidence: `evidence/exp-12/prospective/P-002_PRE_REGISTRATION.json`.
 - State: `REGISTERED`; result fields remain `null` until subsequent checkpoints.
+- Engine result: `VERIFIED`, approval not required, confidence 85, deep-change score 17.
+- Implementation adds a deterministic execution CLI and changes evaluation to consume frozen EXECUTED evidence with registration/execution/scorer hashes instead of rerunning the scorer.
+- Observed final classification: `VERIFIED`, approval not required; all three agreement checks are `true`.
+- Verification: 44 total tests, including 42 passes and 2 privilege skips; package validator PASS.
+- P-002 outcome: `PASS`; prospective progress: `2/10`.
+- Independent Codex Router review: `PASS`; evaluation was verified not to rerun the scorer. Methodology note: P-001 and P-002 are self-hosting tooling tasks, so P-003 should be real product work or a genuine high-approval/deep-change case.
 
 ### Prospective P-001 registration — 2026-08-18
 
@@ -134,7 +140,7 @@ Important limitation: inputs and expected labels were curated from already-known
 3. Review disagreements manually; change weights only in a new dataset/engine version.
 4. After 10 prospective cases, compare under-triage, over-triage and approval recall.
 5. Do not connect the engine to automatic execution or Router authority without a new filter and explicit DEEP-CHANGE approval.
-6. Register P-002 only when a real task is selected; do not fill the prospective dataset with hypothetical outcomes.
+6. Register the next case only when a real task is selected; do not fill the prospective dataset with hypothetical outcomes.
 
 Run locally:
 

@@ -1,15 +1,15 @@
 {
-  "case_id": "EXP12-P-001",
-  "registration_ref": "evidence/exp-12/prospective/P-001_PRE_REGISTRATION.json",
-  "registration_sha256": "70d5a2ef1ca8395a2e3496300b349fbbe418aeb8c734238d60cf2af8d8a5fadb",
-  "execution_ref": "evidence/exp-12/prospective/P-001_EXECUTION.json",
-  "execution_sha256": "015fde7165d355d249fe9c6c90116d46c622e8a3867ff0a105da53f53db1a3c9",
+  "case_id": "EXP12-P-002",
+  "registration_ref": "evidence/exp-12/prospective/P-002_PRE_REGISTRATION.json",
+  "registration_sha256": "5c2541e4c91399b4282f43c1574132f43de0adbdf2f8d9f1dea0952a868e5ad1",
+  "execution_ref": "evidence/exp-12/prospective/P-002_EXECUTION.json",
+  "execution_sha256": "6400442bfbf41bbb20ab0dc5a582facd5a4bc8e056352b7b897c0b278f7c8615",
   "engine_ref": "scripts/triage_engine.py",
   "engine_sha256": "815566cc9cce865aee286d9a6c2e0235b127fe89a578f0ea380e8c438f1c181c",
   "engine_output": {
-    "task_id": "EXP12-P-001",
+    "task_id": "EXP12-P-002",
     "execution_confidence": 85,
-    "complexity": 2,
+    "complexity": 3,
     "risk": 2,
     "blast_radius": 0,
     "affected_repositories": [
@@ -27,7 +27,7 @@
   "pre_registered_human_label": {
     "risk_tier": "VERIFIED",
     "human_approval_required": false,
-    "rationale": "New evidence contract and evaluator affect one repository and require regression checks, but remain stateless and additive."
+    "rationale": "The change modifies evidence-generation semantics and requires regression tests, but remains stateless, additive and single-repository."
   },
   "observed_final_classification": {
     "risk_tier": "VERIFIED",

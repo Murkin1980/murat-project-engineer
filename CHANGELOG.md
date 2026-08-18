@@ -6,6 +6,7 @@
 - Recorded 20/20 retrospective fixture agreement with zero DEEP-CHANGE false negatives; prospective accuracy remains NOT_OBSERVABLE pending pre-registered validation.
 - Applied Router-review safety rework: maximum architectural impact cannot fall below DEEP-CHANGE/human approval, and runtime input validation enforces the triage contract.
 - Added immutable prospective registration/evaluation contracts and evaluator; completed P-001 with three-way label agreement and one direct-CLI rework. Prospective progress is 1/10.
+- Completed P-002: added deterministic EXECUTED evidence generation and changed evaluation to consume the frozen execution artifact with hashes. Prospective progress is 2/10.
 
 - Activated `docs/NEW_IDEA_FILTER_POLICY.md` as a mandatory portfolio gate for new products, features, services, agents, plugins, integrations, automations, repositories and substantial technical ideas.
 - Added `docs/OPERATING_MODEL.md` to connect portfolio dispositions (`EXTEND_EXISTING`, `REUSE_COMPONENT`, `MERGE`, `EXPERIMENT`, `HOLD`, `NEW_REPOSITORY`, `REJECT`) with the existing FAST / VERIFIED / DEEP-CHANGE execution model.

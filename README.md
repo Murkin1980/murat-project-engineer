@@ -30,7 +30,7 @@ The sample project demonstrates an isolated `software-feature` run with complete
 
 EXP-12 adds a bounded, stateless triage prototype and a 20-case retrospective backtest. See `docs/experiments/EXP-12_CLEARS_TRIAGE.md`. It recommends a risk tier and human gate from explicit structured inputs; it does not execute, approve or route work autonomously.
 
-Prospective cases use immutable registration evidence plus a separate evaluation containing the registration SHA-256. P-001 is complete; progress toward the first prospective review is 1/10.
+Prospective cases use immutable REGISTERED, EXECUTED and EVALUATED evidence with registration, execution and scorer hashes. P-001 and P-002 are complete; progress toward the first prospective review is 2/10.
 
 ## Portfolio dashboard
 

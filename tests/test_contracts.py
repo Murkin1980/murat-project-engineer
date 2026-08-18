@@ -59,16 +59,17 @@ class PackageContractTests(unittest.TestCase):
             output = triage_module.triage(case["input"])
             self.assertEqual(set(output_schema["required"]), set(output))
 
-    def test_prospective_p001_contract_field_parity(self):
+    def test_prospective_contract_field_parity(self):
         registration_schema = json.loads((ROOT / "contracts" / "PROSPECTIVE_CASE.schema.json").read_text(encoding="utf-8"))
         execution_schema = json.loads((ROOT / "contracts" / "PROSPECTIVE_EXECUTION.schema.json").read_text(encoding="utf-8"))
         evaluation_schema = json.loads((ROOT / "contracts" / "PROSPECTIVE_EVALUATION.schema.json").read_text(encoding="utf-8"))
-        registration = json.loads((ROOT / "evidence" / "exp-12" / "prospective" / "P-001_PRE_REGISTRATION.json").read_text(encoding="utf-8"))
-        execution = json.loads((ROOT / "evidence" / "exp-12" / "prospective" / "P-001_EXECUTION.json").read_text(encoding="utf-8"))
-        evaluation = json.loads((ROOT / "evidence" / "exp-12" / "prospective" / "P-001_EVALUATION.json").read_text(encoding="utf-8"))
-        self.assertEqual(set(registration_schema["required"]), set(registration))
-        self.assertEqual(set(execution_schema["required"]), set(execution))
-        self.assertEqual(set(evaluation_schema["required"]), set(evaluation))
+        for case in ("P-001", "P-002"):
+            registration = json.loads((ROOT / "evidence" / "exp-12" / "prospective" / f"{case}_PRE_REGISTRATION.json").read_text(encoding="utf-8"))
+            execution = json.loads((ROOT / "evidence" / "exp-12" / "prospective" / f"{case}_EXECUTION.json").read_text(encoding="utf-8"))
+            evaluation = json.loads((ROOT / "evidence" / "exp-12" / "prospective" / f"{case}_EVALUATION.json").read_text(encoding="utf-8"))
+            self.assertEqual(set(registration_schema["required"]), set(registration))
+            self.assertEqual(set(execution_schema["required"]), set(execution))
+            self.assertEqual(set(evaluation_schema["required"]), set(evaluation))
 
 
 if __name__ == "__main__":

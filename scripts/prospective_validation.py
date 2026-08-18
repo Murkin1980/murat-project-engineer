@@ -16,6 +16,7 @@ except ModuleNotFoundError:  # Direct `python scripts/prospective_validation.py`
 RISK_TIERS = {"FAST", "VERIFIED", "DEEP-CHANGE"}
 REGISTRATION_KEYS = {"case_id", "registered_at", "baseline_commit", "task", "acceptance_criteria", "non_scope", "triage_input", "pre_registered_human_label", "engine_output", "observed_final_classification", "state"}
 LABEL_KEYS = {"risk_tier", "human_approval_required", "rationale"}
+EXECUTION_KEYS = {"case_id", "registration_ref", "registration_sha256", "engine_ref", "engine_sha256", "engine_output", "state"}
 
 
 def validate_label(label: dict[str, Any], require_rationale: bool = True) -> None:
@@ -45,19 +46,48 @@ def _pair(label: dict[str, Any]) -> tuple[str, bool]:
     return label["risk_tier"], label["human_approval_required"]
 
 
-def evaluate(registration: dict[str, Any], observed: dict[str, Any], registration_ref: str, registration_bytes: bytes) -> dict[str, Any]:
+def execute(registration: dict[str, Any], registration_ref: str, registration_bytes: bytes) -> dict[str, Any]:
     validate_registration(registration)
-    validate_label(observed, require_rationale=False)
     engine = triage(registration["triage_input"])
     engine_path = Path(__file__).with_name("triage_engine.py")
-    engine_label = {"risk_tier": engine["recommended_risk_tier"], "human_approval_required": engine["human_approval_required"]}
-    human = registration["pre_registered_human_label"]
     return {
         "case_id": registration["case_id"],
         "registration_ref": registration_ref,
         "registration_sha256": hashlib.sha256(registration_bytes).hexdigest(),
         "engine_ref": "scripts/triage_engine.py",
         "engine_sha256": hashlib.sha256(engine_path.read_bytes()).hexdigest(),
+        "engine_output": engine,
+        "state": "EXECUTED"
+    }
+
+
+def validate_execution(execution: dict[str, Any], registration: dict[str, Any], registration_bytes: bytes) -> None:
+    if not isinstance(execution, dict) or set(execution) != EXECUTION_KEYS or execution["state"] != "EXECUTED":
+        raise ContractError("execution fields do not match the contract")
+    if execution["case_id"] != registration["case_id"]:
+        raise ContractError("execution and registration case_id must match")
+    if execution["registration_sha256"] != hashlib.sha256(registration_bytes).hexdigest():
+        raise ContractError("execution registration hash mismatch")
+    output = execution["engine_output"]
+    if not isinstance(output, dict) or output.get("task_id") != registration["case_id"]:
+        raise ContractError("execution engine output does not match the case")
+
+
+def evaluate(registration: dict[str, Any], execution: dict[str, Any], observed: dict[str, Any], registration_ref: str, registration_bytes: bytes, execution_ref: str, execution_bytes: bytes) -> dict[str, Any]:
+    validate_registration(registration)
+    validate_execution(execution, registration, registration_bytes)
+    validate_label(observed, require_rationale=False)
+    engine = execution["engine_output"]
+    engine_label = {"risk_tier": engine["recommended_risk_tier"], "human_approval_required": engine["human_approval_required"]}
+    human = registration["pre_registered_human_label"]
+    return {
+        "case_id": registration["case_id"],
+        "registration_ref": registration_ref,
+        "registration_sha256": hashlib.sha256(registration_bytes).hexdigest(),
+        "execution_ref": execution_ref,
+        "execution_sha256": hashlib.sha256(execution_bytes).hexdigest(),
+        "engine_ref": execution["engine_ref"],
+        "engine_sha256": execution["engine_sha256"],
         "engine_output": engine,
         "pre_registered_human_label": human,
         "observed_final_classification": observed,
@@ -72,14 +102,17 @@ def evaluate(registration: dict[str, Any], observed: dict[str, Any], registratio
 def main() -> int:
     parser = argparse.ArgumentParser(description="Evaluate an immutable EXP-12 prospective registration")
     parser.add_argument("registration", type=Path)
+    parser.add_argument("--execution", required=True, type=Path)
     parser.add_argument("--observed-risk-tier", required=True, choices=sorted(RISK_TIERS))
     parser.add_argument("--observed-human-approval", required=True, choices=["true", "false"])
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
     raw = args.registration.read_bytes()
     registration = json.loads(raw.decode("utf-8"))
+    execution_raw = args.execution.read_bytes()
+    execution = json.loads(execution_raw.decode("utf-8"))
     observed = {"risk_tier": args.observed_risk_tier, "human_approval_required": args.observed_human_approval == "true"}
-    result = evaluate(registration, observed, args.registration.as_posix(), raw)
+    result = evaluate(registration, execution, observed, args.registration.as_posix(), raw, args.execution.as_posix(), execution_raw)
     rendered = json.dumps(result, ensure_ascii=False, indent=2) + "\n"
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)

@@ -1,0 +1,26 @@
+{
+  "case_id": "EXP12-P-002",
+  "registration_ref": "evidence/exp-12/prospective/P-002_PRE_REGISTRATION.json",
+  "registration_sha256": "5c2541e4c91399b4282f43c1574132f43de0adbdf2f8d9f1dea0952a868e5ad1",
+  "engine_ref": "scripts/triage_engine.py",
+  "engine_sha256": "815566cc9cce865aee286d9a6c2e0235b127fe89a578f0ea380e8c438f1c181c",
+  "engine_output": {
+    "task_id": "EXP12-P-002",
+    "execution_confidence": 85,
+    "complexity": 3,
+    "risk": 2,
+    "blast_radius": 0,
+    "affected_repositories": [
+      "murat-project-engineer"
+    ],
+    "architectural_impact": 1,
+    "data_sensitivity": 0,
+    "unknowns": 1,
+    "deep_change_probability": 17,
+    "human_approval_required": false,
+    "human_approval_reasons": [],
+    "recommended_risk_tier": "VERIFIED",
+    "engine_version": "0.1.0"
+  },
+  "state": "EXECUTED"
+}
