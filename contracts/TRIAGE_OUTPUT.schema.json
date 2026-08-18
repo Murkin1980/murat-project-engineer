@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://murat-ai-stack.local/schemas/triage-output-v0.1.json",
+  "title": "MPE deterministic triage output",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["task_id", "execution_confidence", "complexity", "risk", "blast_radius", "affected_repositories", "architectural_impact", "data_sensitivity", "unknowns", "deep_change_probability", "human_approval_required", "human_approval_reasons", "recommended_risk_tier", "engine_version"],
+  "properties": {
+    "task_id": {"type": "string"},
+    "execution_confidence": {"type": "integer", "minimum": 0, "maximum": 100},
+    "complexity": {"type": "integer", "minimum": 0, "maximum": 4},
+    "risk": {"type": "integer", "minimum": 0, "maximum": 4},
+    "blast_radius": {"type": "integer", "minimum": 0, "maximum": 4},
+    "affected_repositories": {"type": "array", "items": {"type": "string"}},
+    "architectural_impact": {"type": "integer", "minimum": 0, "maximum": 4},
+    "data_sensitivity": {"type": "integer", "minimum": 0, "maximum": 4},
+    "unknowns": {"type": "integer", "minimum": 0, "maximum": 4},
+    "deep_change_probability": {"type": "integer", "minimum": 0, "maximum": 100},
+    "human_approval_required": {"type": "boolean"},
+    "human_approval_reasons": {"type": "array", "items": {"type": "string"}},
+    "recommended_risk_tier": {"enum": ["FAST", "VERIFIED", "DEEP-CHANGE"]},
+    "engine_version": {"const": "0.1.0"}
+  }
+}

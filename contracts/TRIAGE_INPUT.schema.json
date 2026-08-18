@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://murat-ai-stack.local/schemas/triage-input-v0.1.json",
+  "title": "MPE deterministic triage input",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["task_id", "summary", "affected_repositories", "acceptance_criteria_present", "rollback_known", "ratings", "signals"],
+  "properties": {
+    "task_id": {"type": "string", "minLength": 1},
+    "summary": {"type": "string", "minLength": 1},
+    "affected_repositories": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "acceptance_criteria_present": {"type": "boolean"},
+    "rollback_known": {"type": "boolean"},
+    "ratings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["complexity", "risk", "architectural_impact", "data_sensitivity", "unknowns"],
+      "properties": {
+        "complexity": {"type": "integer", "minimum": 0, "maximum": 4},
+        "risk": {"type": "integer", "minimum": 0, "maximum": 4},
+        "architectural_impact": {"type": "integer", "minimum": 0, "maximum": 4},
+        "data_sensitivity": {"type": "integer", "minimum": 0, "maximum": 4},
+        "unknowns": {"type": "integer", "minimum": 0, "maximum": 4}
+      }
+    },
+    "signals": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"enum": ["architecture_redesign", "destructive_operation", "new_orchestration_authority", "persistent_agents", "persistent_runtime_state", "production_change", "router_authority_change", "security_or_permissions_change", "sensitive_data_write", "shared_component", "workflow_engine"]}
+    }
+  }
+}

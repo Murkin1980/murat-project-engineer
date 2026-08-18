@@ -37,13 +37,27 @@ class PackageContractTests(unittest.TestCase):
     def test_stage2_experiment_records_have_canonical_required_fields(self):
         schema = json.loads((ROOT / "contracts" / "EXPERIMENT_RECORD.schema.json").read_text(encoding="utf-8"))
         required = set(schema["required"])
-        for run in range(6, 12):
+        for run in range(6, 13):
             path = ROOT / "evidence" / "stage2" / f"RUN-{run:02d}_EXPERIMENT_RECORD.json"
             with self.subTest(run=run):
                 self.assertTrue(path.exists(), f"missing canonical record: {path}")
                 record = json.loads(path.read_text(encoding="utf-8"))
                 self.assertEqual(required, set(record), f"schema field mismatch: {path}")
                 self.assertEqual(f"RUN-{run:02d}", record["run_id"])
+
+    def test_triage_contracts_match_fixture_and_engine_output(self):
+        input_schema = json.loads((ROOT / "contracts" / "TRIAGE_INPUT.schema.json").read_text(encoding="utf-8"))
+        output_schema = json.loads((ROOT / "contracts" / "TRIAGE_OUTPUT.schema.json").read_text(encoding="utf-8"))
+        dataset = json.loads((ROOT / "datasets" / "exp-12-backtest.json").read_text(encoding="utf-8"))
+        triage_spec = importlib.util.spec_from_file_location("triage_engine", ROOT / "scripts" / "triage_engine.py")
+        triage_module = importlib.util.module_from_spec(triage_spec)
+        assert triage_spec.loader
+        triage_spec.loader.exec_module(triage_module)
+        self.assertGreaterEqual(len(dataset["cases"]), 20)
+        for case in dataset["cases"]:
+            self.assertEqual(set(input_schema["required"]), set(case["input"]))
+            output = triage_module.triage(case["input"])
+            self.assertEqual(set(output_schema["required"]), set(output))
 
 
 if __name__ == "__main__":

@@ -176,3 +176,7 @@ Use these as the starting queue unless real work provides better candidates:
 - No permanent model binding to Expert roles.
 - Router remains inference/protocol/credential gateway only.
 - Project source-of-truth files override stale session notes.
+
+## EXP-12 triage sub-experiment
+
+Run 12 introduced a deterministic, stateless triage scorecard as an `EXPERIMENT` within Option A+. The first retrospective backtest validates mechanics only. Prospective tasks must be recorded before execution and compared with final human/observed tiers. Automatic execution, approval, adaptive scoring and Router authority remain out of scope. The living record is `docs/experiments/EXP-12_CLEARS_TRIAGE.md`.

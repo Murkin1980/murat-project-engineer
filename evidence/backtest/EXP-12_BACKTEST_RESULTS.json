@@ -1,0 +1,484 @@
+{
+  "engine_version": "0.1.0",
+  "dataset_version": "exp-12-v1",
+  "case_count": 20,
+  "exact_match_count": 20,
+  "exact_match_rate": 1.0,
+  "approval_match_rate": 1.0,
+  "deep_change_false_negatives": 0,
+  "cases": [
+    {
+      "case_id": "run-01",
+      "tier_match": true,
+      "approval_match": true,
+      "output": {
+        "task_id": "hist-01",
+        "execution_confidence": 100,
+        "complexity": 1,
+        "risk": 1,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 0,
+        "data_sensitivity": 0,
+        "unknowns": 0,
+        "deep_change_probability": 0,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "FAST",
+        "engine_version": "0.1.0"
+      }
+    },
+    {
+      "case_id": "run-02",
+      "tier_match": true,
+      "approval_match": true,
+      "output": {
+        "task_id": "hist-02",
+        "execution_confidence": 85,
+        "complexity": 4,
+        "risk": 3,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "furniture-configurator"
+        ],
+        "architectural_impact": 2,
+        "data_sensitivity": 1,
+        "unknowns": 1,
+        "deep_change_probability": 29,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      }
+    },
+    {
+      "case_id": "run-03",
+      "tier_match": true,
+      "approval_match": true,
+      "output": {
+        "task_id": "hist-03",
+        "execution_confidence": 85,
+        "complexity": 4,
+        "risk": 3,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "mebeldocs-ai"
+        ],
+        "architectural_impact": 2,
+        "data_sensitivity": 2,
+        "unknowns": 1,
+        "deep_change_probability": 29,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      }
+    },
+    {
+      "case_id": "run-04",
+      "tier_match": true,
+      "approval_match": true,
+      "output": {
+        "task_id": "hist-04",
+        "execution_confidence": 70,
+        "complexity": 4,
+        "risk": 4,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "mebel-legal-kz"
+        ],
+        "architectural_impact": 4,
+        "data_sensitivity": 3,
+        "unknowns": 2,
+        "deep_change_probability": 78,
+        "human_approval_required": true,
+        "human_approval_reasons": [
+          "architecture_redesign"
+        ],
+        "recommended_risk_tier": "DEEP-CHANGE",
+        "engine_version": "0.1.0"
+      }
+    },
+    {
+      "case_id": "run-05",
+      "tier_match": true,
+      "approval_match": true,
+      "output": {
+        "task_id": "hist-05",
+        "execution_confidence": 70,
+        "complexity": 3,
+        "risk": 2,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 1,
+        "data_sensitivity": 0,
+        "unknowns": 2,
+        "deep_change_probability": 22,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      }
+    },
+    {
+      "case_id": "run-06",
+      "tier_match": true,
+      "approval_match": true,
+      "output": {
+        "task_id": "hist-06",
+        "execution_confidence": 100,
+        "complexity": 1,
+        "risk": 1,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 0,
+        "data_sensitivity": 0,
+        "unknowns": 0,
+        "deep_change_probability": 0,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "FAST",
+        "engine_version": "0.1.0"
+      }
+    },
+    {
+      "case_id": "run-07",
+      "tier_match": true,
+      "approval_match": true,
+      "output": {
+        "task_id": "hist-07",
+        "execution_confidence": 55,
+        "complexity": 3,
+        "risk": 3,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 2,
+        "data_sensitivity": 2,
+        "unknowns": 3,
+        "deep_change_probability": 39,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      }
+    },
+    {
+      "case_id": "run-08",
+      "tier_match": true,
+      "approval_match": true,
+      "output": {
+        "task_id": "hist-08",
+        "execution_confidence": 70,
+        "complexity": 2,
+        "risk": 2,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 1,
+        "data_sensitivity": 1,
+        "unknowns": 2,
+        "deep_change_probability": 22,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      }
+    },
+    {
+      "case_id": "run-09",
+      "tier_match": true,
+      "approval_match": true,
+      "output": {
+        "task_id": "hist-09",
+        "execution_confidence": 45,
+        "complexity": 4,
+        "risk": 3,
+        "blast_radius": 2,
+        "affected_repositories": [
+          "murat-project-engineer",
+          "salamat-kitchen-configurator"
+        ],
+        "architectural_impact": 2,
+        "data_sensitivity": 2,
+        "unknowns": 3,
+        "deep_change_probability": 44,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      }
+    },
+    {
+      "case_id": "run-10",
+      "tier_match": true,
+      "approval_match": true,
+      "output": {
+        "task_id": "hist-10",
+        "execution_confidence": 55,
+        "complexity": 3,
+        "risk": 3,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 2,
+        "data_sensitivity": 1,
+        "unknowns": 3,
+        "deep_change_probability": 39,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      }
+    },
+    {
+      "case_id": "run-11",
+      "tier_match": true,
+      "approval_match": true,
+      "output": {
+        "task_id": "hist-11",
+        "execution_confidence": 70,
+        "complexity": 4,
+        "risk": 3,
+        "blast_radius": 1,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 3,
+        "data_sensitivity": 1,
+        "unknowns": 2,
+        "deep_change_probability": 46,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      }
+    },
+    {
+      "case_id": "sample-feature",
+      "tier_match": true,
+      "approval_match": true,
+      "output": {
+        "task_id": "hist-12",
+        "execution_confidence": 100,
+        "complexity": 2,
+        "risk": 2,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "sample-software-project"
+        ],
+        "architectural_impact": 1,
+        "data_sensitivity": 0,
+        "unknowns": 0,
+        "deep_change_probability": 12,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      }
+    },
+    {
+      "case_id": "idea-filter",
+      "tier_match": true,
+      "approval_match": true,
+      "output": {
+        "task_id": "hist-13",
+        "execution_confidence": 100,
+        "complexity": 1,
+        "risk": 1,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 1,
+        "data_sensitivity": 0,
+        "unknowns": 0,
+        "deep_change_probability": 12,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "FAST",
+        "engine_version": "0.1.0"
+      }
+    },
+    {
+      "case_id": "global-installer",
+      "tier_match": true,
+      "approval_match": true,
+      "output": {
+        "task_id": "hist-14",
+        "execution_confidence": 85,
+        "complexity": 3,
+        "risk": 3,
+        "blast_radius": 1,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 2,
+        "data_sensitivity": 1,
+        "unknowns": 1,
+        "deep_change_probability": 29,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      }
+    },
+    {
+      "case_id": "dashboard",
+      "tier_match": true,
+      "approval_match": true,
+      "output": {
+        "task_id": "hist-15",
+        "execution_confidence": 85,
+        "complexity": 3,
+        "risk": 2,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 1,
+        "data_sensitivity": 0,
+        "unknowns": 1,
+        "deep_change_probability": 17,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      }
+    },
+    {
+      "case_id": "dashboard-refresh",
+      "tier_match": true,
+      "approval_match": true,
+      "output": {
+        "task_id": "hist-16",
+        "execution_confidence": 100,
+        "complexity": 1,
+        "risk": 1,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 0,
+        "data_sensitivity": 0,
+        "unknowns": 0,
+        "deep_change_probability": 0,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "FAST",
+        "engine_version": "0.1.0"
+      }
+    },
+    {
+      "case_id": "input-contract",
+      "tier_match": true,
+      "approval_match": true,
+      "output": {
+        "task_id": "hist-17",
+        "execution_confidence": 100,
+        "complexity": 2,
+        "risk": 2,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 1,
+        "data_sensitivity": 1,
+        "unknowns": 0,
+        "deep_change_probability": 12,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      }
+    },
+    {
+      "case_id": "router-boundary",
+      "tier_match": true,
+      "approval_match": true,
+      "output": {
+        "task_id": "hist-18",
+        "execution_confidence": 10,
+        "complexity": 4,
+        "risk": 4,
+        "blast_radius": 1,
+        "affected_repositories": [
+          "murat-project-engineer",
+          "codex-router"
+        ],
+        "architectural_impact": 4,
+        "data_sensitivity": 2,
+        "unknowns": 4,
+        "deep_change_probability": 100,
+        "human_approval_required": true,
+        "human_approval_reasons": [
+          "new_orchestration_authority",
+          "router_authority_change"
+        ],
+        "recommended_risk_tier": "DEEP-CHANGE",
+        "engine_version": "0.1.0"
+      }
+    },
+    {
+      "case_id": "workflow-engine-boundary",
+      "tier_match": true,
+      "approval_match": true,
+      "output": {
+        "task_id": "hist-19",
+        "execution_confidence": 10,
+        "complexity": 4,
+        "risk": 4,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 4,
+        "data_sensitivity": 2,
+        "unknowns": 4,
+        "deep_change_probability": 100,
+        "human_approval_required": true,
+        "human_approval_reasons": [
+          "persistent_runtime_state",
+          "workflow_engine"
+        ],
+        "recommended_risk_tier": "DEEP-CHANGE",
+        "engine_version": "0.1.0"
+      }
+    },
+    {
+      "case_id": "persistent-agents-boundary",
+      "tier_match": true,
+      "approval_match": true,
+      "output": {
+        "task_id": "hist-20",
+        "execution_confidence": 10,
+        "complexity": 4,
+        "risk": 4,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 4,
+        "data_sensitivity": 3,
+        "unknowns": 4,
+        "deep_change_probability": 100,
+        "human_approval_required": true,
+        "human_approval_reasons": [
+          "architecture_redesign",
+          "persistent_agents"
+        ],
+        "recommended_risk_tier": "DEEP-CHANGE",
+        "engine_version": "0.1.0"
+      }
+    }
+  ]
+}

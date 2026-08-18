@@ -26,6 +26,10 @@ python -m unittest discover -s tests -v
 
 The sample project demonstrates an isolated `software-feature` run with completed handoffs and Run Report.
 
+## Deterministic triage experiment
+
+EXP-12 adds a bounded, stateless triage prototype and a 20-case retrospective backtest. See `docs/experiments/EXP-12_CLEARS_TRIAGE.md`. It recommends a risk tier and human gate from explicit structured inputs; it does not execute, approve or route work autonomously.
+
 ## Portfolio dashboard
 
 Live project status map: https://murat-project-engineer.muriktl.workers.dev

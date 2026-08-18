@@ -8,7 +8,7 @@ Updated: 2026-08-15
 - Stage 1: COMPLETE
 - Stage 2: ACTIVE — 20-run evidence experiment
 - Stage 2A: FIRST-FIVE EVIDENCE CAPTURED
-- Runs 07–11: EVIDENCE CAPTURED — three PASS, one REWORK, one BLOCKED
+- Runs 07–12: EVIDENCE CAPTURED — four PASS, one REWORK, one BLOCKED
 - Portfolio dashboard: LIVE at https://murat-project-engineer.muriktl.workers.dev
 
 ## Current architecture
@@ -35,6 +35,7 @@ Implemented and available:
 - isolated software-feature PoC
 - Stage 2 evidence for Runs 01–11
 - bounded runtime-coordination contracts and stateless helpers from Run 11
+- EXP-12 deterministic triage prototype, contracts and first retrospective backtest
 - portfolio dashboard (read-only static asset, Workers Static Assets, auto-deploy on configured main push)
 
 ## Stage 2 run status
@@ -50,6 +51,7 @@ Implemented and available:
 - Run 09 — Personalized Assessment Engine v0 — VERIFIED coordinator — REWORK
 - Run 10 — Munder Difflin controlled pilot — VERIFIED coordinator — BLOCKED
 - Run 11 — bounded runtime-coordination patterns — VERIFIED coordinator — PASS
+- Run 12 — CLEARS deterministic triage/executability backtest — VERIFIED coordinator — PASS (retrospective mechanics only)
 
 Run 05 remains historically BLOCKED because repository-local package validator and unit tests were not executable through the GitHub connector execution surface during that run. No PASS is retroactively claimed.
 
@@ -58,6 +60,8 @@ Run 06 is a separate FAST documentation/policy synchronization run. It does not 
 Run 07 PASS applies only to completion of the controlled evaluation. Strix execution is NOT_EXECUTED and its decision remains HOLD. FreeBuff execution is REJECT; selected Codebuff patterns are REUSE_COMPONENT.
 
 Run 09 remains REWORK until its unresolved production-rule, external-LLM, Git-boundary, and source-of-truth findings are addressed. Run 10 remains historically BLOCKED. Run 11 remains inside Option A+ only while its mailbox, JSONL, and lifecycle elements stay bounded, stateless, conditional helpers rather than runtime authority.
+
+Run 12 PASS validates deterministic execution, contract/fixture consistency and the first retrospective backtest (20/20 fixture agreement; zero DEEP-CHANGE false negatives). Prospective accuracy is NOT_OBSERVABLE because labels and ratings were curated from known historical evidence. Router review caused safety rework: maximum architectural impact now always forces DEEP-CHANGE and human approval. The next validation must pre-register real tasks before execution.
 
 ## New Idea Filter
 
@@ -107,7 +111,7 @@ The experiment must measure quality, rework, reviewer value, interruption recove
 
 1. Preserve the historical Run 05 and Run 10 BLOCKED outcomes; do not retroactively promote them.
 2. Keep Run 09 in REWORK until the recorded findings are resolved or explicitly scoped out.
-3. Continue Runs 12–20 with fresh real work.
+3. Continue Runs 13–20 with fresh real work; include at least 10 pre-registered prospective EXP-12 triage cases before operational reliance.
 4. Ensure the 20-run set contains at least five baseline runs total; Runs 01–04 currently provide four historical baselines.
 5. Use independent Reviewer on enough VERIFIED runs to measure reviewer usefulness and false positives.
 6. Keep Run 11 helpers conditional and bounded. A poller, daemon, retry worker, router, scheduler, shared state, database, or generic messaging/runtime layer requires a new filter and DEEP-CHANGE review.

@@ -93,7 +93,10 @@ class MailboxTests(unittest.TestCase):
             )
             if created.returncode != 0:
                 self.skipTest(f"junction creation unavailable: {created.stderr or created.stdout}")
-            with self.assertRaises(ContractError): deliver_atomic(junction, envelope())
+            try:
+                with self.assertRaises(ContractError): deliver_atomic(junction, envelope())
+            finally:
+                os.rmdir(junction)
     def test_partial_json_not_accepted(self):
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "events.jsonl"; path.write_text('{"schema_version":', encoding="utf-8")
