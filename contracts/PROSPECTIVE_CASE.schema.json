@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://murat-ai-stack.local/schemas/prospective-case-v0.1.json",
+  "title": "EXP-12 prospective case registration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["case_id", "registered_at", "baseline_commit", "task", "acceptance_criteria", "non_scope", "triage_input", "pre_registered_human_label", "engine_output", "observed_final_classification", "state"],
+  "properties": {
+    "case_id": {"type": "string", "pattern": "^EXP12-P-[0-9]{3}$"},
+    "registered_at": {"type": "string", "format": "date-time"},
+    "baseline_commit": {"type": "string", "pattern": "^[0-9a-f]{7,40}$"},
+    "task": {"type": "string", "minLength": 1},
+    "acceptance_criteria": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "non_scope": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "triage_input": {"$ref": "TRIAGE_INPUT.schema.json"},
+    "pre_registered_human_label": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["risk_tier", "human_approval_required", "rationale"],
+      "properties": {
+        "risk_tier": {"enum": ["FAST", "VERIFIED", "DEEP-CHANGE"]},
+        "human_approval_required": {"type": "boolean"},
+        "rationale": {"type": "string", "minLength": 1}
+      }
+    },
+    "engine_output": {"type": "null"},
+    "observed_final_classification": {"type": "null"},
+    "state": {"const": "REGISTERED"}
+  }
+}

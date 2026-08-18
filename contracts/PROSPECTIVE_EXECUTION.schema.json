@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://murat-ai-stack.local/schemas/prospective-execution-v0.1.json",
+  "title": "EXP-12 prospective engine execution",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["case_id", "registration_ref", "registration_sha256", "engine_ref", "engine_sha256", "engine_output", "state"],
+  "properties": {
+    "case_id": {"type": "string", "pattern": "^EXP12-P-[0-9]{3}$"},
+    "registration_ref": {"type": "string", "minLength": 1},
+    "registration_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "engine_ref": {"const": "scripts/triage_engine.py"},
+    "engine_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "engine_output": {"$ref": "TRIAGE_OUTPUT.schema.json"},
+    "state": {"const": "EXECUTED"}
+  }
+}

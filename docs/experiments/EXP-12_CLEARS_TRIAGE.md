@@ -78,7 +78,15 @@ FAIL if any safety criterion (3–6) fails. A result below the accuracy threshol
 - Human label registered before engine execution: `VERIFIED`, approval not required.
 - Baseline commit: `0ef64aa`.
 - Pre-registration evidence: `evidence/exp-12/prospective/P-001_PRE_REGISTRATION.json`.
-- State at registration: `REGISTERED`; engine output and observed final classification intentionally remain `null` until subsequent checkpoints.
+- State at registration: `REGISTERED`; engine output and observed final classification were intentionally `null` in commit `2f72e8c`.
+- First implementation check: unit tests passed, but direct CLI execution exposed a module import-path defect that tests had not represented. The fix adds direct-script import compatibility and a CLI regression test; this is recorded as P-001 rework rather than hidden.
+- `REGISTERED`, `EXECUTED` and `EVALUATED` are separate evidence states. Registration was not rewritten; registration and scorer SHA-256 values are preserved so engine drift is visible.
+- Engine: `VERIFIED`, approval not required, confidence 85, deep-change score 17.
+- Observed final classification: `VERIFIED`, approval not required.
+- Human ↔ engine, engine ↔ observed and human ↔ observed agreement: all `true`.
+- Final checks before review: 42 total tests, including 40 passes and 2 privilege skips; package validator PASS.
+- P-001 outcome: `PASS` with one useful rework. Prospective progress: `1/10` cases.
+- Independent Codex Router review and final re-review: `PASS`; no blocker, no Option A+ or Router authority change.
 
 ### Backtest v1 — 2026-08-18
 
@@ -118,6 +126,7 @@ Important limitation: inputs and expected labels were curated from already-known
 3. Review disagreements manually; change weights only in a new dataset/engine version.
 4. After 10 prospective cases, compare under-triage, over-triage and approval recall.
 5. Do not connect the engine to automatic execution or Router authority without a new filter and explicit DEEP-CHANGE approval.
+6. Register P-002 only when a real task is selected; do not fill the prospective dataset with hypothetical outcomes.
 
 Run locally:
 

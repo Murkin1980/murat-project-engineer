@@ -61,7 +61,7 @@ Run 07 PASS applies only to completion of the controlled evaluation. Strix execu
 
 Run 09 remains REWORK until its unresolved production-rule, external-LLM, Git-boundary, and source-of-truth findings are addressed. Run 10 remains historically BLOCKED. Run 11 remains inside Option A+ only while its mailbox, JSONL, and lifecycle elements stay bounded, stateless, conditional helpers rather than runtime authority.
 
-Run 12 PASS validates deterministic execution, contract/fixture consistency and the first retrospective backtest (20/20 fixture agreement; zero DEEP-CHANGE false negatives). Prospective accuracy is NOT_OBSERVABLE because labels and ratings were curated from known historical evidence. Router review caused safety rework: maximum architectural impact now always forces DEEP-CHANGE and human approval. The next validation must pre-register real tasks before execution.
+Run 12 PASS validates deterministic execution, contract/fixture consistency and the first retrospective backtest (20/20 fixture agreement; zero DEEP-CHANGE false negatives). Prospective case P-001 is now complete: human, engine and observed labels all matched `VERIFIED / approval=false`; one direct-CLI defect was found and fixed. Prospective progress is 1/10, so accuracy remains insufficient for operational reliance. Router review caused safety rework: maximum architectural impact now always forces DEEP-CHANGE and human approval.
 
 ## New Idea Filter
 
@@ -111,7 +111,7 @@ The experiment must measure quality, rework, reviewer value, interruption recove
 
 1. Preserve the historical Run 05 and Run 10 BLOCKED outcomes; do not retroactively promote them.
 2. Keep Run 09 in REWORK until the recorded findings are resolved or explicitly scoped out.
-3. Continue Runs 13–20 with fresh real work; include at least 10 pre-registered prospective EXP-12 triage cases before operational reliance.
+3. Continue Runs 13–20 with fresh real work; pre-register P-002 only when its real task is selected and reach 10 prospective EXP-12 cases before operational reliance.
 4. Ensure the 20-run set contains at least five baseline runs total; Runs 01–04 currently provide four historical baselines.
 5. Use independent Reviewer on enough VERIFIED runs to measure reviewer usefulness and false positives.
 6. Keep Run 11 helpers conditional and bounded. A poller, daemon, retry worker, router, scheduler, shared state, database, or generic messaging/runtime layer requires a new filter and DEEP-CHANGE review.
