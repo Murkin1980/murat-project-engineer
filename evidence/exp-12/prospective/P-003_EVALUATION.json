@@ -1,0 +1,41 @@
+{
+  "case_id": "EXP12-P-003",
+  "registration_ref": "evidence/exp-12/prospective/P-003_PRE_REGISTRATION.json",
+  "registration_sha256": "be1ce49115f0709b6ca124685dfa6143541ee2f557049f50e5e4b33d27debf18",
+  "execution_ref": "evidence/exp-12/prospective/P-003_EXECUTION.json",
+  "execution_sha256": "c3f8a47c07aa3e95ab7593bf76eae2bf327d4a06c3699c3d2c5ccfa72f7031ce",
+  "engine_ref": "scripts/triage_engine.py",
+  "engine_sha256": "815566cc9cce865aee286d9a6c2e0235b127fe89a578f0ea380e8c438f1c181c",
+  "engine_output": {
+    "task_id": "EXP12-P-003",
+    "execution_confidence": 85,
+    "complexity": 3,
+    "risk": 3,
+    "blast_radius": 0,
+    "affected_repositories": [
+      "mebeldocs-ai"
+    ],
+    "architectural_impact": 1,
+    "data_sensitivity": 3,
+    "unknowns": 1,
+    "deep_change_probability": 17,
+    "human_approval_required": false,
+    "human_approval_reasons": [],
+    "recommended_risk_tier": "VERIFIED",
+    "engine_version": "0.1.0"
+  },
+  "pre_registered_human_label": {
+    "risk_tier": "VERIFIED",
+    "human_approval_required": false,
+    "rationale": "The UI handles sensitive business-profile fields but changes no real data during validation, uses an existing local API and remains a bounded single-repository feature."
+  },
+  "observed_final_classification": {
+    "risk_tier": "VERIFIED",
+    "human_approval_required": false
+  },
+  "human_engine_agreement": true,
+  "engine_observed_agreement": true,
+  "human_observed_agreement": true,
+  "state": "EVALUATED",
+  "evaluator_version": "0.1.0"
+}

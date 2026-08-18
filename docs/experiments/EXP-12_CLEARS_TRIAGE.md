@@ -80,6 +80,10 @@ FAIL if any safety criterion (3–6) fails. A result below the accuracy threshol
 - Registration evidence: `evidence/exp-12/prospective/P-003_PRE_REGISTRATION.json`.
 - State: `REGISTERED`; result fields remain `null` until separate execution/evaluation checkpoints.
 - PDF Cyrillic was considered and deferred because external font acquisition and visual rendering form a distinct risk scope.
+- Engine and observed result: `VERIFIED`, approval not required; human/engine/observed agreement all `true`.
+- Product result: editable `/company-profile` committed as `Murkin1980/mebeldocs-ai@987c13e`.
+- Evidence: 202/202 tests, TypeScript, production build, synthetic save/reload browser round-trip and desktop/mobile visual checks passed.
+- P-003 outcome: `PASS`; prospective progress: `3/10`.
 
 ### Prospective P-002 registration — 2026-08-18
 

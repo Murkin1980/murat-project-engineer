@@ -1,0 +1,26 @@
+{
+  "case_id": "EXP12-P-003",
+  "registration_ref": "evidence/exp-12/prospective/P-003_PRE_REGISTRATION.json",
+  "registration_sha256": "be1ce49115f0709b6ca124685dfa6143541ee2f557049f50e5e4b33d27debf18",
+  "engine_ref": "scripts/triage_engine.py",
+  "engine_sha256": "815566cc9cce865aee286d9a6c2e0235b127fe89a578f0ea380e8c438f1c181c",
+  "engine_output": {
+    "task_id": "EXP12-P-003",
+    "execution_confidence": 85,
+    "complexity": 3,
+    "risk": 3,
+    "blast_radius": 0,
+    "affected_repositories": [
+      "mebeldocs-ai"
+    ],
+    "architectural_impact": 1,
+    "data_sensitivity": 3,
+    "unknowns": 1,
+    "deep_change_probability": 17,
+    "human_approval_required": false,
+    "human_approval_reasons": [],
+    "recommended_risk_tier": "VERIFIED",
+    "engine_version": "0.1.0"
+  },
+  "state": "EXECUTED"
+}
