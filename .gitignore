@@ -9,3 +9,4 @@ dist/
 # Local environment secrets
 .env
 .mpe-runtime/mailboxes/
+.devcontainer/OPENCODE_MOBILE_CONNECTION.txt
