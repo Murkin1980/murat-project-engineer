@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased — Compute Budget Controlled Validation (2026-08-20)
+
+- Ran a blind retrospective validation of the Compute Budget Estimator v1.0 against five selected historical MPE runs (research / browser / architecture / implementation / evaluation).
+- Result: `INSUFFICIENT_HISTORICAL_TELEMETRY` — all 12 inventoried runs carry `approximate_cost: null` or qualitative "not observable" notes; zero observed usage. No accuracy is reported and no telemetry is fabricated.
+- Added `experiments/compute-budget/validation_runs.json` (canonical dataset), `scripts/compute_budget_retrospective.py` (blind preflight runner), and `evidence/validation/COMPUTE_BUDGET_RETROSPECTIVE_RESULTS.json`.
+- Added `docs/COMPUTE_BUDGET_INSTRUMENTATION.md` defining the mandatory per-run usage fields (provider, model, tokens, observed_cost, calls, retries, timestamps, progress checkpoints, measurement_source) for forward validation on the next 5-10 runs.
+- Added `COMPUTE_BUDGET_VALIDATION_REPORT.md`. Estimator parameters unchanged; no historical evidence rewritten.
+
 ## Unreleased — Compute Budget Gate MVP (2026-08-19)
 
 - Added the `AI Compute Budget` canonical contract (`contracts/COMPUTE_BUDGET.*`) with six blocks plus a derived status block.
