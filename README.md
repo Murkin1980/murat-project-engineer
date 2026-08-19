@@ -28,7 +28,7 @@ The sample project demonstrates an isolated `software-feature` run with complete
 
 ## Compute Budget Gate
 
-A deterministic `AI Compute Budget` check runs before substantial execution. See `docs/COMPUTE_BUDGET_GATE.md` and `contracts/COMPUTE_BUDGET.md`. `scripts/compute_budget.py` is the single source of truth for the preflight estimate, budget health (GREEN/YELLOW/ORANGE/RED/UNOBSERVED), burn-rate anomaly, and evidence-based reforecast. `observed` / `estimated` / `unobserved` usage are distinct; missing usage renders `UNOBSERVED`, never fake zeros.
+The deterministic `AI Compute Budget` check is currently **experimental** and may be run as a preflight for substantial execution; it is not a mandatory gate or hard-stop. See `docs/COMPUTE_BUDGET_GATE.md` and `contracts/COMPUTE_BUDGET.md`. `scripts/compute_budget.py` is the single source of truth for the preflight estimate, budget health (GREEN/YELLOW/ORANGE/RED/UNOBSERVED), burn-rate anomaly, and evidence-based reforecast. `observed` / `estimated` / `unobserved` usage are distinct; missing usage renders `UNOBSERVED`, never fake zeros.
 
 ## Deterministic triage experiment
 
