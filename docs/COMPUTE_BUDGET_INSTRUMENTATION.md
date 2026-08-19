@@ -74,6 +74,39 @@ python scripts/compute_budget_retrospective.py
 
 and evaluate against the experimental targets (preflight min-max hit rate >= 80%; reforecast error <= +/-25% after ~20% progress) in `docs/COMPUTE_BUDGET_GATE.md`.
 
+## Implementation (now wired in)
+
+The policy above is implemented as code, not just prose:
+
+- `contracts/USAGE_RECORD.schema.json` / `.md` / `.example.json` — the canonical usage record contract.
+- `scripts/usage_instrumentation.py` — deterministic recorder:
+  - `UsageRecorder` accumulates model calls, tool calls, retries, cost, and progress checkpoints and emits a validated record;
+  - `classify_measurement(source)` derives observed/estimated/unobserved and never promotes;
+  - `usage_to_compute_budget(record)` projects the record onto the compute-budget `usage` block;
+  - `usage_to_run_report(record)` projects it onto the Run Report `usage` block;
+  - CLI: `python scripts/usage_instrumentation.py --template RUN-XX` (empty UNOBSERVED record) or `python scripts/usage_instrumentation.py <record.json>` (validate).
+- `contracts/RUN_REPORT.schema.json` gains an optional `usage` block (same shape as USAGE_RECORD, minus `schema_version`/`run_id`), so every new run writes its usage inline and old reports stay valid.
+
+Example of recording a run in code:
+
+```python
+from scripts.usage_instrumentation import UsageRecorder
+
+record = (
+    UsageRecorder(run_id="RUN-XX")
+    .start(provider="OpenCode Zen", model="opencode-go/deepseek-v4-flash")
+    .record_model_call(1200, 240, cost=0.01)   # per model call
+    .record_tool_call(3)
+    .record_retry(1)
+    .record_checkpoint(20, 0.11, "router_billing")
+    .to_record("router_billing")
+)
+```
+
+If no telemetry is available, emit `empty_record(run_id)` — explicit UNOBSERVED, never fake zeros.
+
 ## Explicitly out of scope
 
 No separate telemetry backend, no billing service, no analytics service, no new authority store. The fields above live in the existing Run Report, Experiment Record, and compute-budget snapshot. Business Discovery and shared research architecture are unchanged.
+
+The Compute Budget Gate itself stays EXPERIMENTAL: instrumentation records telemetry only and never enforces a budget, blocks a run, or promotes the gate to a mandatory ritual.

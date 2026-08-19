@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased — Run Usage Instrumentation (2026-08-20)
+
+- Added the canonical `USAGE_RECORD` contract (`contracts/USAGE_RECORD.schema.json` / `.md` / `.example.json`) for per-run usage telemetry: provider, model, input/cached/output tokens, observed cost, model/tool calls, retries, start/end timestamps, progress checkpoints, and measurement_source.
+- Added `scripts/usage_instrumentation.py` — a deterministic recorder plus `classify_measurement` (observed/estimated/unobserved derived from measurement_source, never promoted), `usage_to_compute_budget`, `usage_to_run_report`, and a CLI.
+- Extended `contracts/RUN_REPORT.schema.json` / `.md` / `.example.json` with an optional `usage` block so every new run writes its usage inline while historical reports stay valid.
+- Compute Budget Gate remains EXPERIMENTAL: instrumentation records telemetry only and does not enforce a budget or hard-stop a run.
+
 ## Unreleased — Compute Budget Controlled Validation (2026-08-20)
 
 - Ran a blind retrospective validation of the Compute Budget Estimator v1.0 against five selected historical MPE runs (research / browser / architecture / implementation / evaluation).

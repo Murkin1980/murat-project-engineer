@@ -19,7 +19,25 @@
 - unresolved_risks:
 - rollback:
 - approximate_usage_cost:
+- usage: (Run Usage Record — see USAGE_RECORD.md)
 - compute_budget: (AI Compute Budget summary — see COMPUTE_BUDGET.md)
+
+### Run Usage Record (inside `usage`)
+
+- provider:
+- model:
+- input_tokens:
+- cached_input_tokens:
+- output_tokens:
+- observed_cost:
+- model_calls:
+- tool_calls:
+- retries:
+- start_time:
+- end_time:
+- progress_checkpoints:
+- measurement_source: provider_api | router_billing | usage_api | execution_log | price_reconstruction | operator_estimate | none
+- measurement: observed | estimated | unobserved
 
 ### Compute Budget summary (inside `compute_budget`)
 

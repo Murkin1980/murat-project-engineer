@@ -26,6 +26,24 @@
   "unresolved_risks": ["Full repository-local validator and unit-test execution must remain observable in the completed run evidence."],
   "rollback": "Revert the Stage 2A commits on main.",
   "approximate_usage_cost": null,
+  "usage": {
+    "provider": "OpenCode Zen",
+    "model": "opencode-go/deepseek-v4-flash",
+    "input_tokens": 1200000,
+    "cached_input_tokens": 360000,
+    "output_tokens": 36000,
+    "observed_cost": 0.48,
+    "model_calls": 40,
+    "tool_calls": 12,
+    "retries": 1,
+    "start_time": "2026-08-20T09:00:00Z",
+    "end_time": "2026-08-20T09:22:00Z",
+    "progress_checkpoints": [
+      {"progress_percent": 20, "cost_usd": 0.11, "measurement_source": "router_billing"}
+    ],
+    "measurement_source": "router_billing",
+    "measurement": "observed"
+  },
   "compute_budget": {
     "planned_budget": 80.0,
     "hard_limit": 100.0,
