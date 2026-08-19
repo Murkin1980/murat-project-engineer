@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://murat-project-engineer.local/schemas/compute-budget.schema.json",
+  "title": "MPE Compute Budget Snapshot",
+  "type": "object",
+  "required": ["compute_budget", "usage", "forecast", "efficiency"],
+  "properties": {
+    "compute_budget": {
+      "type": "object",
+      "required": ["currency", "planned_budget", "hard_limit"],
+      "properties": {
+        "currency": {"const": "USD"},
+        "planned_budget": {"type": ["number", "null"], "minimum": 0},
+        "hard_limit": {"type": ["number", "null"], "minimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "preflight": {
+      "type": "object",
+      "properties": {
+        "input_tokens_min": {"type": ["integer", "null"], "minimum": 0},
+        "input_tokens_expected": {"type": ["integer", "null"], "minimum": 0},
+        "input_tokens_max": {"type": ["integer", "null"], "minimum": 0},
+        "output_tokens_min": {"type": ["integer", "null"], "minimum": 0},
+        "output_tokens_expected": {"type": ["integer", "null"], "minimum": 0},
+        "output_tokens_max": {"type": ["integer", "null"], "minimum": 0},
+        "estimated_cost_min": {"type": ["number", "null"], "minimum": 0},
+        "estimated_cost_expected": {"type": ["number", "null"], "minimum": 0},
+        "estimated_cost_max": {"type": ["number", "null"], "minimum": 0},
+        "confidence": {"enum": ["low", "medium", "high"]}
+      },
+      "additionalProperties": false
+    },
+    "usage": {
+      "type": "object",
+      "required": ["measurement"],
+      "properties": {
+        "input_tokens": {"type": ["integer", "null"], "minimum": 0},
+        "cached_input_tokens": {"type": ["integer", "null"], "minimum": 0},
+        "output_tokens": {"type": ["integer", "null"], "minimum": 0},
+        "observed_cost": {"type": ["number", "null"], "minimum": 0},
+        "measurement": {"enum": ["observed", "estimated", "unobserved"]}
+      },
+      "additionalProperties": false
+    },
+    "forecast": {
+      "type": "object",
+      "properties": {
+        "projected_total_cost_min": {"type": ["number", "null"], "minimum": 0},
+        "projected_total_cost_expected": {"type": ["number", "null"], "minimum": 0},
+        "projected_total_cost_max": {"type": ["number", "null"], "minimum": 0},
+        "projected_remaining_cost_expected": {"type": ["number", "null"], "minimum": 0},
+        "confidence": {"enum": ["low", "medium", "high"]},
+        "burn_rate_per_progress_point": {"type": ["number", "null"], "minimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "routing": {
+      "type": "object",
+      "properties": {
+        "recommended_stack": {"type": "array", "items": {"type": "string"}},
+        "actual_provider_mix": {
+          "type": "object",
+          "additionalProperties": {"type": "number", "minimum": 0, "maximum": 1}
+        }
+      },
+      "additionalProperties": false
+    },
+    "efficiency": {
+      "type": "object",
+      "properties": {
+        "project_progress_percent": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+        "budget_consumed_percent": {"type": ["number", "null"], "minimum": 0},
+        "cost_per_progress_percent": {"type": ["number", "null"], "minimum": 0},
+        "burn_rate_ratio": {"type": ["number", "null"], "minimum": 0}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
