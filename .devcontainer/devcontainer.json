@@ -1,0 +1,13 @@
+{
+  "name": "MPE Codespace",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "forwardPorts": [4096],
+  "portsAttributes": {
+    "4096": {
+      "label": "OpenCode Mobile API",
+      "onAutoForward": "silent"
+    }
+  },
+  "postCreateCommand": "npm install -g opencode-ai",
+  "postStartCommand": "bash .devcontainer/start-opencode.sh"
+}
