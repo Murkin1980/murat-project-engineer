@@ -235,9 +235,14 @@ def validate_usage_record(record: dict) -> None:
 def usage_to_compute_budget(record: dict) -> dict:
     """Project a usage record onto the compute-budget ``usage`` block.
 
-    The compute-budget block uses the generic field name ``estimated_cost`` for
-    the cost figure (its quality is given by ``measurement``); the usage record's
-    ``observed_cost`` maps onto it without changing its quality label.
+    This is the ONLY projection path from ``USAGE_RECORD`` (the canonical usage
+    source of truth) into ``COMPUTE_BUDGET.usage``; the compute-budget block must
+    not be written independently.
+
+    ``estimated_cost`` here is a generic destination field name, not a quality
+    claim. The usage record's ``observed_cost`` maps onto it without changing its
+    provenance: the quality is carried by ``measurement``, so an observed value
+    stays observed even though it lands in a field named ``estimated_cost``.
     """
     validate_usage_record(record)
     return {

@@ -38,6 +38,12 @@ measurement: observed | estimated | unobserved
 - usage_measurement_source: where the telemetry came from
 - usage_measurement: observed | estimated | unobserved (derived from measurement_source)
 
+## Source of truth
+
+`USAGE_RECORD` is the canonical source of truth for usage telemetry. `RUN_REPORT.usage` and `COMPUTE_BUDGET.usage` are projections of `USAGE_RECORD` only and must not be written independently. The only projection paths are `usage_to_run_report` and `usage_to_compute_budget` in `scripts/usage_instrumentation.py`.
+
+Note on `estimated_cost`: in the `COMPUTE_BUDGET.usage` block, `estimated_cost` is a generic destination field name, not a quality claim. The quality of the value is carried by `measurement`; when the source is `observed`, the value remains observed by provenance even though it lands in a field named `estimated_cost`. Do not rename `estimated_cost` — it is part of the canonical Compute Budget contract and changing it would break backward compatibility.
+
 ## Measurement rules
 
 `measurement` is derived from `measurement_source` and never promoted:
