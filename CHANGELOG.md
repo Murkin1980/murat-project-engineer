@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased — Compute Budget Gate MVP (2026-08-19)
+
+- Added the `AI Compute Budget` canonical contract (`contracts/COMPUTE_BUDGET.*`) with six blocks plus a derived status block.
+- Added `scripts/compute_budget.py` — a deterministic, dependency-free gate engine: preflight estimate, GREEN/YELLOW/ORANGE/RED/UNOBSERVED health, burn-rate metrics and `BURN_RATE_ANOMALY`, evidence-based reforecast, provider scenarios (economy vs premium), Run Report summary and dashboard rendering.
+- Extended `contracts/RUN_REPORT.*` with an optional `compute_budget` summary block while keeping `approximate_usage_cost` backward compatible (migrated as *estimated*, never *observed*).
+- Added three deterministic gates (`compute_budget_preflight`, `compute_budget_health`, `compute_budget_burn_rate`) to `gates/registry.yaml`.
+- Added the PROJECT PROGRESS / AI BUDGET split to the Portfolio Dashboard, rendering `UNOBSERVED` instead of fake zeros when usage is missing.
+- Recorded a controlled validation across 12 historical MPE runs: all report UNOBSERVED spend (no historical cost telemetry); the min-max accuracy criterion is deferred until usage capture is wired into new runs.
+- No billing backend, payment automation, persistent agents, scheduler, workflow engine, authority store or new repository were introduced.
+
 ## Unreleased — Stage 2 (2026-08-13)
 
 - Added EXP-12 CLEARS deterministic triage contracts, stateless prototype, 20-case retrospective dataset, tests and evidence.

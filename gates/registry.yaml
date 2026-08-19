@@ -119,3 +119,24 @@ gates:
     evidence_required: valid state and allowed transition; a terminal role requires a new invocation to restart
     failure_state: REWORK
     retry_policy: correct the transition or create an explicit new invocation
+  - gate_id: compute_budget_preflight
+    type: deterministic
+    hard: true
+    applicable_when: substantial execution, deep-change work, large refactors, migrations, or large code-generation tasks
+    evidence_required: deterministic preflight estimate with scope, estimated tasks, complexity, context size, model/tool calls, token range, provider mix, cost min/expected/max, recommended budget, hard limit, and forecast confidence
+    failure_state: REWORK
+    retry_policy: complete the preflight block before execution
+  - gate_id: compute_budget_health
+    type: deterministic
+    hard: true
+    applicable_when: a compute budget snapshot with a hard limit and a projected total exists
+    evidence_required: GREEN/YELLOW/ORANGE/RED/UNOBSERVED status derived from projected total vs hard limit
+    failure_state: HUMAN_REQUIRED
+    retry_policy: report the status; ORANGE or RED requires a separate explicit human budget decision
+  - gate_id: compute_budget_burn_rate
+    type: deterministic
+    hard: false
+    applicable_when: observed usage and project progress both exist
+    evidence_required: budget_consumed_percent, cost_per_progress_percent, and burn_rate_ratio with a BURN_RATE_ANOMALY flag on clear divergence
+    failure_state: REWORK
+    retry_policy: surface the anomaly in the run report and dashboard without blocking the run

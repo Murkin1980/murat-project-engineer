@@ -59,6 +59,25 @@
     "unresolved_risks": {"type": "array", "items": {"type": "string"}},
     "rollback": {"type": ["string", "null"]},
     "approximate_usage_cost": {"type": ["string", "number", "null"]},
+    "compute_budget": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "properties": {
+        "planned_budget": {"type": ["number", "null"], "minimum": 0},
+        "hard_limit": {"type": ["number", "null"], "minimum": 0},
+        "spend": {"type": ["number", "null"], "minimum": 0},
+        "spend_measurement": {"type": "string", "enum": ["observed", "estimated", "unobserved"]},
+        "projected_total": {"type": ["number", "null"], "minimum": 0},
+        "projected_remaining": {"type": ["number", "null"], "minimum": 0},
+        "budget_status": {"type": "string", "enum": ["GREEN", "YELLOW", "ORANGE", "RED", "UNOBSERVED"]},
+        "burn_rate_status": {"type": "string", "enum": ["OK", "BURN_RATE_ANOMALY", "UNOBSERVED"]},
+        "measurement_quality": {"type": "string", "enum": ["observed", "estimated", "unobserved"]},
+        "forecast_confidence": {"type": "string", "enum": ["low", "medium", "high"]},
+        "provider_model_mix": {"type": "object", "additionalProperties": {"type": "number", "minimum": 0, "maximum": 1}},
+        "recommended_stack": {"type": "array", "items": {"type": "string"}},
+        "cost_per_progress_percent": {"type": ["number", "null"], "minimum": 0}
+      }
+    },
     "source_refs": {"type": "array", "items": {"type": "string"}},
     "artifact_refs": {"type": "array", "items": {"type": "string"}},
     "handoff_refs": {"type": "array", "items": {"type": "string"}},
