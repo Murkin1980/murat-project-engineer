@@ -1,0 +1,133 @@
+{
+  "engine": "compute_budget",
+  "pricing_snapshot_date": "2026-08-19",
+  "historical_run_count": 12,
+  "observed_count": 0,
+  "estimated_count": 0,
+  "unobserved_count": 12,
+  "coverage_observed_rate": 0.0,
+  "min_max_accuracy_rate": null,
+  "min_max_accuracy_note": "Cannot evaluate preflight min-max accuracy: 0 historical runs carry observed usage cost. The gate reports UNOBSERVED for all of them rather than fabricating cost data. Accuracy criterion is deferred until usage capture is wired into new runs.",
+  "results": [
+    {
+      "run_id": "RUN-06",
+      "risk_tier": "FAST",
+      "preflight_cost_min": 0.0608,
+      "preflight_cost_expected": 0.0936,
+      "preflight_cost_max": 0.1263,
+      "measurement": "unobserved",
+      "legacy_approximate_usage_cost": null,
+      "budget_status": "UNOBSERVED"
+    },
+    {
+      "run_id": "RUN-07",
+      "risk_tier": "VERIFIED",
+      "preflight_cost_min": 0.0779,
+      "preflight_cost_expected": 0.1198,
+      "preflight_cost_max": 0.1617,
+      "measurement": "unobserved",
+      "legacy_approximate_usage_cost": null,
+      "budget_status": "UNOBSERVED"
+    },
+    {
+      "run_id": "RUN-08",
+      "risk_tier": "VERIFIED",
+      "preflight_cost_min": 0.0649,
+      "preflight_cost_expected": 0.0998,
+      "preflight_cost_max": 0.1348,
+      "measurement": "unobserved",
+      "legacy_approximate_usage_cost": "0 observed for local Chrome; external service cost UNKNOWN",
+      "budget_status": "UNOBSERVED"
+    },
+    {
+      "run_id": "RUN-09",
+      "risk_tier": "VERIFIED",
+      "preflight_cost_min": 0.0779,
+      "preflight_cost_expected": 0.1198,
+      "preflight_cost_max": 0.1617,
+      "measurement": "unobserved",
+      "legacy_approximate_usage_cost": "No external runtime/API cost observed.",
+      "budget_status": "UNOBSERVED"
+    },
+    {
+      "run_id": "RUN-10",
+      "risk_tier": "VERIFIED",
+      "preflight_cost_min": 0.0649,
+      "preflight_cost_expected": 0.0998,
+      "preflight_cost_max": 0.1348,
+      "measurement": "unobserved",
+      "legacy_approximate_usage_cost": "No external product/API cost observed; local Codex attempts only.",
+      "budget_status": "UNOBSERVED"
+    },
+    {
+      "run_id": "RUN-11",
+      "risk_tier": "VERIFIED",
+      "preflight_cost_min": 0.1817,
+      "preflight_cost_expected": 0.2795,
+      "preflight_cost_max": 0.3774,
+      "measurement": "unobserved",
+      "legacy_approximate_usage_cost": "Codex Router independent review plus local execution; exact cost not observable.",
+      "budget_status": "UNOBSERVED"
+    },
+    {
+      "run_id": "RUN-12",
+      "risk_tier": "VERIFIED",
+      "preflight_cost_min": 0.2077,
+      "preflight_cost_expected": 0.3195,
+      "preflight_cost_max": 0.4313,
+      "measurement": "unobserved",
+      "legacy_approximate_usage_cost": "Codex Router independent analysis/review plus local execution; exact cost not observable.",
+      "budget_status": "UNOBSERVED"
+    },
+    {
+      "run_id": "stage2a-run-01",
+      "risk_tier": "FAST",
+      "preflight_cost_min": 0.0243,
+      "preflight_cost_expected": 0.0374,
+      "preflight_cost_max": 0.0505,
+      "measurement": "unobserved",
+      "legacy_approximate_usage_cost": null,
+      "budget_status": "UNOBSERVED"
+    },
+    {
+      "run_id": "stage2a-run-02",
+      "risk_tier": "VERIFIED",
+      "preflight_cost_min": 0.1298,
+      "preflight_cost_expected": 0.1997,
+      "preflight_cost_max": 0.2695,
+      "measurement": "unobserved",
+      "legacy_approximate_usage_cost": null,
+      "budget_status": "UNOBSERVED"
+    },
+    {
+      "run_id": "stage2a-run-03",
+      "risk_tier": "VERIFIED",
+      "preflight_cost_min": 0.1947,
+      "preflight_cost_expected": 0.2995,
+      "preflight_cost_max": 0.4043,
+      "measurement": "unobserved",
+      "legacy_approximate_usage_cost": null,
+      "budget_status": "UNOBSERVED"
+    },
+    {
+      "run_id": "stage2a-run-04",
+      "risk_tier": "DEEP-CHANGE",
+      "preflight_cost_min": 0.1379,
+      "preflight_cost_expected": 0.2122,
+      "preflight_cost_max": 0.2865,
+      "measurement": "unobserved",
+      "legacy_approximate_usage_cost": null,
+      "budget_status": "UNOBSERVED"
+    },
+    {
+      "run_id": "stage2a-run-05",
+      "risk_tier": "VERIFIED",
+      "preflight_cost_min": 0.1817,
+      "preflight_cost_expected": 0.2795,
+      "preflight_cost_max": 0.3774,
+      "measurement": "unobserved",
+      "legacy_approximate_usage_cost": null,
+      "budget_status": "UNOBSERVED"
+    }
+  ]
+}

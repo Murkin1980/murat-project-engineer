@@ -1,5 +1,30 @@
 # Changelog
 
+## Unreleased — Run Usage Instrumentation (2026-08-20)
+
+- Added the canonical `USAGE_RECORD` contract (`contracts/USAGE_RECORD.schema.json` / `.md` / `.example.json`) for per-run usage telemetry: provider, model, input/cached/output tokens, observed cost, model/tool calls, retries, start/end timestamps, progress checkpoints, and measurement_source.
+- Added `scripts/usage_instrumentation.py` — a deterministic recorder plus `classify_measurement` (observed/estimated/unobserved derived from measurement_source, never promoted), `usage_to_compute_budget`, `usage_to_run_report`, and a CLI.
+- Extended `contracts/RUN_REPORT.schema.json` / `.md` / `.example.json` with an optional `usage` block so every new run writes its usage inline while historical reports stay valid.
+- Compute Budget Gate remains EXPERIMENTAL: instrumentation records telemetry only and does not enforce a budget or hard-stop a run.
+
+## Unreleased — Compute Budget Controlled Validation (2026-08-20)
+
+- Ran a blind retrospective validation of the Compute Budget Estimator v1.0 against five selected historical MPE runs (research / browser / architecture / implementation / evaluation).
+- Result: `INSUFFICIENT_HISTORICAL_TELEMETRY` — all 12 inventoried runs carry `approximate_cost: null` or qualitative "not observable" notes; zero observed usage. No accuracy is reported and no telemetry is fabricated.
+- Added `experiments/compute-budget/validation_runs.json` (canonical dataset), `scripts/compute_budget_retrospective.py` (blind preflight runner), and `evidence/validation/COMPUTE_BUDGET_RETROSPECTIVE_RESULTS.json`.
+- Added `docs/COMPUTE_BUDGET_INSTRUMENTATION.md` defining the mandatory per-run usage fields (provider, model, tokens, observed_cost, calls, retries, timestamps, progress checkpoints, measurement_source) for forward validation on the next 5-10 runs.
+- Added `COMPUTE_BUDGET_VALIDATION_REPORT.md`. Estimator parameters unchanged; no historical evidence rewritten.
+
+## Unreleased — Compute Budget Gate MVP (2026-08-19)
+
+- Added the `AI Compute Budget` canonical contract (`contracts/COMPUTE_BUDGET.*`) with six blocks plus a derived status block.
+- Added `scripts/compute_budget.py` — a deterministic, dependency-free gate engine: preflight estimate, GREEN/YELLOW/ORANGE/RED/UNOBSERVED health, burn-rate metrics and `BURN_RATE_ANOMALY`, evidence-based reforecast, provider scenarios (economy vs premium), Run Report summary and dashboard rendering.
+- Extended `contracts/RUN_REPORT.*` with an optional `compute_budget` summary block while keeping `approximate_usage_cost` backward compatible (migrated as *estimated*, never *observed*).
+- Added three deterministic gates (`compute_budget_preflight`, `compute_budget_health`, `compute_budget_burn_rate`) to `gates/registry.yaml`.
+- Added the PROJECT PROGRESS / AI BUDGET split to the Portfolio Dashboard, rendering `UNOBSERVED` instead of fake zeros when usage is missing.
+- Recorded a controlled validation across 12 historical MPE runs: all report UNOBSERVED spend (no historical cost telemetry); the min-max accuracy criterion is deferred until usage capture is wired into new runs.
+- No billing backend, payment automation, persistent agents, scheduler, workflow engine, authority store or new repository were introduced.
+
 ## Unreleased — Stage 2 (2026-08-13)
 
 - Added EXP-12 CLEARS deterministic triage contracts, stateless prototype, 20-case retrospective dataset, tests and evidence.

@@ -26,6 +26,10 @@ python -m unittest discover -s tests -v
 
 The sample project demonstrates an isolated `software-feature` run with completed handoffs and Run Report.
 
+## Compute Budget Gate
+
+The deterministic `AI Compute Budget` check is currently **experimental** and may be run as a preflight for substantial execution; it is not a mandatory gate or hard-stop. See `docs/COMPUTE_BUDGET_GATE.md` and `contracts/COMPUTE_BUDGET.md`. `scripts/compute_budget.py` is the single source of truth for the preflight estimate, budget health (GREEN/YELLOW/ORANGE/RED/UNOBSERVED), burn-rate anomaly, and evidence-based reforecast. `observed` / `estimated` / `unobserved` usage are distinct; missing usage renders `UNOBSERVED`, never fake zeros.
+
 ## Deterministic triage experiment
 
 EXP-12 adds a bounded, stateless triage prototype and a 20-case retrospective backtest. See `docs/experiments/EXP-12_CLEARS_TRIAGE.md`. It recommends a risk tier and human gate from explicit structured inputs; it does not execute, approve or route work autonomously.

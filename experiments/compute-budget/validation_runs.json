@@ -1,0 +1,185 @@
+{
+  "schema_version": "1.0",
+  "dataset_name": "mpe-compute-budget-validation-v1",
+  "created_at": "2026-08-20",
+  "estimator_version": "1.0",
+  "disposition": "EXTEND_EXISTING",
+  "selection_note": "Five coordinator runs (not baselines) with the richest structured evidence, one per required task type: research, browser/tool, architecture, implementation, evaluation. Historical runs predate usage capture, so every run is UNOBSERVED for cost telemetry; null is used instead of invented values.",
+  "runs": [
+    {
+      "run_id": "RUN-07",
+      "task_type": "research",
+      "task_class": "external capability security and execution evaluation",
+      "complexity": "MEDIUM",
+      "risk_tier": "VERIFIED",
+      "experts": ["Researcher", "Reviewer"],
+      "route_profile": "cheap-research=opencode-go/deepseek-v4-flash; strong-review=gpt-5.6-sol",
+      "measurement": "UNOBSERVED",
+      "preflight": {
+        "scope": "Evaluate external capability security and execution (STRIX / FreeBuff / CodeBuff) without installing untrusted tooling",
+        "task_class": "external capability security and execution evaluation",
+        "complexity": "MEDIUM",
+        "expected_stages": ["Researcher", "Reviewer"],
+        "expected_calls": 60,
+        "expected_context_tokens": 60000,
+        "routing_policy": "economy"
+      },
+      "actual": {
+        "input_tokens": null,
+        "cached_input_tokens": null,
+        "output_tokens": null,
+        "cost_usd": null,
+        "model_calls": null,
+        "tool_calls": null,
+        "retries": null
+      },
+      "evidence": [
+        "evidence/stage2/RUN-07_EXPERIMENT_RECORD.json",
+        "evidence/stage2/RUN-07_REPORT.json",
+        "docs/security/STRIX_PILOT.md",
+        "docs/evaluations/FREEBUFF_EVALUATION.md"
+      ],
+      "result": "PASS"
+    },
+    {
+      "run_id": "RUN-08",
+      "task_type": "browser_research",
+      "task_class": "public web browser evidence acquisition evaluation",
+      "complexity": "MEDIUM",
+      "risk_tier": "VERIFIED",
+      "experts": ["Researcher", "Reviewer"],
+      "route_profile": "research/extraction/normalization=opencode-go/deepseek-v4-flash",
+      "measurement": "UNOBSERVED",
+      "preflight": {
+        "scope": "Acquire public competitor offers for Almaty custom kitchens via normal web + BrowserAct fallback",
+        "task_class": "public web browser evidence acquisition evaluation",
+        "complexity": "MEDIUM",
+        "expected_stages": ["Researcher", "Reviewer"],
+        "expected_calls": 70,
+        "expected_context_tokens": 40000,
+        "routing_policy": "economy"
+      },
+      "actual": {
+        "input_tokens": null,
+        "cached_input_tokens": null,
+        "output_tokens": null,
+        "cost_usd": null,
+        "model_calls": null,
+        "tool_calls": 29,
+        "retries": 2
+      },
+      "evidence": [
+        "evidence/stage2/RUN-08_EXPERIMENT_RECORD.json",
+        "evidence/stage2/RUN-08_REPORT.json",
+        "evidence/stage2/run-08/browseract_almaty_kitchen_snapshot.json",
+        "docs/evaluations/BROWSERACT_EVALUATION.md"
+      ],
+      "result": "PASS"
+    },
+    {
+      "run_id": "RUN-10",
+      "task_type": "architecture",
+      "task_class": "controlled external architecture pilot",
+      "complexity": "MEDIUM",
+      "risk_tier": "VERIFIED",
+      "experts": ["Architect", "Coder/Analyst", "Reviewer"],
+      "route_profile": "Munder Difflin -> Codex gpt-5-codex",
+      "measurement": "UNOBSERVED",
+      "preflight": {
+        "scope": "Controlled pilot of the Munder Difflin architecture pattern against an existing MPE project",
+        "task_class": "controlled external architecture pilot",
+        "complexity": "MEDIUM",
+        "expected_stages": ["Architect", "Coder/Analyst", "Reviewer"],
+        "expected_calls": 75,
+        "expected_context_tokens": 60000,
+        "routing_policy": "premium"
+      },
+      "actual": {
+        "input_tokens": null,
+        "cached_input_tokens": null,
+        "output_tokens": null,
+        "cost_usd": null,
+        "model_calls": null,
+        "tool_calls": null,
+        "retries": null
+      },
+      "evidence": [
+        "evidence/stage2/RUN-10_EXPERIMENT_RECORD.json",
+        "evidence/stage2/RUN-10_REPORT.json",
+        "Munder Dufflin/CODEX_MUNDER_DIFFLIN_CONTROLLED_ARCHITECTURE_PILOT.md"
+      ],
+      "result": "BLOCKED"
+    },
+    {
+      "run_id": "RUN-11",
+      "task_type": "implementation",
+      "task_class": "bounded runtime coordination contracts",
+      "complexity": "MEDIUM",
+      "risk_tier": "VERIFIED",
+      "experts": ["Researcher", "Implementer", "Reviewer"],
+      "route_profile": "independent review -> opencode-go/deepseek-v4-pro via Codex Router",
+      "measurement": "UNOBSERVED",
+      "preflight": {
+        "scope": "Add bounded runtime coordination helpers (mailbox, events, lifecycle) without a daemon or workflow engine",
+        "task_class": "bounded runtime coordination contracts",
+        "complexity": "MEDIUM",
+        "expected_stages": ["Researcher", "Implementer", "Reviewer"],
+        "expected_calls": 90,
+        "expected_context_tokens": 60000,
+        "routing_policy": "economy"
+      },
+      "actual": {
+        "input_tokens": null,
+        "cached_input_tokens": null,
+        "output_tokens": null,
+        "cost_usd": null,
+        "model_calls": null,
+        "tool_calls": null,
+        "retries": null
+      },
+      "evidence": [
+        "evidence/stage2/RUN-11_EXPERIMENT_RECORD.json",
+        "evidence/stage2/RUN-11_REPORT.json",
+        "evidence/runtime/RUN-11.events.jsonl",
+        "evidence/stage2/run-11/HANDOFF_RESEARCHER_TO_IMPLEMENTER.md",
+        "evidence/stage2/run-11/HANDOFF_IMPLEMENTER_TO_REVIEWER.md"
+      ],
+      "result": "PASS"
+    },
+    {
+      "run_id": "RUN-12",
+      "task_type": "evaluation",
+      "task_class": "deterministic triage backtest",
+      "complexity": "MEDIUM",
+      "risk_tier": "VERIFIED",
+      "experts": ["Implementer", "Reviewer"],
+      "route_profile": "independent review -> opencode-go/deepseek-v4-pro via Codex Router",
+      "measurement": "UNOBSERVED",
+      "preflight": {
+        "scope": "Add EXP-12 deterministic triage contracts, engine, 20-case backtest and prospective validation",
+        "task_class": "deterministic triage backtest",
+        "complexity": "MEDIUM",
+        "expected_stages": ["Implementer", "Reviewer"],
+        "expected_calls": 60,
+        "expected_context_tokens": 40000,
+        "routing_policy": "economy"
+      },
+      "actual": {
+        "input_tokens": null,
+        "cached_input_tokens": null,
+        "output_tokens": null,
+        "cost_usd": null,
+        "model_calls": null,
+        "tool_calls": null,
+        "retries": null
+      },
+      "evidence": [
+        "evidence/stage2/RUN-12_EXPERIMENT_RECORD.json",
+        "evidence/stage2/RUN-12_REPORT.json",
+        "evidence/backtest/EXP-12_BACKTEST_RESULTS.json",
+        "datasets/exp-12-backtest.json"
+      ],
+      "result": "PASS"
+    }
+  ]
+}

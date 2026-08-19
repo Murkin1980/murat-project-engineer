@@ -1,0 +1,57 @@
+{
+  "compute_budget": {
+    "currency": "USD",
+    "planned_budget": 0.48,
+    "hard_limit": 1.0
+  },
+  "preflight": {
+    "input_tokens_min": 780000,
+    "input_tokens_expected": 1200000,
+    "input_tokens_max": 1620000,
+    "output_tokens_min": 23400,
+    "output_tokens_expected": 36000,
+    "output_tokens_max": 48600,
+    "estimated_cost_min": 0.3134,
+    "estimated_cost_expected": 0.4822,
+    "estimated_cost_max": 0.651,
+    "confidence": "medium"
+  },
+  "usage": {
+    "input_tokens": 1200000,
+    "cached_input_tokens": 360000,
+    "output_tokens": 36000,
+    "estimated_cost": 0.4822,
+    "measurement": "estimated"
+  },
+  "forecast": {
+    "estimated_total_cost_min": 0.3134,
+    "estimated_total_cost_expected": 0.4822,
+    "estimated_total_cost_max": 0.651,
+    "remaining_cost_expected": 0.0,
+    "confidence": "medium"
+  },
+  "routing": {
+    "recommended_stack": [
+      "opencode-go/deepseek-v4-flash",
+      "opencode-go/kimi-k2.7-code",
+      "qwen-coder-plus",
+      "minimax-m2"
+    ],
+    "actual_provider_mix": {
+      "opencode-go/deepseek-v4-flash": 1.0
+    }
+  },
+  "efficiency": {
+    "project_progress_percent": 100.0,
+    "budget_consumed_percent": 100.45833333333334,
+    "cost_per_progress_percent": 0.004822
+  },
+  "status": {
+    "budget_status": "GREEN",
+    "burn_rate_status": "OK",
+    "burn_rate_ratio": 1.0045833333333334
+  },
+  "schema_version": "1.0",
+  "run_id": "RUN-CBG-001",
+  "project": "Murkin1980/murat-project-engineer"
+}

@@ -1,0 +1,176 @@
+{
+  "estimator_version": "1.0",
+  "dataset": "experiments/compute-budget/validation_runs.json",
+  "run_count": 5,
+  "observed_count": 0,
+  "estimated_count": 0,
+  "unobserved_count": 5,
+  "observed_metrics": null,
+  "estimated_metrics": null,
+  "conclusion": "INSUFFICIENT_HISTORICAL_TELEMETRY",
+  "rows": [
+    {
+      "run_id": "RUN-07",
+      "task_type": "research",
+      "measurement": "UNOBSERVED",
+      "scenario": "economy",
+      "estimated": {
+        "input_tokens_min": 2340000,
+        "input_tokens_expected": 3600000,
+        "input_tokens_max": 4860000,
+        "output_tokens_min": 35100,
+        "output_tokens_expected": 54000,
+        "output_tokens_max": 72900,
+        "cost_min": 0.8914,
+        "cost_expected": 1.3713,
+        "cost_max": 1.8513,
+        "recommended_stack": [
+          "opencode-go/deepseek-v4-flash",
+          "opencode-go/kimi-k2.7-code",
+          "qwen-coder-plus",
+          "minimax-m2"
+        ],
+        "confidence": "medium"
+      },
+      "actual_cost_usd": null,
+      "comparison": {
+        "range_hit": null,
+        "expected_error_percent": null,
+        "absolute_error_usd": null,
+        "actual_vs_expected_ratio": null,
+        "evaluable": false
+      },
+      "result": "PASS"
+    },
+    {
+      "run_id": "RUN-08",
+      "task_type": "browser_research",
+      "measurement": "UNOBSERVED",
+      "scenario": "economy",
+      "estimated": {
+        "input_tokens_min": 1820000,
+        "input_tokens_expected": 2800000,
+        "input_tokens_max": 3780000,
+        "output_tokens_min": 40950,
+        "output_tokens_expected": 63000,
+        "output_tokens_max": 85050,
+        "cost_min": 0.7123,
+        "cost_expected": 1.0959,
+        "cost_max": 1.4794,
+        "recommended_stack": [
+          "opencode-go/deepseek-v4-flash",
+          "opencode-go/kimi-k2.7-code",
+          "qwen-coder-plus",
+          "minimax-m2"
+        ],
+        "confidence": "medium"
+      },
+      "actual_cost_usd": null,
+      "comparison": {
+        "range_hit": null,
+        "expected_error_percent": null,
+        "absolute_error_usd": null,
+        "actual_vs_expected_ratio": null,
+        "evaluable": false
+      },
+      "result": "PASS"
+    },
+    {
+      "run_id": "RUN-10",
+      "task_type": "architecture",
+      "measurement": "UNOBSERVED",
+      "scenario": "premium",
+      "estimated": {
+        "input_tokens_min": 2925000,
+        "input_tokens_expected": 4500000,
+        "input_tokens_max": 6075000,
+        "output_tokens_min": 43875,
+        "output_tokens_expected": 67500,
+        "output_tokens_max": 91125,
+        "cost_min": 9.3673,
+        "cost_expected": 14.4113,
+        "cost_max": 19.4552,
+        "recommended_stack": [
+          "gpt-5.6-sol",
+          "claude-sonnet-4-6"
+        ],
+        "confidence": "medium"
+      },
+      "actual_cost_usd": null,
+      "comparison": {
+        "range_hit": null,
+        "expected_error_percent": null,
+        "absolute_error_usd": null,
+        "actual_vs_expected_ratio": null,
+        "evaluable": false
+      },
+      "result": "BLOCKED"
+    },
+    {
+      "run_id": "RUN-11",
+      "task_type": "implementation",
+      "measurement": "UNOBSERVED",
+      "scenario": "economy",
+      "estimated": {
+        "input_tokens_min": 3510000,
+        "input_tokens_expected": 5400000,
+        "input_tokens_max": 7290000,
+        "output_tokens_min": 52650,
+        "output_tokens_expected": 81000,
+        "output_tokens_max": 109350,
+        "cost_min": 1.337,
+        "cost_expected": 2.057,
+        "cost_max": 2.7769,
+        "recommended_stack": [
+          "opencode-go/deepseek-v4-flash",
+          "opencode-go/kimi-k2.7-code",
+          "qwen-coder-plus",
+          "minimax-m2"
+        ],
+        "confidence": "medium"
+      },
+      "actual_cost_usd": null,
+      "comparison": {
+        "range_hit": null,
+        "expected_error_percent": null,
+        "absolute_error_usd": null,
+        "actual_vs_expected_ratio": null,
+        "evaluable": false
+      },
+      "result": "PASS"
+    },
+    {
+      "run_id": "RUN-12",
+      "task_type": "evaluation",
+      "measurement": "UNOBSERVED",
+      "scenario": "economy",
+      "estimated": {
+        "input_tokens_min": 1560000,
+        "input_tokens_expected": 2400000,
+        "input_tokens_max": 3240000,
+        "output_tokens_min": 35100,
+        "output_tokens_expected": 54000,
+        "output_tokens_max": 72900,
+        "cost_min": 0.6106,
+        "cost_expected": 0.9393,
+        "cost_max": 1.2681,
+        "recommended_stack": [
+          "opencode-go/deepseek-v4-flash",
+          "opencode-go/kimi-k2.7-code",
+          "qwen-coder-plus",
+          "minimax-m2"
+        ],
+        "confidence": "medium"
+      },
+      "actual_cost_usd": null,
+      "comparison": {
+        "range_hit": null,
+        "expected_error_percent": null,
+        "absolute_error_usd": null,
+        "actual_vs_expected_ratio": null,
+        "evaluable": false
+      },
+      "result": "PASS"
+    }
+  ]
+}

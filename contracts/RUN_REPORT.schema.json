@@ -59,6 +59,74 @@
     "unresolved_risks": {"type": "array", "items": {"type": "string"}},
     "rollback": {"type": ["string", "null"]},
     "approximate_usage_cost": {"type": ["string", "number", "null"]},
+    "usage": {
+      "type": ["object", "null"],
+      "description": "Canonical per-run usage telemetry (see contracts/USAGE_RECORD.schema.json).",
+      "additionalProperties": false,
+      "required": [
+        "provider",
+        "model",
+        "input_tokens",
+        "cached_input_tokens",
+        "output_tokens",
+        "observed_cost",
+        "model_calls",
+        "tool_calls",
+        "retries",
+        "start_time",
+        "end_time",
+        "progress_checkpoints",
+        "measurement_source",
+        "measurement"
+      ],
+      "properties": {
+        "provider": {"type": ["string", "null"]},
+        "model": {"type": ["string", "null"]},
+        "input_tokens": {"type": ["integer", "null"], "minimum": 0},
+        "cached_input_tokens": {"type": ["integer", "null"], "minimum": 0},
+        "output_tokens": {"type": ["integer", "null"], "minimum": 0},
+        "observed_cost": {"type": ["number", "null"], "minimum": 0},
+        "model_calls": {"type": ["integer", "null"], "minimum": 0},
+        "tool_calls": {"type": ["integer", "null"], "minimum": 0},
+        "retries": {"type": ["integer", "null"], "minimum": 0},
+        "start_time": {"type": ["string", "null"], "format": "date-time"},
+        "end_time": {"type": ["string", "null"], "format": "date-time"},
+        "progress_checkpoints": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["progress_percent", "cost_usd", "measurement_source"],
+            "properties": {
+              "progress_percent": {"type": "number", "minimum": 0, "maximum": 100},
+              "cost_usd": {"type": "number", "minimum": 0},
+              "measurement_source": {"type": "string", "enum": ["provider_api", "router_billing", "usage_api", "execution_log", "price_reconstruction", "operator_estimate", "none"]}
+            }
+          }
+        },
+        "measurement_source": {"type": "string", "enum": ["provider_api", "router_billing", "usage_api", "execution_log", "price_reconstruction", "operator_estimate", "none"]},
+        "measurement": {"type": "string", "enum": ["observed", "estimated", "unobserved"]}
+      }
+    },
+    "compute_budget": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "properties": {
+        "planned_budget": {"type": ["number", "null"], "minimum": 0},
+        "hard_limit": {"type": ["number", "null"], "minimum": 0},
+        "spend": {"type": ["number", "null"], "minimum": 0},
+        "spend_measurement": {"type": "string", "enum": ["observed", "estimated", "unobserved"]},
+        "projected_total": {"type": ["number", "null"], "minimum": 0},
+        "projected_remaining": {"type": ["number", "null"], "minimum": 0},
+        "budget_status": {"type": "string", "enum": ["GREEN", "YELLOW", "ORANGE", "RED", "UNOBSERVED"]},
+        "burn_rate_status": {"type": "string", "enum": ["OK", "BURN_RATE_ANOMALY", "UNOBSERVED"]},
+        "measurement_quality": {"type": "string", "enum": ["observed", "estimated", "unobserved"]},
+        "forecast_confidence": {"type": "string", "enum": ["low", "medium", "high"]},
+        "provider_model_mix": {"type": "object", "additionalProperties": {"type": "number", "minimum": 0, "maximum": 1}},
+        "recommended_stack": {"type": "array", "items": {"type": "string"}},
+        "cost_per_progress_percent": {"type": ["number", "null"], "minimum": 0}
+      }
+    },
     "source_refs": {"type": "array", "items": {"type": "string"}},
     "artifact_refs": {"type": "array", "items": {"type": "string"}},
     "handoff_refs": {"type": "array", "items": {"type": "string"}},
