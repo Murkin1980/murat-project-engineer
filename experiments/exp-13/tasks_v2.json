@@ -1,0 +1,126 @@
+{
+  "dataset_version": "exp-13-tasks-v2",
+  "label_policy": "Frozen acceptance labels. Each task carries a deterministic triage input (same contract as scripts/triage_engine.py) plus a pre-registered human label (risk tier + human approval). The harness must reproduce these labels; a mismatch is a triage_expected_match failure.",
+  "tasks": [
+    {
+      "task_id": "T-001",
+      "summary": "Stage 2 status documentation sync for murat-project-engineer",
+      "affected_repositories": ["murat-project-engineer"],
+      "acceptance_criteria_present": true,
+      "rollback_known": true,
+      "ratings": {"complexity": 1, "risk": 1, "architectural_impact": 0, "data_sensitivity": 0, "unknowns": 0},
+      "signals": [],
+      "expected": {"risk_tier": "FAST", "human_approval_required": false}
+    },
+    {
+      "task_id": "T-002",
+      "summary": "Refresh README quick-start and add one FAQ entry",
+      "affected_repositories": ["murat-project-engineer"],
+      "acceptance_criteria_present": true,
+      "rollback_known": true,
+      "ratings": {"complexity": 1, "risk": 1, "architectural_impact": 0, "data_sensitivity": 0, "unknowns": 1},
+      "signals": [],
+      "expected": {"risk_tier": "FAST", "human_approval_required": false}
+    },
+    {
+      "task_id": "T-003",
+      "summary": "Furniture configurator: add parametric width/height constraints to pricing",
+      "affected_repositories": ["furniture-configurator"],
+      "acceptance_criteria_present": true,
+      "rollback_known": true,
+      "ratings": {"complexity": 3, "risk": 2, "architectural_impact": 1, "data_sensitivity": 0, "unknowns": 1},
+      "signals": [],
+      "expected": {"risk_tier": "VERIFIED", "human_approval_required": false}
+    },
+    {
+      "task_id": "T-004",
+      "summary": "MebelDocs AI: add order line-item discount summary to invoice",
+      "affected_repositories": ["mebeldocs-ai"],
+      "acceptance_criteria_present": true,
+      "rollback_known": true,
+      "ratings": {"complexity": 3, "risk": 2, "architectural_impact": 1, "data_sensitivity": 2, "unknowns": 1},
+      "signals": [],
+      "expected": {"risk_tier": "VERIFIED", "human_approval_required": false}
+    },
+    {
+      "task_id": "T-005",
+      "summary": "MebelLegal KZ: add client TIN format validation to the order form",
+      "affected_repositories": ["mebel-legal-kz"],
+      "acceptance_criteria_present": true,
+      "rollback_known": true,
+      "ratings": {"complexity": 2, "risk": 2, "architectural_impact": 0, "data_sensitivity": 3, "unknowns": 1},
+      "signals": [],
+      "expected": {"risk_tier": "VERIFIED", "human_approval_required": false}
+    },
+    {
+      "task_id": "T-006",
+      "summary": "MPE tooling: add a deterministic acceptance-mapping gate to the package validator",
+      "affected_repositories": ["murat-project-engineer"],
+      "acceptance_criteria_present": true,
+      "rollback_known": true,
+      "ratings": {"complexity": 3, "risk": 2, "architectural_impact": 2, "data_sensitivity": 0, "unknowns": 1},
+      "signals": [],
+      "expected": {"risk_tier": "VERIFIED", "human_approval_required": false}
+    },
+    {
+      "task_id": "T-007",
+      "summary": "Portfolio dashboard: add a weekly snapshot refresh checklist",
+      "affected_repositories": ["murat-project-engineer"],
+      "acceptance_criteria_present": true,
+      "rollback_known": true,
+      "ratings": {"complexity": 2, "risk": 1, "architectural_impact": 1, "data_sensitivity": 0, "unknowns": 1},
+      "signals": [],
+      "expected": {"risk_tier": "VERIFIED", "human_approval_required": false}
+    },
+    {
+      "task_id": "T-008",
+      "summary": "MebelDocs AI: deploy the new invoice footer to production",
+      "affected_repositories": ["mebeldocs-ai"],
+      "acceptance_criteria_present": true,
+      "rollback_known": true,
+      "ratings": {"complexity": 3, "risk": 3, "architectural_impact": 2, "data_sensitivity": 2, "unknowns": 1},
+      "signals": ["production_change"],
+      "expected": {"risk_tier": "VERIFIED", "human_approval_required": true}
+    },
+    {
+      "task_id": "T-009",
+      "summary": "Refactor core MASTER routing authority to introduce a workflow engine",
+      "affected_repositories": ["murat-project-engineer"],
+      "acceptance_criteria_present": true,
+      "rollback_known": true,
+      "ratings": {"complexity": 4, "risk": 4, "architectural_impact": 4, "data_sensitivity": 1, "unknowns": 2},
+      "signals": ["architecture_redesign", "workflow_engine"],
+      "expected": {"risk_tier": "DEEP-CHANGE", "human_approval_required": true}
+    },
+    {
+      "task_id": "T-010",
+      "summary": "MebelLegal KZ: add persisted case-history export (CSV)",
+      "affected_repositories": ["mebel-legal-kz"],
+      "acceptance_criteria_present": true,
+      "rollback_known": true,
+      "ratings": {"complexity": 3, "risk": 2, "architectural_impact": 1, "data_sensitivity": 3, "unknowns": 2},
+      "signals": [],
+      "expected": {"risk_tier": "VERIFIED", "human_approval_required": false}
+    },
+    {
+      "task_id": "T-011",
+      "summary": "MebelDocs AI: correct a typo in the order confirmation copy",
+      "affected_repositories": ["mebeldocs-ai"],
+      "acceptance_criteria_present": true,
+      "rollback_known": true,
+      "ratings": {"complexity": 1, "risk": 1, "architectural_impact": 0, "data_sensitivity": 1, "unknowns": 0},
+      "signals": [],
+      "expected": {"risk_tier": "FAST", "human_approval_required": false}
+    },
+    {
+      "task_id": "T-012",
+      "summary": "MPE: bounded refactor of the runtime-coordination mailbox helper for Windows paths",
+      "affected_repositories": ["murat-project-engineer"],
+      "acceptance_criteria_present": true,
+      "rollback_known": true,
+      "ratings": {"complexity": 3, "risk": 2, "architectural_impact": 2, "data_sensitivity": 0, "unknowns": 1},
+      "signals": ["shared_component"],
+      "expected": {"risk_tier": "VERIFIED", "human_approval_required": false}
+    }
+  ]
+}

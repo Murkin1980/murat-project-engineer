@@ -1,0 +1,135 @@
+{
+  "batch_id": "EXP13-PILOT-BATCH1",
+  "created_at": "2026-08-21",
+  "description": "Frozen pre-registration for EXP-13 Pilot Batch 1: 6 tasks x 3 routes = 18 planned runs. No execution evidence is pre-created here; usage_ref stays null until real runs are recorded after merge. The harness enforces STOP after max_runs.",
+  "max_runs": 18,
+  "state": "PRE_REGISTERED",
+  "entries": [
+    {
+      "run_id": "EXP13-T-001-A",
+      "task_id": "T-001",
+      "route": "A",
+      "usage_ref": null,
+      "defects": []
+    },
+    {
+      "run_id": "EXP13-T-001-B",
+      "task_id": "T-001",
+      "route": "B",
+      "usage_ref": null,
+      "defects": []
+    },
+    {
+      "run_id": "EXP13-T-001-premium",
+      "task_id": "T-001",
+      "route": "premium",
+      "usage_ref": null,
+      "defects": []
+    },
+    {
+      "run_id": "EXP13-T-004-A",
+      "task_id": "T-004",
+      "route": "A",
+      "usage_ref": null,
+      "defects": []
+    },
+    {
+      "run_id": "EXP13-T-004-B",
+      "task_id": "T-004",
+      "route": "B",
+      "usage_ref": null,
+      "defects": []
+    },
+    {
+      "run_id": "EXP13-T-004-premium",
+      "task_id": "T-004",
+      "route": "premium",
+      "usage_ref": null,
+      "defects": []
+    },
+    {
+      "run_id": "EXP13-T-006-A",
+      "task_id": "T-006",
+      "route": "A",
+      "usage_ref": null,
+      "defects": []
+    },
+    {
+      "run_id": "EXP13-T-006-B",
+      "task_id": "T-006",
+      "route": "B",
+      "usage_ref": null,
+      "defects": []
+    },
+    {
+      "run_id": "EXP13-T-006-premium",
+      "task_id": "T-006",
+      "route": "premium",
+      "usage_ref": null,
+      "defects": []
+    },
+    {
+      "run_id": "EXP13-T-008-A",
+      "task_id": "T-008",
+      "route": "A",
+      "usage_ref": null,
+      "defects": []
+    },
+    {
+      "run_id": "EXP13-T-008-B",
+      "task_id": "T-008",
+      "route": "B",
+      "usage_ref": null,
+      "defects": []
+    },
+    {
+      "run_id": "EXP13-T-008-premium",
+      "task_id": "T-008",
+      "route": "premium",
+      "usage_ref": null,
+      "defects": []
+    },
+    {
+      "run_id": "EXP13-T-010-A",
+      "task_id": "T-010",
+      "route": "A",
+      "usage_ref": null,
+      "defects": []
+    },
+    {
+      "run_id": "EXP13-T-010-B",
+      "task_id": "T-010",
+      "route": "B",
+      "usage_ref": null,
+      "defects": []
+    },
+    {
+      "run_id": "EXP13-T-010-premium",
+      "task_id": "T-010",
+      "route": "premium",
+      "usage_ref": null,
+      "defects": []
+    },
+    {
+      "run_id": "EXP13-T-012-A",
+      "task_id": "T-012",
+      "route": "A",
+      "usage_ref": null,
+      "defects": []
+    },
+    {
+      "run_id": "EXP13-T-012-B",
+      "task_id": "T-012",
+      "route": "B",
+      "usage_ref": null,
+      "defects": []
+    },
+    {
+      "run_id": "EXP13-T-012-premium",
+      "task_id": "T-012",
+      "route": "premium",
+      "usage_ref": null,
+      "defects": []
+    }
+  ]
+}

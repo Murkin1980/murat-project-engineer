@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://murat-ai-stack.local/schemas/exp13-execution-record-v1.json",
+  "title": "EXP-13 low-cost evaluation execution record",
+  "description": "Canonical record of one EXP-13 low-cost evaluation run. Produced by scripts/exp13_harness.py. Pre-execution checks run first (cheap); escalation is derived (HUMAN_REVIEW_REQUIRED for human-approval tasks, PREMIUM_REQUIRED for DEEP-CHANGE on a non-premium route); outcome is derived (HUMAN_REQUIRED / REWORK / BLOCKED / PASS); cost is never fabricated (observed stays observed, missing spend is null).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "run_id",
+    "task_id",
+    "route",
+    "model_slug",
+    "triage",
+    "pre_execution",
+    "checks",
+    "usage",
+    "defects",
+    "retries",
+    "model_calls",
+    "tool_calls",
+    "escalation",
+    "outcome",
+    "cost_usd",
+    "cost_measurement",
+    "engine_version",
+    "state"
+  ],
+  "properties": {
+    "schema_version": {"type": "string", "const": "1.0"},
+    "run_id": {"type": "string", "pattern": "^EXP13-T-[0-9]{3}-(A|B|premium)$"},
+    "task_id": {"type": "string", "pattern": "^T-[0-9]{3}$"},
+    "route": {"type": "string", "enum": ["A", "B", "premium"]},
+    "model_slug": {"type": ["string", "null"]},
+    "triage": {"$ref": "TRIAGE_OUTPUT.schema.json"},
+    "pre_execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["checks", "escalation", "proceeded"],
+      "properties": {
+        "checks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["check_id", "result", "detail"],
+            "properties": {
+              "check_id": {"type": "string", "minLength": 1},
+              "result": {"type": "string", "enum": ["PASS", "FAIL", "NOT_APPLICABLE"]},
+              "detail": {"type": "string"}
+            }
+          }
+        },
+        "escalation": {"type": "string", "enum": ["NONE", "PREMIUM_REQUIRED", "HUMAN_REVIEW_REQUIRED"]},
+        "proceeded": {"type": "boolean"}
+      }
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["check_id", "result", "detail"],
+        "properties": {
+          "check_id": {"type": "string", "minLength": 1},
+          "result": {"type": "string", "enum": ["PASS", "FAIL", "NOT_APPLICABLE"]},
+          "detail": {"type": "string"}
+        }
+      }
+    },
+    "usage": {"$ref": "USAGE_RECORD.schema.json"},
+    "defects": {"type": "array", "items": {"type": "string"}},
+    "retries": {"type": ["integer", "null"], "minimum": 0},
+    "model_calls": {"type": ["integer", "null"], "minimum": 0},
+    "tool_calls": {"type": ["integer", "null"], "minimum": 0},
+    "escalation": {"type": "string", "enum": ["NONE", "PREMIUM_REQUIRED", "HUMAN_REVIEW_REQUIRED"]},
+    "outcome": {"type": "string", "enum": ["PASS", "REWORK", "BLOCKED", "HUMAN_REQUIRED"]},
+    "cost_usd": {"type": ["number", "null"], "minimum": 0},
+    "cost_measurement": {"type": "string", "enum": ["observed", "estimated", "unobserved"]},
+    "engine_version": {"type": "string", "const": "0.1.0"},
+    "state": {"type": "string", "const": "EXECUTED"}
+  }
+}

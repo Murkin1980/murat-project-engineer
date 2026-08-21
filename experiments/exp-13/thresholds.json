@@ -1,0 +1,10 @@
+{
+  "thresholds_version": "exp-13-thresholds-v1",
+  "frozen_at": "2026-08-21",
+  "description": "Frozen EXP-13 check thresholds. These are the acceptance boundaries for the low-cost harness; they are not adaptive and must only change in a new thresholds version.",
+  "max_retries": 2,
+  "max_defects": 0,
+  "max_escalations_per_run": 1,
+  "cost_budget_ratio_soft": 0.7,
+  "cost_budget_ratio_hard": 1.0
+}
