@@ -1,0 +1,19 @@
+{
+  "routes_version": "exp-13-routes-v1",
+  "frozen_at": "2026-08-21",
+  "description": "Frozen EXP-13 route profiles. A and B are economy routes, premium is the strong-review route. Profiles reference the coordinator-side route profiles (skills/murat-project-engineer/references/route-profiles.md); slugs are the explicit model slugs that profile resolves to on 2026-08-21.",
+  "routes": {
+    "A": {
+      "profile": "cheap-research",
+      "slug": "opencode-go/deepseek-v4-flash"
+    },
+    "B": {
+      "profile": "coding",
+      "slug": "opencode-go/kimi-k2.7-code"
+    },
+    "premium": {
+      "profile": "strong-review",
+      "slug": "gpt-5.6-sol"
+    }
+  }
+}

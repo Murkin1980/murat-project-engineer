@@ -36,6 +36,7 @@ Implemented and available:
 - Stage 2 evidence for Runs 01–11
 - bounded runtime-coordination contracts and stateless helpers from Run 11
 - EXP-12 deterministic triage prototype, contracts and first retrospective backtest
+- EXP-13 low-cost evaluation harness + pre-execution rework (frozen dataset v2, routes A/B/premium, thresholds, pricing snapshot, checks, and Pilot Batch 1 pre-registration)
 - portfolio dashboard (read-only static asset, Workers Static Assets, auto-deploy on configured main push)
 
 ## Stage 2 run status
@@ -117,6 +118,7 @@ The experiment must measure quality, rework, reviewer value, interruption recove
 6. Keep Run 11 helpers conditional and bounded. A poller, daemon, retry worker, router, scheduler, shared state, database, or generic messaging/runtime layer requires a new filter and DEEP-CHANGE review.
 7. Add selected deterministic gates to GitHub CI only through a separate bounded change.
 8. Maintain the portfolio dashboard snapshot as part of the weekly status ritual.
+9. After merge, run EXP-13 Pilot Batch 1 (6 tasks × routes A/B/premium = 18 real runs) with real `USAGE_RECORD` evidence; each run records `exp13_checks` + usage + retries/calls/escalation/defects/cost. T-008 legally yields `HUMAN_REVIEW_REQUIRED`. After 18 runs, STOP and analyse — no automatic continuation.
 
 ## Evidence-format finding
 

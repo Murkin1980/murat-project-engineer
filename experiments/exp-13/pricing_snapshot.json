@@ -1,0 +1,24 @@
+{
+  "pricing_snapshot_date": "2026-08-21",
+  "pricing_snapshot_version": "exp-13-pricing-v1",
+  "currency": "USD",
+  "unit": "per_1_000_000_tokens",
+  "description": "Dated, frozen pricing snapshot for the three EXP-13 route slugs, consistent with scripts/compute_budget.py PRICING_SNAPSHOT (2026-08-19). Revalidate before production use; do not silently edit this file.",
+  "per_mtok": {
+    "opencode-go/deepseek-v4-flash": {
+      "input": 0.14,
+      "output": 0.28,
+      "cached_input": 0.014
+    },
+    "opencode-go/kimi-k2.7-code": {
+      "input": 0.6,
+      "output": 2.5,
+      "cached_input": 0.15
+    },
+    "gpt-5.6-sol": {
+      "input": 3.0,
+      "output": 12.0,
+      "cached_input": 1.5
+    }
+  }
+}

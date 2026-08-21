@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased — EXP-13 low-cost evaluation harness + pre-execution rework (2026-08-21)
+
+- Added `contracts/EXP13_EXECUTION_RECORD.schema.json` — canonical record of one EXP-13 low-cost evaluation run: pre-execution checks, full checks, escalation, outcome, defects, and cost (cost is never fabricated).
+- Added `scripts/exp13_checks.py` — deterministic check pipeline: 4 cheap pre-execution checks (`route_resolves`, `triage_expected_match`, `acceptance_present`, `human_review_due`) and 5 execution checks (`usage_valid`, `usage_consistent`, `retries_within_limit`, `defects_within_limit`, `cost_within_limit`). Escalation (`HUMAN_REVIEW_REQUIRED` > `PREMIUM_REQUIRED` > `NONE`) and outcome (`HUMAN_REQUIRED` / `REWORK` / `BLOCKED` / `PASS`) are derived, never hand-set.
+- Added `scripts/exp13_harness.py` — wraps checks into immutable records, enforces the batch STOP rule (`max_runs`), and summarizes batches. It never invents telemetry: a run that proceeds requires a real `USAGE_RECORD`; an escalated run stores an empty, unobserved record.
+- Added frozen EXP-13 assets in `experiments/exp-13/`: dataset v2 (`tasks_v2.json`, 12 tasks T-001…T-012), routes (`routes.json`, A/B/premium), thresholds (`thresholds.json`), and a dated pricing snapshot (`pricing_snapshot.json`).
+- Pre-registered Pilot Batch 1 (`evidence/exp-13/PILOT_BATCH1_PRE_REGISTRATION.json`): 6 tasks (T-001, T-004, T-006, T-008, T-010, T-012) × routes A/B/premium = 18 planned runs. T-008 legally escalates to `HUMAN_REVIEW_REQUIRED`; the harness enforces STOP after 18 runs.
+- Documented the experiment in `docs/experiments/EXP-13_LOW_COST_EVALUATION_HARNESS.md`, `docs/experiments/EXP-13_PILOT_BATCH1.md`, and `docs/experiments/EXP13_PRE_EXECUTION_REWORK.md`.
+- Added `tests/test_exp13_checks.py` and `tests/test_exp13_harness.py`.
+
+Reconstruction note: this EXP-13 revision is a controlled reconstruction of a previously built but unpublished harness whose patch was not preserved. It is not a byte-for-byte restoration. The frozen semantics (dataset v2, thresholds, pricing snapshot, routes, acceptance criteria) are authoritative from this revision forward. The suite runs 180 tests OK (1 skip) — more than the lost implementation's reported 159 — because the reconstruction ships additional determinism/regression coverage.
+
 ## Unreleased — Run Usage Instrumentation (2026-08-20)
 
 - Added the canonical `USAGE_RECORD` contract (`contracts/USAGE_RECORD.schema.json` / `.md` / `.example.json`) for per-run usage telemetry: provider, model, input/cached/output tokens, observed cost, model/tool calls, retries, start/end timestamps, progress checkpoints, and measurement_source.
