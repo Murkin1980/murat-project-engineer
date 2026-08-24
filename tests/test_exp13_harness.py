@@ -162,6 +162,31 @@ class BatchTests(unittest.TestCase):
             with self.assertRaises(ContractError):
                 eh.run_batch(MANIFEST, DATASET, ROUTES, THRESHOLDS, PRICING, Path(tmp))
 
+    def test_run_batch_allows_missing_usage_for_pre_execution_escalation(self):
+        manifest = {
+            "batch_id": "EXP13-T008-SMOKE",
+            "max_runs": 3,
+            "entries": [
+                {
+                    "run_id": eh.make_run_id("T-008", route),
+                    "task_id": "T-008",
+                    "route": route,
+                    "usage_ref": None,
+                    "defects": [],
+                }
+                for route in ("A", "B", "premium")
+            ],
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            result = eh.run_batch(manifest, DATASET, ROUTES, THRESHOLDS, PRICING, Path(tmp))
+
+        self.assertEqual(3, len(result["records"]))
+        for record in result["records"]:
+            self.assertEqual("HUMAN_REVIEW_REQUIRED", record["escalation"])
+            self.assertEqual("HUMAN_REQUIRED", record["outcome"])
+            self.assertEqual("unobserved", record["usage"]["measurement"])
+            self.assertIsNone(record["cost_usd"])
+
 
 class SummaryTests(unittest.TestCase):
     def _records(self):
