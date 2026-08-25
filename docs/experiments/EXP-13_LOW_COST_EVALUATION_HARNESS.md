@@ -1,6 +1,6 @@
 # EXP-13 — Low-cost evaluation harness + pre-execution rework
 
-Status: ACTIVE — harness published; Pilot Batch 1 pre-registered and BLOCKED pending real execution telemetry
+Status: ACTIVE — harness published; Pilot Batch 1 pre-registered and PARTIALLY BLOCKED pending premium-route telemetry
 Date: 2026-08-21
 New Idea Filter disposition: `EXPERIMENT` (extends the EXP-12 triage line)
 Execution tier: `VERIFIED`
@@ -151,12 +151,35 @@ proceeds to execution; a task that escalates before execution needs none.
 
 ## Current execution blocker
 
-Pilot Batch 1 must not run until the execution environment can supply a real
-provider/Router `USAGE_RECORD` for each run that proceeds. Synthetic usage or
-cost is not evidence. Batch entries that stop during pre-execution escalation
-(the three T-008 routes) legally keep `usage_ref: null`; the harness records
-empty, unobserved usage for them. All other entries still fail closed without
-real usage evidence.
+`scripts/usage_from_router_log.py` can now turn an isolated, token-metered
+Router event window into an honest `execution_log` / `estimated` USAGE_RECORD.
+It requires explicit event-completion start/end timestamps, a model and an
+expected call count; rejects mixed, unmetered or inconsistent traffic; and
+leaves cost, cached tokens, tools and retries unknown rather than fabricating
+them. A reconstructed request start may precede the filter window because the
+Router writes its event when the response completes. This provides an evidence
+path for routes A and B. Upstream-reported zero input tokens remain zero and
+must not be interpreted as proof that the prompt was empty.
+
+Premium remains blocked: current native `gpt-5.6-sol` Router events have no
+token fields, so the adapter correctly refuses them. Synthetic usage or cost is
+not evidence. Batch entries that stop during pre-execution escalation (the
+three T-008 routes) legally keep `usage_ref: null`; the harness records empty,
+unobserved usage for them. The full pilot must not start until every proceeding
+route has a valid usage evidence path.
+
+Example for a deliberately isolated route-A window:
+
+```powershell
+python scripts/usage_from_router_log.py `
+  --run-id EXP13-T-001-A `
+  --provider opencode-go `
+  --model opencode-go/deepseek-v4-flash `
+  --start 2026-08-25T09:00:00Z `
+  --end 2026-08-25T09:05:00Z `
+  --expected-calls 1 `
+  --output evidence/exp-13/EXP13-T-001-A-USAGE.json
+```
 
 ## Continuation instructions
 

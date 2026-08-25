@@ -9,10 +9,12 @@ This directory holds EXP-13 low-cost evaluation evidence.
   A / B / premium = 18 planned runs. It records the *plan only*; `usage_ref` is
   `null` for every entry and no execution evidence is fabricated before merge.
 
-Pilot execution is currently `BLOCKED` pending a real provider/Router usage
-source for the 15 entries that proceed. The three T-008 entries stop before
-execution and therefore legally retain `usage_ref: null`. No synthetic usage
-files should be added to unblock the batch.
+Pilot execution is partially unblocked. `scripts/usage_from_router_log.py` can
+produce honest estimated USAGE_RECORDs for isolated, metered A/B Router event
+windows. Premium remains blocked because current native `gpt-5.6-sol` events
+contain no token counts. The three T-008 entries stop before execution and
+therefore legally retain `usage_ref: null`. No synthetic usage files should be
+added to unblock the batch.
 
 ## What lands here after merge
 
