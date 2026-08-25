@@ -66,7 +66,7 @@ class RouterUsageAdapterTests(unittest.TestCase):
     def test_rejects_unmetered_match(self):
         event = {key: value for key, value in EVENTS[0].items() if not key.endswith("Tokens")}
         with self.assertRaisesRegex(adapter.RouterUsageImportError, "unmetered request"):
-            self.build([event], expected_calls=None)
+            self.build([event], expected_calls=1)
 
     def test_rejects_partially_unmetered_match(self):
         event = {key: value for key, value in EVENTS[0].items() if not key.endswith("Tokens")}
@@ -76,6 +76,15 @@ class RouterUsageAdapterTests(unittest.TestCase):
     def test_rejects_call_count_mismatch(self):
         with self.assertRaisesRegex(adapter.RouterUsageImportError, "expected 1 model calls"):
             self.build(expected_calls=1)
+
+    def test_rejects_invalid_expected_calls(self):
+        with self.assertRaisesRegex(adapter.RouterUsageImportError, "positive integer"):
+            self.build(expected_calls=0)
+
+    def test_rejects_inconsistent_total_tokens(self):
+        events = [{**EVENTS[0], "totalTokens": 999}]
+        with self.assertRaisesRegex(adapter.RouterUsageImportError, "totalTokens"):
+            self.build(events, expected_calls=1)
 
     def test_load_events_rejects_malformed_json(self):
         with tempfile.TemporaryDirectory() as tmp:

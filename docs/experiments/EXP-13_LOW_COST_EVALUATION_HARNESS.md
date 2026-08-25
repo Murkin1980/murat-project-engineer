@@ -153,9 +153,13 @@ proceeds to execution; a task that escalates before execution needs none.
 
 `scripts/usage_from_router_log.py` can now turn an isolated, token-metered
 Router event window into an honest `execution_log` / `estimated` USAGE_RECORD.
-It requires explicit start/end timestamps and a model, rejects mixed metered
-traffic, and leaves cost, cached tokens, tools and retries unknown rather than
-fabricating them. This provides an evidence path for routes A and B.
+It requires explicit event-completion start/end timestamps, a model and an
+expected call count; rejects mixed, unmetered or inconsistent traffic; and
+leaves cost, cached tokens, tools and retries unknown rather than fabricating
+them. A reconstructed request start may precede the filter window because the
+Router writes its event when the response completes. This provides an evidence
+path for routes A and B. Upstream-reported zero input tokens remain zero and
+must not be interpreted as proof that the prompt was empty.
 
 Premium remains blocked: current native `gpt-5.6-sol` Router events have no
 token fields, so the adapter correctly refuses them. Synthetic usage or cost is

@@ -76,13 +76,15 @@ def build_usage_record(
     model: str,
     start: str,
     end: str,
+    expected_calls: int,
     provider: Optional[str] = None,
-    expected_calls: Optional[int] = None,
 ) -> dict[str, Any]:
     start_at = parse_timestamp(start, "start")
     end_at = parse_timestamp(end, "end")
     if end_at <= start_at:
         raise RouterUsageImportError("end must be later than start")
+    if type(expected_calls) is not int or expected_calls < 1:
+        raise RouterUsageImportError("expected_calls must be a positive integer")
 
     in_window: list[tuple[dict[str, Any], datetime]] = []
     for event in events:
@@ -124,7 +126,7 @@ def build_usage_record(
     ]
     if not selected:
         raise RouterUsageImportError("no metered Router events matched the requested window/model/provider")
-    if expected_calls is not None and len(selected) != expected_calls:
+    if len(selected) != expected_calls:
         raise RouterUsageImportError(f"expected {expected_calls} model calls, found {len(selected)}")
 
     providers = {event.get("provider") for event, _ in selected}
@@ -133,6 +135,12 @@ def build_usage_record(
 
     input_tokens = sum(_token_count(event, "inputTokens") or 0 for event, _ in selected)
     output_tokens = sum(_token_count(event, "outputTokens") or 0 for event, _ in selected)
+    for event, _ in selected:
+        total = _token_count(event, "totalTokens")
+        event_input = _token_count(event, "inputTokens")
+        event_output = _token_count(event, "outputTokens")
+        if total is not None and event_input is not None and event_output is not None and total != event_input + event_output:
+            raise RouterUsageImportError("event totalTokens does not equal inputTokens + outputTokens")
     completed_at = max(at for _, at in selected)
     durations = [event.get("durationMs") for event, _ in selected]
     if any(not isinstance(value, (int, float)) or value < 0 for value in durations):
@@ -167,12 +175,12 @@ def main() -> int:
     parser.add_argument("--run-id", required=True)
     parser.add_argument("--model", required=True)
     parser.add_argument("--provider")
-    parser.add_argument("--start", required=True, help="inclusive ISO-8601 timestamp")
-    parser.add_argument("--end", required=True, help="exclusive ISO-8601 timestamp")
-    parser.add_argument("--expected-calls", type=int)
+    parser.add_argument("--start", required=True, help="inclusive event-completion ISO-8601 timestamp")
+    parser.add_argument("--end", required=True, help="exclusive event-completion ISO-8601 timestamp")
+    parser.add_argument("--expected-calls", type=int, required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    if args.expected_calls is not None and args.expected_calls < 1:
+    if args.expected_calls < 1:
         parser.error("--expected-calls must be >= 1")
 
     record = build_usage_record(
