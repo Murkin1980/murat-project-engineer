@@ -86,6 +86,7 @@ The policy above is implemented as code, not just prose:
   - `usage_to_run_report(record)` projects it onto the Run Report `usage` block;
   - CLI: `python scripts/usage_instrumentation.py --template RUN-XX` (empty UNOBSERVED record) or `python scripts/usage_instrumentation.py <record.json>` (validate).
 - `scripts/usage_from_router_log.py` — read-only adapter from an isolated Codex Router `usage-events.jsonl` window into a canonical `execution_log` / `estimated` USAGE_RECORD. It requires an explicit model, expected call count, and event-completion time window; rejects mixed, unmetered, or inconsistent traffic; and never reads Router credentials. The reconstructed record start may precede the window because Router writes each event when the response completes. Some upstreams report `inputTokens: 0`; the adapter preserves that source limitation rather than guessing.
+- `scripts/usage_from_codex_rollout.py` — read-only fallback for one explicit Codex rollout file and turn ID when the native backend omits Router-visible usage. It requires the expected model, provider and call count, stops at the next turn boundary, ignores conversation payloads, and emits `execution_log` / `estimated` usage with null cost. Incomplete breakdowns, including opaque positive totals, fail closed.
 - `contracts/RUN_REPORT.schema.json` gains an optional `usage` block (same shape as USAGE_RECORD, minus `schema_version`/`run_id`), so every new run writes its usage inline and old reports stay valid.
 
 Example of recording a run in code:

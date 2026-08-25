@@ -118,7 +118,7 @@ The experiment must measure quality, rework, reviewer value, interruption recove
 6. Keep Run 11 helpers conditional and bounded. A poller, daemon, retry worker, router, scheduler, shared state, database, or generic messaging/runtime layer requires a new filter and DEEP-CHANGE review.
 7. Add selected deterministic gates to GitHub CI only through a separate bounded change.
 8. Maintain the portfolio dashboard snapshot as part of the weekly status ritual.
-9. EXP-13 Pilot Batch 1 is partially unblocked: `scripts/usage_from_router_log.py` can produce honest `execution_log` / `estimated` USAGE_RECORDs from isolated Router event windows for metered A/B routes. Premium remains `BLOCKED` because current native `gpt-5.6-sol` Router events carry no token fields. Do not substitute synthetic telemetry. The three T-008 routes legally stop without usage. Run the 18-entry batch only after every proceeding route has a valid evidence path, then STOP and analyse.
+9. EXP-13 Pilot Batch 1 has fail-closed usage paths for all routes: `scripts/usage_from_router_log.py` imports isolated metered A/B Router windows, while `scripts/usage_from_codex_rollout.py` can import one explicit premium Codex turn only when its rollout contains a complete token breakdown. Native Router events and opaque-total rollout events remain unusable; do not substitute synthetic telemetry. The three T-008 routes legally stop without usage. Run the 18-entry batch only after each proceeding run has a valid source record, then STOP and analyse.
 
 ## Evidence-format finding
 

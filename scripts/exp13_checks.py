@@ -290,8 +290,10 @@ def compute_cost(usage: Optional[dict[str, Any]], pricing: dict[str, Any], model
         input_tokens = usage.get("input_tokens") or 0
         cached_tokens = usage.get("cached_input_tokens") or 0
         output_tokens = usage.get("output_tokens") or 0
+        if cached_tokens > input_tokens:
+            raise ValueError("cached_input_tokens cannot exceed input_tokens")
         cost = (
-            input_tokens / 1_000_000 * float(rates.get("input", 0.0))
+            (input_tokens - cached_tokens) / 1_000_000 * float(rates.get("input", 0.0))
             + cached_tokens / 1_000_000 * float(rates.get("cached_input", 0.0))
             + output_tokens / 1_000_000 * float(rates.get("output", 0.0))
         )
