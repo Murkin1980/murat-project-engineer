@@ -13,6 +13,8 @@ def context(turn_id="turn-target", model="gpt-5.6-sol", timestamp="2026-08-25T10
 
 def tokens(input_tokens=100, cached=40, output=20, timestamp="2026-08-25T10:00:05Z"):
     return {"timestamp": timestamp, "type": "event_msg", "payload": {"type": "token_count", "info": {
+        "total_token_usage": {"input_tokens": 999999, "cached_input_tokens": 999999,
+                              "output_tokens": 999999, "total_tokens": 1999998},
         "last_token_usage": {"input_tokens": input_tokens, "cached_input_tokens": cached,
                              "output_tokens": output, "total_tokens": input_tokens + output}}}}
 
@@ -44,6 +46,11 @@ class CodexRolloutUsageAdapterTests(unittest.TestCase):
                          (record["measurement_source"], record["measurement"], record["observed_cost"]))
         self.assertEqual("2026-08-25T10:00:00Z", record["start_time"])
         self.assertEqual("2026-08-25T10:00:08Z", record["end_time"])
+
+    def test_uses_per_call_last_usage_not_cumulative_total_snapshot(self):
+        record = self.build()
+        self.assertEqual(150, record["input_tokens"])
+        self.assertNotEqual(1_999_998, record["input_tokens"])
 
     def test_rejects_model_mismatch(self):
         with self.assertRaisesRegex(adapter.CodexRolloutUsageImportError, "target turn model"):

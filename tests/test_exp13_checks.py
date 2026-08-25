@@ -222,6 +222,15 @@ class ComputeCostTests(unittest.TestCase):
         self.assertEqual(0.14, cost)
         self.assertEqual("estimated", measurement)
 
+    def test_cached_input_is_not_charged_twice(self):
+        usage = make_usage("EXP13-T-001-premium", cost=None, input_tokens=1_000_000, output_tokens=100_000, model_calls=1)
+        usage["observed_cost"] = None
+        usage["cached_input_tokens"] = 400_000
+        pricing = {"per_mtok": {"gpt-5.6-sol": {"input": 3.0, "cached_input": 1.5, "output": 12.0}}}
+        cost, measurement = ec.compute_cost(usage, pricing, "gpt-5.6-sol")
+        self.assertEqual(3.6, cost)
+        self.assertEqual("estimated", measurement)
+
     def test_unobserved_when_no_execution(self):
         cost, measurement = ec.compute_cost(None, PRICING, "opencode-go/deepseek-v4-flash")
         self.assertIsNone(cost)

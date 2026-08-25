@@ -60,6 +60,9 @@ def _usage(event: dict[str, Any]) -> dict[str, int] | None:
     if not isinstance(payload, dict) or payload.get("type") != "token_count":
         return None
     info = payload.get("info")
+    # Codex exposes ``total_token_usage`` as the cumulative turn/session
+    # snapshot and ``last_token_usage`` as the completed model call. Summing
+    # the latter counts billed input (including the growing context) per call.
     last = info.get("last_token_usage") if isinstance(info, dict) else None
     if not isinstance(last, dict):
         raise CodexRolloutUsageImportError("token_count event has no last_token_usage object")
