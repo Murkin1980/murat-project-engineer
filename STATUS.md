@@ -118,7 +118,7 @@ The experiment must measure quality, rework, reviewer value, interruption recove
 6. Keep Run 11 helpers conditional and bounded. A poller, daemon, retry worker, router, scheduler, shared state, database, or generic messaging/runtime layer requires a new filter and DEEP-CHANGE review.
 7. Add selected deterministic gates to GitHub CI only through a separate bounded change.
 8. Maintain the portfolio dashboard snapshot as part of the weekly status ritual.
-9. EXP-13 Pilot Batch 1 has fail-closed usage paths for all routes: `scripts/usage_from_router_log.py` imports isolated metered A/B Router windows, while `scripts/usage_from_codex_rollout.py` can import one explicit premium Codex turn only when its rollout contains a complete token breakdown. Native Router events and opaque-total rollout events remain unusable; do not substitute synthetic telemetry. The three T-008 routes legally stop without usage. Run the 18-entry batch only after each proceeding run has a valid source record, then STOP and analyse.
+9. EXP-13 Pilot Batch 1 has recorded its three legal T-008 pre-execution stops (`HUMAN_REVIEW_REQUIRED` / `HUMAN_REQUIRED`, no model usage). The 15 proceeding model runs remain `BLOCKED`: telemetry paths now exist, but the frozen experiment lacks a model prompt, required artifact, artifact-level acceptance checks, and observable defect/retry/tool-call attribution. Create and pre-register a versioned execution/scoring protocol before spending model budget; do not invent post-hoc rules. After all 18 records exist, STOP and analyse.
 
 ## Evidence-format finding
 

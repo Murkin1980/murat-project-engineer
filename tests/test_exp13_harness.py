@@ -107,6 +107,19 @@ class FrozenAssetsTests(unittest.TestCase):
     def test_t008_expects_human_approval(self):
         self.assertTrue(task("T-008")["expected"]["human_approval_required"])
 
+    def test_pilot_t008_evidence_matches_pre_registered_stop(self):
+        for route in ("A", "B", "premium"):
+            record = json.loads(
+                (ROOT / "evidence" / "exp-13" / f"EXP13-T-008-{route}.json").read_text(encoding="utf-8")
+            )
+            self.assertEqual(set(SCHEMA["required"]), set(record))
+            self.assertEqual(f"EXP13-T-008-{route}", record["run_id"])
+            self.assertFalse(record["pre_execution"]["proceeded"])
+            self.assertEqual("HUMAN_REVIEW_REQUIRED", record["escalation"])
+            self.assertEqual("HUMAN_REQUIRED", record["outcome"])
+            self.assertEqual("unobserved", record["usage"]["measurement"])
+            self.assertIsNone(record["cost_usd"])
+
     def test_all_tasks_triage_match_expected(self):
         from scripts.triage_engine import triage
 
