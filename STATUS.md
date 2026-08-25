@@ -118,7 +118,7 @@ The experiment must measure quality, rework, reviewer value, interruption recove
 6. Keep Run 11 helpers conditional and bounded. A poller, daemon, retry worker, router, scheduler, shared state, database, or generic messaging/runtime layer requires a new filter and DEEP-CHANGE review.
 7. Add selected deterministic gates to GitHub CI only through a separate bounded change.
 8. Maintain the portfolio dashboard snapshot as part of the weekly status ritual.
-9. After merge, run EXP-13 Pilot Batch 1 (6 tasks × routes A/B/premium = 18 real runs) with real `USAGE_RECORD` evidence; each run records `exp13_checks` + usage + retries/calls/escalation/defects/cost. T-008 legally yields `HUMAN_REVIEW_REQUIRED`. After 18 runs, STOP and analyse — no automatic continuation.
+9. EXP-13 Pilot Batch 1 is `BLOCKED` until an execution environment can supply real provider/Router `USAGE_RECORD` evidence for the 15 runs that proceed. Do not substitute synthetic telemetry. The three T-008 routes may be recorded without usage because they legally stop before execution with `HUMAN_REVIEW_REQUIRED`. Once telemetry is available, run exactly 18 entries and then STOP and analyse.
 
 ## Evidence-format finding
 

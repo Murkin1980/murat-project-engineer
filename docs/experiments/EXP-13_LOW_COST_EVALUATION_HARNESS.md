@@ -1,6 +1,6 @@
 # EXP-13 — Low-cost evaluation harness + pre-execution rework
 
-Status: ACTIVE — harness published; Pilot Batch 1 pre-registered, not yet executed
+Status: ACTIVE — harness published; Pilot Batch 1 pre-registered and BLOCKED pending real execution telemetry
 Date: 2026-08-21
 New Idea Filter disposition: `EXPERIMENT` (extends the EXP-12 triage line)
 Execution tier: `VERIFIED`
@@ -149,10 +149,19 @@ python scripts/validate_package.py .
 The single-run CLI needs a real `USAGE_RECORD` (`--usage`) for any task that
 proceeds to execution; a task that escalates before execution needs none.
 
+## Current execution blocker
+
+Pilot Batch 1 must not run until the execution environment can supply a real
+provider/Router `USAGE_RECORD` for each run that proceeds. Synthetic usage or
+cost is not evidence. Batch entries that stop during pre-execution escalation
+(the three T-008 routes) legally keep `usage_ref: null`; the harness records
+empty, unobserved usage for them. All other entries still fail closed without
+real usage evidence.
+
 ## Continuation instructions
 
-1. After merge, run Pilot Batch 1 (6 tasks × 3 routes = 18 runs) with real
-   `USAGE_RECORD` evidence; the harness enforces STOP after 18.
+1. Unblock a real provider/Router usage source, then run Pilot Batch 1
+   (6 tasks × 3 routes = 18 runs); the harness enforces STOP after 18.
 2. Record, per run, the `exp13_checks` result + usage + retries/calls/
    escalation/defects/cost.
 3. T-008 must produce `HUMAN_REVIEW_REQUIRED`; anything else is a defect.

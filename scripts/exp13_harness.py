@@ -167,11 +167,7 @@ def run_batch(
     records: list[dict[str, Any]] = []
     for entry in entries:
         task = load_task(dataset, entry["task_id"])
-        if entry["usage_ref"] is None:
-            raise ContractError(
-                f"entry {entry['run_id']} has no usage_ref; real USAGE_RECORD evidence is required after merge"
-            )
-        usage = load_json(base_dir / entry["usage_ref"])
+        usage = load_json(base_dir / entry["usage_ref"]) if entry["usage_ref"] is not None else None
         record = build_record(task, entry["route"], routes, thresholds, pricing, usage=usage, defects=entry["defects"])
         records.append(record)
         out = base_dir / f"{record['run_id']}.json"
