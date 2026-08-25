@@ -161,9 +161,11 @@ Router writes its event when the response completes. This provides an evidence
 path for routes A and B. Upstream-reported zero input tokens remain zero and
 must not be interpreted as proof that the prompt was empty.
 
-Premium remains blocked: current native `gpt-5.6-sol` Router events have no
-token fields, so the adapter correctly refuses them. Synthetic usage or cost is
-not evidence. Batch entries that stop during pre-execution escalation (the
+Premium can use `scripts/usage_from_codex_rollout.py` when one isolated Codex
+rollout contains a complete per-call breakdown for the explicit turn. Native
+`gpt-5.6-sol` Router events still have no token fields, and some rollout events
+expose only an opaque total; those cases fail closed. Synthetic usage or cost
+is not evidence. Batch entries that stop during pre-execution escalation (the
 three T-008 routes) legally keep `usage_ref: null`; the harness records empty,
 unobserved usage for them. The full pilot must not start until every proceeding
 route has a valid usage evidence path.
