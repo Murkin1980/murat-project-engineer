@@ -1,7 +1,7 @@
 # EXP-13 — Pilot Batch 1 plan
 
 Date: 2026-08-21
-Status: PRE_REGISTERED — execution BLOCKED pending real provider/Router usage telemetry
+Status: PRE_REGISTERED — A/B usage adapter available; premium execution BLOCKED pending token telemetry
 Parent: `docs/experiments/EXP-13_LOW_COST_EVALUATION_HARNESS.md`
 
 ## Pre-registration

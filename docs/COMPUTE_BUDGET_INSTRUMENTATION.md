@@ -85,6 +85,7 @@ The policy above is implemented as code, not just prose:
   - `usage_to_compute_budget(record)` projects the record onto the compute-budget `usage` block;
   - `usage_to_run_report(record)` projects it onto the Run Report `usage` block;
   - CLI: `python scripts/usage_instrumentation.py --template RUN-XX` (empty UNOBSERVED record) or `python scripts/usage_instrumentation.py <record.json>` (validate).
+- `scripts/usage_from_router_log.py` — read-only adapter from an isolated Codex Router `usage-events.jsonl` window into a canonical `execution_log` / `estimated` USAGE_RECORD. It requires an explicit model and time window, rejects mixed metered traffic, and never reads Router credentials.
 - `contracts/RUN_REPORT.schema.json` gains an optional `usage` block (same shape as USAGE_RECORD, minus `schema_version`/`run_id`), so every new run writes its usage inline and old reports stay valid.
 
 Example of recording a run in code:
