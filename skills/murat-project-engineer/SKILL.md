@@ -9,15 +9,17 @@ Coordinate the current Codex environment; do not create a second orchestration r
 
 ## Execution
 
-1. Read the project context files referenced by `../../../context/project-context.md`.
-2. Classify the request as `FAST`, `VERIFIED`, or `DEEP-CHANGE` using `references/risk-and-routing.md`.
-3. Select the smallest sufficient Expert or temporary Expert Team from `../../../experts/` and `../../../teams/`.
-4. Select a Playbook from `../../../playbooks/`.
-5. Resolve a route profile from `references/route-profiles.md` to an explicit configured model slug. Never modify Router internals.
-6. Execute the Playbook with explicit handoffs using `../../../contracts/HANDOFF.md`.
-7. Run applicable hard deterministic gates from `../../../gates/registry.yaml` before semantic review.
-8. Invoke an independent Reviewer only when required. The Reviewer must not edit the candidate in the same invocation.
-9. Stop at `PASS`, `REWORK`, `BLOCKED`, or `HUMAN_REQUIRED` and complete `../../../contracts/RUN_REPORT.md`.
+1. For a new substantial idea, apply `../../../docs/NEW_IDEA_FILTER_POLICY.md` and record exactly one disposition.
+2. Read the project context files referenced by `../../../context/project-context.md`, then pass Value, Scope, and Deep-change gates from `../../../docs/UNIFIED_EXECUTION_WORKFLOW.md`.
+3. Create a Task Packet using `../../../contracts/TASK_PACKET.md`; stop for explicit approval when deep-change or architecture conflict is detected.
+4. Pass the Skillization Gate: read any applicable user-named, project, or available skill and record it, or record why none applies.
+5. Classify the task as `FAST`, `VERIFIED`, or `DEEP-CHANGE` using `references/risk-and-routing.md`; select the smallest sufficient Expert or temporary Team and a Playbook.
+6. Resolve a route profile from `references/route-profiles.md` to an explicit configured model slug. Never modify Router internals.
+7. Execute the bounded Task Packet, using typed handoffs from `../../../contracts/HANDOFF.md` for delegates. Keep one writer per worktree unless explicitly isolated and merged by the named owner.
+8. Run applicable hard technical gates, then collect `../../../contracts/BROWSER_EVIDENCE.md` where required.
+9. Capture and check `../../../scripts/verification_state.py`; a post-verification mutation makes the state `UNVERIFIED` and requires fresh affected evidence.
+10. Invoke an independent Reviewer only when required. The Reviewer must not edit the candidate in the same invocation.
+11. Inspect the final Git diff and status against the Task Packet only after the state is `VERIFIED`, then complete `../../../contracts/RUN_REPORT.md` with one terminal state.
 
 ## Non-negotiable rules
 
@@ -29,6 +31,8 @@ Coordinate the current Codex environment; do not create a second orchestration r
 - Never promote session observations into durable project memory automatically.
 - Never expose or own provider credentials.
 - Never bypass Codex permissions or applicable `AGENTS.md`/`FOUNDATION.md`.
+- Do not delegate authority: delegates may only receive a narrowed packet and may not publish, deploy, contact third parties, access credentials, or widen scope without explicit parent authorization and any required human approval.
+- A `PASS` is invalid after any post-verification change to a scoped verified file. Mark it `UNVERIFIED`, re-run the affected checks and Browser Evidence, and repeat the final Git-diff checkpoint.
 - If the request changes MASTER, Router authority, security, credentials, persistent-agent governance, core plugin boundaries, memory governance, or the central runtime, emit `DEEP_CHANGE_REQUIRES_USER_APPROVAL`, offer a soft-compatible alternative, and stop implementation.
 
 ## Software feature flow

@@ -1,10 +1,10 @@
 # Murat Project Engineer — Status
 
-Updated: 2026-08-15
+Updated: 2026-08-29
 
 ## Current version
 
-- Release: v1.0
+- Release: v1.1
 - Stage 1: COMPLETE
 - Stage 2: ACTIVE — 20-run evidence experiment
 - Stage 2A: FIRST-FIVE EVIDENCE CAPTURED
@@ -31,6 +31,10 @@ Implemented and available:
 - context-provider architecture documentation
 - mandatory New Idea Filter Policy
 - operating-model documentation connecting portfolio filtering to risk-tiered execution
+- unified evidence-first workflow: Value / Scope / Deep-change gates → Task Packet → Skillization Gate → bounded delegation → technical checks → Browser Evidence → verification-state check → final Git-diff checkpoint
+- Task Packet and Browser Evidence contracts
+- deterministic verification-state helper that invalidates scoped evidence after post-verification changes
+- safe delegation rules: narrowed authority, explicit stop conditions, and one writer per worktree by default
 - package validator and tests
 - isolated software-feature PoC
 - Stage 2 evidence for Runs 01–11
@@ -83,6 +87,10 @@ The primary disposition must be one of:
 `NEW_REPOSITORY` is the exception, not the default.
 
 See `docs/OPERATING_MODEL.md` for how portfolio filtering connects to the existing FAST / VERIFIED / DEEP-CHANGE execution model.
+
+## Unified execution workflow
+
+`docs/UNIFIED_EXECUTION_WORKFLOW.md` is ACTIVE and MANDATORY for bounded implementation and delegation. It turns the existing gates into one evidence chain rather than independent rules. `PASS` is valid only for the exact final diff and current verification state; a post-verification mutation of a scoped verified file resets it to `UNVERIFIED` and requires fresh affected checks and Browser Evidence.
 
 ## Boundaries still in force
 

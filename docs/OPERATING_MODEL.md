@@ -53,7 +53,13 @@ For coordinator runs:
 5. require explicit user approval for DEEP-CHANGE when applicable;
 6. emit one terminal state: `PASS`, `REWORK`, `BLOCKED`, or `HUMAN_REQUIRED`.
 
-### 4.1 Cost-aware execution invariant
+### 4.1 Unified execution invariant
+
+Every implementation and delegation follows `docs/UNIFIED_EXECUTION_WORKFLOW.md`: New Idea Filter (when needed) → Value / Scope / Deep-change gates → Task Packet → Skillization Gate → bounded execution or delegation → technical checks → Browser Evidence (when browser-observable) → verification-state check → final Git-diff checkpoint → terminal state.
+
+The Task Packet is the pre-execution authority boundary. Delegates receive a narrowed packet or typed handoff; one writer owns a worktree unless isolated worktrees and a merge owner are explicit. Post-verification changes to a scoped verified file automatically make the verification state `UNVERIFIED`, so `PASS` cannot survive a moving diff.
+
+### 4.2 Cost-aware execution invariant
 
 Token and model cost are product-quality constraints, not an afterthought. A platform that consumes disproportionate model budget for routine tests is considered operationally defective even when its outputs are correct.
 

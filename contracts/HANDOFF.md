@@ -14,5 +14,9 @@
 - required_next_checks:
 - acceptance_criteria:
 - do_not_change:
+- task_packet_ref:
+- delegation_authority:
+- verification_evidence_required:
+- skillization_gate_result:
 
 Pass only observable decisions, evidence, artifacts and risks. Do not include hidden chain-of-thought or secrets.
