@@ -146,6 +146,7 @@ def _checkpoint_digest(state: dict) -> str:
         "captured_at": state.get("captured_at"),
         "excluded_paths": state.get("excluded_paths"),
         "git": state.get("git"),
+        "task_packet": state.get("task_packet"),
     }
     canonical = json.dumps(immutable, sort_keys=True, separators=(",", ":")).encode()
     return _digest_bytes(canonical)
@@ -156,6 +157,27 @@ def _scope_patterns(task_packet: dict) -> list[str]:
     if not isinstance(values, list) or not values or not all(isinstance(item, str) and item for item in values):
         raise VerificationStateError("task packet needs a non-empty target_files_or_components string list")
     return [Path(item).as_posix().rstrip("/") for item in values]
+
+
+def _task_packet_binding(root: Path, path: Path) -> dict:
+    resolved = path.resolve()
+    raw = resolved.read_bytes()
+    try:
+        packet = json.loads(raw)
+    except json.JSONDecodeError as exc:
+        raise VerificationStateError(f"invalid Task Packet JSON: {exc}") from exc
+    scope = _scope_patterns(packet)
+    relative = _repo_relative(root, resolved)
+    identity = relative if relative is not None else resolved.as_posix()
+    location = "repository" if relative is not None else "external"
+    scope_raw = json.dumps(scope, separators=(",", ":")).encode()
+    return {
+        "location": location,
+        "path": identity,
+        "sha256": _digest_bytes(raw),
+        "scope": scope,
+        "scope_sha256": _digest_bytes(scope_raw),
+    }
 
 
 def _in_scope(path: str, patterns: list[str]) -> bool:
@@ -173,6 +195,7 @@ def capture(
     *,
     base_ref: str = "HEAD",
     excluded_paths: set[str] | None = None,
+    task_packet_path: Path | None = None,
 ) -> dict:
     root = _repo_root(root)
     excluded = set(excluded_paths or set())
@@ -185,12 +208,14 @@ def capture(
             raise VerificationStateError("--file scope omits Git changes: " + ", ".join(omitted))
     if not changed_paths:
         raise VerificationStateError("Git change set is empty")
+    binding = _task_packet_binding(root, task_packet_path) if task_packet_path else None
     state = {
         "schema_version": "2.0",
         "state": "VERIFIED",
         "captured_at": datetime.now(timezone.utc).isoformat(),
         "excluded_paths": sorted(excluded),
         "git": snapshot,
+        "task_packet": binding,
     }
     return {**state, "checkpoint_sha256": _checkpoint_digest(state)}
 
@@ -200,7 +225,7 @@ def check(
     state: dict,
     *,
     require_clean_scope: bool = False,
-    task_packet: dict | None = None,
+    task_packet_path: Path | None = None,
     allowed_excluded_paths: set[str] | None = None,
 ) -> dict:
     root = _repo_root(root)
@@ -228,9 +253,28 @@ def check(
     if actual["fingerprint_sha256"] != expected.get("fingerprint_sha256"):
         reasons.append("Git diff or changed-file content changed")
     if require_clean_scope:
-        if task_packet is None:
+        expected_packet = state.get("task_packet")
+        if not isinstance(expected_packet, dict):
+            raise VerificationStateError("--require-clean-scope requires a Task Packet bound during capture")
+        if task_packet_path is None:
             raise VerificationStateError("--require-clean-scope requires --task-packet")
-        patterns = _scope_patterns(task_packet)
+        try:
+            current_packet = _task_packet_binding(root, task_packet_path)
+        except (OSError, VerificationStateError) as exc:
+            current_packet = None
+            reasons.append(f"bound Task Packet is unavailable or invalid: {exc}")
+        if current_packet is not None:
+            if (current_packet["location"], current_packet["path"]) != (
+                expected_packet.get("location"), expected_packet.get("path")
+            ):
+                reasons.append("Task Packet path identity changed")
+            if current_packet["sha256"] != expected_packet.get("sha256"):
+                reasons.append("Task Packet bytes changed")
+            if current_packet["scope_sha256"] != expected_packet.get("scope_sha256"):
+                reasons.append("Task Packet scope changed")
+        patterns = expected_packet.get("scope")
+        if not isinstance(patterns, list) or not patterns:
+            raise VerificationStateError("bound Task Packet has no frozen scope")
         outside = sorted({entry["path"] for entry in actual["entries"] if not _in_scope(entry["path"], patterns)})
         if outside:
             reasons.append("out-of-scope Git changes: " + ", ".join(outside))
@@ -247,6 +291,7 @@ def main() -> int:
     capture_parser.add_argument("--state", required=True)
     capture_parser.add_argument("--base", default="HEAD")
     capture_parser.add_argument("--file", action="append", dest="files")
+    capture_parser.add_argument("--task-packet", type=Path)
     check_parser = subparsers.add_parser("check")
     check_parser.add_argument("--root", default=".")
     check_parser.add_argument("--state", required=True)
@@ -258,18 +303,21 @@ def main() -> int:
         state_path = Path(args.state).resolve()
         state_relative = _repo_relative(root, state_path)
         if args.command == "capture":
-            state = capture(root, args.files, base_ref=args.base, excluded_paths={state_relative} if state_relative else set())
+            state = capture(
+                root,
+                args.files,
+                base_ref=args.base,
+                excluded_paths={state_relative} if state_relative else set(),
+                task_packet_path=args.task_packet,
+            )
             state_path.parent.mkdir(parents=True, exist_ok=True)
             state_path.write_text(json.dumps(state, indent=2) + "\n", encoding="utf-8")
         else:
-            packet = None
-            if args.task_packet:
-                packet = json.loads(args.task_packet.read_text(encoding="utf-8"))
             state = check(
                 root,
                 json.loads(state_path.read_text(encoding="utf-8")),
                 require_clean_scope=args.require_clean_scope,
-                task_packet=packet,
+                task_packet_path=args.task_packet,
                 allowed_excluded_paths={state_relative} if state_relative else set(),
             )
             if state["state"] == "UNVERIFIED":

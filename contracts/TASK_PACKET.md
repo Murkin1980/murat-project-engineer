@@ -33,4 +33,4 @@ A Task Packet is the immutable execution brief for one bounded MPE run. Create i
 3. A delegated packet may narrow the parent packet but cannot widen scope, grant new authority, alter approvals, or authorize an external side effect.
 4. `single_writer_owner` is mandatory when any delegate can edit. All other delegates are read-only unless isolated worktrees and an explicit merge owner are named.
 5. The Task Packet is complete before execution only when the Skillization Gate and delegation plan have an explicit decision.
-6. An executable final Git-diff checkpoint uses a JSON Task Packet and treats `target_files_or_components` as the allowed changed-path scope. Any changed path outside that list is `UNVERIFIED`.
+6. An executable final Git-diff checkpoint binds the JSON Task Packet path identity, exact-byte hash, normalized scope, and scope digest during capture. Check uses that frozen scope; a changed or substituted packet is `UNVERIFIED`.

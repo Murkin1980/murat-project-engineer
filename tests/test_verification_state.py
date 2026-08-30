@@ -34,6 +34,12 @@ class VerificationStateTests(unittest.TestCase):
         (self.root / "candidate.txt").write_text("verified change", encoding="utf-8")
         return capture(self.root)
 
+    def task_packet(self, scope):
+        path = self.root.parent / f"{self.root.name}-task-packet.json"
+        path.write_text(json.dumps({"target_files_or_components": scope}), encoding="utf-8")
+        self.addCleanup(path.unlink, missing_ok=True)
+        return path
+
     def test_unchanged_git_change_set_remains_verified(self):
         state = self.captured_change()
         self.assertEqual("VERIFIED", check(self.root, state)["state"])
@@ -122,25 +128,50 @@ class VerificationStateTests(unittest.TestCase):
         self.assertIn("integrity digest mismatch", result["invalidation_reason"])
 
     def test_clean_scope_gate_rejects_outside_task_packet(self):
-        state = self.captured_change()
+        packet = self.task_packet(["docs/"])
+        (self.root / "candidate.txt").write_text("verified change", encoding="utf-8")
+        state = capture(self.root, task_packet_path=packet)
         result = check(
             self.root,
             state,
             require_clean_scope=True,
-            task_packet={"target_files_or_components": ["docs/"]},
+            task_packet_path=packet,
         )
         self.assertEqual("UNVERIFIED", result["state"])
         self.assertIn("out-of-scope", result["invalidation_reason"])
 
     def test_clean_scope_gate_accepts_file_and_directory_patterns(self):
-        state = self.captured_change()
+        packet = self.task_packet(["candidate.txt", "docs/"])
+        (self.root / "candidate.txt").write_text("verified change", encoding="utf-8")
+        state = capture(self.root, task_packet_path=packet)
         result = check(
             self.root,
             state,
             require_clean_scope=True,
-            task_packet={"target_files_or_components": ["candidate.txt", "docs/"]},
+            task_packet_path=packet,
         )
         self.assertEqual("VERIFIED", result["state"])
+
+    def test_changed_task_packet_cannot_expand_frozen_scope(self):
+        packet = self.task_packet(["candidate.txt"])
+        (self.root / "candidate.txt").write_text("verified change", encoding="utf-8")
+        (self.root / "outside.txt").write_text("already present at capture", encoding="utf-8")
+        state = capture(self.root, task_packet_path=packet)
+        packet.write_text(
+            json.dumps({"target_files_or_components": ["candidate.txt", "outside.txt"]}),
+            encoding="utf-8",
+        )
+        result = check(self.root, state, require_clean_scope=True, task_packet_path=packet)
+        self.assertEqual("UNVERIFIED", result["state"])
+        self.assertIn("Task Packet bytes changed", result["invalidation_reason"])
+        self.assertIn("Task Packet scope changed", result["invalidation_reason"])
+        self.assertIn("out-of-scope Git changes: outside.txt", result["invalidation_reason"])
+
+    def test_scope_gate_rejects_state_without_bound_task_packet(self):
+        state = self.captured_change()
+        packet = self.task_packet(["candidate.txt"])
+        with self.assertRaisesRegex(VerificationStateError, "bound during capture"):
+            check(self.root, state, require_clean_scope=True, task_packet_path=packet)
 
     def test_state_is_json_serializable(self):
         state = self.captured_change()
@@ -157,7 +188,17 @@ class VerificationStateTests(unittest.TestCase):
         script = Path(__file__).parents[1] / "scripts" / "verification_state.py"
         try:
             captured = subprocess.run(
-                ["python", str(script), "capture", "--root", str(self.root), "--state", str(state_path)],
+                [
+                    "python",
+                    str(script),
+                    "capture",
+                    "--root",
+                    str(self.root),
+                    "--state",
+                    str(state_path),
+                    "--task-packet",
+                    str(packet),
+                ],
                 check=False,
                 capture_output=True,
                 text=True,

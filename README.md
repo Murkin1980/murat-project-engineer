@@ -15,7 +15,7 @@ This package defines bounded Experts, temporary Expert Teams, human-readable Pla
 5. Execute with bounded handoffs and one writer per worktree.
 6. Run hard technical gates, then Browser Evidence where the outcome is browser-observable.
 7. Capture the Git-complete verification state, including committed `base...HEAD`; a repeated check returns `UNVERIFIED` after any change-set, content, status, `HEAD`, base, or permitted-exclusion movement.
-8. Run the executable final scope checkpoint against the Task Packet, then emit one typed terminal state and complete the Run Report.
+8. Bind the frozen Task Packet during capture and run the executable final scope checkpoint against that exact packet, then emit one typed terminal state and complete the Run Report.
 
 ## Validation
 
