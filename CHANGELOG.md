@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased — Unified evidence-first execution workflow (2026-08-29)
+
+- Added `docs/UNIFIED_EXECUTION_WORKFLOW.md`, which makes one bounded MPE flow out of New Idea Filter → Value / Scope / Deep-change gates → Task Packet → Skillization Gate → execution/delegation → technical checks → Browser Evidence → verification-state check → final Git-diff checkpoint → terminal state.
+- Added `TASK_PACKET` and `BROWSER_EVIDENCE` contracts and extended Handoff / Run Report templates so value, scope, skill decision, delegation, browser proof, verification state, and final diff evidence remain observable.
+- Added five hard deterministic gates: `task_packet_complete`, `skillization_gate`, `browser_evidence`, `verification_state_current`, and `final_git_diff_checkpoint`.
+- Added `scripts/verification_state.py` and its schema. It records SHA-256 fingerprints for the scoped verified files and changes `VERIFIED` to `UNVERIFIED` after a file is changed or removed, forcing fresh applicable checks before PASS.
+- Added safe delegation rules: a narrowed packet, no delegated authority escalation or external effect by default, stop-on-risk, and one writer per worktree unless explicitly isolated with a merge owner.
+- Kept Option A+ boundaries: no scheduler, queue, daemon, workflow runtime, persistent agent, new credentials authority, or new repository.
+
 ## Unreleased — EXP-13 low-cost evaluation harness + pre-execution rework (2026-08-21)
 
 - Added `contracts/EXP13_EXECUTION_RECORD.schema.json` — canonical record of one EXP-13 low-cost evaluation run: pre-execution checks, full checks, escalation, outcome, defects, and cost (cost is never fabricated).

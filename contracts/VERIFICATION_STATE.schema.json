@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Murat Project Engineer Verification State",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "state", "captured_at", "files"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "state": {"enum": ["VERIFIED", "UNVERIFIED"]},
+    "captured_at": {"type": "string", "format": "date-time"},
+    "files": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+    },
+    "invalidation_reason": {"type": "string"}
+  }
+}

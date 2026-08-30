@@ -8,8 +8,8 @@ from pathlib import Path
 
 EXPERT_FIELDS = {"expert_id", "role", "responsibility", "invoke_when", "do_not_invoke_when", "allowed_inputs", "expected_outputs", "required_skills", "capability_profile", "preferred_route_profile", "max_rework_cycles", "forbidden_actions", "handoff_contract"}
 PLAYBOOK_FIELDS = {"playbook_id", "version", "supported_task_classes", "risk_tier", "roles", "sequence", "required_inputs", "deterministic_gates", "optional_semantic_review", "human_gate_conditions", "max_rework_cycles", "terminal_states", "run_report_fields"}
-HANDOFF_FIELDS = {"run_id", "task_id", "producer_role", "consumer_role", "task_summary", "input_refs", "changed_files", "artifact_refs", "assumptions", "unresolved_risks", "checks_already_run", "required_next_checks", "acceptance_criteria", "do_not_change"}
-RUN_REPORT_FIELDS = {"run_id", "project", "task", "start_timestamp", "end_timestamp", "risk_tier", "playbook", "experts_invoked", "route_profiles", "files_changed", "commands_tools_used", "deterministic_gate_results", "judge_verdict", "approvals", "rework_count", "outcome", "unresolved_risks", "rollback", "approximate_usage_cost"}
+HANDOFF_FIELDS = {"run_id", "task_id", "producer_role", "consumer_role", "task_summary", "input_refs", "changed_files", "artifact_refs", "assumptions", "unresolved_risks", "checks_already_run", "required_next_checks", "acceptance_criteria", "do_not_change", "task_packet_ref", "delegation_authority", "verification_evidence_required", "skillization_gate_result"}
+RUN_REPORT_FIELDS = {"run_id", "project", "task", "start_timestamp", "end_timestamp", "risk_tier", "playbook", "experts_invoked", "route_profiles", "files_changed", "commands_tools_used", "deterministic_gate_results", "judge_verdict", "approvals", "rework_count", "outcome", "unresolved_risks", "rollback", "approximate_usage_cost", "task_packet_ref", "skillization_gate_result", "delegation_summary", "browser_evidence_ref", "verification_state_ref", "final_git_diff_checkpoint"}
 COMPUTE_BUDGET_FIELDS = {"compute_budget_currency", "compute_budget_planned_budget", "compute_budget_hard_limit", "preflight_input_tokens_min", "preflight_input_tokens_expected", "preflight_input_tokens_max", "preflight_output_tokens_min", "preflight_output_tokens_expected", "preflight_output_tokens_max", "preflight_estimated_cost_min", "preflight_estimated_cost_expected", "preflight_estimated_cost_max", "preflight_confidence", "usage_input_tokens", "usage_cached_input_tokens", "usage_output_tokens", "usage_estimated_cost", "usage_measurement", "forecast_estimated_total_cost_min", "forecast_estimated_total_cost_expected", "forecast_estimated_total_cost_max", "forecast_remaining_cost_expected", "forecast_confidence", "routing_recommended_stack", "routing_actual_provider_mix", "efficiency_project_progress_percent", "efficiency_budget_consumed_percent", "efficiency_cost_per_progress_percent", "status_budget_status", "status_burn_rate_status", "status_burn_rate_ratio"}
 USAGE_RECORD_FIELDS = {"usage_provider", "usage_model", "usage_input_tokens", "usage_cached_input_tokens", "usage_output_tokens", "usage_observed_cost", "usage_model_calls", "usage_tool_calls", "usage_retries", "usage_start_time", "usage_end_time", "usage_progress_checkpoints", "usage_measurement_source", "usage_measurement"}
 EXPERIMENT_FIELDS = {"run_id", "execution_mode", "task_class", "risk_tier", "expert_or_team", "run_duration", "resolved_model_slugs", "tool_calls_observable", "deterministic_gate_failures", "reviewer_findings", "reviewer_false_positives", "rework_count", "human_intervention", "defect_escaped_after_pass", "interruption_recovery_issue", "approximate_token_cost_overhead", "fan_out_fan_in_needed", "notes"}
@@ -89,11 +89,15 @@ def validate(root: Path) -> list[str]:
     except Exception as exc:
         errors.append(f"invalid USAGE_RECORD schema or example: {exc}")
 
-    required_gates = {"clean_diff_scope", "secrets_scan", "build", "typecheck", "lint", "unit_tests", "integration_tests", "acceptance_tests", "artifact_exists", "artifact_hash", "rollback_available", "deep_change_check", "mailbox_schema_valid", "handoff_traceable", "event_log_valid", "worktree_collision_check", "terminal_state_valid"}
+    required_gates = {"clean_diff_scope", "secrets_scan", "build", "typecheck", "lint", "unit_tests", "integration_tests", "acceptance_tests", "artifact_exists", "artifact_hash", "rollback_available", "deep_change_check", "task_packet_complete", "skillization_gate", "browser_evidence", "verification_state_current", "final_git_diff_checkpoint", "mailbox_schema_valid", "handoff_traceable", "event_log_valid", "worktree_collision_check", "terminal_state_valid"}
     registry = (root / "gates" / "registry.yaml").read_text(encoding="utf-8")
     present = set(re.findall(r"gate_id:\s*([a-z_]+)", registry))
     if required_gates - present:
         errors.append(f"gate registry missing: {sorted(required_gates - present)}")
+
+    for path in (root / "contracts" / "TASK_PACKET.md", root / "contracts" / "BROWSER_EVIDENCE.md", root / "contracts" / "VERIFICATION_STATE.schema.json", root / "docs" / "UNIFIED_EXECUTION_WORKFLOW.md", root / "scripts" / "verification_state.py"):
+        if not path.exists():
+            errors.append(f"unified workflow artifact missing: {path.relative_to(root)}")
 
     route_text = (root / "skills" / "murat-project-engineer" / "references" / "route-profiles.md").read_text(encoding="utf-8")
     for slug in ("gpt-5.6-sol", "opencode-go/deepseek-v4-flash", "opencode-go/kimi-k2.7-code"):

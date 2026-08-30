@@ -8,14 +8,14 @@ This package defines bounded Experts, temporary Expert Teams, human-readable Pla
 
 ## Execution
 
-1. Invoke `$murat-project-engineer` with a project task.
-2. Read project source-of-truth files.
-3. Classify `FAST`, `VERIFIED`, or `DEEP-CHANGE`.
-4. Choose the smallest sufficient Expert or temporary Team.
-5. Use the matching Playbook and explicit route profile.
-6. Preserve handoffs as observable artifacts.
-7. Run hard deterministic gates before optional semantic review.
-8. Emit one typed terminal state and complete the Run Report.
+1. Apply the New Idea Filter when the request is a new substantial idea.
+2. Pass Value / Scope / Deep-change gates and freeze a Task Packet.
+3. Pass the Skillization Gate, then classify `FAST`, `VERIFIED`, or `DEEP-CHANGE`.
+4. Choose the smallest sufficient Expert or temporary Team and matching Playbook.
+5. Execute with bounded handoffs and one writer per worktree.
+6. Run hard technical gates, then Browser Evidence where the outcome is browser-observable.
+7. Capture verification state; post-verification changes reset it to `UNVERIFIED`.
+8. Inspect the final Git diff only after current verification, then emit one typed terminal state and complete the Run Report.
 
 ## Validation
 

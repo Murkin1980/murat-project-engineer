@@ -23,6 +23,18 @@ class PackageContractTests(unittest.TestCase):
         self.assertIn("DEEP_CHANGE_REQUIRES_USER_APPROVAL", text)
         self.assertIn("HUMAN_REQUIRED", text)
 
+    def test_unified_workflow_orders_the_required_evidence(self):
+        text = (ROOT / "docs" / "UNIFIED_EXECUTION_WORKFLOW.md").read_text(encoding="utf-8")
+        for marker in ("New Idea Filter", "Value Gate", "Scope Gate", "Deep-change Gate", "Task Packet", "Skillization Gate", "Browser Evidence", "Final Git-diff checkpoint"):
+            self.assertIn(marker, text)
+        self.assertLess(text.index("Task Packet"), text.index("Browser Evidence"))
+        self.assertLess(text.index("Browser Evidence"), text.index("Final Git-diff checkpoint"))
+
+    def test_post_verification_changes_are_invalidated(self):
+        text = (ROOT / "skills" / "murat-project-engineer" / "SKILL.md").read_text(encoding="utf-8")
+        self.assertIn("UNVERIFIED", text)
+        self.assertTrue((ROOT / "scripts" / "verification_state.py").exists())
+
     def test_gate_detection_and_human_approval_are_separate(self):
         text = (ROOT / "gates" / "registry.yaml").read_text(encoding="utf-8")
         self.assertIn("gate_id: deep_change_check\n    type: deterministic", text)
