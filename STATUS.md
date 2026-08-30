@@ -90,7 +90,7 @@ See `docs/OPERATING_MODEL.md` for how portfolio filtering connects to the existi
 
 ## Unified execution workflow
 
-`docs/UNIFIED_EXECUTION_WORKFLOW.md` is ACTIVE and MANDATORY for bounded implementation and delegation. It turns the existing gates into one evidence chain rather than independent rules. `PASS` is valid only for the exact final diff and current verification state; a post-verification mutation of a scoped verified file resets it to `UNVERIFIED` and requires fresh affected checks and Browser Evidence.
+`docs/UNIFIED_EXECUTION_WORKFLOW.md` is ACTIVE and MANDATORY for bounded implementation and delegation. It turns the existing gates into one evidence chain rather than independent rules. `PASS` is valid only for the captured Git-complete snapshot and current verification state; the required check returns `UNVERIFIED` after any change-set, status, content, `HEAD`, or base movement and enforces the Task Packet changed-path scope.
 
 ## Boundaries still in force
 

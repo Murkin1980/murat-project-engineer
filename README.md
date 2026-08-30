@@ -14,8 +14,8 @@ This package defines bounded Experts, temporary Expert Teams, human-readable Pla
 4. Choose the smallest sufficient Expert or temporary Team and matching Playbook.
 5. Execute with bounded handoffs and one writer per worktree.
 6. Run hard technical gates, then Browser Evidence where the outcome is browser-observable.
-7. Capture verification state; post-verification changes reset it to `UNVERIFIED`.
-8. Inspect the final Git diff only after current verification, then emit one typed terminal state and complete the Run Report.
+7. Capture the Git-complete verification state; a repeated check returns `UNVERIFIED` after any change-set, content, status, `HEAD`, or base movement.
+8. Run the executable final scope checkpoint against the Task Packet, then emit one typed terminal state and complete the Run Report.
 
 ## Validation
 

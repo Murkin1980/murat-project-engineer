@@ -46,25 +46,25 @@ Run applicable deterministic technical checks first: scope, secret scan, build/t
 
 Then collect `contracts/BROWSER_EVIDENCE.md` for every browser-observable acceptance criterion. If none exists, record `NOT_APPLICABLE` with a reason. Required browser evidence that cannot be collected is `BLOCKED`, not PASS.
 
-After the evidence is collected, capture the exact verified files with:
+After the evidence is collected, capture the complete Git change set. The snapshot includes `HEAD`, the selected base SHA, porcelain status for staged/unstaged/deleted/untracked paths, staged and unstaged binary diff fingerprints, and content hashes:
 
 ```bash
-python scripts/verification_state.py capture --state evidence/verification-state.json --file path/to/file
-python scripts/verification_state.py check --state evidence/verification-state.json
+python scripts/verification_state.py capture --state evidence/verification-state.json --base origin/main
+python scripts/verification_state.py check --state evidence/verification-state.json --require-clean-scope --task-packet evidence/task-packet.json
 ```
 
-The state is deterministic and file-scoped. A changed, removed, or altered verified file changes the state from `VERIFIED` to `UNVERIFIED` (exit code `3`). That automatically invalidates the previous technical, browser, and reviewer evidence for every affected criterion. Re-run the affected checks, refresh Browser Evidence, capture a new state, and then continue. This mechanism does not track unrelated files; the final Git diff gate still protects the declared scope.
+The state is deterministic and Git-complete. `--file` is optional and may narrow declared scope only when it includes every path already present in the Git change set. Any later changed, added, removed, renamed, staged, unstaged, or untracked path; any content/status change; or any `HEAD`/base movement changes the result to `UNVERIFIED` (exit code `3`). The state file itself is the only self-referential path excluded by the CLI. There is no daemon: invalidation is enforced whenever the required check command runs. Re-run affected checks, refresh Browser Evidence, capture a fresh state, and then continue.
 
 ## 6. Final Git-diff checkpoint and terminal state
 
-Only after `verification_state.py check` returns `VERIFIED`:
+Only after the executable scope command `verification_state.py check --require-clean-scope --task-packet ...` returns `VERIFIED`:
 
-1. inspect `git diff` and `git status` against the Task Packet's scope;
+1. retain the command output as proof that the exact Git snapshot matches the Task Packet's `target_files_or_components` scope;
 2. confirm the changed-file list, no unintended artifacts, and rollback reference;
 3. record all gate results, Browser Evidence, verification-state artifact, reviewer verdict (when used), and final commit/rollback in the Run Report;
 4. emit `PASS` only when every applicable gate passes.
 
-Any mutation after this checkpoint resets the checkpoint to `UNVERIFIED` and returns the run to step 5. `PASS` is therefore a final state of a specific diff and evidence set, not a sticky label for a moving worktree.
+Any mutation detected by a repeated checkpoint returns `UNVERIFIED` and sends the run back to step 5. `PASS` is therefore a final state of a specific Git snapshot and evidence set, not a sticky label for a moving worktree.
 
 ## Terminal outcomes
 

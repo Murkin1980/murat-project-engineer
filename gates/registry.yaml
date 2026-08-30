@@ -109,14 +109,14 @@ gates:
     type: deterministic
     hard: true
     applicable_when: technical or browser verification has completed
-    evidence_required: verification-state check returning VERIFIED for the scoped verified files
+    evidence_required: Git-complete verification-state check returning VERIFIED for captured HEAD/base, changed-file statuses, staged/unstaged diffs, and changed-file contents
     failure_state: REWORK
     retry_policy: rerun affected checks and evidence, capture fresh state, then recheck
   - gate_id: final_git_diff_checkpoint
     type: deterministic
     hard: true
     applicable_when: a run is about to claim PASS after repository changes
-    evidence_required: post-verification git diff and status reviewed against Task Packet scope, plus rollback reference
+    evidence_required: successful verification_state.py check --require-clean-scope --task-packet command for the final Git snapshot, plus rollback reference
     failure_state: REWORK
     retry_policy: correct scope/artifacts or re-enter verification after every mutation
   - gate_id: mailbox_schema_valid

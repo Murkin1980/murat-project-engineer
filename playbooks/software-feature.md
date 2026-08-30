@@ -30,4 +30,4 @@ confidence: low | medium | high
 
 Reviewer must not edit the candidate in the same invocation.
 
-If any candidate file changes after technical checks, Browser Evidence, or reviewer evidence, mark the verification state `UNVERIFIED` and repeat the affected verification before the final Git-diff checkpoint.
+If the Git-complete snapshot changes after technical checks, Browser Evidence, or reviewer evidence, the required check returns `UNVERIFIED`; repeat the affected verification before the executable final Git-diff checkpoint.

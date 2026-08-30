@@ -57,7 +57,7 @@ For coordinator runs:
 
 Every implementation and delegation follows `docs/UNIFIED_EXECUTION_WORKFLOW.md`: New Idea Filter (when needed) → Value / Scope / Deep-change gates → Task Packet → Skillization Gate → bounded execution or delegation → technical checks → Browser Evidence (when browser-observable) → verification-state check → final Git-diff checkpoint → terminal state.
 
-The Task Packet is the pre-execution authority boundary. Delegates receive a narrowed packet or typed handoff; one writer owns a worktree unless isolated worktrees and a merge owner are explicit. Post-verification changes to a scoped verified file automatically make the verification state `UNVERIFIED`, so `PASS` cannot survive a moving diff.
+The Task Packet is the pre-execution authority boundary. Delegates receive a narrowed packet or typed handoff; one writer owns a worktree unless isolated worktrees and a merge owner are explicit. The required Git-complete verification check returns `UNVERIFIED` after any change-set, status, content, `HEAD`, or base movement, so `PASS` cannot survive a moving diff.
 
 ### 4.2 Cost-aware execution invariant
 

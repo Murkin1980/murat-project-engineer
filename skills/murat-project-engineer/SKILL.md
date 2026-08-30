@@ -17,9 +17,9 @@ Coordinate the current Codex environment; do not create a second orchestration r
 6. Resolve a route profile from `references/route-profiles.md` to an explicit configured model slug. Never modify Router internals.
 7. Execute the bounded Task Packet, using typed handoffs from `../../../contracts/HANDOFF.md` for delegates. Keep one writer per worktree unless explicitly isolated and merged by the named owner.
 8. Run applicable hard technical gates, then collect `../../../contracts/BROWSER_EVIDENCE.md` where required.
-9. Capture and check `../../../scripts/verification_state.py`; a post-verification mutation makes the state `UNVERIFIED` and requires fresh affected evidence.
+9. Capture and check the Git-complete snapshot with `../../../scripts/verification_state.py`; any change-set, content, status, `HEAD`, or base movement returns `UNVERIFIED` and requires fresh affected evidence.
 10. Invoke an independent Reviewer only when required. The Reviewer must not edit the candidate in the same invocation.
-11. Inspect the final Git diff and status against the Task Packet only after the state is `VERIFIED`, then complete `../../../contracts/RUN_REPORT.md` with one terminal state.
+11. Run the executable final scope checkpoint against the Task Packet only after capture; complete `../../../contracts/RUN_REPORT.md` with one terminal state only when it returns `VERIFIED`.
 
 ## Non-negotiable rules
 
@@ -32,7 +32,7 @@ Coordinate the current Codex environment; do not create a second orchestration r
 - Never expose or own provider credentials.
 - Never bypass Codex permissions or applicable `AGENTS.md`/`FOUNDATION.md`.
 - Do not delegate authority: delegates may only receive a narrowed packet and may not publish, deploy, contact third parties, access credentials, or widen scope without explicit parent authorization and any required human approval.
-- A `PASS` is invalid after any post-verification change to a scoped verified file. Mark it `UNVERIFIED`, re-run the affected checks and Browser Evidence, and repeat the final Git-diff checkpoint.
+- A `PASS` is invalid after any post-verification Git snapshot change. The mandatory check returns `UNVERIFIED`; re-run affected checks and Browser Evidence, then repeat the final Git-diff checkpoint.
 - If the request changes MASTER, Router authority, security, credentials, persistent-agent governance, core plugin boundaries, memory governance, or the central runtime, emit `DEEP_CHANGE_REQUIRES_USER_APPROVAL`, offer a soft-compatible alternative, and stop implementation.
 
 ## Software feature flow

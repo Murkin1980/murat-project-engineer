@@ -3,15 +3,58 @@
   "title": "Murat Project Engineer Verification State",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "state", "captured_at", "files"],
+  "required": ["schema_version", "state", "captured_at", "excluded_paths", "git"],
   "properties": {
-    "schema_version": {"const": "1.0"},
+    "schema_version": {"const": "2.0"},
     "state": {"enum": ["VERIFIED", "UNVERIFIED"]},
     "captured_at": {"type": "string", "format": "date-time"},
-    "files": {
+    "excluded_paths": {
+      "type": "array",
+      "items": {"type": "string"},
+      "uniqueItems": true
+    },
+    "git": {
       "type": "object",
-      "minProperties": 1,
-      "additionalProperties": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      "additionalProperties": false,
+      "required": [
+        "head_sha",
+        "base_ref",
+        "base_sha",
+        "entries",
+        "content",
+        "staged_diff_sha256",
+        "unstaged_diff_sha256",
+        "fingerprint_sha256"
+      ],
+      "properties": {
+        "head_sha": {"type": "string", "pattern": "^[a-f0-9]{40,64}$"},
+        "base_ref": {"type": "string", "minLength": 1},
+        "base_sha": {"type": "string", "pattern": "^[a-f0-9]{40,64}$"},
+        "entries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["path", "status"],
+            "properties": {
+              "path": {"type": "string", "minLength": 1},
+              "status": {"type": "string", "minLength": 2}
+            }
+          }
+        },
+        "content": {
+          "type": "object",
+          "additionalProperties": {
+            "oneOf": [
+              {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+              {"type": "null"}
+            ]
+          }
+        },
+        "staged_diff_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "unstaged_diff_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "fingerprint_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
     },
     "invalidation_reason": {"type": "string"}
   }
