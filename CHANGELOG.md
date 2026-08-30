@@ -5,7 +5,7 @@
 - Added `docs/UNIFIED_EXECUTION_WORKFLOW.md`, which makes one bounded MPE flow out of New Idea Filter → Value / Scope / Deep-change gates → Task Packet → Skillization Gate → execution/delegation → technical checks → Browser Evidence → verification-state check → final Git-diff checkpoint → terminal state.
 - Added `TASK_PACKET` and `BROWSER_EVIDENCE` contracts and extended Handoff / Run Report templates so value, scope, skill decision, delegation, browser proof, verification state, and final diff evidence remain observable.
 - Added five hard deterministic gates: `task_packet_complete`, `skillization_gate`, `browser_evidence`, `verification_state_current`, and `final_git_diff_checkpoint`.
-- Added `scripts/verification_state.py` and its schema. It fingerprints the complete Git change set (HEAD/base, statuses, staged/unstaged diffs, and changed-file content) and returns `UNVERIFIED` when the final snapshot moves or exceeds Task Packet scope.
+- Added `scripts/verification_state.py` and its schema. It fingerprints the complete Git change set (committed `base...HEAD`, HEAD/base, statuses, staged/unstaged diffs, and changed-file content), strictly derives the state-file exclusion in the CLI, and returns `UNVERIFIED` when the final snapshot moves or exceeds Task Packet scope.
 - Added safe delegation rules: a narrowed packet, no delegated authority escalation or external effect by default, stop-on-risk, and one writer per worktree unless explicitly isolated with a merge owner.
 - Kept Option A+ boundaries: no scheduler, queue, daemon, workflow runtime, persistent agent, new credentials authority, or new repository.
 

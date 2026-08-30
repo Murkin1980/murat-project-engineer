@@ -3,7 +3,7 @@
   "title": "Murat Project Engineer Verification State",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "state", "captured_at", "excluded_paths", "git"],
+  "required": ["schema_version", "state", "captured_at", "excluded_paths", "git", "checkpoint_sha256"],
   "properties": {
     "schema_version": {"const": "2.0"},
     "state": {"enum": ["VERIFIED", "UNVERIFIED"]},
@@ -22,6 +22,7 @@
         "base_sha",
         "entries",
         "content",
+        "committed_diff_sha256",
         "staged_diff_sha256",
         "unstaged_diff_sha256",
         "fingerprint_sha256"
@@ -51,11 +52,13 @@
             ]
           }
         },
+        "committed_diff_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
         "staged_diff_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
         "unstaged_diff_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
         "fingerprint_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
       }
     },
+    "checkpoint_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
     "invalidation_reason": {"type": "string"}
   }
 }

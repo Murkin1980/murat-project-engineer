@@ -46,14 +46,14 @@ Run applicable deterministic technical checks first: scope, secret scan, build/t
 
 Then collect `contracts/BROWSER_EVIDENCE.md` for every browser-observable acceptance criterion. If none exists, record `NOT_APPLICABLE` with a reason. Required browser evidence that cannot be collected is `BLOCKED`, not PASS.
 
-After the evidence is collected, capture the complete Git change set. The snapshot includes `HEAD`, the selected base SHA, porcelain status for staged/unstaged/deleted/untracked paths, staged and unstaged binary diff fingerprints, and content hashes:
+After the evidence is collected, capture the complete Git change set. The snapshot includes the committed `base...HEAD` name-status and binary diff, `HEAD` and base SHA, porcelain status for staged/unstaged/deleted/untracked paths, staged and unstaged binary diff fingerprints, and content hashes:
 
 ```bash
 python scripts/verification_state.py capture --state evidence/verification-state.json --base origin/main
 python scripts/verification_state.py check --state evidence/verification-state.json --require-clean-scope --task-packet evidence/task-packet.json
 ```
 
-The state is deterministic and Git-complete. `--file` is optional and may narrow declared scope only when it includes every path already present in the Git change set. Any later changed, added, removed, renamed, staged, unstaged, or untracked path; any content/status change; or any `HEAD`/base movement changes the result to `UNVERIFIED` (exit code `3`). The state file itself is the only self-referential path excluded by the CLI. There is no daemon: invalidation is enforced whenever the required check command runs. Re-run affected checks, refresh Browser Evidence, capture a fresh state, and then continue.
+The state is deterministic and Git-complete. `--file` is optional and may narrow declared scope only when it includes every path already present across committed, staged, unstaged, and untracked layers. Any later changed, added, removed, renamed, staged, unstaged, or untracked path; any content/status change; or any `HEAD`/base movement changes the result to `UNVERIFIED` (exit code `3`). The CLI computes the only permitted exclusion from its own `--state` path and rejects a different stored exclusion list. A checkpoint digest detects state edits that were not accompanied by a new capture; it is an integrity check, not a cryptographic signature against an actor who can rewrite both the file and digest. There is no daemon: invalidation is enforced whenever the required check command runs. Re-run affected checks, refresh Browser Evidence, capture a fresh state, and then continue.
 
 ## 6. Final Git-diff checkpoint and terminal state
 

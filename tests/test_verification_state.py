@@ -89,6 +89,38 @@ class VerificationStateTests(unittest.TestCase):
         self.assertEqual("UNVERIFIED", result["state"])
         self.assertIn("HEAD changed", result["invalidation_reason"])
 
+    def test_clean_worktree_captures_committed_diff_from_base(self):
+        base_sha = self.git("rev-parse", "HEAD").stdout.strip()
+        (self.root / "candidate.txt").write_text("committed change", encoding="utf-8")
+        self.git("add", "candidate.txt")
+        self.git("commit", "-m", "candidate change")
+        state = capture(self.root, base_ref=base_sha)
+        self.assertEqual("VERIFIED", check(self.root, state)["state"])
+        self.assertIn(
+            {"path": "candidate.txt", "status": "committed:M"},
+            state["git"]["entries"],
+        )
+        self.assertNotEqual(
+            "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            state["git"]["committed_diff_sha256"],
+        )
+
+    def test_tampered_excluded_paths_cannot_hide_new_file(self):
+        state = self.captured_change()
+        state["excluded_paths"] = ["outside.txt"]
+        (self.root / "outside.txt").write_text("hidden attempt", encoding="utf-8")
+        result = check(self.root, state, allowed_excluded_paths=set())
+        self.assertEqual("UNVERIFIED", result["state"])
+        self.assertIn("stored exclusions differ", result["invalidation_reason"])
+        self.assertIn("integrity digest mismatch", result["invalidation_reason"])
+
+    def test_tampered_snapshot_fields_fail_integrity_check(self):
+        state = self.captured_change()
+        state["git"]["content"]["candidate.txt"] = "0" * 64
+        result = check(self.root, state)
+        self.assertEqual("UNVERIFIED", result["state"])
+        self.assertIn("integrity digest mismatch", result["invalidation_reason"])
+
     def test_clean_scope_gate_rejects_outside_task_packet(self):
         state = self.captured_change()
         result = check(

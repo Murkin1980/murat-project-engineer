@@ -75,6 +75,31 @@ def _parse_status(raw: bytes, excluded: set[str]) -> list[dict[str, str]]:
     return sorted(entries, key=lambda item: (item["path"], item["status"]))
 
 
+def _parse_committed_status(raw: bytes, excluded: set[str]) -> list[dict[str, str]]:
+    tokens = raw.decode("utf-8", errors="surrogateescape").split("\0")
+    entries: list[dict[str, str]] = []
+    index = 0
+    while index < len(tokens):
+        status = tokens[index]
+        index += 1
+        if not status:
+            continue
+        path_count = 2 if status.startswith(("R", "C")) else 1
+        if index + path_count > len(tokens):
+            raise VerificationStateError("committed name-status entry is incomplete")
+        paths = tokens[index:index + path_count]
+        index += path_count
+        for position, value in enumerate(paths):
+            if not value:
+                raise VerificationStateError("committed name-status path is empty")
+            normalized = Path(value).as_posix()
+            if normalized in excluded:
+                continue
+            role = ":source" if path_count == 2 and position == 0 else ""
+            entries.append({"path": normalized, "status": f"committed:{status}{role}"})
+    return sorted(entries, key=lambda item: (item["path"], item["status"]))
+
+
 def _content_digest(root: Path, value: str) -> str | None:
     path = root / value
     if not path.is_file():
@@ -83,12 +108,21 @@ def _content_digest(root: Path, value: str) -> str | None:
 
 
 def _snapshot(root: Path, base_ref: str, excluded: set[str]) -> dict:
-    raw_status = _git(root, "status", "--porcelain=v1", "-z", "--untracked-files=all")
-    entries = _parse_status(raw_status, excluded)
-    paths = sorted({entry["path"] for entry in entries})
     head_sha = _git(root, "rev-parse", "HEAD").decode().strip()
     base_sha = _git(root, "rev-parse", "--verify", f"{base_ref}^{{commit}}").decode().strip()
     pathspec = [".", *[f":(exclude){value}" for value in sorted(excluded)]]
+    raw_committed_status = _git(
+        root, "diff", "--name-status", "-z", "--find-renames", f"{base_sha}...{head_sha}", "--", *pathspec
+    )
+    raw_status = _git(root, "status", "--porcelain=v1", "-z", "--untracked-files=all")
+    entries = sorted(
+        [*_parse_committed_status(raw_committed_status, excluded), *_parse_status(raw_status, excluded)],
+        key=lambda item: (item["path"], item["status"]),
+    )
+    paths = sorted({entry["path"] for entry in entries})
+    committed = _git(
+        root, "diff", "--binary", "--full-index", "--no-ext-diff", f"{base_sha}...{head_sha}", "--", *pathspec
+    )
     staged = _git(root, "diff", "--cached", "--binary", "--full-index", "--no-ext-diff", "--", *pathspec)
     unstaged = _git(root, "diff", "--binary", "--full-index", "--no-ext-diff", "--", *pathspec)
     content = {value: _content_digest(root, value) for value in paths}
@@ -98,11 +132,23 @@ def _snapshot(root: Path, base_ref: str, excluded: set[str]) -> dict:
         "base_sha": base_sha,
         "entries": entries,
         "content": content,
+        "committed_diff_sha256": _digest_bytes(committed),
         "staged_diff_sha256": _digest_bytes(staged),
         "unstaged_diff_sha256": _digest_bytes(unstaged),
     }
     canonical = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode()
     return {**payload, "fingerprint_sha256": _digest_bytes(canonical)}
+
+
+def _checkpoint_digest(state: dict) -> str:
+    immutable = {
+        "schema_version": state.get("schema_version"),
+        "captured_at": state.get("captured_at"),
+        "excluded_paths": state.get("excluded_paths"),
+        "git": state.get("git"),
+    }
+    canonical = json.dumps(immutable, sort_keys=True, separators=(",", ":")).encode()
+    return _digest_bytes(canonical)
 
 
 def _scope_patterns(task_packet: dict) -> list[str]:
@@ -139,13 +185,14 @@ def capture(
             raise VerificationStateError("--file scope omits Git changes: " + ", ".join(omitted))
     if not changed_paths:
         raise VerificationStateError("Git change set is empty")
-    return {
+    state = {
         "schema_version": "2.0",
         "state": "VERIFIED",
         "captured_at": datetime.now(timezone.utc).isoformat(),
         "excluded_paths": sorted(excluded),
         "git": snapshot,
     }
+    return {**state, "checkpoint_sha256": _checkpoint_digest(state)}
 
 
 def check(
@@ -154,6 +201,7 @@ def check(
     *,
     require_clean_scope: bool = False,
     task_packet: dict | None = None,
+    allowed_excluded_paths: set[str] | None = None,
 ) -> dict:
     root = _repo_root(root)
     if state.get("schema_version") != "2.0" or state.get("state") not in {"VERIFIED", "UNVERIFIED"}:
@@ -161,11 +209,16 @@ def check(
     expected = state.get("git")
     if not isinstance(expected, dict) or not expected.get("fingerprint_sha256"):
         raise VerificationStateError("verification state needs a Git snapshot")
-    excluded = state.get("excluded_paths", [])
-    if not isinstance(excluded, list) or not all(isinstance(item, str) for item in excluded):
+    stored_excluded = state.get("excluded_paths", [])
+    if not isinstance(stored_excluded, list) or not all(isinstance(item, str) for item in stored_excluded):
         raise VerificationStateError("invalid excluded_paths")
-    actual = _snapshot(root, expected.get("base_ref", "HEAD"), set(excluded))
+    allowed_excluded = set(allowed_excluded_paths or set())
     reasons: list[str] = []
+    if set(stored_excluded) != allowed_excluded:
+        reasons.append("stored exclusions differ from the CLI-computed state path")
+    if state.get("checkpoint_sha256") != _checkpoint_digest(state):
+        reasons.append("verification checkpoint integrity digest mismatch")
+    actual = _snapshot(root, expected.get("base_ref", "HEAD"), allowed_excluded)
     if actual["head_sha"] != expected.get("head_sha"):
         reasons.append("HEAD changed")
     if actual["base_sha"] != expected.get("base_sha"):
@@ -217,6 +270,7 @@ def main() -> int:
                 json.loads(state_path.read_text(encoding="utf-8")),
                 require_clean_scope=args.require_clean_scope,
                 task_packet=packet,
+                allowed_excluded_paths={state_relative} if state_relative else set(),
             )
             if state["state"] == "UNVERIFIED":
                 state_path.write_text(json.dumps(state, indent=2) + "\n", encoding="utf-8")

@@ -109,7 +109,7 @@ gates:
     type: deterministic
     hard: true
     applicable_when: technical or browser verification has completed
-    evidence_required: Git-complete verification-state check returning VERIFIED for captured HEAD/base, changed-file statuses, staged/unstaged diffs, and changed-file contents
+    evidence_required: Git-complete verification-state check returning VERIFIED for committed base...HEAD, captured HEAD/base, changed-file statuses, staged/unstaged diffs, changed-file contents, strict state-path exclusion, and checkpoint integrity
     failure_state: REWORK
     retry_policy: rerun affected checks and evidence, capture fresh state, then recheck
   - gate_id: final_git_diff_checkpoint
