@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.0",
+  "run_id": "EXP13-T-008-A",
+  "task_id": "T-008",
+  "route": "A",
+  "model_slug": "opencode-go/deepseek-v4-flash",
+  "triage": {
+    "task_id": "T-008",
+    "execution_confidence": 85,
+    "complexity": 3,
+    "risk": 3,
+    "blast_radius": 1,
+    "affected_repositories": [
+      "mebeldocs-ai"
+    ],
+    "architectural_impact": 2,
+    "data_sensitivity": 2,
+    "unknowns": 1,
+    "deep_change_probability": 29,
+    "human_approval_required": true,
+    "human_approval_reasons": [
+      "production_change"
+    ],
+    "recommended_risk_tier": "VERIFIED",
+    "engine_version": "0.1.0"
+  },
+  "pre_execution": {
+    "checks": [
+      {
+        "check_id": "route_resolves",
+        "result": "PASS",
+        "detail": "opencode-go/deepseek-v4-flash"
+      },
+      {
+        "check_id": "triage_expected_match",
+        "result": "PASS",
+        "detail": "triage matches the frozen expected label"
+      },
+      {
+        "check_id": "acceptance_present",
+        "result": "PASS",
+        "detail": "acceptance criteria present"
+      },
+      {
+        "check_id": "human_review_due",
+        "result": "FAIL",
+        "detail": "human approval required: production_change"
+      }
+    ],
+    "escalation": "HUMAN_REVIEW_REQUIRED",
+    "proceeded": false
+  },
+  "checks": [
+    {
+      "check_id": "route_resolves",
+      "result": "PASS",
+      "detail": "opencode-go/deepseek-v4-flash"
+    },
+    {
+      "check_id": "triage_expected_match",
+      "result": "PASS",
+      "detail": "triage matches the frozen expected label"
+    },
+    {
+      "check_id": "acceptance_present",
+      "result": "PASS",
+      "detail": "acceptance criteria present"
+    },
+    {
+      "check_id": "human_review_due",
+      "result": "FAIL",
+      "detail": "human approval required: production_change"
+    },
+    {
+      "check_id": "usage_valid",
+      "result": "NOT_APPLICABLE",
+      "detail": "run did not proceed to execution"
+    },
+    {
+      "check_id": "usage_consistent",
+      "result": "NOT_APPLICABLE",
+      "detail": "run did not proceed to execution"
+    },
+    {
+      "check_id": "retries_within_limit",
+      "result": "NOT_APPLICABLE",
+      "detail": "run did not proceed to execution"
+    },
+    {
+      "check_id": "defects_within_limit",
+      "result": "NOT_APPLICABLE",
+      "detail": "run did not proceed to execution"
+    },
+    {
+      "check_id": "cost_within_limit",
+      "result": "NOT_APPLICABLE",
+      "detail": "run did not proceed to execution"
+    }
+  ],
+  "usage": {
+    "schema_version": "1.0",
+    "run_id": "EXP13-T-008-A",
+    "provider": null,
+    "model": null,
+    "input_tokens": null,
+    "cached_input_tokens": null,
+    "output_tokens": null,
+    "observed_cost": null,
+    "model_calls": null,
+    "tool_calls": null,
+    "retries": null,
+    "start_time": null,
+    "end_time": null,
+    "progress_checkpoints": [],
+    "measurement_source": "none",
+    "measurement": "unobserved"
+  },
+  "defects": [],
+  "retries": null,
+  "model_calls": null,
+  "tool_calls": null,
+  "escalation": "HUMAN_REVIEW_REQUIRED",
+  "outcome": "HUMAN_REQUIRED",
+  "cost_usd": null,
+  "cost_measurement": "unobserved",
+  "engine_version": "0.1.0",
+  "state": "EXECUTED"
+}

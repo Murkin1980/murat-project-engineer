@@ -1,7 +1,7 @@
 # EXP-13 — Pilot Batch 1 plan
 
 Date: 2026-08-21
-Status: PRE_REGISTERED — A/B usage adapter available; premium execution BLOCKED pending token telemetry
+Status: PARTIALLY EXECUTED — 3 pre-execution escalation runs recorded; 15 model runs blocked pending a frozen execution/scoring protocol
 Parent: `docs/experiments/EXP-13_LOW_COST_EVALUATION_HARNESS.md`
 
 ## Pre-registration
@@ -45,3 +45,16 @@ Every run produces an `EXP13_EXECUTION_RECORD` containing:
 
 After the 18 runs, STOP and analyse. Do not auto-continue into further batches
 or into A/B/premium execution-evidence work in the same task.
+
+## Execution checkpoint — 2026-08-25
+
+The three T-008 routes were executed through the deterministic pre-execution
+gate. All stopped before any model call with `HUMAN_REVIEW_REQUIRED` /
+`HUMAN_REQUIRED`, null cost and unobserved usage, as pre-registered.
+
+The remaining 15 runs have not started. The frozen assets define task summaries,
+routes and telemetry, but do not define the model prompt, required output
+artifact, artifact-level acceptance checks, or an observable procedure for
+assigning defects/retries/tool calls. Inventing those rules after seeing the
+registered batch would make route comparisons non-reproducible. A versioned,
+pre-registered execution/scoring protocol is required before model calls.

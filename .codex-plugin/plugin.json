@@ -1,6 +1,6 @@
 {
   "name": "murat-project-engineer",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Risk-tiered project coordination with bounded experts, playbooks, deterministic gates, and compact run reports.",
   "author": {
     "name": "Murat AI Stack"

@@ -1,10 +1,10 @@
 # Murat Project Engineer — Status
 
-Updated: 2026-08-15
+Updated: 2026-08-29
 
 ## Current version
 
-- Release: v1.0
+- Release: v1.1
 - Stage 1: COMPLETE
 - Stage 2: ACTIVE — 20-run evidence experiment
 - Stage 2A: FIRST-FIVE EVIDENCE CAPTURED
@@ -31,6 +31,10 @@ Implemented and available:
 - context-provider architecture documentation
 - mandatory New Idea Filter Policy
 - operating-model documentation connecting portfolio filtering to risk-tiered execution
+- unified evidence-first workflow: Value / Scope / Deep-change gates → Task Packet → Skillization Gate → bounded delegation → technical checks → Browser Evidence → verification-state check → final Git-diff checkpoint
+- Task Packet and Browser Evidence contracts
+- deterministic verification-state helper that invalidates scoped evidence after post-verification changes
+- safe delegation rules: narrowed authority, explicit stop conditions, and one writer per worktree by default
 - package validator and tests
 - isolated software-feature PoC
 - Stage 2 evidence for Runs 01–11
@@ -84,6 +88,10 @@ The primary disposition must be one of:
 
 See `docs/OPERATING_MODEL.md` for how portfolio filtering connects to the existing FAST / VERIFIED / DEEP-CHANGE execution model.
 
+## Unified execution workflow
+
+`docs/UNIFIED_EXECUTION_WORKFLOW.md` is ACTIVE and MANDATORY for bounded implementation and delegation. It turns the existing gates into one evidence chain rather than independent rules. `PASS` is valid only for the captured Git-complete snapshot and current verification state; the required check returns `UNVERIFIED` after any change-set, status, content, `HEAD`, or base movement and enforces the Task Packet changed-path scope.
+
 ## Boundaries still in force
 
 Not part of the current implementation:
@@ -118,7 +126,7 @@ The experiment must measure quality, rework, reviewer value, interruption recove
 6. Keep Run 11 helpers conditional and bounded. A poller, daemon, retry worker, router, scheduler, shared state, database, or generic messaging/runtime layer requires a new filter and DEEP-CHANGE review.
 7. Add selected deterministic gates to GitHub CI only through a separate bounded change.
 8. Maintain the portfolio dashboard snapshot as part of the weekly status ritual.
-9. EXP-13 Pilot Batch 1 has fail-closed usage paths for all routes: `scripts/usage_from_router_log.py` imports isolated metered A/B Router windows, while `scripts/usage_from_codex_rollout.py` can import one explicit premium Codex turn only when its rollout contains a complete token breakdown. Native Router events and opaque-total rollout events remain unusable; do not substitute synthetic telemetry. The three T-008 routes legally stop without usage. Run the 18-entry batch only after each proceeding run has a valid source record, then STOP and analyse.
+9. EXP-13 Pilot Batch 1 has recorded its three legal T-008 pre-execution stops (`HUMAN_REVIEW_REQUIRED` / `HUMAN_REQUIRED`, no model usage). The 15 proceeding model runs remain `BLOCKED`: telemetry paths now exist, but the frozen experiment lacks a model prompt, required artifact, artifact-level acceptance checks, and observable defect/retry/tool-call attribution. Create and pre-register a versioned execution/scoring protocol before spending model budget; do not invent post-hoc rules. After all 18 records exist, STOP and analyse.
 
 ## Evidence-format finding
 

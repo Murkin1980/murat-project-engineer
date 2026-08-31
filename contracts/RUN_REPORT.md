@@ -19,6 +19,12 @@
 - unresolved_risks:
 - rollback:
 - approximate_usage_cost:
+- task_packet_ref:
+- skillization_gate_result:
+- delegation_summary:
+- browser_evidence_ref:
+- verification_state_ref:
+- final_git_diff_checkpoint:
 - usage: (Run Usage Record — see USAGE_RECORD.md)
 - compute_budget: (AI Compute Budget summary — see COMPUTE_BUDGET.md)
 

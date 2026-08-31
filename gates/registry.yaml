@@ -84,6 +84,41 @@ gates:
     evidence_required: assessment against MASTER and core boundaries
     failure_state: HUMAN_REQUIRED
     retry_policy: detection cannot be overridden; a separate explicit human approval may authorize a later run
+  - gate_id: task_packet_complete
+    type: deterministic
+    hard: true
+    applicable_when: every bounded implementation or delegated task
+    evidence_required: Task Packet with value, scope, deep-change, acceptance, verification, skillization, delegation, and rollback decisions
+    failure_state: BLOCKED
+    retry_policy: complete or narrow the packet before execution
+  - gate_id: skillization_gate
+    type: deterministic
+    hard: true
+    applicable_when: every bounded implementation or delegated task
+    evidence_required: applicable skill reference and proof it was read, or explicit NO_APPLICABLE_SKILL reasoning
+    failure_state: BLOCKED
+    retry_policy: read the applicable skill or document why none applies
+  - gate_id: browser_evidence
+    type: deterministic
+    hard: true
+    applicable_when: one or more acceptance criteria are browser-observable
+    evidence_required: Browser Evidence with exact environment, entry point, steps, observations, and artifact references
+    failure_state: BLOCKED
+    retry_policy: collect fresh evidence; inaccessible required browser surface cannot be passed
+  - gate_id: verification_state_current
+    type: deterministic
+    hard: true
+    applicable_when: technical or browser verification has completed
+    evidence_required: Git-complete verification-state check returning VERIFIED for committed base...HEAD, captured HEAD/base, changed-file statuses, staged/unstaged diffs, changed-file contents, strict state-path exclusion, and checkpoint integrity
+    failure_state: REWORK
+    retry_policy: rerun affected checks and evidence, capture fresh state, then recheck
+  - gate_id: final_git_diff_checkpoint
+    type: deterministic
+    hard: true
+    applicable_when: a run is about to claim PASS after repository changes
+    evidence_required: successful verification_state.py check --require-clean-scope --task-packet command for the final Git snapshot and the exact Task Packet bound during capture, plus rollback reference
+    failure_state: REWORK
+    retry_policy: correct scope/artifacts or re-enter verification after every mutation
   - gate_id: mailbox_schema_valid
     type: deterministic
     hard: true
