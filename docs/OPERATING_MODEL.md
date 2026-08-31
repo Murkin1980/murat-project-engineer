@@ -1,7 +1,7 @@
 # Murat Project Engineer — Operating Model
 
 Status: ACTIVE
-Updated: 2026-08-19
+Updated: 2026-09-01
 Architecture: Option A+ boundaries unchanged
 
 ## Purpose
@@ -32,6 +32,27 @@ If the disposition permits work, identify the target project's source-of-truth f
 
 `NEW_REPOSITORY` is exceptional and requires the evidence defined in the New Idea Filter Policy.
 
+### 2.1 Opinionated Workspace resolution
+
+Before substantial implementation, resolve the project's current default workspace using `docs/OPINIONATED_WORKSPACE_POLICY.md`.
+
+Where applicable, the resolved workspace should identify or inherit the current defaults for:
+
+- source-of-truth repository and governing files;
+- execution environment/runtime;
+- deployment/hosting target;
+- approved integrations and reusable components;
+- evidence/verification method;
+- authority and permission boundaries;
+- rollback path;
+- cost/compute-budget constraints.
+
+Use existing defaults instead of reopening settled infrastructure choices on every task. Do not silently introduce parallel hosting, storage, auth, workflow, gateway, deployment, or verification paths.
+
+If a task needs to deviate from the current workspace default, record the concrete reason and expected measurable benefit. A deviation that changes protected architecture, runtime, credentials/security, persistent-agent, memory-governance, or Router-authority boundaries triggers the deep-change gate.
+
+Opinionated Workspace is a default-resolution policy, not a new runtime or vendor lock. Defaults remain replaceable when evidence justifies change.
+
 ### 3. Execution classification
 
 A concrete implementation task is classified using the existing MPE risk tiers:
@@ -51,7 +72,8 @@ For coordinator runs:
 3. preserve observable handoffs where needed;
 4. run deterministic gates before optional semantic review;
 5. require explicit user approval for DEEP-CHANGE when applicable;
-6. emit one terminal state: `PASS`, `REWORK`, `BLOCKED`, or `HUMAN_REQUIRED`.
+6. preserve the resolved Opinionated Workspace defaults unless an evidence-backed deviation was recorded;
+7. emit one terminal state: `PASS`, `REWORK`, `BLOCKED`, or `HUMAN_REQUIRED`.
 
 ### 4.1 Cost-aware execution invariant
 
@@ -90,6 +112,7 @@ Measured Stage 2 work records:
 - gate results;
 - reviewer findings when used;
 - architecture-pressure signals;
+- resolved Opinionated Workspace defaults and any evidence-backed deviations;
 - observable model/router selection and cost/usage where available;
 - budget-limit or escalation events where applicable.
 
@@ -101,6 +124,7 @@ Do not store hidden chain-of-thought, secrets, agent lifecycle state, queue stat
 - Murat Project Engineer remains a bounded coordinator and policy layer.
 - Codex Router or any additional inference router remains an inference/protocol/credential gateway only.
 - Multiple routers/providers may coexist for cost and capability routing, but no router owns project decisions, approvals or workflow state.
+- Opinionated Workspace resolves project defaults; it does not own runtime state, install tools autonomously, or gain approval authority.
 - Experts remain bounded roles, not persistent processes.
 - Git/project files remain the source of truth.
 - The deep-change-gate remains mandatory.
@@ -110,5 +134,7 @@ Do not store hidden chain-of-thought, secrets, agent lifecycle state, queue stat
 Continue validating this operating model through the 20-run evidence experiment before proposing architectural expansion.
 
 Cost-aware routing may be evaluated as a bounded experiment inside the existing architecture because it changes model/provider selection rather than project authority. Installing a new router that changes credentials, security boundaries, runtime ownership, persistent state, or autonomous execution remains subject to the appropriate security/deep-change review.
+
+Opinionated Workspace may be adopted as documentation/configuration policy inside the current architecture because it resolves existing project defaults rather than creating a workspace runtime or orchestration owner.
 
 A need for better ergonomics, batching, dashboards, or UI is not by itself evidence for a workflow engine, persistent agents, adaptive routing, or durable orchestration state.
