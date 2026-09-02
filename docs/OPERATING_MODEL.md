@@ -99,6 +99,18 @@ Default routing intent:
 - `DEEP-CHANGE` / RED: human gate first where required, then the capability tier justified by the risk;
 - final judge/reviewer: use the strongest necessary model only on the smallest evidence package that can support the decision.
 
+#### Routing Observability Fields
+
+**PROPOSED / EXPERIMENTAL — documentation only; not yet a runtime implementation.**
+
+- `task_tier` — the MPE risk tier used for routing: `FAST`, `VERIFIED`, or `DEEP-CHANGE`.
+- `selected_model_class` — the selected cost-aware model class, such as low-cost or premium, without binding policy to a specific model name.
+- `escalation_reason` — the failed or ambiguous gate, explicit quality need, high-risk reasoning need, or final adjudication need that justified escalation; otherwise absent.
+- `approval_required` — whether the routing decision remains subject to the applicable human gate.
+- `estimated_cost` — the estimated model cost for the routed task, kept distinct from observed cost.
+- `remaining_budget` — the estimated compute budget remaining after the routing decision.
+- `routing_timestamp` — the timestamp at which the routing decision was recorded.
+
 This policy explicitly permits installing/configuring multiple inference routers or provider adapters for economical testing, provided they remain replaceable infrastructure and respect MPE contracts, evidence requirements, security rules and deep-change boundaries.
 
 ### 5. Evidence
