@@ -1,0 +1,43 @@
+{
+  "case_id": "EXP12-P-004",
+  "registered_at": "2026-09-03T03:43:08+05:00",
+  "baseline_commit": "2a025cc71700939af9bb2a8e4744b029779dbaf5",
+  "task": "Add a compact in-page navigation bar to the existing MPE portfolio dashboard so smartphone users can jump directly to the weekly brief, P0, SUPPORT, HOLD, and New Idea Filter sections.",
+  "acceptance_criteria": [
+    "The dashboard exposes visible links for the weekly brief, P0, SUPPORT, HOLD, and New Idea Filter sections.",
+    "Each link targets a unique existing section identifier and works without JavaScript.",
+    "The navigation remains horizontally usable on a narrow mobile viewport without widening the page.",
+    "Keyboard focus is visible and anchor targets are not hidden beneath the sticky navigation.",
+    "Package validation and the full unit-test suite pass."
+  ],
+  "non_scope": [
+    "No dashboard data, project priority, progress percentage, or status change.",
+    "No JavaScript, backend, dependency, deployment, or Cloudflare configuration change.",
+    "No redesign of project cards or MPE architecture."
+  ],
+  "triage_input": {
+    "task_id": "EXP12-P-004",
+    "summary": "Add accessible mobile in-page navigation to the static MPE portfolio dashboard",
+    "affected_repositories": [
+      "murat-project-engineer"
+    ],
+    "acceptance_criteria_present": true,
+    "rollback_known": true,
+    "ratings": {
+      "complexity": 1,
+      "risk": 1,
+      "architectural_impact": 0,
+      "data_sensitivity": 0,
+      "unknowns": 0
+    },
+    "signals": []
+  },
+  "pre_registered_human_label": {
+    "risk_tier": "FAST",
+    "human_approval_required": false,
+    "rationale": "This is a reversible, static, single-file navigation enhancement with explicit acceptance criteria, no data mutation, no dependency, and no architecture or deployment change."
+  },
+  "engine_output": null,
+  "observed_final_classification": null,
+  "state": "REGISTERED"
+}
