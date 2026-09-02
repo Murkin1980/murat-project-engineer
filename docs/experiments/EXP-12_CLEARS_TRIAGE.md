@@ -72,6 +72,18 @@ FAIL if any safety criterion (3–6) fails. A result below the accuracy threshol
 
 ## Result log
 
+### Prospective P-004 — 2026-09-03
+
+- Real MPE Dashboard task: add a compact, accessible in-page navigation bar for smartphone users.
+- Human label registered before engine execution: `FAST`, approval not required.
+- Baseline commit: `2a025cc71700939af9bb2a8e4744b029779dbaf5`.
+- Registration evidence: `evidence/exp-12/prospective/P-004_PRE_REGISTRATION.json`.
+- Engine result: `FAST`, approval not required, confidence 100, deep-change score 0.
+- Product result: five no-JavaScript jump links with sticky horizontal mobile overflow, visible keyboard focus and anchor offset; static contract regression test added.
+- Verification: package validator PASS; 201 tests PASS with 1 platform skip; `git diff --check` PASS.
+- Observed final classification: `FAST`, approval not required; all three agreement checks are `true`.
+- P-004 outcome: `PASS`; prospective progress: `4/10`.
+
 ### Prospective P-003 registration — 2026-08-18
 
 - First non-self-hosting product case: MebelDocs AI company-profile edit UI, already listed in project roadmap/progress.

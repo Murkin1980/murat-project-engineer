@@ -1,0 +1,41 @@
+{
+  "case_id": "EXP12-P-004",
+  "registration_ref": "evidence/exp-12/prospective/P-004_PRE_REGISTRATION.json",
+  "registration_sha256": "67cfa91e469c2600446bd56318a4326242d329a7c6aa0e7c4f9d17fe5cc9fdcc",
+  "execution_ref": "evidence/exp-12/prospective/P-004_EXECUTION.json",
+  "execution_sha256": "63772e849d36f7c9109df165758ccabb28fe530cf4b5ffa91ea64941c17c9b62",
+  "engine_ref": "scripts/triage_engine.py",
+  "engine_sha256": "815566cc9cce865aee286d9a6c2e0235b127fe89a578f0ea380e8c438f1c181c",
+  "engine_output": {
+    "task_id": "EXP12-P-004",
+    "execution_confidence": 100,
+    "complexity": 1,
+    "risk": 1,
+    "blast_radius": 0,
+    "affected_repositories": [
+      "murat-project-engineer"
+    ],
+    "architectural_impact": 0,
+    "data_sensitivity": 0,
+    "unknowns": 0,
+    "deep_change_probability": 0,
+    "human_approval_required": false,
+    "human_approval_reasons": [],
+    "recommended_risk_tier": "FAST",
+    "engine_version": "0.1.0"
+  },
+  "pre_registered_human_label": {
+    "risk_tier": "FAST",
+    "human_approval_required": false,
+    "rationale": "This is a reversible, static, single-file navigation enhancement with explicit acceptance criteria, no data mutation, no dependency, and no architecture or deployment change."
+  },
+  "observed_final_classification": {
+    "risk_tier": "FAST",
+    "human_approval_required": false
+  },
+  "human_engine_agreement": true,
+  "engine_observed_agreement": true,
+  "human_observed_agreement": true,
+  "state": "EVALUATED",
+  "evaluator_version": "0.1.0"
+}

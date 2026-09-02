@@ -62,7 +62,7 @@ Run 07 PASS applies only to completion of the controlled evaluation. Strix execu
 
 Run 09 remains REWORK until its unresolved production-rule, external-LLM, Git-boundary, and source-of-truth findings are addressed. Run 10 remains historically BLOCKED. Run 11 remains inside Option A+ only while its mailbox, JSONL, and lifecycle elements stay bounded, stateless, conditional helpers rather than runtime authority.
 
-Run 12 PASS validates deterministic execution and retrospective fixture consistency. Prospective P-001–P-003 are complete; P-003 is the first real product case (`mebeldocs-ai@987c13e`). All labels matched `VERIFIED / approval=false`. Progress is 3/10, still insufficient for operational reliance.
+Run 12 PASS validates deterministic execution and retrospective fixture consistency. Prospective P-001–P-004 are complete; P-003 is the first external product case (`mebeldocs-ai@987c13e`) and P-004 is the first FAST dashboard UI case. Every case has three-way human/engine/observed agreement. Progress is 4/10, still insufficient for operational reliance.
 
 ## New Idea Filter
 

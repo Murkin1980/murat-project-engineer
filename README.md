@@ -34,7 +34,7 @@ The deterministic `AI Compute Budget` check is currently **experimental** and ma
 
 EXP-12 adds a bounded, stateless triage prototype and a 20-case retrospective backtest. See `docs/experiments/EXP-12_CLEARS_TRIAGE.md`. It recommends a risk tier and human gate from explicit structured inputs; it does not execute, approve or route work autonomously.
 
-Prospective cases use immutable REGISTERED, EXECUTED and EVALUATED evidence with hashes. P-001–P-003 are complete; P-003 is the first product case. Progress is 3/10.
+Prospective cases use immutable REGISTERED, EXECUTED and EVALUATED evidence with hashes. P-001–P-004 are complete; P-003 is the first external product case and P-004 is the first FAST dashboard UI case. Progress is 4/10.
 
 ## Portfolio dashboard
 

@@ -63,7 +63,7 @@ class PackageContractTests(unittest.TestCase):
         registration_schema = json.loads((ROOT / "contracts" / "PROSPECTIVE_CASE.schema.json").read_text(encoding="utf-8"))
         execution_schema = json.loads((ROOT / "contracts" / "PROSPECTIVE_EXECUTION.schema.json").read_text(encoding="utf-8"))
         evaluation_schema = json.loads((ROOT / "contracts" / "PROSPECTIVE_EVALUATION.schema.json").read_text(encoding="utf-8"))
-        for case in ("P-001", "P-002", "P-003"):
+        for case in ("P-001", "P-002", "P-003", "P-004"):
             registration = json.loads((ROOT / "evidence" / "exp-12" / "prospective" / f"{case}_PRE_REGISTRATION.json").read_text(encoding="utf-8"))
             execution = json.loads((ROOT / "evidence" / "exp-12" / "prospective" / f"{case}_EXECUTION.json").read_text(encoding="utf-8"))
             evaluation = json.loads((ROOT / "evidence" / "exp-12" / "prospective" / f"{case}_EVALUATION.json").read_text(encoding="utf-8"))
