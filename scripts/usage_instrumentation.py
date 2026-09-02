@@ -232,6 +232,26 @@ def validate_usage_record(record: dict) -> None:
             raise UsageInstrumentationError(f"invalid checkpoint measurement_source: {checkpoint['measurement_source']}")
 
 
+def summarize_usage(record: dict) -> dict:
+    """Return a compact summary of a validated canonical usage record."""
+    validate_usage_record(record)
+    total_tokens = sum(
+        record[field] or 0
+        for field in ("input_tokens", "cached_input_tokens", "output_tokens")
+    )
+    return {
+        "run_id": record["run_id"],
+        "provider": record["provider"],
+        "model": record["model"],
+        "total_tokens": total_tokens,
+        "model_calls": record["model_calls"],
+        "tool_calls": record["tool_calls"],
+        "retries": record["retries"],
+        "cost": record["observed_cost"],
+        "measurement": record["measurement"],
+    }
+
+
 def usage_to_compute_budget(record: dict) -> dict:
     """Project a usage record onto the compute-budget ``usage`` block.
 

@@ -1,5 +1,6 @@
 import json
 import unittest
+from copy import deepcopy
 from pathlib import Path
 
 from scripts import compute_budget as cb
@@ -102,6 +103,66 @@ class ValidationTests(unittest.TestCase):
         record["start_time"] = "not-a-time"
         with self.assertRaises(ui.UsageInstrumentationError):
             ui.validate_usage_record(record)
+
+
+class SummaryTests(unittest.TestCase):
+    def test_observed_record_with_all_token_fields(self):
+        record = ui.UsageRecorder(
+            run_id="RUN-SUMMARY",
+            provider="OpenCode Zen",
+            model="opencode-go/deepseek-v4-flash",
+        ).start(timestamp="2026-08-20T09:00:00Z").record_model_call(
+            input_tokens=100,
+            cached_input_tokens=25,
+            output_tokens=50,
+            cost=0.02,
+        ).record_tool_call(2).record_retry().to_record(
+            "router_billing",
+            end_time="2026-08-20T09:22:00Z",
+        )
+
+        summary = ui.summarize_usage(record)
+
+        self.assertEqual(175, summary["total_tokens"])
+        self.assertIs(type(summary["total_tokens"]), int)
+        self.assertEqual(0.02, summary["cost"])
+        self.assertEqual(1, summary["model_calls"])
+        self.assertEqual(2, summary["tool_calls"])
+        self.assertEqual(1, summary["retries"])
+
+    def test_none_token_fields_produce_zero_total(self):
+        summary = ui.summarize_usage(ui.empty_record("RUN-EMPTY"))
+        self.assertEqual(0, summary["total_tokens"])
+        self.assertIs(type(summary["total_tokens"]), int)
+
+    def test_estimated_measurement_remains_estimated(self):
+        record = ui.empty_record("RUN-ESTIMATED")
+        record["measurement_source"] = "execution_log"
+        record["measurement"] = "estimated"
+        self.assertEqual("estimated", ui.summarize_usage(record)["measurement"])
+
+    def test_unobserved_cost_remains_none(self):
+        self.assertIsNone(ui.summarize_usage(ui.empty_record("RUN-EMPTY"))["cost"])
+
+    def test_invalid_record_rejected_by_existing_validation(self):
+        record = ui.empty_record("RUN-INVALID")
+        del record["retries"]
+        with self.assertRaises(ui.UsageInstrumentationError):
+            ui.summarize_usage(record)
+
+    def test_source_record_is_not_mutated(self):
+        record = ui.empty_record("RUN-UNCHANGED")
+        original = deepcopy(record)
+        summary = ui.summarize_usage(record)
+        self.assertEqual(original, record)
+        self.assertIsNot(summary, record)
+
+    def test_returned_key_set_is_exact(self):
+        summary = ui.summarize_usage(ui.empty_record("RUN-KEYS"))
+        self.assertEqual({
+            "run_id", "provider", "model", "total_tokens", "model_calls",
+            "tool_calls", "retries", "cost", "measurement",
+        }, set(summary))
 
 
 class ProjectionTests(unittest.TestCase):
