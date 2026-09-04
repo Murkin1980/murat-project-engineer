@@ -1262,6 +1262,297 @@
         animation-iteration-count: 1 !important;
       }
     }
+  
+/* CREF-inspired atlas layer */
+:root {
+  --atlas-lime: #c8ff49;
+  --atlas-cyan: #57c7e5;
+  --atlas-coral: #ff735f;
+  --atlas-yellow: #ffd05b;
+  --atlas-violet: #a38bf2;
+}
+body {
+  background:
+    radial-gradient(circle at 8% 8%, rgba(200,255,73,.08), transparent 24rem),
+    radial-gradient(circle at 92% 30%, rgba(87,199,229,.08), transparent 28rem),
+    var(--bg);
+}
+.story-panel { overflow: clip; }
+.story-panel::before {
+  background-size: 54px 54px;
+  opacity: .7;
+  mask-image: radial-gradient(circle at 58% 42%, black, transparent 75%);
+}
+.story-panel:nth-of-type(even) { background: linear-gradient(145deg, rgba(87,199,229,.035), transparent 65%); }
+.story-panel:nth-of-type(odd) { background: linear-gradient(325deg, rgba(200,255,73,.03), transparent 64%); }
+.story-panel h1, .story-panel h2 { text-shadow: 0 1px 0 rgba(255,255,255,.02); }
+.chaos-board {
+  position: relative;
+  border-color: rgba(185,237,111,.35);
+  background:
+    radial-gradient(circle at 50% 50%, rgba(185,237,111,.08), transparent 45%),
+    rgba(255,255,255,.02);
+}
+.chaos-board::before,
+.chaos-board::after {
+  position: absolute;
+  inset: 15%;
+  border: 1px dashed rgba(185,237,111,.25);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+  animation: atlas-orbit 26s linear infinite;
+}
+.chaos-board::after { inset: 30%; animation-direction: reverse; animation-duration: 17s; }
+.chaos-card {
+  position: relative;
+  z-index: 1;
+  min-height: 142px;
+  display: grid;
+  align-content: end;
+  border-radius: 22px 8px 22px 8px;
+  transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
+}
+.chaos-card:nth-child(2n) { border-radius: 50%; }
+.chaos-card:nth-child(3n) { clip-path: polygon(50% 0,100% 25%,90% 100%,10% 100%,0 25%); }
+.chaos-card:hover { border-color: var(--discovery); background: var(--discovery-soft); transform: translateY(-7px) rotate(0); }
+.linear-flow,
+.mpe-flow { position: relative; }
+.flow-node,
+.mpe-node {
+  min-height: 128px;
+  border-radius: 18px 48px 18px 48px;
+  background: linear-gradient(145deg, rgba(185,237,111,.14), rgba(255,255,255,.018));
+  transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
+}
+.flow-node:nth-child(2n),
+.mpe-node:nth-child(2n) { border-radius: 50%; }
+.flow-node:nth-child(3n),
+.mpe-node:nth-child(3n) { clip-path: polygon(50% 0,100% 25%,90% 100%,10% 100%,0 25%); }
+.flow-node:hover,
+.mpe-node:hover {
+  z-index: 2;
+  border-color: var(--discovery);
+  box-shadow: 0 0 0 7px rgba(185,237,111,.09);
+  transform: translateY(-7px) scale(1.03);
+}
+.pipeline { gap: 12px; }
+.pipeline-stage {
+  border-radius: 18px 44px 18px 44px;
+  background: linear-gradient(145deg, rgba(113,199,255,.1), rgba(255,255,255,.02));
+}
+.pipeline-stage:nth-child(2n) { border-radius: 50%; }
+.pipeline-stage:nth-child(3n) { clip-path: polygon(50% 0,100% 25%,90% 100%,10% 100%,0 25%); }
+.pipeline-stage.is-active {
+  box-shadow: 0 0 0 8px var(--stage-soft), 0 18px 45px rgba(0,0,0,.25);
+  transform: translateY(-8px) scale(1.02);
+}
+.pipeline-detail { border-radius: 18px 44px 18px 44px; }
+.compare-card { transition: transform 240ms ease, border-color 240ms ease; }
+.compare-card:hover { transform: translateY(-6px) rotate(-.5deg); }
+.scenario-shell { display: none !important; }
+#atlasDecision {
+  position: relative;
+  margin-top: 34px;
+  padding: clamp(20px, 3vw, 32px);
+  border: 1px solid rgba(20,34,43,.35);
+  border-radius: 30px;
+  background: linear-gradient(145deg, rgba(255,255,255,.58), rgba(255,255,255,.22));
+  overflow: hidden;
+}
+#atlasDecision::before {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(20,34,43,.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20,34,43,.08) 1px, transparent 1px);
+  background-size: 44px 44px;
+  content: "";
+  opacity: .5;
+}
+.atlas-decision__header,
+.atlas-decision__body,
+.atlas-decision__footer { position: relative; z-index: 1; }
+.atlas-decision__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.atlas-decision__kicker {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+.atlas-decision__headline {
+  max-width: 580px;
+  margin: 7px 0 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(25px, 3vw, 40px);
+  line-height: 1;
+}
+.atlas-decision__badge {
+  min-width: 92px;
+  padding: 10px 12px;
+  border-radius: 12px 30px 12px 30px;
+  background: var(--ink);
+  color: var(--atlas-lime);
+  font-size: 10px;
+  font-weight: 850;
+  text-align: center;
+}
+.atlas-decision__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, .36fr);
+  gap: 18px;
+  align-items: stretch;
+}
+.atlas-cascade {
+  position: relative;
+  min-height: 360px;
+  border: 1px solid rgba(20,34,43,.22);
+  border-radius: 24px;
+  background: rgba(255,253,247,.48);
+  overflow: hidden;
+}
+.atlas-cascade::before {
+  position: absolute;
+  inset: 14px;
+  border: 1px dashed rgba(20,34,43,.2);
+  border-radius: 50%;
+  content: "";
+}
+.atlas-cascade__lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.atlas-cascade__lines path {
+  fill: none;
+  stroke: rgba(20,34,43,.18);
+  stroke-width: 2;
+  stroke-dasharray: 7 8;
+  transition: stroke 260ms ease, stroke-width 260ms ease;
+}
+#atlasDecision[data-choice="build"] .atlas-path--build,
+#atlasDecision[data-choice="validate"] .atlas-path--validate,
+#atlasDecision[data-choice="ignore"] .atlas-path--ignore {
+  stroke: var(--ink);
+  stroke-width: 6;
+  stroke-dasharray: none;
+  animation: atlas-dash 700ms ease both;
+}
+.atlas-node {
+  position: absolute;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  padding: 10px;
+  border: 1px solid var(--line-strong);
+  background: var(--white);
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 850;
+  line-height: 1.1;
+  text-align: center;
+  transition: transform 280ms ease, background 280ms ease;
+}
+.atlas-node--signal { top: 50%; left: 9%; width: 76px; height: 76px; border-radius: 50%; background: var(--atlas-yellow); transform: translateY(-50%); }
+.atlas-node--decision { top: 50%; left: 36%; width: 92px; height: 92px; clip-path: polygon(50% 0,100% 50%,50% 100%,0 50%); background: var(--ink); color: var(--white); transform: translate(-50%, -50%); }
+.atlas-node--build { top: 17%; left: 63%; width: 106px; min-height: 54px; border-radius: 999px; }
+.atlas-node--validate { top: 50%; left: 63%; width: 112px; min-height: 60px; border-radius: 9px 27px 9px 27px; }
+.atlas-node--ignore { top: 83%; left: 63%; width: 102px; min-height: 54px; clip-path: polygon(50% 0,100% 28%,82% 100%,18% 100%,0 28%); }
+.atlas-node--result { top: 50%; right: 6%; width: 92px; height: 92px; border-radius: 50%; background: var(--atlas-lime); transform: translateY(-50%); }
+#atlasDecision[data-choice="build"] .atlas-node--build,
+#atlasDecision[data-choice="validate"] .atlas-node--validate,
+#atlasDecision[data-choice="ignore"] .atlas-node--ignore { background: var(--atlas-cyan); transform: translate(-3px, 0) scale(1.08); }
+#atlasDecision[data-choice="validate"] .atlas-node--validate { box-shadow: 0 0 0 8px rgba(200,255,73,.16); }
+#atlasDecision[data-choice="build"] .atlas-node--result { background: var(--atlas-coral); }
+#atlasDecision[data-choice="ignore"] .atlas-node--result { background: var(--atlas-violet); }
+.atlas-options {
+  display: grid;
+  gap: 8px;
+  margin-top: 13px;
+}
+.atlas-option {
+  min-height: 58px;
+  display: grid;
+  grid-template-columns: 30px minmax(0,1fr);
+  gap: 9px;
+  align-items: center;
+  padding: 9px 11px;
+  border: 1px solid rgba(20,34,43,.2);
+  border-radius: 13px;
+  background: rgba(255,255,255,.55);
+  cursor: pointer;
+  text-align: left;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+.atlas-option:hover { transform: translateX(4px); }
+.atlas-option.is-active { border-color: var(--ink); background: var(--white); transform: translateX(6px); }
+.atlas-option__shape { width: 25px; height: 25px; background: var(--choice-color); }
+.atlas-option:nth-child(1) .atlas-option__shape { border-radius: 50%; }
+.atlas-option:nth-child(2) .atlas-option__shape { border-radius: 5px 13px 5px 13px; }
+.atlas-option:nth-child(3) .atlas-option__shape { clip-path: polygon(50% 0,100% 100%,0 100%); }
+.atlas-option small { display: block; color: var(--muted); font-size: 9px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+.atlas-option strong { display: block; margin-top: 2px; font-size: 13px; line-height: 1.1; }
+.atlas-decision__metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+  margin-top: 12px;
+}
+.atlas-metric {
+  padding: 11px 12px;
+  border-radius: 12px;
+  background: var(--ink);
+  color: var(--white);
+}
+.atlas-metric span { display: block; color: #9eabb0; font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
+.atlas-metric strong { display: block; margin-top: 3px; color: var(--atlas-lime); font-size: 20px; }
+.atlas-decision__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 12px;
+}
+.atlas-decision__result {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(19px, 2.2vw, 28px);
+}
+.atlas-decision__note { max-width: 400px; color: var(--muted); font-size: 11px; text-align: right; }
+@keyframes atlas-orbit { to { transform: rotate(360deg); } }
+@keyframes atlas-dash { from { stroke-dashoffset: 90; } to { stroke-dashoffset: 0; } }
+@media (max-width: 780px) {
+  .atlas-decision__header { align-items: start; flex-direction: column; }
+  .atlas-decision__body { grid-template-columns: 1fr; }
+  .atlas-cascade { min-height: 430px; }
+  .atlas-cascade__lines { display: none; }
+  .atlas-node--signal { top: 10%; left: 50%; transform: translateX(-50%); }
+  .atlas-node--decision { top: 32%; left: 50%; transform: translate(-50%, -50%); }
+  .atlas-node--build { top: 53%; left: 10%; }
+  .atlas-node--validate { top: 53%; left: 50%; transform: translateX(-50%); }
+  .atlas-node--ignore { top: 53%; left: auto; right: 9%; }
+  .atlas-node--result { top: 79%; right: auto; left: 50%; transform: translateX(-50%); }
+  #atlasDecision[data-choice="build"] .atlas-node--build,
+  #atlasDecision[data-choice="ignore"] .atlas-node--ignore { transform: scale(1.06); }
+  #atlasDecision[data-choice="validate"] .atlas-node--validate { transform: translateX(-50%) scale(1.06); }
+  .atlas-decision__footer { align-items: start; flex-direction: column; }
+  .atlas-decision__note { max-width: none; text-align: left; }
+}
+@media (max-width: 390px) {
+  .chaos-card { min-height: 110px; padding: 13px; }
+  .atlas-cascade { min-height: 470px; }
+  .atlas-node--build { left: 4%; width: 94px; }
+  .atlas-node--ignore { right: 3%; width: 90px; }
+  .atlas-node--result { width: 84px; height: 84px; }
+}
+
   </style>
 </head>
 <body>
@@ -1835,5 +2126,131 @@
     renderLanguage();
     syncSectionFromScroll();
   </script>
+
+<script>
+(function () {
+  var copy = {
+    ru: {
+      kicker: "LIVE CASE / один сигнал",
+      headline: "Клиенты снова просят онлайн-расчёт. Как вы отреагируете?",
+      badge: "выберите путь",
+      signal: "Повторяющийся запрос",
+      decision: "Ваше решение",
+      build: "Сразу строить",
+      validate: "Сначала проверить",
+      ignore: "Оставить как есть",
+      time: "До решения",
+      risk: "Риск потерь",
+      clarity: "Ясность",
+      result: {
+        build: "Дорогая гипотеза",
+        validate: "Решение по фактам",
+        ignore: "Сигнал потерян"
+      },
+      note: "Показатели условные: они показывают логику сравнения, а не обещают конкретный результат."
+    },
+    kz: {
+      kicker: "LIVE CASE / бір сигнал",
+      headline: "Клиенттер онлайн есеп сұрайды. Сіз қалай жауап бересіз?",
+      badge: "жолды таңдаңыз",
+      signal: "Қайталанатын сұраныс",
+      decision: "Сіздің шешіміңіз",
+      build: "Бірден жасау",
+      validate: "Алдымен тексеру",
+      ignore: "Өзгеріссіз қалдыру",
+      time: "Шешімге дейін",
+      risk: "Шығын тәуекелі",
+      clarity: "Айқындық",
+      result: {
+        build: "Қымбат гипотеза",
+        validate: "Дерекке негізделген шешім",
+        ignore: "Сигнал жоғалды"
+      },
+      note: "Көрсеткіштер шартты: олар нақты нәтижеге уәде бермейді, тек салыстыру логикасын көрсетеді."
+    }
+  };
+  var metrics = {
+    build: ["42 дня", "78%", "25%"],
+    validate: ["3 дня", "28%", "86%"],
+    ignore: ["0 дней", "64%", "8%"]
+  };
+  var metricsKz = {
+    build: ["42 күн", "78%", "25%"],
+    validate: ["3 күн", "28%", "86%"],
+    ignore: ["0 күн", "64%", "8%"]
+  };
+  var selected = "validate";
+  function currentCopy() { return copy[document.documentElement.lang === "kz" ? "kz" : "ru"]; }
+  function currentMetrics(key) { return document.documentElement.lang === "kz" ? metricsKz[key] : metrics[key]; }
+  function buildAtlas() {
+    var scenario = document.querySelector("#scenario .story-panel__inner");
+    if (!scenario || document.getElementById("atlasDecision")) return;
+    var atlas = document.createElement("div");
+    atlas.id = "atlasDecision";
+    atlas.innerHTML =
+      '<div class="atlas-decision__header"><div><div class="atlas-decision__kicker"></div><h3 class="atlas-decision__headline"></h3></div><div class="atlas-decision__badge"></div></div>' +
+      '<div class="atlas-decision__body"><div class="atlas-cascade">' +
+        '<svg class="atlas-cascade__lines" viewBox="0 0 760 360" preserveAspectRatio="none" aria-hidden="true">' +
+          '<path class="atlas-path atlas-path--build" d="M82 180 C175 180 190 62 300 62 S470 180 680 180" />' +
+          '<path class="atlas-path atlas-path--validate" d="M82 180 C175 180 205 180 300 180 S480 180 680 180" />' +
+          '<path class="atlas-path atlas-path--ignore" d="M82 180 C175 180 190 298 300 298 S470 180 680 180" />' +
+        '</svg>' +
+        '<div class="atlas-node atlas-node--signal"></div><div class="atlas-node atlas-node--decision"></div>' +
+        '<div class="atlas-node atlas-node--build"></div><div class="atlas-node atlas-node--validate"></div><div class="atlas-node atlas-node--ignore"></div><div class="atlas-node atlas-node--result"></div>' +
+      '</div><div><div class="atlas-options">' +
+        '<button class="atlas-option" type="button" data-choice="build" style="--choice-color:#ff735f"><span class="atlas-option__shape"></span><span><small></small><strong></strong></span></button>' +
+        '<button class="atlas-option" type="button" data-choice="validate" style="--choice-color:#c8ff49"><span class="atlas-option__shape"></span><span><small></small><strong></strong></span></button>' +
+        '<button class="atlas-option" type="button" data-choice="ignore" style="--choice-color:#a38bf2"><span class="atlas-option__shape"></span><span><small></small><strong></strong></span></button>' +
+      '</div><div class="atlas-decision__metrics"><div class="atlas-metric"><span class="metric-time"></span><strong></strong></div><div class="atlas-metric"><span class="metric-risk"></span><strong></strong></div><div class="atlas-metric"><span class="metric-clarity"></span><strong></strong></div></div></div></div>' +
+      '<div class="atlas-decision__footer"><div class="atlas-decision__result"></div><div class="atlas-decision__note"></div></div>';
+    scenario.insertBefore(atlas, scenario.querySelector(".scenario-shell"));
+    atlas.querySelectorAll(".atlas-option").forEach(function (button) {
+      button.addEventListener("click", function () { selected = button.dataset.choice; renderAtlas(); });
+    });
+    renderAtlas();
+  }
+  function renderAtlas() {
+    var atlas = document.getElementById("atlasDecision");
+    if (!atlas) return;
+    var c = currentCopy();
+    var choiceIndex = { build: 0, validate: 1, ignore: 2 };
+    var values = currentMetrics(selected);
+    atlas.dataset.choice = selected;
+    atlas.querySelector(".atlas-decision__kicker").textContent = c.kicker;
+    atlas.querySelector(".atlas-decision__headline").textContent = c.headline;
+    atlas.querySelector(".atlas-decision__badge").textContent = c.badge;
+    atlas.querySelector(".atlas-node--signal").textContent = c.signal;
+    atlas.querySelector(".atlas-node--decision").textContent = c.decision;
+    atlas.querySelector(".atlas-node--build").textContent = c.build;
+    atlas.querySelector(".atlas-node--validate").textContent = c.validate;
+    atlas.querySelector(".atlas-node--ignore").textContent = c.ignore;
+    atlas.querySelector(".atlas-node--result").textContent = c.result[selected];
+    var labels = [c.build, c.validate, c.ignore];
+    atlas.querySelectorAll(".atlas-option").forEach(function (button, index) {
+      button.classList.toggle("is-active", index === choiceIndex[selected]);
+      button.setAttribute("aria-pressed", String(index === choiceIndex[selected]));
+      button.querySelector("small").textContent = "0" + (index + 1);
+      button.querySelector("strong").textContent = labels[index];
+    });
+    atlas.querySelector(".metric-time").textContent = c.time;
+    atlas.querySelector(".metric-risk").textContent = c.risk;
+    atlas.querySelector(".metric-clarity").textContent = c.clarity;
+    atlas.querySelectorAll(".atlas-metric strong")[0].textContent = values[0];
+    atlas.querySelectorAll(".atlas-metric strong")[1].textContent = values[1];
+    atlas.querySelectorAll(".atlas-metric strong")[2].textContent = values[2];
+    atlas.querySelector(".atlas-decision__result").textContent = c.result[selected];
+    atlas.querySelector(".atlas-decision__note").textContent = c.note;
+  }
+  buildAtlas();
+  var previousSetLanguage = window.setLanguage;
+  if (typeof previousSetLanguage === "function") {
+    window.setLanguage = function (language) {
+      previousSetLanguage(language);
+      window.setTimeout(renderAtlas, 0);
+    };
+  }
+}());
+</script>
+
 </body>
 </html>
