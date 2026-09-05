@@ -68,7 +68,7 @@ A minimal rule was introduced (and later promoted to production, see below):
 | C | trusted local tool evidence (git status / secrets scan / build) | `PASS` |
 | D | unknown / untrusted evidence source | fail-closed `REWORK` |
 
-**Key result:** MPE distinguishes `UNDERSTOOT`, `EXECUTED CLAIM`, and `VERIFIED EXECUTION`
+**Key result:** MPE distinguishes `UNDERSTOOD`, `EXECUTED CLAIM`, and `VERIFIED EXECUTION`
 using **evidence provenance**, not executor self-identification.
 
 ### Production integration
