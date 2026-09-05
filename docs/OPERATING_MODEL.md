@@ -1,12 +1,33 @@
 # Murat Project Engineer — Operating Model
 
 Status: ACTIVE
-Updated: 2026-09-01
+Updated: 2026-09-05
 Architecture: Option A+ boundaries unchanged
 
 ## Purpose
 
 This document connects the portfolio-level New Idea Filter with the existing per-task Murat Project Engineer execution model. It is policy/documentation only and does not create a runtime, queue, scheduler, persistent agent, memory service, or workflow engine.
+
+## Product Construction Rule — Minimum Sufficient Architecture
+
+Every new product or major product expansion starts from one concrete, measurable user or business task and the smallest architecture that can solve that task end-to-end.
+
+Default rule:
+
+**Core + Task-Specific Shell. Nothing Else Until Needed.**
+
+Application rules:
+
+1. Do not build a general-purpose platform, broad integration layer, orchestration stack, storage layer, memory system, dashboard, vector search, multi-agent topology, or other infrastructure merely because it may be useful later.
+2. Reuse MPE Core or other proven shared components for generic execution concerns such as task contracts, permissions, gates, stop/approval rules, validation, audit, handoff and model/tool adapters.
+3. Keep product-specific logic inside the product. A product should contain only the domain logic and tools required to solve its defined task.
+4. Add a new module only after a verified need appears and the existing core or reusable components cannot satisfy it sufficiently.
+5. Prefer deterministic mechanisms and simple adapters over new framework layers when both can solve the same requirement.
+6. Treat future scalability as a boundary to preserve, not as infrastructure that must be implemented in advance.
+7. A proposed architectural component must name the concrete current problem it solves and the observable acceptance criterion proving that it is needed.
+8. If a component cannot justify itself against a current verified task, default to HOLD rather than building it speculatively.
+
+This rule applies to Business Discovery, Tender Assistant, AI Microtask Factory, MPE Control Center and future products unless an explicit deep-change decision states otherwise.
 
 ## Lifecycle
 
