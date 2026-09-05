@@ -15,6 +15,68 @@ USAGE_RECORD_FIELDS = {"usage_provider", "usage_model", "usage_input_tokens", "u
 EXPERIMENT_FIELDS = {"run_id", "execution_mode", "task_class", "risk_tier", "expert_or_team", "run_duration", "resolved_model_slugs", "tool_calls_observable", "deterministic_gate_failures", "reviewer_findings", "reviewer_false_positives", "rework_count", "human_intervention", "defect_escaped_after_pass", "interruption_recovery_issue", "approximate_token_cost_overhead", "fan_out_fan_in_needed", "notes"}
 
 
+# --- Canonical MPE evidence-trust boundary (integrated from EXP-002 Iteration 3) ---
+# Reuses the existing Result Contract field ``evidence_ref``
+# (RUN_REPORT.deterministic_gate_results). The invariant enforced here:
+#   a claimed/required execution PASS must be backed by a trusted evidence source.
+# Self-reported or unknown evidence is fail-closed (cannot yield PASS). Honest
+# "understood but not executed" is represented as HUMAN_REQUIRED, never as PASS.
+TRUSTED_EVIDENCE_REFS = {
+    "git_status", "git_diff", "secrets_scan", "compileall",
+    "test_runner", "terminal_command", "ci_result",
+    "platform_tool_trace", "hash_linked_artifact",
+}
+UNTRUSTED_EVIDENCE_SENTINELS = {"self_reported", "executor_prose", "model_generated"}
+REQUIRED_EXECUTION_CHECKS = ("clean_diff_scope", "secrets_scan", "build")
+
+
+def classify_evidence_ref(ref) -> str:
+    """Classify an ``evidence_ref`` as TRUSTED / UNTRUSTED / UNKNOWN.
+
+    UNKNOWN covers prose or unrecognized sources and must fail-closed.
+    """
+    if ref in TRUSTED_EVIDENCE_REFS:
+        return "TRUSTED"
+    if ref in UNTRUSTED_EVIDENCE_SENTINELS:
+        return "UNTRUSTED"
+    return "UNKNOWN"
+
+
+def derive_execution_outcome(gate_results, required_checks=REQUIRED_EXECUTION_CHECKS) -> str:
+    """Canonical MPE execution-outcome derivation from gate evidence (deterministic).
+
+    - untrusted/unknown PASS claim for a required check -> REWORK (never PASS)
+    - every required check PASS via trusted evidence        -> PASS
+    - no verified execution evidence                        -> HUMAN_REQUIRED
+    """
+    passed_trusted = [
+        g for g in gate_results
+        if g.get("gate_id") in required_checks and g.get("result") == "PASS"
+        and classify_evidence_ref(g.get("evidence_ref")) == "TRUSTED"
+    ]
+    fabricated = [
+        g for g in gate_results
+        if g.get("gate_id") in required_checks and g.get("result") == "PASS"
+        and classify_evidence_ref(g.get("evidence_ref")) != "TRUSTED"
+    ]
+    if fabricated:
+        return "REWORK"
+    if len(passed_trusted) == len(required_checks):
+        return "PASS"
+    return "HUMAN_REQUIRED"
+
+
+def validate_gate_results(gate_results) -> list:
+    """Return violations: any PASS claim lacking trusted ``evidence_ref``."""
+    violations = []
+    for g in gate_results:
+        if g.get("result") == "PASS" and classify_evidence_ref(g.get("evidence_ref")) != "TRUSTED":
+            violations.append(
+                f"gate {g.get('gate_id')!r} claims PASS with non-trusted evidence_ref {g.get('evidence_ref')!r}"
+            )
+    return violations
+
+
 def frontmatter_keys(path: Path) -> set[str]:
     text = path.read_text(encoding="utf-8")
     match = re.match(r"^---\s*\n(.*?)\n---", text, re.S)
@@ -94,6 +156,21 @@ def validate(root: Path) -> list[str]:
     present = set(re.findall(r"gate_id:\s*([a-z_]+)", registry))
     if required_gates - present:
         errors.append(f"gate registry missing: {sorted(required_gates - present)}")
+
+    # Evidence-trust integration: enforce the canonical rule on canonical RUN_REPORT
+    # gate results (structured JSON). The legacy ``evidence/`` directory used prose
+    # provenance and is intentionally excluded (backward-compat; no bulk-migration).
+    for path in root.rglob("*.json"):
+        if "evidence" in path.parts:
+            continue
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        gates = data.get("deterministic_gate_results") if isinstance(data, dict) else None
+        if isinstance(gates, list):
+            for v in validate_gate_results(gates):
+                errors.append(f"{path.relative_to(root)}: evidence-trust violation: {v}")
 
     route_text = (root / "skills" / "murat-project-engineer" / "references" / "route-profiles.md").read_text(encoding="utf-8")
     for slug in ("gpt-5.6-sol", "opencode-go/deepseek-v4-flash", "opencode-go/kimi-k2.7-code"):
