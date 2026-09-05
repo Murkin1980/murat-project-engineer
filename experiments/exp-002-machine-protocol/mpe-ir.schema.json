@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://murat-ai-stack.local/schemas/mpe-ir-v0.1.json",
+  "title": "MPE Intermediate Representation (minimal PoC)",
+  "description": "Minimal machine-consumable representation of an MPE Task Packet. Every field maps to an existing MPE source (Task Packet / TRIAGE_INPUT / gates/registry.yaml / triage decision). Not a replacement for the Task Packet or Result Contract.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "protocol",
+    "version",
+    "task",
+    "objective",
+    "decision",
+    "scope",
+    "autonomy",
+    "constraints",
+    "acceptance_criteria",
+    "required_checks",
+    "required_evidence"
+  ],
+  "properties": {
+    "protocol": {"type": "string", "const": "mpe-ir"},
+    "version": {"type": "string", "const": "0.1"},
+    "task": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["task_id", "summary"],
+      "properties": {
+        "task_id": {"type": "string", "minLength": 1},
+        "summary": {"type": "string", "minLength": 1}
+      }
+    },
+    "objective": {"type": "string", "minLength": 1},
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["risk_tier", "human_approval_required"],
+      "properties": {
+        "risk_tier": {"type": "string", "enum": ["FAST", "VERIFIED", "DEEP-CHANGE"]},
+        "human_approval_required": {"type": "boolean"}
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["affected_repositories", "allowed_paths", "forbidden_paths"],
+      "properties": {
+        "affected_repositories": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "allowed_paths": {"type": "array", "items": {"type": "string"}},
+        "forbidden_paths": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "autonomy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["level", "requires_human_approval"],
+      "properties": {
+        "level": {"type": "string", "enum": ["FAST", "VERIFIED", "DEEP-CHANGE"]},
+        "requires_human_approval": {"type": "boolean"}
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["new_repository", "production_change", "secrets_write", "deep_change"],
+      "properties": {
+        "new_repository": {"type": "boolean"},
+        "production_change": {"type": "boolean"},
+        "secrets_write": {"type": "boolean"},
+        "deep_change": {"type": "boolean"}
+      }
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "required_checks": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "required_evidence": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    }
+  }
+}
