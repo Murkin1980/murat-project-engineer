@@ -34,13 +34,11 @@ from __future__ import annotations
 from typing import Any, Optional
 
 try:  # normal package / module import
-    from scripts.earned_autonomy import evaluate_autonomy
-    from scripts.triage_engine import ContractError, triage
+    from scripts.earned_autonomy import AUTONOMY_LEVELS, evaluate_autonomy
+    from scripts.triage_engine import triage
 except Exception:  # when loaded standalone via importlib (e.g. tests)
-    from earned_autonomy import evaluate_autonomy  # type: ignore
-    from triage_engine import ContractError, triage  # type: ignore
-
-AUTONOMY_LEVELS = ("L0", "L1", "L2", "L3", "L4")
+    from earned_autonomy import AUTONOMY_LEVELS, evaluate_autonomy  # type: ignore
+    from triage_engine import triage  # type: ignore
 
 LEVEL_TO_ACTION = {
     "L0": "OBSERVE",
