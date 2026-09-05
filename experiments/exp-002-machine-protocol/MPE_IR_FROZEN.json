@@ -1,0 +1,52 @@
+{
+  "protocol": "mpe-ir",
+  "version": "0.1",
+  "task": {
+    "task_id": "T-001",
+    "summary": "Stage 2 status documentation sync for murat-project-engineer"
+  },
+  "objective": "Stage 2 status documentation sync for murat-project-engineer",
+  "decision": {
+    "risk_tier": "FAST",
+    "human_approval_required": false
+  },
+  "scope": {
+    "affected_repositories": [
+      "murat-project-engineer"
+    ],
+    "allowed_paths": [
+      "experiments/exp-002-machine-protocol/"
+    ],
+    "forbidden_paths": [
+      "secrets.env",
+      "*.env",
+      ".github/workflows/"
+    ]
+  },
+  "autonomy": {
+    "level": "FAST",
+    "requires_human_approval": false
+  },
+  "constraints": {
+    "new_repository": false,
+    "production_change": false,
+    "secrets_write": false,
+    "deep_change": false
+  },
+  "acceptance_criteria": [
+    "task objective completed",
+    "only allowed paths changed",
+    "no secret written",
+    "no production change"
+  ],
+  "required_checks": [
+    "clean_diff_scope",
+    "secrets_scan",
+    "build"
+  ],
+  "required_evidence": [
+    "scoped changed-file list",
+    "secrets scan result",
+    "build exit status"
+  ]
+}
