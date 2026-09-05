@@ -214,18 +214,6 @@ def governed_run(
     executor.
     """
     safe_task_id = task.get("task_id") if isinstance(task, dict) else None
-    blocked = {
-        "task_id": safe_task_id,
-        "acceptance_state": "BLOCKED",
-        "allowed_action": "OBSERVE",
-        "executor_invoked": False,
-        "approval_recorded": approval_recorded,
-        "execution_status": "BLOCKED",
-        "execution_result": None,
-        "blocking_reasons": ["entry_integration_error"],
-        "reason": "",
-        "events": ["intake"],
-    }
     try:
         try:  # normal package / module import
             from scripts.execution_runner import run_task
@@ -252,8 +240,18 @@ def governed_run(
             raise ValueError("runner returned an invalid result contract")
         return result
     except Exception as exc:  # fail-closed: never call executor, deterministic block
-        blocked["reason"] = f"fail-closed entry error: {type(exc).__name__}: {exc}"
-        return blocked
+        return {
+            "task_id": safe_task_id,
+            "acceptance_state": "BLOCKED",
+            "allowed_action": "OBSERVE",
+            "executor_invoked": False,
+            "approval_recorded": approval_recorded,
+            "execution_status": "BLOCKED",
+            "execution_result": None,
+            "blocking_reasons": ["entry_integration_error"],
+            "reason": f"fail-closed entry error: {type(exc).__name__}: {exc}",
+            "events": ["intake"],
+        }
 
 
 def main() -> int:
