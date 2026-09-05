@@ -154,14 +154,153 @@ def backtest(dataset: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+# ---------------------------------------------------------------------------
+# Governed task entry — EXTEND_EXISTING wiring of the real Task Packet intake
+# to the already-validated execution path.
+#
+# The triage CLI is the canonical production-like entry point that ingests a
+# Task Packet. This opt-in ``governed_run`` mode routes that SAME Task Packet
+# through ``execution_runner.run_task`` (accept_task -> dispatch_with_autonomy
+# -> evaluate_autonomy -> enforce_execution -> [injected executor]) instead of
+# only printing the risk tier. It adds no new orchestration framework,
+# storage, queue, daemon, API, or provider: the executor stays an injected,
+# provider-neutral callable (the CLI default is a non-mutating dry-run probe
+# that performs zero real work). Safety/history/level are conservative by
+# default (history=[], current_level="L0", every hard-safety signal False),
+# trust is never inferred from executor identity, and every error fails closed
+# (no executor call, deterministic BLOCKED result). The default triage /
+# backtest behavior is unchanged.
+# ---------------------------------------------------------------------------
+
+_DEFAULT_LEVEL = "L0"
+
+
+def governed_dry_run_executor(decision: dict[str, Any]) -> dict[str, Any]:
+    """Non-mutating default executor for the governed-run intake.
+
+    Performs NO real work and NO provider call — it only acknowledges that the
+    single enforcement gate permitted execution, so the CLI can exercise the
+    acceptance/dispatch boundary without mutating anything. Real executors are
+    injected programmatically; none are shipped here.
+    """
+    return {
+        "status": "PROBE_ONLY",
+        "executed": False,
+        "note": "dry-run executor: no work performed; inject a real executor for execution",
+        "task_id": decision.get("task_id") if isinstance(decision, dict) else None,
+    }
+
+
+def governed_run(
+    task: dict[str, Any],
+    executor=None,
+    history: list[dict[str, Any]] | None = None,
+    current_level: str = _DEFAULT_LEVEL,
+    *,
+    approval_recorded: bool = False,
+    scope_violation: bool = False,
+    security_violation: bool = False,
+    secrets_restricted: bool = False,
+    production_restricted: bool = False,
+    stop_condition: bool = False,
+    required_checks: tuple[str, ...] | None = None,
+) -> dict[str, Any]:
+    """Run one real Task Packet through the governed execution path.
+
+    Thin intake adapter over ``execution_runner.run_task`` — it contains no
+    acceptance/dispatch logic of its own and never calls an executor directly.
+    Fail-closed: any parsing / integration / wiring error returns a deterministic
+    BLOCKED result with ``executor_invoked = False`` and never invokes the
+    executor.
+    """
+    safe_task_id = task.get("task_id") if isinstance(task, dict) else None
+    blocked = {
+        "task_id": safe_task_id,
+        "acceptance_state": "BLOCKED",
+        "allowed_action": "OBSERVE",
+        "executor_invoked": False,
+        "approval_recorded": approval_recorded,
+        "execution_status": "BLOCKED",
+        "execution_result": None,
+        "blocking_reasons": ["entry_integration_error"],
+        "reason": "",
+        "events": ["intake"],
+    }
+    try:
+        try:  # normal package / module import
+            from scripts.execution_runner import run_task
+        except Exception:  # when loaded standalone via the scripts/ path (CLI, tests)
+            from execution_runner import run_task  # type: ignore
+
+        if executor is None:
+            executor = governed_dry_run_executor
+
+        result = run_task(
+            task,
+            executor,
+            history=[] if history is None else history,
+            current_level=current_level,
+            approval_recorded=approval_recorded,
+            scope_violation=scope_violation,
+            security_violation=security_violation,
+            secrets_restricted=secrets_restricted,
+            production_restricted=production_restricted,
+            stop_condition=stop_condition,
+            required_checks=required_checks,
+        )
+        if not isinstance(result, dict) or "executor_invoked" not in result:
+            raise ValueError("runner returned an invalid result contract")
+        return result
+    except Exception as exc:  # fail-closed: never call executor, deterministic block
+        blocked["reason"] = f"fail-closed entry error: {type(exc).__name__}: {exc}"
+        return blocked
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Deterministic MPE task triage")
     parser.add_argument("input", type=Path)
     parser.add_argument("--backtest", action="store_true")
+    parser.add_argument(
+        "--governed-run",
+        action="store_true",
+        help="route the Task Packet through the governed execution path "
+        "(accept_task -> dispatch -> enforce_execution) instead of only triaging",
+    )
+    parser.add_argument("--level", default=_DEFAULT_LEVEL, help="current autonomy level L0-L4")
+    parser.add_argument("--approval-recorded", action="store_true")
+    parser.add_argument("--scope-violation", action="store_true")
+    parser.add_argument("--security-violation", action="store_true")
+    parser.add_argument("--secrets-restricted", action="store_true")
+    parser.add_argument("--production-restricted", action="store_true")
+    parser.add_argument("--stop-condition", action="store_true")
+    parser.add_argument(
+        "--history-file",
+        type=Path,
+        help="JSON file with a trusted run-history list for the governed run "
+        "(injected; defaults to empty history — no storage is built here)",
+    )
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
     payload = json.loads(args.input.read_text(encoding="utf-8"))
-    result = backtest(payload) if args.backtest else triage(payload)
+    if args.backtest and args.governed_run:
+        parser.error("--backtest and --governed-run are mutually exclusive")
+    if args.governed_run:
+        history = []
+        if args.history_file:
+            history = json.loads(args.history_file.read_text(encoding="utf-8"))
+        result = governed_run(
+            payload,
+            history=history,
+            current_level=args.level,
+            approval_recorded=args.approval_recorded,
+            scope_violation=args.scope_violation,
+            security_violation=args.security_violation,
+            secrets_restricted=args.secrets_restricted,
+            production_restricted=args.production_restricted,
+            stop_condition=args.stop_condition,
+        )
+    else:
+        result = backtest(payload) if args.backtest else triage(payload)
     rendered = json.dumps(result, ensure_ascii=False, indent=2) + "\n"
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)
