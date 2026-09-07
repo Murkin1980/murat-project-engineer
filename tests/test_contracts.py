@@ -1,3 +1,4 @@
+import hashlib
 import importlib.util
 import json
 import unittest
@@ -70,6 +71,82 @@ class PackageContractTests(unittest.TestCase):
             self.assertEqual(set(registration_schema["required"]), set(registration))
             self.assertEqual(set(execution_schema["required"]), set(execution))
             self.assertEqual(set(evaluation_schema["required"]), set(evaluation))
+
+    def test_exp002_frozen_ir_matches_schema(self):
+        # GAP-1: executable binding between the frozen EXP-002 IR and its
+        # schema. Read-only regression test: fails if the frozen bytes,
+        # protocol/version consts, or schema parity drift.
+        ir_path = ROOT / "experiments" / "exp-002-machine-protocol" / "MPE_IR_FROZEN.json"
+        schema_path = ROOT / "experiments" / "exp-002-machine-protocol" / "mpe-ir.schema.json"
+        self.assertTrue(ir_path.exists(), f"missing frozen IR: {ir_path}")
+        self.assertTrue(schema_path.exists(), f"missing IR schema: {schema_path}")
+        raw = ir_path.read_bytes()
+        self.assertEqual(
+            "cdafe73309960c555d8da1c84efbfc7b4c1e6ca22d3eeafeca5a226ba43fdbfd",
+            hashlib.sha256(raw).hexdigest(),
+            "frozen IR bytes drifted (SHA-256 mismatch)",
+        )
+        self.assertEqual(1148, len(raw), "frozen IR byte size drifted")
+        record = json.loads(raw.decode("utf-8"))
+        schema = json.loads(schema_path.read_text(encoding="utf-8"))
+        self.assert_frozen_ir_conformance(record, schema)
+
+    def assert_frozen_ir_conformance(self, record, schema):
+        # Top-level contract parity: required keys present, nothing unexpected.
+        self.assertEqual(set(schema["required"]), set(record), "frozen IR top-level parity mismatch")
+        # Protocol/version self-identification must equal the schema consts.
+        self.assertEqual(schema["properties"]["protocol"]["const"], record["protocol"])
+        self.assertEqual(schema["properties"]["version"]["const"], record["version"])
+        # Every closed nested object: required keys present, unexpected rejected.
+        # (No subTest wrapper here: failures must raise so negative-proof
+        # assertRaises blocks observe them; the field name is in the message.)
+        for key, subschema in schema["properties"].items():
+            if not isinstance(subschema, dict) or subschema.get("type") != "object":
+                continue
+            self.assertFalse(
+                subschema.get("additionalProperties", True),
+                f"schema object {key!r} must stay closed",
+            )
+            self.assertEqual(
+                set(subschema.get("required", [])),
+                set(record[key]),
+                f"frozen IR nested parity mismatch: {key}",
+            )
+
+    def test_exp002_frozen_ir_conformance_rejects_drift(self):
+        # Negative proof (in-memory mutations only; committed files untouched):
+        # each drift shape must fail the conformance check.
+        schema = json.loads(
+            (ROOT / "experiments" / "exp-002-machine-protocol" / "mpe-ir.schema.json").read_text(encoding="utf-8")
+        )
+        record = json.loads(
+            (ROOT / "experiments" / "exp-002-machine-protocol" / "MPE_IR_FROZEN.json").read_text(encoding="utf-8")
+        )
+
+        def mutated(**overrides):
+            clone = json.loads(json.dumps(record))
+            clone.update(overrides)
+            return clone
+
+        with self.subTest(drift="wrong protocol"):
+            with self.assertRaises(AssertionError):
+                self.assert_frozen_ir_conformance(mutated(protocol="other-ir"), schema)
+        with self.subTest(drift="wrong version"):
+            with self.assertRaises(AssertionError):
+                self.assert_frozen_ir_conformance(mutated(version="9.9"), schema)
+        with self.subTest(drift="extra top-level field"):
+            with self.assertRaises(AssertionError):
+                self.assert_frozen_ir_conformance(mutated(unknown_field="x"), schema)
+        with self.subTest(drift="missing required field"):
+            clone = json.loads(json.dumps(record))
+            del clone["objective"]
+            with self.assertRaises(AssertionError):
+                self.assert_frozen_ir_conformance(clone, schema)
+        with self.subTest(drift="extra nested field"):
+            clone = json.loads(json.dumps(record))
+            clone["task"]["unexpected"] = "x"
+            with self.assertRaises(AssertionError):
+                self.assert_frozen_ir_conformance(clone, schema)
 
 
 if __name__ == "__main__":
