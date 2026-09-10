@@ -1,0 +1,26 @@
+{
+ "run_id": "RUN-13",
+ "task_class": "isolated test fix + documentation/status synchronization",
+ "project": "Murkin1980/murat-project-engineer",
+ "risk_tier": "FAST",
+ "baseline_or_coordinator": "murat-project-engineer",
+ "experts_or_team": [
+  "Coordinator"
+ ],
+ "playbook": "fast",
+ "route_profile": "none (deterministic tools only; no external model route)",
+ "duration": "single same-day session on 2026-09-10 (clock window ~17:11–17:17 UTC; not an instrumented measurement)",
+ "deterministic_failures": 0,
+ "reviewer_findings_useful": 0,
+ "reviewer_false_positives": 0,
+ "rework_count": 0,
+ "human_interventions": 1,
+ "escaped_defect_after_pass": false,
+ "interruption_recovery_result": "NOT_APPLICABLE",
+ "fan_out_fan_in_needed": false,
+ "durable_state_needed": false,
+ "workflow_engine_pressure": false,
+ "persistent_agent_pressure": false,
+ "approximate_cost": "Model/tool cost not observable in this environment; unobserved, not zero.",
+ "notes": "Stabilization run. The failing navigation guard was traced to the intentional 2026-09-07 weekly snapshot refresh (7962d91b09), which regenerated the dashboard with nav class 'nav' (was 'jump-nav') and filter section id 'ideas' (was 'decisions'); the page navigation is internally consistent, so the fix updates the test expectations and follows the page's <nav> element, preserving the 'links target existing sections' invariant (exact set equality + ids subset). dashboard/public/index.html unchanged. STATUS.md and the EXP-13 plan were reconciled with evidence: EXP-002 IR understanding by external models (SUPPORTED) separated from confirmed cross-executor execution (INCONCLUSIVE); EXP-13 premium telemetry is no longer 'BLOCKED pending token telemetry' (fail-closed Codex-rollout adapter since 893517b) while Pilot Batch 1 still has zero executed runs; the deployed dashboard is stale (live 12.08.2026 snapshot vs 07.09.2026 on main; CI deploy steps skipped for missing repository credentials). One nearest action named: choose one small real task from an active project and run it through the existing MPE, recording the outcome, time, rework, and available telemetry; EXP-13 Pilot Batch 1 stays unrun for now. After the fix: full suite 315 tests, 0 failures, 1 skip; validate_package VALIDATION PASSED; git diff --check clean. No Option A+ boundary changed; no deep-change."
+}

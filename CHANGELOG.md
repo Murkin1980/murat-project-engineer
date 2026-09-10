@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased — MPE navigation-test stabilization and status synchronization (2026-09-10)
+
+- Fixed the failing `tests/test_dashboard_navigation.py` regression guard. The test was written against the 2026-09-02 snapshot (nav `class="jump-nav"`, filter section `id="decisions"`); the intentional 2026-09-07 weekly refresh (7962d91b09) regenerated the page with `class="nav"` and section `id="ideas"`. The parser now follows the page's `<nav>` element and expects `{brief, p0, support, hold, ideas}`. The original invariant is preserved: section-navigation links must target exactly the existing section set. No dashboard HTML change.
+- Synchronized `STATUS.md` with origin/main 95d9e4ba, merged PRs, CI runs and the live dashboard: status verification date recorded; EXP-002 state split (external models' understanding of the frozen IR is SUPPORTED; confirmed cross-executor execution is INCONCLUSIVE, self-reported execution claims stay UNVERIFIED); EXP-13 telemetry state split (fail-closed usage adapters exist in main for all routes; Pilot Batch 1 has zero executed runs); stale deployed dashboard recorded (live site shows the 12.08.2026 snapshot while main carries 07.09.2026, and CI deploy steps are skipped until repository Cloudflare credentials are configured); one nearest action named (choose one small real task from an active project and run it through the existing MPE, recording the outcome, time, rework, and available telemetry; EXP-13 Pilot Batch 1 stays unrun for now).
+- Corrected the confirmed stale telemetry status lines in `docs/experiments/EXP-13_PILOT_BATCH1.md` and `docs/experiments/EXP-13_LOW_COST_EVALUATION_HARNESS.md` (premium route has had a fail-closed Codex-rollout usage adapter since 893517b; "BLOCKED pending token telemetry" no longer accurate). Frozen acceptance criteria unchanged.
+- Recorded the stabilization as RUN-13 (`evidence/stage2/RUN-13_REPORT.json`, `evidence/stage2/RUN-13_EXPERIMENT_RECORD.json`) and extended the existing canonical experiment-record field guard in `tests/test_contracts.py` to cover RUN-13.
+- No production code, contracts, frozen assets, workflows, or architecture changed.
+
 ## Unreleased — EXP-13 low-cost evaluation harness + pre-execution rework (2026-08-21)
 
 - Added `contracts/EXP13_EXECUTION_RECORD.schema.json` — canonical record of one EXP-13 low-cost evaluation run: pre-execution checks, full checks, escalation, outcome, defects, and cost (cost is never fabricated).

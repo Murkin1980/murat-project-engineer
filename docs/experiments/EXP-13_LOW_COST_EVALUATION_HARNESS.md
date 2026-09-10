@@ -1,6 +1,6 @@
 # EXP-13 — Low-cost evaluation harness + pre-execution rework
 
-Status: ACTIVE — harness published; Pilot Batch 1 pre-registered and PARTIALLY BLOCKED pending premium-route telemetry
+Status: ACTIVE — harness published; Pilot Batch 1 pre-registered; usage evidence paths available for all routes (A/B Router-log adapter; premium Codex-rollout adapter, fail-closed on incomplete token breakdowns); batch execution not started
 Date: 2026-08-21
 New Idea Filter disposition: `EXPERIMENT` (extends the EXP-12 triage line)
 Execution tier: `VERIFIED`
