@@ -38,7 +38,7 @@ class PackageContractTests(unittest.TestCase):
     def test_stage2_experiment_records_have_canonical_required_fields(self):
         schema = json.loads((ROOT / "contracts" / "EXPERIMENT_RECORD.schema.json").read_text(encoding="utf-8"))
         required = set(schema["required"])
-        for run in range(6, 13):
+        for run in range(6, 14):
             path = ROOT / "evidence" / "stage2" / f"RUN-{run:02d}_EXPERIMENT_RECORD.json"
             with self.subTest(run=run):
                 self.assertTrue(path.exists(), f"missing canonical record: {path}")

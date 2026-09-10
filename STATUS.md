@@ -1,6 +1,6 @@
 # Murat Project Engineer — Status
 
-Updated: 2026-08-15
+Updated: 2026-09-10 (status re-verified against origin/main 95d9e4ba, merged PRs, CI runs and the live dashboard)
 
 ## Current version
 
@@ -8,8 +8,8 @@ Updated: 2026-08-15
 - Stage 1: COMPLETE
 - Stage 2: ACTIVE — 20-run evidence experiment
 - Stage 2A: FIRST-FIVE EVIDENCE CAPTURED
-- Runs 07–12: EVIDENCE CAPTURED — four PASS, one REWORK, one BLOCKED
-- Portfolio dashboard: LIVE at https://murat-project-engineer.muriktl.workers.dev
+- Runs 07–13: EVIDENCE CAPTURED — five PASS, one REWORK, one BLOCKED
+- Portfolio dashboard: LIVE at https://murat-project-engineer.muriktl.workers.dev — deployed snapshot is 12.08.2026 (older design), stale relative to the 07.09.2026 snapshot on main. CI deploy steps are skipped on recent pushes because `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID` are not configured in the repository; a successful workflow run is therefore not proof that the site was updated.
 
 ## Current architecture
 
@@ -33,10 +33,11 @@ Implemented and available:
 - operating-model documentation connecting portfolio filtering to risk-tiered execution
 - package validator and tests
 - isolated software-feature PoC
-- Stage 2 evidence for Runs 01–11
+- Stage 2 evidence for Runs 01–12
 - bounded runtime-coordination contracts and stateless helpers from Run 11
+- EXP-002 Machine Protocol (CLOSED, verdict PASS): external models correctly understood the frozen MPE IR (cross-model semantic portability supported); confirmed cross-executor execution is NOT demonstrated (INCONCLUSIVE — no real tool/repository access; self-reported execution claims remain UNVERIFIED). The evidence-trust boundary rule is promoted into `scripts/validate_package.py`
 - EXP-12 deterministic triage prototype, contracts and first retrospective backtest
-- EXP-13 low-cost evaluation harness + pre-execution rework (frozen dataset v2, routes A/B/premium, thresholds, pricing snapshot, checks, and Pilot Batch 1 pre-registration)
+- EXP-13 low-cost evaluation harness + pre-execution rework (frozen dataset v2, routes A/B/premium, thresholds, pricing snapshot, checks, and Pilot Batch 1 pre-registration). Telemetry state: usage evidence adapters exist in main for all routes (`scripts/usage_from_router_log.py` for A/B isolated metered Router windows; `scripts/usage_from_codex_rollout.py` for one explicit premium Codex turn with a complete per-call breakdown, fail-closed otherwise); no Pilot Batch 1 runs have been executed yet
 - portfolio dashboard (read-only static asset, Workers Static Assets, auto-deploy on configured main push)
 
 ## Stage 2 run status
@@ -53,6 +54,7 @@ Implemented and available:
 - Run 10 — Munder Difflin controlled pilot — VERIFIED coordinator — BLOCKED
 - Run 11 — bounded runtime-coordination patterns — VERIFIED coordinator — PASS
 - Run 12 — CLEARS deterministic triage/executability backtest — VERIFIED coordinator — PASS (retrospective mechanics only)
+- Run 13 — MPE navigation-test fix and status synchronization (this stabilization) — FAST coordinator — PASS
 
 Run 05 remains historically BLOCKED because repository-local package validator and unit tests were not executable through the GitHub connector execution surface during that run. No PASS is retroactively claimed.
 
@@ -110,9 +112,11 @@ The experiment must measure quality, rework, reviewer value, interruption recove
 
 ## Next actions
 
+**Nearest single action (as of 2026-09-10):** resolve open PR #10 (merge or close — the frozen EXP-13 criterion "no execution evidence before merge" gates the batch on it), then run EXP-13 Pilot Batch 1 (18 pre-registered runs) through the existing harness with per-run usage evidence, and STOP after 18. This is the cheapest sufficient next real task: scope is pre-registered, deterministic gates exist, per-run cost is observable, the three T-008 routes stop before spend, and nothing new (gates, architecture, repository) is required.
+
 1. Preserve the historical Run 05 and Run 10 BLOCKED outcomes; do not retroactively promote them.
 2. Keep Run 09 in REWORK until the recorded findings are resolved or explicitly scoped out.
-3. Continue Runs 13–20 with fresh real work; pre-register the next EXP-12 case only when its real task is selected and reach 10 cases before operational reliance.
+3. Continue Runs 14–20 with fresh real work; pre-register the next EXP-12 case only when its real task is selected and reach 10 cases before operational reliance.
 4. Ensure the 20-run set contains at least five baseline runs total; Runs 01–04 currently provide four historical baselines.
 5. Use independent Reviewer on enough VERIFIED runs to measure reviewer usefulness and false positives.
 6. Keep Run 11 helpers conditional and bounded. A poller, daemon, retry worker, router, scheduler, shared state, database, or generic messaging/runtime layer requires a new filter and DEEP-CHANGE review.

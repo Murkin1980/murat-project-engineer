@@ -1,7 +1,7 @@
 # EXP-13 — Pilot Batch 1 plan
 
-Date: 2026-08-21
-Status: PRE_REGISTERED — A/B usage adapter available; premium execution BLOCKED pending token telemetry
+Date: 2026-08-21 (status line re-verified 2026-09-10)
+Status: PRE_REGISTERED — usage evidence paths available for all routes (A/B via `scripts/usage_from_router_log.py`; premium via `scripts/usage_from_codex_rollout.py`, fail-closed unless the rollout contains a complete per-call token breakdown); no batch runs executed yet
 Parent: `docs/experiments/EXP-13_LOW_COST_EVALUATION_HARNESS.md`
 
 ## Pre-registration
