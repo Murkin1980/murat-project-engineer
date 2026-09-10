@@ -33,7 +33,7 @@ Implemented and available:
 - operating-model documentation connecting portfolio filtering to risk-tiered execution
 - package validator and tests
 - isolated software-feature PoC
-- Stage 2 evidence for Runs 01–12
+- Stage 2 evidence for Runs 01–13
 - bounded runtime-coordination contracts and stateless helpers from Run 11
 - EXP-002 Machine Protocol (CLOSED, verdict PASS): external models correctly understood the frozen MPE IR (cross-model semantic portability supported); confirmed cross-executor execution is NOT demonstrated (INCONCLUSIVE — no real tool/repository access; self-reported execution claims remain UNVERIFIED). The evidence-trust boundary rule is promoted into `scripts/validate_package.py`
 - EXP-12 deterministic triage prototype, contracts and first retrospective backtest
@@ -112,7 +112,7 @@ The experiment must measure quality, rework, reviewer value, interruption recove
 
 ## Next actions
 
-**Nearest single action (as of 2026-09-10):** resolve open PR #10 (merge or close — the frozen EXP-13 criterion "no execution evidence before merge" gates the batch on it), then run EXP-13 Pilot Batch 1 (18 pre-registered runs) through the existing harness with per-run usage evidence, and STOP after 18. This is the cheapest sufficient next real task: scope is pre-registered, deterministic gates exist, per-run cost is observable, the three T-008 routes stop before spend, and nothing new (gates, architecture, repository) is required.
+**Nearest single action (as of 2026-09-10):** choose one small real task from an active project and run it through the existing MPE, recording the outcome, time, rework, and available telemetry. Do not run EXP-13 Pilot Batch 1 yet.
 
 1. Preserve the historical Run 05 and Run 10 BLOCKED outcomes; do not retroactively promote them.
 2. Keep Run 09 in REWORK until the recorded findings are resolved or explicitly scoped out.
