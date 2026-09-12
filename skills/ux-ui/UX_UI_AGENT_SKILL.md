@@ -106,6 +106,17 @@ Check:
 - touch targets and spacing appropriate to the platform and task;
 - `prefers-reduced-motion`: remove travel and unnecessary motion, but retain the state change and feedback.
 
+For a modal/dialog:
+
+- move focus into the dialog when it opens;
+- keyboard focus must not reach an unavailable background while the modal is actually blocking;
+- Tab and Shift+Tab must remain inside the dialog when it is a modal dialog;
+- Escape must close the dialog when that is acceptable;
+- after closing, focus returns to the element that opened the dialog;
+- the background is not available for interaction while the modal is blocking.
+
+Do not require a custom focus-trap implementation when the existing component library or a browser-native solution already covers containment. Do not apply focus containment automatically when the dialog is non-modal.
+
 Do not claim an automated audit passed without running it. Treat manual keyboard and visual inspection as complementary evidence.
 
 ## 9. Responsive/Mobile Contract
@@ -170,7 +181,26 @@ Use labels such as blocker, high, medium, or low only when supported by evidence
 - Prefer existing components and tokens; add a new one only with a clear reuse case.
 - Avoid gratuitous dependencies and new toolchains.
 - Do not make backend, database, authentication, production write-path, or infrastructure changes to solve a UI problem.
+- Presentation-only ordering is allowed: a UI change may change the display order of elements without touching the data layer when all of the following hold:
+  - data is not mutated;
+  - persisted/source order does not change;
+  - sorting affects only the presentation/view layer;
+  - sorting improves operational clarity;
+  - business semantics of the records do not change;
+  - other views that require the source order keep it.
+- A display-order change that affects workflow semantics, persistence, API contracts, or downstream consumers is not a UI-only change and requires separate approval.
 - Keep the diff minimal and coherent; do not rewrite unrelated screens.
+- Minimal diff boundary: a local UI change has left this boundary when solving one visual/UX problem starts to require any of:
+  - rewriting several unrelated screens;
+  - a new navigation architecture;
+  - a new UI framework;
+  - a new state-management layer;
+  - a backend/API/database change;
+  - replacing the existing design system;
+  - mass-creating new components instead of reuse;
+  - changing domain/business semantics;
+  - large unrelated cleanup.
+- If any of the above appears, STOP before expanding scope and return `HUMAN_REQUIRED`, or propose a separate Task Packet / experiment. An artificial line-count limit is not an absolute criterion.
 - Do not bypass MPE approval, checkpoints, Task Packet scope, deterministic gates, or evidence requirements.
 - Keep generated artifacts and validation scripts project-local; this skill does not require installing the upstream repository.
 
