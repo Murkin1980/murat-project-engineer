@@ -2,39 +2,2271 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Интерактивная презентация Murat Project Engineer и Business Discovery" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0a0f14" />
+  <meta name="description" content="Интерактивная презентация Business Discovery и Murat Project Engineer" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230a0f14'/%3E%3Cpath d='M15 42V22h6l11 13 11-13h6v20h-6V31L32 44 21 31v11z' fill='%23b9ed6f'/%3E%3C/svg%3E" />
   <title>MPE × Business Discovery</title>
   <style>
-    :root{--bg:#08111f;--panel:#0f1b2e;--panel2:#13223a;--text:#f4f7fb;--muted:#a8b5c8;--line:#243b5a;--a:#4ea1ff;--b:#62d6a7;--warn:#ffc766;--radius:24px}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,#07101d,#0a1422 45%,#08111f);color:var(--text)}
-    a{color:inherit}.wrap{width:min(1180px,calc(100% - 32px));margin:auto}.top{position:sticky;top:0;z-index:20;background:rgba(8,17,31,.88);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08)}
-    .topin{height:66px;display:flex;align-items:center;justify-content:space-between;gap:14px}.brand{font-weight:800;letter-spacing:.02em}.controls{display:flex;gap:8px;align-items:center}.btn{border:1px solid var(--line);background:#0d192a;color:var(--text);border-radius:999px;padding:10px 14px;cursor:pointer;font-weight:700}.btn.active{background:var(--text);color:#08111f}.progress{height:3px;background:#14233a}.progress>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--a),var(--b))}
-    section{min-height:72vh;display:grid;align-items:center;padding:72px 0;border-bottom:1px solid rgba(255,255,255,.05)}.hero{min-height:82vh}.eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#8cbef8;font-weight:800}.hero h1{font-size:clamp(42px,7vw,84px);line-height:.97;margin:14px 0 22px;max-width:980px}.lead{font-size:clamp(19px,2.5vw,28px);line-height:1.4;color:var(--muted);max-width:880px}.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}.chip{padding:10px 14px;border:1px solid var(--line);border-radius:999px;color:#c8d3e4;background:rgba(255,255,255,.025)}
-    h2{font-size:clamp(32px,5vw,56px);line-height:1.05;margin:0 0 16px}.sub{font-size:19px;color:var(--muted);max-width:820px;line-height:1.55}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:34px}.card{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:var(--radius);padding:26px}.card h3{font-size:24px;margin:0 0 10px}.card p{color:var(--muted);line-height:1.55;margin:0}.big{font-size:42px;font-weight:900;margin-bottom:14px}.accentA{color:#75b7ff}.accentB{color:#74e0b5}
-    .compare{display:grid;grid-template-columns:1fr auto 1fr;align-items:stretch;gap:16px;margin-top:34px}.vs{display:grid;place-items:center;color:#8092aa;font-weight:900}.list{display:grid;gap:11px;margin-top:18px}.row{display:flex;gap:12px;align-items:flex-start;color:#dce5f2}.dot{width:9px;height:9px;border-radius:50%;background:var(--a);margin-top:7px;flex:0 0 auto}.green .dot{background:var(--b)}
-    .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:36px}.step{position:relative;padding:20px;border:1px solid var(--line);border-radius:20px;background:#0e1a2b;min-height:150px;cursor:pointer;transition:.2s}.step:hover,.step.active{transform:translateY(-3px);border-color:#4f7cac;background:#12233a}.step b{display:block;font-size:13px;color:#89a5c9;margin-bottom:12px}.step strong{font-size:19px;line-height:1.25}.step p{font-size:14px;color:var(--muted);line-height:1.4}.flowdetail{margin-top:16px;border:1px solid var(--line);border-radius:18px;padding:18px 20px;color:#d9e4f2;background:rgba(255,255,255,.025);min-height:68px}
-    .scenario{display:grid;grid-template-columns:.9fr 1.1fr;gap:22px;margin-top:34px}.problem{font-size:24px;line-height:1.35}.timeline{display:grid;gap:10px}.event{display:grid;grid-template-columns:42px 1fr;gap:12px;align-items:start;padding:15px 0;border-bottom:1px solid var(--line)}.num{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:#132743;color:#9ecbff;font-weight:900}.event strong{display:block;margin-bottom:4px}.event span{color:var(--muted);line-height:1.4}
-    .value{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}.metric{padding:24px;border:1px solid var(--line);border-radius:22px;background:#0e1a2b}.metric strong{display:block;font-size:34px;margin-bottom:8px}.metric span{color:var(--muted);line-height:1.4}.cta{padding:40px;border-radius:28px;border:1px solid #31557d;background:linear-gradient(135deg,#102440,#102d28);margin-top:30px}.cta h3{font-size:32px;margin:0 0 12px}.cta p{font-size:18px;color:#c9d7e8;max-width:760px;line-height:1.5}.footer{padding:26px 0 42px;color:#7f91a8;font-size:14px}
-    @media(max-width:820px){section{padding:56px 0;min-height:auto}.grid,.scenario,.value{grid-template-columns:1fr}.compare{grid-template-columns:1fr}.vs{padding:0}.flow{grid-template-columns:1fr 1fr}.hero{min-height:72vh}.topin{height:auto;padding:10px 0}.brand{font-size:14px}.btn{padding:9px 11px}.card{padding:21px}}
-    @media(max-width:520px){.wrap{width:min(100% - 22px,1180px)}.flow{grid-template-columns:1fr}.hero h1{font-size:43px}.lead{font-size:19px}.controls .btn:first-child{display:none}.topin{gap:8px}.brand{max-width:150px}.value{gap:10px}}
+    :root {
+      --ink: #f5f2e9;
+      --muted: #a6afb7;
+      --dim: #737d86;
+      --bg: #0a0f14;
+      --panel: rgba(21, 30, 38, 0.82);
+      --line: rgba(211, 226, 236, 0.14);
+      --line-strong: rgba(211, 226, 236, 0.28);
+      --discovery: #b9ed6f;
+      --discovery-soft: rgba(185, 237, 111, 0.11);
+      --mpe: #71c7ff;
+      --mpe-soft: rgba(113, 199, 255, 0.11);
+      --signal: #ffb86b;
+      --radius-lg: 30px;
+      --radius-md: 20px;
+      --header-h: 72px;
+      --content: 1240px;
+      color-scheme: dark;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      max-width: 100%;
+      overflow-x: clip;
+    }
+
+    body {
+      margin: 0;
+      min-width: 0;
+      max-width: 100%;
+      overflow-x: clip;
+      background:
+        radial-gradient(circle at 78% 10%, rgba(113, 199, 255, 0.09), transparent 31rem),
+        radial-gradient(circle at 14% 42%, rgba(185, 237, 111, 0.055), transparent 28rem),
+        var(--bg);
+      color: var(--ink);
+      font-family: Aptos, "Segoe UI Variable", "Trebuchet MS", sans-serif;
+      line-height: 1.5;
+    }
+
+    body::before {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.017) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.017) 1px, transparent 1px);
+      background-size: 44px 44px;
+      content: "";
+      pointer-events: none;
+      mask-image: linear-gradient(to bottom, black, transparent 85%);
+    }
+
+    button, a { font: inherit; }
+    button { color: inherit; }
+
+    button:focus-visible,
+    a:focus-visible {
+      outline: 3px solid var(--signal);
+      outline-offset: 3px;
+    }
+
+    [hidden] { display: none !important; }
+
+    .skip-link {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 100;
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: var(--ink);
+      color: var(--bg);
+      transform: translateY(-160%);
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
+    .topbar {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 50;
+      height: var(--header-h);
+      border-bottom: 1px solid var(--line);
+      background: rgba(10, 15, 20, 0.82);
+      backdrop-filter: blur(20px) saturate(140%);
+    }
+
+    .topbar__inner {
+      width: min(var(--content), calc(100% - 32px));
+      height: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      min-width: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      border: 0;
+      padding: 6px;
+      background: none;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .brand__mark {
+      width: 34px;
+      height: 34px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line-strong);
+      border-radius: 11px;
+      background: linear-gradient(145deg, var(--discovery-soft), var(--mpe-soft));
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .brand__copy { min-width: 0; }
+
+    .brand__name {
+      display: block;
+      overflow: hidden;
+      font-weight: 760;
+      letter-spacing: -0.02em;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .brand__chapter {
+      display: block;
+      overflow: hidden;
+      color: var(--muted);
+      font-size: 12px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .topbar__actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 0 0 auto;
+    }
+
+    .menu-button,
+    .lang-button,
+    .icon-button {
+      min-height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.025);
+      cursor: pointer;
+      transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+    }
+
+    .menu-button:hover,
+    .lang-button:hover,
+    .icon-button:hover { border-color: var(--line-strong); }
+
+    .menu-button:active,
+    .lang-button:active,
+    .icon-button:active { transform: scale(0.97); }
+
+    .menu-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 15px;
+      font-weight: 700;
+    }
+
+    .menu-button__dots {
+      width: 14px;
+      height: 14px;
+      display: grid;
+      grid-template-columns: repeat(2, 4px);
+      gap: 3px;
+    }
+
+    .menu-button__dots i {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .language-switch {
+      display: flex;
+      padding: 3px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .lang-button {
+      min-width: 44px;
+      min-height: 44px;
+      border: 0;
+      padding: 0 10px;
+      background: transparent;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 0.06em;
+    }
+
+    .lang-button.is-active {
+      background: var(--ink);
+      color: var(--bg);
+    }
+
+    .top-progress {
+      position: absolute;
+      inset: auto 0 0;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .top-progress__bar {
+      display: block;
+      width: 12.5%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--discovery), var(--mpe));
+      transition: width 280ms ease;
+    }
+
+    .story-panel {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      align-items: center;
+      padding: calc(var(--header-h) + 54px) 0 112px;
+      border-bottom: 1px solid var(--line);
+      scroll-margin-top: var(--header-h);
+      isolation: isolate;
+    }
+
+    .story-panel::after {
+      position: absolute;
+      right: clamp(16px, 4vw, 64px);
+      bottom: 28px;
+      z-index: -1;
+      color: rgba(255, 255, 255, 0.035);
+      content: attr(data-chapter);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(88px, 16vw, 210px);
+      font-variant-numeric: lining-nums;
+      line-height: 0.8;
+      pointer-events: none;
+    }
+
+    .story-panel__inner {
+      width: min(var(--content), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .chapter-label {
+      margin: 0 0 16px;
+      color: var(--mpe);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .chapter-label--green { color: var(--discovery); }
+    .chapter-label--warm { color: var(--signal); }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1,
+    h2,
+    .final-statement {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      letter-spacing: -0.045em;
+      text-wrap: balance;
+    }
+
+    h1 {
+      max-width: 1040px;
+      margin-bottom: 24px;
+      font-size: clamp(44px, 7.1vw, 104px);
+      line-height: 0.98;
+    }
+
+    h2 {
+      max-width: 1010px;
+      margin-bottom: 20px;
+      font-size: clamp(38px, 5.1vw, 72px);
+      line-height: 1.02;
+    }
+
+    .lead {
+      max-width: 850px;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: clamp(18px, 2vw, 25px);
+      line-height: 1.48;
+      text-wrap: pretty;
+    }
+
+    .problem-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(340px, 0.88fr);
+      gap: clamp(36px, 7vw, 98px);
+      align-items: center;
+    }
+
+    .chaos-board {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.018);
+    }
+
+    .chaos-card {
+      min-width: 0;
+      min-height: 128px;
+      padding: 17px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--panel);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+    }
+
+    .chaos-card:nth-child(2) { transform: translateY(10px) rotate(1.3deg); }
+    .chaos-card:nth-child(3) { transform: rotate(-1.5deg); }
+    .chaos-card:nth-child(6) { transform: translateY(-6px) rotate(1deg); }
+
+    .chaos-card__tag {
+      display: block;
+      margin-bottom: 16px;
+      color: var(--dim);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .chaos-card strong {
+      display: block;
+      font-size: clamp(15px, 1.5vw, 19px);
+      line-height: 1.25;
+      text-wrap: balance;
+    }
+
+    .takeaway {
+      display: flex;
+      gap: 13px;
+      align-items: flex-start;
+      max-width: 850px;
+      margin-top: 32px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line-strong);
+      color: var(--ink);
+      font-size: clamp(17px, 1.6vw, 21px);
+      font-weight: 700;
+    }
+
+    .takeaway__mark {
+      width: 12px;
+      height: 12px;
+      flex: 0 0 auto;
+      margin-top: 9px;
+      border-radius: 50%;
+      background: var(--signal);
+      box-shadow: 0 0 0 7px rgba(255, 184, 107, 0.1);
+    }
+
+    .source-row,
+    .benefit-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin: 28px 0 34px;
+    }
+
+    .source-pill,
+    .benefit-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      padding: 8px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.02);
+      color: #d4d9dc;
+      font-size: 14px;
+    }
+
+    .source-pill::before,
+    .benefit-pill::before {
+      width: 6px;
+      height: 6px;
+      margin-right: 9px;
+      border-radius: 50%;
+      background: var(--discovery);
+      content: "";
+    }
+
+    .benefit-pill::before { background: var(--mpe); }
+
+    .linear-flow {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      counter-reset: flow;
+    }
+
+    .flow-node,
+    .mpe-node {
+      position: relative;
+      min-width: 0;
+      min-height: 120px;
+      display: flex;
+      align-items: flex-end;
+      padding: 19px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--panel);
+      color: var(--ink);
+      font-weight: 760;
+      line-height: 1.25;
+    }
+
+    .flow-node::before,
+    .mpe-node::before {
+      position: absolute;
+      top: 16px;
+      left: 18px;
+      color: var(--discovery);
+      content: "0" counter(flow);
+      counter-increment: flow;
+      font-size: 11px;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+    }
+
+    .flow-node:not(:last-child)::after,
+    .mpe-node:not(:last-child)::after {
+      position: absolute;
+      top: 50%;
+      right: -13px;
+      z-index: 2;
+      width: 13px;
+      color: var(--dim);
+      content: "→";
+      font-weight: 400;
+      transform: translateY(-50%);
+    }
+
+    .question-card {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: center;
+      margin-top: 16px;
+      padding: 20px 22px;
+      border: 1px solid rgba(185, 237, 111, 0.35);
+      border-radius: var(--radius-md);
+      background: var(--discovery-soft);
+    }
+
+    .question-card--blue {
+      border-color: rgba(113, 199, 255, 0.35);
+      background: var(--mpe-soft);
+    }
+
+    .question-card span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 780;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .question-card strong {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(20px, 2.2vw, 30px);
+      font-weight: 500;
+      text-align: right;
+    }
+
+    .mpe-flow {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 34px;
+      counter-reset: flow;
+    }
+
+    .mpe-node {
+      min-height: 108px;
+      padding: 16px;
+      font-size: 14px;
+    }
+
+    .mpe-node::before { color: var(--mpe); }
+
+    .interactive-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 18px;
+      margin-top: 34px;
+      align-items: stretch;
+    }
+
+    .pipeline {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 9px;
+      min-width: 0;
+    }
+
+    .pipeline-stage {
+      position: relative;
+      min-width: 0;
+      min-height: 158px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 17px;
+      overflow: visible;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.022);
+      cursor: pointer;
+      text-align: left;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .pipeline-stage:not(:last-child)::after {
+      position: absolute;
+      right: -7px;
+      bottom: 46px;
+      z-index: 2;
+      color: var(--dim);
+      content: "↓";
+      font-size: 16px;
+    }
+
+    .pipeline-stage:hover { transform: translateY(-4px); }
+
+    .pipeline-stage.is-active {
+      border-color: var(--stage-accent, var(--mpe));
+      background: var(--stage-soft, var(--mpe-soft));
+    }
+
+    .pipeline-stage__num {
+      color: var(--dim);
+      font-size: 11px;
+      font-weight: 850;
+      letter-spacing: 0.1em;
+    }
+
+    .pipeline-stage__label {
+      display: block;
+      max-width: 100%;
+      font-size: clamp(14px, 1.25vw, 17px);
+      font-weight: 800;
+      line-height: 1.2;
+      overflow-wrap: break-word;
+    }
+
+    .pipeline-stage[data-tone="discovery"] {
+      --stage-accent: var(--discovery);
+      --stage-soft: var(--discovery-soft);
+    }
+
+    .pipeline-stage[data-tone="signal"] {
+      --stage-accent: var(--signal);
+      --stage-soft: rgba(255, 184, 107, 0.1);
+    }
+
+    .pipeline-detail {
+      min-width: 0;
+      min-height: 126px;
+      display: flex;
+      justify-content: flex-start;
+      gap: clamp(24px, 5vw, 72px);
+      align-items: center;
+      padding: 25px;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018));
+    }
+
+    .pipeline-detail__label {
+      flex: 0 0 auto;
+      color: var(--dim);
+      font-size: 11px;
+      font-weight: 850;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .pipeline-detail p {
+      max-width: 850px;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(22px, 2.25vw, 31px);
+      line-height: 1.25;
+      text-wrap: balance;
+    }
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 90px minmax(0, 1fr);
+      gap: 18px;
+      margin-top: 38px;
+      align-items: stretch;
+    }
+
+    .compare-card {
+      min-width: 0;
+      padding: clamp(25px, 4vw, 42px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--panel);
+    }
+
+    .compare-card--discovery { border-top: 3px solid var(--discovery); }
+    .compare-card--mpe { border-top: 3px solid var(--mpe); }
+
+    .compare-card__name {
+      margin-bottom: 32px;
+      color: var(--discovery);
+      font-size: 14px;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .compare-card--mpe .compare-card__name { color: var(--mpe); }
+
+    .compare-card h3 {
+      margin-bottom: 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(27px, 3vw, 40px);
+      font-weight: 500;
+      line-height: 1.1;
+      text-wrap: balance;
+    }
+
+    .compare-card p {
+      margin-bottom: 30px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .compare-question {
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    .compare-question span {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--dim);
+      font-size: 12px;
+      font-weight: 750;
+      text-transform: uppercase;
+    }
+
+    .compare-question strong { font-size: clamp(20px, 2vw, 27px); }
+
+    .sequence-arrow {
+      display: grid;
+      place-items: center;
+      color: var(--dim);
+      font-size: 38px;
+    }
+
+    .sequence-note {
+      max-width: 880px;
+      margin: 20px auto 0;
+      padding: 17px 20px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.018);
+      text-align: center;
+      text-wrap: balance;
+    }
+
+    .sequence-note strong { color: var(--discovery); }
+    .sequence-note b { color: var(--mpe); }
+
+    .scenario-shell {
+      display: grid;
+      grid-template-columns: minmax(220px, 0.34fr) minmax(0, 1fr);
+      gap: 18px;
+      margin-top: 36px;
+    }
+
+    .scenario-nav {
+      display: grid;
+      align-content: start;
+      gap: 8px;
+    }
+
+    .scenario-tab {
+      min-height: 68px;
+      display: grid;
+      grid-template-columns: 32px minmax(0, 1fr);
+      gap: 10px;
+      align-items: center;
+      padding: 13px 15px;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: rgba(255, 255, 255, 0.02);
+      cursor: pointer;
+      text-align: left;
+      transition: border-color 180ms ease, background 180ms ease;
+    }
+
+    .scenario-tab span:first-child {
+      color: var(--dim);
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .scenario-tab span:last-child {
+      min-width: 0;
+      font-weight: 760;
+      overflow-wrap: anywhere;
+    }
+
+    .scenario-tab.is-active {
+      border-color: var(--mpe);
+      background: var(--mpe-soft);
+    }
+
+    .scenario-card {
+      min-width: 0;
+      min-height: 386px;
+      padding: clamp(26px, 4.5vw, 48px);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(145deg, rgba(113, 199, 255, 0.07), rgba(185, 237, 111, 0.025));
+    }
+
+    .scenario-card__role {
+      display: block;
+      margin-bottom: 22px;
+      color: var(--mpe);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .scenario-card h3 {
+      max-width: 780px;
+      margin-bottom: 23px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(27px, 3.2vw, 44px);
+      font-weight: 500;
+      line-height: 1.13;
+      text-wrap: balance;
+    }
+
+    .scenario-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .scenario-list li {
+      position: relative;
+      min-width: 0;
+      padding: 14px 14px 14px 37px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: rgba(0, 0, 0, 0.12);
+      color: #d6dce0;
+    }
+
+    .scenario-list li::before {
+      position: absolute;
+      top: 18px;
+      left: 16px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--discovery);
+      content: "";
+    }
+
+    .scenario-verdict {
+      margin-top: 20px;
+      padding: 16px 18px;
+      border-left: 3px solid var(--signal);
+      background: rgba(255, 184, 107, 0.07);
+      font-weight: 780;
+    }
+
+    .scenario-outcome {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .scenario-outcome span {
+      position: relative;
+      min-width: 0;
+      padding: 13px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 680;
+      line-height: 1.3;
+      overflow-wrap: anywhere;
+    }
+
+    .scenario-outcome span:not(:last-child)::after {
+      position: absolute;
+      top: 50%;
+      right: -8px;
+      z-index: 2;
+      color: var(--dim);
+      content: "→";
+      transform: translateY(-50%);
+    }
+
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 11px;
+      margin-top: 38px;
+    }
+
+    .value-card {
+      min-width: 0;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--panel);
+    }
+
+    .value-card__num {
+      color: var(--mpe);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 32px;
+    }
+
+    .value-card h3 {
+      margin-bottom: 10px;
+      font-size: 19px;
+      line-height: 1.18;
+      text-wrap: balance;
+    }
+
+    .value-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .final-panel {
+      text-align: center;
+      background:
+        radial-gradient(circle at 50% 52%, rgba(113, 199, 255, 0.12), transparent 27rem),
+        radial-gradient(circle at 50% 40%, rgba(185, 237, 111, 0.07), transparent 34rem);
+    }
+
+    .final-panel .chapter-label { color: var(--ink); }
+
+    .final-statement {
+      max-width: 1050px;
+      margin: 0 auto;
+      font-size: clamp(40px, 6.3vw, 88px);
+      line-height: 1.03;
+    }
+
+    .final-statement span { display: block; }
+    .final-statement .final-discovery { color: var(--discovery); }
+    .final-statement .final-mpe { color: var(--mpe); }
+
+    .final-chain {
+      max-width: 980px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+      gap: 13px;
+      align-items: center;
+      margin: 48px auto 0;
+      padding: 18px;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.028);
+    }
+
+    .final-chain span:not(.final-chain__arrow) {
+      min-width: 0;
+      padding: 15px;
+      font-weight: 760;
+      overflow-wrap: anywhere;
+    }
+
+    .final-chain__arrow { color: var(--dim); }
+
+    .final-note {
+      max-width: 680px;
+      margin: 25px auto 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .story-controls {
+      position: fixed;
+      right: 50%;
+      bottom: max(16px, env(safe-area-inset-bottom));
+      z-index: 45;
+      width: min(720px, calc(100% - 24px));
+      min-height: 64px;
+      display: grid;
+      grid-template-columns: minmax(112px, auto) minmax(0, 1fr) minmax(112px, auto);
+      gap: 9px;
+      padding: 8px;
+      border: 1px solid var(--line-strong);
+      border-radius: 22px;
+      background: rgba(15, 22, 29, 0.9);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.36);
+      backdrop-filter: blur(22px) saturate(150%);
+      transform: translateX(50%);
+    }
+
+    .control-button {
+      min-width: 0;
+      min-height: 48px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.025);
+      cursor: pointer;
+      font-weight: 760;
+    }
+
+    .control-button:disabled { cursor: not-allowed; opacity: 0.34; }
+
+    .control-button--next {
+      border-color: transparent;
+      background: var(--ink);
+      color: var(--bg);
+    }
+
+    .control-status {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 8px;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .control-status__count {
+      color: var(--dim);
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: 0.12em;
+    }
+
+    .control-status__title {
+      max-width: 100%;
+      overflow: hidden;
+      font-size: 13px;
+      font-weight: 740;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 70;
+      border: 0;
+      background: rgba(0, 0, 0, 0.56);
+      cursor: default;
+      opacity: 0;
+      transition: opacity 220ms ease;
+    }
+
+    .chapter-drawer {
+      position: fixed;
+      top: 12px;
+      right: 12px;
+      bottom: 12px;
+      z-index: 80;
+      width: min(430px, calc(100% - 24px));
+      display: flex;
+      flex-direction: column;
+      padding: 18px;
+      border: 1px solid var(--line-strong);
+      border-radius: 28px;
+      background: #111820;
+      box-shadow: 0 32px 100px rgba(0, 0, 0, 0.48);
+      transform: translateX(calc(100% + 32px));
+      transition: transform 220ms ease;
+    }
+
+    .drawer-backdrop.is-open { opacity: 1; }
+    .chapter-drawer.is-open { transform: translateX(0); }
+
+    .drawer__header {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+      margin-bottom: 14px;
+      padding: 4px 4px 14px 8px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .drawer__header strong {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 25px;
+      font-weight: 500;
+    }
+
+    .icon-button {
+      width: 44px;
+      flex: 0 0 auto;
+      padding: 0;
+      font-size: 22px;
+    }
+
+    .drawer__nav {
+      min-height: 0;
+      display: grid;
+      gap: 7px;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+
+    .drawer-link {
+      min-height: 58px;
+      display: grid;
+      grid-template-columns: 38px minmax(0, 1fr);
+      gap: 10px;
+      align-items: center;
+      padding: 10px 12px;
+      border: 1px solid transparent;
+      border-radius: 15px;
+      background: transparent;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .drawer-link:hover { background: rgba(255, 255, 255, 0.03); }
+
+    .drawer-link.is-active {
+      border-color: var(--line-strong);
+      background: rgba(255, 255, 255, 0.045);
+    }
+
+    .drawer-link__num {
+      color: var(--dim);
+      font-size: 11px;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+    }
+
+    .drawer-link__name {
+      min-width: 0;
+      font-weight: 720;
+      overflow-wrap: anywhere;
+    }
+
+    .page-footer {
+      padding: 28px 16px 120px;
+      color: var(--dim);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    @media (max-width: 1100px) {
+      .problem-layout { grid-template-columns: 1fr; }
+      .chaos-board { max-width: 760px; }
+      .mpe-flow { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .mpe-node:nth-child(4)::after { display: none; }
+      .pipeline { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .pipeline-stage { min-height: 138px; }
+      .pipeline-stage:nth-child(4)::after { display: none; }
+      .pipeline-detail { min-height: 126px; }
+      .value-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 780px) {
+      :root { --header-h: 64px; }
+
+      .topbar__inner,
+      .story-panel__inner { width: min(100% - 24px, var(--content)); }
+
+      .brand__name { font-size: 14px; }
+      .brand__chapter { display: none; }
+      .menu-button__label { display: none; }
+      .menu-button { width: 44px; justify-content: center; padding: 0; }
+
+      .story-panel {
+        min-height: 100svh;
+        padding: calc(var(--header-h) + 44px) 0 118px;
+      }
+
+      .linear-flow,
+      .mpe-flow,
+      .pipeline { grid-template-columns: 1fr; }
+
+      .flow-node,
+      .mpe-node {
+        min-height: 76px;
+        padding: 18px 18px 18px 65px;
+        align-items: center;
+      }
+
+      .flow-node::before,
+      .mpe-node::before {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .flow-node:not(:last-child)::after,
+      .mpe-node:not(:last-child)::after {
+        top: auto;
+        right: 50%;
+        bottom: -18px;
+        width: auto;
+        content: "↓";
+        transform: translateX(50%);
+      }
+
+      .mpe-node:nth-child(4)::after { display: block; }
+
+      .question-card { align-items: flex-start; flex-direction: column; }
+      .question-card strong { text-align: left; }
+
+      .pipeline-stage {
+        min-height: 72px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 17px;
+        padding: 15px 17px;
+      }
+
+      .pipeline-stage:not(:last-child)::after {
+        right: 50%;
+        bottom: -15px;
+        transform: translateX(50%);
+      }
+
+      .pipeline-stage__num { flex: 0 0 26px; }
+      .pipeline-stage:nth-child(4)::after { display: block; }
+      .pipeline-detail { align-items: flex-start; flex-direction: column; gap: 0; }
+      .pipeline-detail p { margin-top: 20px; }
+
+      .compare-grid { grid-template-columns: 1fr; }
+      .sequence-arrow { min-height: 34px; transform: rotate(90deg); }
+      .sequence-note { border-radius: var(--radius-md); }
+
+      .scenario-shell { grid-template-columns: 1fr; }
+      .scenario-nav { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .scenario-tab {
+        min-height: 62px;
+        grid-template-columns: 1fr;
+        gap: 2px;
+        padding: 9px;
+        text-align: center;
+      }
+      .scenario-tab span:last-child { font-size: 12px; line-height: 1.2; }
+      .scenario-card { min-height: 420px; }
+      .scenario-list { grid-template-columns: 1fr; }
+      .scenario-outcome { grid-template-columns: 1fr 1fr; }
+      .scenario-outcome span:nth-child(2)::after { display: none; }
+
+      .value-grid { grid-template-columns: 1fr 1fr; }
+      .value-card { min-height: 210px; }
+
+      .final-chain { grid-template-columns: 1fr; max-width: 520px; }
+      .final-chain__arrow { transform: rotate(90deg); }
+    }
+
+    @media (max-width: 520px) {
+      .brand__copy { display: none; }
+      .topbar__actions { gap: 6px; }
+
+      h1 { font-size: clamp(40px, 12.5vw, 58px); }
+      h2 { font-size: clamp(36px, 10.4vw, 48px); }
+
+      .chaos-board { padding: 10px; gap: 7px; }
+      .chaos-card { min-height: 112px; padding: 13px; }
+      .chaos-card__tag { margin-bottom: 11px; }
+
+      .value-grid { grid-template-columns: 1fr; }
+      .value-card { min-height: 180px; }
+
+      .scenario-nav { grid-template-columns: 1fr 1fr; }
+      .scenario-card { min-height: 460px; padding: 24px 20px; }
+      .scenario-outcome { grid-template-columns: 1fr; }
+      .scenario-outcome span:not(:last-child)::after {
+        top: auto;
+        right: 50%;
+        bottom: -14px;
+        content: "↓";
+        transform: translateX(50%);
+      }
+      .scenario-outcome span:nth-child(2)::after { display: block; }
+
+      .story-controls { grid-template-columns: 52px minmax(0, 1fr) 52px; min-height: 62px; }
+      .control-button { padding: 0; }
+      .control-button__label { display: none; }
+      .control-status__title { font-size: 12px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  
+/* CREF-inspired atlas layer */
+:root {
+  --atlas-lime: #c8ff49;
+  --atlas-cyan: #57c7e5;
+  --atlas-coral: #ff735f;
+  --atlas-yellow: #ffd05b;
+  --atlas-violet: #a38bf2;
+}
+body {
+  background:
+    radial-gradient(circle at 8% 8%, rgba(200,255,73,.08), transparent 24rem),
+    radial-gradient(circle at 92% 30%, rgba(87,199,229,.08), transparent 28rem),
+    var(--bg);
+}
+.story-panel { overflow: clip; }
+.story-panel::before {
+  background-size: 54px 54px;
+  opacity: .7;
+  mask-image: radial-gradient(circle at 58% 42%, black, transparent 75%);
+}
+.story-panel:nth-of-type(even) { background: linear-gradient(145deg, rgba(87,199,229,.035), transparent 65%); }
+.story-panel:nth-of-type(odd) { background: linear-gradient(325deg, rgba(200,255,73,.03), transparent 64%); }
+.story-panel h1, .story-panel h2 { text-shadow: 0 1px 0 rgba(255,255,255,.02); }
+.chaos-board {
+  position: relative;
+  border-color: rgba(185,237,111,.35);
+  background:
+    radial-gradient(circle at 50% 50%, rgba(185,237,111,.08), transparent 45%),
+    rgba(255,255,255,.02);
+}
+.chaos-board::before,
+.chaos-board::after {
+  position: absolute;
+  inset: 15%;
+  border: 1px dashed rgba(185,237,111,.25);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+  animation: atlas-orbit 26s linear infinite;
+}
+.chaos-board::after { inset: 30%; animation-direction: reverse; animation-duration: 17s; }
+.chaos-card {
+  position: relative;
+  z-index: 1;
+  min-height: 142px;
+  display: grid;
+  align-content: end;
+  border-radius: 22px 8px 22px 8px;
+  transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
+}
+.chaos-card:nth-child(2n) { border-radius: 50%; }
+.chaos-card:nth-child(3n) { clip-path: polygon(50% 0,100% 25%,90% 100%,10% 100%,0 25%); }
+.chaos-card:hover { border-color: var(--discovery); background: var(--discovery-soft); transform: translateY(-7px) rotate(0); }
+.linear-flow,
+.mpe-flow { position: relative; }
+.flow-node,
+.mpe-node {
+  min-height: 128px;
+  border-radius: 18px 48px 18px 48px;
+  background: linear-gradient(145deg, rgba(185,237,111,.14), rgba(255,255,255,.018));
+  transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
+}
+.flow-node:nth-child(2n),
+.mpe-node:nth-child(2n) { border-radius: 50%; }
+.flow-node:nth-child(3n),
+.mpe-node:nth-child(3n) { clip-path: polygon(50% 0,100% 25%,90% 100%,10% 100%,0 25%); }
+.flow-node:hover,
+.mpe-node:hover {
+  z-index: 2;
+  border-color: var(--discovery);
+  box-shadow: 0 0 0 7px rgba(185,237,111,.09);
+  transform: translateY(-7px) scale(1.03);
+}
+.pipeline { gap: 12px; }
+.pipeline-stage {
+  border-radius: 18px 44px 18px 44px;
+  background: linear-gradient(145deg, rgba(113,199,255,.1), rgba(255,255,255,.02));
+}
+.pipeline-stage:nth-child(2n) { border-radius: 50%; }
+.pipeline-stage:nth-child(3n) { clip-path: polygon(50% 0,100% 25%,90% 100%,10% 100%,0 25%); }
+.pipeline-stage.is-active {
+  box-shadow: 0 0 0 8px var(--stage-soft), 0 18px 45px rgba(0,0,0,.25);
+  transform: translateY(-8px) scale(1.02);
+}
+.pipeline-detail { border-radius: 18px 44px 18px 44px; }
+.compare-card { transition: transform 240ms ease, border-color 240ms ease; }
+.compare-card:hover { transform: translateY(-6px) rotate(-.5deg); }
+.scenario-shell { display: none !important; }
+#atlasDecision {
+  position: relative;
+  margin-top: 34px;
+  padding: clamp(20px, 3vw, 32px);
+  border: 1px solid rgba(20,34,43,.35);
+  border-radius: 30px;
+  background: linear-gradient(145deg, rgba(255,255,255,.58), rgba(255,255,255,.22));
+  overflow: hidden;
+}
+#atlasDecision::before {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(20,34,43,.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20,34,43,.08) 1px, transparent 1px);
+  background-size: 44px 44px;
+  content: "";
+  opacity: .5;
+}
+.atlas-decision__header,
+.atlas-decision__body,
+.atlas-decision__footer { position: relative; z-index: 1; }
+.atlas-decision__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.atlas-decision__kicker {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+.atlas-decision__headline {
+  max-width: 580px;
+  margin: 7px 0 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(25px, 3vw, 40px);
+  line-height: 1;
+}
+.atlas-decision__badge {
+  min-width: 92px;
+  padding: 10px 12px;
+  border-radius: 12px 30px 12px 30px;
+  background: var(--ink);
+  color: var(--atlas-lime);
+  font-size: 10px;
+  font-weight: 850;
+  text-align: center;
+}
+.atlas-decision__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, .36fr);
+  gap: 18px;
+  align-items: stretch;
+}
+.atlas-cascade {
+  position: relative;
+  min-height: 360px;
+  border: 1px solid rgba(20,34,43,.22);
+  border-radius: 24px;
+  background: rgba(255,253,247,.48);
+  overflow: hidden;
+}
+.atlas-cascade::before {
+  position: absolute;
+  inset: 14px;
+  border: 1px dashed rgba(20,34,43,.2);
+  border-radius: 50%;
+  content: "";
+}
+.atlas-cascade__lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.atlas-cascade__lines path {
+  fill: none;
+  stroke: rgba(20,34,43,.18);
+  stroke-width: 2;
+  stroke-dasharray: 7 8;
+  transition: stroke 260ms ease, stroke-width 260ms ease;
+}
+#atlasDecision[data-choice="build"] .atlas-path--build,
+#atlasDecision[data-choice="validate"] .atlas-path--validate,
+#atlasDecision[data-choice="ignore"] .atlas-path--ignore {
+  stroke: var(--ink);
+  stroke-width: 6;
+  stroke-dasharray: none;
+  animation: atlas-dash 700ms ease both;
+}
+.atlas-node {
+  position: absolute;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  padding: 10px;
+  border: 1px solid var(--line-strong);
+  background: var(--white);
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 850;
+  line-height: 1.1;
+  text-align: center;
+  transition: transform 280ms ease, background 280ms ease;
+}
+.atlas-node--signal { top: 50%; left: 9%; width: 76px; height: 76px; border-radius: 50%; background: var(--atlas-yellow); transform: translateY(-50%); }
+.atlas-node--decision { top: 50%; left: 36%; width: 92px; height: 92px; clip-path: polygon(50% 0,100% 50%,50% 100%,0 50%); background: var(--ink); color: var(--white); transform: translate(-50%, -50%); }
+.atlas-node--build { top: 17%; left: 63%; width: 106px; min-height: 54px; border-radius: 999px; }
+.atlas-node--validate { top: 50%; left: 63%; width: 112px; min-height: 60px; border-radius: 9px 27px 9px 27px; }
+.atlas-node--ignore { top: 83%; left: 63%; width: 102px; min-height: 54px; clip-path: polygon(50% 0,100% 28%,82% 100%,18% 100%,0 28%); }
+.atlas-node--result { top: 50%; right: 6%; width: 92px; height: 92px; border-radius: 50%; background: var(--atlas-lime); transform: translateY(-50%); }
+#atlasDecision[data-choice="build"] .atlas-node--build,
+#atlasDecision[data-choice="validate"] .atlas-node--validate,
+#atlasDecision[data-choice="ignore"] .atlas-node--ignore { background: var(--atlas-cyan); transform: translate(-3px, 0) scale(1.08); }
+#atlasDecision[data-choice="validate"] .atlas-node--validate { box-shadow: 0 0 0 8px rgba(200,255,73,.16); }
+#atlasDecision[data-choice="build"] .atlas-node--result { background: var(--atlas-coral); }
+#atlasDecision[data-choice="ignore"] .atlas-node--result { background: var(--atlas-violet); }
+.atlas-options {
+  display: grid;
+  gap: 8px;
+  margin-top: 13px;
+}
+.atlas-option {
+  min-height: 58px;
+  display: grid;
+  grid-template-columns: 30px minmax(0,1fr);
+  gap: 9px;
+  align-items: center;
+  padding: 9px 11px;
+  border: 1px solid rgba(20,34,43,.2);
+  border-radius: 13px;
+  background: rgba(255,255,255,.55);
+  cursor: pointer;
+  text-align: left;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+.atlas-option:hover { transform: translateX(4px); }
+.atlas-option.is-active { border-color: var(--ink); background: var(--white); transform: translateX(6px); }
+.atlas-option__shape { width: 25px; height: 25px; background: var(--choice-color); }
+.atlas-option:nth-child(1) .atlas-option__shape { border-radius: 50%; }
+.atlas-option:nth-child(2) .atlas-option__shape { border-radius: 5px 13px 5px 13px; }
+.atlas-option:nth-child(3) .atlas-option__shape { clip-path: polygon(50% 0,100% 100%,0 100%); }
+.atlas-option small { display: block; color: var(--muted); font-size: 9px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+.atlas-option strong { display: block; margin-top: 2px; font-size: 13px; line-height: 1.1; }
+.atlas-decision__metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+  margin-top: 12px;
+}
+.atlas-metric {
+  padding: 11px 12px;
+  border-radius: 12px;
+  background: var(--ink);
+  color: var(--white);
+}
+.atlas-metric span { display: block; color: #9eabb0; font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
+.atlas-metric strong { display: block; margin-top: 3px; color: var(--atlas-lime); font-size: 20px; }
+.atlas-decision__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 12px;
+}
+.atlas-decision__result {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(19px, 2.2vw, 28px);
+}
+.atlas-decision__note { max-width: 400px; color: var(--muted); font-size: 11px; text-align: right; }
+@keyframes atlas-orbit { to { transform: rotate(360deg); } }
+@keyframes atlas-dash { from { stroke-dashoffset: 90; } to { stroke-dashoffset: 0; } }
+@media (max-width: 780px) {
+  .atlas-decision__header { align-items: start; flex-direction: column; }
+  .atlas-decision__body { grid-template-columns: 1fr; }
+  .atlas-cascade { min-height: 430px; }
+  .atlas-cascade__lines { display: none; }
+  .atlas-node--signal { top: 10%; left: 50%; transform: translateX(-50%); }
+  .atlas-node--decision { top: 32%; left: 50%; transform: translate(-50%, -50%); }
+  .atlas-node--build { top: 53%; left: 10%; }
+  .atlas-node--validate { top: 53%; left: 50%; transform: translateX(-50%); }
+  .atlas-node--ignore { top: 53%; left: auto; right: 9%; }
+  .atlas-node--result { top: 79%; right: auto; left: 50%; transform: translateX(-50%); }
+  #atlasDecision[data-choice="build"] .atlas-node--build,
+  #atlasDecision[data-choice="ignore"] .atlas-node--ignore { transform: scale(1.06); }
+  #atlasDecision[data-choice="validate"] .atlas-node--validate { transform: translateX(-50%) scale(1.06); }
+  .atlas-decision__footer { align-items: start; flex-direction: column; }
+  .atlas-decision__note { max-width: none; text-align: left; }
+}
+@media (max-width: 390px) {
+  .chaos-card { min-height: 110px; padding: 13px; }
+  .atlas-cascade { min-height: 470px; }
+  .atlas-node--build { left: 4%; width: 94px; }
+  .atlas-node--ignore { right: 3%; width: 90px; }
+  .atlas-node--result { width: 84px; height: 84px; }
+}
+
+  
+    .atlas-disposition {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      margin-top: 18px;
+      padding: 9px 14px;
+      border: 1px solid rgba(185, 237, 111, 0.48);
+      border-radius: 999px;
+      background: rgba(185, 237, 111, 0.12);
+      color: var(--discovery);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+    }
+
   </style>
 </head>
 <body>
-<header class="top"><div class="wrap topin"><div class="brand">MPE × Business Discovery</div><div class="controls"><button class="btn" id="nextBtn" type="button">Дальше ↓</button><button class="btn active" data-lang="ru" type="button">RU</button><button class="btn" data-lang="kz" type="button">KZ</button></div></div><div class="progress"><i id="bar"></i></div></header>
-<main>
-<section class="hero" id="s1"><div class="wrap"><div class="eyebrow" data-t="heroEye">Система предпринимателя с ИИ</div><h1 data-t="heroTitle">От идеи до работающего результата — без хаоса.</h1><p class="lead" data-t="heroLead">Business Discovery помогает понять, чем стоит заниматься. Murat Project Engineer помогает довести выбранное направление до проверенного результата.</p><div class="chips"><span class="chip" data-t="chip1">Поиск возможностей</span><span class="chip" data-t="chip2">Приоритеты</span><span class="chip" data-t="chip3">Эксперименты</span><span class="chip" data-t="chip4">Контроль исполнения</span><span class="chip" data-t="chip5">ИИ как рабочая система</span></div></div></section>
-<section id="s2"><div class="wrap"><div class="eyebrow">01</div><h2 data-t="problemTitle">Проблема предпринимателя</h2><p class="sub" data-t="problemSub">Идей и задач много. Время, деньги и внимание ограничены. Главная потеря возникает не из-за отсутствия идей, а из-за неправильного выбора и слабого исполнения.</p><div class="grid"><div class="card"><div class="big">?</div><h3 data-t="p1t">Что делать?</h3><p data-t="p1d">Какую идею проверить первой? Где реальная потребность? Есть ли бизнес-ценность?</p></div><div class="card"><div class="big">→</div><h3 data-t="p2t">Как довести до результата?</h3><p data-t="p2d">Кто делает следующий шаг? Что уже проверено? Где риск, блокер или лишняя работа?</p></div></div></div></section>
-<section id="s3"><div class="wrap"><div class="eyebrow">02</div><h2>Business Discovery</h2><p class="sub" data-t="bdSub">Система поиска и проверки бизнес-возможностей до того, как предприниматель потратит серьёзные ресурсы.</p><div class="card" style="margin-top:30px"><h3 class="accentB" data-t="bdQ">Главный вопрос: «Стоит ли этим заниматься?»</h3><div class="list green"><div class="row"><i class="dot"></i><span data-t="bd1">Находит проблемы и незакрытые потребности.</span></div><div class="row"><i class="dot"></i><span data-t="bd2">Формирует бизнес-гипотезы.</span></div><div class="row"><i class="dot"></i><span data-t="bd3">Оценивает ценность, риски, рынок и следующий эксперимент.</span></div><div class="row"><i class="dot"></i><span data-t="bd4">Отбрасывает слабые направления до дорогой реализации.</span></div></div></div></div></section>
-<section id="s4"><div class="wrap"><div class="eyebrow">03</div><h2>Murat Project Engineer</h2><p class="sub" data-t="mpeSub">Инженерная система управления проектами и работой с ИИ после того, как направление выбрано.</p><div class="card" style="margin-top:30px"><h3 class="accentA" data-t="mpeQ">Главный вопрос: «Как правильно это реализовать?»</h3><div class="list"><div class="row"><i class="dot"></i><span data-t="mpe1">Проверяет новую идею через New Idea Filter.</span></div><div class="row"><i class="dot"></i><span data-t="mpe2">Ищет, что можно расширить или переиспользовать вместо создания дублей.</span></div><div class="row"><i class="dot"></i><span data-t="mpe3">Разбивает работу на эксперименты, checkpoints и проверяемые шаги.</span></div><div class="row"><i class="dot"></i><span data-t="mpe4">Контролирует результат через тесты, evidence и историю решений.</span></div></div></div></div></section>
-<section id="s5"><div class="wrap"><div class="eyebrow">04</div><h2 data-t="togetherTitle">Как они работают вместе</h2><p class="sub" data-t="togetherSub">Нажмите на этап, чтобы увидеть его роль.</p><div class="flow" id="flow"><div class="step active" data-step="0"><b>01</b><strong data-t="f1t">Сигнал</strong><p data-t="f1p">Проблема, тренд, запрос клиента или новая возможность.</p></div><div class="step" data-step="1"><b>02</b><strong>Business Discovery</strong><p data-t="f2p">Проверка ценности и формирование гипотезы.</p></div><div class="step" data-step="2"><b>03</b><strong data-t="f3t">Решение</strong><p data-t="f3p">Берём в работу, экспериментируем или откладываем.</p></div><div class="step" data-step="3"><b>04</b><strong>MPE</strong><p data-t="f4p">Архитектура исполнения, Task Packet, checkpoints.</p></div><div class="step" data-step="4"><b>05</b><strong data-t="f5t">Результат</strong><p data-t="f5p">Работающий продукт, процесс или доказанный вывод.</p></div></div><div class="flowdetail" id="flowDetail"></div></div></section>
-<section id="s6"><div class="wrap"><div class="eyebrow">05</div><h2 data-t="scenarioTitle">Пример рабочего сценария</h2><div class="scenario"><div class="card"><div class="eyebrow" data-t="scenarioEye">Ситуация</div><p class="problem" data-t="scenarioProblem">Предприниматель замечает, что клиенты постоянно задают один и тот же вопрос и менеджеры тратят на ответы много времени.</p></div><div class="card timeline"><div class="event"><div class="num">1</div><div><strong>Business Discovery</strong><span data-t="e1">Проверяет масштаб проблемы, ценность автоматизации и возможный формат решения.</span></div></div><div class="event"><div class="num">2</div><div><strong data-t="e2t">Эксперимент</strong><span data-t="e2">Вместо большой системы запускается минимальная проверка.</span></div></div><div class="event"><div class="num">3</div><div><strong>MPE</strong><span data-t="e3">Определяет, что переиспользовать, ставит checkpoints и контролирует реализацию.</span></div></div><div class="event"><div class="num">4</div><div><strong data-t="e4t">Решение по фактам</strong><span data-t="e4">Масштабировать, изменить или закрыть эксперимент.</span></div></div></div></div></div></section>
-<section id="s7"><div class="wrap"><div class="eyebrow">06</div><h2 data-t="valueTitle">Что получает предприниматель</h2><div class="value"><div class="metric"><strong>↓</strong><span data-t="v1">Меньше хаотичных проектов и дублирования.</span></div><div class="metric"><strong>↑</strong><span data-t="v2">Быстрее проверяются идеи и принимаются решения.</span></div><div class="metric"><strong>◎</strong><span data-t="v3">Понятно, что происходит с каждой инициативой и почему.</span></div></div><div class="cta"><h3 data-t="ctaTitle">Не «ChatGPT для бизнеса», а управляемый контур работы с ИИ.</h3><p data-t="ctaText">Business Discovery выбирает правильную цель. MPE организует путь до результата. Вместе они превращают идеи, данные и возможности в управляемый процесс предпринимателя.</p></div></div></section>
-</main>
-<footer class="footer"><div class="wrap">Murat Project Engineer × Business Discovery · 2026</div></footer>
+  <a class="skip-link" href="#problem" data-i18n="ui.skip"></a>
+
+  <header class="topbar">
+    <div class="topbar__inner">
+      <button class="brand" id="brandButton" type="button">
+        <span class="brand__mark" aria-hidden="true">M×B</span>
+        <span class="brand__copy">
+          <span class="brand__name" data-i18n="ui.brand"></span>
+          <span class="brand__chapter" id="brandChapter"></span>
+        </span>
+      </button>
+
+      <div class="topbar__actions">
+        <button class="menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="chapterDrawer">
+          <span class="menu-button__dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span class="menu-button__label" data-i18n="ui.sections"></span>
+        </button>
+        <div class="language-switch" role="group" id="languageSwitch">
+          <button class="lang-button is-active" type="button" data-lang="ru" aria-pressed="true">RU</button>
+          <button class="lang-button" type="button" data-lang="kz" aria-pressed="false">KZ</button>
+        </div>
+      </div>
+    </div>
+    <div class="top-progress" aria-hidden="true"><i class="top-progress__bar" id="progressBar"></i></div>
+  </header>
+
+  <main id="story">
+    <section class="story-panel" id="problem" data-section="0" data-chapter="01">
+      <div class="story-panel__inner problem-layout">
+        <div>
+          <p class="chapter-label chapter-label--warm" data-i18n="problem.eyebrow"></p>
+          <h1 data-i18n="problem.title"></h1>
+          <p class="lead" data-i18n="problem.lead"></p>
+          <div class="takeaway"><i class="takeaway__mark" aria-hidden="true"></i><span data-i18n="problem.takeaway"></span></div>
+        </div>
+        <div class="chaos-board" id="chaosBoard"></div>
+      </div>
+    </section>
+
+    <section class="story-panel" id="discovery" data-section="1" data-chapter="02">
+      <div class="story-panel__inner">
+        <p class="chapter-label chapter-label--green" data-i18n="discovery.eyebrow"></p>
+        <h2 data-i18n="discovery.title"></h2>
+        <p class="lead" data-i18n="discovery.lead"></p>
+        <div class="source-row" id="discoverySources"></div>
+        <div class="linear-flow" id="discoveryFlow"></div>
+        <div class="question-card"><span data-i18n="ui.mainQuestion"></span><strong data-i18n="discovery.question"></strong></div>
+      </div>
+    </section>
+
+    <section class="story-panel" id="mpe" data-section="2" data-chapter="03">
+      <div class="story-panel__inner">
+        <p class="chapter-label" data-i18n="mpe.eyebrow"></p>
+        <h2 data-i18n="mpe.title"></h2>
+        <p class="lead" data-i18n="mpe.lead"></p>
+        <div class="mpe-flow" id="mpeFlow"></div><div class="atlas-disposition">EXTEND_EXISTING · расширяем существующее</div>
+        <div class="benefit-row" id="mpeBenefits"></div>
+        <div class="question-card question-card--blue"><span data-i18n="ui.mainQuestion"></span><strong data-i18n="mpe.question"></strong></div>
+      </div>
+    </section>
+
+    <section class="story-panel" id="pipeline" data-section="3" data-chapter="04">
+      <div class="story-panel__inner">
+        <p class="chapter-label" data-i18n="pipeline.eyebrow"></p>
+        <h2 data-i18n="pipeline.title"></h2>
+        <p class="lead" data-i18n="pipeline.lead"></p>
+        <div class="interactive-shell">
+          <div class="pipeline" id="pipelineStages"></div>
+          <div class="pipeline-detail" aria-live="polite"><span class="pipeline-detail__label" data-i18n="ui.stageRole"></span><p id="pipelineDetail"></p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-panel" id="comparison" data-section="4" data-chapter="05">
+      <div class="story-panel__inner">
+        <p class="chapter-label chapter-label--green" data-i18n="comparison.eyebrow"></p>
+        <h2 data-i18n="comparison.title"></h2>
+        <p class="lead" data-i18n="comparison.lead"></p>
+        <div class="compare-grid">
+          <article class="compare-card compare-card--discovery">
+            <div class="compare-card__name" data-i18n="terms.discovery"></div>
+            <h3 data-i18n="comparison.discoveryTitle"></h3>
+            <p data-i18n="comparison.discoveryText"></p>
+            <div class="compare-question"><span data-i18n="ui.answers"></span><strong data-i18n="comparison.discoveryQuestion"></strong></div>
+          </article>
+          <div class="sequence-arrow" aria-hidden="true">→</div>
+          <article class="compare-card compare-card--mpe">
+            <div class="compare-card__name" data-i18n="terms.mpe"></div>
+            <h3 data-i18n="comparison.mpeTitle"></h3>
+            <p data-i18n="comparison.mpeText"></p>
+            <div class="compare-question"><span data-i18n="ui.answers"></span><strong data-i18n="comparison.mpeQuestion"></strong></div>
+          </article>
+        </div>
+        <div class="sequence-note" id="sequenceNote"></div>
+      </div>
+    </section>
+
+    <section class="story-panel" id="scenario" data-section="5" data-chapter="06">
+      <div class="story-panel__inner">
+        <p class="chapter-label chapter-label--warm" data-i18n="scenario.eyebrow"></p>
+        <h2 data-i18n="scenario.title"></h2>
+        <p class="lead" data-i18n="scenario.lead"></p>
+        <div class="scenario-shell">
+          <div class="scenario-nav" id="scenarioNav"></div>
+          <article class="scenario-card" aria-live="polite">
+            <span class="scenario-card__role" id="scenarioRole"></span>
+            <h3 id="scenarioHeadline"></h3>
+            <ul class="scenario-list" id="scenarioList"></ul>
+            <div class="scenario-verdict" id="scenarioVerdict" hidden></div>
+            <div class="scenario-outcome" id="scenarioOutcome" hidden></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-panel" id="value" data-section="6" data-chapter="07">
+      <div class="story-panel__inner">
+        <p class="chapter-label" data-i18n="value.eyebrow"></p>
+        <h2 data-i18n="value.title"></h2>
+        <p class="lead" data-i18n="value.lead"></p>
+        <div class="value-grid" id="valueGrid"></div>
+      </div>
+    </section>
+
+    <section class="story-panel final-panel" id="final" data-section="7" data-chapter="08">
+      <div class="story-panel__inner">
+        <p class="chapter-label" data-i18n="final.eyebrow"></p>
+        <div class="final-statement"><span class="final-discovery" data-i18n="final.discovery"></span><span class="final-mpe" data-i18n="final.mpe"></span></div>
+        <div class="final-chain" id="finalChain"></div>
+        <p class="final-note" data-i18n="final.note"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-footer" data-i18n="ui.footer"></footer>
+
+  <div class="story-controls" id="storyControls">
+    <button class="control-button" id="previousButton" type="button"><span aria-hidden="true">←</span><span class="control-button__label" data-i18n="ui.previous"></span></button>
+    <button class="control-status" id="statusButton" type="button"><span class="control-status__count" id="sectionCount"></span><span class="control-status__title" id="sectionTitle"></span></button>
+    <button class="control-button control-button--next" id="nextButton" type="button"><span class="control-button__label" data-i18n="ui.next"></span><span aria-hidden="true">→</span></button>
+  </div>
+
+  <button class="drawer-backdrop" id="drawerBackdrop" type="button" hidden></button>
+  <aside class="chapter-drawer" id="chapterDrawer" aria-modal="true" role="dialog" hidden>
+    <div class="drawer__header"><strong data-i18n="ui.sections"></strong><button class="icon-button" id="closeDrawerButton" type="button">×</button></div>
+    <nav class="drawer__nav" id="drawerNav"></nav>
+  </aside>
+
+  <script>
+    const CONTENT = {
+      ru: {
+        meta: {
+          title: 'MPE × Business Discovery — от идеи к бизнес-результату',
+          description: 'Интерактивная презентация о том, как Business Discovery и Murat Project Engineer помогают бизнесу выбирать и реализовывать правильные инициативы.'
+        },
+        terms: { discovery: 'Business Discovery', mpe: 'Murat Project Engineer' },
+        ui: {
+          brand: 'MPE × Business Discovery', skip: 'Перейти к содержанию', sections: 'Разделы', previous: 'Назад', next: 'Дальше',
+          mainQuestion: 'Главный вопрос', stageRole: 'Роль этапа', answers: 'Отвечает',
+          footer: 'Murat Project Engineer × Business Discovery · Интерактивная презентация · 2026',
+          close: 'Закрыть меню', menuLabel: 'Открыть список разделов', languageLabel: 'Выбор языка',
+          navigationLabel: 'Навигация по презентации', counter: (current, total) => `${current} из ${total}`
+        },
+        nav: ['Проблема предпринимателя', 'Business Discovery', 'Murat Project Engineer', 'Как они работают вместе', 'Разница ролей', 'Бизнес-сценарий', 'Практическая ценность', 'Итог'],
+        problem: {
+          eyebrow: '01 · Исходная ситуация', title: 'ИИ ускорил поток идей. Система выбора не успела.',
+          lead: 'Задачи живут в чатах, мессенджерах и заметках. Новые сервисы появляются быстрее, чем бизнес успевает понять, что действительно приносит деньги.',
+          takeaway: 'ИИ даёт много возможностей, но без системы быстро появляется ещё больше хаоса.',
+          cards: [
+            { tag: 'ChatGPT', text: 'Много идей, открытых одновременно' }, { tag: 'Telegram', text: 'Задачи теряются среди сообщений' },
+            { tag: 'Заметки', text: 'Часть решений забывается' }, { tag: 'Приоритет', text: 'Непонятно, что делать первым' },
+            { tag: 'Проекты', text: 'Возникают новые сервисы и дубли' }, { tag: 'Результат', text: 'Сложно увидеть, что даёт деньги' }
+          ]
+        },
+        discovery: {
+          eyebrow: '02 · Найти правильную возможность', title: 'Сначала — понять, чем вообще стоит заниматься.',
+          lead: 'Business Discovery собирает сигналы, находит повторяющиеся проблемы и проверяет бизнес-ценность до серьёзных затрат.',
+          sources: ['Запросы клиентов', 'Рынок', 'Конкуренты', 'Тренды', 'Новые технологии', 'Проблемы компании'],
+          flow: ['Сигналы рынка', 'Проблемы клиентов', 'Бизнес-идеи', 'Проверка', 'Приоритет'], question: '«Что стоит делать?»'
+        },
+        mpe: {
+          eyebrow: '03 · Довести идею до результата', title: 'Затем — реализовать выбранную идею без лишней работы.',
+          lead: 'MPE превращает проверенную возможность в управляемый эксперимент, рабочее решение и зафиксированный результат.',
+          flow: ['Идея', 'New Idea Filter', 'Эксперимент / MVP', 'Task Packet', 'Исполнение', 'Проверка', 'Результат'],
+          benefits: ['Не создаёт лишние проекты', 'Ищет расширение существующего', 'Проверяет бизнес-ценность', 'Разбивает работу на этапы', 'Контролирует реализацию', 'Фиксирует решения', 'Проверяет результат'],
+          question: '«Как это правильно реализовать?»'
+        },
+        pipeline: {
+          eyebrow: '04 · Единый маршрут', title: 'От рыночного сигнала — к измеримому бизнес-результату.',
+          lead: 'Нажмите на любой блок. Каждый инструмент отвечает за свою часть маршрута.',
+          stages: [
+            { label: 'Рынок / клиенты / проблемы', detail: 'Реальный запрос, потеря времени, денег или новая возможность.', tone: 'signal' },
+            { label: 'Business Discovery', detail: 'Находит закономерность и проверяет, есть ли ценность для бизнеса.', tone: 'discovery' },
+            { label: 'Проверенная возможность', detail: 'Есть факты, приоритет и понятный смысл следующего шага.', tone: 'discovery' },
+            { label: 'MPE', detail: 'Выбирает минимальный путь и использует уже существующие активы.', tone: 'mpe' },
+            { label: 'Эксперимент', detail: 'Небольшая и измеримая проверка вместо большой разработки.', tone: 'mpe' },
+            { label: 'Рабочее решение', detail: 'Проверенный продукт или процесс, готовый к реальному использованию.', tone: 'mpe' },
+            { label: 'Бизнес-результат', detail: 'Измеримое влияние: время, выручка, затраты или качество.', tone: 'signal' }
+          ]
+        },
+        comparison: {
+          eyebrow: '05 · Два инструмента — две роли', title: 'Они не конкурируют. Они передают работу друг другу.',
+          lead: 'Business Discovery отвечает за качество выбора. MPE — за качество исполнения.',
+          discoveryTitle: 'Найти правильную возможность', discoveryText: 'Понять проблему, спрос, ценность и приоритет.', discoveryQuestion: '«Что делать?»',
+          mpeTitle: 'Правильно реализовать', mpeText: 'Выбрать минимальный путь, выполнить и проверить.', mpeQuestion: '«Как довести до результата?»',
+          sequence: '<strong>Business Discovery</strong> выбирает работу <span aria-hidden="true">→</span> <b>MPE</b> доводит её до результата.'
+        },
+        scenario: {
+          eyebrow: '06 · На примере реального бизнеса', title: 'Клиенты снова просят онлайн-расчёт. Что делать?',
+          lead: 'Пройдите четыре шага: от повторяющегося запроса до решения по фактам.', tabs: ['Ситуация', 'Discovery', 'MPE', 'Результат'],
+          steps: [
+            { role: 'Ситуация', headline: 'Клиенты компании постоянно спрашивают онлайн-расчёт стоимости.', items: ['Менеджеры отвечают вручную', 'Клиент долго ждёт цену', 'Запрос повторяется каждую неделю'] },
+            { role: 'Business Discovery', headline: 'Сначала проверяем: это случайность или ценная возможность?', items: ['Проблема повторяется', 'Есть подтверждённый спрос', 'Можно снизить нагрузку менеджеров', 'Есть потенциальная финансовая ценность'], verdict: 'Вывод: стоит проверить.' },
+            { role: 'Murat Project Engineer', headline: 'Выбираем самый маленький полезный способ проверки.', items: ['Есть ли уже подходящий проект?', 'Можно ли расширить текущий сайт?', 'Какой минимальный MVP нужен?', 'Сколько времени и ресурсов потребуется?'] },
+            { role: 'Проверяемый результат', headline: 'Не спорим о большой системе — измеряем эффект маленького решения.', items: [], outcome: ['Минимальный калькулятор', 'Тест на реальных клиентах', 'Измерение результата', 'Масштабировать / изменить / остановить'] }
+          ]
+        },
+        value: {
+          eyebrow: '07 · Практическая ценность', title: 'Что меняется для владельца компании.',
+          lead: 'Не абстрактная «цифровизация», а пять понятных изменений в ежедневной работе.',
+          items: [
+            { title: 'Меньше хаоса', text: 'Все идеи проходят одинаковый процесс.' },
+            { title: 'Меньше лишней разработки', text: 'Не создаются дублирующие проекты.' },
+            { title: 'Быстрее проверяются идеи', text: 'Сначала маленький эксперимент, потом масштабирование.' },
+            { title: 'Меньше потерь', text: 'Решения, эксперименты и результаты сохраняются.' },
+            { title: 'ИИ становится частью процесса', text: 'Не просто чат, а рабочий инструмент компании.' }
+          ]
+        },
+        final: {
+          eyebrow: '08 · В одной формуле', discovery: 'Business Discovery помогает выбрать правильную работу.',
+          mpe: 'MPE помогает правильно её выполнить.', chain: ['Идеи', 'Проверенные решения', 'Реальный бизнес-результат'],
+          note: 'Вместе они превращают возможности ИИ в управляемую систему роста бизнеса.'
+        }
+      },
+      kz: {
+        meta: {
+          title: 'MPE × Business Discovery — идеядан бизнес-нәтижеге дейін',
+          description: 'Business Discovery және Murat Project Engineer бизнеске дұрыс бастамаларды таңдауға және іске асыруға қалай көмектесетіні туралы интерактивті презентация.'
+        },
+        terms: { discovery: 'Business Discovery', mpe: 'Murat Project Engineer' },
+        ui: {
+          brand: 'MPE × Business Discovery', skip: 'Мазмұнға өту', sections: 'Бөлімдер', previous: 'Артқа', next: 'Келесі',
+          mainQuestion: 'Негізгі сұрақ', stageRole: 'Кезеңнің рөлі', answers: 'Жауап беретін сұрақ',
+          footer: 'Murat Project Engineer × Business Discovery · Интерактивті презентация · 2026',
+          close: 'Мәзірді жабу', menuLabel: 'Бөлімдер тізімін ашу', languageLabel: 'Тілді таңдау',
+          navigationLabel: 'Презентация бойынша навигация', counter: (current, total) => `${current} / ${total}`
+        },
+        nav: ['Кәсіпкердің мәселесі', 'Business Discovery', 'Murat Project Engineer', 'Екеуі қалай бірге жұмыс істейді', 'Рөлдердің айырмашылығы', 'Бизнес-сценарий', 'Практикалық құндылық', 'Қорытынды'],
+        problem: {
+          eyebrow: '01 · Бастапқы жағдай', title: 'AI идеялар ағынын жеделдетті. Таңдау жүйесі оған ілесе алмады.',
+          lead: 'Міндеттер чаттарда, мессенджерлерде және жазбаларда шашырап жатыр. Жаңа сервистер бизнес ненің нақты табыс әкелетінін түсініп үлгергеннен жылдамырақ пайда болады.',
+          takeaway: 'AI көп мүмкіндік береді, бірақ жүйесіз ол ретсіздікті одан әрі көбейтеді.',
+          cards: [
+            { tag: 'ChatGPT', text: 'Бір уақытта тым көп идея ашық тұрады' }, { tag: 'Telegram', text: 'Міндеттер хабарламалар арасында жоғалады' },
+            { tag: 'Жазбалар', text: 'Шешімдердің бір бөлігі ұмытылады' }, { tag: 'Басымдық', text: 'Алдымен нені істеу керегі түсініксіз' },
+            { tag: 'Жобалар', text: 'Жаңа сервистер мен қайталанатын жобалар көбейеді' }, { tag: 'Нәтиже', text: 'Ненің ақша әкелетінін көру қиын' }
+          ]
+        },
+        discovery: {
+          eyebrow: '02 · Дұрыс мүмкіндікті табу', title: 'Алдымен немен айналысу керегін анықтау қажет.',
+          lead: 'Business Discovery сигналдарды жинайды, қайталанатын мәселелерді табады және елеулі шығынға дейін бизнес-құндылықты тексереді.',
+          sources: ['Клиент сұраныстары', 'Нарық', 'Бәсекелестер', 'Үрдістер', 'Жаңа технологиялар', 'Компания мәселелері'],
+          flow: ['Нарық сигналдары', 'Клиент мәселелері', 'Бизнес-идеялар', 'Тексеру', 'Басымдық'], question: '«Нені істеу керек?»'
+        },
+        mpe: {
+          eyebrow: '03 · Идеяны нәтижеге жеткізу', title: 'Содан кейін таңдалған идеяны артық жұмыссыз іске асыру.',
+          lead: 'MPE тексерілген мүмкіндікті басқарылатын экспериментке, жұмыс істейтін шешімге және тіркелген нәтижеге айналдырады.',
+          flow: ['Идея', 'New Idea Filter', 'Эксперимент / MVP', 'Task Packet', 'Орындау', 'Тексеру', 'Нәтиже'],
+          benefits: ['Артық жобаларды құрмайды', 'Бар жобаны кеңейту жолын іздейді', 'Бизнес-құндылықты тексереді', 'Жұмысты кезеңдерге бөледі', 'Іске асыруды бақылайды', 'Шешімдерді тіркейді', 'Нәтижені тексереді'],
+          question: '«Мұны қалай дұрыс іске асыру керек?»'
+        },
+        pipeline: {
+          eyebrow: '04 · Бірыңғай бағыт', title: 'Нарық сигналынан өлшенетін бизнес-нәтижеге дейін.',
+          lead: 'Кез келген блокты басыңыз. Әр құрал бағыттың өз бөлігіне жауап береді.',
+          stages: [
+            { label: 'Нарық / клиенттер / мәселелер', detail: 'Нақты сұраныс, уақыт не ақша шығыны немесе жаңа мүмкіндік.', tone: 'signal' },
+            { label: 'Business Discovery', detail: 'Заңдылықты тауып, бизнес үшін құндылығы бар-жоғын тексереді.', tone: 'discovery' },
+            { label: 'Тексерілген мүмкіндік', detail: 'Келесі қадамның дерегі, басымдығы және түсінікті мәні бар.', tone: 'discovery' },
+            { label: 'MPE', detail: 'Ең шағын жолды таңдап, қолданыстағы активтерді пайдаланады.', tone: 'mpe' },
+            { label: 'Эксперимент', detail: 'Үлкен әзірлеменің орнына шағын әрі өлшенетін тексеру.', tone: 'mpe' },
+            { label: 'Жұмыс істейтін шешім', detail: 'Нақты қолдануға дайын тексерілген өнім немесе үдеріс.', tone: 'mpe' },
+            { label: 'Бизнес-нәтиже', detail: 'Өлшенетін әсер: уақыт, табыс, шығын немесе сапа.', tone: 'signal' }
+          ]
+        },
+        comparison: {
+          eyebrow: '05 · Екі құрал — екі рөл', title: 'Олар бәсекелеспейді. Жұмысты бір-біріне береді.',
+          lead: 'Business Discovery таңдау сапасына жауап береді. MPE орындау сапасына жауап береді.',
+          discoveryTitle: 'Дұрыс мүмкіндікті табу', discoveryText: 'Мәселені, сұранысты, құндылықты және басымдықты түсіну.', discoveryQuestion: '«Нені істеу керек?»',
+          mpeTitle: 'Дұрыс іске асыру', mpeText: 'Ең шағын жолды таңдап, орындау және тексеру.', mpeQuestion: '«Нәтижеге қалай жеткізу керек?»',
+          sequence: '<strong>Business Discovery</strong> жұмысты таңдайды <span aria-hidden="true">→</span> <b>MPE</b> оны нәтижеге жеткізеді.'
+        },
+        scenario: {
+          eyebrow: '06 · Нақты бизнес мысалында', title: 'Клиенттер тағы да онлайн есеп сұрады. Не істейміз?',
+          lead: 'Қайталанатын сұраныстан дерекке негізделген шешімге дейінгі төрт қадамнан өтіңіз.', tabs: ['Жағдай', 'Discovery', 'MPE', 'Нәтиже'],
+          steps: [
+            { role: 'Жағдай', headline: 'Компания клиенттері құнын онлайн есептеуді үнемі сұрайды.', items: ['Менеджерлер қолмен жауап береді', 'Клиент бағаны ұзақ күтеді', 'Сұраныс апта сайын қайталанады'] },
+            { role: 'Business Discovery', headline: 'Алдымен тексереміз: бұл кездейсоқ жағдай ма, әлде құнды мүмкіндік пе?', items: ['Мәселе қайталанады', 'Расталған сұраныс бар', 'Менеджерлер жүктемесін азайтуға болады', 'Әлеуетті қаржылық құндылық бар'], verdict: 'Қорытынды: тексеруге тұрарлық.' },
+            { role: 'Murat Project Engineer', headline: 'Тексерудің ең шағын әрі пайдалы тәсілін таңдаймыз.', items: ['Сәйкес жоба қазірдің өзінде бар ма?', 'Қолданыстағы сайтты кеңейтуге бола ма?', 'Қандай ең шағын MVP қажет?', 'Қанша уақыт пен ресурс керек?'] },
+            { role: 'Тексерілетін нәтиже', headline: 'Үлкен жүйе туралы дауласпаймыз — шағын шешімнің әсерін өлшейміз.', items: [], outcome: ['Ең шағын калькулятор', 'Нақты клиенттермен сынақ', 'Нәтижені өлшеу', 'Кеңейту / өзгерту / тоқтату'] }
+          ]
+        },
+        value: {
+          eyebrow: '07 · Практикалық құндылық', title: 'Компания иесі үшін не өзгереді.',
+          lead: 'Дерексіз «цифрландыру» емес, күнделікті жұмыстағы бес түсінікті өзгеріс.',
+          items: [
+            { title: 'Ретсіздік азаяды', text: 'Барлық идея бірдей үдерістен өтеді.' },
+            { title: 'Артық әзірлеме азаяды', text: 'Қайталанатын жобалар құрылмайды.' },
+            { title: 'Идеялар жылдам тексеріледі', text: 'Алдымен шағын эксперимент, содан кейін кеңейту.' },
+            { title: 'Ақпарат жоғалмайды', text: 'Шешімдер, эксперименттер және нәтижелер сақталады.' },
+            { title: 'AI үдерістің бөлігіне айналады', text: 'Жай чат емес, компанияның жұмыс құралы.' }
+          ]
+        },
+        final: {
+          eyebrow: '08 · Бір формуламен', discovery: 'Business Discovery дұрыс жұмысты таңдауға көмектеседі.',
+          mpe: 'MPE оны дұрыс орындауға көмектеседі.', chain: ['Идеялар', 'Тексерілген шешімдер', 'Нақты бизнес-нәтиже'],
+          note: 'Екеуі бірге AI мүмкіндіктерін бизнестің басқарылатын өсу жүйесіне айналдырады.'
+        }
+      }
+    };
+
+    const state = {
+      lang: localStorage.getItem('mpe-presentation-lang') === 'kz' ? 'kz' : 'ru',
+      section: 0,
+      pipeline: 0,
+      scenario: 0,
+      drawerOpen: false
+    };
+
+    const panels = [...document.querySelectorAll('[data-section]')];
+    const getCopy = () => CONTENT[state.lang];
+
+    function getByPath(source, path) { return path.split('.').reduce((value, key) => value?.[key], source); }
+
+    function escapeHtml(value) {
+      return String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;');
+    }
+
+    function renderStaticCopy() {
+      const copy = getCopy();
+      document.documentElement.lang = state.lang;
+      document.title = copy.meta.title;
+      document.querySelector('meta[name="description"]').content = copy.meta.description;
+      document.querySelectorAll('[data-i18n]').forEach((element) => {
+        const value = getByPath(copy, element.dataset.i18n);
+        if (typeof value === 'string') element.textContent = value;
+      });
+      document.getElementById('menuButton').ariaLabel = copy.ui.menuLabel;
+      document.getElementById('brandButton').ariaLabel = copy.ui.brand;
+      document.getElementById('closeDrawerButton').ariaLabel = copy.ui.close;
+      document.getElementById('drawerBackdrop').ariaLabel = copy.ui.close;
+      document.getElementById('chapterDrawer').ariaLabel = copy.ui.sections;
+      document.getElementById('languageSwitch').ariaLabel = copy.ui.languageLabel;
+      document.getElementById('storyControls').ariaLabel = copy.ui.navigationLabel;
+      document.querySelectorAll('[data-lang]').forEach((button) => {
+        const active = button.dataset.lang === state.lang;
+        button.classList.toggle('is-active', active);
+        button.setAttribute('aria-pressed', String(active));
+      });
+    }
+
+    function renderProblem() {
+      document.getElementById('chaosBoard').innerHTML = getCopy().problem.cards.map((card) => `
+        <article class="chaos-card"><span class="chaos-card__tag">${escapeHtml(card.tag)}</span><strong>${escapeHtml(card.text)}</strong></article>
+      `).join('');
+    }
+
+    function renderDiscovery() {
+      const copy = getCopy().discovery;
+      document.getElementById('discoverySources').innerHTML = copy.sources.map((item) => `<span class="source-pill">${escapeHtml(item)}</span>`).join('');
+      document.getElementById('discoveryFlow').innerHTML = copy.flow.map((item) => `<div class="flow-node">${escapeHtml(item)}</div>`).join('');
+    }
+
+    function renderMpe() {
+      const copy = getCopy().mpe;
+      document.getElementById('mpeFlow').innerHTML = copy.flow.map((item) => `<div class="mpe-node">${escapeHtml(item)}</div>`).join('');
+      document.getElementById('mpeBenefits').innerHTML = copy.benefits.map((item) => `<span class="benefit-pill">${escapeHtml(item)}</span>`).join('');
+    }
+
+    function selectPipeline(index, moveFocus = false) {
+      const stages = getCopy().pipeline.stages;
+      state.pipeline = Math.max(0, Math.min(index, stages.length - 1));
+      const buttons = [...document.querySelectorAll('.pipeline-stage')];
+      buttons.forEach((button, buttonIndex) => {
+        const active = buttonIndex === state.pipeline;
+        button.classList.toggle('is-active', active);
+        button.setAttribute('aria-pressed', String(active));
+      });
+      document.getElementById('pipelineDetail').textContent = stages[state.pipeline].detail;
+      if (moveFocus) buttons[state.pipeline]?.focus({ preventScroll: true });
+    }
+
+    function renderPipeline() {
+      const stages = getCopy().pipeline.stages;
+      const container = document.getElementById('pipelineStages');
+      container.innerHTML = stages.map((stage, index) => `
+        <button class="pipeline-stage" type="button" data-pipeline-index="${index}" data-tone="${escapeHtml(stage.tone)}" aria-pressed="false">
+          <span class="pipeline-stage__num">${String(index + 1).padStart(2, '0')}</span><span class="pipeline-stage__label">${escapeHtml(stage.label)}</span>
+        </button>
+      `).join('');
+      container.querySelectorAll('[data-pipeline-index]').forEach((button) => {
+        button.addEventListener('click', () => selectPipeline(Number(button.dataset.pipelineIndex)));
+        button.addEventListener('keydown', (event) => {
+          if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) return;
+          event.preventDefault();
+          const direction = ['ArrowRight', 'ArrowDown'].includes(event.key) ? 1 : -1;
+          selectPipeline((state.pipeline + direction + stages.length) % stages.length, true);
+        });
+      });
+      selectPipeline(state.pipeline);
+    }
+
+    function renderComparison() { document.getElementById('sequenceNote').innerHTML = getCopy().comparison.sequence; }
+
+    function selectScenario(index, moveFocus = false) {
+      const steps = getCopy().scenario.steps;
+      state.scenario = Math.max(0, Math.min(index, steps.length - 1));
+      const step = steps[state.scenario];
+      const tabs = [...document.querySelectorAll('.scenario-tab')];
+      tabs.forEach((tab, tabIndex) => {
+        const active = tabIndex === state.scenario;
+        tab.classList.toggle('is-active', active);
+        tab.setAttribute('aria-pressed', String(active));
+      });
+      document.getElementById('scenarioRole').textContent = step.role;
+      document.getElementById('scenarioHeadline').textContent = step.headline;
+      document.getElementById('scenarioList').innerHTML = step.items.map((item) => `<li>${escapeHtml(item)}</li>`).join('');
+      const verdict = document.getElementById('scenarioVerdict');
+      verdict.hidden = !step.verdict;
+      verdict.textContent = step.verdict || '';
+      const outcome = document.getElementById('scenarioOutcome');
+      outcome.hidden = !step.outcome;
+      outcome.innerHTML = (step.outcome || []).map((item) => `<span>${escapeHtml(item)}</span>`).join('');
+      if (moveFocus) tabs[state.scenario]?.focus({ preventScroll: true });
+    }
+
+    function renderScenario() {
+      const copy = getCopy().scenario;
+      const container = document.getElementById('scenarioNav');
+      container.innerHTML = copy.tabs.map((label, index) => `
+        <button class="scenario-tab" type="button" data-scenario-index="${index}" aria-pressed="false"><span>${String(index + 1).padStart(2, '0')}</span><span>${escapeHtml(label)}</span></button>
+      `).join('');
+      container.querySelectorAll('[data-scenario-index]').forEach((button) => {
+        button.addEventListener('click', () => selectScenario(Number(button.dataset.scenarioIndex)));
+        button.addEventListener('keydown', (event) => {
+          if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) return;
+          event.preventDefault();
+          const direction = ['ArrowRight', 'ArrowDown'].includes(event.key) ? 1 : -1;
+          selectScenario((state.scenario + direction + copy.steps.length) % copy.steps.length, true);
+        });
+      });
+      selectScenario(state.scenario);
+    }
+
+    function renderValue() {
+      document.getElementById('valueGrid').innerHTML = getCopy().value.items.map((item, index) => `
+        <article class="value-card"><span class="value-card__num">${String(index + 1).padStart(2, '0')}</span><div><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.text)}</p></div></article>
+      `).join('');
+    }
+
+    function renderFinal() {
+      document.getElementById('finalChain').innerHTML = getCopy().final.chain.map((item, index, items) => `
+        <span>${escapeHtml(item)}</span>${index < items.length - 1 ? '<span class="final-chain__arrow" aria-hidden="true">→</span>' : ''}
+      `).join('');
+    }
+
+    function renderDrawer() {
+      const copy = getCopy();
+      const nav = document.getElementById('drawerNav');
+      nav.innerHTML = copy.nav.map((label, index) => `
+        <button class="drawer-link" type="button" data-go-to="${index}"><span class="drawer-link__num">${String(index + 1).padStart(2, '0')}</span><span class="drawer-link__name">${escapeHtml(label)}</span></button>
+      `).join('');
+      nav.querySelectorAll('[data-go-to]').forEach((button) => {
+        button.addEventListener('click', () => { closeDrawer(); goToSection(Number(button.dataset.goTo)); });
+      });
+    }
+
+    function renderLanguage() {
+      renderStaticCopy(); renderProblem(); renderDiscovery(); renderMpe(); renderPipeline(); renderComparison();
+      renderScenario(); renderValue(); renderFinal(); renderDrawer(); updateNavigation();
+    }
+
+    function setLanguage(language) {
+      if (!CONTENT[language]) return;
+      state.lang = language;
+      localStorage.setItem('mpe-presentation-lang', language);
+      renderLanguage();
+    }
+
+    function updateNavigation() {
+      const copy = getCopy();
+      const current = state.section + 1;
+      const total = panels.length;
+      document.getElementById('progressBar').style.width = `${(current / total) * 100}%`;
+      document.getElementById('sectionCount').textContent = copy.ui.counter(current, total);
+      document.getElementById('sectionTitle').textContent = copy.nav[state.section];
+      document.getElementById('brandChapter').textContent = copy.nav[state.section];
+      document.getElementById('previousButton').disabled = state.section === 0;
+      document.getElementById('nextButton').disabled = state.section === total - 1;
+      document.querySelectorAll('.drawer-link').forEach((link, index) => {
+        const active = index === state.section;
+        link.classList.toggle('is-active', active);
+        if (active) link.setAttribute('aria-current', 'step'); else link.removeAttribute('aria-current');
+      });
+    }
+
+    function goToSection(index) {
+      const target = Math.max(0, Math.min(index, panels.length - 1));
+      panels[target].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function openDrawer() {
+      if (state.drawerOpen) return;
+      state.drawerOpen = true;
+      const drawer = document.getElementById('chapterDrawer');
+      const backdrop = document.getElementById('drawerBackdrop');
+      drawer.hidden = false;
+      backdrop.hidden = false;
+      document.getElementById('menuButton').setAttribute('aria-expanded', 'true');
+      requestAnimationFrame(() => {
+        drawer.classList.add('is-open'); backdrop.classList.add('is-open'); document.getElementById('closeDrawerButton').focus();
+      });
+    }
+
+    function closeDrawer() {
+      if (!state.drawerOpen) return;
+      state.drawerOpen = false;
+      const drawer = document.getElementById('chapterDrawer');
+      const backdrop = document.getElementById('drawerBackdrop');
+      drawer.classList.remove('is-open'); backdrop.classList.remove('is-open');
+      document.getElementById('menuButton').setAttribute('aria-expanded', 'false');
+      window.setTimeout(() => { drawer.hidden = true; backdrop.hidden = true; }, 230);
+    }
+
+    let scrollFrame = 0;
+    function syncSectionFromScroll() {
+      cancelAnimationFrame(scrollFrame);
+      scrollFrame = requestAnimationFrame(() => {
+        const viewportTarget = window.innerHeight * 0.48;
+        let nearest = 0;
+        let distance = Number.POSITIVE_INFINITY;
+        panels.forEach((panel, index) => {
+          const rect = panel.getBoundingClientRect();
+          const panelTarget = rect.top + Math.min(rect.height, window.innerHeight) * 0.5;
+          const candidate = Math.abs(panelTarget - viewportTarget);
+          if (candidate < distance) { distance = candidate; nearest = index; }
+        });
+        if (nearest !== state.section) { state.section = nearest; updateNavigation(); }
+      });
+    }
+
+    document.getElementById('menuButton').addEventListener('click', openDrawer);
+    document.getElementById('statusButton').addEventListener('click', openDrawer);
+    document.getElementById('closeDrawerButton').addEventListener('click', closeDrawer);
+    document.getElementById('drawerBackdrop').addEventListener('click', closeDrawer);
+    document.getElementById('brandButton').addEventListener('click', () => goToSection(0));
+    document.getElementById('previousButton').addEventListener('click', () => goToSection(state.section - 1));
+    document.getElementById('nextButton').addEventListener('click', () => goToSection(state.section + 1));
+    document.querySelectorAll('[data-lang]').forEach((button) => button.addEventListener('click', () => setLanguage(button.dataset.lang)));
+    window.addEventListener('scroll', syncSectionFromScroll, { passive: true });
+    window.addEventListener('resize', syncSectionFromScroll, { passive: true });
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && state.drawerOpen) { closeDrawer(); document.getElementById('menuButton').focus(); return; }
+      if (state.drawerOpen || event.target.closest('button, a, input, textarea, select')) return;
+      if (['ArrowRight', 'PageDown'].includes(event.key)) { event.preventDefault(); goToSection(state.section + 1); }
+      if (['ArrowLeft', 'PageUp'].includes(event.key)) { event.preventDefault(); goToSection(state.section - 1); }
+    });
+
+    renderLanguage();
+    syncSectionFromScroll();
+  </script>
+
 <script>
-const T={ru:{heroEye:'Система предпринимателя с ИИ',heroTitle:'От идеи до работающего результата — без хаоса.',heroLead:'Business Discovery помогает понять, чем стоит заниматься. Murat Project Engineer помогает довести выбранное направление до проверенного результата.',chip1:'Поиск возможностей',chip2:'Приоритеты',chip3:'Эксперименты',chip4:'Контроль исполнения',chip5:'ИИ как рабочая система',problemTitle:'Проблема предпринимателя',problemSub:'Идей и задач много. Время, деньги и внимание ограничены. Главная потеря возникает не из-за отсутствия идей, а из-за неправильного выбора и слабого исполнения.',p1t:'Что делать?',p1d:'Какую идею проверить первой? Где реальная потребность? Есть ли бизнес-ценность?',p2t:'Как довести до результата?',p2d:'Кто делает следующий шаг? Что уже проверено? Где риск, блокер или лишняя работа?',bdSub:'Система поиска и проверки бизнес-возможностей до того, как предприниматель потратит серьёзные ресурсы.',bdQ:'Главный вопрос: «Стоит ли этим заниматься?»',bd1:'Находит проблемы и незакрытые потребности.',bd2:'Формирует бизнес-гипотезы.',bd3:'Оценивает ценность, риски, рынок и следующий эксперимент.',bd4:'Отбрасывает слабые направления до дорогой реализации.',mpeSub:'Инженерная система управления проектами и работой с ИИ после того, как направление выбрано.',mpeQ:'Главный вопрос: «Как правильно это реализовать?»',mpe1:'Проверяет новую идею через New Idea Filter.',mpe2:'Ищет, что можно расширить или переиспользовать вместо создания дублей.',mpe3:'Разбивает работу на эксперименты, checkpoints и проверяемые шаги.',mpe4:'Контролирует результат через тесты, evidence и историю решений.',togetherTitle:'Как они работают вместе',togetherSub:'Нажмите на этап, чтобы увидеть его роль.',f1t:'Сигнал',f1p:'Проблема, тренд, запрос клиента или новая возможность.',f2p:'Проверка ценности и формирование гипотезы.',f3t:'Решение',f3p:'Берём в работу, экспериментируем или откладываем.',f4p:'Архитектура исполнения, Task Packet, checkpoints.',f5t:'Результат',f5p:'Работающий продукт, процесс или доказанный вывод.',scenarioTitle:'Пример рабочего сценария',scenarioEye:'Ситуация',scenarioProblem:'Предприниматель замечает, что клиенты постоянно задают один и тот же вопрос и менеджеры тратят на ответы много времени.',e1:'Проверяет масштаб проблемы, ценность автоматизации и возможный формат решения.',e2t:'Эксперимент',e2:'Вместо большой системы запускается минимальная проверка.',e3:'Определяет, что переиспользовать, ставит checkpoints и контролирует реализацию.',e4t:'Решение по фактам',e4:'Масштабировать, изменить или закрыть эксперимент.',valueTitle:'Что получает предприниматель',v1:'Меньше хаотичных проектов и дублирования.',v2:'Быстрее проверяются идеи и принимаются решения.',v3:'Понятно, что происходит с каждой инициативой и почему.',ctaTitle:'Не «ChatGPT для бизнеса», а управляемый контур работы с ИИ.',ctaText:'Business Discovery выбирает правильную цель. MPE организует путь до результата. Вместе они превращают идеи, данные и возможности в управляемый процесс предпринимателя.',next:'Дальше ↓',flow:['Сначала фиксируется реальный сигнал: проблема клиента, изменение рынка или новая возможность.','Business Discovery проверяет, есть ли здесь достаточно ценности, чтобы тратить ресурсы.','Результат Discovery — решение: продолжить, провести минимальный эксперимент или отказаться.','MPE организует исполнение: переиспользование существующего, scope, checkpoints, тесты и доказательства.','На выходе — не просто идея, а проверенный результат и история того, как он был получен.']},kz:{heroEye:'Кәсіпкердің AI жүйесі',heroTitle:'Идеядан нақты нәтижеге дейін — ретсіздіксіз.',heroLead:'Business Discovery немен айналысу керегін анықтауға көмектеседі. Murat Project Engineer таңдалған бағытты тексерілген нәтижеге дейін жеткізеді.',chip1:'Мүмкіндіктерді іздеу',chip2:'Басымдықтар',chip3:'Эксперименттер',chip4:'Орындалуды бақылау',chip5:'AI — жұмыс жүйесі',problemTitle:'Кәсіпкердің мәселесі',problemSub:'Идеялар мен міндеттер көп. Уақыт, ақша және назар шектеулі. Негізгі шығын идеяның жоқтығынан емес, қате таңдау мен әлсіз орындаудан туады.',p1t:'Не істеу керек?',p1d:'Қай идеяны бірінші тексеру керек? Нақты сұраныс қайда? Бизнес-құндылығы бар ма?',p2t:'Нәтижеге қалай жеткіземіз?',p2d:'Келесі қадамды кім орындайды? Не тексерілді? Қай жерде тәуекел, бөгет немесе артық жұмыс бар?',bdSub:'Кәсіпкер елеулі ресурс жұмсамай тұрып бизнес-мүмкіндіктерді іздеп, тексеретін жүйе.',bdQ:'Негізгі сұрақ: «Мұнымен айналысу керек пе?»',bd1:'Проблемалар мен жабылмаған қажеттіліктерді табады.',bd2:'Бизнес-гипотезаларды қалыптастырады.',bd3:'Құндылықты, тәуекелді, нарықты және келесі экспериментті бағалайды.',bd4:'Қымбат іске асыруға дейін әлсіз бағыттарды алып тастайды.',mpeSub:'Бағыт таңдалғаннан кейін жобалар мен AI жұмысын инженерлік түрде басқаратын жүйе.',mpeQ:'Негізгі сұрақ: «Мұны қалай дұрыс іске асырамыз?»',mpe1:'Жаңа идеяны New Idea Filter арқылы тексереді.',mpe2:'Жаңа дубль жасаудың орнына нені кеңейтуге немесе қайта қолдануға болатынын іздейді.',mpe3:'Жұмысты эксперименттерге, checkpoints және тексерілетін қадамдарға бөледі.',mpe4:'Нәтижені тесттер, evidence және шешімдер тарихы арқылы бақылайды.',togetherTitle:'Екі жүйе бірге қалай жұмыс істейді',togetherSub:'Рөлін көру үшін кезеңді басыңыз.',f1t:'Сигнал',f1p:'Проблема, тренд, клиент сұранысы немесе жаңа мүмкіндік.',f2p:'Құндылықты тексеру және гипотеза қалыптастыру.',f3t:'Шешім',f3p:'Іске аламыз, эксперимент жасаймыз немесе кейінге қалдырамыз.',f4p:'Орындау архитектурасы, Task Packet, checkpoints.',f5t:'Нәтиже',f5p:'Жұмыс істейтін өнім, процесс немесе дәлелденген қорытынды.',scenarioTitle:'Жұмыс сценарийінің мысалы',scenarioEye:'Жағдай',scenarioProblem:'Кәсіпкер клиенттер бір сұрақты қайта-қайта қоятынын және менеджерлер оған көп уақыт жұмсайтынын байқайды.',e1:'Проблеманың ауқымын, автоматтандыру құндылығын және шешім форматын тексереді.',e2t:'Эксперимент',e2:'Үлкен жүйенің орнына минималды тексеру іске қосылады.',e3:'Нені қайта қолдануға болатынын анықтап, checkpoints қойып, іске асыруды бақылайды.',e4t:'Фактіге негізделген шешім',e4:'Масштабтау, өзгерту немесе экспериментті жабу.',valueTitle:'Кәсіпкер не алады',v1:'Ретсіз жобалар мен қайталанатын жұмыстың азаюы.',v2:'Идеялар тезірек тексеріліп, шешім жылдамырақ қабылданады.',v3:'Әр бастаманың жағдайы және неге дәл солай шешілгені түсінікті.',ctaTitle:'Бұл жай ғана «бизнеске арналған ChatGPT» емес — AI-мен басқарылатын жұмыс контуры.',ctaText:'Business Discovery дұрыс мақсатты таңдайды. MPE нәтижеге дейінгі жолды ұйымдастырады. Екеуі бірге идеялар, деректер және мүмкіндіктерді кәсіпкердің басқарылатын процесіне айналдырады.',next:'Келесі ↓',flow:['Алдымен нақты сигнал белгіленеді: клиент мәселесі, нарықтағы өзгеріс немесе жаңа мүмкіндік.','Business Discovery осы бағытқа ресурс жұмсауға жеткілікті құндылық бар-жоғын тексереді.','Discovery нәтижесі — жалғастыру, минималды эксперимент жасау немесе бас тарту туралы шешім.','MPE орындауды ұйымдастырады: барды қайта пайдалану, scope, checkpoints, тесттер және дәлелдер.','Нәтижесінде жай идея емес, тексерілген нәтиже және оған қалай жеткеніміздің тарихы қалады.']}};
-let lang='ru';const steps=[...document.querySelectorAll('.step')],detail=document.getElementById('flowDetail');function apply(){document.documentElement.lang=lang;document.querySelectorAll('[data-t]').forEach(el=>{const k=el.dataset.t;if(T[lang][k])el.textContent=T[lang][k]});document.getElementById('nextBtn').textContent=T[lang].next;document.querySelectorAll('[data-lang]').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));showDetail(steps.findIndex(s=>s.classList.contains('active')))}function showDetail(i){steps.forEach((s,n)=>s.classList.toggle('active',n===i));detail.textContent=T[lang].flow[i]||''}steps.forEach((s,i)=>s.addEventListener('click',()=>showDetail(i)));document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>{lang=b.dataset.lang;apply()}));document.getElementById('nextBtn').addEventListener('click',()=>{const secs=[...document.querySelectorAll('main section')];const y=scrollY+90;const next=secs.find(s=>s.offsetTop>y);(next||secs[secs.length-1]).scrollIntoView({behavior:'smooth'})});addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-innerHeight;document.getElementById('bar').style.width=(h?Math.min(100,scrollY/h*100):0)+'%'});apply();
+(function () {
+  var copy = {
+    ru: {
+      kicker: "LIVE CASE / один сигнал",
+      headline: "Клиенты снова просят онлайн-расчёт. Как вы отреагируете?",
+      badge: "выберите путь",
+      signal: "Повторяющийся запрос",
+      decision: "Ваше решение",
+      build: "Сразу строить",
+      validate: "Сначала проверить",
+      ignore: "Оставить как есть",
+      time: "До решения",
+      risk: "Риск потерь",
+      clarity: "Ясность",
+      result: {
+        build: "Дорогая гипотеза",
+        validate: "Решение по фактам",
+        ignore: "Сигнал потерян"
+      },
+      note: "Показатели условные: они показывают логику сравнения, а не обещают конкретный результат."
+    },
+    kz: {
+      kicker: "LIVE CASE / бір сигнал",
+      headline: "Клиенттер онлайн есеп сұрайды. Сіз қалай жауап бересіз?",
+      badge: "жолды таңдаңыз",
+      signal: "Қайталанатын сұраныс",
+      decision: "Сіздің шешіміңіз",
+      build: "Бірден жасау",
+      validate: "Алдымен тексеру",
+      ignore: "Өзгеріссіз қалдыру",
+      time: "Шешімге дейін",
+      risk: "Шығын тәуекелі",
+      clarity: "Айқындық",
+      result: {
+        build: "Қымбат гипотеза",
+        validate: "Дерекке негізделген шешім",
+        ignore: "Сигнал жоғалды"
+      },
+      note: "Көрсеткіштер шартты: олар нақты нәтижеге уәде бермейді, тек салыстыру логикасын көрсетеді."
+    }
+  };
+  var metrics = {
+    build: ["42 дня", "78%", "25%"],
+    validate: ["3 дня", "28%", "86%"],
+    ignore: ["0 дней", "64%", "8%"]
+  };
+  var metricsKz = {
+    build: ["42 күн", "78%", "25%"],
+    validate: ["3 күн", "28%", "86%"],
+    ignore: ["0 күн", "64%", "8%"]
+  };
+  var selected = "validate";
+  function currentCopy() { return copy[document.documentElement.lang === "kz" ? "kz" : "ru"]; }
+  function currentMetrics(key) { return document.documentElement.lang === "kz" ? metricsKz[key] : metrics[key]; }
+  function buildAtlas() {
+    var scenario = document.querySelector("#scenario .story-panel__inner");
+    if (!scenario || document.getElementById("atlasDecision")) return;
+    var atlas = document.createElement("div");
+    atlas.id = "atlasDecision";
+    atlas.innerHTML =
+      '<div class="atlas-decision__header"><div><div class="atlas-decision__kicker"></div><h3 class="atlas-decision__headline"></h3></div><div class="atlas-decision__badge"></div></div>' +
+      '<div class="atlas-decision__body"><div class="atlas-cascade">' +
+        '<svg class="atlas-cascade__lines" viewBox="0 0 760 360" preserveAspectRatio="none" aria-hidden="true">' +
+          '<path class="atlas-path atlas-path--build" d="M82 180 C175 180 190 62 300 62 S470 180 680 180" />' +
+          '<path class="atlas-path atlas-path--validate" d="M82 180 C175 180 205 180 300 180 S480 180 680 180" />' +
+          '<path class="atlas-path atlas-path--ignore" d="M82 180 C175 180 190 298 300 298 S470 180 680 180" />' +
+        '</svg>' +
+        '<div class="atlas-node atlas-node--signal"></div><div class="atlas-node atlas-node--decision"></div>' +
+        '<div class="atlas-node atlas-node--build"></div><div class="atlas-node atlas-node--validate"></div><div class="atlas-node atlas-node--ignore"></div><div class="atlas-node atlas-node--result"></div>' +
+      '</div><div><div class="atlas-options">' +
+        '<button class="atlas-option" type="button" data-choice="build" style="--choice-color:#ff735f"><span class="atlas-option__shape"></span><span><small></small><strong></strong></span></button>' +
+        '<button class="atlas-option" type="button" data-choice="validate" style="--choice-color:#c8ff49"><span class="atlas-option__shape"></span><span><small></small><strong></strong></span></button>' +
+        '<button class="atlas-option" type="button" data-choice="ignore" style="--choice-color:#a38bf2"><span class="atlas-option__shape"></span><span><small></small><strong></strong></span></button>' +
+      '</div><div class="atlas-decision__metrics"><div class="atlas-metric"><span class="metric-time"></span><strong></strong></div><div class="atlas-metric"><span class="metric-risk"></span><strong></strong></div><div class="atlas-metric"><span class="metric-clarity"></span><strong></strong></div></div></div></div>' +
+      '<div class="atlas-decision__footer"><div class="atlas-decision__result"></div><div class="atlas-decision__note"></div></div>';
+    scenario.insertBefore(atlas, scenario.querySelector(".scenario-shell"));
+    atlas.querySelectorAll(".atlas-option").forEach(function (button) {
+      button.addEventListener("click", function () { selected = button.dataset.choice; renderAtlas(); });
+    });
+    renderAtlas();
+  }
+  function renderAtlas() {
+    var atlas = document.getElementById("atlasDecision");
+    if (!atlas) return;
+    var c = currentCopy();
+    var choiceIndex = { build: 0, validate: 1, ignore: 2 };
+    var values = currentMetrics(selected);
+    atlas.dataset.choice = selected;
+    atlas.querySelector(".atlas-decision__kicker").textContent = c.kicker;
+    atlas.querySelector(".atlas-decision__headline").textContent = c.headline;
+    atlas.querySelector(".atlas-decision__badge").textContent = c.badge;
+    atlas.querySelector(".atlas-node--signal").textContent = c.signal;
+    atlas.querySelector(".atlas-node--decision").textContent = c.decision;
+    atlas.querySelector(".atlas-node--build").textContent = c.build;
+    atlas.querySelector(".atlas-node--validate").textContent = c.validate;
+    atlas.querySelector(".atlas-node--ignore").textContent = c.ignore;
+    atlas.querySelector(".atlas-node--result").textContent = c.result[selected];
+    var labels = [c.build, c.validate, c.ignore];
+    atlas.querySelectorAll(".atlas-option").forEach(function (button, index) {
+      button.classList.toggle("is-active", index === choiceIndex[selected]);
+      button.setAttribute("aria-pressed", String(index === choiceIndex[selected]));
+      button.querySelector("small").textContent = "0" + (index + 1);
+      button.querySelector("strong").textContent = labels[index];
+    });
+    atlas.querySelector(".metric-time").textContent = c.time;
+    atlas.querySelector(".metric-risk").textContent = c.risk;
+    atlas.querySelector(".metric-clarity").textContent = c.clarity;
+    atlas.querySelectorAll(".atlas-metric strong")[0].textContent = values[0];
+    atlas.querySelectorAll(".atlas-metric strong")[1].textContent = values[1];
+    atlas.querySelectorAll(".atlas-metric strong")[2].textContent = values[2];
+    atlas.querySelector(".atlas-decision__result").textContent = c.result[selected];
+    atlas.querySelector(".atlas-decision__note").textContent = c.note;
+  }
+  buildAtlas();
+  var previousSetLanguage = window.setLanguage;
+  if (typeof previousSetLanguage === "function") {
+    window.setLanguage = function (language) {
+      previousSetLanguage(language);
+      window.setTimeout(renderAtlas, 0);
+    };
+  }
+}());
 </script>
+
 </body>
 </html>

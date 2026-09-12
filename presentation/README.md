@@ -8,12 +8,14 @@ Decision: `EXTEND_EXISTING`.
 
 The presentation is intentionally kept inside `murat-project-engineer`. It does not create a parallel product, backend, database, or new repository.
 
-## MVP
+## Storytelling presentation
 
 - Single static `index.html`
-- Responsive desktop/mobile layout
-- RU/KZ language switch
-- Interactive Business Discovery → MPE workflow
+- Eight-screen, mobile-first storytelling flow
+- Fully centralized RU/KZ content and interface copy
+- Previous/next controls, progress, section picker, and keyboard navigation
+- Interactive Business Discovery → MPE pipeline and business scenario
+- Responsive layouts verified at 360×800, 390×844, and 1440px desktop
 - No external JavaScript dependencies
 - No backend and no secrets
 
@@ -27,6 +29,6 @@ Recommended configuration:
 - Build output directory: `presentation`
 - Root directory: repository root
 
-Suggested Pages project name: `mpe-business-discovery`
+Pages project name: `mpe-business-discovery`
 
 After the first deploy, attach a custom domain only if needed. The initial `*.pages.dev` URL is sufficient for MVP validation.
