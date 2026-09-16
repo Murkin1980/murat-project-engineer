@@ -1,0 +1,146 @@
+{
+  "schema_version": "arena-execution-evidence/1.0",
+  "artifact_type": "execution_evidence_bundle",
+  "experiment": "EXP-002",
+  "run_id": "ARENA-XEXEC-EXP002-20260916-01",
+  "record_ref": "ARENA_EXECUTION_RECORD.json",
+  "produced_by": "Arena sandbox shell tool (bash); each captured_output below is the unmodified text of the raw log file written by the command it names",
+  "provenance_class": "TOOL_OBSERVED_EXECUTION",
+  "capture_policy": {
+    "verbatim_capture": "captured_output = full raw log file content, including the injected exit code line; nothing edited, summarised or reordered",
+    "full_test_and_gate_logs_committed": false,
+    "full_log_location": "/home/user/exp002-evidence-logs/ (executor sandbox, outside this repository)",
+    "rationale": "the run instruction forbids committing the full test log; raw_log_sha256 lets a reviewer compare the committed excerpt with the raw log when it is available"
+  },
+  "evidence_items": [
+    {
+      "evidence_id": "EV-01",
+      "check_id": "preflight_repository_state",
+      "command": "bash -c git rev-parse --abbrev-ref HEAD; git rev-parse HEAD; git rev-parse origin/main; git rev-list --left-right --count origin/main...HEAD; echo \"porcelain_lines=$(git status --porcelain | wc -l)\"",
+      "observed_by": "arena_sandbox_shell_tool",
+      "exit_code": 0,
+      "raw_log_file": "10_preflight_repository_state.log",
+      "raw_log_sha256": "7b224578e6ab061ce7cae94a3c846343ccab9e4c080d5233650be4d2e30efbb9",
+      "captured_output": "=== 10_preflight_repository_state ===\ncaptured_at_utc: 2026-09-16T13:21:26Z\n$ bash -c git rev-parse --abbrev-ref HEAD; git rev-parse HEAD; git rev-parse origin/main; git rev-list --left-right --count origin/main...HEAD; echo \"porcelain_lines=$(git status --porcelain | wc -l)\"\narena/01a0aa5d-murat-project-engineer\nf19daebb6f8efdd28e81aed65b0df5b264c92f4a\nf19daebb6f8efdd28e81aed65b0df5b264c92f4a\n0\t0\nporcelain_lines=2\nexit=0\n"
+    },
+    {
+      "evidence_id": "EV-02",
+      "check_id": "frozen_ir_identity_and_integrity",
+      "command": "bash -c sha256sum experiments/exp-002-machine-protocol/MPE_IR_FROZEN.json; wc -c experiments/exp-002-machine-protocol/MPE_IR_FROZEN.json; python3 -c \"import json;d=json.load(open('experiments/exp-002-machine-protocol/MPE_IR_FROZEN.json'));print('protocol=%s version=%s risk_tier=%s autonomy=%s'%(d['protocol'],d['version'],d['decision']['risk_tier'],d['autonomy']['level']))\"; git hash-object experiments/exp-002-machine-protocol/MPE_IR_FROZEN.json; git status --porcelain experiments/exp-002-machine-protocol/MPE_IR_FROZEN.json",
+      "observed_by": "arena_sandbox_shell_tool",
+      "exit_code": 0,
+      "raw_log_file": "11_frozen_ir_identity.log",
+      "raw_log_sha256": "c81aaf7115b0951ff9b73f766f8c33ed36560039b388cca8e8f47b478c251d0b",
+      "captured_output": "=== 11_frozen_ir_identity ===\ncaptured_at_utc: 2026-09-16T13:21:26Z\n$ bash -c sha256sum experiments/exp-002-machine-protocol/MPE_IR_FROZEN.json; wc -c experiments/exp-002-machine-protocol/MPE_IR_FROZEN.json; python3 -c \"import json;d=json.load(open('experiments/exp-002-machine-protocol/MPE_IR_FROZEN.json'));print('protocol=%s version=%s risk_tier=%s autonomy=%s'%(d['protocol'],d['version'],d['decision']['risk_tier'],d['autonomy']['level']))\"; git hash-object experiments/exp-002-machine-protocol/MPE_IR_FROZEN.json; git status --porcelain experiments/exp-002-machine-protocol/MPE_IR_FROZEN.json\ncdafe73309960c555d8da1c84efbfc7b4c1e6ca22d3eeafeca5a226ba43fdbfd  experiments/exp-002-machine-protocol/MPE_IR_FROZEN.json\n1148 experiments/exp-002-machine-protocol/MPE_IR_FROZEN.json\nprotocol=mpe-ir version=0.1 risk_tier=FAST autonomy=FAST\n8f0775a5f4f7fa1d8e50b45ebfea285a9a59a8d9\nexit=0\n"
+    },
+    {
+      "evidence_id": "EV-03",
+      "check_id": "frozen_ir_schema_conformance",
+      "command": "python3 -m unittest tests.test_contracts.PackageContractTests.test_exp002_frozen_ir_matches_schema -v",
+      "observed_by": "arena_sandbox_shell_tool",
+      "exit_code": 0,
+      "raw_log_file": "12_frozen_ir_schema_conformance.log",
+      "raw_log_sha256": "1e53332b677251cd0288de3f29fc951bd2d721c1a65268c484b3b54e95b33f16",
+      "captured_output": "=== 12_frozen_ir_schema_conformance ===\ncaptured_at_utc: 2026-09-16T13:21:26Z\n$ python3 -m unittest tests.test_contracts.PackageContractTests.test_exp002_frozen_ir_matches_schema -v\ntest_exp002_frozen_ir_matches_schema (tests.test_contracts.PackageContractTests.test_exp002_frozen_ir_matches_schema) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\nexit=0\n"
+    },
+    {
+      "evidence_id": "EV-04",
+      "check_id": "frozen_ir_drift_rejection",
+      "command": "python3 -m unittest tests.test_contracts.PackageContractTests.test_exp002_frozen_ir_conformance_rejects_drift -v",
+      "observed_by": "arena_sandbox_shell_tool",
+      "exit_code": 0,
+      "raw_log_file": "13_frozen_ir_drift_rejection.log",
+      "raw_log_sha256": "b8c70ddd09c4e298cf5e05fba0175bbd18da169c21b7d07524e309b250381ffa",
+      "captured_output": "=== 13_frozen_ir_drift_rejection ===\ncaptured_at_utc: 2026-09-16T13:21:26Z\n$ python3 -m unittest tests.test_contracts.PackageContractTests.test_exp002_frozen_ir_conformance_rejects_drift -v\ntest_exp002_frozen_ir_conformance_rejects_drift (tests.test_contracts.PackageContractTests.test_exp002_frozen_ir_conformance_rejects_drift) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nOK\nexit=0\n"
+    },
+    {
+      "evidence_id": "EV-05",
+      "check_id": "deterministic_triage_of_ir_derived_task_packet",
+      "command": "python3 scripts/triage_engine.py /tmp/t001_arena_task.json",
+      "observed_by": "arena_sandbox_shell_tool",
+      "exit_code": 0,
+      "raw_log_file": "15_triage_engine_output.log",
+      "raw_log_sha256": "9cb3334147a704a5c1b036922dc908e211c801fe170171dc148cbfb53a1842c0",
+      "captured_output": "=== 15_triage_engine_output ===\ncaptured_at_utc: 2026-09-16T13:21:29Z\n$ python3 scripts/triage_engine.py /tmp/t001_arena_task.json\n{\n  \"task_id\": \"T-001\",\n  \"execution_confidence\": 100,\n  \"complexity\": 0,\n  \"risk\": 0,\n  \"blast_radius\": 0,\n  \"affected_repositories\": [\n    \"murat-project-engineer\"\n  ],\n  \"architectural_impact\": 0,\n  \"data_sensitivity\": 0,\n  \"unknowns\": 0,\n  \"deep_change_probability\": 0,\n  \"human_approval_required\": false,\n  \"human_approval_reasons\": [],\n  \"recommended_risk_tier\": \"FAST\",\n  \"engine_version\": \"0.1.0\"\n}\nexit=0\n"
+    },
+    {
+      "evidence_id": "EV-06",
+      "check_id": "mpe_governed_entry_default_level",
+      "command": "python3 scripts/triage_engine.py /tmp/t001_arena_task.json --governed-run",
+      "observed_by": "arena_sandbox_shell_tool",
+      "exit_code": 0,
+      "raw_log_file": "16_governed_entry_L0.log",
+      "raw_log_sha256": "220b3699c9fa31cae71e125b26a673ade711b8cd8eceebcf5bf2bff185391b1e",
+      "captured_output": "=== 16_governed_entry_L0 ===\ncaptured_at_utc: 2026-09-16T13:21:29Z\n$ python3 scripts/triage_engine.py /tmp/t001_arena_task.json --governed-run\n{\n  \"task_id\": \"T-001\",\n  \"acceptance_state\": \"ACCEPTED_OBSERVE\",\n  \"allowed_action\": \"OBSERVE\",\n  \"executor_invoked\": false,\n  \"approval_recorded\": false,\n  \"execution_status\": \"NOT_PERMITTED\",\n  \"execution_result\": null,\n  \"blocking_reasons\": [],\n  \"reason\": \"earned=L0 risk_tier=FAST approval_required=False hard_blocks=none; allowed_action=OBSERVE execution_allowed=False\",\n  \"dispatch_evaluation_id\": \"EA-0aabcd40fc91668d\",\n  \"task_risk_tier\": \"FAST\",\n  \"current_autonomy_level\": \"L0\",\n  \"earned_recommended_level\": \"L0\",\n  \"events\": [\n    \"acceptance\",\n    \"enforcement\"\n  ]\n}\nexit=0\n"
+    },
+    {
+      "evidence_id": "EV-07",
+      "check_id": "mpe_governed_entry_elevated_level",
+      "command": "python3 scripts/triage_engine.py /tmp/t001_arena_task.json --governed-run --level L4",
+      "observed_by": "arena_sandbox_shell_tool",
+      "exit_code": 0,
+      "raw_log_file": "17_governed_entry_L4.log",
+      "raw_log_sha256": "ce24ec981457a2d7b125b2478362bd6774146d6cd452ed6bc4c2470c0ea10512",
+      "captured_output": "=== 17_governed_entry_L4 ===\ncaptured_at_utc: 2026-09-16T13:21:29Z\n$ python3 scripts/triage_engine.py /tmp/t001_arena_task.json --governed-run --level L4\n{\n  \"task_id\": \"T-001\",\n  \"acceptance_state\": \"ACCEPTED_OBSERVE\",\n  \"allowed_action\": \"OBSERVE\",\n  \"executor_invoked\": false,\n  \"approval_recorded\": false,\n  \"execution_status\": \"NOT_PERMITTED\",\n  \"execution_result\": null,\n  \"blocking_reasons\": [],\n  \"reason\": \"earned=L0 risk_tier=FAST approval_required=False hard_blocks=none; allowed_action=OBSERVE execution_allowed=False\",\n  \"dispatch_evaluation_id\": \"EA-2efb5ea81734a181\",\n  \"task_risk_tier\": \"FAST\",\n  \"current_autonomy_level\": \"L4\",\n  \"earned_recommended_level\": \"L0\",\n  \"events\": [\n    \"acceptance\",\n    \"enforcement\"\n  ]\n}\nexit=0\n"
+    }
+  ],
+  "frozen_ir_identity": {
+    "path": "experiments/exp-002-machine-protocol/MPE_IR_FROZEN.json",
+    "protocol": "mpe-ir",
+    "version": "0.1",
+    "bytes": 1148,
+    "sha256": "cdafe73309960c555d8da1c84efbfc7b4c1e6ca22d3eeafeca5a226ba43fdbfd",
+    "git_blob_sha": "8f0775a5f4f7fa1d8e50b45ebfea285a9a59a8d9",
+    "expected_protocol": "mpe-ir",
+    "expected_version": "0.1",
+    "expected_bytes": 1148,
+    "expected_sha256": "cdafe73309960c555d8da1c84efbfc7b4c1e6ca22d3eeafeca5a226ba43fdbfd",
+    "all_expected_values_match": true,
+    "modified_by_this_run": false
+  },
+  "triage_crosscheck_input": {
+    "note": "Task Packet derived from the frozen IR (task_id, objective, affected_repositories) plus executor-chosen ratings; the ratings are an AUTHORED INPUT, not tool-verified fact",
+    "input_verbatim": {
+      "task_id": "T-001",
+      "summary": "Stage 2 status documentation sync for murat-project-engineer",
+      "affected_repositories": [
+        "murat-project-engineer"
+      ],
+      "acceptance_criteria_present": true,
+      "rollback_known": true,
+      "ratings": {
+        "complexity": 0,
+        "risk": 0,
+        "architectural_impact": 0,
+        "data_sensitivity": 0,
+        "unknowns": 0
+      },
+      "signals": []
+    },
+    "rating_justification": {
+      "complexity": "0 — two additive artifacts plus two additive documentation paragraphs, no logic",
+      "risk": "0 — no production path, no secret, no CI, no contract, no gate change",
+      "architectural_impact": "0 — no new module, no runtime, no orchestration",
+      "data_sensitivity": "0 — no personal or customer data touched",
+      "unknowns": "0 — scope, allowed path and deliverable are fixed by the frozen IR"
+    },
+    "crosscheck_result": "scripts/triage_engine.py recommends FAST with human_approval_required=false, matching the frozen IR decision block; see EV-05",
+    "limitation": "agreement is conditional on the executor-chosen ratings above; the ratings themselves are not tool-verifiable"
+  },
+  "artifact_manifest": [
+    {
+      "path": "experiments/exp-002-machine-protocol/README.md",
+      "change": "modified",
+      "bytes": 6098,
+      "sha256": "04d7b55cdf7e312f4371d4748b6e31a439a6945a167021fb6396f31aa2796676"
+    },
+    {
+      "path": "experiments/exp-002-machine-protocol/EXP-002_RESULTS.md",
+      "change": "modified",
+      "bytes": 7714,
+      "sha256": "52cbba80a05614685bdc443118a03c1bcaae4248c2be16c6cdda88bdcf799b15"
+    }
+  ],
+  "hash_chain": "content files -> this evidence bundle -> ARENA_EXECUTION_RECORD.json (which records this bundle's digest) -> Git commit (which anchors the record's final bytes); this file therefore carries no digest of itself",
+  "secrets_policy": "no credential value, API token, environment-variable content, personal data or chain-of-thought is recorded in this file; EV-02/EV-03 report digests only"
+}
