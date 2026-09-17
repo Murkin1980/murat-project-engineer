@@ -123,7 +123,10 @@ The experiment references that production code; it does **not** duplicate it.
 - `CANONICAL_MACHINE_INTERFACE_SUPPORTED`
 - `CROSS_MODEL_SEMANTIC_PORTABILITY_SUPPORTED`
 - `EVIDENCE_TRUST_BOUNDARY_SUPPORTED`
-- Execution portability: `INCONCLUSIVE`
+- Execution portability: `INCONCLUSIVE` (Iterations 1–3)
+  — updated for one later run by the 2026-09-16 Arena run to
+  `SUPPORTED_BY_ONE_ARENA_RUN`; the historical value and all other outcomes are
+  unchanged. See the addendum in `EXP-002_RESULTS.md`.
 
 ## Artifacts in this directory
 
@@ -132,4 +135,13 @@ The experiment references that production code; it does **not** duplicate it.
   1148 bytes, protocol `mpe-ir` / version `0.1`)
 - `mpe-ir.schema.json` — the minimal MPE IR JSON Schema (draft 2020-12)
 - `README.md` — this document
-- `EXP-002_RESULTS.md` — detailed results and conclusions
+- `EXP-002_RESULTS.md` — detailed results and conclusions (plus the 2026-09-16
+  Arena run addendum)
+- `ARENA_EXECUTION_RECORD.json` — machine-readable record of the one external
+  cross-executor execution run performed by Arena (2026-09-16): executor, base
+  commit, frozen IR verification, changed files, executed commands, gate results,
+  evidence references, terminal state, limitations and rollback, with executor
+  claim / tool-observed execution / MPE-verified outcome kept distinct
+- `ARENA_EXECUTION_EVIDENCE.json` — the captured tool output backing that record's
+  verification claims (frozen IR hash/size, preflight Git state, governed-entry
+  cross-check) with artifact digests
