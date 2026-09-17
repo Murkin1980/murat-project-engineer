@@ -11,6 +11,10 @@ For any work involving human-facing automation, process discovery, onboarding, w
 
 - `docs/HUMAN_VALUE_DELIVERY_PRINCIPLES.md`
 
+For any work involving automation value, ROI, prioritization, process decomposition, unit economics, MVP selection, reusable automation primitives, or comparing candidate improvements, also read and apply:
+
+- `docs/VALUE_UNIT_ECONOMICS.md`
+
 For any new substantial idea, product, feature, service, agent, plugin, integration, automation, or repository decision, also read and apply:
 
 - `docs/NEW_IDEA_FILTER_POLICY.md`
@@ -32,6 +36,18 @@ Preserve these principles unless an explicit approved deep change says otherwise
 9. Process observation must not silently become employee productivity scoring.
 10. Do not claim relief or completed automation when only analysis/recommendation was produced.
 
+## Mandatory value-unit rules
+
+For substantial automation/value work:
+
+1. Decompose the process toward the smallest useful `Work Atom`.
+2. Distinguish a detected opportunity from a delivered `Relief Atom`.
+3. Count a `Verified Relief Unit (VRU)` only after implemented relief is verified on a real or production-like outcome.
+4. Track `Unlock Value` when one small fix enables downstream work.
+5. Track `Reuse Multiplier` when a solved primitive can benefit multiple workflows/projects.
+6. Prefer verified relief over activity metrics such as prompts, agent runs, model calls, feature count, or lines of code.
+7. Do not invent project-specific incompatible value units when the canonical VRU model is sufficient.
+
 ## Graceful handoff contract
 
 When execution must stop because of quota, credentials, approvals, unavailable integrations, external dependencies, budget, model/context boundaries, or other blockers, preserve at minimum:
@@ -48,7 +64,7 @@ Where code or artifacts changed, preserve the applicable diff, commit, artifact,
 
 ## Conflict rule
 
-If an implementation materially conflicts with `docs/HUMAN_VALUE_DELIVERY_PRINCIPLES.md` or other mandatory MPE governance, stop and surface the conflict for the appropriate human/deep-change decision rather than silently weakening the rule.
+If an implementation materially conflicts with `docs/HUMAN_VALUE_DELIVERY_PRINCIPLES.md`, `docs/VALUE_UNIT_ECONOMICS.md`, or other mandatory MPE governance, stop and surface the conflict for the appropriate human/deep-change decision rather than silently weakening the rule.
 
 ## Scope
 
