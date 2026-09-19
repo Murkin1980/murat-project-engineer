@@ -21,6 +21,10 @@ For any new substantial idea, product, feature, service, agent, plugin, integrat
 - `docs/GLOBAL_MPE_ENFORCEMENT.md`
 - `docs/OPINIONATED_WORKSPACE_POLICY.md`
 
+For work involving Composio social-media publishing or moving ChatGPT-managed media into a publishing connector, also read and apply:
+
+- `playbooks/composio-social-publishing.md`
+
 ## Mandatory human-value rules
 
 Preserve these principles unless an explicit approved deep change says otherwise:
