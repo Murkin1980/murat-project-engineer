@@ -11,11 +11,27 @@ Provide a repeatable route for publishing image/video content from ChatGPT-manag
 
 This playbook avoids creating parallel storage infrastructure when Composio's own temporary object storage is sufficient.
 
-## Verified route
+## Preferred route
 
 ```text
 ChatGPT Library / local working file
-  -> send as temporary Gmail attachment
+  -> Cloudflare R2 bucket: salamat-temp-media
+  -> temporary/publicly fetchable URL for the destination platform
+  -> Instagram media container
+  -> Instagram publish
+  -> post-publish verification
+  -> automatic R2 deletion after 7 days
+```
+
+Cloudflare R2 lifecycle is configured for all objects with an age of 604800 seconds (7 days).
+
+## Verified fallback route
+
+If direct transfer into R2 is unavailable in the current execution environment:
+
+```text
+ChatGPT Library / local working file
+  -> temporary Gmail attachment
   -> Gmail account connected inside Composio
   -> GMAIL_FETCH_EMAILS (exact unique subject)
   -> GMAIL_GET_ATTACHMENT
@@ -24,6 +40,8 @@ ChatGPT Library / local working file
   -> Instagram publish
   -> post-publish verification
 ```
+
+The Gmail bridge is fallback only, not the preferred user-visible workflow.
 
 ## Preconditions
 
@@ -109,25 +127,25 @@ Use the published media ID for verification/insights/permalink reads.
 
 ## Storage policy
 
-Do **not** create a dedicated Cloudflare R2 bucket/Worker only for this bridge while the Composio Gmail attachment route remains reliable.
+Primary temporary media storage is the existing Cloudflare R2 bucket:
 
-Reason:
+- bucket: `salamat-temp-media`
+- storage class: `Standard`
+- lifecycle rule: `delete-after-7-days`
+- scope: all objects (empty prefix)
+- expiration age: `604800` seconds / 7 days
+- purpose: transient media transport for social publishing and similar connector workflows
 
-- Composio already stages the attachment in temporary R2 storage;
-- the URL is short-lived;
-- no new lifecycle, auth, cleanup, billing, or security surface is introduced;
-- duplicating storage would violate the MPE default-over-invention rule without measurable benefit.
+The bucket is infrastructure reuse, not a new product or repository.
 
-Escalate to a dedicated Cloudflare media bridge only if evidence shows recurring friction such as:
+Rules:
 
-- Gmail attachment limits blocking required content;
-- repeated account-routing failures;
-- unacceptable latency;
-- bulk publishing throughput needs;
-- need for deterministic automatic expiry/cleanup across many files;
-- another destination cannot consume the Composio temporary URL.
-
-Such an escalation requires a new MPE filter decision before implementation.
+- Do not store permanent business archives here.
+- Do not store credentials or secrets in object names or metadata.
+- Prefer short-lived access URLs when exposing media to third-party publishing APIs.
+- Let lifecycle cleanup handle abandoned media automatically.
+- Gmail attachment bridging remains fallback only when direct R2 transfer is unavailable.
+- Preserve the original source file in its normal source-of-truth location when needed.
 
 ## Verified Relief Unit
 
