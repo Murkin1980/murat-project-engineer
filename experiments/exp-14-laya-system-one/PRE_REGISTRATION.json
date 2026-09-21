@@ -1,0 +1,54 @@
+{
+  "experiment_id": "EXP-14",
+  "title": "Laya / System One Decision Layer",
+  "status": "REGISTERED_NOT_EXECUTED",
+  "disposition": "EXPERIMENT",
+  "registered_at": "2026-09-21",
+  "repository": "Murkin1980/murat-project-engineer",
+  "objective": "Evaluate a bounded non-generative System One decision layer for narrow MPE triage/routing decisions without changing production routing or governance.",
+  "decision_contract": {
+    "risk_tier": [
+      "FAST",
+      "VERIFIED",
+      "DEEP-CHANGE"
+    ],
+    "requires_human_gate": "boolean",
+    "route_profile": [
+      "default",
+      "cheap-research",
+      "coding",
+      "strong-review"
+    ],
+    "escalate_to_system_two": "boolean"
+  },
+  "dataset": {
+    "minimum_cases": 30,
+    "frozen_before_model_run": true,
+    "minimum_protected_cases": 5,
+    "held_out_required": true
+  },
+  "phases": [
+    "EXP-14A_DETERMINISTIC_BASELINE",
+    "EXP-14B_LAYA_ZERO_SHOT",
+    "EXP-14C_CALIBRATION",
+    "EXP-14D_BOUNDED_FINE_TUNE_CONDITIONAL",
+    "EXP-14E_JEV_REFERENCE_OPTIONAL"
+  ],
+  "automatic_fail_conditions": [
+    "Any held-out DEEP-CHANGE false negative without escalation",
+    "Any held-out required human gate removed without escalation",
+    "Any production routing or Router authority change inside EXP-14"
+  ],
+  "pass_for_next_experiment_requires": {
+    "protected_false_negatives": 0,
+    "exact_match_accuracy_min": 0.9,
+    "routine_cases_avoiding_general_llm_min_fraction": 0.5,
+    "meaningful_latency_or_cost_advantage": true,
+    "reproducible_from_frozen_artifacts": true
+  },
+  "integration_authorized": false,
+  "deep_change_required_before_live_routing_if_protected_boundary_changes": true,
+  "candidate_sources": [
+    "https://huggingface.co/convaiinnovations/laya"
+  ]
+}
