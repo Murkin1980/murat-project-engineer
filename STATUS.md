@@ -1,6 +1,6 @@
 # Murat Project Engineer — Status
 
-Updated: 2026-09-10 (status re-verified against origin/main 95d9e4ba, merged PRs, CI runs and the live dashboard)
+Updated: 2026-09-21 (EXP-14 Laya/System One experiment registered; no production routing change)
 
 ## Current version
 
@@ -38,6 +38,7 @@ Implemented and available:
 - EXP-002 Machine Protocol (CLOSED, verdict PASS): external models correctly understood the frozen MPE IR (cross-model semantic portability supported); confirmed cross-executor execution is NOT demonstrated (INCONCLUSIVE — no real tool/repository access; self-reported execution claims remain UNVERIFIED). The evidence-trust boundary rule is promoted into `scripts/validate_package.py`
 - EXP-12 deterministic triage prototype, contracts and first retrospective backtest
 - EXP-13 low-cost evaluation harness + pre-execution rework (frozen dataset v2, routes A/B/premium, thresholds, pricing snapshot, checks, and Pilot Batch 1 pre-registration). Telemetry state: usage evidence adapters exist in main for all routes (`scripts/usage_from_router_log.py` for A/B isolated metered Router windows; `scripts/usage_from_codex_rollout.py` for one explicit premium Codex turn with a complete per-call breakdown, fail-closed otherwise); no Pilot Batch 1 runs have been executed yet
+- EXP-14 Laya / System One Decision Layer — REGISTERED, NOT_EXECUTED. Bounded comparison of deterministic baseline → Laya zero-shot → calibration → conditional fine-tune, with optional Jev reference. No production routing, Router-authority, persistence, or human/deep-change gate changes are authorized by this registration.
 - portfolio dashboard (read-only static asset, Workers Static Assets, auto-deploy on configured main push)
 
 ## Stage 2 run status
@@ -123,6 +124,7 @@ The experiment must measure quality, rework, reviewer value, interruption recove
 7. Add selected deterministic gates to GitHub CI only through a separate bounded change.
 8. Maintain the portfolio dashboard snapshot as part of the weekly status ritual.
 9. EXP-13 Pilot Batch 1 has fail-closed usage paths for all routes: `scripts/usage_from_router_log.py` imports isolated metered A/B Router windows, while `scripts/usage_from_codex_rollout.py` can import one explicit premium Codex turn only when its rollout contains a complete token breakdown. Native Router events and opaque-total rollout events remain unusable; do not substitute synthetic telemetry. The three T-008 routes legally stop without usage. Run the 18-entry batch only after each proceeding run has a valid source record, then STOP and analyse.
+10. EXP-14 may proceed only as an isolated benchmark under `experiments/exp-14-laya-system-one/README.md`. Freeze the labeled dataset before model runs; do not change live MPE routing. Any proposal to integrate a learned System One model into the production decision path requires a separate New Idea Filter decision and applicable DEEP-CHANGE approval.
 
 ## Evidence-format finding
 
