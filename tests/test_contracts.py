@@ -35,6 +35,21 @@ class PackageContractTests(unittest.TestCase):
         self.assertIn("opencode-go/kimi-k2.7-code", routes)
         self.assertTrue((ROOT / "contracts" / "EXPERIMENT_RECORD.md").exists())
 
+    def test_canonical_experiment_registry_has_required_identity_and_status_fields(self):
+        schema = json.loads((ROOT / "contracts" / "EXPERIMENT_REGISTRY.schema.json").read_text(encoding="utf-8"))
+        registry = json.loads((ROOT / "experiments" / "EXPERIMENT_REGISTRY.json").read_text(encoding="utf-8"))
+        required = set(schema["properties"]["experiments"]["items"]["required"])
+        allowed_statuses = set(schema["properties"]["experiments"]["items"]["properties"]["status"]["enum"])
+        self.assertEqual("1.0.0", registry["schema_version"])
+        self.assertGreater(len(registry["experiments"]), 0)
+        ids = set()
+        for experiment in registry["experiments"]:
+            with self.subTest(experiment=experiment["experiment_id"]):
+                self.assertEqual(required, set(experiment))
+                self.assertNotIn(experiment["experiment_id"], ids)
+                self.assertIn(experiment["status"], allowed_statuses)
+                ids.add(experiment["experiment_id"])
+
     def test_stage2_experiment_records_have_canonical_required_fields(self):
         schema = json.loads((ROOT / "contracts" / "EXPERIMENT_RECORD.schema.json").read_text(encoding="utf-8"))
         required = set(schema["required"])
