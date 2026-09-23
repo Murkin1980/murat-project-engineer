@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://murat-ai-stack.local/schemas/experiment-registry-v1.json",
+  "title": "Murat Project Engineer Canonical Experiment Registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "updated_at", "experiments"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "updated_at": {"type": "string", "format": "date"},
+    "experiments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["experiment_id", "name", "owning_project", "status", "why", "date_added", "next_action", "result_summary", "repo", "experiment_path", "evidence_links", "pr_or_issue_links", "updated_at"],
+        "properties": {
+          "experiment_id": {"type": "string", "pattern": "^EXP-[A-Z0-9-]+$"},
+          "name": {"type": "string", "minLength": 1},
+          "owning_project": {"type": "string", "minLength": 1},
+          "status": {"enum": ["IDEA", "PLANNED", "READY_TO_TEST", "RUNNING", "PASS", "FAIL", "HOLD", "ADOPTED"]},
+          "why": {"type": "string", "minLength": 1},
+          "date_added": {"type": "string", "format": "date"},
+          "next_action": {"type": "string", "minLength": 1},
+          "result_summary": {"type": "string", "minLength": 1},
+          "repo": {"type": "string", "pattern": "^[^/]+/[^/]+$"},
+          "experiment_path": {"type": "string", "minLength": 1},
+          "evidence_links": {"type": "array", "items": {"type": "string", "format": "uri"}},
+          "pr_or_issue_links": {"type": "array", "items": {"type": "string", "format": "uri"}},
+          "updated_at": {"type": "string", "format": "date"}
+        }
+      }
+    }
+  }
+}
