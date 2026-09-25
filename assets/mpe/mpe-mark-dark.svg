@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+<title id="title">MPE dark mark</title>
+<desc id="desc">Three ascending pseudo-3D blocks carrying M, P and E on a dark background.</desc>
+<defs>
+  <linearGradient id="mFront" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#42516a"/><stop offset="1" stop-color="#202b3d"/></linearGradient>
+  <linearGradient id="mSide" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#33435b"/><stop offset="1" stop-color="#141d2b"/></linearGradient>
+  <linearGradient id="pFront" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2e88ec"/><stop offset="1" stop-color="#164da4"/></linearGradient>
+  <linearGradient id="pSide" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#236fd0"/><stop offset="1" stop-color="#103979"/></linearGradient>
+  <linearGradient id="eFront" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#159eff"/><stop offset="1" stop-color="#173bd5"/></linearGradient>
+  <linearGradient id="eSide" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1172ef"/><stop offset="1" stop-color="#102b9b"/></linearGradient>
+  <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#000" flood-opacity=".45"/></filter>
+</defs>
+<rect width="512" height="512" rx="92" fill="#07111f"/>
+<g filter="url(#shadow)">
+  <polygon points="76,322 156,282 232,321 151,362" fill="#607089"/>
+  <polygon points="151,362 232,321 232,419 151,460" fill="url(#mSide)"/>
+  <polygon points="76,322 151,362 151,460 76,420" fill="url(#mFront)"/>
+  <polygon points="180,240 266,197 348,238 261,281" fill="#4ba5ff"/>
+  <polygon points="261,281 348,238 348,395 261,438" fill="url(#pSide)"/>
+  <polygon points="180,240 261,281 261,438 180,398" fill="url(#pFront)"/>
+  <polygon points="291,147 382,102 468,145 377,190" fill="#1db1ff"/>
+  <polygon points="377,190 468,145 468,357 377,402" fill="url(#eSide)"/>
+  <polygon points="291,147 377,190 377,402 291,359" fill="url(#eFront)"/>
+</g>
+<g font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="72" text-anchor="middle" fill="#fff">
+  <text x="116" y="413">M</text><text x="221" y="354">P</text><text x="334" y="302">E</text>
+</g>
+</svg>
