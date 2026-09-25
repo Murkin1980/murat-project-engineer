@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from scripts.prospective_validation import evaluate, execute, validate_execution, validate_registration
+from scripts.prospective_validation import artifact_sha256, evaluate, execute, validate_execution, validate_registration
 from scripts.triage_engine import ContractError
 
 
@@ -55,6 +55,9 @@ class ProspectiveValidationTests(unittest.TestCase):
         execution_value["registration_sha256"] = "0" * 64
         with self.assertRaises(ContractError):
             validate_execution(execution_value, self.registration(), raw)
+
+    def test_artifact_hash_is_independent_of_checkout_line_endings(self):
+        self.assertEqual(artifact_sha256(b"one\ntwo\n"), artifact_sha256(b"one\r\ntwo\r\n"))
 
     def test_execution_cli_direct_execution(self):
         with tempfile.TemporaryDirectory() as tmp:

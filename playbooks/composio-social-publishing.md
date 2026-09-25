@@ -1,3 +1,19 @@
+---
+playbook_id: composio-social-publishing
+version: 1.0.0
+supported_task_classes: [social-media-publishing, media-transfer]
+risk_tier: VERIFIED
+roles: [researcher, coder, reviewer]
+sequence: [classify, prepare-media, publish, verify, report]
+required_inputs: [source_media, destination_account, publication_request]
+deterministic_gates: [artifact_exists, secrets_scan, acceptance_tests]
+optional_semantic_review: true
+human_gate_conditions: [irreversible_external_effect, destination_account_change]
+max_rework_cycles: 1
+terminal_states: [PASS, BLOCKED, HUMAN_REQUIRED, REWORK]
+run_report_fields: contracts/RUN_REPORT.md
+---
+
 # Composio Social Publishing — Media Bridge Playbook
 
 Status: ACTIVE / VERIFIED

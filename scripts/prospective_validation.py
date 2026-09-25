@@ -19,6 +19,12 @@ LABEL_KEYS = {"risk_tier", "human_approval_required", "rationale"}
 EXECUTION_KEYS = {"case_id", "registration_ref", "registration_sha256", "engine_ref", "engine_sha256", "engine_output", "state"}
 
 
+def artifact_sha256(value: bytes) -> str:
+    """Hash text artifacts consistently across Git line-ending settings."""
+    canonical = value.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    return hashlib.sha256(canonical).hexdigest()
+
+
 def validate_label(label: dict[str, Any], require_rationale: bool = True) -> None:
     expected = LABEL_KEYS if require_rationale else {"risk_tier", "human_approval_required"}
     if not isinstance(label, dict) or set(label) != expected:
@@ -53,9 +59,9 @@ def execute(registration: dict[str, Any], registration_ref: str, registration_by
     return {
         "case_id": registration["case_id"],
         "registration_ref": registration_ref,
-        "registration_sha256": hashlib.sha256(registration_bytes).hexdigest(),
+        "registration_sha256": artifact_sha256(registration_bytes),
         "engine_ref": "scripts/triage_engine.py",
-        "engine_sha256": hashlib.sha256(engine_path.read_bytes()).hexdigest(),
+        "engine_sha256": artifact_sha256(engine_path.read_bytes()),
         "engine_output": engine,
         "state": "EXECUTED"
     }
@@ -66,7 +72,7 @@ def validate_execution(execution: dict[str, Any], registration: dict[str, Any], 
         raise ContractError("execution fields do not match the contract")
     if execution["case_id"] != registration["case_id"]:
         raise ContractError("execution and registration case_id must match")
-    if execution["registration_sha256"] != hashlib.sha256(registration_bytes).hexdigest():
+    if execution["registration_sha256"] != artifact_sha256(registration_bytes):
         raise ContractError("execution registration hash mismatch")
     output = execution["engine_output"]
     if not isinstance(output, dict) or output.get("task_id") != registration["case_id"]:
@@ -83,9 +89,9 @@ def evaluate(registration: dict[str, Any], execution: dict[str, Any], observed: 
     return {
         "case_id": registration["case_id"],
         "registration_ref": registration_ref,
-        "registration_sha256": hashlib.sha256(registration_bytes).hexdigest(),
+        "registration_sha256": artifact_sha256(registration_bytes),
         "execution_ref": execution_ref,
-        "execution_sha256": hashlib.sha256(execution_bytes).hexdigest(),
+        "execution_sha256": artifact_sha256(execution_bytes),
         "engine_ref": execution["engine_ref"],
         "engine_sha256": execution["engine_sha256"],
         "engine_output": engine,

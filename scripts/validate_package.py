@@ -13,6 +13,7 @@ RUN_REPORT_FIELDS = {"run_id", "project", "task", "start_timestamp", "end_timest
 COMPUTE_BUDGET_FIELDS = {"compute_budget_currency", "compute_budget_planned_budget", "compute_budget_hard_limit", "preflight_input_tokens_min", "preflight_input_tokens_expected", "preflight_input_tokens_max", "preflight_output_tokens_min", "preflight_output_tokens_expected", "preflight_output_tokens_max", "preflight_estimated_cost_min", "preflight_estimated_cost_expected", "preflight_estimated_cost_max", "preflight_confidence", "usage_input_tokens", "usage_cached_input_tokens", "usage_output_tokens", "usage_estimated_cost", "usage_measurement", "forecast_estimated_total_cost_min", "forecast_estimated_total_cost_expected", "forecast_estimated_total_cost_max", "forecast_remaining_cost_expected", "forecast_confidence", "routing_recommended_stack", "routing_actual_provider_mix", "efficiency_project_progress_percent", "efficiency_budget_consumed_percent", "efficiency_cost_per_progress_percent", "status_budget_status", "status_burn_rate_status", "status_burn_rate_ratio"}
 USAGE_RECORD_FIELDS = {"usage_provider", "usage_model", "usage_input_tokens", "usage_cached_input_tokens", "usage_output_tokens", "usage_observed_cost", "usage_model_calls", "usage_tool_calls", "usage_retries", "usage_start_time", "usage_end_time", "usage_progress_checkpoints", "usage_measurement_source", "usage_measurement"}
 EXPERIMENT_FIELDS = {"run_id", "execution_mode", "task_class", "risk_tier", "expert_or_team", "run_duration", "resolved_model_slugs", "tool_calls_observable", "deterministic_gate_failures", "reviewer_findings", "reviewer_false_positives", "rework_count", "human_intervention", "defect_escaped_after_pass", "interruption_recovery_issue", "approximate_token_cost_overhead", "fan_out_fan_in_needed", "notes"}
+EXPECTED_PLAYBOOK_COUNT = 5
 
 
 # --- Canonical MPE evidence-trust boundary (integrated from EXP-002 Iteration 3) ---
@@ -85,6 +86,10 @@ def frontmatter_keys(path: Path) -> set[str]:
     return {m.group(1) for m in re.finditer(r"^([a-z_]+):", match.group(1), re.M)}
 
 
+def directory_slug(path: Path) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", path.name.lower()).strip("-")
+
+
 def template_fields(path: Path) -> set[str]:
     return {m.group(1) for m in re.finditer(r"^- ([a-z_]+):", path.read_text(encoding="utf-8"), re.M)}
 
@@ -93,7 +98,7 @@ def validate(root: Path) -> list[str]:
     errors: list[str] = []
     try:
         data = json.loads((root / ".codex-plugin" / "plugin.json").read_text(encoding="utf-8"))
-        if data.get("name") != root.name:
+        if data.get("name") != directory_slug(root):
             errors.append("plugin name must match root folder")
         if not re.fullmatch(r"\d+\.\d+\.\d+", str(data.get("version", ""))):
             errors.append("plugin version must be strict semver")
@@ -107,8 +112,8 @@ def validate(root: Path) -> list[str]:
         errors.append("exactly four Expert definitions are required")
     if len(teams) != 3:
         errors.append("exactly three Team definitions are required")
-    if len(playbooks) != 4:
-        errors.append("exactly four Playbooks are required")
+    if len(playbooks) != EXPECTED_PLAYBOOK_COUNT:
+        errors.append(f"exactly {EXPECTED_PLAYBOOK_COUNT} Playbooks are required")
     for path in experts:
         missing = EXPERT_FIELDS - frontmatter_keys(path)
         if missing:
@@ -212,7 +217,7 @@ def main() -> int:
         return 1
     print("VALIDATION PASSED")
     gate_count = len(set(re.findall(r"gate_id:\s*([a-z_]+)", (root / "gates" / "registry.yaml").read_text(encoding="utf-8"))))
-    print(f"4 experts, 3 teams, 4 playbooks, contracts, and {gate_count} gates present")
+    print(f"4 experts, 3 teams, {EXPECTED_PLAYBOOK_COUNT} playbooks, contracts, and {gate_count} gates present")
     return 0
 
 

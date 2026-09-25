@@ -12,6 +12,9 @@ SPEC.loader.exec_module(MODULE)
 
 
 class PackageContractTests(unittest.TestCase):
+    def test_directory_slug_accepts_the_legacy_workspace_name(self):
+        self.assertEqual("murat-project-engineer", MODULE.directory_slug(Path("Murat Project Engineer")))
+
     def test_package_contracts(self):
         self.assertEqual([], MODULE.validate(ROOT))
 
@@ -95,7 +98,9 @@ class PackageContractTests(unittest.TestCase):
         schema_path = ROOT / "experiments" / "exp-002-machine-protocol" / "mpe-ir.schema.json"
         self.assertTrue(ir_path.exists(), f"missing frozen IR: {ir_path}")
         self.assertTrue(schema_path.exists(), f"missing IR schema: {schema_path}")
-        raw = ir_path.read_bytes()
+        # Git may materialize text with CRLF on Windows. The frozen artifact is
+        # defined by its repository-normalized LF bytes, not checkout settings.
+        raw = ir_path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
         self.assertEqual(
             "cdafe73309960c555d8da1c84efbfc7b4c1e6ca22d3eeafeca5a226ba43fdbfd",
             hashlib.sha256(raw).hexdigest(),
