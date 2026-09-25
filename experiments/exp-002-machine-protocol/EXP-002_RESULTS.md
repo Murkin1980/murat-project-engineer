@@ -90,6 +90,52 @@ The Iteration 3 rule was promoted into the canonical MPE validation flow:
 
 > **Executor identity is optional. Trusted evidence provenance is mandatory for verified PASS.**
 
+## Addendum — Arena cross-executor execution run (2026-09-16)
+
+**Nature of this section:** additive only. It does **not** revise, restate or retract any
+conclusion, table, verdict or status written above. Every section above remains the
+historical record of Iterations 1–3 and stays unchanged. This addendum records a later,
+run-scoped measurement and declares its own precedence rule.
+
+**Why it exists:** at closure, cross-executor *execution* portability was `INCONCLUSIVE`
+because the external models exercised in Iteration 2 had no real repository or tool
+access. An external executor *with* real Git and tool access was therefore run against
+the same frozen IR.
+
+| Item | Value |
+|------|-------|
+| Executor | Arena — external agent with real Git, shell and test-runner access |
+| Frozen IR | `MPE_IR_FROZEN.json`, protocol `mpe-ir`, version `0.1`, 1148 bytes, SHA-256 `cdafe73309960c555d8da1c84efbfc7b4c1e6ca22d3eeafeca5a226ba43fdbfd` — verified before execution and left unmodified |
+| Base commit | `f19daebb6f8efdd28e81aed65b0df5b264c92f4a` (= `origin/main` at run start; working tree clean) |
+| Allowed path | `experiments/exp-002-machine-protocol/` only — confirmed against base SHA |
+| Deliverables | `ARENA_EXECUTION_RECORD.json` (machine-readable run record), `ARENA_EXECUTION_EVIDENCE.json` (captured tool output) |
+| Terminal state | `PASS` — see the record for the gate table, evidence references and the three provenance classes |
+| Evidence provenance | tool-generated (package validator, unittest, byte-compilation, git, sha256) and captured in the evidence artifact — not executor prose |
+
+**Updated outcome (run-scoped):**
+
+- cross-executor execution portability — historical value `INCONCLUSIVE` (Iterations 1–3)
+  **→** `SUPPORTED_BY_ONE_ARENA_RUN`
+
+**Precedence rule:** for this one outcome only, this addendum supersedes the value in the
+outcomes table above. Nothing else in this document is superseded.
+
+**Explicitly NOT claimed:**
+
+- one run does not prove universal or provider-independent cross-executor portability;
+- cross-*model* semantic portability is unchanged (`CROSS_MODEL_SEMANTIC_PORTABILITY_SUPPORTED`);
+- the evidence-trust boundary is unchanged (`EVIDENCE_TRUST_BOUNDARY_SUPPORTED`) and is the
+  mechanism used to judge this run;
+- Stage 2 is **not** complete; it remains ACTIVE (`STATUS.md`);
+- MPE granted no *autonomous* execution authorization for this task: the governed entry
+  returned `OBSERVE` / `NOT_PERMITTED` because trusted history is empty. The run was
+  human-directed inside the FAST scope the frozen IR declares. See
+  `ARENA_EXECUTION_RECORD.json` → `mpe_governance_observation`.
+
+**Rollback:** `git revert` of the commit that carries this addendum removes this section
+and the two added artifacts. No production code, contract, gate registry or CI file was
+touched by the run.
+
 ## Recommendation (next step, not implemented here)
 
 Promote the rule's provenance classification into a first-class MPE gate so every
