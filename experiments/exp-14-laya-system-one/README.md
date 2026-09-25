@@ -28,11 +28,14 @@ Relevant governing files:
 
 ## Candidate
 
-Primary candidate:
+Primary candidates:
 
 - Laya by Convai Innovations
 - Hugging Face: https://huggingface.co/convaiinnovations/laya
 - Project/research implementation: verify the current canonical repository and checkpoint metadata before execution.
+- AnyJev by Nokia Applied Research
+- GitHub: https://github.com/nokia-applied-research/AnyJev
+- AnyJev is a training-free calibration/decision layer for open-weight LLMs. In EXP-14 it is evaluated as a bounded candidate, not installed into production routing.
 
 Reference comparator:
 
@@ -53,6 +56,8 @@ frozen MPE decision cases
         +--> Laya calibrated
         |
         +--> Laya fine-tuned (conditional)
+        |
+        +--> AnyJev L0/L1 calibration path
         |
         +--> Jev reference (optional)
 ```
@@ -148,7 +153,21 @@ Use a small training split plus held-out evaluation. Do not train on the held-ou
 
 Goal: test whether a narrow MPE-specific decision head can outperform zero-shot while preserving safe escalation.
 
-### EXP-14E — optional Jev comparison
+### EXP-14E — AnyJev calibration comparison
+
+Run AnyJev on the exact same frozen cases and decision contract.
+
+Start with the training-free L0 path. If 100–500 trustworthy labels are available without fabricating them, L1 temperature calibration may be tested. Do not add production routing, a persistent model service, or a new infrastructure dependency.
+
+Capture:
+
+- position-order stability / flip rate;
+- confidence calibration;
+- automated coverage at fixed safety thresholds;
+- protected-decision false negatives;
+- latency and compute overhead from permutation-based evaluation.
+
+### EXP-14F — optional Jev comparison
 
 Only if Jev access is available without creating new infrastructure.
 
@@ -232,5 +251,6 @@ When Arena/Codex starts EXP-14:
 3. create/freeze the 30-case dataset and oracle first;
 4. run EXP-14A before any Laya measurement;
 5. then run EXP-14B;
-6. stop and report before fine-tuning unless B/C evidence justifies D;
-7. preserve a compact handoff so no rediscovery is required.
+6. run EXP-14E AnyJev against the same frozen cases before considering production relevance;
+7. stop and report before fine-tuning unless B/C evidence justifies D;
+8. preserve a compact handoff so no rediscovery is required.
