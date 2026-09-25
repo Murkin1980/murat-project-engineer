@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+<title id="title">MPE horizontal light logo</title>
+<desc id="desc">MPE pseudo-3D mark with Murat Project Engineer wordmark.</desc>
+<rect width="1200" height="360" rx="40" fill="#fff"/>
+<g transform="translate(36,-35) scale(.68)">
+  <defs>
+    <linearGradient id="mF" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#dce6f2"/></linearGradient>
+    <linearGradient id="mS" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#dce6f2"/><stop offset="1" stop-color="#b9c7d8"/></linearGradient>
+    <linearGradient id="pF" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#75b8ff"/><stop offset="1" stop-color="#2f75d6"/></linearGradient>
+    <linearGradient id="pS" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4f9df1"/><stop offset="1" stop-color="#2358a7"/></linearGradient>
+    <linearGradient id="eF" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1ea7ff"/><stop offset="1" stop-color="#173bd5"/></linearGradient>
+    <linearGradient id="eS" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1476f2"/><stop offset="1" stop-color="#102c9d"/></linearGradient>
+  </defs>
+  <polygon points="76,322 156,282 232,321 151,362" fill="#f8fbff"/><polygon points="151,362 232,321 232,419 151,460" fill="url(#mS)"/><polygon points="76,322 151,362 151,460 76,420" fill="url(#mF)"/>
+  <polygon points="180,240 266,197 348,238 261,281" fill="#9ccfff"/><polygon points="261,281 348,238 348,395 261,438" fill="url(#pS)"/><polygon points="180,240 261,281 261,438 180,398" fill="url(#pF)"/>
+  <polygon points="291,147 382,102 468,145 377,190" fill="#24b2ff"/><polygon points="377,190 468,145 468,357 377,402" fill="url(#eS)"/><polygon points="291,147 377,190 377,402 291,359" fill="url(#eF)"/>
+  <g font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="72" text-anchor="middle"><text x="116" y="413" fill="#071525">M</text><text x="221" y="354" fill="#fff">P</text><text x="334" y="302" fill="#fff">E</text></g>
+</g>
+<text x="430" y="170" fill="#071525" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="124" letter-spacing="2">MPE</text>
+<text x="435" y="226" fill="#5f6c80" font-family="Arial, Helvetica, sans-serif" font-weight="500" font-size="32" letter-spacing="8">MURAT PROJECT ENGINEER</text>
+</svg>
