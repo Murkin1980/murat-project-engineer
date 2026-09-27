@@ -1,6 +1,6 @@
 ---
 name: mpe-logo-creation
-version: 1.0.0
+version: 1.1.0
 description: Create product logos for the Murat Project Engineer ecosystem through a repeatable meaning-first workflow: product meaning, associations, numbered visual elements, owner selection, visual story, core mark, pseudo-3D family language, simplification, small-scale testing, variants, and canonical asset storage.
 ---
 
@@ -31,7 +31,13 @@ Product
 → Meanings
 → Associations
 → Numbered Elements
-→ Owner Selection
+→ Brand Noun Map
+→ 16 BW Concepts (4×4)
+→ Owner Selects 3
+→ Develop 3 in BW
+→ Select 1–2
+→ Refine Final Mark in BW
+→ Color Exploration
 → Visual Story
 → Core Mark
 → Pseudo-3D Family Language
@@ -124,15 +130,152 @@ Do not jump directly to many full logo concepts before this selection step.
 
 The list should be broad enough to choose from, but concise enough to scan.
 
-## 5. Wait for owner selection when material
+## 5. Build the Brand Noun Map
 
-When element choice materially changes the logo concept, present the numbered options and let the owner choose.
+Before generating logo concepts, translate abstract product meanings into concrete drawable nouns.
 
-Do not silently pick a large semantic direction on the owner's behalf when multiple materially different directions remain.
+Group nouns by semantic territory.
 
-Minor composition details can be resolved autonomously.
+Example:
 
-## 6. Convert elements into a visual story
+```text
+Documents
+- sheet
+- folder
+- invoice
+- stamp
+
+Control
+- check
+- frame
+- lock
+- shield
+
+Furniture
+- cabinet
+- panel
+- module
+- facade
+
+Flow
+- arrow
+- stack
+- connection
+- sequence
+```
+
+Then combine nouns across territories to produce materially different visual ideas.
+
+Examples:
+
+```text
+document + module
+folder + check
+cabinet + document
+stack + control
+panel + flow
+```
+
+The purpose is to expand the search space before choosing a direction.
+
+## 6. Generate the first exploration sheet: 16 black-and-white concepts
+
+The first visual generation must be one exploration sheet containing exactly 16 distinct concepts in a 4×4 grid.
+
+Mandatory constraints:
+
+- black and white only;
+- no color;
+- no gradients;
+- no mockups;
+- no presentation effects;
+- no polished brand system;
+- simple flat or sketch-like marks;
+- each cell must contain one materially different concept;
+- every concept must be numbered 1–16;
+- concepts should explore different combinations of the Brand Noun Map, not cosmetic variations of one icon.
+
+The goal is divergence, not polish.
+
+Do not generate a color logo before this step is complete.
+
+Do not treat the first attractive concept as final.
+
+## 7. Owner selects 3 directions
+
+After presenting the 4×4 sheet, ask the owner to choose three concepts by number.
+
+Example:
+
+```text
+4, 7, 11
+```
+
+Do not change the semantic idea of the selected concepts during the next step.
+
+If the owner explicitly selects a different number of concepts, follow that instruction. Otherwise, default to three.
+
+## 8. Develop the selected 3 in black and white
+
+Take the three selected concepts and refine them while preserving their core meanings.
+
+Default exploration format:
+
+```text
+3 selected directions × 4 refinements each = 12 BW variants
+```
+
+Prefer one sheet with three rows:
+
+- row 1 = four refinements of selected concept A;
+- row 2 = four refinements of selected concept B;
+- row 3 = four refinements of selected concept C.
+
+Keep all variants black and white.
+
+At this stage:
+
+- improve silhouette;
+- simplify geometry;
+- remove visual noise;
+- improve balance and spacing;
+- test whether the mark remains understandable without color;
+- avoid decorative detail that does not carry meaning.
+
+Do not introduce color yet.
+
+## 9. Select 1–2 finalists and refine in black and white
+
+From the developed set, select one preferred mark or at most two finalists.
+
+Before any color exploration, run a final black-and-white refinement pass:
+
+- normalize geometry;
+- strengthen silhouette;
+- remove fragile small details;
+- verify readability without text;
+- verify that the mark survives reduction;
+- preserve the approved semantic story.
+
+Color is allowed only after the mark works convincingly in monochrome.
+
+## 10. Explore color only after monochrome approval
+
+Once the black-and-white form is approved, explore color.
+
+Color must support an already-working mark, not rescue a weak one.
+
+At this stage you may test:
+
+- primary palette;
+- light and dark background behavior;
+- restrained gradients when appropriate;
+- family consistency with other MPE products;
+- typography and lockups.
+
+Do not return to broad concept exploration unless the owner rejects the underlying mark.
+
+## 11. Convert elements into a visual story
 
 Selected elements should form one understandable structure.
 
@@ -160,7 +303,7 @@ Use when change itself is the key product meaning.
 
 Do not place unrelated icons around a logo only for decoration.
 
-## 7. Define the core mark
+## 12. Define the core mark
 
 Every product needs one recognizable core that can survive after all secondary detail is removed.
 
@@ -178,7 +321,7 @@ Examples already validated:
 
 The core mark must work independently from the full story composition.
 
-## 8. Use the MPE family visual language
+## 13. Use the MPE family visual language
 
 Default family language for core MPE products:
 
@@ -196,7 +339,7 @@ The products should feel related, but not identical.
 
 Do not force pseudo-3D when it harms small-size recognition.
 
-## 9. Simplify after the first strong concept
+## 14. Simplify after the first strong concept
 
 The first generated concept is a draft, not the final logo.
 
@@ -216,7 +359,7 @@ Priority:
 recognition > decoration
 ```
 
-## 10. Run the small-scale test
+## 15. Run the small-scale test
 
 Never approve only from a large presentation image.
 
@@ -238,7 +381,7 @@ Questions:
 
 If the full logo fails, create a dedicated compact mark.
 
-## 11. Create the minimum useful variant set
+## 16. Create the minimum useful variant set
 
 Create only variants that have a real use.
 
@@ -264,7 +407,7 @@ For dark surfaces.
 
 Do not create unnecessary variants just to complete a template.
 
-## 12. Preserve owner-approved meaning
+## 17. Preserve owner-approved meaning
 
 Once the owner approves a concept, treat its meaning and composition as canonical.
 
@@ -282,7 +425,7 @@ do not later replace the highlighted module with a gear because it looks attract
 
 Meaning takes precedence over decorative novelty.
 
-## 13. Save approved assets into the existing product repository
+## 18. Save approved assets into the existing product repository
 
 After approval, convert the concept from a chat image into usable product assets.
 
@@ -312,7 +455,7 @@ The README should record:
 
 Do not merge or deploy unless the owner or repository workflow already grants that authority.
 
-## 14. Separate presentation art from production assets
+## 19. Separate presentation art from production assets
 
 Generated presentation images are useful for exploration and approval.
 
@@ -320,7 +463,7 @@ Production assets should be recreated or exported as clean scalable assets, pref
 
 Do not treat a large generated PNG mockup as the only source of truth for a website logo.
 
-## 15. Reference examples
+## 20. Reference examples
 
 ### MPE
 
@@ -362,6 +505,10 @@ Rules:
 A logo task is complete when:
 
 - product meaning is explicit;
+- Brand Noun Map is explicit;
+- first exploration used a numbered 4×4 sheet of 16 black-and-white concepts;
+- three directions were selected and developed further in black and white;
+- color was introduced only after monochrome refinement;
 - chosen visual elements are explicit;
 - owner-approved composition is captured;
 - small-scale usability is considered;
