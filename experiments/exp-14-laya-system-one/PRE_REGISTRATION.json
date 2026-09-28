@@ -1,6 +1,6 @@
 {
   "experiment_id": "EXP-14",
-  "title": "Laya / System One Decision Layer",
+  "title": "Laya / AnyJev / System One Decision Layer",
   "status": "REGISTERED_NOT_EXECUTED",
   "disposition": "EXPERIMENT",
   "registered_at": "2026-09-21",
@@ -32,7 +32,8 @@
     "EXP-14B_LAYA_ZERO_SHOT",
     "EXP-14C_CALIBRATION",
     "EXP-14D_BOUNDED_FINE_TUNE_CONDITIONAL",
-    "EXP-14E_JEV_REFERENCE_OPTIONAL"
+    "EXP-14E_ANYJEV_CALIBRATION",
+    "EXP-14F_JEV_REFERENCE_OPTIONAL"
   ],
   "automatic_fail_conditions": [
     "Any held-out DEEP-CHANGE false negative without escalation",
@@ -49,6 +50,7 @@
   "integration_authorized": false,
   "deep_change_required_before_live_routing_if_protected_boundary_changes": true,
   "candidate_sources": [
-    "https://huggingface.co/convaiinnovations/laya"
+    "https://huggingface.co/convaiinnovations/laya",
+    "https://github.com/nokia-applied-research/AnyJev"
   ]
 }
