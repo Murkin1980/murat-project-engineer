@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-09-26",
+  "updated_at": "2026-09-28",
   "experiments": [
     {
       "experiment_id": "EXP-ALEXANDRIA",
@@ -63,19 +63,22 @@
       "experiment_id": "EXP-07",
       "name": "Strix / FreeBuff evaluation",
       "owning_project": "Murat Project Engineer",
-      "status": "READY_TO_TEST",
+      "status": "HOLD",
       "why": "Evaluate Strix as an external, reusable AI security-validation capability for existing MPE projects without adding a new repository, runtime authority, or production dependency.",
       "date_added": "2026-08-20",
-      "next_action": "Run a bounded Strix quick scan in a Docker-enabled environment against one authorized low-blast-radius MPE-owned target, with an explicit spend limit and manual validation of findings.",
-      "result_summary": "Historical EXP-07 evaluation remains preserved: the 2026-08-14 Strix pilot was blocked before scanning because Docker was unavailable. On 2026-09-26 the same experiment identity was reopened for a controlled retry against current Strix.",
+      "next_action": "Run exactly one bounded Strix quick scan (strix -n --scan-mode quick --scope-mode full --max-turns 200 --max-budget 15) against a clean clone of the frozen target Murkin1980/mebeldocs-ai@2d6d60b240f8f4e2546cf451433c8f1ff0aad65a in an owner-controlled Docker-enabled environment with an LLM API key, keeping raw output out of Git; re-freeze target and baseline if another commit is scanned.",
+      "result_summary": "execution_outcome: BLOCKED -> registry status HOLD (canonical mapping PASS->PASS, WARNING->HOLD, BLOCKED->HOLD, FAIL->FAIL; no new registry status). Attempt 1 (2026-08-14) was blocked before scanning because Docker was unavailable and stays preserved. Retry preparation completed 2026-09-28: raw penetration-test evidence is barred from Git and only sanitized artifacts may be committed, the target and its baseline are frozen before any scan (Murkin1980/mebeldocs-ai@2d6d60b240f8f4e2546cf451433c8f1ff0aad65a; npm ci exit 0, 202/202 tests pass, tsc --noEmit PASS, next build PASS, existing checks, known issues and ordinary code-review baseline recorded), and execution outcomes now map onto the existing registry enum. No Strix scan ran: no Docker daemon (no runtime binary, no socket, unprivileged container), no Strix CLI (strix-agent 1.6.2 requires Python >=3.12 versus 3.11.2 available) and no LLM API key. Findings total 0 meaning NOT_RUN, never 'nothing found'; nothing was simulated or synthesized. Sanitized evidence: evidence/exp-07/STRIX_RETRY_2026-09-28.json.",
       "repo": "Murkin1980/murat-project-engineer",
       "experiment_path": "docs/security/STRIX_PILOT.md",
       "evidence_links": [
         "https://github.com/Murkin1980/murat-project-engineer/blob/main/docs/security/STRIX_PILOT.md",
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/evidence/exp-07/STRIX_RETRY_2026-09-28.json",
         "https://github.com/usestrix/strix"
       ],
-      "pr_or_issue_links": [],
-      "updated_at": "2026-09-26"
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/27"
+      ],
+      "updated_at": "2026-09-28"
     },
     {
       "experiment_id": "EXP-08",
