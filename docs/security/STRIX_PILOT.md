@@ -71,3 +71,52 @@ STRIX_DECISION: HOLD
 ```
 
 Reason: evidence is insufficient because execution was blocked before scanning. A future retry may use a local Docker-enabled environment, `quick` mode first, an explicit spend limit, and the exact same commit or a newly recorded baseline. Do not run against production or real documents.
+
+
+---
+
+## Retry registration — 2026-09-26
+
+Source project: https://github.com/usestrix/strix
+
+### New Idea Filter
+
+Primary disposition: `EXTEND_EXISTING`.
+
+This is not a new experiment identity. It reopens `EXP-07` for a controlled Strix retry because the 2026-08-14 Strix phase was blocked before any scan ran. The historical evidence above remains authoritative for the first attempt.
+
+### Purpose
+
+Test whether current Strix can add meaningful, reproducible security findings beyond existing tests and normal Codex/Arena review for an existing MPE-owned service.
+
+### MVP scope
+
+- Use exactly one authorized, low-blast-radius MPE-owned target.
+- Prefer repository + non-production/staging URL when both are available and explicitly authorized.
+- Start with Strix `quick` mode.
+- Require Docker-enabled execution outside the smartphone.
+- Set an explicit spend/turn limit before execution.
+- No automatic fixes.
+- No CI/CD gate.
+- No production-wide rollout.
+- No new repository or parallel security platform.
+- Store raw report, validated findings, false positives, runtime and observable model cost as evidence.
+
+### Acceptance
+
+`PASS`
+: At least one meaningful, reproducible finding is discovered that existing project tests and ordinary review did not already surface, with acceptable operational cost.
+
+`WARNING`
+: Strix runs successfully but produces only already-known issues, low-value findings, or operational overhead that is not yet justified.
+
+`BLOCKED`
+: Runtime/prerequisite/credential/environment failure prevents a valid scan, or evidence cannot be validated.
+
+### Promotion gate
+
+Even after `PASS`, do not promote Strix to a portfolio-wide security gate automatically. A separate decision is required before CI integration, auto-fix, recurring scanning, or use against production.
+
+### Next action
+
+Run one bounded quick scan in a Docker-enabled environment and record the result under this same `EXP-07` identity.
