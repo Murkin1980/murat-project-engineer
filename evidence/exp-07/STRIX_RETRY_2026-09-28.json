@@ -1,0 +1,354 @@
+{
+  "artifact_id": "EXP-07-STRIX-RETRY-2026-09-28",
+  "artifact_kind": "sanitized_experiment_evidence",
+  "experiment_id": "EXP-07",
+  "experiment_name": "Strix / FreeBuff evaluation",
+  "attempt": "retry-2 (2026-09-28); attempt-1 was 2026-08-14 BLOCKED_DOCKER",
+  "owning_repository": "Murkin1980/murat-project-engineer",
+  "session_branch": "arena/01a0e965-murat-project-engineer",
+  "related_pr": "https://github.com/Murkin1980/murat-project-engineer/pull/27",
+  "generated_at": "2026-09-28T19:14:33Z",
+  "generated_by": "Arena agent session on branch arena/01a0e965-murat-project-engineer",
+  "target": {
+    "repository": "Murkin1980/mebeldocs-ai",
+    "branch": "main",
+    "commit_sha": "2d6d60b240f8f4e2546cf451433c8f1ff0aad65a",
+    "commit_tree": "8adf596a6e8e130de337880fadfd40c9e913d903",
+    "commit_date": "2026-09-22T02:49:32Z",
+    "target_kind": "owner_controlled_code_target",
+    "live_target_url": null,
+    "selection_rationale": "One MPE-owned target with a real network-facing attack surface (Next.js 16 app: 21 API routes, ESF XML import, PDF generation, payments/invoices state machines, company isolation) that the owner controls and that can be baselined reproducibly in this environment. Code-only target: no production or staging dynamic testing.",
+    "rejected_alternatives": [
+      {
+        "target": "Murkin1980/murat-project-engineer",
+        "reason": "No dynamic attack surface: documentation plus local Python CLI scripts (no subprocess/network/eval usage) and a script-free static HTML dashboard on Workers Static Assets. A pentest scan would be low-value by construction, so it is not a suitable bounded Strix target."
+      },
+      {
+        "target": "Murkin1980/mebeldocs-ai production deployment",
+        "reason": "Production dynamic/destructive testing is prohibited by the EXP-07 boundaries; no owner-authorized staging URL exists for this retry."
+      }
+    ]
+  },
+  "frozen_scope": {
+    "frozen_before_scan": true,
+    "scan_scope": [
+      "apps/web/app",
+      "apps/web/lib",
+      "apps/web/components",
+      "apps/web/tests"
+    ],
+    "excluded_paths": [
+      "docs/**",
+      "data/**",
+      "design/**",
+      "tools/**",
+      "repository-root *.md",
+      "apps/web/node_modules/**",
+      "apps/web/.next/**",
+      "apps/web/package-lock.json",
+      "apps/web/tsconfig.tsbuildinfo"
+    ],
+    "scan_mode": "quick",
+    "scope_mode": "full",
+    "planned_command": "strix -n --target <clean-clone-at-frozen-sha> --scan-mode quick --scope-mode full --max-turns 200 --max-budget 15",
+    "limits": {
+      "max_turns": 200,
+      "max_budget_usd": 15
+    },
+    "one_target_only": true,
+    "one_frozen_commit_only": true,
+    "one_bounded_scan_only": true,
+    "scope_expansion_allowed": false,
+    "production_destructive_testing_allowed": false,
+    "writable_working_tree_mount_allowed": false,
+    "autofix_allowed": false
+  },
+  "baseline": {
+    "status": "PASS",
+    "frozen_at": "2026-09-28T19:11:00Z",
+    "frozen_against_commit_sha": "2d6d60b240f8f4e2546cf451433c8f1ff0aad65a",
+    "method": "clean shallow clone of the frozen SHA into temporary local storage outside Git; commands run in apps/web",
+    "checks": [
+      {
+        "check_id": "install",
+        "command": "npm ci --no-audit --no-fund",
+        "result": "PASS",
+        "detail": "exit 0; node_modules 535 MB",
+        "evidence_ref": "terminal_command",
+        "raw_log_location": "access-controlled local temporary storage only (not committed)",
+        "raw_log_sha256": "c919159c5f74b350759f79669580041be3b79628d0ff8285e8e38487a21be201"
+      },
+      {
+        "check_id": "unit_tests",
+        "command": "npm test (npx tsx --test tests/*.test.ts)",
+        "result": "PASS",
+        "detail": "202 tests, 202 pass, 0 fail, 0 skipped, 0 todo, duration 2542 ms, exit 0",
+        "evidence_ref": "test_runner",
+        "raw_log_location": "access-controlled local temporary storage only (not committed)",
+        "raw_log_sha256": "9efa86959e5060ad4ac5b3a325fafb269b4513046b42230698bf211fc221f253"
+      },
+      {
+        "check_id": "typecheck",
+        "command": "npm run lint (tsc --noEmit)",
+        "result": "PASS",
+        "detail": "exit 0, no diagnostics",
+        "evidence_ref": "terminal_command",
+        "raw_log_location": "access-controlled local temporary storage only (not committed)",
+        "raw_log_sha256": "4b5c5550c4af5b95937b6b9b82e6d07415b4b6aea17f06d3010532f578640d2c"
+      },
+      {
+        "check_id": "build",
+        "command": "npm run build (next build)",
+        "result": "PASS",
+        "detail": "exit 0; 21 dynamic API routes plus static/dynamic pages compiled",
+        "evidence_ref": "terminal_command",
+        "raw_log_location": "access-controlled local temporary storage only (not committed)",
+        "raw_log_sha256": "7e9a51c02107b65eb56beee1203d885de0782eae4ad18865c3428321c3708389"
+      },
+      {
+        "check_id": "api_surface_inventory",
+        "command": "find apps/web/app/api -name route.ts",
+        "result": "PASS",
+        "detail": "21 API routes: audit-events, company-profile, counterparties, esf/[id], esf/[id]/baseline, esf/[id]/final-check, esf/import, invoices/[id], invoices/[id]/confirm, invoices/[id]/pdf, orders, orders/[id], orders/[id]/confirm, orders/[id]/invoices, payments, payments/[id], payments/[id]/balance, payments/[id]/match, payments/[id]/reverse, pilot, reviews/[reviewId]/decision",
+        "evidence_ref": "terminal_command",
+        "raw_log_location": "not retained (no sensitive content)",
+        "raw_log_sha256": null
+      }
+    ],
+    "existing_static_security_checks": "npm test suite (auth-guard, esf-xml-parser, esf-comparison, pdf, integration, domain, payment-calculations, company-profile-form, date-utils, pilot) and tsc --noEmit only. The target repository has no CI workflow, no SAST/DAST, no dependency scanning and no secrets scanning configured.",
+    "known_security_issues": [
+      "Pilot-mode hardcoded server context: every request is treated as one owner identity of one company, with no real authentication. Documented pilot limitation; SECURITY.md requires roles, 2FA and company isolation before production. Already visible to ordinary review and partially covered by tests/auth-guard.test.ts.",
+      "Some API routes return internal error messages to clients (generic catch mapping error.message into the response body), a low-severity information-disclosure pattern already visible to ordinary review."
+    ],
+    "ordinary_code_review_baseline": {
+      "reviewed_paths": [
+        "apps/web/lib/auth/server-context.ts",
+        "apps/web/app/api/esf/import/route.ts",
+        "apps/web/app/api/pilot/route.ts",
+        "apps/web/lib/esf/xml-parser.ts",
+        "apps/web/lib/storage/local-repositories.ts",
+        "apps/web/lib/pdf-generator.ts",
+        "apps/web/tests/auth-guard.test.ts"
+      ],
+      "observations": [
+        "No child_process, eval, new Function or dangerouslySetInnerHTML usage in apps/web/app or apps/web/lib.",
+        "ESF XML import enforces a 10 MB input cap and 10,000-character text truncation with typed parse errors.",
+        "User-supplied filename on ESF import is stored as metadata only and is not used to build filesystem paths.",
+        "Storage paths are derived from process.cwd() with randomUUID identifiers; companyId filtering is applied in list operations.",
+        "Authentication/authorization is pilot-static, so role and tenant-isolation behaviour cannot be exercised by an external caller."
+      ],
+      "conclusion": "Ordinary review already surfaces the pilot-auth limitation and the error-message disclosure pattern. Anything Strix reports on those two items is NOT novel; novelty must be judged against this recorded baseline."
+    },
+    "superseded_baseline": {
+      "attempt": "2026-08-14",
+      "commit_sha": "fad30491a851825018cbab6aa1fbae0c60857627",
+      "recorded_result": "197 tests pass, 2 fail (sandbox EPERM), tsc PASS, build PASS",
+      "reuse_allowed": false,
+      "note": "Historical baseline of attempt 1; must not be used for novelty comparison in this retry."
+    }
+  },
+  "strix": {
+    "source_repository": "https://github.com/usestrix/strix",
+    "license": "Apache-2.0",
+    "package_name": "strix-agent",
+    "version_available": "1.6.2",
+    "version_installed": null,
+    "version_used": null,
+    "documentation_checked": [
+      "https://docs.strix.ai/usage/cli",
+      "https://github.com/usestrix/strix README (Quick Start prerequisites, ways to run, CI example)"
+    ],
+    "checked_at": "2026-09-28",
+    "documented_prerequisites": [
+      "Docker installed and running (first run pulls the sandbox image)",
+      "LLM API key via STRIX_LLM + LLM_API_KEY, or strix auth login chatgpt",
+      "Python >= 3.12 for the strix-agent package"
+    ],
+    "cli_options_recorded": {
+      "scan_mode": "quick | standard | deep (default deep)",
+      "non_interactive": "-n / --non-interactive",
+      "scope_mode": "auto | diff | full",
+      "diff_base": "--diff-base <ref>",
+      "max_budget": "--max-budget <usd>",
+      "max_turns": "--max-turns <int> (default 500)",
+      "exit_codes": "0 = completed / no vulnerabilities in headless mode, 1 = fatal error (missing env vars, Docker unavailable), 2 = vulnerabilities found",
+      "writable_mount_warning": "a local directory target is mounted writable into the sandbox (agent can edit real files, .git excepted)"
+    }
+  },
+  "execution_environment": {
+    "surface": "Arena agent sandbox (headless, no GUI, no interactive browser sign-in)",
+    "os": "Debian GNU/Linux 12 (bookworm)",
+    "kernel": "Linux 6.1.158+",
+    "python": "3.11.2",
+    "node": "v22.22.3",
+    "npm": "10.9.8",
+    "privileged": false,
+    "capability_effective_hex": "0000000000000000",
+    "docker_available": false,
+    "container_runtimes_on_path": [],
+    "docker_socket_present": false,
+    "llm_credentials_available": false,
+    "credentials_present": ["GH_TOKEN", "GITHUB_TOKEN"],
+    "network": "restricted egress: pypi.org, registry.npmjs.org, api.github.com and github.com reachable; docs.strix.ai and raw.githubusercontent.com failed the TLS handshake via curl (docs read through the platform fetch tool instead)",
+    "disk_free": "20 GB"
+  },
+  "scan": {
+    "executed": false,
+    "run_status": "NOT_RUN",
+    "started_at": null,
+    "finished_at": null,
+    "duration_seconds": null,
+    "exit_code": null,
+    "observed_cost_usd": null,
+    "observed_turns": null,
+    "raw_output_location": null,
+    "raw_output_exists": false,
+    "simulation_used": false,
+    "synthesized_results": false,
+    "blocking_prerequisites": [
+      {
+        "prerequisite": "Docker Engine with a running daemon",
+        "required_by": "Strix sandbox execution (documented prerequisite; first run pulls the sandbox image)",
+        "observation": "docker, podman, nerdctl, containerd and runc absent from PATH; /var/run/docker.sock absent; CapEff 0000000000000000 so a daemon cannot be started in this unprivileged container",
+        "evidence_ref": "terminal_command"
+      },
+      {
+        "prerequisite": "Strix CLI (strix / strix-agent)",
+        "required_by": "the scan itself",
+        "observation": "no strix binary; PyPI strix-agent 1.6.2 requires Python >=3.12 while the environment provides 3.11.2; pip install --dry-run strix-agent in a clean venv returned 'No matching distribution found for strix-agent'",
+        "evidence_ref": "terminal_command"
+      },
+      {
+        "prerequisite": "LLM credential (STRIX_LLM + LLM_API_KEY, or strix auth login chatgpt)",
+        "required_by": "every Strix scan",
+        "observation": "no LLM provider key in the environment; only GitHub tokens are present; interactive ChatGPT sign-in is unavailable headless",
+        "evidence_ref": "terminal_command"
+      },
+      {
+        "prerequisite": "Strix Cloud fallback (managed scan without Docker)",
+        "required_by": "only as an alternative path",
+        "observation": "not authorized: a new external security service plus upload of owner code, both requiring separate owner approval under the EXP-07 boundaries",
+        "evidence_ref": "owner_policy"
+      }
+    ]
+  },
+  "findings": {
+    "total": 0,
+    "confirmed": 0,
+    "false_positive": 0,
+    "inconclusive": 0,
+    "novel": 0,
+    "already_detected_by_baseline": 0,
+    "actionable": 0,
+    "items": [],
+    "interpretation": "All counts are zero because the scan never ran. Zero here means NOT_RUN, never 'nothing found'."
+  },
+  "novelty_comparison": {
+    "performed": false,
+    "reason": "no Strix output exists to compare against the frozen baseline",
+    "baseline_instruments_for_future_comparison": [
+      "npm test (202 tests) at the frozen SHA",
+      "tsc --noEmit at the frozen SHA",
+      "next build at the frozen SHA",
+      "recorded existing static/security checks (no CI, no SAST/DAST, no dependency or secrets scanning)",
+      "recorded known security issues",
+      "recorded ordinary code-review baseline observations"
+    ]
+  },
+  "actionable_findings_summary": "None. No scan ran, so no actionable security signal was produced and none was invented.",
+  "review_findings_addressed": [
+    {
+      "thread_id": "PRRT_kwDOT0ekDM6mRKu6",
+      "priority": "P1",
+      "title": "Keep raw penetration-test output out of repository evidence",
+      "resolution": "docs/security/STRIX_PILOT.md gained the mandatory 'Evidence handling and raw-output boundary' section (RAW_STRIX_OUTPUT_NEVER_COMMITTED): prohibited content list, access-controlled local-only raw storage, allowed sanitized fields, sanitization statement rule, safe hash/reference rule. The MVP scope bullet that said to store the raw report as evidence was replaced. .gitignore now blocks strix_runs/, .strix/, raw-pentest/, *.har and *.pcap.",
+      "files": ["docs/security/STRIX_PILOT.md", ".gitignore"]
+    },
+    {
+      "thread_id": "PRRT_kwDOT0ekDM6mRKu_",
+      "priority": "P2",
+      "title": "Freeze the retry target and comparison baseline before scanning",
+      "resolution": "Added the mandatory 'Target and baseline freeze' section (BASELINE_FREEZE_REQUIRED_BEFORE_SCAN, STRIX_RUN_BEFORE_BASELINE_FREEZE = FORBIDDEN, STRIX_WRITABLE_MOUNT_FORBIDDEN) plus the frozen 2026-09-28 target Murkin1980/mebeldocs-ai@2d6d60b240f8f4e2546cf451433c8f1ff0aad65a with scope, exclusions, limits, executed test/typecheck/build results, existing checks, known issues and the ordinary code-review baseline. The 2026-08-14 baseline is explicitly marked non-reusable.",
+      "files": ["docs/security/STRIX_PILOT.md", "evidence/exp-07/STRIX_RETRY_2026-09-28.json"]
+    },
+    {
+      "thread_id": "PRRT_kwDOT0ekDM6mRKvB",
+      "priority": "P2",
+      "title": "Map acceptance outcomes to valid registry statuses",
+      "resolution": "Added the mandatory 'Canonical status mapping' section (EXECUTION_OUTCOME_IS_NOT_REGISTRY_STATUS): PASS->PASS, WARNING->HOLD, BLOCKED->HOLD, confirmed failure->FAIL, using only the existing enum in contracts/EXPERIMENT_REGISTRY.schema.json; result_summary must carry the literal execution_outcome token. Registry EXP-07 now uses HOLD with execution_outcome: BLOCKED. No new registry status and no schema change.",
+      "files": ["docs/security/STRIX_PILOT.md", "experiments/EXPERIMENT_REGISTRY.json"]
+    }
+  ],
+  "validation": {
+    "mpe_unit_tests": {
+      "command": "python3 -m unittest discover -s tests",
+      "result": "PASS",
+      "detail": "333 tests, OK, 1 skipped (was 318 before this change; +15 from tests/test_exp07_strix_retry.py)",
+      "evidence_ref": "test_runner"
+    },
+    "package_contract_validation": {
+      "command": "python3 scripts/validate_package.py .",
+      "result": "PASS",
+      "detail": "VALIDATION PASSED; 4 experts, 3 teams, 5 playbooks, contracts and 20 gates present; exit 0",
+      "evidence_ref": "terminal_command"
+    },
+    "json_validity": {
+      "command": "json.loads over experiments/EXPERIMENT_REGISTRY.json and this artifact",
+      "result": "PASS",
+      "detail": "registry parses with 17 experiment entries; this artifact parses with 28 top-level keys",
+      "evidence_ref": "terminal_command"
+    },
+    "registry_schema_conformance": {
+      "command": "tests/test_contracts.py registry guard + jsonschema Draft 2020-12 validation of experiments/EXPERIMENT_REGISTRY.json against contracts/EXPERIMENT_REGISTRY.schema.json with FormatChecker",
+      "result": "PASS",
+      "detail": "0 schema errors; EXP-07 status HOLD is inside the existing enum; no new status added and no schema change",
+      "evidence_ref": "test_runner"
+    },
+    "whitespace_check": {
+      "command": "git diff --check && git diff --cached --check",
+      "result": "PASS",
+      "detail": "exit 0, no whitespace or conflict-marker errors",
+      "evidence_ref": "git_diff"
+    },
+    "sensitive_artifact_scan": {
+      "command": "pattern scan over every changed/added file for credential assignments, private key blocks, AWS keys, JWTs, SQLi/XSS/path-traversal payloads, exploit curl commands and base64 blobs",
+      "result": "PASS",
+      "detail": "0 sensitive hits; policy mentions of credential names are words, not values",
+      "evidence_ref": "secrets_scan"
+    },
+    "raw_pentest_artifacts_committed": {
+      "command": "git ls-files | grep -E 'strix_runs/|\\.har$|\\.pcap$|raw-pentest/' plus a directory listing of evidence/exp-07",
+      "result": "PASS",
+      "detail": "no raw pentest artifact tracked; evidence/exp-07 holds only README.md and this sanitized artifact",
+      "evidence_ref": "git_status"
+    },
+    "target_and_baseline_frozen": {
+      "command": "manual verification against this artifact and docs/security/STRIX_PILOT.md",
+      "result": "PASS",
+      "detail": "target SHA 2d6d60b240f8f4e2546cf451433c8f1ff0aad65a frozen with scope, exclusions, limits, tests 202/202, tsc PASS, build PASS, known issues and review baseline recorded before any scan attempt"
+    }
+  },
+  "sanitization_statement": "This artifact is sanitized. No raw Strix output, scan report, agent transcript, exploit payload, proof of concept, exploitable endpoint detail, source excerpt, secret, token, credential or configuration fragment is committed to this repository. No Strix scan ran, so no raw output exists anywhere. Baseline command logs were kept only in access-controlled local temporary storage outside Git and are referenced here by sha256 digest alone. Known security issues are described at class level (authentication model, error-message disclosure) without exploit steps, credentials or payloads.",
+  "execution_outcome": "BLOCKED",
+  "registry_status": "HOLD",
+  "status_mapping_applied": {
+    "PASS": "PASS",
+    "WARNING": "HOLD",
+    "BLOCKED": "HOLD",
+    "FAIL": "FAIL"
+  },
+  "recommendation": "Keep EXP-07 at HOLD. Preparation is now reproducible: the sanitization boundary, the frozen target/baseline and the outcome-to-status mapping are all in place, and the only remaining gap is an execution environment with Docker plus an LLM key. Do not treat this as evidence about Strix's value in either direction, do not integrate Strix into CI, do not grant it autofix or execution authority, and do not add a new security service. Run exactly one bounded quick scan of the frozen SHA in an owner-controlled Docker-enabled environment, then re-evaluate PASS/WARNING/FAIL against the frozen baseline.",
+  "next_action": "Provide a Docker-enabled, LLM-keyed environment and run the single planned bounded quick scan against a clean clone of Murkin1980/mebeldocs-ai@2d6d60b240f8f4e2546cf451433c8f1ff0aad65a with --max-turns 200 --max-budget 15, keeping raw output out of Git and committing only the sanitized result artifact.",
+  "boundaries_respected": [
+    "no production integration",
+    "no CI security gate",
+    "no autonomous remediation or automatic code fixes",
+    "no recurring scans",
+    "no new security service",
+    "no new repository",
+    "no MPE architecture change",
+    "no Strix execution authority over MPE code",
+    "no weakening of MPE security or governance boundaries",
+    "PR #27 not merged"
+  ]
+}
