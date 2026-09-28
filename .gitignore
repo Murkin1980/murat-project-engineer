@@ -6,6 +6,14 @@ node_modules/
 .wrangler/
 dist/
 
+# Raw security/pentest evidence must never be committed.
+# Only sanitized artifacts are allowed in Git (docs/security/STRIX_PILOT.md).
+strix_runs/
+.strix/
+raw-pentest/
+*.har
+*.pcap
+
 # Local environment secrets
 .env
 .mpe-runtime/mailboxes/
