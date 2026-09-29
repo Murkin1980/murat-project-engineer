@@ -42,3 +42,27 @@ A real dependency graph would need an optional `depends_on: [EXP-id]` field in t
 2. Deterministic text output is diffable and testable (the freshness test fails if the registry changes and the diagram is stale).
 3. The dependency gap is a data gap, not a Reladraw gap.
 4. Mobile needs split views; one portfolio-wide diagram is desktop-only.
+
+---
+
+# CP-03: Mobile-readable views (same PR #35)
+
+- **Result**: PASS · registry schema unchanged · no `depends_on` · the desktop `portfolio.*` files are byte-identical to CP-02.
+- **Approach**: one view **per status**, a single column of cards (wrap 26 chars, project shown as a short label on each card).
+- **Generate**: `python scripts/registry_to_reladraw.py --mobile-dir experiments/exp-19-shirman-trend-intake/cp02/mobile`, then `npx reladraw@0.13.0 <file>.reladraw -o <file>.svg`.
+
+| View | SVG width | Cards |
+|---|---|---|
+| `mobile/status-pass` | 355px | 5 |
+| `mobile/status-ready_to_test` | 346px | 3 |
+| `mobile/status-planned` | 355px | 7 |
+| `mobile/status-hold` | 355px | 4 |
+
+**390px check**: every SVG is ≤355px wide, so it renders 1:1 on a 390px screen (no downscale). Text stays at 14px monospace and reads without zoom
+(`*-390px.png` are renders at that size). Before this it was ~0.24× scale and 3–4px text.
+Next step is extended from 48 to 70 characters, because the narrow column has vertical room.
+
+**Tests** (`tests/test_registry_to_reladraw.py`): each experiment appears in exactly one view; committed views match the registry; SVG width ≤390 and 14px text; registry has no `depends_on`.
+
+**Findings**: per-status beats per-project on mobile (MPE alone holds 17/19 experiments, so a project view would be one very long column).
+The inferred dependency edge is dropped from the mobile views because it crosses views; the dependency is still mentioned in the card text ("Complete EXP-12…").
