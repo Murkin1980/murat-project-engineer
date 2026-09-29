@@ -1,0 +1,17 @@
+{
+  "name": "murat-project-engineer-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Static portfolio dashboard build for murat-project-engineer (Cloudflare Workers Static Assets / Pages).",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node scripts/build_dashboard.mjs",
+    "preview": "node scripts/preview_dashboard.mjs",
+    "check": "node scripts/check_dashboard_deploy.mjs",
+    "dev": "npx --yes wrangler@4.143.0 dev",
+    "deploy:dry-run": "npx --yes wrangler@4.143.0 deploy --dry-run"
+  }
+}

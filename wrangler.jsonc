@@ -2,8 +2,14 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "murat-project-engineer",
   "compatibility_date": "2026-08-13",
+  // Static dashboard: no Worker script, no bindings, no secrets.
+  // `build.command` runs before `wrangler dev` / `wrangler deploy`, so the
+  // deployable output directory always matches the committed dashboard source.
+  "build": {
+    "command": "node scripts/build_dashboard.mjs"
+  },
   "assets": {
-    "directory": "./dashboard/public",
+    "directory": "./dist",
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "single-page-application"
   }
