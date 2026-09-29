@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="346" height="849" viewBox="0 0 346 849" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
+  <defs>
+  </defs>
+  <rect x="0" y="0" width="346" height="849" fill="#ffffff"/>
+  <path d="M48 40 H298 a8 8 0 0 1 8 8 V801 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <text x="54" y="68.4" fill="#1f2328" text-anchor="start">PASS (5)</text>
+  <path d="M62 83 H284 a8 8 0 0 1 8 8 V198 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V91 a8 8 0 0 1 8 -8 Z" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="173" y="111.4" fill="#1f2328" text-anchor="middle">EXP-002 · MPE</text>
+  <text x="173" y="130.4" fill="#1f2328" text-anchor="middle">Machine Protocol</text>
+  <text x="173" y="149.4" fill="#1f2328" text-anchor="middle">→ Keep the closed result;</text>
+  <text x="173" y="168.4" fill="#1f2328" text-anchor="middle">a second independent</text>
+  <text x="173" y="187.4" fill="#1f2328" text-anchor="middle">executor run is the stre…</text>
+  <path d="M62 216 H284 a8 8 0 0 1 8 8 V350 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V224 a8 8 0 0 1 8 -8 Z" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="173" y="244.4" fill="#1f2328" text-anchor="middle">EXP-07 · MPE</text>
+  <text x="173" y="263.4" fill="#1f2328" text-anchor="middle">Strix / FreeBuff</text>
+  <text x="173" y="282.4" fill="#1f2328" text-anchor="middle">evaluation</text>
+  <text x="173" y="301.4" fill="#1f2328" text-anchor="middle">→ Keep Strix on hold;</text>
+  <text x="173" y="320.4" fill="#1f2328" text-anchor="middle">reuse only selected</text>
+  <text x="173" y="339.4" fill="#1f2328" text-anchor="middle">Codebuff patterns.</text>
+  <path d="M62 368 H284 a8 8 0 0 1 8 8 V502 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V376 a8 8 0 0 1 8 -8 Z" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="173" y="396.4" fill="#1f2328" text-anchor="middle">EXP-08 · MPE</text>
+  <text x="173" y="415.4" fill="#1f2328" text-anchor="middle">BrowserAct public-web</text>
+  <text x="173" y="434.4" fill="#1f2328" text-anchor="middle">acquisition</text>
+  <text x="173" y="453.4" fill="#1f2328" text-anchor="middle">→ Reuse the documented</text>
+  <text x="173" y="472.4" fill="#1f2328" text-anchor="middle">browser-acquisition role</text>
+  <text x="173" y="491.4" fill="#1f2328" text-anchor="middle">where a bounded project…</text>
+  <path d="M62 520 H284 a8 8 0 0 1 8 8 V635 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V528 a8 8 0 0 1 8 -8 Z" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="173" y="548.4" fill="#1f2328" text-anchor="middle">EXP-12 · MPE</text>
+  <text x="173" y="567.4" fill="#1f2328" text-anchor="middle">CLEARS triage backtest</text>
+  <text x="173" y="586.4" fill="#1f2328" text-anchor="middle">→ Pre-register real cases</text>
+  <text x="173" y="605.4" fill="#1f2328" text-anchor="middle">until ten cases exist</text>
+  <text x="173" y="624.4" fill="#1f2328" text-anchor="middle">before operational reli…</text>
+  <path d="M62 653 H284 a8 8 0 0 1 8 8 V787 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V661 a8 8 0 0 1 8 -8 Z" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="173" y="681.4" fill="#1f2328" text-anchor="middle">EXP-19 · MPE</text>
+  <text x="173" y="700.4" fill="#1f2328" text-anchor="middle">Shir-man trend intake and</text>
+  <text x="173" y="719.4" fill="#1f2328" text-anchor="middle">agent-readabl…</text>
+  <text x="173" y="738.4" fill="#1f2328" text-anchor="middle">→ Adopt Shir-man compact</text>
+  <text x="173" y="757.4" fill="#1f2328" text-anchor="middle">schema as a file-based</text>
+  <text x="173" y="776.4" fill="#1f2328" text-anchor="middle">intake format for perio…</text>
+</svg>
