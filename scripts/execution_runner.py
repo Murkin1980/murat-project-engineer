@@ -56,12 +56,15 @@ def run_task(
     production_restricted: bool = False,
     stop_condition: bool = False,
     required_checks: Optional[tuple[str, ...]] = None,
+    requested_human_approval: bool = False,
 ) -> dict[str, Any]:
     """Run one task through the acceptance boundary and, if permitted, the executor.
 
-    Returns a combined acceptance + execution outcome. The executor is invoked ONLY
-    via ``enforce_execution``; it can never run below the permitted action or before
-    the human gate. Fails closed on any error.
+    ``requested_human_approval`` is the tighten-only MPE IR intent input (see
+    ``scripts.mpe_ir_mapping``): it can only add a human gate, never authorize
+    execution. Returns a combined acceptance + execution outcome. The executor
+    is invoked ONLY via ``enforce_execution``; it can never run below the
+    permitted action or before the human gate. Fails closed on any error.
     """
     # 5. call accept_task (fail-closed inside task_acceptance)
     acceptance = accept_task(
@@ -74,6 +77,7 @@ def run_task(
         production_restricted=production_restricted,
         stop_condition=stop_condition,
         required_checks=required_checks,
+        requested_human_approval=requested_human_approval,
     )
     allowed = acceptance["allowed_action"]
     acceptance_state = acceptance["acceptance_state"]
@@ -96,6 +100,7 @@ def run_task(
             "allowed_action": allowed,
             "executor_invoked": True,
             "approval_recorded": approval_recorded,
+            "requested_human_approval": requested_human_approval,
             "execution_status": "ERROR",
             "execution_result": {"error": f"{type(exc).__name__}: {exc}"},
             "blocking_reasons": acceptance.get("blocking_reasons", []),
@@ -130,6 +135,7 @@ def run_task(
         "allowed_action": allowed,
         "executor_invoked": execution_invoked,
         "approval_recorded": approval_recorded,
+        "requested_human_approval": requested_human_approval,
         "execution_status": execution_status,
         "execution_result": execution_result,
         "blocking_reasons": acceptance.get("blocking_reasons", []),

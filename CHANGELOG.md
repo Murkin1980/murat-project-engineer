@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased — OBS-01 governed-entry intent contract fix (2026-09-29)
+
+- Reproduced OBS-01 (from the real Arena run `ARENA-XEXEC-EXP002-20260916-01`) with unchanged production code: the frozen EXP-002 IR-derived Task Packet yields `OBSERVE / NOT_PERMITTED / executor_invoked=false` at L0 and L4 with empty trusted history — byte-identical to evidence EV-06/EV-07 (same dispatch evaluation ids).
+- Root cause: the IR `autonomy`/`decision` blocks were an unmapped intent declaration — no production IR→Task Packet mapping existed, `autonomy.level` (risk-tier vocabulary) invited a misreading as an L0–L4 permission, and a `requires_human_approval: true` intent would have been silently dropped. The observed denial itself is correct Earned Autonomy behavior (intent never self-elevates; empty history ⇒ earned L0 ⇒ OBSERVE).
+- Added `scripts/mpe_ir_mapping.py` — deterministic fail-closed `derive_ir_intent`: intent-only semantics (`authorization: None`), tighten-only `requested_human_approval`, most-restrictive risk-tier merge; TRIAGE_INPUT stays closed.
+- Threaded the tighten-only `requested_human_approval` through the governed entry (`dispatch_autonomy` → `task_acceptance` → `execution_runner` → `triage_engine.governed_run` + `--requested-human-approval` CLI flag): intent can only add a human gate, never authorize execution or raise the earned ceiling.
+- Documented the single contract `IR intent → Task Packet → governed entry → executable permission` in `docs/governance/IR_INTENT_VS_EARNED_AUTONOMY.md`; added `tests/test_ir_intent_governed_entry.py` (27 tests: OBS-01 regression, positive/empty-history/human-approval/evidence-trust negatives).
+- No Earned Autonomy model, threshold, schema, gate registry, Router, dashboard, CI or experiment artifact change. Suite: 352 tests OK (1 skip).
+
 ## Unreleased — MPE navigation-test stabilization and status synchronization (2026-09-10)
 
 - Fixed the failing `tests/test_dashboard_navigation.py` regression guard. The test was written against the 2026-09-02 snapshot (nav `class="jump-nav"`, filter section `id="decisions"`); the intentional 2026-09-07 weekly refresh (7962d91b09) regenerated the page with `class="nav"` and section `id="ideas"`. The parser now follows the page's `<nav>` element and expects `{brief, p0, support, hold, ideas}`. The original invariant is preserved: section-navigation links must target exactly the existing section set. No dashboard HTML change.
