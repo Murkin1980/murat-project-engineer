@@ -17,7 +17,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 DASHBOARD = ROOT / "dashboard" / "public" / "index.html"
-EXPECTED_TARGETS = {"brief", "p0", "support", "hold", "ideas"}
+EXPECTED_TARGETS = {"brief", "p0", "support", "hold", "ideas", "registry"}
 
 
 class DashboardParser(HTMLParser):

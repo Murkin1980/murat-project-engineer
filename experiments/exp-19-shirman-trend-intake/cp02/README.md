@@ -66,3 +66,15 @@ Next step is extended from 48 to 70 characters, because the narrow column has ve
 
 **Findings**: per-status beats per-project on mobile (MPE alone holds 17/19 experiments, so a project view would be one very long column).
 The inferred dependency edge is dropped from the mobile views because it crosses views; the dependency is still mentioned in the card text ("Complete EXP-12…").
+
+---
+
+# CP-04: Integrate Reladraw views into the existing MPE dashboard
+
+- **Decision**: EXTEND_EXISTING · **Result**: PASS
+- **Integration point**: the existing static `dashboard/public/index.html`; the new `#registry` section is reachable from its existing sticky navigation.
+- **Desktop**: the full portfolio SVG is embedded in the dashboard and linked as a standalone SVG for the native 1619px view.
+- **Mobile**: four expandable per-status views are embedded; SVG widths are 346–355px with 14px text, and the responsive frame preserves their native size at 390px without zoom.
+- **Provenance**: `dashboard/public/registry/*.svg` are generated deployment copies of the validated CP-02 renders. Tests compare each dashboard render byte-for-byte with CP-02 and separately verify the Reladraw sources against `experiments/EXPERIMENT_REGISTRY.json`.
+- **Guardrails**: registry and schema unchanged; no `depends_on`, manually maintained duplicate registry state, service, database, queue, worker, or repository added. Reladraw remains a regeneration-time tool only.
+- **Verification**: full suite passed (330 tests; 1 platform-specific skip); `python scripts/validate_package.py .` passed; static preview returned HTTP 200 for the dashboard and all five SVG assets.
