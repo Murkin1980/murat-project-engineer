@@ -1,17 +1,18 @@
 # Architecture Map
 
 **Result:** `PARTIAL`  
+**Checkpoint:** `CP-02`  
 **Rule:** в основной карте показаны только наблюдаемые публичные роли. Точные API/service boundaries, storage type и framework не добавляются как факты.
 
 ## Evidence-backed public workflow
 
 ```mermaid
 graph TD
-    Browser[Browser] --> PublicFrontend[Public pages and constructor UI<br/>privetmaket.ru]
-    PublicFrontend --> Constructor[Parametric furniture constructor]
-    PublicFrontend --> Planner[Room planner]
-    PublicFrontend --> Auth[Login / registration / personal cabinet boundary]
-    Constructor --> Basket[Basket / submit route]
+    Browser[Browser / Client Runtime<br/>WebGL Scene Graph & Diagnostics] --> PublicFrontend[Public pages and constructor UI<br/>privetmaket.ru]
+    PublicFrontend --> Constructor[Parametric furniture constructor<br/>/shkaf]
+    PublicFrontend --> Planner[Room planner<br/>/planner]
+    PublicFrontend --> Auth[Login / registration / personal cabinet boundary<br/>/login, /reg]
+    Constructor --> Basket[Basket / submit route<br/>/submit]
     Planner --> Basket
     Basket --> Review[Manager / technologist review]
     Review --> Bank[Bank acquiring payment page<br/>provider named publicly as Tinkoff]
@@ -25,7 +26,8 @@ graph TD
 
 ### What this map means
 
-- `PublicFrontend`, `Constructor`, `Planner`, `Basket`, `Auth` and `Exports` are evidenced by public pages and visible UI labels: [EVIDENCE-001](evidence/frontend/EVIDENCE-001-homepage.md), [EVIDENCE-002](evidence/frontend/EVIDENCE-002-constructor.md), [EVIDENCE-004](evidence/endpoints/EVIDENCE-004-auth-and-basket.md), [EVIDENCE-008](evidence/frontend/EVIDENCE-008-planner.md).
+- `Browser / Client Runtime`: Confirmed by live WebGL diagnostics (`EVIDENCE-019`) to execute client-side rendering with explicit budgets (`draw calls <= 300`, `triangles <= 500k`, `JS heap <= 256 MB`). Scene manipulation (geometry, mesh updates, cell divisions) runs locally in browser memory.
+- `PublicFrontend`, `Constructor`, `Planner`, `Basket`, `Auth` and `Exports` are evidenced by public pages and visible UI labels: [EVIDENCE-001](evidence/frontend/EVIDENCE-001-homepage.md), [EVIDENCE-002](evidence/frontend/EVIDENCE-002-constructor.md), [EVIDENCE-004](evidence/endpoints/EVIDENCE-004-auth-and-basket.md), [EVIDENCE-008](evidence/frontend/EVIDENCE-008-planner.md), [CP02_NETWORK_MANIFEST](evidence/endpoints/CP02_NETWORK_MANIFEST.md).
 - `Review → Bank → Production → Delivery` is a published customer workflow, not a captured request trace: [EVIDENCE-007](evidence/endpoints/EVIDENCE-007-order-payment.md), [EVIDENCE-009](evidence/frontend/EVIDENCE-009-partners-and-production.md).
 - `Tinkoff` is a public textual claim on the order-help page. The exact acquiring hostname, API, callback and token flow are not mapped.
 - `ProjectState` is a boundary label, not a claim about a specific database. The site states that project/order parameters are available in a personal cabinet and exposes save/planner flows; storage implementation remains unknown: [EVIDENCE-008](evidence/frontend/EVIDENCE-008-planner.md), [EVIDENCE-009](evidence/frontend/EVIDENCE-009-partners-and-production.md).
@@ -34,8 +36,8 @@ graph TD
 
 ```mermaid
 graph LR
-    UI[Constructor UI] -. unknown execution location .-> Pricing[Pricing rules]
-    UI -. unknown transport .-> Api[Possible JSON/API boundary]
+    UI[Constructor UI] -. client JS formula vs async XHR .-> Pricing[Pricing rules]
+    UI -. no separate API host observed .-> Api[Possible JSON/API boundary]
     Project[Saved project] -. likely server-side persistence .-> Store[Account/project store]
     Exports[Generated files] -. generator location unknown .-> Generator[Client or server generator]
     Site[Public site] -. historical secondary source only .-> CRM[CRM / custom internal tooling]
@@ -43,7 +45,7 @@ graph LR
 
 These are not confirmed components. The following evidence is insufficient to promote them to FACT:
 
-- no browser Network export with request/response metadata;
+- no browser Network export with request/response metadata (CP-02 DevTools HAR blocked in current sandbox);
 - no raw public JS bundle analysis;
 - no response headers available from the current tool context;
 - no successful authenticated project-save/order flow was attempted;

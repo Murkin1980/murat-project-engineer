@@ -2,9 +2,9 @@
 
 ## Unknowns
 
-1. Exact browser Network requests for load, dimension change, material selection, module change and recalculation.
+1. Exact browser Network request logs (HAR) for initial load, dimension changes, material selection, module toggle and price recalculation (blocked due to sandbox lack of CDP/DevTools and TLS egress reset).
 2. Whether price calculation is entirely client-side, server-side, or hybrid.
-3. Exact public API/BFF hostname, path, method and content types.
+3. Exact public API/BFF hostname, path, method and content types (apex `privetmaket.ru` handles routes; separate API host unconfirmed).
 4. Whether project state is stored in account DB, server session, browser storage or a hybrid.
 5. Exact authentication/session cookie names and token mechanism. These must not be collected into the experiment.
 6. Whether project generation is synchronous, queued, or performed by a separate export worker.
@@ -20,17 +20,15 @@
 
 ## Safe next step
 
-If this experiment is continued, use a fresh ordinary browser session and export a redacted Network HAR while performing only anonymous/read-only steps:
+If this experiment is continued in an environment with full browser DevTools (CDP):
 
-1. load `/` and `/shkaf`;
+1. load `/` and `/shkaf` in a clean headless or headed Chrome session with Network inspection enabled;
 2. open catalog and a public ready-made model;
 3. change dimensions/material/one module;
 4. record only request metadata: method, host, path, content types, status, timing and purpose;
 5. stop before login, POST, order submission, project save, export purchase or payment;
 6. remove cookies, authorization headers, query secrets, form values, personal data and project identifiers;
 7. save only a small endpoint manifest under `evidence/endpoints/`.
-
-A second safe lane may inspect public JS bundles only after confirming that the browser loaded them anonymously; keep only matched strings for routes/hosts, not the bundle itself.
 
 ## Stop conditions
 

@@ -1,13 +1,15 @@
 {
   "schema_version": "1.0.0",
   "experiment": "privetmaket-backend-recon",
+  "checkpoint": "CP-02",
   "repository": "Murat Project Engineer",
   "decision": "EXTEND_EXISTING",
   "status": "PARTIAL",
+  "cp02_result": "BLOCKED",
   "research_date_utc": "2026-09-29",
   "security_boundary": "PASS",
   "raw_artifacts_policy": {
-    "directory": ".artifacts/privetmaket-backend-recon/",
+    "directory": ".artifacts/privetmaket-backend-recon/cp02/",
     "gitignored": true,
     "raw_traces_committed": false,
     "secrets_saved": false
@@ -19,7 +21,8 @@
     "browser_network_trace": false,
     "state_changing_requests": false,
     "authentication_attempted": false,
-    "payment_attempted": false
+    "payment_attempted": false,
+    "cdp_devtools_available": false
   },
   "domains": [
     {
@@ -72,7 +75,12 @@
     "evidence/frontend/EVIDENCE-016-privacy-and-analytics.md",
     "evidence/headers/EVIDENCE-017-headers-and-network-limitations.md",
     "evidence/frontend/EVIDENCE-018-murat-comparison.md",
+    "evidence/frontend/EVIDENCE-019-constructor-dom-and-webgl-diagnostics.md",
+    "evidence/endpoints/CP02_NETWORK_MANIFEST.md",
+    "evidence/endpoints/CP02_ACTION_TRACE.md",
+    "evidence/endpoints/CP02_JS_ASSETS.md",
+    "evidence/endpoints/CP02_HEADERS.md",
     "evidence/screenshots/README.md"
   ],
-  "next_action": "Capture a redacted anonymous browser Network manifest only; do not submit forms or cross authentication boundary."
+  "next_action": "Execute CDP browser HAR capture in an environment equipped with interactive browser DevTools; do not submit forms, bypass TLS/WAF, or cross authentication boundary."
 }

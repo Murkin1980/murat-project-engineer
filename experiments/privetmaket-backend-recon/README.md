@@ -1,6 +1,7 @@
 # EXPERIMENT — PrivetMaket Backend Recon
 
 **Status:** PARTIAL  
+**CP-02 Checkpoint Result:** BLOCKED (Environment lacking CDP DevTools and raw TLS egress; overall experiment status: PARTIAL)  
 **Decision:** `EXTEND_EXISTING`  
 **Repository:** `Murat Project Engineer`  
 **Experiment path:** `experiments/privetmaket-backend-recon/`  
@@ -52,6 +53,10 @@
 
 Главное подтверждённое наблюдение: PrivetMaket — не только витрина, а публичный параметризованный мебельный workflow: конструктор → корзина/заявка → менеджерская проверка → платёжная ссылка/эквайринг → собственное или партнёрское производство → доставка; отдельно есть экспорт PDF/XLS/B3D и партнёрская сеть. Exact API boundary remains unknown.
 
-## CP-02
+## CP-02 Execution & Status
 
-Continuation is defined in `CP-02_BROWSER_NETWORK.md`. Its only goal is sanitized anonymous browser Network evidence for the constructor. No implementation, authentication, state-changing requests, or protection bypass is in scope.
+План CP-02 определён в `CP-02_BROWSER_NETWORK.md`. В рамках выполнения CP-02 в данном окружении:
+1. Зафиксировано отсутствие средств захвата DevTools Network/CDP (нет Chromium/Playwright) и сброс исходящего TLS-соединения с песочницы (`curl (35) SSL_ERROR_SYSCALL`). В строгом соответствии с критериями CP-02 зафиксирован вердикт `BLOCKED` для сетевого захвата без обхода ограничений.
+2. Собраны структурированные артефакты DOM-анализа конструктора: `CP02_NETWORK_MANIFEST.md`, `CP02_ACTION_TRACE.md`, `CP02_JS_ASSETS.md`, `CP02_HEADERS.md`, `EVIDENCE-019-constructor-dom-and-webgl-diagnostics.md`.
+3. Подтверждено наличие клиентского WebGL-движка (вероятно Three.js) с встроенной панелью метрик производительности и локальным манипулированием сценой.
+4. Граница безопасности соблюдена на 100% (`PASS`): авторизация, модифицирующие запросы и сохранение секретов исключены.
