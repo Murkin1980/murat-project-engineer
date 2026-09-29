@@ -8,5 +8,8 @@ dist/
 
 # Local environment secrets
 .env
+
+# Raw temporary web-research material; keep cleaned evidence under an experiment only
+.artifacts/
 .mpe-runtime/mailboxes/
 .devcontainer/OPENCODE_MOBILE_CONNECTION.txt
