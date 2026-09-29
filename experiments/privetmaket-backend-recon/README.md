@@ -51,3 +51,7 @@
 ## Current result
 
 Главное подтверждённое наблюдение: PrivetMaket — не только витрина, а публичный параметризованный мебельный workflow: конструктор → корзина/заявка → менеджерская проверка → платёжная ссылка/эквайринг → собственное или партнёрское производство → доставка; отдельно есть экспорт PDF/XLS/B3D и партнёрская сеть. Exact API boundary remains unknown.
+
+## CP-02
+
+Continuation is defined in `CP-02_BROWSER_NETWORK.md`. Its only goal is sanitized anonymous browser Network evidence for the constructor. No implementation, authentication, state-changing requests, or protection bypass is in scope.
