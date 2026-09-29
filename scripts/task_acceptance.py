@@ -60,11 +60,15 @@ def accept_task(
     production_restricted: bool = False,
     stop_condition: bool = False,
     required_checks: Optional[tuple[str, ...]] = None,
+    requested_human_approval: bool = False,
 ) -> dict[str, Any]:
     """Resolve the deterministic acceptance decision for one task (fail-closed).
 
-    The execution path must then OBEY this decision via ``enforce_execution``.
-    On any error the function returns a safe BLOCKED decision and never executes.
+    ``requested_human_approval`` is the tighten-only MPE IR intent input (see
+    ``scripts.mpe_ir_mapping``): it can only add a human gate, never authorize
+    execution. The execution path must then OBEY this decision via
+    ``enforce_execution``. On any error the function returns a safe BLOCKED
+    decision and never executes.
     """
     task_id = task.get("task_id") if isinstance(task, dict) else None
     try:
@@ -78,6 +82,7 @@ def accept_task(
             production_restricted=production_restricted,
             stop_condition=stop_condition,
             required_checks=required_checks,
+            requested_human_approval=requested_human_approval,
         )
     except Exception as exc:  # fail-closed: never fall back to autonomous execution
         return {
@@ -85,6 +90,7 @@ def accept_task(
             "task_risk_tier": None,
             "current_autonomy_level": current_level,
             "earned_recommended_level": None,
+            "requested_human_approval": requested_human_approval,
             "allowed_action": "OBSERVE",
             "execution_allowed": False,
             "human_gate_required": True,

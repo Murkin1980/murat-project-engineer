@@ -204,14 +204,17 @@ def governed_run(
     production_restricted: bool = False,
     stop_condition: bool = False,
     required_checks: tuple[str, ...] | None = None,
+    requested_human_approval: bool = False,
 ) -> dict[str, Any]:
     """Run one real Task Packet through the governed execution path.
 
     Thin intake adapter over ``execution_runner.run_task`` — it contains no
     acceptance/dispatch logic of its own and never calls an executor directly.
-    Fail-closed: any parsing / integration / wiring error returns a deterministic
-    BLOCKED result with ``executor_invoked = False`` and never invokes the
-    executor.
+    ``requested_human_approval`` is the tighten-only MPE IR intent input (see
+    ``scripts.mpe_ir_mapping.derive_ir_intent``): it can only add a human gate,
+    never authorize execution. Fail-closed: any parsing / integration / wiring
+    error returns a deterministic BLOCKED result with ``executor_invoked = False``
+    and never invokes the executor.
     """
     safe_task_id = task.get("task_id") if isinstance(task, dict) else None
     try:
@@ -235,6 +238,7 @@ def governed_run(
             production_restricted=production_restricted,
             stop_condition=stop_condition,
             required_checks=required_checks,
+            requested_human_approval=requested_human_approval,
         )
         if not isinstance(result, dict) or "executor_invoked" not in result:
             raise ValueError("runner returned an invalid result contract")
@@ -246,6 +250,7 @@ def governed_run(
             "allowed_action": "OBSERVE",
             "executor_invoked": False,
             "approval_recorded": approval_recorded,
+            "requested_human_approval": requested_human_approval,
             "execution_status": "BLOCKED",
             "execution_result": None,
             "blocking_reasons": ["entry_integration_error"],
@@ -266,6 +271,13 @@ def main() -> int:
     )
     parser.add_argument("--level", default=_DEFAULT_LEVEL, help="current autonomy level L0-L4")
     parser.add_argument("--approval-recorded", action="store_true")
+    parser.add_argument(
+        "--requested-human-approval",
+        action="store_true",
+        help="tighten-only MPE IR intent input (scripts/mpe_ir_mapping."
+        "derive_ir_intent): keeps the human gate mandatory; never authorizes "
+        "execution",
+    )
     parser.add_argument("--scope-violation", action="store_true")
     parser.add_argument("--security-violation", action="store_true")
     parser.add_argument("--secrets-restricted", action="store_true")
@@ -296,6 +308,7 @@ def main() -> int:
             secrets_restricted=args.secrets_restricted,
             production_restricted=args.production_restricted,
             stop_condition=args.stop_condition,
+            requested_human_approval=args.requested_human_approval,
         )
     else:
         result = backtest(payload) if args.backtest else triage(payload)

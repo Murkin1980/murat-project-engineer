@@ -18,6 +18,11 @@ Design contract (from the integration brief):
 - L4 is owner-controlled and never auto-granted: it is honored only when the
   executor has verifiably earned at least L3 and no earned-history violation
   exists. Untrusted / unknown evidence cannot raise the earned level.
+- MPE IR intent (``scripts.mpe_ir_mapping.derive_ir_intent``) is never a
+  permission. Its only channel into this function is the tighten-only
+  ``requested_human_approval`` flag: it can add a human gate, never remove one,
+  and never raises the earned ceiling. ``requires_human_approval: false`` is
+  not an execution authorization.
 - No new orchestration subsystem: this is a single deterministic composition
   function reusing existing MPE modules. No Result Contract / Task Packet / MPE IR
   change.
@@ -85,6 +90,7 @@ def dispatch_with_autonomy(
     production_restricted: bool = False,
     stop_condition: bool = False,
     required_checks: Optional[tuple[str, ...]] = None,
+    requested_human_approval: bool = False,
 ) -> dict[str, Any]:
     """Deterministically derive the maximum allowed action for a task.
 
@@ -98,10 +104,17 @@ def dispatch_with_autonomy(
         7. derive execution_allowed
         8. emit reason / blockers
 
+    ``requested_human_approval`` is a tighten-only intent input (e.g. the MPE
+    IR ``autonomy.requires_human_approval`` / ``decision.human_approval_required``
+    / DEEP-CHANGE intent): it can only ADD a human gate to step 4, never remove
+    one and never grant execution permission.
+
     Returns the canonical dispatch result. No LLM chooses the precedence.
     """
     if current_level not in AUTONOMY_LEVELS:
         raise ValueError(f"unknown current_level: {current_level!r}")
+    if not isinstance(requested_human_approval, bool):
+        raise ValueError("requested_human_approval must be a boolean")
 
     triage_output = triage(task)
     risk_tier = triage_output["recommended_risk_tier"]
@@ -125,9 +138,11 @@ def dispatch_with_autonomy(
     if stop_condition:
         hard_blocks.append("stop_condition")
 
-    # 4. Approval requirement: triage-mandated approval OR DEEP-CHANGE risk tier.
+    # 4. Approval requirement: triage-mandated approval OR DEEP-CHANGE risk
+    #    tier OR the tighten-only IR intent request. The intent can only add a
+    #    gate here (most restrictive wins); it never removes one.
     deep_change = risk_tier == "DEEP-CHANGE"
-    approval_required = human_approval_required or deep_change
+    approval_required = human_approval_required or deep_change or requested_human_approval
 
     # Ceilings (privilege integers; lower == more restrictive).
     earned_ceiling = ACTION_PRIVILEGE[LEVEL_TO_ACTION[earned_level]]
@@ -165,6 +180,7 @@ def dispatch_with_autonomy(
         "evaluation_id": ea_result.get("evaluation_id"),
         "verified_pass_count": ea_result["verified_pass_count"],
         "task_risk_tier": risk_tier,
+        "requested_human_approval": requested_human_approval,
         "approval_required": approval_required,
         "allowed_action": allowed_action,
         "execution_allowed": execution_allowed,
