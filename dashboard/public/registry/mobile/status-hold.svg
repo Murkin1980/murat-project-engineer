@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="355" height="697" viewBox="0 0 355 697" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
+  <defs>
+  </defs>
+  <rect x="0" y="0" width="355" height="697" fill="#ffffff"/>
+  <path d="M48 40 H307 a8 8 0 0 1 8 8 V649 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <text x="54" y="68.4" fill="#1f2328" text-anchor="start">HOLD (4)</text>
+  <path d="M62 83 H293 a8 8 0 0 1 8 8 V217 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V91 a8 8 0 0 1 8 -8 Z" fill="#fef3c7" stroke="#d97706"/>
+  <text x="177.5" y="111.4" fill="#1f2328" text-anchor="middle">EXP-10 · MPE</text>
+  <text x="177.5" y="130.4" fill="#1f2328" text-anchor="middle">Munder Difflin controlled</text>
+  <text x="177.5" y="149.4" fill="#1f2328" text-anchor="middle">pilot</text>
+  <text x="177.5" y="168.4" fill="#1f2328" text-anchor="middle">→ Do not retry until the</text>
+  <text x="177.5" y="187.4" fill="#1f2328" text-anchor="middle">Windows Codex-adapter</text>
+  <text x="177.5" y="206.4" fill="#1f2328" text-anchor="middle">failure has a scoped rem…</text>
+  <path d="M62 235 H293 a8 8 0 0 1 8 8 V350 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V243 a8 8 0 0 1 8 -8 Z" fill="#fef3c7" stroke="#d97706"/>
+  <text x="177.5" y="263.4" fill="#1f2328" text-anchor="middle">EXP-COMPUTE-BUDGET · MPE</text>
+  <text x="177.5" y="282.4" fill="#1f2328" text-anchor="middle">Compute Budget Gate</text>
+  <text x="177.5" y="301.4" fill="#1f2328" text-anchor="middle">→ Collect 5–10 observed</text>
+  <text x="177.5" y="320.4" fill="#1f2328" text-anchor="middle">usage records and rerun</text>
+  <text x="177.5" y="339.4" fill="#1f2328" text-anchor="middle">the retrospective evalu…</text>
+  <path d="M62 368 H293 a8 8 0 0 1 8 8 V502 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V376 a8 8 0 0 1 8 -8 Z" fill="#fef3c7" stroke="#d97706"/>
+  <text x="177.5" y="396.4" fill="#1f2328" text-anchor="middle">EXP-STAGE3-SYNTHETIC · MPE</text>
+  <text x="177.5" y="415.4" fill="#1f2328" text-anchor="middle">Synthetic Stakeholder</text>
+  <text x="177.5" y="434.4" fill="#1f2328" text-anchor="middle">Evaluation</text>
+  <text x="177.5" y="453.4" fill="#1f2328" text-anchor="middle">→ Complete EXP-12</text>
+  <text x="177.5" y="472.4" fill="#1f2328" text-anchor="middle">prospective validation and</text>
+  <text x="177.5" y="491.4" fill="#1f2328" text-anchor="middle">the Stage 2 review before…</text>
+  <path d="M62 520 H293 a8 8 0 0 1 8 8 V635 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V528 a8 8 0 0 1 8 -8 Z" fill="#fef3c7" stroke="#d97706"/>
+  <text x="177.5" y="548.4" fill="#1f2328" text-anchor="middle">EXP-17 · MPE</text>
+  <text x="177.5" y="567.4" fill="#1f2328" text-anchor="middle">PrivetMaket backend recon</text>
+  <text x="177.5" y="586.4" fill="#1f2328" text-anchor="middle">→ If needed, capture a</text>
+  <text x="177.5" y="605.4" fill="#1f2328" text-anchor="middle">redacted anonymous browser</text>
+  <text x="177.5" y="624.4" fill="#1f2328" text-anchor="middle">Network manifest only…</text>
+</svg>
