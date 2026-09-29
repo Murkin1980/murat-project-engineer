@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0.0",
+  "experiment": "privetmaket-backend-recon",
+  "repository": "Murat Project Engineer",
+  "decision": "EXTEND_EXISTING",
+  "status": "PARTIAL",
+  "research_date_utc": "2026-09-29",
+  "security_boundary": "PASS",
+  "raw_artifacts_policy": {
+    "directory": ".artifacts/privetmaket-backend-recon/",
+    "gitignored": true,
+    "raw_traces_committed": false,
+    "secrets_saved": false
+  },
+  "collection": {
+    "public_get_pages": true,
+    "public_dns_over_https": true,
+    "public_search_and_published_articles": true,
+    "browser_network_trace": false,
+    "state_changing_requests": false,
+    "authentication_attempted": false,
+    "payment_attempted": false
+  },
+  "domains": [
+    {
+      "host": "privetmaket.ru",
+      "relationship": "primary target",
+      "confidence": "FACT"
+    },
+    {
+      "host": "pmplanner.ru",
+      "relationship": "PMplanner landing page explicitly links to PrivetMaket and describes the constructor as its example",
+      "confidence": "FACT"
+    },
+    {
+      "host": "konstruktor-shkafov.ru",
+      "relationship": "publicly linked/brand-associated related constructor; shared infrastructure unconfirmed",
+      "confidence": "STRONG_INFERENCE"
+    },
+    {
+      "host": "raspil59.ru",
+      "relationship": "public related cutting/detail service; shared infrastructure unconfirmed",
+      "confidence": "WEAK_INFERENCE"
+    },
+    {
+      "host": "b2b.pan-raspil.ru",
+      "relationship": "partner embed example named on public partner page; not treated as core infrastructure",
+      "confidence": "FACT"
+    },
+    {
+      "host": "mebelevich.com",
+      "relationship": "partner embed example named on public partner page; not treated as core infrastructure",
+      "confidence": "FACT"
+    }
+  ],
+  "evidence_files": [
+    "evidence/frontend/EVIDENCE-001-homepage.md",
+    "evidence/frontend/EVIDENCE-002-constructor.md",
+    "evidence/endpoints/EVIDENCE-003-robots-and-route-surface.md",
+    "evidence/endpoints/EVIDENCE-004-auth-and-basket.md",
+    "evidence/frontend/EVIDENCE-005-pricing.md",
+    "evidence/frontend/EVIDENCE-006-exports.md",
+    "evidence/endpoints/EVIDENCE-007-order-payment.md",
+    "evidence/frontend/EVIDENCE-008-planner.md",
+    "evidence/frontend/EVIDENCE-009-partners-and-production.md",
+    "evidence/frontend/EVIDENCE-010-pmplanner.md",
+    "evidence/dns/EVIDENCE-011-dns.md",
+    "evidence/frontend/EVIDENCE-012-related-domains.md",
+    "evidence/frontend/EVIDENCE-013-raspil.md",
+    "evidence/frontend/EVIDENCE-014-public-b3d-link.md",
+    "evidence/frontend/EVIDENCE-015-historical-architecture.md",
+    "evidence/frontend/EVIDENCE-016-privacy-and-analytics.md",
+    "evidence/headers/EVIDENCE-017-headers-and-network-limitations.md",
+    "evidence/frontend/EVIDENCE-018-murat-comparison.md",
+    "evidence/screenshots/README.md"
+  ],
+  "next_action": "Capture a redacted anonymous browser Network manifest only; do not submit forms or cross authentication boundary."
+}
