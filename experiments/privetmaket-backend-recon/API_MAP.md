@@ -1,6 +1,6 @@
 # API / Public Route Map
 
-**Important:** в доступном execution context не был получен browser Network trace. Поэтому таблица отделяет **наблюдаемые GET routes** от возможных API. URL route не называется API без evidence о method/content type/JSON response.
+**Important:** в доступном execution context не был получен browser Network trace (чекпоинт CP-02 классифицирован как `BLOCKED` по сетевому захвату). Поэтому таблица отделяет **наблюдаемые GET routes** от возможных API. URL route не называется API без evidence о method/content type/JSON response.
 
 Confidence: `FACT`, `STRONG_INFERENCE`, `WEAK_INFERENCE`, `UNKNOWN`.
 
@@ -24,8 +24,8 @@ Confidence: `FACT`, `STRONG_INFERENCE`, `WEAK_INFERENCE`, `UNKNOWN`.
 - **Purpose:** parametric cabinet/shelving/wardrobe configurator and quote UI
 - **Authentication:** page accessible without login; save/order/export requirements not fully tested
 - **Input:** public UI fields for dimensions, cells, materials, options and notes; no request body captured
-- **Output:** HTML plus browser-side interactive 3D/configuration UI; displayed price and basket/save/export controls
-- **Evidence:** EVIDENCE-002
+- **Output:** HTML plus browser-side interactive 3D WebGL configuration UI (`EVIDENCE-019`); displayed price and basket/save/export controls
+- **Evidence:** EVIDENCE-002, EVIDENCE-019, CP02_NETWORK_MANIFEST, CP02_ACTION_TRACE
 - **Confidence:** FACT
 
 ### Endpoint: `https://privetmaket.ru/garderob`
@@ -165,7 +165,7 @@ Confidence: `FACT`, `STRONG_INFERENCE`, `WEAK_INFERENCE`, `UNKNOWN`.
 - `/api/`, `/graphql`, `/v1/`, `/v2/` exact endpoints: **UNKNOWN**.
 - `POST`/JSON methods for recalculation, save, order, export or payment: **UNKNOWN**.
 - WebSocket/SSE channels: **UNKNOWN**.
-- Separate API hostname: **UNKNOWN**.
+- Separate API hostname: **UNKNOWN** (all observed actions stay on apex `privetmaket.ru`).
 - Cookies, authorization headers, JWT or session identifiers: intentionally not collected.
 
 A future Network-only continuation may add endpoint entries after redaction, but must not submit forms or cross the authentication boundary.
