@@ -11,6 +11,11 @@ set -uo pipefail
 
 PASSES="${1:-3}"
 ARMS="${2:-root typed-decisions}"
+# TAG keeps repeat invocations from overwriting an earlier run's console log or
+# host probe. Attempt 1 (arms "root typed-decisions") is preserved as
+# raw/sequence_b_console_attempt1.log and
+# raw/laya_access_probe_execution_host_attempt1.json.
+TAG="${3:-}"
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 RUN_DIR="$(dirname "$HERE")"
@@ -18,7 +23,7 @@ REPO_ROOT="$(cd "$RUN_DIR/../../.." && pwd)"
 cd "$RUN_DIR"
 
 PY="${PYTHON:-python3}"
-LOG="$RUN_DIR/raw/sequence_b_console.log"
+LOG="$RUN_DIR/raw/sequence_b_console${TAG:+_$TAG}.log"
 mkdir -p "$RUN_DIR/raw"
 : > "$LOG"
 
@@ -28,12 +33,12 @@ log "=== EXP-14 Sequence B ==="
 log "run_dir=$RUN_DIR"
 log "repo_root=$REPO_ROOT"
 log "python=$($PY -V 2>&1)"
-log "passes=$PASSES arms=$ARMS"
+log "passes=$PASSES arms=$ARMS tag=${TAG:-<none>}"
 
 # ---------------------------------------------------------------- stage 0
 log "--- stage 0: host + egress probe (contrast evidence) ---"
 $PY "$HERE/probe_laya_access.py" --timeout 20 \
-    --out "$RUN_DIR/raw/laya_access_probe_execution_host.json" \
+    --out "$RUN_DIR/raw/laya_access_probe_execution_host${TAG:+_$TAG}.json" \
     --skip-load-probe >> "$LOG" 2>&1
 log "probe exit=$?"
 

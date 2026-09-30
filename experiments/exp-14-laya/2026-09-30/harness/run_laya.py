@@ -54,10 +54,27 @@ from exp14_common import (  # noqa: E402
 
 LAYA_SDK_PIN = "laya==0.3.22"
 HF_REPO = "convaiinnovations/laya"
+# laya/revisions.py PINNED_REVISIONS, read from the installed SDK, not guessed.
+#
+# HARNESS DEFECT CORRECTED (arm B2 only, after arm B was already frozen):
+# the SDK pins one revision per *repository*. `typed-decisions` is a SUBFOLDER of
+# the bundled repository `convaiinnovations/laya`, so it shares that repository's
+# revision; `1a793eb5…` is the pin of the separate repository
+# `convaiinnovations/laya-typed-decisions` and is not a valid rev id of the
+# bundled repo. The first B2 attempt therefore failed with
+# RevisionNotFoundError (preserved verbatim in
+# raw/laya_B2_laya_typed_decisions_reference.json). Arm B (root) used the same
+# code path and the same revision before and after this correction, so no primary
+# result changed; raw/laya_B_laya_zero_shot_root_pass{1,2,3}.json are untouched.
+REPO_REVISION = "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
 PINNED_REVISIONS = {
-    # laya/revisions.py PINNED_REVISIONS, read from the installed SDK, not guessed
-    "root": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
-    "typed-decisions": "1a793eb568e6718f15941d08f85432581df534e3",
+    "root": REPO_REVISION,
+    "typed-decisions": REPO_REVISION,
+}
+STANDALONE_REPO_PINS = {
+    "convaiinnovations/laya": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+    "convaiinnovations/laya-multilingual": "e4e9ddf21a7b1903b7acffd8814ad4307bf63a67",
+    "convaiinnovations/laya-typed-decisions": "1a793eb568e6718f15941d08f85432581df534e3",
 }
 
 # ---------------------------------------------------------------------------

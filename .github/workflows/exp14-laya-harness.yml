@@ -72,13 +72,16 @@ jobs:
         env:
           HF_HUB_DISABLE_PROGRESS_BARS: '1'
           OMP_NUM_THREADS: '4'
-        run: bash harness/run_sequence_b.sh 3 "root typed-decisions"
+        # Attempt 2 re-runs ONLY the secondary reference arm B2, whose first
+        # attempt was blocked by a harness revision-pin defect (see the comment
+        # in harness/run_laya.py). Arm B's frozen evidence is not regenerated.
+        run: bash harness/run_sequence_b.sh 3 "typed-decisions" "attempt2"
 
       - name: Print key evidence to the job log
         if: always()
         working-directory: experiments/exp-14-laya/2026-09-30
         run: |
-          for f in raw/sequence_b_console.log raw/laya_access_probe_execution_host.json \
+          for f in raw/sequence_b_console*.log raw/laya_access_probe_execution_host*.json \
                    raw/metrics_*.json raw/laya_*_reproducibility.json; do
             for match in $f; do
               echo "===== $match ====="
