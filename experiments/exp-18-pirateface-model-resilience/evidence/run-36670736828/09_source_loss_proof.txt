@@ -1,0 +1,10 @@
+--- getent hosts huggingface.co ---
+0.0.0.0         huggingface.co
+--- curl https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 ---
+curl: (7) Failed to connect to huggingface.co port 443 after 0 ms: Couldn't connect to server
+curl failed (expected)
+--- curl https://pirateface.co/ (web layer) ---
+curl: (7) Failed to connect to pirateface.co port 443 after 0 ms: Couldn't connect to server
+curl failed (expected)
+--- tracker name resolution (must still work) ---
+187.127.110.248 tracker.pirateface.co

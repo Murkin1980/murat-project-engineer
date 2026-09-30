@@ -1,0 +1,221 @@
+{
+  "canonical": {
+    "file_count": 30,
+    "primary_artifact": {
+      "path": "model.safetensors",
+      "sha256": "53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db"
+    },
+    "total_bytes": 976948716
+  },
+  "comparison_vs_canonical": {
+    "pirateface_normal": {
+      "additional_in_candidate": [],
+      "file_set_identical": false,
+      "files_compared": 29,
+      "missing_in_candidate": [
+        ".gitattributes"
+      ],
+      "sha256_matched": 29,
+      "sha256_mismatched": 0,
+      "shared_files_hash_identical": false
+    },
+    "pirateface_swarm_only": {
+      "additional_in_candidate": [],
+      "file_set_identical": false,
+      "files_compared": 29,
+      "missing_in_candidate": [
+        ".gitattributes"
+      ],
+      "sha256_matched": 29,
+      "sha256_mismatched": 0,
+      "shared_files_hash_identical": false
+    }
+  },
+  "dht_only_extra_check": {
+    "exit_code": "124",
+    "file_set_identical": false,
+    "manifest_present": true,
+    "shared_files_hash_identical": false,
+    "wall_seconds": "331"
+  },
+  "generated_utc": "2026-09-30T05:08:30Z",
+  "github_run_id": "36670736828",
+  "harness": "experiments/exp-18-pirateface-model-resilience/harness/run_exp18.sh",
+  "hash_crosscheck": {
+    "hf_lfs_files": 15,
+    "pirateface_page_hashes": 13,
+    "pirateface_page_hashes_confirmed_against_canonical": 13
+  },
+  "hash_crosscheck_detail": {
+    "computed_manifest_matches_hf_recorded_lfs": true,
+    "files_whose_hash_is_published_by_pirateface": {
+      "model.safetensors": "53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db",
+      "onnx/model.onnx": "6fd5d72fe4589f189f8ebc006442dbb529bb7ce38f8082112682524616046452",
+      "onnx/model_O1.onnx": "1391c6fc20b5530250bc15cbe1f47578ffeca55ab0551d335cc668b6299a88ec",
+      "onnx/model_O2.onnx": "1de3905029190b398c7d300b530e320cf4b5e7d3dfb9af1429ebd73fd9a16faf",
+      "onnx/model_O3.onnx": "a44f671e364dddbac31f203f07b91be6b0a35e51936e5ebfab65b6d9538b83ff",
+      "onnx/model_O4.onnx": "1667d7f3ba669048b13a96ee3a44456d5e42c8f44588ae8b603430e16160c485",
+      "onnx/model_qint8_arm64.onnx": "4278337fd0ff3c68bfb6291042cad8ab363e1d9fbc43dcb499fe91c871902474",
+      "onnx/model_qint8_avx512.onnx": "4278337fd0ff3c68bfb6291042cad8ab363e1d9fbc43dcb499fe91c871902474",
+      "onnx/model_qint8_avx512_vnni.onnx": "4278337fd0ff3c68bfb6291042cad8ab363e1d9fbc43dcb499fe91c871902474",
+      "onnx/model_quint8_avx2.onnx": "b941bf19f1f1283680f449fa6a7336bb5600bdcd5f84d10ddc5cd72218a0fd21",
+      "openvino/openvino_model.bin": "8b86cab4722e2aefab310cf96d4d5a9eb3b187f7d9670a082afc55c7fa0d392a",
+      "openvino/openvino_model_qint8_quantized.bin": "c92ea4af3c6bc7b4a0f3b3d61b147c850f4dbdd7c9e7beee0c0c70dc12da289b",
+      "pytorch_model.bin": "c3a85f238711653950f6a79ece63eb0ea93d76f6a6284be04019c53733baf256",
+      "rust_model.ot": "2d98d96d278348988f2744e6445b8bc16d921c3f6e17c667362f3cb353007aea",
+      "tf_model.h5": "24c06a7429b843d46e40c6b167122053921bf94dce2e5550ea5c07fabc597646"
+    },
+    "pirateface_page_hashes_matching_canonical_bytes": [
+      "1391c6fc20b5530250bc15cbe1f47578ffeca55ab0551d335cc668b6299a88ec",
+      "1667d7f3ba669048b13a96ee3a44456d5e42c8f44588ae8b603430e16160c485",
+      "1de3905029190b398c7d300b530e320cf4b5e7d3dfb9af1429ebd73fd9a16faf",
+      "24c06a7429b843d46e40c6b167122053921bf94dce2e5550ea5c07fabc597646",
+      "2d98d96d278348988f2744e6445b8bc16d921c3f6e17c667362f3cb353007aea",
+      "4278337fd0ff3c68bfb6291042cad8ab363e1d9fbc43dcb499fe91c871902474",
+      "53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db",
+      "6fd5d72fe4589f189f8ebc006442dbb529bb7ce38f8082112682524616046452",
+      "8b86cab4722e2aefab310cf96d4d5a9eb3b187f7d9670a082afc55c7fa0d392a",
+      "a44f671e364dddbac31f203f07b91be6b0a35e51936e5ebfab65b6d9538b83ff",
+      "b941bf19f1f1283680f449fa6a7336bb5600bdcd5f84d10ddc5cd72218a0fd21",
+      "c3a85f238711653950f6a79ece63eb0ea93d76f6a6284be04019c53733baf256",
+      "c92ea4af3c6bc7b4a0f3b3d61b147c850f4dbdd7c9e7beee0c0c70dc12da289b"
+    ]
+  },
+  "hf_license_evidence": "apache-2.0",
+  "hf_revision_pinned": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+  "hf_revision_reported_by_api": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+  "hf_tags_license": [
+    "license:apache-2.0"
+  ],
+  "model_repo": "sentence-transformers/all-MiniLM-L6-v2",
+  "piece_reverification_log_tail": [
+    "gid   |stat|avg speed  |path/URI",
+    "======+====+===========+=======================================================",
+    "730889|OK  |       0B/s|/home/runner/work/_temp/exp18-work/swarm_run/sentence-transformers__all-MiniLM-L6-v2/1_Pooling/config.json (28more)",
+    "",
+    "Status Legend:",
+    "(OK):download completed."
+  ],
+  "pirateface_reference": {
+    "checksum_badge_text": [
+      "15 checksums"
+    ],
+    "infohash_from_magnet": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+    "magnet_advertised": "magnet:?xt=urn:btih:fed3a1e271827a2094b93ecbe738dbf3bd58c5cf&tr=udp%3A%2F%2Ftracker.pirateface.co%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.pirateface.co%3A6969%2Fannounce",
+    "magnet_has_web_seed_parameter": false,
+    "magnet_swarm_only": "magnet:?xt=urn:btih:fed3a1e271827a2094b93ecbe738dbf3bd58c5cf&tr=udp%3A%2F%2Ftracker.pirateface.co%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.pirateface.co%3A6969%2Fannounce",
+    "page_http_status_line": null,
+    "page_url": "https://pirateface.co/sentence-transformers/all-MiniLM-L6-v2",
+    "sha256_values_published_on_page": 13
+  },
+  "runs": {
+    "D_pirateface_normal": {
+      "exit_code": "124",
+      "manifest_file_count": 30,
+      "manifest_total_bytes": 976986449,
+      "peer_sample": {
+        "distinct_peer_networks": 0,
+        "info_hash_reported_by_client": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+        "max_connections": 18,
+        "max_download_speed_bps": 0,
+        "max_seeders": 0,
+        "sample_count": 2
+      },
+      "primary_artifact_sha256": {
+        "path": "sentence-transformers__all-MiniLM-L6-v2/model.safetensors",
+        "sha256": "53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db"
+      },
+      "wall_seconds": "331",
+      "webseed_mentions_in_client_log": 0,
+      "zero_byte_files": []
+    },
+    "E2_dht_only_tracker_blocked": {
+      "exit_code": "124",
+      "manifest_file_count": 30,
+      "manifest_total_bytes": 976986338,
+      "peer_sample": {
+        "distinct_peer_networks": 0,
+        "info_hash_reported_by_client": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+        "max_connections": 5,
+        "max_download_speed_bps": 0,
+        "max_seeders": 0,
+        "sample_count": 14
+      },
+      "primary_artifact_sha256": {
+        "path": "sentence-transformers__all-MiniLM-L6-v2/model.safetensors",
+        "sha256": "53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db"
+      },
+      "wall_seconds": "331",
+      "webseed_mentions_in_client_log": 0,
+      "zero_byte_files": []
+    },
+    "E_swarm_only_hf_blocked": {
+      "exit_code": "124",
+      "manifest_file_count": 30,
+      "manifest_total_bytes": 976986449,
+      "peer_sample": {
+        "distinct_peer_networks": 0,
+        "info_hash_reported_by_client": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+        "max_connections": 22,
+        "max_download_speed_bps": 0,
+        "max_seeders": 0,
+        "sample_count": 2
+      },
+      "primary_artifact_sha256": {
+        "path": "sentence-transformers__all-MiniLM-L6-v2/model.safetensors",
+        "sha256": "53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db"
+      },
+      "wall_seconds": "331",
+      "webseed_mentions_in_client_log": 0,
+      "zero_byte_files": []
+    }
+  },
+  "source_loss_proof": "--- getent hosts huggingface.co ---\n0.0.0.0         huggingface.co\n--- curl https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 ---\ncurl: (7) Failed to connect to huggingface.co port 443 after 0 ms: Couldn't connect to server\ncurl failed (expected)\n--- curl https://pirateface.co/ (web layer) ---\ncurl: (7) Failed to connect to pirateface.co port 443 after 0 ms: Couldn't connect to server\ncurl failed (expected)\n--- tracker name resolution (must still work) ---\n187.127.110.248 tracker.pirateface.co",
+  "torrent_metainfo": {
+    "announce_list": [
+      [
+        "udp://tracker.pirateface.co:6969/announce"
+      ],
+      [
+        "http://tracker.pirateface.co:6969/announce"
+      ]
+    ],
+    "creation_date_utc": null,
+    "creator": null,
+    "file_count": 29,
+    "has_web_seed_in_metainfo": false,
+    "info_hash": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+    "piece_count": 1864,
+    "piece_length": 524288,
+    "same_info_hash_across_runs": true,
+    "same_piece_table_and_file_list_across_runs": true,
+    "total_length": 976947487,
+    "url_list_web_seeds": null
+  },
+  "tracker_observation_before_retrieval": {
+    "interval_seconds": 1863,
+    "leechers": 0,
+    "ok": true,
+    "peer_networks": [
+      "129.222.x.x",
+      "146.212.x.x",
+      "147.90.x.x",
+      "151.243.x.x",
+      "170.203.x.x",
+      "178.162.x.x",
+      "180.149.x.x",
+      "181.41.x.x",
+      "185.21.x.x",
+      "187.127.x.x",
+      "20.118.x.x",
+      "5.79.x.x",
+      "52.159.x.x",
+      "64.238.x.x",
+      "69.42.x.x",
+      "79.127.x.x",
+      "9.234.x.x"
+    ],
+    "peers_returned": 17,
+    "seeders": 17
+  }
+}

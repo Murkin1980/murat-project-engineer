@@ -81,8 +81,12 @@ def main() -> int:
                 if not active:
                     idle_polls += 1
                     if idle_polls >= IDLE_POLLS_BEFORE_STOP:
+                        # The transfer left the active queue: it either completed
+                        # or was stopped by --bt-stop-timeout. Stop aria2c here so
+                        # a finished stage does not sit until the wrapper timeout.
                         stop_reason = "no_active_download"
                         stop_detail = f"tellActive empty for {idle_polls} consecutive polls"
+                        stop_detail += f"; aria2c stopped via {shutdown(port)}"
                         break
                     time.sleep(1)
                     continue
@@ -93,8 +97,11 @@ def main() -> int:
         except Exception as exc:  # download dropped out of the queue, or RPC gone
             idle_polls += 1
             if idle_polls >= IDLE_POLLS_BEFORE_STOP:
+                # aria2 removes the entry once the transfer is over, so tellStatus
+                # and getPeers start failing with "400 Bad Request" on the stale gid.
                 stop_reason = "status_unavailable"
                 stop_detail = f"{type(exc).__name__}: {exc}"
+                stop_detail += f"; aria2c stopped via {shutdown(port)}"
                 break
             time.sleep(1)
             continue

@@ -163,6 +163,14 @@ run_torrent() {
   cp "${WORK}/${tag}_peers.json" "${EVID}/07_${tag}_peers.json" 2>/dev/null
   log "[${tag}] aria2c exit=${rc} wall_seconds=$((t1 - t0))"
   cp "${WORK}/${tag}_aria2c.log" "${EVID}/07_${tag}_aria2c.log"
+  # Truth about whether the client finished the payload lives in the client log,
+  # not in the exit code (a stage stopped at its budget also exits non-zero).
+  if grep -qi 'Download complete' "${WORK}/${tag}_aria2c.log"; then
+    log "[${tag}] client reported: Download complete"
+  else
+    log "[${tag}] client did NOT report a completed download"
+  fi
+  grep -cE '\|OK  \|' "${WORK}/${tag}_aria2c.log" | sed "s/^/[${tag}] download-result lines with OK status: /" | tee -a "$LOG" > /dev/null
   echo "$rc" > "${WORK}/${tag}_rc"; echo "$((t1 - t0))" > "${WORK}/${tag}_seconds"
   local t
   t="$(find "$dir" -maxdepth 1 -name '*.torrent' | head -1)"
