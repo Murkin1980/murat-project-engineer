@@ -51,5 +51,12 @@ only — it reads recorded files and infers nothing).
 
 ## Run log
 
-- run attempt 1 (2026-09-30): harness executed; evidence pushed back via git (artifact CDN unreachable from the authoring sandbox)
-  - note: runner used a checkout of the harness commit; see evidence/ for observed results
+- attempt 01 (run 36667540675, commit 6d8d807): harness executed end to end. The
+  weight-file SHA-256 already matched across the Hugging Face and swarm-only
+  retrievals, but two harness defects made the recorded evidence incomplete:
+  `torrent_identity.py` raised `TypeError: Object of type bytes is not JSON
+  serializable` while dumping the metainfo (the file was left truncated), and the
+  manifest comparison did not normalise the torrent's payload directory, so the
+  path sets were reported as disjoint. Both defects were fixed before attempt 02;
+  the raw attempt-01 evidence remains in git history at commit 6d8d807.
+- attempt 02 (2026-09-30): clean run of the fixed harness.
