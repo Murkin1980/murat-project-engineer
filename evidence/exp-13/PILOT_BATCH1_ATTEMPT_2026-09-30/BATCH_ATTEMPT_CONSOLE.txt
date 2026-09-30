@@ -1,0 +1,37 @@
+EXP-13 Pilot Batch 1 attempt — 2026-09-30
+repo HEAD: 66dc1c57ef894586677b200274d06e6003699fe2
+manifest: evidence/exp-13/PILOT_BATCH1_PRE_REGISTRATION.json sha256=198b1aab9970b93b2fd34bfb763a169df490415e4f53637791d060a05720cb87
+
+== Registered batch CLI attempts (fail-closed capture) ==
+run 1: returncode=1 files_written=[]
+  |   File "<REPO>/scripts/exp13_checks.py", line 331, in evaluate
+  |     raise ContractError("usage record is required when the run proceeds to execution")
+  | triage_engine.ContractError: usage record is required when the run proceeds to execution
+run 2: returncode=1 files_written=[]
+  |   File "<REPO>/scripts/exp13_checks.py", line 331, in evaluate
+  |     raise ContractError("usage record is required when the run proceeds to execution")
+  | triage_engine.ContractError: usage record is required when the run proceeds to execution
+
+== Per-case attempt results ==
+EXP13-T-001-A: BLOCKED_BY_EVIDENCE_GATE (escalation=NONE, proceeded=True, usage=unobserved)
+EXP13-T-001-B: BLOCKED_BY_EVIDENCE_GATE (escalation=NONE, proceeded=True, usage=unobserved)
+EXP13-T-001-premium: BLOCKED_BY_EVIDENCE_GATE (escalation=NONE, proceeded=True, usage=unobserved)
+EXP13-T-004-A: BLOCKED_BY_EVIDENCE_GATE (escalation=NONE, proceeded=True, usage=unobserved)
+EXP13-T-004-B: BLOCKED_BY_EVIDENCE_GATE (escalation=NONE, proceeded=True, usage=unobserved)
+EXP13-T-004-premium: BLOCKED_BY_EVIDENCE_GATE (escalation=NONE, proceeded=True, usage=unobserved)
+EXP13-T-006-A: BLOCKED_BY_EVIDENCE_GATE (escalation=NONE, proceeded=True, usage=unobserved)
+EXP13-T-006-B: BLOCKED_BY_EVIDENCE_GATE (escalation=NONE, proceeded=True, usage=unobserved)
+EXP13-T-006-premium: BLOCKED_BY_EVIDENCE_GATE (escalation=NONE, proceeded=True, usage=unobserved)
+EXP13-T-008-A: COMPLETED_PRE_EXECUTION_ESCALATION (escalation=HUMAN_REVIEW_REQUIRED, proceeded=False, usage=unobserved)
+EXP13-T-008-B: COMPLETED_PRE_EXECUTION_ESCALATION (escalation=HUMAN_REVIEW_REQUIRED, proceeded=False, usage=unobserved)
+EXP13-T-008-premium: COMPLETED_PRE_EXECUTION_ESCALATION (escalation=HUMAN_REVIEW_REQUIRED, proceeded=False, usage=unobserved)
+EXP13-T-010-A: BLOCKED_BY_EVIDENCE_GATE (escalation=NONE, proceeded=True, usage=unobserved)
+EXP13-T-010-B: BLOCKED_BY_EVIDENCE_GATE (escalation=NONE, proceeded=True, usage=unobserved)
+EXP13-T-010-premium: BLOCKED_BY_EVIDENCE_GATE (escalation=NONE, proceeded=True, usage=unobserved)
+EXP13-T-012-A: BLOCKED_BY_EVIDENCE_GATE (escalation=NONE, proceeded=True, usage=unobserved)
+EXP13-T-012-B: BLOCKED_BY_EVIDENCE_GATE (escalation=NONE, proceeded=True, usage=unobserved)
+EXP13-T-012-premium: BLOCKED_BY_EVIDENCE_GATE (escalation=NONE, proceeded=True, usage=unobserved)
+
+coverage: {"total_registered": 18, "attempted": 18, "completed_via_pre_execution_escalation": 3, "blocked_by_evidence_gate": 15, "proceeded_to_execution": 0, "proceeded_run_ids": [], "unexpected_gate_results": []}
+determinism: deterministic=True
+integrity: {"preflight_failure_never_proceeds": true, "missing_usage_never_passes": true, "registered_batch_cli_failed_closed_with_no_partial_writes": true}
