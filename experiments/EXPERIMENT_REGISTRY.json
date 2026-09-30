@@ -2,25 +2,381 @@
   "schema_version": "1.0.0",
   "updated_at": "2026-09-30",
   "experiments": [
-    {"experiment_id":"EXP-ALEXANDRIA","name":"Firecrawl Alexandria source discovery","owning_project":"Murat AI Orchestrator","status":"PLANNED","why":"Test whether Alexandria improves source discovery on real research and tool tasks without becoming a runtime dependency.","date_added":"2026-09-23","next_action":"Execute the isolated five-task comparison and record per-run evidence in the owning repository.","result_summary":"Planned only: no dependency, credential, runtime integration, or production route has been added.","repo":"Murkin1980/Murat-AI-Orchestrator","experiment_path":"docs/experiments/alexandria/README.md","evidence_links":["https://github.com/Murkin1980/Murat-AI-Orchestrator/blob/experiment/alexandria-source-discovery/docs/experiments/alexandria/README.md"],"pr_or_issue_links":["https://github.com/Murkin1980/Murat-AI-Orchestrator/pull/12"],"updated_at":"2026-09-23"},
-    {"experiment_id":"EXP-RANKCONTROL","name":"RankControl AI visibility","owning_project":"Murat House","status":"PLANNED","why":"Test whether RankControl reveals actionable AI visibility signals not available from the current stack.","date_added":"2026-09-23","next_action":"After owner registration, run and record the first fixed-query baseline on the live Murat House site.","result_summary":"Draft plan only: no registration or live measurement has occurred; result is inconclusive.","repo":"Murkin1980/Murat-house","experiment_path":"src/content/experiments/rankcontrol-ai-visibility.md","evidence_links":["https://github.com/Murkin1980/Murat-house/blob/experiment/rankcontrol-ai-visibility/src/content/experiments/rankcontrol-ai-visibility.md"],"pr_or_issue_links":["https://github.com/Murkin1980/Murat-house/pull/23"],"updated_at":"2026-09-23"},
-    {"experiment_id":"EXP-002","name":"Machine Protocol","owning_project":"Murat Project Engineer","status":"PASS","why":"Test portable MPE task representation and evidence trust.","date_added":"2026-08-20","next_action":"Keep the closed result; a second independent executor run is the strengthening step.","result_summary":"Semantic portability and evidence-trust gate passed; one Arena run supports execution portability only for that bounded run.","repo":"Murkin1980/murat-project-engineer","experiment_path":"experiments/exp-002-machine-protocol","evidence_links":["https://github.com/Murkin1980/murat-project-engineer/blob/main/experiments/exp-002-machine-protocol/EXP-002_RESULTS.md"],"pr_or_issue_links":["https://github.com/Murkin1980/murat-project-engineer/pull/20"],"updated_at":"2026-09-16"},
-    {"experiment_id":"EXP-07","name":"Strix / FreeBuff evaluation","owning_project":"Murat Project Engineer","status":"PASS","why":"Evaluate external security and execution patterns without adding runtime authority.","date_added":"2026-08-20","next_action":"Keep Strix on hold; reuse only selected Codebuff patterns.","result_summary":"The controlled evaluation passed; Strix was not executed, FreeBuff execution was rejected.","repo":"Murkin1980/murat-project-engineer","experiment_path":"docs/security/STRIX_PILOT.md","evidence_links":["https://github.com/Murkin1980/murat-project-engineer/blob/main/STATUS.md"],"pr_or_issue_links":[],"updated_at":"2026-09-21"},
-    {"experiment_id":"EXP-08","name":"BrowserAct public-web acquisition","owning_project":"Murat Project Engineer","status":"PASS","why":"Assess public-web evidence acquisition under observed retries and tool use.","date_added":"2026-08-20","next_action":"Reuse the documented browser-acquisition role where a bounded project task needs it.","result_summary":"Controlled BrowserAct evaluation passed.","repo":"Murkin1980/murat-project-engineer","experiment_path":"docs/evaluations/BROWSERACT_EVALUATION.md","evidence_links":["https://github.com/Murkin1980/murat-project-engineer/blob/main/STATUS.md"],"pr_or_issue_links":[],"updated_at":"2026-09-21"},
-    {"experiment_id":"EXP-09","name":"Personalized Assessment Engine v0","owning_project":"Murat Project Engineer","status":"HOLD","why":"Test a reusable assessment pattern using synthetic kitchen scenarios.","date_added":"2026-08-20","next_action":"No further EXP-09 implementation/reconstruction unless the original source repository and frozen artifacts are independently recovered.","result_summary":"STATUS: HOLD; RESULT: SOURCE_OF_TRUTH_MISSING; REPRODUCIBLE: NO. Closed as non-reproducible; historical RUN-09 remains REWORK. Stage-2 was not rerun.","repo":"Murkin1980/murat-project-engineer","experiment_path":"CODEX_PERSONALIZED_ASSESSMENT_ENGINE_V0_EXPERIMENT.md","evidence_links":["https://github.com/Murkin1980/murat-project-engineer/blob/main/STATUS.md","https://github.com/Murkin1980/murat-project-engineer/blob/64dd9ebe22f1461c36461e1fa21165e3c79cc725/experiments/exp-09/recovery-2026-09-30/SOURCE_OF_TRUTH_MAP.md","https://github.com/Murkin1980/murat-project-engineer/blob/64dd9ebe22f1461c36461e1fa21165e3c79cc725/experiments/exp-09/recovery-2026-09-30/RECOVERY_HASHES.txt"],"pr_or_issue_links":["https://github.com/Murkin1980/murat-project-engineer/pull/44"],"updated_at":"2026-09-30"},
-    {"experiment_id":"EXP-10","name":"Munder Difflin controlled pilot","owning_project":"Murat Project Engineer","status":"HOLD","why":"Evaluate bounded multi-role architecture patterns.","date_added":"2026-08-20","next_action":"Do not retry until the Windows Codex-adapter failure has a scoped remedy.","result_summary":"Blocked before role execution because the adapter exited immediately; only reuse-pattern analysis is supported.","repo":"Murkin1980/murat-project-engineer","experiment_path":"docs/evaluations/MUNDER_DIFFLIN_EVALUATION.md","evidence_links":["https://github.com/Murkin1980/murat-project-engineer/blob/main/evidence/stage2/RUN-10_REPORT.json"],"pr_or_issue_links":[],"updated_at":"2026-09-21"},
-    {"experiment_id":"EXP-12","name":"CLEARS triage backtest","owning_project":"Murat Project Engineer","status":"PASS","why":"Validate deterministic triage and executability classifications.","date_added":"2026-08-21","next_action":"Pre-register real cases until ten cases exist before operational reliance.","result_summary":"Retrospective mechanics passed; four prospective cases are complete, but the evidence remains insufficient for operational reliance.","repo":"Murkin1980/murat-project-engineer","experiment_path":"docs/experiments/EXP-12_CLEARS_TRIAGE.md","evidence_links":["https://github.com/Murkin1980/murat-project-engineer/blob/main/evidence/backtest/EXP-12_BACKTEST_RESULTS.json"],"pr_or_issue_links":[],"updated_at":"2026-09-21"},
-    {"experiment_id":"EXP-13","name":"Low-cost evaluation harness","owning_project":"Murat Project Engineer","status":"READY_TO_TEST","why":"Test deterministic pre-execution route checks before spending budget.","date_added":"2026-08-21","next_action":"Run the frozen 18-entry Pilot Batch 1 only when every proceeding route has valid usage evidence.","result_summary":"Harness and usage adapters exist; no Pilot Batch 1 runs have executed.","repo":"Murkin1980/murat-project-engineer","experiment_path":"docs/experiments/EXP-13_LOW_COST_EVALUATION_HARNESS.md","evidence_links":["https://github.com/Murkin1980/murat-project-engineer/blob/main/evidence/exp-13/PILOT_BATCH1_PRE_REGISTRATION.json"],"pr_or_issue_links":[],"updated_at":"2026-09-21"},
-    {"experiment_id":"EXP-14","name":"Laya / System One Decision Layer","owning_project":"Murat Project Engineer","status":"PLANNED","why":"Compare a narrow System One model with deterministic MPE decisions without changing production routing.","date_added":"2026-09-21","next_action":"Freeze the labelled decision dataset before model runs.","result_summary":"Registered and not executed; Jev is optional comparator only.","repo":"Murkin1980/murat-project-engineer","experiment_path":"experiments/exp-14-laya-system-one","evidence_links":["https://github.com/Murkin1980/murat-project-engineer/blob/main/experiments/exp-14-laya-system-one/README.md"],"pr_or_issue_links":["https://github.com/Murkin1980/murat-project-engineer/pull/6"],"updated_at":"2026-09-21"},
-    {"experiment_id":"EXP-15","name":"MPE Project Memory Layer","owning_project":"Murat Project Engineer","status":"PLANNED","why":"Test whether bounded, provenance-aware memory reduces rediscovery without becoming a second source of truth.","date_added":"2026-08-28","next_action":"Select a small set of real MPE tasks and compare against the current artifact-only baseline.","result_summary":"Queued; no prototype or production memory service is authorized.","repo":"Murkin1980/murat-project-engineer","experiment_path":"docs/experiments/EXP-15_MPE_PROJECT_MEMORY_LAYER.md","evidence_links":["https://github.com/Murkin1980/murat-project-engineer/blob/main/docs/experiments/EXP-15_MPE_PROJECT_MEMORY_LAYER.md"],"pr_or_issue_links":[],"updated_at":"2026-08-28"},
-    {"experiment_id":"EXP-S2C-01","name":"Screenshot-to-Code Visual Workflow","owning_project":"Murat Project Engineer","status":"PLANNED","why":"Measure whether a bounded visual feedback loop reduces UI reconstruction effort.","date_added":"2026-08-28","next_action":"Freeze one existing-project fixture and baseline/candidate instructions before execution.","result_summary":"Planned; no production integration or new runtime is authorized.","repo":"Murkin1980/murat-project-engineer","experiment_path":"docs/experiments/EXP-S2C-01_SCREENSHOT_TO_CODE_VISUAL_WORKFLOW.md","evidence_links":["https://github.com/Murkin1980/murat-project-engineer/blob/main/docs/experiments/EXP-S2C-01_SCREENSHOT_TO_CODE_VISUAL_WORKFLOW.md"],"pr_or_issue_links":[],"updated_at":"2026-08-28"},
-    {"experiment_id":"EXP-COMPUTE-BUDGET","name":"Compute Budget Gate","owning_project":"Murat Project Engineer","status":"HOLD","why":"Assess whether observed usage can support budget estimates without fabricated telemetry.","date_added":"2026-08-21","next_action":"Collect 5–10 observed usage records and rerun the retrospective evaluation.","result_summary":"Retrospective validation passed but historical telemetry is insufficient for promotion beyond experimental status.","repo":"Murkin1980/murat-project-engineer","experiment_path":"experiments/compute-budget","evidence_links":["https://github.com/Murkin1980/murat-project-engineer/blob/main/COMPUTE_BUDGET_VALIDATION_REPORT.md"],"pr_or_issue_links":["https://github.com/Murkin1980/murat-project-engineer/pull/3"],"updated_at":"2026-08-21"},
-    {"experiment_id":"EXP-QOOPIA-MEMORY","name":"Qoopia cross-session memory","owning_project":"Murat Project Engineer","status":"PLANNED","why":"Test retrievable session context without replacing GitHub/MPE authority.","date_added":"2026-09-14","next_action":"Inspect current Qoopia documentation, then prepare a disposable synthetic-data test plan.","result_summary":"Queued and not started; no integration or production use is authorized.","repo":"Murkin1980/murat-project-engineer","experiment_path":"QOOPIA_MEMORY_EXPERIMENT.md","evidence_links":["https://github.com/Murkin1980/murat-project-engineer/commit/da8e1ea30e78d04494b8b1d1ec50f6e411248831"],"pr_or_issue_links":[],"updated_at":"2026-09-14"},
-    {"experiment_id":"EXP-UX-UI-SKILLS","name":"UX/UI Agent Skills","owning_project":"Murat Project Engineer","status":"HOLD","why":"Find additional actionable UI quality defects beyond native project checks.","date_added":"2026-09-15","next_action":"Do not rerun until the registered target fixture ai-microtask-factory is accessible and its baseline can be independently frozen; alternatively register a different target through a new contract.","result_summary":"BLOCKED: registered target fixture Murkin1980/ai-microtask-factory is inaccessible; baseline and candidate separation are not measurable. Upstream evaluation was not executed (0 cases). No production, infrastructure, dependency, fork, vendoring, or CI changes.","repo":"Murkin1980/murat-project-engineer","experiment_path":"UX_UI_AGENT_SKILLS_EXPERIMENT.md","evidence_links":["https://github.com/Murkin1980/murat-project-engineer/blob/main/experiments/exp-ux-ui-skills/2026-09-30/README.md","https://github.com/Murkin1980/murat-project-engineer/blob/main/experiments/exp-ux-ui-skills/2026-09-30/FINDINGS.md"],"pr_or_issue_links":["https://github.com/Murkin1980/murat-project-engineer/pull/45"],"updated_at":"2026-09-30"},
-    {"experiment_id":"EXP-16","name":"Minimalist Entrepreneur Skills Reuse","owning_project":"Murat Project Engineer","status":"PLANNED","why":"Test a bounded minimalist review against documented MPE decisions.","date_added":"2026-09-15","next_action":"Run the five-case retrospective only when it reaches active priority.","result_summary":"Queued and not started; the proposed result is advisory and must not create a second governance system.","repo":"Murkin1980/murat-project-engineer","experiment_path":"docs/experiments/EXP-16_MINIMALIST_ENTREPRENEUR_SKILLS_REUSE.md","evidence_links":["https://github.com/Murkin1980/murat-project-engineer/commit/4aa3b8325084eb924de340a81f61d746fd815b9d"],"pr_or_issue_links":["https://github.com/Murkin1980/murat-project-engineer/pull/19"],"updated_at":"2026-09-15"},
-    {"experiment_id":"EXP-STAGE3-SYNTHETIC","name":"Synthetic Stakeholder Evaluation","owning_project":"Murat Project Engineer","status":"HOLD","why":"Propose bounded stakeholder/persona evaluation only after Stage 2 evidence matures.","date_added":"2026-08-21","next_action":"Complete EXP-12 prospective validation and the Stage 2 review before starting any Stage 3 experiment.","result_summary":"Explicitly deferred; no Stage 3 execution evidence exists.","repo":"Murkin1980/murat-project-engineer","experiment_path":"docs/experiments/STAGE3_SYNTHETIC_STAKEHOLDER_EVALUATION.md","evidence_links":["https://github.com/Murkin1980/murat-project-engineer/blob/main/docs/experiments/STAGE3_SYNTHETIC_STAKEHOLDER_EVALUATION.md"],"pr_or_issue_links":[],"updated_at":"2026-08-21"},
-    {"experiment_id":"EXP-17","name":"PrivetMaket backend recon","owning_project":"Murat Project Engineer","status":"HOLD","why":"Map publicly observable architecture and reusable furniture-configurator patterns without creating a repository or crossing authentication/security boundaries.","date_added":"2026-09-29","next_action":"If needed, capture a redacted anonymous browser Network manifest only; do not submit forms or cross authentication boundary.","result_summary":"Public route/product architecture, PMplanner relationship, pricing/export/order workflow and reuse candidates documented. Exact API, framework, headers and storage remain unknown because no browser Network trace was available.","repo":"Murkin1980/murat-project-engineer","experiment_path":"experiments/privetmaket-backend-recon","evidence_links":["experiments/privetmaket-backend-recon/FINDINGS.md","experiments/privetmaket-backend-recon/manifest.json"],"pr_or_issue_links":[],"updated_at":"2026-09-29"},
-    {"experiment_id":"EXP-18","name":"Pirate Face model resilience","owning_project":"Murat Project Engineer","status":"PASS","why":"Test whether Pirate Face can provide a verifiable fallback distribution path for a pinned open-weight model artifact without adding a production runtime dependency.","date_added":"2026-09-29","next_action":"Keep Pirate Face as an optional last-resort path only: record a magnet and canonical SHA-256 manifest with any model pin and verify hashes after a fallback retrieval; do not add production routing, a registry, or seeding infrastructure.","result_summary":"PASS: the pinned sentence-transformers/all-MiniLM-L6-v2 artifact (revision 1110a243fdf4706b3f48f1d95db1a4f5529b4d41, Apache-2.0) was retrieved through the Pirate Face magnet and verified byte-for-byte - 29/29 payload files with matching SHA-256 including model.safetensors - with the Hugging Face zone and Pirate Face web layer blocked, and again with the Pirate Face tracker blocked (DHT only). Caveat: the torrent omits .gitattributes, so full repository snapshot identity is not exact while the model payload is exact. No production change, no registry, no new infrastructure.","repo":"Murkin1980/murat-project-engineer","experiment_path":"experiments/exp-18-pirateface-model-resilience","evidence_links":["https://github.com/Murkin1980/murat-project-engineer/blob/main/experiments/exp-18-pirateface-model-resilience/FINDINGS.md","https://github.com/Murkin1980/murat-project-engineer/blob/main/experiments/exp-18-pirateface-model-resilience/METHOD.md","https://github.com/Murkin1980/murat-project-engineer/blob/main/experiments/exp-18-pirateface-model-resilience/evidence/15_exp18_run_summary.json","https://github.com/Murkin1980/murat-project-engineer/blob/main/experiments/exp-18-pirateface-model-resilience/evidence/13_comparison.json"],"pr_or_issue_links":["https://github.com/Murkin1980/murat-project-engineer/pull/31","https://github.com/Murkin1980/murat-project-engineer/pull/40"],"updated_at":"2026-09-30"},
-    {"experiment_id":"EXP-19","name":"Shir-man trend intake and agent-readable surface","owning_project":"Murat Project Engineer","status":"PASS","why":"Test whether Shir-man trend intake mechanics provide a lightweight, agent-readable layer for processing external tech signals into Murat Project Engineer New Idea Filter decisions.","date_added":"2026-09-29","next_action":"Adopt Shir-man compact schema as a file-based intake format for periodic backlog grooming; do not build background scrapers or database infrastructure.","result_summary":"CP-01 completed with 15 processed signals, 7 actionable project candidates, token-efficient agent schema, and zero deep-change triggers.","repo":"Murkin1980/murat-project-engineer","experiment_path":"experiments/exp-19-shirman-trend-intake","evidence_links":["experiments/exp-19-shirman-trend-intake/README.md","experiments/exp-19-shirman-trend-intake/SIGNALS.md","experiments/exp-19-shirman-trend-intake/FORMAT.md","experiments/exp-19-shirman-trend-intake/FINDINGS.md"],"pr_or_issue_links":["https://github.com/Murkin1980/murat-project-engineer/issues/33"],"updated_at":"2026-09-29"}
+    {
+      "experiment_id": "EXP-ALEXANDRIA",
+      "name": "Firecrawl Alexandria source discovery",
+      "owning_project": "Murat AI Orchestrator",
+      "status": "PLANNED",
+      "why": "Test whether Alexandria improves source discovery on real research and tool tasks without becoming a runtime dependency.",
+      "date_added": "2026-09-23",
+      "next_action": "Execute the isolated five-task comparison and record per-run evidence in the owning repository.",
+      "result_summary": "Planned only: no dependency, credential, runtime integration, or production route has been added.",
+      "repo": "Murkin1980/Murat-AI-Orchestrator",
+      "experiment_path": "docs/experiments/alexandria/README.md",
+      "evidence_links": [
+        "https://github.com/Murkin1980/Murat-AI-Orchestrator/blob/experiment/alexandria-source-discovery/docs/experiments/alexandria/README.md"
+      ],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/Murat-AI-Orchestrator/pull/12"
+      ],
+      "updated_at": "2026-09-23"
+    },
+    {
+      "experiment_id": "EXP-RANKCONTROL",
+      "name": "RankControl AI visibility",
+      "owning_project": "Murat House",
+      "status": "PLANNED",
+      "why": "Test whether RankControl reveals actionable AI visibility signals not available from the current stack.",
+      "date_added": "2026-09-23",
+      "next_action": "After owner registration, run and record the first fixed-query baseline on the live Murat House site.",
+      "result_summary": "Draft plan only: no registration or live measurement has occurred; result is inconclusive.",
+      "repo": "Murkin1980/Murat-house",
+      "experiment_path": "src/content/experiments/rankcontrol-ai-visibility.md",
+      "evidence_links": [
+        "https://github.com/Murkin1980/Murat-house/blob/experiment/rankcontrol-ai-visibility/src/content/experiments/rankcontrol-ai-visibility.md"
+      ],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/Murat-house/pull/23"
+      ],
+      "updated_at": "2026-09-23"
+    },
+    {
+      "experiment_id": "EXP-002",
+      "name": "Machine Protocol",
+      "owning_project": "Murat Project Engineer",
+      "status": "PASS",
+      "why": "Test portable MPE task representation and evidence trust.",
+      "date_added": "2026-08-20",
+      "next_action": "Keep the closed result; a second independent executor run is the strengthening step.",
+      "result_summary": "Semantic portability and evidence-trust gate passed; one Arena run supports execution portability only for that bounded run.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/exp-002-machine-protocol",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/experiments/exp-002-machine-protocol/EXP-002_RESULTS.md"
+      ],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/20"
+      ],
+      "updated_at": "2026-09-16"
+    },
+    {
+      "experiment_id": "EXP-07",
+      "name": "Strix / FreeBuff evaluation",
+      "owning_project": "Murat Project Engineer",
+      "status": "PASS",
+      "why": "Evaluate external security and execution patterns without adding runtime authority.",
+      "date_added": "2026-08-20",
+      "next_action": "Keep Strix on hold; reuse only selected Codebuff patterns.",
+      "result_summary": "The controlled evaluation passed; Strix was not executed, FreeBuff execution was rejected.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "docs/security/STRIX_PILOT.md",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/STATUS.md"
+      ],
+      "pr_or_issue_links": [],
+      "updated_at": "2026-09-21"
+    },
+    {
+      "experiment_id": "EXP-08",
+      "name": "BrowserAct public-web acquisition",
+      "owning_project": "Murat Project Engineer",
+      "status": "PASS",
+      "why": "Assess public-web evidence acquisition under observed retries and tool use.",
+      "date_added": "2026-08-20",
+      "next_action": "Reuse the documented browser-acquisition role where a bounded project task needs it.",
+      "result_summary": "Controlled BrowserAct evaluation passed.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "docs/evaluations/BROWSERACT_EVALUATION.md",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/STATUS.md"
+      ],
+      "pr_or_issue_links": [],
+      "updated_at": "2026-09-21"
+    },
+    {
+      "experiment_id": "EXP-09",
+      "name": "Personalized Assessment Engine v0",
+      "owning_project": "Murat Project Engineer",
+      "status": "HOLD",
+      "why": "Test a reusable assessment pattern using synthetic kitchen scenarios.",
+      "date_added": "2026-08-20",
+      "next_action": "No further EXP-09 implementation/reconstruction unless the original source repository and frozen artifacts are independently recovered.",
+      "result_summary": "STATUS: HOLD; RESULT: SOURCE_OF_TRUTH_MISSING; REPRODUCIBLE: NO. Closed as non-reproducible; historical RUN-09 remains REWORK. Stage-2 was not rerun.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "CODEX_PERSONALIZED_ASSESSMENT_ENGINE_V0_EXPERIMENT.md",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/STATUS.md",
+        "https://github.com/Murkin1980/murat-project-engineer/blob/64dd9ebe22f1461c36461e1fa21165e3c79cc725/experiments/exp-09/recovery-2026-09-30/SOURCE_OF_TRUTH_MAP.md",
+        "https://github.com/Murkin1980/murat-project-engineer/blob/64dd9ebe22f1461c36461e1fa21165e3c79cc725/experiments/exp-09/recovery-2026-09-30/RECOVERY_HASHES.txt"
+      ],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/44"
+      ],
+      "updated_at": "2026-09-30"
+    },
+    {
+      "experiment_id": "EXP-10",
+      "name": "Munder Difflin controlled pilot",
+      "owning_project": "Murat Project Engineer",
+      "status": "HOLD",
+      "why": "Evaluate bounded multi-role architecture patterns.",
+      "date_added": "2026-08-20",
+      "next_action": "Do not retry until the Windows Codex-adapter failure has a scoped remedy.",
+      "result_summary": "Blocked before role execution because the adapter exited immediately; only reuse-pattern analysis is supported.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "docs/evaluations/MUNDER_DIFFLIN_EVALUATION.md",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/evidence/stage2/RUN-10_REPORT.json"
+      ],
+      "pr_or_issue_links": [],
+      "updated_at": "2026-09-21"
+    },
+    {
+      "experiment_id": "EXP-12",
+      "name": "CLEARS triage backtest",
+      "owning_project": "Murat Project Engineer",
+      "status": "PASS",
+      "why": "Validate deterministic triage and executability classifications.",
+      "date_added": "2026-08-21",
+      "next_action": "Pre-register real cases until ten cases exist before operational reliance.",
+      "result_summary": "Retrospective mechanics passed; four prospective cases are complete, but the evidence remains insufficient for operational reliance.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "docs/experiments/EXP-12_CLEARS_TRIAGE.md",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/evidence/backtest/EXP-12_BACKTEST_RESULTS.json"
+      ],
+      "pr_or_issue_links": [],
+      "updated_at": "2026-09-21"
+    },
+    {
+      "experiment_id": "EXP-13",
+      "name": "Low-cost evaluation harness",
+      "owning_project": "Murat Project Engineer",
+      "status": "READY_TO_TEST",
+      "why": "Test deterministic pre-execution route checks before spending budget.",
+      "date_added": "2026-08-21",
+      "next_action": "Run the frozen 18-entry Pilot Batch 1 only when every proceeding route has valid usage evidence.",
+      "result_summary": "Harness and usage adapters exist; no Pilot Batch 1 runs have executed.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "docs/experiments/EXP-13_LOW_COST_EVALUATION_HARNESS.md",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/evidence/exp-13/PILOT_BATCH1_PRE_REGISTRATION.json"
+      ],
+      "pr_or_issue_links": [],
+      "updated_at": "2026-09-21"
+    },
+    {
+      "experiment_id": "EXP-14",
+      "name": "Laya / System One Decision Layer",
+      "owning_project": "Murat Project Engineer",
+      "status": "PLANNED",
+      "why": "Compare a narrow System One model with deterministic MPE decisions without changing production routing.",
+      "date_added": "2026-09-21",
+      "next_action": "Freeze the labelled decision dataset before model runs.",
+      "result_summary": "Registered and not executed; Jev is optional comparator only.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/exp-14-laya-system-one",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/experiments/exp-14-laya-system-one/README.md"
+      ],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/6"
+      ],
+      "updated_at": "2026-09-21"
+    },
+    {
+      "experiment_id": "EXP-15",
+      "name": "MPE Project Memory Layer",
+      "owning_project": "Murat Project Engineer",
+      "status": "PASS",
+      "why": "Test whether bounded, provenance-aware memory reduces rediscovery without becoming a second source of truth.",
+      "date_added": "2026-08-28",
+      "next_action": "Keep EXP-15 as validated experiment evidence. When MPE task runners are next extended, reuse the bounded memory contract as an optional pre-execution context injection step without changing production routing or adding background infrastructure.",
+      "result_summary": "PASS: controlled MVP across 4 real completed MPE tasks. All 6 acceptance tests passed; unnecessary document reads 17→0 (-100%), context footprint 1,838→104 lines (-94.3%), rediscovery steps 21→4 (-81.0%), with 0 unauthorized writes, 0 cross-project leakage, 100% structured provenance, and safe FALLBACK_CANONICAL. Git/project artifacts remain the sole Source of Truth.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "docs/experiments/EXP-15_MPE_PROJECT_MEMORY_LAYER.md",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/experiments/exp-15-memory/2026-09-30/README.md",
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/experiments/exp-15-memory/2026-09-30/RESULTS.md",
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/experiments/exp-15-memory/2026-09-30/ACCEPTANCE_TESTS.md",
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/experiments/exp-15-memory/2026-09-30/HASHES.txt"
+      ],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/46"
+      ],
+      "updated_at": "2026-09-30"
+    },
+    {
+      "experiment_id": "EXP-S2C-01",
+      "name": "Screenshot-to-Code Visual Workflow",
+      "owning_project": "Murat Project Engineer",
+      "status": "PLANNED",
+      "why": "Measure whether a bounded visual feedback loop reduces UI reconstruction effort.",
+      "date_added": "2026-08-28",
+      "next_action": "Freeze one existing-project fixture and baseline/candidate instructions before execution.",
+      "result_summary": "Planned; no production integration or new runtime is authorized.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "docs/experiments/EXP-S2C-01_SCREENSHOT_TO_CODE_VISUAL_WORKFLOW.md",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/docs/experiments/EXP-S2C-01_SCREENSHOT_TO_CODE_VISUAL_WORKFLOW.md"
+      ],
+      "pr_or_issue_links": [],
+      "updated_at": "2026-08-28"
+    },
+    {
+      "experiment_id": "EXP-COMPUTE-BUDGET",
+      "name": "Compute Budget Gate",
+      "owning_project": "Murat Project Engineer",
+      "status": "HOLD",
+      "why": "Assess whether observed usage can support budget estimates without fabricated telemetry.",
+      "date_added": "2026-08-21",
+      "next_action": "Collect 5–10 observed usage records and rerun the retrospective evaluation.",
+      "result_summary": "Retrospective validation passed but historical telemetry is insufficient for promotion beyond experimental status.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/compute-budget",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/COMPUTE_BUDGET_VALIDATION_REPORT.md"
+      ],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/3"
+      ],
+      "updated_at": "2026-08-21"
+    },
+    {
+      "experiment_id": "EXP-QOOPIA-MEMORY",
+      "name": "Qoopia cross-session memory",
+      "owning_project": "Murat Project Engineer",
+      "status": "PLANNED",
+      "why": "Test retrievable session context without replacing GitHub/MPE authority.",
+      "date_added": "2026-09-14",
+      "next_action": "Inspect current Qoopia documentation, then prepare a disposable synthetic-data test plan.",
+      "result_summary": "Queued and not started; no integration or production use is authorized.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "QOOPIA_MEMORY_EXPERIMENT.md",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/commit/da8e1ea30e78d04494b8b1d1ec50f6e411248831"
+      ],
+      "pr_or_issue_links": [],
+      "updated_at": "2026-09-14"
+    },
+    {
+      "experiment_id": "EXP-UX-UI-SKILLS",
+      "name": "UX/UI Agent Skills",
+      "owning_project": "Murat Project Engineer",
+      "status": "HOLD",
+      "why": "Find additional actionable UI quality defects beyond native project checks.",
+      "date_added": "2026-09-15",
+      "next_action": "Do not rerun until the registered target fixture ai-microtask-factory is accessible and its baseline can be independently frozen; alternatively register a different target through a new contract.",
+      "result_summary": "BLOCKED: registered target fixture Murkin1980/ai-microtask-factory is inaccessible; baseline and candidate separation are not measurable. Upstream evaluation was not executed (0 cases). No production, infrastructure, dependency, fork, vendoring, or CI changes.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "UX_UI_AGENT_SKILLS_EXPERIMENT.md",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/experiments/exp-ux-ui-skills/2026-09-30/README.md",
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/experiments/exp-ux-ui-skills/2026-09-30/FINDINGS.md"
+      ],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/45"
+      ],
+      "updated_at": "2026-09-30"
+    },
+    {
+      "experiment_id": "EXP-16",
+      "name": "Minimalist Entrepreneur Skills Reuse",
+      "owning_project": "Murat Project Engineer",
+      "status": "PLANNED",
+      "why": "Test a bounded minimalist review against documented MPE decisions.",
+      "date_added": "2026-09-15",
+      "next_action": "Run the five-case retrospective only when it reaches active priority.",
+      "result_summary": "Queued and not started; the proposed result is advisory and must not create a second governance system.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "docs/experiments/EXP-16_MINIMALIST_ENTREPRENEUR_SKILLS_REUSE.md",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/commit/4aa3b8325084eb924de340a81f61d746fd815b9d"
+      ],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/19"
+      ],
+      "updated_at": "2026-09-15"
+    },
+    {
+      "experiment_id": "EXP-STAGE3-SYNTHETIC",
+      "name": "Synthetic Stakeholder Evaluation",
+      "owning_project": "Murat Project Engineer",
+      "status": "HOLD",
+      "why": "Propose bounded stakeholder/persona evaluation only after Stage 2 evidence matures.",
+      "date_added": "2026-08-21",
+      "next_action": "Complete EXP-12 prospective validation and the Stage 2 review before starting any Stage 3 experiment.",
+      "result_summary": "Explicitly deferred; no Stage 3 execution evidence exists.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "docs/experiments/STAGE3_SYNTHETIC_STAKEHOLDER_EVALUATION.md",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/docs/experiments/STAGE3_SYNTHETIC_STAKEHOLDER_EVALUATION.md"
+      ],
+      "pr_or_issue_links": [],
+      "updated_at": "2026-08-21"
+    },
+    {
+      "experiment_id": "EXP-17",
+      "name": "PrivetMaket backend recon",
+      "owning_project": "Murat Project Engineer",
+      "status": "HOLD",
+      "why": "Map publicly observable architecture and reusable furniture-configurator patterns without creating a repository or crossing authentication/security boundaries.",
+      "date_added": "2026-09-29",
+      "next_action": "If needed, capture a redacted anonymous browser Network manifest only; do not submit forms or cross authentication boundary.",
+      "result_summary": "Public route/product architecture, PMplanner relationship, pricing/export/order workflow and reuse candidates documented. Exact API, framework, headers and storage remain unknown because no browser Network trace was available.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/privetmaket-backend-recon",
+      "evidence_links": [
+        "experiments/privetmaket-backend-recon/FINDINGS.md",
+        "experiments/privetmaket-backend-recon/manifest.json"
+      ],
+      "pr_or_issue_links": [],
+      "updated_at": "2026-09-29"
+    },
+    {
+      "experiment_id": "EXP-18",
+      "name": "Pirate Face model resilience",
+      "owning_project": "Murat Project Engineer",
+      "status": "PASS",
+      "why": "Test whether Pirate Face can provide a verifiable fallback distribution path for a pinned open-weight model artifact without adding a production runtime dependency.",
+      "date_added": "2026-09-29",
+      "next_action": "Keep Pirate Face as an optional last-resort path only: record a magnet and canonical SHA-256 manifest with any model pin and verify hashes after a fallback retrieval; do not add production routing, a registry, or seeding infrastructure.",
+      "result_summary": "PASS: the pinned sentence-transformers/all-MiniLM-L6-v2 artifact (revision 1110a243fdf4706b3f48f1d95db1a4f5529b4d41, Apache-2.0) was retrieved through the Pirate Face magnet and verified byte-for-byte - 29/29 payload files with matching SHA-256 including model.safetensors - with the Hugging Face zone and Pirate Face web layer blocked, and again with the Pirate Face tracker blocked (DHT only). Caveat: the torrent omits .gitattributes, so full repository snapshot identity is not exact while the model payload is exact. No production change, no registry, no new infrastructure.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/exp-18-pirateface-model-resilience",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/experiments/exp-18-pirateface-model-resilience/FINDINGS.md",
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/experiments/exp-18-pirateface-model-resilience/METHOD.md",
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/experiments/exp-18-pirateface-model-resilience/evidence/15_exp18_run_summary.json",
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/experiments/exp-18-pirateface-model-resilience/evidence/13_comparison.json"
+      ],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/31",
+        "https://github.com/Murkin1980/murat-project-engineer/pull/40"
+      ],
+      "updated_at": "2026-09-30"
+    },
+    {
+      "experiment_id": "EXP-19",
+      "name": "Shir-man trend intake and agent-readable surface",
+      "owning_project": "Murat Project Engineer",
+      "status": "PASS",
+      "why": "Test whether Shir-man trend intake mechanics provide a lightweight, agent-readable layer for processing external tech signals into Murat Project Engineer New Idea Filter decisions.",
+      "date_added": "2026-09-29",
+      "next_action": "Adopt Shir-man compact schema as a file-based intake format for periodic backlog grooming; do not build background scrapers or database infrastructure.",
+      "result_summary": "CP-01 completed with 15 processed signals, 7 actionable project candidates, token-efficient agent schema, and zero deep-change triggers.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/exp-19-shirman-trend-intake",
+      "evidence_links": [
+        "experiments/exp-19-shirman-trend-intake/README.md",
+        "experiments/exp-19-shirman-trend-intake/SIGNALS.md",
+        "experiments/exp-19-shirman-trend-intake/FORMAT.md",
+        "experiments/exp-19-shirman-trend-intake/FINDINGS.md"
+      ],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/issues/33"
+      ],
+      "updated_at": "2026-09-29"
+    }
   ]
 }
