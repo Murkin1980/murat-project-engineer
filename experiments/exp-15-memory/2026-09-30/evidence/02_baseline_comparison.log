@@ -1,0 +1,38 @@
+================================================================================
+EXP-15 Mode A (Baseline) vs Mode B (Memory Layer) Evaluation
+================================================================================
+
+Task: [TASK-MPE-08] BrowserAct Scraping and Automation Boundaries
+  Query: "Can BrowserAct be used for authenticated scraping and form submission across private client portals?"
+  Baseline (Mode A): 5 doc reads, 465 lines inspected, 6 steps
+  Memory   (Mode B): 0 repo reads, 26 lines context, 1 lookup step, delta: NO_CHANGE
+  Rediscovery reduction: 5 reads -> 0 reads (100% reduction)
+
+Task: [TASK-MPE-11] Runtime Coordination Messaging Architecture
+  Query: "Should MPE use a background Redis daemon or persistent process broker for multi-expert handoffs?"
+  Baseline (Mode A): 4 doc reads, 382 lines inspected, 5 steps
+  Memory   (Mode B): 0 repo reads, 26 lines context, 1 lookup step, delta: NO_CHANGE
+  Rediscovery reduction: 4 reads -> 0 reads (100% reduction)
+
+Task: [TASK-MPE-12] CLEARS Triage Engine Operational Reliance
+  Query: "Can deep_change_probability from CLEARS triage engine be used as an autonomous gate in production routing?"
+  Baseline (Mode A): 4 doc reads, 564 lines inspected, 5 steps
+  Memory   (Mode B): 0 repo reads, 26 lines context, 1 lookup step, delta: NO_CHANGE
+  Rediscovery reduction: 4 reads -> 0 reads (100% reduction)
+
+Task: [TASK-MPE-18] Pirate Face Model Resilience Distribution Architecture
+  Query: "Should Pirate Face be deployed as an active model registry and seeding cluster in production?"
+  Baseline (Mode A): 4 doc reads, 427 lines inspected, 5 steps
+  Memory   (Mode B): 0 repo reads, 26 lines context, 1 lookup step, delta: NO_CHANGE
+  Rediscovery reduction: 4 reads -> 0 reads (100% reduction)
+
+================================================================================
+SUMMARY METRICS
+  Tasks Tested:                  4
+  Total Baseline Doc Reads:      17 reads (1838 lines)
+  Total Memory Prototype Reads:  0 reads (104 lines)
+  Unnecessary Reads Reduction:   100.0% (17 -> 0)
+  Context Footprint Reduction:   94.3% (1838 lines -> 104 lines)
+  Unauthorized Canonical Writes: 0
+  Cross-Project Leakage:         0
+================================================================================

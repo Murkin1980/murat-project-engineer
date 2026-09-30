@@ -1,0 +1,77 @@
+{
+  "tasks": [
+    {
+      "task_id": "TASK-MPE-08",
+      "name": "BrowserAct Scraping and Automation Boundaries",
+      "project": "Murkin1980/murat-project-engineer",
+      "query": "Can BrowserAct be used for authenticated scraping and form submission across private client portals?",
+      "topic": "browseract",
+      "canonical_decision": "REUSE_COMPONENT for public-web browser acquisition role only.",
+      "canonical_constraints": "PUBLIC_WEB_ONLY: no authentication, no forms, no messaging, no purchase, no CAPTCHA bypass; isolated Chrome must be deleted after use.",
+      "baseline_required_files": [
+        "docs/NEW_IDEA_FILTER_POLICY.md",
+        "docs/evaluations/BROWSERACT_EVALUATION.md",
+        "docs/evaluations/BROWSER_ACQUISITION_ROLE.md",
+        "evidence/stage2/RUN-08_REPORT.json",
+        "STATUS.md"
+      ],
+      "baseline_lines_inspected": 465,
+      "expected_memory_ids": ["MEM-MPE-001", "MEM-MPE-002"],
+      "expected_delta_action": "NO_CHANGE"
+    },
+    {
+      "task_id": "TASK-MPE-11",
+      "name": "Runtime Coordination Messaging Architecture",
+      "project": "Murkin1980/murat-project-engineer",
+      "query": "Should MPE use a background Redis daemon or persistent process broker for multi-expert handoffs?",
+      "topic": "runtime coordination",
+      "canonical_decision": "Approved lightweight file-based coordination (typed mailbox envelopes, append-only JSONL events, ephemeral state).",
+      "canonical_constraints": "NO daemon, background scheduler, persistent agent, shared database, or Router authority change allowed. Atomic publication single-filesystem only; Windows junction rejection enforced.",
+      "baseline_required_files": [
+        "docs/architecture/RUNTIME_COORDINATION_PATTERNS.md",
+        "evidence/stage2/RUN-10_REPORT.json",
+        "evidence/stage2/RUN-11_REPORT.json",
+        "docs/OPINIONATED_WORKSPACE_POLICY.md"
+      ],
+      "baseline_lines_inspected": 382,
+      "expected_memory_ids": ["MEM-MPE-003", "MEM-MPE-004"],
+      "expected_delta_action": "NO_CHANGE"
+    },
+    {
+      "task_id": "TASK-MPE-12",
+      "name": "CLEARS Triage Engine Operational Reliance",
+      "project": "Murkin1980/murat-project-engineer",
+      "query": "Can deep_change_probability from CLEARS triage engine be used as an autonomous gate in production routing?",
+      "topic": "clears",
+      "canonical_decision": "Retrospective backtest passed (20/20 cases), but status remains EXPERIMENT.",
+      "canonical_constraints": "deep_change_probability is a deterministic heuristic score, NOT a calibrated statistical probability; prospective pre-registered cases required before operational reliance.",
+      "baseline_required_files": [
+        "docs/experiments/EXP-12_CLEARS_TRIAGE.md",
+        "evidence/stage2/RUN-12_REPORT.json",
+        "scripts/triage_engine.py",
+        "datasets/exp-12-backtest.json"
+      ],
+      "baseline_lines_inspected": 564,
+      "expected_memory_ids": ["MEM-MPE-005", "MEM-MPE-006"],
+      "expected_delta_action": "NO_CHANGE"
+    },
+    {
+      "task_id": "TASK-MPE-18",
+      "name": "Pirate Face Model Resilience Distribution Architecture",
+      "project": "Murkin1980/murat-project-engineer",
+      "query": "Should Pirate Face be deployed as an active model registry and seeding cluster in production?",
+      "topic": "pirateface",
+      "canonical_decision": "EXP-18 PASS: verified byte-for-byte retrieval (29/29 files) of pinned model under source loss.",
+      "canonical_constraints": "Optional last-resort fallback path ONLY; mandatory SHA-256 manifest check; DO NOT add production routing, a registry, or seeding infrastructure.",
+      "baseline_required_files": [
+        "experiments/exp-18-pirateface-model-resilience/README.md",
+        "experiments/exp-18-pirateface-model-resilience/FINDINGS.md",
+        "experiments/exp-18-pirateface-model-resilience/METHOD.md",
+        "experiments/EXPERIMENT_REGISTRY.json"
+      ],
+      "baseline_lines_inspected": 427,
+      "expected_memory_ids": ["MEM-MPE-007", "MEM-MPE-008"],
+      "expected_delta_action": "NO_CHANGE"
+    }
+  ]
+}

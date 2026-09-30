@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0.0",
+  "project": "Murkin1980/murat-project-engineer",
+  "updated_at": "2026-09-30T00:00:00Z",
+  "items": [
+    {
+      "item_id": "MEM-MPE-001",
+      "project": "Murkin1980/murat-project-engineer",
+      "category": "decision",
+      "topic": "browseract acquisition role",
+      "summary": "BrowserAct approved under New Idea Filter as REUSE_COMPONENT for public-web browser acquisition role only.",
+      "provenance": "docs/evaluations/BROWSERACT_EVALUATION.md#L45, evidence/stage2/RUN-08_REPORT.json#L24",
+      "rationale": "Reuses existing CLI/skill instead of building new browser automation.",
+      "status": "active",
+      "superseded_by": null,
+      "created_at": "2026-08-15T00:00:00Z",
+      "approved_by": "MPE-Core-Gate"
+    },
+    {
+      "item_id": "MEM-MPE-002",
+      "project": "Murkin1980/murat-project-engineer",
+      "category": "constraint",
+      "topic": "browseract scraping policy",
+      "summary": "Strictly PUBLIC_WEB_ONLY: no authentication, no forms, no messaging, no purchase, no CAPTCHA bypass; isolated Chrome must be deleted after use.",
+      "provenance": "evidence/stage2/RUN-08_REPORT.json#L29, docs/evaluations/BROWSER_ACQUISITION_ROLE.md#L15",
+      "rationale": "Safety boundary prevents unauthorized private data access or permanent resource leaks.",
+      "status": "active",
+      "superseded_by": null,
+      "created_at": "2026-08-15T00:00:00Z",
+      "approved_by": "MPE-Core-Gate"
+    },
+    {
+      "item_id": "MEM-MPE-003",
+      "project": "Murkin1980/murat-project-engineer",
+      "category": "decision",
+      "topic": "runtime coordination architecture",
+      "summary": "Approved lightweight file-based coordination (typed mailbox envelopes, append-only JSONL events, ephemeral state).",
+      "provenance": "docs/architecture/RUNTIME_COORDINATION_PATTERNS.md#L1, evidence/stage2/RUN-11_REPORT.json#L24",
+      "rationale": "EXTEND_EXISTING pattern avoiding daemons or distributed schedulers.",
+      "status": "active",
+      "superseded_by": null,
+      "created_at": "2026-08-15T15:00:00Z",
+      "approved_by": "MPE-Core-Gate"
+    },
+    {
+      "item_id": "MEM-MPE-004",
+      "project": "Murkin1980/murat-project-engineer",
+      "category": "constraint",
+      "topic": "runtime coordination boundaries",
+      "summary": "NO daemon, background scheduler, persistent agent, shared database, or Router authority change allowed. Atomic publication single-filesystem only; Windows junction rejection enforced.",
+      "provenance": "evidence/stage2/RUN-11_REPORT.json#L39, docs/architecture/RUNTIME_COORDINATION_PATTERNS.md#L20",
+      "rationale": "Opinionated Workspace and deep-change invariants prohibit parallel authority.",
+      "status": "active",
+      "superseded_by": null,
+      "created_at": "2026-08-15T15:00:00Z",
+      "approved_by": "MPE-Core-Gate"
+    },
+    {
+      "item_id": "MEM-MPE-005",
+      "project": "Murkin1980/murat-project-engineer",
+      "category": "outcome",
+      "topic": "clears triage engine",
+      "summary": "EXP-12 CLEARS deterministic backtest passed 20/20 retrospective cases, but status remains EXPERIMENT.",
+      "provenance": "evidence/stage2/RUN-12_REPORT.json#L26, docs/experiments/EXP-12_CLEARS_TRIAGE.md#L1",
+      "rationale": "100% fit on curated retrospective cases does not prove prospective generalization.",
+      "status": "active",
+      "superseded_by": null,
+      "created_at": "2026-08-18T12:00:00Z",
+      "approved_by": "MPE-Core-Gate"
+    },
+    {
+      "item_id": "MEM-MPE-006",
+      "project": "Murkin1980/murat-project-engineer",
+      "category": "constraint",
+      "topic": "clears operational reliance",
+      "summary": "deep_change_probability is a deterministic heuristic score, NOT a calibrated statistical probability; prospective pre-registered cases required before operational reliance.",
+      "provenance": "evidence/stage2/RUN-12_REPORT.json#L41, docs/experiments/EXP-12_CLEARS_TRIAGE.md#L80",
+      "rationale": "Prevents false precision and premature deployment into production routing.",
+      "status": "active",
+      "superseded_by": null,
+      "created_at": "2026-08-18T12:00:00Z",
+      "approved_by": "MPE-Core-Gate"
+    },
+    {
+      "item_id": "MEM-MPE-007",
+      "project": "Murkin1980/murat-project-engineer",
+      "category": "decision",
+      "topic": "pirateface model resilience",
+      "summary": "EXP-18 PASS: verified byte-for-byte retrieval (29/29 files) of pinned sentence-transformers/all-MiniLM-L6-v2 artifact under primary source loss.",
+      "provenance": "experiments/exp-18-pirateface-model-resilience/FINDINGS.md#L5, experiments/EXPERIMENT_REGISTRY.json#L20",
+      "rationale": "Demonstrated BitTorrent/DHT fallback distribution viability for pinned open-weight models.",
+      "status": "active",
+      "superseded_by": null,
+      "created_at": "2026-09-30T00:00:00Z",
+      "approved_by": "MPE-Core-Gate"
+    },
+    {
+      "item_id": "MEM-MPE-008",
+      "project": "Murkin1980/murat-project-engineer",
+      "category": "constraint",
+      "topic": "pirateface deployment boundaries",
+      "summary": "Optional last-resort fallback path ONLY; mandatory SHA-256 manifest check; DO NOT add production routing, a registry, or seeding infrastructure.",
+      "provenance": "experiments/exp-18-pirateface-model-resilience/FINDINGS.md#L12, experiments/exp-18-pirateface-model-resilience/METHOD.md#L10",
+      "rationale": "Prevents adding external dependencies or production torrent daemons to MPE.",
+      "status": "active",
+      "superseded_by": null,
+      "created_at": "2026-09-30T00:00:00Z",
+      "approved_by": "MPE-Core-Gate"
+    }
+  ]
+}

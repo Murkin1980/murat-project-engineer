@@ -1,0 +1,12 @@
+======================================================================
+EXP-15 Acceptance Test Suite — Controlled MVP Execution
+======================================================================
+[PASS] RECALL: Correctly recalled active decisions, constraints, and outcomes across queries without omission.
+[PASS] UPDATE: New approved fact supersedes old fact; old marked superseded; recall returns exclusively the new active fact.
+[PASS] DELETE: Approved deletion tombstones item; item completely excluded from subsequent active recall queries.
+[PASS] ISOLATION: Strict scope enforcement on recall and mutation; zero cross-project leakage observed.
+[PASS] PROVENANCE: 100% of recalled facts point to existing repo artifacts; writes without provenance fail closed.
+[PASS] FAILURE: Missing and corrupted stores trigger FALLBACK_CANONICAL safely; zero hallucinations; canonical Git fallback verified.
+======================================================================
+FINAL OUTCOME: PASS (6/6 tests passed)
+======================================================================

@@ -1,0 +1,34 @@
+# EXP-15 — Cryptographic Artifact Hashes (SHA-256)
+# Run Date: 2026-09-30 (UTC)
+
+## 1. Frozen Inputs (Canonical Sources of Truth)
+fe46acc4f48e4f52e92da6b0d6dca3279fc76db014c8f1b5e81170927037d528  AGENTS.md
+f289fed56aad3e67b09411b23f2d7cac05936252919319938142968d0c7dcb22  docs/NEW_IDEA_FILTER_POLICY.md
+da38ccd45b843e403b08972cac1e6993faf1ba38f69135d1eefd168c014fc9eb  docs/GLOBAL_MPE_ENFORCEMENT.md
+96974048a393a9a1ceee85cb754f428569cd6176d0d3d2b41616c57893e240e2  docs/OPINIONATED_WORKSPACE_POLICY.md
+0594354d37fd3b03743667829d9737dc05f130a9797917cffc793ffbf4cbadbb  docs/HUMAN_VALUE_DELIVERY_PRINCIPLES.md
+c4b747249f37d94dab9e5597b6e03692d2064846a4b7903a5b68036f996a0f9e  docs/governance/SCOPE-CHANGE-CONTROL.md
+ea5a6becdcf6b756b9d5e403885b8ab4461405f85abb3fc85a78f5d9042714db  docs/experiments/EXP-15_MPE_PROJECT_MEMORY_LAYER.md
+a82fbd96e6b6b6a766fdb84eb3093ff0e52ec100ca8713ab57adb79bca6258e7  experiments/EXPERIMENT_REGISTRY.json
+a7e08f27380cdb14c89ca2044a5e6d025fe2f2ce33d33930c560f74d298d0d4f  evidence/stage2/RUN-08_REPORT.json
+6a690f95254c17e889e568f0b815b5183f4784ee974baef026d759dd93ed28aa  evidence/stage2/RUN-10_REPORT.json
+f2795d3e70018313743cd50401fb4bdc2fd70899ee02b1975b5127d96daef9d2  evidence/stage2/RUN-11_REPORT.json
+bf23b20f0d5bdf27edbfee30dbb53769dfab30fe795e966f5690bd63e16a12db  evidence/stage2/RUN-12_REPORT.json
+4d4b3b15d835171940e5d1a060933a00aa64cedb60664784e18d3546db821296  experiments/exp-18-pirateface-model-resilience/FINDINGS.md
+
+## 2. Experiment Artifacts (EXP-15 Run 2026-09-30)
+6df8006d3815c11c6cd80fbd71ca460226437f8f5579842cc3852dcd0d868921  experiments/exp-15-memory/2026-09-30/ACCEPTANCE_TESTS.md
+8e0362fe34202e58f181605ca3dd6dbf6d1dae9f4ff3273e1b59c868ea13646b  experiments/exp-15-memory/2026-09-30/BASELINE.md
+f7ddd940cc0dd16386a164e5dd24263ebe0b705cc864b40a52dc2a68fbd10788  experiments/exp-15-memory/2026-09-30/MEMORY_MODEL.md
+963e3e94fe15699574c24306075665316011b6ef23185d77d28f1a243dc636a6  experiments/exp-15-memory/2026-09-30/README.md
+1e12444155f791ca6650a1b0cea3facc7bcdf959c42150cb7e21a34dbba68a4c  experiments/exp-15-memory/2026-09-30/RESULTS.md
+8eacedf98deeb78ef4846df6a337b0bd1700ae9de87c5caf6a40daaf6fc77e5a  experiments/exp-15-memory/2026-09-30/evidence/01_acceptance_tests.json
+e31a0eb070a7ab70484d1edf5065407e623202a89f61393625d2153b912411a4  experiments/exp-15-memory/2026-09-30/evidence/01_acceptance_tests.log
+abb4205e1da493f5508d9c404877411312e62cde0cc0d36096e9d8c28aa7c63d  experiments/exp-15-memory/2026-09-30/evidence/02_baseline_comparison.json
+4221c6aa585d666a24a2e6a008108c7843188631f6bf527a8bda34f710fd1c08  experiments/exp-15-memory/2026-09-30/evidence/02_baseline_comparison.log
+dcb0d2f920ba8d95e9a2dfd6641f6855c20a5aa586fb021c21ab8303a70951e1  experiments/exp-15-memory/2026-09-30/fixtures/benchmark_tasks.json
+24b2a00bc9627ebda9cf92bb6b06a269e4f0857577d1d57185dbe09f8a6623df  experiments/exp-15-memory/2026-09-30/fixtures/canonical_memory.json
+9705d797f766558ecffb7a1a4038a4e1f4e649fed42daff8b91cda51716e543e  experiments/exp-15-memory/2026-09-30/fixtures/cross_project_memory.json
+15266ce759223c43973c7a3cb1d2a5bad1e7e3615d98d1859df080f45eab3de7  experiments/exp-15-memory/2026-09-30/harness/memory_layer.py
+9ccb55df55c2a3007cbe294f809e6fb2d330f4e2e46f9c71f9b160b505034dab  experiments/exp-15-memory/2026-09-30/harness/run_acceptance_tests.py
+58d5086a1bd4e41c1077ce027a679e6da8b484187ce6de124f231afd0c630e21  experiments/exp-15-memory/2026-09-30/harness/run_baseline_comparison.py
