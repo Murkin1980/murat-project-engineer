@@ -1,0 +1,38 @@
+
+09/30 04:09:41 [[1;32mNOTICE[0m] Downloading 1 item(s)
+
+09/30 04:09:41 [[1;32mNOTICE[0m] IPv4 DHT: listening on UDP port 6881
+
+09/30 04:09:41 [[1;32mNOTICE[0m] IPv4 BitTorrent: listening on TCP port 6881
+
+09/30 04:09:41 [[1;32mNOTICE[0m] IPv6 BitTorrent: listening on TCP port 6881
+[#5816aa 0B/0B CN:35 SD:0 DL:0B]
+[#5816aa 37KiB/37KiB(100%) CN:24 SD:1]
+
+09/30 04:09:43 [[1;32mNOTICE[0m] Download complete: [MEMORY][METADATA]fed3a1e271827a2094b93ecbe738dbf3bd58c5cf
+
+09/30 04:09:43 [[1;32mNOTICE[0m] Saved metadata as /home/runner/work/_temp/exp18-work/swarm_run/fed3a1e271827a2094b93ecbe738dbf3bd58c5cf.torrent.
+[#d0a46c 0B/0.9GiB(0%) CN:32 SD:0 DL:0B]
+[#d0a46c 35MiB/0.9GiB(3%) CN:32 SD:9 DL:41MiB ETA:21s]
+[#d0a46c 154MiB/0.9GiB(16%) CN:31 SD:8 DL:82MiB ETA:9s]
+[#d0a46c 309MiB/0.9GiB(33%) CN:31 SD:9 DL:108MiB ETA:5s]
+[#d0a46c 462MiB/0.9GiB(49%) CN:31 SD:9 DL:120MiB ETA:3s]
+[#d0a46c 634MiB/0.9GiB(68%) CN:31 SD:9 DL:131MiB ETA:2s]
+[#d0a46c 817MiB/0.9GiB(87%) CN:31 SD:9 DL:140MiB]
+
+09/30 04:09:51 [[1;32mNOTICE[0m] Seeding is over.
+[#d0a46c SEED(0.0) CN:23 SD:1]
+
+09/30 04:09:54 [[1;32mNOTICE[0m] Download complete: /home/runner/work/_temp/exp18-work/swarm_run/sentence-transformers__all-MiniLM-L6-v2
+
+09/30 04:09:54 [[1;32mNOTICE[0m] Your share ratio was 0.0, uploaded/downloaded=0B/0.9GiB
+
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+5816aa|OK  |       0B/s|[MEMORY][METADATA]fed3a1e271827a2094b93ecbe738dbf3bd58c5cf
+d0a46c|OK  |   113MiB/s|/home/runner/work/_temp/exp18-work/swarm_run/sentence-transformers__all-MiniLM-L6-v2/1_Pooling/config.json (28more)
+
+Status Legend:
+(OK):download completed.
