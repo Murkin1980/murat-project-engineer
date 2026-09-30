@@ -21,7 +21,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: exp18-harness
@@ -59,3 +59,23 @@ jobs:
           path: experiments/exp-18-pirateface-model-resilience/evidence/**
           if-no-files-found: warn
           retention-days: 14
+
+      # The authoring sandbox can reach git but not the Actions artifact CDN, so
+      # the evidence is also committed straight back to the experiment branch.
+      - name: Commit evidence back to the experiment branch
+        if: always()
+        run: |
+          set -e
+          E=experiments/exp-18-pirateface-model-resilience/evidence
+          test -d "$E" || { echo "no evidence directory"; exit 0; }
+          git config user.name "exp18-harness"
+          git config user.email "exp18-harness@users.noreply.github.com"
+          git add -f "$E"
+          if git diff --cached --quiet; then echo "no evidence changes to commit"; exit 0; fi
+          git commit -m "EXP-18: harness evidence (run ${GITHUB_RUN_ID})"
+          for attempt in 1 2 3; do
+            git pull --rebase origin "$GITHUB_REF_NAME" || true
+            if git push origin "HEAD:$GITHUB_REF_NAME"; then echo "evidence pushed"; exit 0; fi
+            sleep 5
+          done
+          echo "evidence push failed after retries"; exit 1

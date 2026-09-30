@@ -51,4 +51,5 @@ only — it reads recorded files and infers nothing).
 
 ## Run log
 
-- run attempt 1 (2026-09-30): initial harness execution
+- run attempt 1 (2026-09-30): harness executed; evidence pushed back via git (artifact CDN unreachable from the authoring sandbox)
+  - note: runner used a checkout of the harness commit; see evidence/ for observed results
