@@ -1,0 +1,1300 @@
+{
+  "report_version": "1.0",
+  "attempt_id": "EXP13-PILOT-BATCH1-ATTEMPT-2026-09-30",
+  "attempt_date": "2026-09-30",
+  "experiment": "EXP-13",
+  "batch_state_after_attempt": "ATTEMPTED_NOT_EXECUTED — the registered batch fails closed at the usage-evidence gate; no run proceeded to execution and no usage or cost value was fabricated",
+  "pre_flight": {
+    "contract": {
+      "path": "docs/experiments/EXP-13_LOW_COST_EVALUATION_HARNESS.md",
+      "sha256": "5a6d4a4477ca24cf7b2feee479fd6276716e59f0f4e0c60618c548a34b93316c",
+      "precondition_quote": "The full pilot must not start until every proceeding route has a valid usage evidence path."
+    },
+    "manifest": {
+      "path": "evidence/exp-13/PILOT_BATCH1_PRE_REGISTRATION.json",
+      "sha256": "198b1aab9970b93b2fd34bfb763a169df490415e4f53637791d060a05720cb87",
+      "batch_id": "EXP13-PILOT-BATCH1",
+      "state": "PRE_REGISTERED",
+      "max_runs": 18,
+      "entry_count": 18,
+      "all_usage_ref_null": true,
+      "validated_by": "scripts.exp13_harness.plan_batch"
+    },
+    "frozen_assets": [
+      {
+        "path": "experiments/exp-13/tasks_v2.json",
+        "sha256": "882762044d548d3cf9308c2c67d1fa239f65579bb15169c078047bc309b99021"
+      },
+      {
+        "path": "experiments/exp-13/routes.json",
+        "sha256": "f5f3c0e051b7019905a6edfa2ed6a8beebaeb62b4b851eccb43a4651cda614ba"
+      },
+      {
+        "path": "experiments/exp-13/thresholds.json",
+        "sha256": "00107b0b247f0a5d8dbcdd19d985b25f093a14dfd3234e12961669df4420a7b7"
+      },
+      {
+        "path": "experiments/exp-13/pricing_snapshot.json",
+        "sha256": "211b11619757e2f6fd65f35d637379dc8414b057040205252681b0ef162c311e"
+      }
+    ],
+    "harness_scripts": [
+      {
+        "path": "scripts/exp13_checks.py",
+        "sha256": "fe197c2b6a5408e9373061f38d6657cb419f75711b88492bf5162fb69dd224be"
+      },
+      {
+        "path": "scripts/exp13_harness.py",
+        "sha256": "2adf5a4c61b3539b2174044bddd23dfeec43fa9282d0cdcea5bfe7a77edc490e"
+      },
+      {
+        "path": "scripts/triage_engine.py",
+        "sha256": "25732b512de7396f8026b4d23991a99362f1b44e3ae9b77ba819481a23199886"
+      },
+      {
+        "path": "scripts/usage_instrumentation.py",
+        "sha256": "33f147b0534682d5ea761ff3ce41563c804b59ef41b91fe4a574578257e85f4d"
+      },
+      {
+        "path": "scripts/usage_from_router_log.py",
+        "sha256": "ce4b10efa22b7ef328dad41874754554903120826c572bc11b856309697b8007"
+      },
+      {
+        "path": "scripts/usage_from_codex_rollout.py",
+        "sha256": "5cb9579dbb8240a26c991cf459af8fcf8e27e156d3415cca615d1d5f7ef92cc7"
+      }
+    ],
+    "registry_entry_at_attempt": {
+      "status": "READY_TO_TEST",
+      "next_action": "Run the frozen 18-entry Pilot Batch 1 only when every proceeding route has valid usage evidence.",
+      "result_summary": "Harness and usage adapters exist; no Pilot Batch 1 runs have executed.",
+      "updated_at": "2026-09-21"
+    },
+    "git": {
+      "head": "66dc1c57ef894586677b200274d06e6003699fe2",
+      "frozen_inputs_unmodified": true
+    },
+    "consistency": {
+      "manifest_matches_contract_18_runs": true,
+      "registry_consistent_with_contract": true
+    }
+  },
+  "usage_evidence_inventory": {
+    "per_entry": [
+      {
+        "run_id": "EXP13-T-001-A",
+        "required_evidence": "real USAGE_RECORD for this run_id reconstructed by scripts/usage_from_router_log.py from an isolated, token-metered Codex Router usage-events.jsonl window of the real execution on route A",
+        "manifest_usage_ref": null,
+        "candidate_usage_record": {
+          "path": "evidence/exp-13/EXP13-T-001-A-USAGE.json",
+          "exists": false
+        },
+        "evidence_state": "missing"
+      },
+      {
+        "run_id": "EXP13-T-001-B",
+        "required_evidence": "real USAGE_RECORD for this run_id reconstructed by scripts/usage_from_router_log.py from an isolated, token-metered Codex Router usage-events.jsonl window of the real execution on route B",
+        "manifest_usage_ref": null,
+        "candidate_usage_record": {
+          "path": "evidence/exp-13/EXP13-T-001-B-USAGE.json",
+          "exists": false
+        },
+        "evidence_state": "missing"
+      },
+      {
+        "run_id": "EXP13-T-001-premium",
+        "required_evidence": "real USAGE_RECORD for this run_id reconstructed by scripts/usage_from_codex_rollout.py from one isolated Codex rollout containing a complete per-call token breakdown for the explicit turn",
+        "manifest_usage_ref": null,
+        "candidate_usage_record": {
+          "path": "evidence/exp-13/EXP13-T-001-premium-USAGE.json",
+          "exists": false
+        },
+        "evidence_state": "missing"
+      },
+      {
+        "run_id": "EXP13-T-004-A",
+        "required_evidence": "real USAGE_RECORD for this run_id reconstructed by scripts/usage_from_router_log.py from an isolated, token-metered Codex Router usage-events.jsonl window of the real execution on route A",
+        "manifest_usage_ref": null,
+        "candidate_usage_record": {
+          "path": "evidence/exp-13/EXP13-T-004-A-USAGE.json",
+          "exists": false
+        },
+        "evidence_state": "missing"
+      },
+      {
+        "run_id": "EXP13-T-004-B",
+        "required_evidence": "real USAGE_RECORD for this run_id reconstructed by scripts/usage_from_router_log.py from an isolated, token-metered Codex Router usage-events.jsonl window of the real execution on route B",
+        "manifest_usage_ref": null,
+        "candidate_usage_record": {
+          "path": "evidence/exp-13/EXP13-T-004-B-USAGE.json",
+          "exists": false
+        },
+        "evidence_state": "missing"
+      },
+      {
+        "run_id": "EXP13-T-004-premium",
+        "required_evidence": "real USAGE_RECORD for this run_id reconstructed by scripts/usage_from_codex_rollout.py from one isolated Codex rollout containing a complete per-call token breakdown for the explicit turn",
+        "manifest_usage_ref": null,
+        "candidate_usage_record": {
+          "path": "evidence/exp-13/EXP13-T-004-premium-USAGE.json",
+          "exists": false
+        },
+        "evidence_state": "missing"
+      },
+      {
+        "run_id": "EXP13-T-006-A",
+        "required_evidence": "real USAGE_RECORD for this run_id reconstructed by scripts/usage_from_router_log.py from an isolated, token-metered Codex Router usage-events.jsonl window of the real execution on route A",
+        "manifest_usage_ref": null,
+        "candidate_usage_record": {
+          "path": "evidence/exp-13/EXP13-T-006-A-USAGE.json",
+          "exists": false
+        },
+        "evidence_state": "missing"
+      },
+      {
+        "run_id": "EXP13-T-006-B",
+        "required_evidence": "real USAGE_RECORD for this run_id reconstructed by scripts/usage_from_router_log.py from an isolated, token-metered Codex Router usage-events.jsonl window of the real execution on route B",
+        "manifest_usage_ref": null,
+        "candidate_usage_record": {
+          "path": "evidence/exp-13/EXP13-T-006-B-USAGE.json",
+          "exists": false
+        },
+        "evidence_state": "missing"
+      },
+      {
+        "run_id": "EXP13-T-006-premium",
+        "required_evidence": "real USAGE_RECORD for this run_id reconstructed by scripts/usage_from_codex_rollout.py from one isolated Codex rollout containing a complete per-call token breakdown for the explicit turn",
+        "manifest_usage_ref": null,
+        "candidate_usage_record": {
+          "path": "evidence/exp-13/EXP13-T-006-premium-USAGE.json",
+          "exists": false
+        },
+        "evidence_state": "missing"
+      },
+      {
+        "run_id": "EXP13-T-008-A",
+        "required_evidence": null,
+        "manifest_usage_ref": null,
+        "candidate_usage_record": {
+          "path": "evidence/exp-13/EXP13-T-008-A-USAGE.json",
+          "exists": false
+        },
+        "evidence_state": "not_required_pre_execution_escalation"
+      },
+      {
+        "run_id": "EXP13-T-008-B",
+        "required_evidence": null,
+        "manifest_usage_ref": null,
+        "candidate_usage_record": {
+          "path": "evidence/exp-13/EXP13-T-008-B-USAGE.json",
+          "exists": false
+        },
+        "evidence_state": "not_required_pre_execution_escalation"
+      },
+      {
+        "run_id": "EXP13-T-008-premium",
+        "required_evidence": null,
+        "manifest_usage_ref": null,
+        "candidate_usage_record": {
+          "path": "evidence/exp-13/EXP13-T-008-premium-USAGE.json",
+          "exists": false
+        },
+        "evidence_state": "not_required_pre_execution_escalation"
+      },
+      {
+        "run_id": "EXP13-T-010-A",
+        "required_evidence": "real USAGE_RECORD for this run_id reconstructed by scripts/usage_from_router_log.py from an isolated, token-metered Codex Router usage-events.jsonl window of the real execution on route A",
+        "manifest_usage_ref": null,
+        "candidate_usage_record": {
+          "path": "evidence/exp-13/EXP13-T-010-A-USAGE.json",
+          "exists": false
+        },
+        "evidence_state": "missing"
+      },
+      {
+        "run_id": "EXP13-T-010-B",
+        "required_evidence": "real USAGE_RECORD for this run_id reconstructed by scripts/usage_from_router_log.py from an isolated, token-metered Codex Router usage-events.jsonl window of the real execution on route B",
+        "manifest_usage_ref": null,
+        "candidate_usage_record": {
+          "path": "evidence/exp-13/EXP13-T-010-B-USAGE.json",
+          "exists": false
+        },
+        "evidence_state": "missing"
+      },
+      {
+        "run_id": "EXP13-T-010-premium",
+        "required_evidence": "real USAGE_RECORD for this run_id reconstructed by scripts/usage_from_codex_rollout.py from one isolated Codex rollout containing a complete per-call token breakdown for the explicit turn",
+        "manifest_usage_ref": null,
+        "candidate_usage_record": {
+          "path": "evidence/exp-13/EXP13-T-010-premium-USAGE.json",
+          "exists": false
+        },
+        "evidence_state": "missing"
+      },
+      {
+        "run_id": "EXP13-T-012-A",
+        "required_evidence": "real USAGE_RECORD for this run_id reconstructed by scripts/usage_from_router_log.py from an isolated, token-metered Codex Router usage-events.jsonl window of the real execution on route A",
+        "manifest_usage_ref": null,
+        "candidate_usage_record": {
+          "path": "evidence/exp-13/EXP13-T-012-A-USAGE.json",
+          "exists": false
+        },
+        "evidence_state": "missing"
+      },
+      {
+        "run_id": "EXP13-T-012-B",
+        "required_evidence": "real USAGE_RECORD for this run_id reconstructed by scripts/usage_from_router_log.py from an isolated, token-metered Codex Router usage-events.jsonl window of the real execution on route B",
+        "manifest_usage_ref": null,
+        "candidate_usage_record": {
+          "path": "evidence/exp-13/EXP13-T-012-B-USAGE.json",
+          "exists": false
+        },
+        "evidence_state": "missing"
+      },
+      {
+        "run_id": "EXP13-T-012-premium",
+        "required_evidence": "real USAGE_RECORD for this run_id reconstructed by scripts/usage_from_codex_rollout.py from one isolated Codex rollout containing a complete per-call token breakdown for the explicit turn",
+        "manifest_usage_ref": null,
+        "candidate_usage_record": {
+          "path": "evidence/exp-13/EXP13-T-012-premium-USAGE.json",
+          "exists": false
+        },
+        "evidence_state": "missing"
+      }
+    ],
+    "router_usage_events": {
+      "path": "/home/user/.codex/codex-router/usage-events.jsonl",
+      "exists": false
+    },
+    "codex_rollout_files": {
+      "searched_dir": "/home/user/.codex/sessions",
+      "count": 0
+    },
+    "exp13_usage_records_in_repository": [],
+    "conclusion": "No real usage evidence exists for any proceeding route: the manifest pre-registers usage_ref null for all 18 entries, no EXP13-*-USAGE.json file exists, no Codex Router usage-events.jsonl is present in the execution environment, and no Codex rollout/session files are present. Only the three T-008 routes legally require no usage evidence (they stop at pre-execution escalation)."
+  },
+  "registered_batch_attempt": {
+    "attempts": [
+      {
+        "run": 1,
+        "command": "python scripts/exp13_harness.py --batch evidence/exp-13/PILOT_BATCH1_PRE_REGISTRATION.json --base-dir <scratch dir outside the repository>",
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "Traceback (most recent call last):\n  File \"<REPO>/scripts/exp13_harness.py\", line 258, in <module>\n    raise SystemExit(main())\n                     ^^^^^^\n  File \"<REPO>/scripts/exp13_harness.py\", line 236, in main\n    result = run_batch(manifest, dataset, routes, thresholds, pricing, base_dir)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<REPO>/scripts/exp13_harness.py\", line 171, in run_batch\n    record = build_record(task, entry[\"route\"], routes, thresholds, pricing, usage=usage, defects=entry[\"defects\"])\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<REPO>/scripts/exp13_harness.py\", line 98, in build_record\n    payload = evaluate(task, route, routes, thresholds, pricing, usage=usage, defects=defects, budget=budget)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<REPO>/scripts/exp13_checks.py\", line 331, in evaluate\n    raise ContractError(\"usage record is required when the run proceeds to execution\")\ntriage_engine.ContractError: usage record is required when the run proceeds to execution\n",
+        "files_written_to_scratch": []
+      },
+      {
+        "run": 2,
+        "command": "python scripts/exp13_harness.py --batch evidence/exp-13/PILOT_BATCH1_PRE_REGISTRATION.json --base-dir <scratch dir outside the repository>",
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "Traceback (most recent call last):\n  File \"<REPO>/scripts/exp13_harness.py\", line 258, in <module>\n    raise SystemExit(main())\n                     ^^^^^^\n  File \"<REPO>/scripts/exp13_harness.py\", line 236, in main\n    result = run_batch(manifest, dataset, routes, thresholds, pricing, base_dir)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<REPO>/scripts/exp13_harness.py\", line 171, in run_batch\n    record = build_record(task, entry[\"route\"], routes, thresholds, pricing, usage=usage, defects=entry[\"defects\"])\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<REPO>/scripts/exp13_harness.py\", line 98, in build_record\n    payload = evaluate(task, route, routes, thresholds, pricing, usage=usage, defects=defects, budget=budget)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<REPO>/scripts/exp13_checks.py\", line 331, in evaluate\n    raise ContractError(\"usage record is required when the run proceeds to execution\")\ntriage_engine.ContractError: usage record is required when the run proceeds to execution\n",
+        "files_written_to_scratch": []
+      }
+    ],
+    "identical_across_runs": true,
+    "fail_closed": true
+  },
+  "cases": [
+    {
+      "run_id": "EXP13-T-001-A",
+      "task_id": "T-001",
+      "route": "A",
+      "input_classification": {
+        "expected_risk_tier": "FAST",
+        "expected_human_approval_required": false,
+        "triage_risk_tier": "FAST",
+        "triage_human_approval_required": false,
+        "triage_expected_match": "PASS",
+        "human_approval_reasons": []
+      },
+      "usage_evidence_state": "unobserved",
+      "usage_evidence_detail": "no USAGE_RECORD exists for this run_id (manifest usage_ref is null; no Router/rollout telemetry available); none was fabricated",
+      "pre_execution_decision": {
+        "escalation": "NONE",
+        "proceeded": true,
+        "checks": [
+          {
+            "check_id": "route_resolves",
+            "result": "PASS"
+          },
+          {
+            "check_id": "triage_expected_match",
+            "result": "PASS"
+          },
+          {
+            "check_id": "acceptance_present",
+            "result": "PASS"
+          },
+          {
+            "check_id": "human_review_due",
+            "result": "PASS"
+          }
+        ]
+      },
+      "budget_compute_estimate": {
+        "produced": false,
+        "cost_usd": null,
+        "cost_measurement": "unobserved",
+        "reason": "no execution happened; the contract forbids fabricating cost without telemetry"
+      },
+      "gate_result": "BLOCKED_BY_EVIDENCE_GATE",
+      "reason": "ContractError: usage record is required when the run proceeds to execution",
+      "record_produced": false
+    },
+    {
+      "run_id": "EXP13-T-001-B",
+      "task_id": "T-001",
+      "route": "B",
+      "input_classification": {
+        "expected_risk_tier": "FAST",
+        "expected_human_approval_required": false,
+        "triage_risk_tier": "FAST",
+        "triage_human_approval_required": false,
+        "triage_expected_match": "PASS",
+        "human_approval_reasons": []
+      },
+      "usage_evidence_state": "unobserved",
+      "usage_evidence_detail": "no USAGE_RECORD exists for this run_id (manifest usage_ref is null; no Router/rollout telemetry available); none was fabricated",
+      "pre_execution_decision": {
+        "escalation": "NONE",
+        "proceeded": true,
+        "checks": [
+          {
+            "check_id": "route_resolves",
+            "result": "PASS"
+          },
+          {
+            "check_id": "triage_expected_match",
+            "result": "PASS"
+          },
+          {
+            "check_id": "acceptance_present",
+            "result": "PASS"
+          },
+          {
+            "check_id": "human_review_due",
+            "result": "PASS"
+          }
+        ]
+      },
+      "budget_compute_estimate": {
+        "produced": false,
+        "cost_usd": null,
+        "cost_measurement": "unobserved",
+        "reason": "no execution happened; the contract forbids fabricating cost without telemetry"
+      },
+      "gate_result": "BLOCKED_BY_EVIDENCE_GATE",
+      "reason": "ContractError: usage record is required when the run proceeds to execution",
+      "record_produced": false
+    },
+    {
+      "run_id": "EXP13-T-001-premium",
+      "task_id": "T-001",
+      "route": "premium",
+      "input_classification": {
+        "expected_risk_tier": "FAST",
+        "expected_human_approval_required": false,
+        "triage_risk_tier": "FAST",
+        "triage_human_approval_required": false,
+        "triage_expected_match": "PASS",
+        "human_approval_reasons": []
+      },
+      "usage_evidence_state": "unobserved",
+      "usage_evidence_detail": "no USAGE_RECORD exists for this run_id (manifest usage_ref is null; no Router/rollout telemetry available); none was fabricated",
+      "pre_execution_decision": {
+        "escalation": "NONE",
+        "proceeded": true,
+        "checks": [
+          {
+            "check_id": "route_resolves",
+            "result": "PASS"
+          },
+          {
+            "check_id": "triage_expected_match",
+            "result": "PASS"
+          },
+          {
+            "check_id": "acceptance_present",
+            "result": "PASS"
+          },
+          {
+            "check_id": "human_review_due",
+            "result": "PASS"
+          }
+        ]
+      },
+      "budget_compute_estimate": {
+        "produced": false,
+        "cost_usd": null,
+        "cost_measurement": "unobserved",
+        "reason": "no execution happened; the contract forbids fabricating cost without telemetry"
+      },
+      "gate_result": "BLOCKED_BY_EVIDENCE_GATE",
+      "reason": "ContractError: usage record is required when the run proceeds to execution",
+      "record_produced": false
+    },
+    {
+      "run_id": "EXP13-T-004-A",
+      "task_id": "T-004",
+      "route": "A",
+      "input_classification": {
+        "expected_risk_tier": "VERIFIED",
+        "expected_human_approval_required": false,
+        "triage_risk_tier": "VERIFIED",
+        "triage_human_approval_required": false,
+        "triage_expected_match": "PASS",
+        "human_approval_reasons": []
+      },
+      "usage_evidence_state": "unobserved",
+      "usage_evidence_detail": "no USAGE_RECORD exists for this run_id (manifest usage_ref is null; no Router/rollout telemetry available); none was fabricated",
+      "pre_execution_decision": {
+        "escalation": "NONE",
+        "proceeded": true,
+        "checks": [
+          {
+            "check_id": "route_resolves",
+            "result": "PASS"
+          },
+          {
+            "check_id": "triage_expected_match",
+            "result": "PASS"
+          },
+          {
+            "check_id": "acceptance_present",
+            "result": "PASS"
+          },
+          {
+            "check_id": "human_review_due",
+            "result": "PASS"
+          }
+        ]
+      },
+      "budget_compute_estimate": {
+        "produced": false,
+        "cost_usd": null,
+        "cost_measurement": "unobserved",
+        "reason": "no execution happened; the contract forbids fabricating cost without telemetry"
+      },
+      "gate_result": "BLOCKED_BY_EVIDENCE_GATE",
+      "reason": "ContractError: usage record is required when the run proceeds to execution",
+      "record_produced": false
+    },
+    {
+      "run_id": "EXP13-T-004-B",
+      "task_id": "T-004",
+      "route": "B",
+      "input_classification": {
+        "expected_risk_tier": "VERIFIED",
+        "expected_human_approval_required": false,
+        "triage_risk_tier": "VERIFIED",
+        "triage_human_approval_required": false,
+        "triage_expected_match": "PASS",
+        "human_approval_reasons": []
+      },
+      "usage_evidence_state": "unobserved",
+      "usage_evidence_detail": "no USAGE_RECORD exists for this run_id (manifest usage_ref is null; no Router/rollout telemetry available); none was fabricated",
+      "pre_execution_decision": {
+        "escalation": "NONE",
+        "proceeded": true,
+        "checks": [
+          {
+            "check_id": "route_resolves",
+            "result": "PASS"
+          },
+          {
+            "check_id": "triage_expected_match",
+            "result": "PASS"
+          },
+          {
+            "check_id": "acceptance_present",
+            "result": "PASS"
+          },
+          {
+            "check_id": "human_review_due",
+            "result": "PASS"
+          }
+        ]
+      },
+      "budget_compute_estimate": {
+        "produced": false,
+        "cost_usd": null,
+        "cost_measurement": "unobserved",
+        "reason": "no execution happened; the contract forbids fabricating cost without telemetry"
+      },
+      "gate_result": "BLOCKED_BY_EVIDENCE_GATE",
+      "reason": "ContractError: usage record is required when the run proceeds to execution",
+      "record_produced": false
+    },
+    {
+      "run_id": "EXP13-T-004-premium",
+      "task_id": "T-004",
+      "route": "premium",
+      "input_classification": {
+        "expected_risk_tier": "VERIFIED",
+        "expected_human_approval_required": false,
+        "triage_risk_tier": "VERIFIED",
+        "triage_human_approval_required": false,
+        "triage_expected_match": "PASS",
+        "human_approval_reasons": []
+      },
+      "usage_evidence_state": "unobserved",
+      "usage_evidence_detail": "no USAGE_RECORD exists for this run_id (manifest usage_ref is null; no Router/rollout telemetry available); none was fabricated",
+      "pre_execution_decision": {
+        "escalation": "NONE",
+        "proceeded": true,
+        "checks": [
+          {
+            "check_id": "route_resolves",
+            "result": "PASS"
+          },
+          {
+            "check_id": "triage_expected_match",
+            "result": "PASS"
+          },
+          {
+            "check_id": "acceptance_present",
+            "result": "PASS"
+          },
+          {
+            "check_id": "human_review_due",
+            "result": "PASS"
+          }
+        ]
+      },
+      "budget_compute_estimate": {
+        "produced": false,
+        "cost_usd": null,
+        "cost_measurement": "unobserved",
+        "reason": "no execution happened; the contract forbids fabricating cost without telemetry"
+      },
+      "gate_result": "BLOCKED_BY_EVIDENCE_GATE",
+      "reason": "ContractError: usage record is required when the run proceeds to execution",
+      "record_produced": false
+    },
+    {
+      "run_id": "EXP13-T-006-A",
+      "task_id": "T-006",
+      "route": "A",
+      "input_classification": {
+        "expected_risk_tier": "VERIFIED",
+        "expected_human_approval_required": false,
+        "triage_risk_tier": "VERIFIED",
+        "triage_human_approval_required": false,
+        "triage_expected_match": "PASS",
+        "human_approval_reasons": []
+      },
+      "usage_evidence_state": "unobserved",
+      "usage_evidence_detail": "no USAGE_RECORD exists for this run_id (manifest usage_ref is null; no Router/rollout telemetry available); none was fabricated",
+      "pre_execution_decision": {
+        "escalation": "NONE",
+        "proceeded": true,
+        "checks": [
+          {
+            "check_id": "route_resolves",
+            "result": "PASS"
+          },
+          {
+            "check_id": "triage_expected_match",
+            "result": "PASS"
+          },
+          {
+            "check_id": "acceptance_present",
+            "result": "PASS"
+          },
+          {
+            "check_id": "human_review_due",
+            "result": "PASS"
+          }
+        ]
+      },
+      "budget_compute_estimate": {
+        "produced": false,
+        "cost_usd": null,
+        "cost_measurement": "unobserved",
+        "reason": "no execution happened; the contract forbids fabricating cost without telemetry"
+      },
+      "gate_result": "BLOCKED_BY_EVIDENCE_GATE",
+      "reason": "ContractError: usage record is required when the run proceeds to execution",
+      "record_produced": false
+    },
+    {
+      "run_id": "EXP13-T-006-B",
+      "task_id": "T-006",
+      "route": "B",
+      "input_classification": {
+        "expected_risk_tier": "VERIFIED",
+        "expected_human_approval_required": false,
+        "triage_risk_tier": "VERIFIED",
+        "triage_human_approval_required": false,
+        "triage_expected_match": "PASS",
+        "human_approval_reasons": []
+      },
+      "usage_evidence_state": "unobserved",
+      "usage_evidence_detail": "no USAGE_RECORD exists for this run_id (manifest usage_ref is null; no Router/rollout telemetry available); none was fabricated",
+      "pre_execution_decision": {
+        "escalation": "NONE",
+        "proceeded": true,
+        "checks": [
+          {
+            "check_id": "route_resolves",
+            "result": "PASS"
+          },
+          {
+            "check_id": "triage_expected_match",
+            "result": "PASS"
+          },
+          {
+            "check_id": "acceptance_present",
+            "result": "PASS"
+          },
+          {
+            "check_id": "human_review_due",
+            "result": "PASS"
+          }
+        ]
+      },
+      "budget_compute_estimate": {
+        "produced": false,
+        "cost_usd": null,
+        "cost_measurement": "unobserved",
+        "reason": "no execution happened; the contract forbids fabricating cost without telemetry"
+      },
+      "gate_result": "BLOCKED_BY_EVIDENCE_GATE",
+      "reason": "ContractError: usage record is required when the run proceeds to execution",
+      "record_produced": false
+    },
+    {
+      "run_id": "EXP13-T-006-premium",
+      "task_id": "T-006",
+      "route": "premium",
+      "input_classification": {
+        "expected_risk_tier": "VERIFIED",
+        "expected_human_approval_required": false,
+        "triage_risk_tier": "VERIFIED",
+        "triage_human_approval_required": false,
+        "triage_expected_match": "PASS",
+        "human_approval_reasons": []
+      },
+      "usage_evidence_state": "unobserved",
+      "usage_evidence_detail": "no USAGE_RECORD exists for this run_id (manifest usage_ref is null; no Router/rollout telemetry available); none was fabricated",
+      "pre_execution_decision": {
+        "escalation": "NONE",
+        "proceeded": true,
+        "checks": [
+          {
+            "check_id": "route_resolves",
+            "result": "PASS"
+          },
+          {
+            "check_id": "triage_expected_match",
+            "result": "PASS"
+          },
+          {
+            "check_id": "acceptance_present",
+            "result": "PASS"
+          },
+          {
+            "check_id": "human_review_due",
+            "result": "PASS"
+          }
+        ]
+      },
+      "budget_compute_estimate": {
+        "produced": false,
+        "cost_usd": null,
+        "cost_measurement": "unobserved",
+        "reason": "no execution happened; the contract forbids fabricating cost without telemetry"
+      },
+      "gate_result": "BLOCKED_BY_EVIDENCE_GATE",
+      "reason": "ContractError: usage record is required when the run proceeds to execution",
+      "record_produced": false
+    },
+    {
+      "run_id": "EXP13-T-008-A",
+      "task_id": "T-008",
+      "route": "A",
+      "input_classification": {
+        "expected_risk_tier": "VERIFIED",
+        "expected_human_approval_required": true,
+        "triage_risk_tier": "VERIFIED",
+        "triage_human_approval_required": true,
+        "triage_expected_match": "PASS",
+        "human_approval_reasons": [
+          "production_change"
+        ]
+      },
+      "usage_evidence_state": "unobserved",
+      "usage_evidence_detail": "run stopped at pre-execution escalation before any execution; the harness stores the empty, unobserved usage record (nulls, no zeros)",
+      "pre_execution_decision": {
+        "escalation": "HUMAN_REVIEW_REQUIRED",
+        "proceeded": false,
+        "checks": [
+          {
+            "check_id": "route_resolves",
+            "result": "PASS"
+          },
+          {
+            "check_id": "triage_expected_match",
+            "result": "PASS"
+          },
+          {
+            "check_id": "acceptance_present",
+            "result": "PASS"
+          },
+          {
+            "check_id": "human_review_due",
+            "result": "FAIL"
+          }
+        ]
+      },
+      "budget_compute_estimate": {
+        "produced": false,
+        "cost_usd": null,
+        "cost_measurement": "unobserved",
+        "reason": "escalated run is not executed; cost stays null / unobserved by contract"
+      },
+      "gate_result": "COMPLETED_PRE_EXECUTION_ESCALATION",
+      "reason": "triage mandates human approval (production_change); the run stops before execution on every route",
+      "record_produced": true
+    },
+    {
+      "run_id": "EXP13-T-008-B",
+      "task_id": "T-008",
+      "route": "B",
+      "input_classification": {
+        "expected_risk_tier": "VERIFIED",
+        "expected_human_approval_required": true,
+        "triage_risk_tier": "VERIFIED",
+        "triage_human_approval_required": true,
+        "triage_expected_match": "PASS",
+        "human_approval_reasons": [
+          "production_change"
+        ]
+      },
+      "usage_evidence_state": "unobserved",
+      "usage_evidence_detail": "run stopped at pre-execution escalation before any execution; the harness stores the empty, unobserved usage record (nulls, no zeros)",
+      "pre_execution_decision": {
+        "escalation": "HUMAN_REVIEW_REQUIRED",
+        "proceeded": false,
+        "checks": [
+          {
+            "check_id": "route_resolves",
+            "result": "PASS"
+          },
+          {
+            "check_id": "triage_expected_match",
+            "result": "PASS"
+          },
+          {
+            "check_id": "acceptance_present",
+            "result": "PASS"
+          },
+          {
+            "check_id": "human_review_due",
+            "result": "FAIL"
+          }
+        ]
+      },
+      "budget_compute_estimate": {
+        "produced": false,
+        "cost_usd": null,
+        "cost_measurement": "unobserved",
+        "reason": "escalated run is not executed; cost stays null / unobserved by contract"
+      },
+      "gate_result": "COMPLETED_PRE_EXECUTION_ESCALATION",
+      "reason": "triage mandates human approval (production_change); the run stops before execution on every route",
+      "record_produced": true
+    },
+    {
+      "run_id": "EXP13-T-008-premium",
+      "task_id": "T-008",
+      "route": "premium",
+      "input_classification": {
+        "expected_risk_tier": "VERIFIED",
+        "expected_human_approval_required": true,
+        "triage_risk_tier": "VERIFIED",
+        "triage_human_approval_required": true,
+        "triage_expected_match": "PASS",
+        "human_approval_reasons": [
+          "production_change"
+        ]
+      },
+      "usage_evidence_state": "unobserved",
+      "usage_evidence_detail": "run stopped at pre-execution escalation before any execution; the harness stores the empty, unobserved usage record (nulls, no zeros)",
+      "pre_execution_decision": {
+        "escalation": "HUMAN_REVIEW_REQUIRED",
+        "proceeded": false,
+        "checks": [
+          {
+            "check_id": "route_resolves",
+            "result": "PASS"
+          },
+          {
+            "check_id": "triage_expected_match",
+            "result": "PASS"
+          },
+          {
+            "check_id": "acceptance_present",
+            "result": "PASS"
+          },
+          {
+            "check_id": "human_review_due",
+            "result": "FAIL"
+          }
+        ]
+      },
+      "budget_compute_estimate": {
+        "produced": false,
+        "cost_usd": null,
+        "cost_measurement": "unobserved",
+        "reason": "escalated run is not executed; cost stays null / unobserved by contract"
+      },
+      "gate_result": "COMPLETED_PRE_EXECUTION_ESCALATION",
+      "reason": "triage mandates human approval (production_change); the run stops before execution on every route",
+      "record_produced": true
+    },
+    {
+      "run_id": "EXP13-T-010-A",
+      "task_id": "T-010",
+      "route": "A",
+      "input_classification": {
+        "expected_risk_tier": "VERIFIED",
+        "expected_human_approval_required": false,
+        "triage_risk_tier": "VERIFIED",
+        "triage_human_approval_required": false,
+        "triage_expected_match": "PASS",
+        "human_approval_reasons": []
+      },
+      "usage_evidence_state": "unobserved",
+      "usage_evidence_detail": "no USAGE_RECORD exists for this run_id (manifest usage_ref is null; no Router/rollout telemetry available); none was fabricated",
+      "pre_execution_decision": {
+        "escalation": "NONE",
+        "proceeded": true,
+        "checks": [
+          {
+            "check_id": "route_resolves",
+            "result": "PASS"
+          },
+          {
+            "check_id": "triage_expected_match",
+            "result": "PASS"
+          },
+          {
+            "check_id": "acceptance_present",
+            "result": "PASS"
+          },
+          {
+            "check_id": "human_review_due",
+            "result": "PASS"
+          }
+        ]
+      },
+      "budget_compute_estimate": {
+        "produced": false,
+        "cost_usd": null,
+        "cost_measurement": "unobserved",
+        "reason": "no execution happened; the contract forbids fabricating cost without telemetry"
+      },
+      "gate_result": "BLOCKED_BY_EVIDENCE_GATE",
+      "reason": "ContractError: usage record is required when the run proceeds to execution",
+      "record_produced": false
+    },
+    {
+      "run_id": "EXP13-T-010-B",
+      "task_id": "T-010",
+      "route": "B",
+      "input_classification": {
+        "expected_risk_tier": "VERIFIED",
+        "expected_human_approval_required": false,
+        "triage_risk_tier": "VERIFIED",
+        "triage_human_approval_required": false,
+        "triage_expected_match": "PASS",
+        "human_approval_reasons": []
+      },
+      "usage_evidence_state": "unobserved",
+      "usage_evidence_detail": "no USAGE_RECORD exists for this run_id (manifest usage_ref is null; no Router/rollout telemetry available); none was fabricated",
+      "pre_execution_decision": {
+        "escalation": "NONE",
+        "proceeded": true,
+        "checks": [
+          {
+            "check_id": "route_resolves",
+            "result": "PASS"
+          },
+          {
+            "check_id": "triage_expected_match",
+            "result": "PASS"
+          },
+          {
+            "check_id": "acceptance_present",
+            "result": "PASS"
+          },
+          {
+            "check_id": "human_review_due",
+            "result": "PASS"
+          }
+        ]
+      },
+      "budget_compute_estimate": {
+        "produced": false,
+        "cost_usd": null,
+        "cost_measurement": "unobserved",
+        "reason": "no execution happened; the contract forbids fabricating cost without telemetry"
+      },
+      "gate_result": "BLOCKED_BY_EVIDENCE_GATE",
+      "reason": "ContractError: usage record is required when the run proceeds to execution",
+      "record_produced": false
+    },
+    {
+      "run_id": "EXP13-T-010-premium",
+      "task_id": "T-010",
+      "route": "premium",
+      "input_classification": {
+        "expected_risk_tier": "VERIFIED",
+        "expected_human_approval_required": false,
+        "triage_risk_tier": "VERIFIED",
+        "triage_human_approval_required": false,
+        "triage_expected_match": "PASS",
+        "human_approval_reasons": []
+      },
+      "usage_evidence_state": "unobserved",
+      "usage_evidence_detail": "no USAGE_RECORD exists for this run_id (manifest usage_ref is null; no Router/rollout telemetry available); none was fabricated",
+      "pre_execution_decision": {
+        "escalation": "NONE",
+        "proceeded": true,
+        "checks": [
+          {
+            "check_id": "route_resolves",
+            "result": "PASS"
+          },
+          {
+            "check_id": "triage_expected_match",
+            "result": "PASS"
+          },
+          {
+            "check_id": "acceptance_present",
+            "result": "PASS"
+          },
+          {
+            "check_id": "human_review_due",
+            "result": "PASS"
+          }
+        ]
+      },
+      "budget_compute_estimate": {
+        "produced": false,
+        "cost_usd": null,
+        "cost_measurement": "unobserved",
+        "reason": "no execution happened; the contract forbids fabricating cost without telemetry"
+      },
+      "gate_result": "BLOCKED_BY_EVIDENCE_GATE",
+      "reason": "ContractError: usage record is required when the run proceeds to execution",
+      "record_produced": false
+    },
+    {
+      "run_id": "EXP13-T-012-A",
+      "task_id": "T-012",
+      "route": "A",
+      "input_classification": {
+        "expected_risk_tier": "VERIFIED",
+        "expected_human_approval_required": false,
+        "triage_risk_tier": "VERIFIED",
+        "triage_human_approval_required": false,
+        "triage_expected_match": "PASS",
+        "human_approval_reasons": []
+      },
+      "usage_evidence_state": "unobserved",
+      "usage_evidence_detail": "no USAGE_RECORD exists for this run_id (manifest usage_ref is null; no Router/rollout telemetry available); none was fabricated",
+      "pre_execution_decision": {
+        "escalation": "NONE",
+        "proceeded": true,
+        "checks": [
+          {
+            "check_id": "route_resolves",
+            "result": "PASS"
+          },
+          {
+            "check_id": "triage_expected_match",
+            "result": "PASS"
+          },
+          {
+            "check_id": "acceptance_present",
+            "result": "PASS"
+          },
+          {
+            "check_id": "human_review_due",
+            "result": "PASS"
+          }
+        ]
+      },
+      "budget_compute_estimate": {
+        "produced": false,
+        "cost_usd": null,
+        "cost_measurement": "unobserved",
+        "reason": "no execution happened; the contract forbids fabricating cost without telemetry"
+      },
+      "gate_result": "BLOCKED_BY_EVIDENCE_GATE",
+      "reason": "ContractError: usage record is required when the run proceeds to execution",
+      "record_produced": false
+    },
+    {
+      "run_id": "EXP13-T-012-B",
+      "task_id": "T-012",
+      "route": "B",
+      "input_classification": {
+        "expected_risk_tier": "VERIFIED",
+        "expected_human_approval_required": false,
+        "triage_risk_tier": "VERIFIED",
+        "triage_human_approval_required": false,
+        "triage_expected_match": "PASS",
+        "human_approval_reasons": []
+      },
+      "usage_evidence_state": "unobserved",
+      "usage_evidence_detail": "no USAGE_RECORD exists for this run_id (manifest usage_ref is null; no Router/rollout telemetry available); none was fabricated",
+      "pre_execution_decision": {
+        "escalation": "NONE",
+        "proceeded": true,
+        "checks": [
+          {
+            "check_id": "route_resolves",
+            "result": "PASS"
+          },
+          {
+            "check_id": "triage_expected_match",
+            "result": "PASS"
+          },
+          {
+            "check_id": "acceptance_present",
+            "result": "PASS"
+          },
+          {
+            "check_id": "human_review_due",
+            "result": "PASS"
+          }
+        ]
+      },
+      "budget_compute_estimate": {
+        "produced": false,
+        "cost_usd": null,
+        "cost_measurement": "unobserved",
+        "reason": "no execution happened; the contract forbids fabricating cost without telemetry"
+      },
+      "gate_result": "BLOCKED_BY_EVIDENCE_GATE",
+      "reason": "ContractError: usage record is required when the run proceeds to execution",
+      "record_produced": false
+    },
+    {
+      "run_id": "EXP13-T-012-premium",
+      "task_id": "T-012",
+      "route": "premium",
+      "input_classification": {
+        "expected_risk_tier": "VERIFIED",
+        "expected_human_approval_required": false,
+        "triage_risk_tier": "VERIFIED",
+        "triage_human_approval_required": false,
+        "triage_expected_match": "PASS",
+        "human_approval_reasons": []
+      },
+      "usage_evidence_state": "unobserved",
+      "usage_evidence_detail": "no USAGE_RECORD exists for this run_id (manifest usage_ref is null; no Router/rollout telemetry available); none was fabricated",
+      "pre_execution_decision": {
+        "escalation": "NONE",
+        "proceeded": true,
+        "checks": [
+          {
+            "check_id": "route_resolves",
+            "result": "PASS"
+          },
+          {
+            "check_id": "triage_expected_match",
+            "result": "PASS"
+          },
+          {
+            "check_id": "acceptance_present",
+            "result": "PASS"
+          },
+          {
+            "check_id": "human_review_due",
+            "result": "PASS"
+          }
+        ]
+      },
+      "budget_compute_estimate": {
+        "produced": false,
+        "cost_usd": null,
+        "cost_measurement": "unobserved",
+        "reason": "no execution happened; the contract forbids fabricating cost without telemetry"
+      },
+      "gate_result": "BLOCKED_BY_EVIDENCE_GATE",
+      "reason": "ContractError: usage record is required when the run proceeds to execution",
+      "record_produced": false
+    }
+  ],
+  "coverage": {
+    "total_registered": 18,
+    "attempted": 18,
+    "completed_via_pre_execution_escalation": 3,
+    "blocked_by_evidence_gate": 15,
+    "proceeded_to_execution": 0,
+    "proceeded_run_ids": [],
+    "unexpected_gate_results": []
+  },
+  "determinism": {
+    "repetitions": 3,
+    "batch_cli_runs": 2,
+    "per_case_digests": [
+      {
+        "run_id": "EXP13-T-001-A",
+        "digest": "1d877b1e45f3019e964e7ad273f2c2d8326bf6a48968248bebecb60d5c29a65d",
+        "identical_across_repetitions": true
+      },
+      {
+        "run_id": "EXP13-T-001-B",
+        "digest": "5402ee07f59637b2a5be11e31f03df1501434907f9d09c9ed1282b2ecc73a7ea",
+        "identical_across_repetitions": true
+      },
+      {
+        "run_id": "EXP13-T-001-premium",
+        "digest": "d8658b1753e6f0d0a1596283e3ad1cdbdb3c23e3fbd8934fa1a3e6f08cfda911",
+        "identical_across_repetitions": true
+      },
+      {
+        "run_id": "EXP13-T-004-A",
+        "digest": "1fd5d80c88c5c9b8037678599f28d71a7704e5c76f89f55985decc29faea980f",
+        "identical_across_repetitions": true
+      },
+      {
+        "run_id": "EXP13-T-004-B",
+        "digest": "801cfe67ed540844c2b51b28545837255aee2bf148a607a414b06f9adc736704",
+        "identical_across_repetitions": true
+      },
+      {
+        "run_id": "EXP13-T-004-premium",
+        "digest": "473d628f4b4dec346a956f5bda380ee40fcc3c9747db61409d950447ab3bd0e0",
+        "identical_across_repetitions": true
+      },
+      {
+        "run_id": "EXP13-T-006-A",
+        "digest": "1213a5ab58e289d1c6d5b8e3d2fc0384965cef5e8efc4e5b98255a829d906c62",
+        "identical_across_repetitions": true
+      },
+      {
+        "run_id": "EXP13-T-006-B",
+        "digest": "e2924275ce988cc54f131e17195bff447c07360d844f3595d9d14dd6578877f6",
+        "identical_across_repetitions": true
+      },
+      {
+        "run_id": "EXP13-T-006-premium",
+        "digest": "3fd27dc3359987ddfc9b81cb6d718ae877925349132ed8be838946779cc833ad",
+        "identical_across_repetitions": true
+      },
+      {
+        "run_id": "EXP13-T-008-A",
+        "digest": "f1b304245d391cb15d60258a8e2784d2ea0837a79be045b5badd2d302941a4a4",
+        "identical_across_repetitions": true
+      },
+      {
+        "run_id": "EXP13-T-008-B",
+        "digest": "f533a4ea44a4e460864f02e7f45e6aedf15cc2df5e462877aff4edafd2e520a5",
+        "identical_across_repetitions": true
+      },
+      {
+        "run_id": "EXP13-T-008-premium",
+        "digest": "f39b6283276246f49dc5d72291bc600a6abfdf7cb131678269008b4474a4f844",
+        "identical_across_repetitions": true
+      },
+      {
+        "run_id": "EXP13-T-010-A",
+        "digest": "b0c335337568729a1685c44274486d9e2d12bb14c03cc1620ffe16a924c47306",
+        "identical_across_repetitions": true
+      },
+      {
+        "run_id": "EXP13-T-010-B",
+        "digest": "19e4ad0a4fc1ee1c8ddc0e6144983ca7f0d7868c22a82ca3c57d3d29d14f3d64",
+        "identical_across_repetitions": true
+      },
+      {
+        "run_id": "EXP13-T-010-premium",
+        "digest": "973952c11dae40ccd6e7d6c0762330a645c25a0b9a2fde77bf958c2375dceb36",
+        "identical_across_repetitions": true
+      },
+      {
+        "run_id": "EXP13-T-012-A",
+        "digest": "beb62a4c52f2c28f3e3f0ee963db5f396782bb2910b60007cb2a4343c5488f51",
+        "identical_across_repetitions": true
+      },
+      {
+        "run_id": "EXP13-T-012-B",
+        "digest": "254c91e7369d747531f6ec34de653ed49ddce3641519027f8b15748bb4dcae01",
+        "identical_across_repetitions": true
+      },
+      {
+        "run_id": "EXP13-T-012-premium",
+        "digest": "3e7e21c4dabb3cfdda073a01023729f77d17e8db6afc6ce12a56b10b25ec49f0",
+        "identical_across_repetitions": true
+      }
+    ],
+    "batch_attempt_identical_across_runs": true,
+    "deterministic": true
+  },
+  "integrity_checks": {
+    "records_structurally_valid": true,
+    "structural_problems": {},
+    "no_false_zeros_verified": true,
+    "false_zero_findings": {},
+    "budget_gate_fail_closed": {
+      "preflight_failure_never_proceeds": true,
+      "missing_usage_never_passes": true,
+      "registered_batch_cli_failed_closed_with_no_partial_writes": true
+    },
+    "usage_evidence_states_observed": {
+      "observed": 0,
+      "estimated": 0,
+      "unobserved": 18
+    }
+  },
+  "evidence_references": {
+    "manifest": {
+      "path": "evidence/exp-13/PILOT_BATCH1_PRE_REGISTRATION.json",
+      "sha256": "198b1aab9970b93b2fd34bfb763a169df490415e4f53637791d060a05720cb87"
+    },
+    "task_dataset": {
+      "path": "experiments/exp-13/tasks_v2.json",
+      "sha256": "882762044d548d3cf9308c2c67d1fa239f65579bb15169c078047bc309b99021"
+    },
+    "routes": {
+      "path": "experiments/exp-13/routes.json",
+      "sha256": "f5f3c0e051b7019905a6edfa2ed6a8beebaeb62b4b851eccb43a4651cda614ba"
+    },
+    "thresholds": {
+      "path": "experiments/exp-13/thresholds.json",
+      "sha256": "00107b0b247f0a5d8dbcdd19d985b25f093a14dfd3234e12961669df4420a7b7"
+    },
+    "pricing": {
+      "path": "experiments/exp-13/pricing_snapshot.json",
+      "sha256": "211b11619757e2f6fd65f35d637379dc8414b057040205252681b0ef162c311e"
+    },
+    "harness_entry_points": [
+      "scripts/exp13_checks.py",
+      "scripts/exp13_harness.py"
+    ],
+    "produced_records": [
+      {
+        "run_id": "EXP13-T-008-A",
+        "path": "evidence/exp-13/PILOT_BATCH1_ATTEMPT_2026-09-30/EXP13-T-008-A.json",
+        "sha256": "92e86f57ecf7a1f7b223eb493c0a99d21a0712ae3207c74e26a90f4eb9e87724"
+      },
+      {
+        "run_id": "EXP13-T-008-B",
+        "path": "evidence/exp-13/PILOT_BATCH1_ATTEMPT_2026-09-30/EXP13-T-008-B.json",
+        "sha256": "bc60c1fa8aa607860ed8d3a2fde69653066b729b0709e1c3727e0b234b64e366"
+      },
+      {
+        "run_id": "EXP13-T-008-premium",
+        "path": "evidence/exp-13/PILOT_BATCH1_ATTEMPT_2026-09-30/EXP13-T-008-premium.json",
+        "sha256": "6f20e8dbcd79f30def87af43aa8264bcc793fb2bda0ce387358d5c8d1fc17615"
+      }
+    ]
+  }
+}
