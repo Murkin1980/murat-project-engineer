@@ -28,7 +28,7 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 EVID="${ROOT}/evidence"
 WORK="${RUNNER_TEMP:-/tmp}/exp18-work"
 LOG="${EVID}/00_run_transcript.log"
-TORRENT_TIMEOUT=600   # seconds without progress before giving up
+TORRENT_TIMEOUT=360   # seconds without progress before giving up (per stage)
 RT="${RT:-$(date -u +%Y-%m-%dT%H:%M:%SZ)}"
 
 mkdir -p "$EVID" "$WORK"
@@ -117,12 +117,12 @@ run_torrent() {
   local rpc=6800
   [ "$tag" = "E_swarm_only" ] && rpc=6801
   [ "$tag" = "E2_dht_only" ] && rpc=6802
-  python3 "$H/peer_sample.py" "$rpc" "${WORK}/${tag}_peers.json" $((TORRENT_TIMEOUT + 300)) \
+  python3 "$H/peer_sample.py" "$rpc" "${WORK}/${tag}_peers.json" $((TORRENT_TIMEOUT + 240)) \
     > "${WORK}/${tag}_peers.txt" 2>&1 &
   local poller=$!
   local t0 t1
   t0="$(date -u +%s)"
-  timeout "$((TORRENT_TIMEOUT + 300))" aria2c \
+  timeout "$((TORRENT_TIMEOUT + 120))" aria2c \
     --dir="$dir" --seed-time=0 --bt-stop-timeout="${TORRENT_TIMEOUT}" \
     --bt-save-metadata=true --bt-enable-lpd=false \
     --enable-dht=true \
@@ -137,6 +137,8 @@ run_torrent() {
     "${extra[@]}" "$magnet" > "${WORK}/${tag}_aria2c.log" 2>&1
   local rc=$?
   t1="$(date -u +%s)"
+  # belt and braces: aria2c in RPC mode does not always terminate by itself
+  pkill -f "rpc-listen-port=${rpc}" 2>/dev/null || true
   wait "$poller" 2>/dev/null
   cat "${WORK}/${tag}_peers.txt" | tee -a "$LOG"
   cp "${WORK}/${tag}_peers.json" "${EVID}/07_${tag}_peers.json" 2>/dev/null

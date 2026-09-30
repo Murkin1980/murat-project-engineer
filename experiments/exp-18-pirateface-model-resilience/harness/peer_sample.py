@@ -85,6 +85,15 @@ def main() -> int:
             }
         )
         if status.get("status") == "complete":
+            # aria2c keeps its RPC server alive after a download finishes, so the
+            # sampler is also the component that stops it.
+            try:
+                call(port, "aria2.shutdown")
+            except Exception:
+                try:
+                    call(port, "aria2.forceShutdown")
+                except Exception:
+                    pass
             break
         time.sleep(1)
 

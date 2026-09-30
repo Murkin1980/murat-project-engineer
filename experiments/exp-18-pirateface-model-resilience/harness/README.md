@@ -59,4 +59,9 @@ only — it reads recorded files and infers nothing).
   manifest comparison did not normalise the torrent's payload directory, so the
   path sets were reported as disjoint. Both defects were fixed before attempt 02;
   the raw attempt-01 evidence remains in git history at commit 6d8d807.
-- attempt 02 (2026-09-30): clean run of the fixed harness.
+- attempt 02 (run 36667763061): aborted by the job timeout. Starting aria2c with
+  `--enable-rpc` keeps its RPC server alive after the download completes, so each
+  stage waited for its own wrapper timeout; no evidence was committed.
+- attempt 03 (2026-09-30): the RPC sampler now issues `aria2.shutdown` when the
+  download reports complete, and the per-stage budget is 6 minutes without
+  progress.
