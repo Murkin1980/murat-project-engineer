@@ -1,0 +1,77 @@
+# EXP-UX-UI-SKILLS target fixture resolution attempt
+# UTC timestamp: 2026-09-30T17:56:54Z
+# Registered target: Murkin1980/ai-microtask-factory
+
+$ gh repo view Murkin1980/ai-microtask-factory --json name,defaultBranchRef,pushedAt
+GraphQL: Could not resolve to a Repository with the name 'Murkin1980/ai-microtask-factory'. (repository)
+exit=0
+
+$ curl -s -o /dev/null -w 'HTTP %{http_code}' https://api.github.com/repos/Murkin1980/ai-microtask-factory   (unauthenticated)
+HTTP 404
+
+$ curl -s -o /dev/null -w 'HTTP %{http_code}' -L https://github.com/Murkin1980/ai-microtask-factory  (web UI)
+HTTP 404
+
+$ git ls-remote https://github.com/Murkin1980/ai-microtask-factory
+remote: Repository not found.
+fatal: repository 'https://github.com/Murkin1980/ai-microtask-factory/' not found
+
+$ gh api 'users/Murkin1980/repos?per_page=100&type=all' --jq 'length'   (public repos of owner)
+37
+# owner public repos: full list (no 'microtask' name present)
+Murkin1980/1c-tutor-kz
+Murkin1980/Asyl-soft-landing-page
+Murkin1980/Contractor-murkin-ver
+Murkin1980/Droid-claw-murkin
+Murkin1980/Furniture-web-platform-V2
+Murkin1980/LLMs-from-scratch-murkin-edition
+Murkin1980/LongLive
+Murkin1980/bek-mebel
+Murkin1980/bek-mebel-3
+Murkin1980/bek-mebel-v2
+Murkin1980/donutbrowser
+Murkin1980/etsy-market-research
+Murkin1980/furniture-configurator
+Murkin1980/furniture-intake-agent
+Murkin1980/furniture-orders-mvp
+Murkin1980/furniture-twenty-integration
+Murkin1980/grand-mebel
+Murkin1980/grand-mebel-invoices
+Murkin1980/interactive-kp
+Murkin1980/leadgen-agent
+Murkin1980/mebel-kalkulator
+Murkin1980/mebel-kalkulator2
+Murkin1980/mebel-legal-kz
+Murkin1980/mebeldocs-ai
+Murkin1980/mebelflow-ai
+Murkin1980/mebelflow-asset-prep-sketchup
+Murkin1980/minibase-cloudflare
+Murkin1980/murat-ads-control
+Murkin1980/murat-project-engineer
+Murkin1980/open-design
+Murkin1980/re-fix-kz
+Murkin1980/salamat-mebel-kz
+Murkin1980/salamat-projects-dashboard
+Murkin1980/tender-assistant
+Murkin1980/threads-qaz
+Murkin1980/tuba-kz
+Murkin1980/twenty
+
+$ gh api 'search/repositories?q=microtask-factory' --jq '.total_count, .items[].full_name'  (GitHub-wide)
+1
+microtask-factory/microtask-factory.github.io
+
+$ gh api /installation/repositories --jq '.total_count, .repositories[].full_name'  (repos reachable by this sandbox GH App)
+1
+Murkin1980/murat-project-engineer
+
+# variant probes (HTTP status)
+Murkin1980/ai-microtask-factory               HTTP 404
+Murkin1980/ai-microtask-factory-mpe           HTTP 404
+Murkin1980/microtask-factory                  HTTP 404
+Murkin1980/microtask-factory-ai               HTTP 404
+
+# Note: a private repository would also return HTTP 404 to an unauthorised caller.
+# The sandbox GitHub App installation contains only Murkin1980/murat-project-engineer,
+# and the token cannot enumerate the owner's private repositories, so a private
+# existence of the fixture can be neither confirmed nor used.

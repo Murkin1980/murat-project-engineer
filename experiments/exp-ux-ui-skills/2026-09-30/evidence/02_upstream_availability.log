@@ -1,0 +1,21 @@
+# EXP-UX-UI-SKILLS upstream availability check (plugin87/ux-ui-agent-skills)
+# UTC timestamp: 2026-09-30T17:57:01Z
+
+$ gh api repos/plugin87/ux-ui-agent-skills --jq '{full_name,license:.license.spdx_id,default_branch,pushed_at,size}'
+{"default_branch":"main","full_name":"plugin87/ux-ui-agent-skills","license":"MIT","pushed_at":"2026-09-16T02:33:41Z","size":9208}
+
+$ gh api repos/plugin87/ux-ui-agent-skills/commits/2ffb677aa02b225c8a3da1b7f31d9ebb7c38f1dd --jq '.sha'  (MPE-pinned version v2.5.1)
+2ffb677aa02b225c8a3da1b7f31d9ebb7c38f1dd
+
+# NOTE: the upstream knowledge source IS reachable (read-only metadata only).
+# NOTE: no upstream repository content was cloned, forked, vendored or installed.
+# NOTE: the local MPE adaptation below was already committed in the repository BEFORE
+#       this run; it is the pre-existing selective adaptation, not new work.
+
+$ sha256sum skills/ux-ui/UX_UI_AGENT_SKILL.md UX_UI_AGENT_SKILLS_EXPERIMENT.md experiments/EXPERIMENT_REGISTRY.json
+7bdcf538f817890bd7557f00a367f2752b3330e678fd5cca77dd74ba2598b5b0  skills/ux-ui/UX_UI_AGENT_SKILL.md
+04765d8e7f89740f1a25f907c84265dbe515678d418e1525793b53eaf9d1d1b6  UX_UI_AGENT_SKILLS_EXPERIMENT.md
+fae981dcd024a16953d75e2bf3d525949ee686648cc65a3f5f2350b8e5fcccee  experiments/EXPERIMENT_REGISTRY.json
+
+$ git log -1 --format='%H %cd %s' -- skills/ux-ui/UX_UI_AGENT_SKILL.md
+8f9e958900fc52e4354cd98a943374326446cd03 Wed Sep 30 16:48:02 2026 +0500 EXP-09: close non-reproducible experiment

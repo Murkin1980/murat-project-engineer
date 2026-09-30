@@ -1,0 +1,48 @@
+# HASHES — EXP-UX-UI-SKILLS / run 2026-09-30
+# Generated: 2026-09-30T17:58:05Z
+
+## 1. Target fixture identity (REGISTERED BASELINE OBJECT)
+target_repository: Murkin1980/ai-microtask-factory
+target_sha: NOT_OBTAINABLE
+target_sha_reason: repository returns HTTP 404 (API and web); git ls-remote reports 'Repository not found';
+                   the owner's public repository list (37 entries) contains no microtask repository; and this
+                   sandbox's GitHub App installation grants access to Murkin1980/murat-project-engineer only.
+target_sha_evidence: evidence/01_target_resolution.log
+
+## 2. Baseline commit of the EVIDENCE-HOST repository (murat-project-engineer)
+host_repo: Murkin1980/murat-project-engineer
+host_branch: arena/01a0f375-murat-project-engineer
+host_baseline_sha: 8f9e958900fc52e4354cd98a943374326446cd03
+host_main_sha: 8f9e958900fc52e4354cd98a943374326446cd03
+
+## 3. Upstream UX/UI knowledge source (availability verified; NOT cloned/vendored by this run)
+upstream_repo: plugin87/ux-ui-agent-skills
+upstream_license: MIT
+upstream_pinned_sha_v2.5.1: 2ffb677aa02b225c8a3da1b7f31d9ebb7c38f1dd   (existence verified via GitHub API)
+upstream_evidence: evidence/02_upstream_availability.log
+
+## 4. Pre-existing repository inputs this run depended on (unmodified by this run)
+04765d8e7f89740f1a25f907c84265dbe515678d418e1525793b53eaf9d1d1b6  UX_UI_AGENT_SKILLS_EXPERIMENT.md
+7bdcf538f817890bd7557f00a367f2752b3330e678fd5cca77dd74ba2598b5b0  skills/ux-ui/UX_UI_AGENT_SKILL.md
+fae981dcd024a16953d75e2bf3d525949ee686648cc65a3f5f2350b8e5fcccee  experiments/EXPERIMENT_REGISTRY.json
+
+## 5. Evidence artifacts produced by this run (SHA-256, scoped to this run directory)
+0bfef5ba1e006365c35f295d4a434e7ae07ca1fb41ba17b6a8ae51ae266c60c5  ./BASELINE.md
+2dc40fbc513e8614f4a0a745644221e0dd4cf8f67c21ae5b9630f607ab78cde1  ./EVALUATION.md
+a88cc81166451a3b2b34a7d5d29643c9b48325bcc8631eb45c37479e0a19f8d6  ./FINDINGS.md
+bd9c128b10c53b1075afc34e53859ab4fc6e3df1c8f06fad59c18a9352b98b79  ./README.md
+f3e2292213ec6fa39e4957f9e484e05720e0047bc83bf5bf1ca935852fc66076  ./evidence/00_environment.txt
+e8924d53e38ca80aca4fd0976e1b90d5074f31d78ba69cf9c744a5114b744e65  ./evidence/01_target_resolution.log
+712049d69169f9e4dd6d9527b66c9af1a1730a00d2525fb9ff4545874ec67fe5  ./evidence/02_upstream_availability.log
+e2fbfac1ce77701c4d53afa4e1a4eb9c1833ebe725f7d9004ad79c112d77efeb  ./evidence/03_mpe_host_native_checks.log
+
+## 6. Scope declaration
+files_modified_in_tracked_source: 0
+ui_files_modified: 0
+production_code_modified: 0
+ci_gates_added: 0
+upstream_files_copied_or_vendored: 0
+dependencies_installed: 0
+runtime_services_started_or_left_running: 0
+experiments_created_other_than_exp-ux-ui-skills: 0
+# This manifest deliberately excludes HASHES.txt itself (a self-referential hash would be unstable).
