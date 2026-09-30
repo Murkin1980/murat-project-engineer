@@ -1,0 +1,17 @@
+name: EXP-18 probe (temporary)
+on:
+  workflow_dispatch:
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Environment + reachability probe
+        run: |
+          echo "=== runner ==="; uname -a; python3 --version
+          echo "=== tools ==="; command -v aria2c || echo "aria2c: absent"
+          echo "=== HF reachable? ==="
+          curl -s -o /dev/null -w "hf_home=%{http_code}\n" --max-time 20 https://huggingface.co/ || echo "HF FAIL"
+          curl -s --max-time 20 "https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2" | head -c 300; echo
+          echo "=== PirateFace reachable? ==="
+          curl -s -o /dev/null -w "pf_home=%{http_code}\n" --max-time 20 https://pirateface.co/ || echo "PF FAIL"
+          echo "=== tracker resolve ==="; getent hosts tracker.pirateface.co || echo "no dns"
