@@ -235,6 +235,12 @@ permissively licensed models: when a model is pinned, also record its magnet and
 the canonical SHA-256 manifest with the pin, and verify hashes after any fallback
 retrieval. Do not integrate it into production routing, do not build a registry,
 and do not rely on it for low-demand models without first confirming seeders.
-The experiment result should be folded back into the EXP-18 registry entry in
-PR #31; this branch deliberately does not edit `experiments/EXPERIMENT_REGISTRY.json`
-to avoid conflicting with that open pull request.
+
+Registration status: the canonical entry lives in
+`experiments/EXPERIMENT_REGISTRY.json` (`EXP-18` = PASS) and was merged with this
+evidence. The registration-only PR #31 could not be merged — its branch predated
+later registry entries and reformatted the registry file — so the registration
+fields were carried over verbatim in a minimal reconciliation commit on the
+execution branch, and PR #31 was closed as superseded after its contract README
+was confirmed byte-identical on `main` (SHA-256
+`89be8f273aa3c9ff690ee07b064c63696b9cdb890c18b3a2ee816a75241a3429`).
