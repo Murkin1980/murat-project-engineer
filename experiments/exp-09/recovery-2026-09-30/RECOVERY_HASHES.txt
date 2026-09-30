@@ -1,0 +1,35 @@
+EXP-09 source-of-truth recovery hashes
+Generated: 2026-09-30
+Hash algorithm: SHA-256 over exact file bytes; Git object is the Git blob SHA-1.
+
+CURRENT MAIN (66dc1c57ef894586677b200274d06e6003699fe2)
+Artifact | Revision | Git blob SHA-1 | SHA-256 | Status
+CODEX_PERSONALIZED_ASSESSMENT_ENGINE_V0_EXPERIMENT.md | 66dc1c57ef894586677b200274d06e6003699fe2 | f862f65c27d3337474270ea810be2f574fa5fa77 | 5384d6aaaecd3e63ec92c625f51c4b6f4417872d9d35124f8d7765739c7d3a0e | governing contract
+experiments/EXPERIMENT_REGISTRY.json | 66dc1c57ef894586677b200274d06e6003699fe2 | 4723a6e8e01c59a40ad7139ca091596408ba1608 | 501334909d218674c95ad7dd7c7cc7c458a8957a3fa5b614ff9b9a194077e394 | canonical registry
+STATUS.md | 66dc1c57ef894586677b200274d06e6003699fe2 | b72e1329a64a37a11132de846a4926967cf797ad | d3f40187517ca5b73740d186b69c9a47ac5d8afe4374e08d265420f93f675b2a | status reference
+
+docs/evaluations/PERSONALIZED_ASSESSMENT_ENGINE_V0.md | 66dc1c57ef894586677b200274d06e6003699fe2 | 9981c413b8800edb7a21b6ae41639105cfb4bd60 | e3d191364879be0e1789c4302ac215e051a378d56ccddb0ba42e85294c97cf96 | historical evaluation narrative
+evidence/stage2/RUN-09_REPORT.json | 66dc1c57ef894586677b200274d06e6003699fe2 | 514d60a7e944ab547e6d58f30a4cafd56fd11298 | 67b659c330af9fb75721eafc2d646de537d583d0fc61cbf8477fdc8e12451d9b | historical Stage-2 report
+evidence/stage2/RUN-09_EXPERIMENT_RECORD.json | 66dc1c57ef894586677b200274d06e6003699fe2 | 34fe660a58b9460cf3455406cf6e2c27800586e5 | 31599c0ea1e8a2a68742e300c75fea3e0adfe22851de7f24fc0c248370b60c22 | historical experiment record
+
+HISTORICAL DUPLICATE FOUND IN GITHUB HISTORY
+PERSONALIZED_ASSESSMENT_ENGINE_V0_REPORT.md | ad6364e5642e41ff0cb52660cbcee181eb325fb4 | 9981c413b8800edb7a21b6ae41639105cfb4bd60 | e3d191364879be0e1789c4302ac215e051a378d56ccddb0ba42e85294c97cf96 | historical duplicate; removed in 2e6a4d9e25dba4601b42071a232aabf77e5c2873
+
+docs/evaluations/PERSONALIZED_ASSESSMENT_ENGINE_V0.md | ad6364e5642e41ff0cb52660cbcee181eb325fb4 | 9981c413b8800edb7a21b6ae41639105cfb4bd60 | e3d191364879be0e1789c4302ac215e051a378d56ccddb0ba42e85294c97cf96 | same Git blob/content as historical root duplicate
+
+evidence/stage2/RUN-09_REPORT.json | ad6364e5642e41ff0cb52660cbcee181eb325fb4 | 514d60a7e944ab547e6d58f30a4cafd56fd11298 | 67b659c330af9fb75721eafc2d646de537d583d0fc61cbf8477fdc8e12451d9b | introduced in this checkpoint commit
+
+RUN-09_EXPERIMENT_RECORD.json | 2e6a4d9e25dba4601b42071a232aabf77e5c2873 | 34fe660a58b9460cf3455406cf6e2c27800586e5 | 31599c0ea1e8a2a68742e300c75fea3e0adfe22851de7f24fc0c248370b60c22 | introduced in follow-up commit
+
+PR #44 EVIDENCE AS INSPECTED BEFORE THIS RECOVERY
+experiments/exp-09/pre-run-2026-09-30/BOUNDARY_REVIEW.md | 698d6352cc3c5c5a4090b49ce82bd79f3399e9f3 | 538af5d586ffe0618c60bd6ff36e5694d09c9921 | 97a59eae3a956bfd4fcc2b7216349ccd5a2f60cca2581bb2562fccfa4106755f | prior additive boundary review
+experiments/exp-09/pre-run-2026-09-30/BASELINE_SHA256SUMS.txt | 698d6352cc3c5c5a4090b49ce82bd79f3399e9f3 | d5b904b9d31afeaa204351a149f16e61ed8abd7b | 4c1487d2cf99b4fc879f9ae4b74b6f9ac8514b775c957d57342734fd2c1caf58 | prior baseline inventory
+
+MISSING / NOT HASHABLE
+- EXP-09 implementation: no artifact found in inspected MPE current tree, 46 branch names / 45 unique tip trees, or relevant path history.
+- Frozen 12-scenario inputs: no fixture path/bytes/revision found; no hash exists in recovered evidence.
+- Canonical assessment-state artifact: not found; no hash exists.
+- Derived per-scenario outputs: not found; no hash exists.
+- EXP-09-specific test source and original execution logs: not found in MPE refs/history; no hash exists.
+
+The identical Git blob ID for the historical root report and `docs/evaluations/PERSONALIZED_ASSESSMENT_ENGINE_V0.md` proves those two recovered report paths contained identical Git blob bytes at `ad6364e`. It does not prove the absent implementation, inputs, outputs, or tests.
