@@ -1,7 +1,7 @@
 {
   "distinct_peer_network_count": 0,
   "distinct_peer_networks": {},
-  "elapsed_seconds": 22.4,
+  "elapsed_seconds": 21.1,
   "info_hash": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
   "max_connections": 18,
   "max_download_speed_bps": 0,
@@ -17,7 +17,7 @@
       "num_seeders": 0,
       "peers_listed": 0,
       "speed_bps": 0,
-      "t": 0.1
+      "t": 0.0
     },
     {
       "completed": 0,
@@ -27,9 +27,9 @@
       "num_seeders": 0,
       "peers_listed": 0,
       "speed_bps": 0,
-      "t": 1.1
+      "t": 1.0
     }
   ],
-  "stop_detail": "HTTPError: HTTP Error 400: Bad Request",
+  "stop_detail": "HTTPError: HTTP Error 400: Bad Request; aria2c stopped via aria2.shutdown",
   "stop_reason": "status_unavailable"
 }

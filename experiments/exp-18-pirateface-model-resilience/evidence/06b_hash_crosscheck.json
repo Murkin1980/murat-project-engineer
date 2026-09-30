@@ -22,7 +22,7 @@
     "rust_model.ot": "2d98d96d278348988f2744e6445b8bc16d921c3f6e17c667362f3cb353007aea",
     "tf_model.h5": "24c06a7429b843d46e40c6b167122053921bf94dce2e5550ea5c07fabc597646"
   },
-  "generated_utc": "2026-09-30T05:08:30Z",
+  "generated_utc": "2026-09-30T05:19:00Z",
   "hf_recorded_lfs_matched": [
     "model.safetensors",
     "onnx/model.onnx",

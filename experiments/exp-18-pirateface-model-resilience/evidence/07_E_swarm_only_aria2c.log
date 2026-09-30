@@ -1,363 +1,65 @@
 
-09/30 04:57:23 [[1;32mNOTICE[0m] Downloading 1 item(s)
+09/30 05:11:02 [[1;32mNOTICE[0m] Downloading 1 item(s)
 
-09/30 04:57:23 [[1;33mWARN[0m] Neither --rpc-secret nor a combination of --rpc-user and --rpc-passwd is set. This is insecure. It is extremely recommended to specify --rpc-secret with the adequate secrecy or now deprecated --rpc-user and --rpc-passwd.
+09/30 05:11:02 [[1;33mWARN[0m] Neither --rpc-secret nor a combination of --rpc-user and --rpc-passwd is set. This is insecure. It is extremely recommended to specify --rpc-secret with the adequate secrecy or now deprecated --rpc-user and --rpc-passwd.
 
-09/30 04:57:23 [[1;32mNOTICE[0m] IPv4 RPC: listening on TCP port 6801
+09/30 05:11:02 [[1;32mNOTICE[0m] IPv4 RPC: listening on TCP port 6801
 
-09/30 04:57:23 [[1;32mNOTICE[0m] IPv6 RPC: listening on TCP port 6801
+09/30 05:11:02 [[1;32mNOTICE[0m] IPv6 RPC: listening on TCP port 6801
 
-09/30 04:57:23 [[1;32mNOTICE[0m] IPv4 DHT: listening on UDP port 6881
+09/30 05:11:02 [[1;32mNOTICE[0m] IPv4 DHT: listening on UDP port 6881
 
-09/30 04:57:23 [[1;32mNOTICE[0m] IPv4 BitTorrent: listening on TCP port 6881
+09/30 05:11:02 [[1;32mNOTICE[0m] IPv4 BitTorrent: listening on TCP port 6881
 
-09/30 04:57:23 [[1;32mNOTICE[0m] IPv6 BitTorrent: listening on TCP port 6881
-[#4693af 0B/0B CN:22 SD:0 DL:0B]
-[#4693af 37KiB/37KiB(100%) CN:12 SD:1]
+09/30 05:11:02 [[1;32mNOTICE[0m] IPv6 BitTorrent: listening on TCP port 6881
+[#686688 0B/0B CN:18 SD:0 DL:0B]
+[#686688 37KiB/37KiB(100%) CN:10 SD:1]
 
-09/30 04:57:25 [[1;32mNOTICE[0m] Download complete: [MEMORY][METADATA]fed3a1e271827a2094b93ecbe738dbf3bd58c5cf
+09/30 05:11:04 [[1;32mNOTICE[0m] Download complete: [MEMORY][METADATA]fed3a1e271827a2094b93ecbe738dbf3bd58c5cf
 
-09/30 04:57:25 [[1;32mNOTICE[0m] Saved metadata as /home/runner/work/_temp/exp18-work/swarm_run/fed3a1e271827a2094b93ecbe738dbf3bd58c5cf.torrent.
-[#c53be5 0B/0.9GiB(0%) CN:17 SD:0 DL:0B]
-[#c53be5 1.4MiB/0.9GiB(0%) CN:17 SD:7 DL:1.9MiB ETA:7m53s]
-[#c53be5 6.6MiB/0.9GiB(0%) CN:17 SD:8 DL:3.8MiB ETA:4m]
-[#c53be5 14MiB/0.9GiB(1%) CN:17 SD:9 DL:5.4MiB ETA:2m48s]
-[#c53be5 28MiB/0.9GiB(3%) CN:17 SD:9 DL:7.7MiB ETA:1m56s]
-[#c53be5 47MiB/0.9GiB(5%) CN:17 SD:9 DL:10MiB ETA:1m26s]
-[#c53be5 80MiB/0.9GiB(8%) CN:17 SD:9 DL:14MiB ETA:1m]
-[#c53be5 122MiB/0.9GiB(13%) CN:17 SD:9 DL:18MiB ETA:43s]
-[#c53be5 171MiB/0.9GiB(18%) CN:17 SD:9 DL:22MiB ETA:34s]
-[#c53be5 217MiB/0.9GiB(23%) CN:17 SD:9 DL:25MiB ETA:28s]
-[#c53be5 264MiB/0.9GiB(28%) CN:17 SD:9 DL:27MiB ETA:24s]
-[#c53be5 310MiB/0.9GiB(33%) CN:22 SD:9 DL:32MiB ETA:19s]
-[#c53be5 360MiB/0.9GiB(38%) CN:22 SD:10 DL:36MiB ETA:15s]
- *** Download Progress Summary as of Wed Sep 30 04:57:39 2026 *** 
+09/30 05:11:04 [[1;32mNOTICE[0m] Saved metadata as /home/runner/work/_temp/exp18-work/swarm_run/fed3a1e271827a2094b93ecbe738dbf3bd58c5cf.torrent.
+[#cb2bb1 0B/0.9GiB(0%) CN:18 SD:0 DL:0B]
+[#cb2bb1 352KiB/0.9GiB(0%) CN:18 SD:5 DL:818KiB ETA:19m25s]
+[#cb2bb1 2.0MiB/0.9GiB(0%) CN:18 SD:8 DL:1.4MiB ETA:10m43s]
+[#cb2bb1 4.5MiB/0.9GiB(0%) CN:18 SD:9 DL:1.8MiB ETA:8m16s]
+[#cb2bb1 7.2MiB/0.9GiB(0%) CN:18 SD:9 DL:2.1MiB ETA:7m18s]
+[#cb2bb1 10MiB/0.9GiB(1%) CN:18 SD:9 DL:2.3MiB ETA:6m38s]
+[#cb2bb1 14MiB/0.9GiB(1%) CN:18 SD:9 DL:2.7MiB ETA:5m38s]
+[#cb2bb1 21MiB/0.9GiB(2%) CN:18 SD:9 DL:3.3MiB ETA:4m33s]
+[#cb2bb1 28MiB/0.9GiB(3%) CN:18 SD:9 DL:3.8MiB ETA:3m56s]
+[#cb2bb1 35MiB/0.9GiB(3%) CN:18 SD:9 DL:4.1MiB ETA:3m34s]
+[#cb2bb1 45MiB/0.9GiB(4%) CN:23 SD:9 DL:4.8MiB ETA:3m1s]
+[#cb2bb1 63MiB/0.9GiB(6%) CN:23 SD:9 DL:6.6MiB ETA:2m11s]
+ *** Download Progress Summary as of Wed Sep 30 05:11:17 2026 *** 
 ===============================================================================
-[#c53be5 414MiB/0.9GiB(44%) CN:20 SD:10 DL:41MiB ETA:12s]
+[#cb2bb1 80MiB/0.9GiB(8%) CN:23 SD:9 DL:8.1MiB ETA:1m43s]
 FILE: /home/runner/work/_temp/exp18-work/swarm_run/sentence-transformers__all-MiniLM-L6-v2/1_Pooling/config.json (28more)
 -------------------------------------------------------------------------------
 
-[#c53be5 414MiB/0.9GiB(44%) CN:20 SD:10 DL:41MiB ETA:12s]
-[#c53be5 470MiB/0.9GiB(50%) CN:20 SD:10 DL:45MiB ETA:10s]
-[#c53be5 532MiB/0.9GiB(57%) CN:20 SD:10 DL:49MiB ETA:8s]
-[#c53be5 604MiB/0.9GiB(64%) CN:20 SD:10 DL:53MiB ETA:6s]
-[#c53be5 707MiB/0.9GiB(75%) CN:20 SD:10 DL:59MiB ETA:3s]
-[#c53be5 822MiB/0.9GiB(88%) CN:20 SD:10 DL:66MiB ETA:1s]
-[#c53be5 0.9GiB/0.9GiB(99%) CN:20 SD:10 DL:72MiB]
-
-09/30 04:57:45 [[1;32mNOTICE[0m] Seeding is over.
-[#c53be5 SEED(0.0) CN:10 SD:0]
-
-09/30 04:57:47 [[1;32mNOTICE[0m] Download complete: /home/runner/work/_temp/exp18-work/swarm_run/sentence-transformers__all-MiniLM-L6-v2
-
-09/30 04:57:47 [[1;32mNOTICE[0m] Your share ratio was 0.0, uploaded/downloaded=0B/0.9GiB
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-09/30 05:02:54 [[1;32mNOTICE[0m] Emergency shutdown sequence commencing...
+[#cb2bb1 80MiB/0.9GiB(8%) CN:23 SD:9 DL:8.1MiB ETA:1m43s]
+[#cb2bb1 99MiB/0.9GiB(10%) CN:23 SD:9 DL:10MiB ETA:1m22s]
+[#cb2bb1 120MiB/0.9GiB(12%) CN:23 SD:9 DL:11MiB ETA:1m8s]
+[#cb2bb1 141MiB/0.9GiB(15%) CN:23 SD:9 DL:13MiB ETA:57s]
+[#cb2bb1 162MiB/0.9GiB(17%) CN:23 SD:9 DL:15MiB ETA:49s]
+[#cb2bb1 187MiB/0.9GiB(20%) CN:23 SD:9 DL:17MiB ETA:42s]
+[#cb2bb1 214MiB/0.9GiB(23%) CN:23 SD:9 DL:19MiB ETA:36s]
+[#cb2bb1 239MiB/0.9GiB(25%) CN:23 SD:9 DL:21MiB ETA:32s]
+[#cb2bb1 263MiB/0.9GiB(28%) CN:23 SD:9 DL:22MiB ETA:30s]
+[#cb2bb1 291MiB/0.9GiB(31%) CN:45 SD:9 DL:23MiB ETA:27s]
+
+09/30 05:11:27 [[1;32mNOTICE[0m] 3 second(s) has passed. Stopping application.
+[#cb2bb1 302MiB/0.9GiB(32%) CN:25 SD:0 DL:21MiB ETA:29s]
+
+09/30 05:11:30 [[1;32mNOTICE[0m] Download GID#cb2bb1edf1658eb2 not complete: /home/runner/work/_temp/exp18-work/swarm_run/sentence-transformers__all-MiniLM-L6-v2
 
 Download Results:
 gid   |stat|avg speed  |path/URI
 ======+====+===========+=======================================================
-4693af|OK  |       0B/s|[MEMORY][METADATA]fed3a1e271827a2094b93ecbe738dbf3bd58c5cf
-c53be5|OK  |    47MiB/s|/home/runner/work/_temp/exp18-work/swarm_run/sentence-transformers__all-MiniLM-L6-v2/1_Pooling/config.json (28more)
+686688|OK  |       0B/s|[MEMORY][METADATA]fed3a1e271827a2094b93ecbe738dbf3bd58c5cf
+cb2bb1|INPR|    12MiB/s|/home/runner/work/_temp/exp18-work/swarm_run/sentence-transformers__all-MiniLM-L6-v2/1_Pooling/config.json (28more)
 
 Status Legend:
-(OK):download completed.
+(OK):download completed.(INPR):download in-progress.
+
+aria2 will resume download if the transfer is restarted.
+If there are any errors, then see the log file. See '-l' option in help/man page for details.
