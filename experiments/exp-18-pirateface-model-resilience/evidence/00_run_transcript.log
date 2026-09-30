@@ -1,0 +1,109 @@
+04:12:21Z -------------------------------------------------------------
+04:12:21Z STAGE 0 environment
+run_utc=2026-09-30T04:12:21Z
+repo=sentence-transformers/all-MiniLM-L6-v2
+harness_host=Linux 6.17.0-1022-azure x86_64
+runner_name=GitHub Actions 1000002499
+github_run_id=36667763061
+github_sha=b894a0fd5a811f8ea9c9bc52ae0ae8ca61053065
+github_ref=refs/heads/arena/01a0f07b-murat-project-engineer
+Python 3.12.3
+curl 8.5.0 (x86_64-pc-linux-gnu) libcurl/8.5.0 OpenSSL/3.0.13 zlib/1.3 brotli/1.1.0 zstd/1.5.5 libidn2/2.3.7 libpsl/0.21.2 (+libidn2/2.3.7) libssh/0.10.6/openssl/zlib nghttp2/1.59.0 librtmp/2.3 OpenLDAP/2.6.10
+jq-1.7
+aria2 version 1.37.0
+euid=1001
+04:12:22Z -------------------------------------------------------------
+04:12:22Z STAGE A pin repository, revision, license, expected files
+04:12:22Z HF repository      : sentence-transformers/all-MiniLM-L6-v2
+04:12:22Z HF pinned revision : 1110a243fdf4706b3f48f1d95db1a4f5529b4d41
+04:12:22Z license evidence   : {"license":"apache-2.0"}
+04:12:22Z tree entries at revision: 33
+04:12:22Z -------------------------------------------------------------
+04:12:22Z STAGE B download canonical artifact through normal Hugging Face path
+04:12:22Z   hf fetch 200 .gitattributes (1229 bytes)
+04:12:22Z   hf fetch 200 1_Pooling/config.json (190 bytes)
+04:12:22Z   hf fetch 200 README.md (10502 bytes)
+04:12:22Z   hf fetch 200 config.json (612 bytes)
+04:12:23Z   hf fetch 200 config_sentence_transformers.json (116 bytes)
+04:12:23Z   hf fetch 200 data_config.json (39265 bytes)
+04:12:24Z   hf fetch 200 model.safetensors (90868376 bytes)
+04:12:24Z   hf fetch 200 modules.json (349 bytes)
+04:12:25Z   hf fetch 200 onnx/model.onnx (90405214 bytes)
+04:12:28Z   hf fetch 200 onnx/model_O1.onnx (90360328 bytes)
+04:12:29Z   hf fetch 200 onnx/model_O2.onnx (90326566 bytes)
+04:12:30Z   hf fetch 200 onnx/model_O3.onnx (90326497 bytes)
+04:12:31Z   hf fetch 200 onnx/model_O4.onnx (45212349 bytes)
+04:12:32Z   hf fetch 200 onnx/model_qint8_arm64.onnx (23026053 bytes)
+04:12:32Z   hf fetch 200 onnx/model_qint8_avx512.onnx (23026053 bytes)
+04:12:33Z   hf fetch 200 onnx/model_qint8_avx512_vnni.onnx (23026053 bytes)
+04:12:34Z   hf fetch 200 onnx/model_quint8_avx2.onnx (23046789 bytes)
+04:12:35Z   hf fetch 200 openvino/openvino_model.bin (90265744 bytes)
+04:12:35Z   hf fetch 200 openvino/openvino_model.xml (211315 bytes)
+04:12:36Z   hf fetch 200 openvino/openvino_model_qint8_quantized.bin (22933664 bytes)
+04:12:36Z   hf fetch 200 openvino/openvino_model_qint8_quantized.xml (368006 bytes)
+04:12:37Z   hf fetch 200 pytorch_model.bin (90888945 bytes)
+04:12:40Z   hf fetch 200 rust_model.ot (90887379 bytes)
+04:12:40Z   hf fetch 200 sentence_bert_config.json (53 bytes)
+04:12:40Z   hf fetch 200 special_tokens_map.json (112 bytes)
+04:12:41Z   hf fetch 200 tf_model.h5 (91005696 bytes)
+04:12:41Z   hf fetch 200 tokenizer.json (466247 bytes)
+04:12:41Z   hf fetch 200 tokenizer_config.json (350 bytes)
+04:12:41Z   hf fetch 200 train_script.py (13156 bytes)
+04:12:42Z   hf fetch 200 vocab.txt (231508 bytes)
+04:12:42Z HF canonical download wall seconds: 20
+04:12:42Z -------------------------------------------------------------
+04:12:42Z STAGE C record Pirate Face distribution reference
+http_status=200
+04:12:43Z magnet URIs found: 2
+magnet:?xt=urn:btih:fed3a1e271827a2094b93ecbe738dbf3bd58c5cf&tr=udp%3A%2F%2Ftracker.pirateface.co%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.pirateface.co%3A6969%2Fannounce
+magnet:?xt=urn:btih:fed3a1e271827a2094b93ecbe738dbf3bd58c5cf\u0026tr=udp%3A%2F%2Ftracker.pirateface.co%3A6969%2Fannounce\u0026tr=http%3A%2F%2Ftracker.pirateface.co%3A6969%2Fannounce\
+04:12:43Z sha256-like strings on page: 13
+https://pirateface.co/api/models/sentence-transformers/all-MiniLM-L6-v2	404
+https://pirateface.co/api/model/sentence-transformers/all-MiniLM-L6-v2	404
+https://pirateface.co/s/sentence-transformers/all-MiniLM-L6-v2	404
+https://pirateface.co/how-it-works	200
+04:12:43Z -------------------------------------------------------------
+04:12:43Z STAGE D retrieve through Pirate Face (magnet as advertised)
+04:12:43Z infohash: fed3a1e271827a2094b93ecbe738dbf3bd58c5cf
+tracker announce: {"ok": true, "interval_seconds": 1719, "seeders": 14, "leechers": 0, "peers_returned": 14, "peer_networks": ["146.212.x.x", "147.90.x.x", "151.243.x.x", "170.203.x.x", "178.162.x.x", "180.149.x.x", "181.41.x.x", "185.21.x.x", "187.127.x.x", "5.79.x.x", "52.159.x.x", "64.238.x.x", "69.42.x.x", "79.127.x.x"]}
+04:12:44Z [D_pf_normal] aria2c start
+peer sample: networks=0 max_seeders=0 max_connections=15 max_speed=0.0MiB/s samples=2 info_hash=fed3a1e271827a2094b93ecbe738dbf3bd58c5cf
+04:27:44Z [D_pf_normal] aria2c exit=124 wall_seconds=900
+04:27:44Z [D_pf_normal] metainfo captured: fed3a1e271827a2094b93ecbe738dbf3bd58c5cf.torrent
+09/30 04:13:18 [[1;32mNOTICE[0m] Download complete: /home/runner/work/_temp/exp18-work/pf_run/sentence-transformers__all-MiniLM-L6-v2
+Download Results:
+gid   |stat|avg speed  |path/URI
+(OK):download completed.
+04:27:45Z -------------------------------------------------------------
+04:27:45Z STAGE E simulate primary-source unavailability (this host only)
+04:27:45Z hosts blocklist:
+0.0.0.0 huggingface.co
+0.0.0.0 www.huggingface.co
+0.0.0.0 cdn-lfs.huggingface.co
+0.0.0.0 cdn-lfs-us-1.huggingface.co
+0.0.0.0 cas-bridge.xethub.hf.co
+0.0.0.0 hf.co
+0.0.0.0 pirateface.co
+0.0.0.0 www.pirateface.co
+--- getent hosts huggingface.co ---
+0.0.0.0         huggingface.co
+--- curl https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 ---
+curl: (7) Failed to connect to huggingface.co port 443 after 0 ms: Couldn't connect to server
+curl failed (expected)
+--- curl https://pirateface.co/ (web layer) ---
+curl: (7) Failed to connect to pirateface.co port 443 after 0 ms: Couldn't connect to server
+curl failed (expected)
+--- tracker name resolution (must still work) ---
+187.127.110.248 tracker.pirateface.co
+04:27:45Z web-seed stripped magnet: magnet:?xt=urn:btih:fed3a1e271827a2094b93ecbe738dbf3bd58c5cf&tr=udp%3A%2F%2Ftracker.pirateface.co%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.pirateface.co%3A6969%2Fannounce
+04:27:45Z [E_swarm_only] aria2c start
+peer sample: networks=0 max_seeders=0 max_connections=49 max_speed=0.0MiB/s samples=2 info_hash=fed3a1e271827a2094b93ecbe738dbf3bd58c5cf
+04:42:46Z [E_swarm_only] aria2c exit=124 wall_seconds=901
+04:42:46Z [E_swarm_only] metainfo captured: fed3a1e271827a2094b93ecbe738dbf3bd58c5cf.torrent
+09/30 04:28:10 [[1;32mNOTICE[0m] Download complete: /home/runner/work/_temp/exp18-work/swarm_run/sentence-transformers__all-MiniLM-L6-v2
+Download Results:
+gid   |stat|avg speed  |path/URI
+(OK):download completed.
+04:42:46Z -------------------------------------------------------------
+04:42:46Z STAGE E2 tracker unavailable too: DHT/PEX swarm only
+04:42:46Z [E2_dht_only] aria2c start
