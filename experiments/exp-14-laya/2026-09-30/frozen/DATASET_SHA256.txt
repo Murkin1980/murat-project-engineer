@@ -1,0 +1,8 @@
+# EXP-14 frozen dataset digest (computed at freeze time, before any model run)
+# algorithm: SHA-256 over the exact bytes of frozen/dataset_v1.json (UTF-8, indent=2, trailing newline)
+aef7d8bfcefd2b4132073eaf52e570aee2b5d5aebf318e5d556f6d4d3803b648  frozen/dataset_v1.json
+cases: 43
+protected_cases: 31
+materially_dangerous_cases: 14
+frozen_at_utc: 2026-09-30T19:20:00Z
+main_sha_at_freeze: d2ec64531e4cac4f5076263f8317dfaaa36e2a9f
