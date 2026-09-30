@@ -1,0 +1,35 @@
+{
+  "distinct_peer_network_count": 0,
+  "distinct_peer_networks": {},
+  "elapsed_seconds": 21.1,
+  "info_hash": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+  "max_connections": 22,
+  "max_download_speed_bps": 0,
+  "max_seeders": 0,
+  "peer_networks_that_were_seeders": [],
+  "sample_count": 2,
+  "samples": [
+    {
+      "completed": 0,
+      "connections": 0,
+      "error": "active",
+      "info_hash": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+      "num_seeders": 0,
+      "peers_listed": 0,
+      "speed_bps": 0,
+      "t": 0.0
+    },
+    {
+      "completed": 0,
+      "connections": 22,
+      "error": "active",
+      "info_hash": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+      "num_seeders": 0,
+      "peers_listed": 0,
+      "speed_bps": 0,
+      "t": 1.0
+    }
+  ],
+  "stop_detail": "HTTPError: HTTP Error 400: Bad Request",
+  "stop_reason": "status_unavailable"
+}

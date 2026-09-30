@@ -1,0 +1,68 @@
+
+09/30 05:11:30 [[1;32mNOTICE[0m] Downloading 1 item(s)
+
+09/30 05:11:30 [[1;33mWARN[0m] Neither --rpc-secret nor a combination of --rpc-user and --rpc-passwd is set. This is insecure. It is extremely recommended to specify --rpc-secret with the adequate secrecy or now deprecated --rpc-user and --rpc-passwd.
+
+09/30 05:11:30 [[1;32mNOTICE[0m] IPv4 RPC: listening on TCP port 6802
+
+09/30 05:11:30 [[1;32mNOTICE[0m] IPv6 RPC: listening on TCP port 6802
+
+09/30 05:11:30 [[1;32mNOTICE[0m] IPv4 DHT: listening on UDP port 6881
+
+09/30 05:11:30 [[1;32mNOTICE[0m] IPv4 BitTorrent: listening on TCP port 6881
+
+09/30 05:11:30 [[1;32mNOTICE[0m] IPv6 BitTorrent: listening on TCP port 6881
+[#572e7e 0B/0B CN:0 SD:0 DL:0B]
+[#572e7e 0B/0B CN:0 SD:0 DL:0B]
+[#572e7e 0B/0B CN:5 SD:0 DL:0B]
+[#572e7e 16KiB/37KiB(42%) CN:5 SD:1 DL:0B]
+[#572e7e 37KiB/37KiB(100%) CN:3 SD:0]
+
+09/30 05:11:35 [[1;32mNOTICE[0m] Download complete: [MEMORY][METADATA]fed3a1e271827a2094b93ecbe738dbf3bd58c5cf
+
+09/30 05:11:35 [[1;32mNOTICE[0m] Saved metadata as /home/runner/work/_temp/exp18-work/dht_run/fed3a1e271827a2094b93ecbe738dbf3bd58c5cf.torrent.
+[#24c76b 0B/0.9GiB(0%) CN:0 SD:0 DL:0B]
+[#24c76b 0B/0.9GiB(0%) CN:0 SD:0 DL:0B]
+[#24c76b 0B/0.9GiB(0%) CN:0 SD:0 DL:0B]
+[#24c76b 0B/0.9GiB(0%) CN:0 SD:0 DL:0B]
+[#24c76b 0B/0.9GiB(0%) CN:0 SD:0 DL:0B]
+[#24c76b 0B/0.9GiB(0%) CN:0 SD:0 DL:0B]
+[#24c76b 0B/0.9GiB(0%) CN:0 SD:0 DL:0B]
+[#24c76b 0B/0.9GiB(0%) CN:0 SD:0 DL:0B]
+[#24c76b 0B/0.9GiB(0%) CN:0 SD:0 DL:0B]
+ *** Download Progress Summary as of Wed Sep 30 05:11:45 2026 *** 
+===============================================================================
+[#24c76b 0B/0.9GiB(0%) CN:0 SD:0 DL:0B]
+FILE: /home/runner/work/_temp/exp18-work/dht_run/sentence-transformers__all-MiniLM-L6-v2/1_Pooling/config.json (28more)
+-------------------------------------------------------------------------------
+
+[#24c76b 0B/0.9GiB(0%) CN:0 SD:0 DL:0B]
+[#24c76b 0B/0.9GiB(0%) CN:5 SD:0 DL:0B]
+[#24c76b 16KiB/0.9GiB(0%) CN:5 SD:3 DL:200KiB ETA:1h19m30s]
+[#24c76b 592KiB/0.9GiB(0%) CN:5 SD:3 DL:549KiB ETA:28m54s]
+[#24c76b 1.2MiB/0.9GiB(0%) CN:5 SD:3 DL:618KiB ETA:25m39s]
+[#24c76b 2.5MiB/0.9GiB(0%) CN:5 SD:3 DL:856KiB ETA:18m31s]
+[#24c76b 4.0MiB/0.9GiB(0%) CN:5 SD:3 DL:0.9MiB ETA:15m30s]
+[#24c76b 6.9MiB/0.9GiB(0%) CN:5 SD:3 DL:1.3MiB ETA:11m18s]
+[#24c76b 10MiB/0.9GiB(1%) CN:5 SD:3 DL:1.6MiB ETA:9m14s]
+[#24c76b 13MiB/0.9GiB(1%) CN:5 SD:3 DL:1.8MiB ETA:8m11s]
+[#24c76b 16MiB/0.9GiB(1%) CN:5 SD:3 DL:2.0MiB ETA:7m31s]
+[#24c76b 19MiB/0.9GiB(2%) CN:10 SD:3 DL:2.1MiB ETA:7m2s]
+[#24c76b 22MiB/0.9GiB(2%) CN:10 SD:4 DL:2.3MiB ETA:6m20s]
+
+09/30 05:11:57 [[1;32mNOTICE[0m] 3 second(s) has passed. Stopping application.
+[#24c76b 22MiB/0.9GiB(2%) CN:6 SD:1 DL:2.2MiB ETA:6m45s]
+
+09/30 05:11:59 [[1;32mNOTICE[0m] Download GID#24c76b8f8bf16053 not complete: /home/runner/work/_temp/exp18-work/dht_run/sentence-transformers__all-MiniLM-L6-v2
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+572e7e|OK  |       0B/s|[MEMORY][METADATA]fed3a1e271827a2094b93ecbe738dbf3bd58c5cf
+24c76b|INPR|   0.9MiB/s|/home/runner/work/_temp/exp18-work/dht_run/sentence-transformers__all-MiniLM-L6-v2/1_Pooling/config.json (28more)
+
+Status Legend:
+(OK):download completed.(INPR):download in-progress.
+
+aria2 will resume download if the transfer is restarted.
+If there are any errors, then see the log file. See '-l' option in help/man page for details.

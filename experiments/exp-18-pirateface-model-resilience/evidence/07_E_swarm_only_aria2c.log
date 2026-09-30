@@ -1,0 +1,68 @@
+
+09/30 05:21:55 [[1;32mNOTICE[0m] Downloading 1 item(s)
+
+09/30 05:21:55 [[1;33mWARN[0m] Neither --rpc-secret nor a combination of --rpc-user and --rpc-passwd is set. This is insecure. It is extremely recommended to specify --rpc-secret with the adequate secrecy or now deprecated --rpc-user and --rpc-passwd.
+
+09/30 05:21:55 [[1;32mNOTICE[0m] IPv4 RPC: listening on TCP port 6801
+
+09/30 05:21:55 [[1;32mNOTICE[0m] IPv6 RPC: listening on TCP port 6801
+
+09/30 05:21:55 [[1;32mNOTICE[0m] IPv4 DHT: listening on UDP port 6881
+
+09/30 05:21:55 [[1;32mNOTICE[0m] IPv4 BitTorrent: listening on TCP port 6881
+
+09/30 05:21:55 [[1;32mNOTICE[0m] IPv6 BitTorrent: listening on TCP port 6881
+[#f6cb76 0B/0B CN:39 SD:0 DL:0B]
+[#f6cb76 37KiB/37KiB(100%) CN:29 SD:1]
+
+09/30 05:21:58 [[1;32mNOTICE[0m] Download complete: [MEMORY][METADATA]fed3a1e271827a2094b93ecbe738dbf3bd58c5cf
+
+09/30 05:21:58 [[1;32mNOTICE[0m] Saved metadata as /home/runner/work/_temp/exp18-work/swarm_run/fed3a1e271827a2094b93ecbe738dbf3bd58c5cf.torrent.
+[#e33130 0B/0.9GiB(0%) CN:21 SD:0 DL:0B]
+[#e33130 20MiB/0.9GiB(2%) CN:21 SD:8 DL:23MiB ETA:38s]
+[#e33130 137MiB/0.9GiB(14%) CN:21 SD:8 DL:74MiB ETA:10s]
+[#e33130 281MiB/0.9GiB(30%) CN:21 SD:9 DL:99MiB ETA:6s]
+[#e33130 454MiB/0.9GiB(48%) CN:21 SD:9 DL:118MiB ETA:4s]
+[#e33130 627MiB/0.9GiB(67%) CN:21 SD:9 DL:129MiB ETA:2s]
+[#e33130 803MiB/0.9GiB(86%) CN:21 SD:9 DL:137MiB]
+
+09/30 05:22:05 [[1;32mNOTICE[0m] Seeding is over.
+[#e33130 SEED(0.0) CN:13 SD:0]
+
+09/30 05:22:08 [[1;32mNOTICE[0m] Download complete: /home/runner/work/_temp/exp18-work/swarm_run/sentence-transformers__all-MiniLM-L6-v2
+
+09/30 05:22:08 [[1;32mNOTICE[0m] Your share ratio was 0.0, uploaded/downloaded=0B/0.9GiB
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+09/30 05:22:30 [[1;32mNOTICE[0m] 3 second(s) has passed. Stopping application.
+
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+f6cb76|OK  |       0B/s|[MEMORY][METADATA]fed3a1e271827a2094b93ecbe738dbf3bd58c5cf
+e33130|OK  |   121MiB/s|/home/runner/work/_temp/exp18-work/swarm_run/sentence-transformers__all-MiniLM-L6-v2/1_Pooling/config.json (28more)
+
+Status Legend:
+(OK):download completed.

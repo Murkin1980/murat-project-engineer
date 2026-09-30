@@ -1,0 +1,363 @@
+
+09/30 04:57:23 [[1;32mNOTICE[0m] Downloading 1 item(s)
+
+09/30 04:57:23 [[1;33mWARN[0m] Neither --rpc-secret nor a combination of --rpc-user and --rpc-passwd is set. This is insecure. It is extremely recommended to specify --rpc-secret with the adequate secrecy or now deprecated --rpc-user and --rpc-passwd.
+
+09/30 04:57:23 [[1;32mNOTICE[0m] IPv4 RPC: listening on TCP port 6801
+
+09/30 04:57:23 [[1;32mNOTICE[0m] IPv6 RPC: listening on TCP port 6801
+
+09/30 04:57:23 [[1;32mNOTICE[0m] IPv4 DHT: listening on UDP port 6881
+
+09/30 04:57:23 [[1;32mNOTICE[0m] IPv4 BitTorrent: listening on TCP port 6881
+
+09/30 04:57:23 [[1;32mNOTICE[0m] IPv6 BitTorrent: listening on TCP port 6881
+[#4693af 0B/0B CN:22 SD:0 DL:0B]
+[#4693af 37KiB/37KiB(100%) CN:12 SD:1]
+
+09/30 04:57:25 [[1;32mNOTICE[0m] Download complete: [MEMORY][METADATA]fed3a1e271827a2094b93ecbe738dbf3bd58c5cf
+
+09/30 04:57:25 [[1;32mNOTICE[0m] Saved metadata as /home/runner/work/_temp/exp18-work/swarm_run/fed3a1e271827a2094b93ecbe738dbf3bd58c5cf.torrent.
+[#c53be5 0B/0.9GiB(0%) CN:17 SD:0 DL:0B]
+[#c53be5 1.4MiB/0.9GiB(0%) CN:17 SD:7 DL:1.9MiB ETA:7m53s]
+[#c53be5 6.6MiB/0.9GiB(0%) CN:17 SD:8 DL:3.8MiB ETA:4m]
+[#c53be5 14MiB/0.9GiB(1%) CN:17 SD:9 DL:5.4MiB ETA:2m48s]
+[#c53be5 28MiB/0.9GiB(3%) CN:17 SD:9 DL:7.7MiB ETA:1m56s]
+[#c53be5 47MiB/0.9GiB(5%) CN:17 SD:9 DL:10MiB ETA:1m26s]
+[#c53be5 80MiB/0.9GiB(8%) CN:17 SD:9 DL:14MiB ETA:1m]
+[#c53be5 122MiB/0.9GiB(13%) CN:17 SD:9 DL:18MiB ETA:43s]
+[#c53be5 171MiB/0.9GiB(18%) CN:17 SD:9 DL:22MiB ETA:34s]
+[#c53be5 217MiB/0.9GiB(23%) CN:17 SD:9 DL:25MiB ETA:28s]
+[#c53be5 264MiB/0.9GiB(28%) CN:17 SD:9 DL:27MiB ETA:24s]
+[#c53be5 310MiB/0.9GiB(33%) CN:22 SD:9 DL:32MiB ETA:19s]
+[#c53be5 360MiB/0.9GiB(38%) CN:22 SD:10 DL:36MiB ETA:15s]
+ *** Download Progress Summary as of Wed Sep 30 04:57:39 2026 *** 
+===============================================================================
+[#c53be5 414MiB/0.9GiB(44%) CN:20 SD:10 DL:41MiB ETA:12s]
+FILE: /home/runner/work/_temp/exp18-work/swarm_run/sentence-transformers__all-MiniLM-L6-v2/1_Pooling/config.json (28more)
+-------------------------------------------------------------------------------
+
+[#c53be5 414MiB/0.9GiB(44%) CN:20 SD:10 DL:41MiB ETA:12s]
+[#c53be5 470MiB/0.9GiB(50%) CN:20 SD:10 DL:45MiB ETA:10s]
+[#c53be5 532MiB/0.9GiB(57%) CN:20 SD:10 DL:49MiB ETA:8s]
+[#c53be5 604MiB/0.9GiB(64%) CN:20 SD:10 DL:53MiB ETA:6s]
+[#c53be5 707MiB/0.9GiB(75%) CN:20 SD:10 DL:59MiB ETA:3s]
+[#c53be5 822MiB/0.9GiB(88%) CN:20 SD:10 DL:66MiB ETA:1s]
+[#c53be5 0.9GiB/0.9GiB(99%) CN:20 SD:10 DL:72MiB]
+
+09/30 04:57:45 [[1;32mNOTICE[0m] Seeding is over.
+[#c53be5 SEED(0.0) CN:10 SD:0]
+
+09/30 04:57:47 [[1;32mNOTICE[0m] Download complete: /home/runner/work/_temp/exp18-work/swarm_run/sentence-transformers__all-MiniLM-L6-v2
+
+09/30 04:57:47 [[1;32mNOTICE[0m] Your share ratio was 0.0, uploaded/downloaded=0B/0.9GiB
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+09/30 05:02:54 [[1;32mNOTICE[0m] Emergency shutdown sequence commencing...
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+4693af|OK  |       0B/s|[MEMORY][METADATA]fed3a1e271827a2094b93ecbe738dbf3bd58c5cf
+c53be5|OK  |    47MiB/s|/home/runner/work/_temp/exp18-work/swarm_run/sentence-transformers__all-MiniLM-L6-v2/1_Pooling/config.json (28more)
+
+Status Legend:
+(OK):download completed.

@@ -1,0 +1,90 @@
+# EXP-18 harness — TEMPORARY experiment runner.
+#
+# This workflow exists only to run the bounded EXP-18 retrieval test
+# (experiments/exp-18-pirateface-model-resilience/README.md) on a host that can
+# reach both huggingface.co and pirateface.co. It is not used by production,
+# deploys nothing, publishes nothing, uses no secrets, and is deleted once the
+# experiment has recorded its evidence. No production system depends on it.
+#
+# The authoring agent sandbox has an allow-listed network egress (GitHub and
+# package registries only), so it cannot reach either distribution path itself;
+# see experiments/exp-18-pirateface-model-resilience/METHOD.md.
+#
+# Note: workflow_dispatch requires the file on the default branch, so this
+# harness is triggered by pushes that touch the harness directory instead. It is
+# never merged to main.
+name: EXP-18 harness (temporary)
+
+on:
+  push:
+    branches:
+      - arena/01a0f09e-murat-project-engineer
+    paths:
+      - 'experiments/exp-18-pirateface-model-resilience/**'
+      - '.github/workflows/exp18-harness.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: exp18-harness-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  exp18:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install aria2 (ephemeral runner tool, not a repository dependency)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq aria2
+
+      - name: Run EXP-18 harness
+        env:
+          # Hard cap for the recorded stages: the harness skips stages instead of
+          # overrunning so that evidence is always written and committed.
+          HARNESS_BUDGET: '1800'
+          TORRENT_TIMEOUT: '300'
+        run: bash experiments/exp-18-pirateface-model-resilience/harness/run_exp18.sh
+
+      - name: Print key evidence to the job log
+        if: always()
+        run: |
+          E=experiments/exp-18-pirateface-model-resilience/evidence
+          for f in 13_comparison.json 13b_dht_only_comparison.json 15_exp18_run_summary.json 09_source_loss_proof.txt; do
+            echo "===== $f ====="
+            cat "$E/$f" 2>/dev/null || echo "(missing)"
+          done
+
+      - name: Upload evidence bundle
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: exp18-evidence
+          path: experiments/exp-18-pirateface-model-resilience/evidence/**
+          if-no-files-found: warn
+          retention-days: 14
+
+      # The authoring sandbox can reach git but not the Actions artifact CDN, so
+      # the evidence is also committed straight back to the experiment branch.
+      - name: Commit evidence back to the experiment branch
+        if: always()
+        run: |
+          set -e
+          E=experiments/exp-18-pirateface-model-resilience/evidence
+          test -d "$E" || { echo "no evidence directory"; exit 0; }
+          git config user.name "exp18-harness"
+          git config user.email "exp18-harness@users.noreply.github.com"
+          git add -f "$E"
+          if git diff --cached --quiet; then echo "no evidence changes to commit"; exit 0; fi
+          git commit -m "EXP-18: harness evidence (run ${GITHUB_RUN_ID})"
+          for attempt in 1 2 3; do
+            git pull --rebase origin "$GITHUB_REF_NAME" || true
+            if git push origin "HEAD:$GITHUB_REF_NAME"; then echo "evidence pushed"; exit 0; fi
+            sleep 5
+          done
+          echo "evidence push failed after retries"; exit 1

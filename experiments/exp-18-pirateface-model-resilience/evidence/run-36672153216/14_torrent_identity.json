@@ -1,0 +1,293 @@
+{
+  "generated_utc": "2026-09-30T05:19:00Z",
+  "normal_retrieval_metainfo": {
+    "announce_list": [
+      [
+        "udp://tracker.pirateface.co:6969/announce"
+      ],
+      [
+        "http://tracker.pirateface.co:6969/announce"
+      ]
+    ],
+    "comment": null,
+    "creation_date_utc": null,
+    "creator": null,
+    "file_count": 29,
+    "files": [
+      {
+        "length": 190,
+        "path": "1_Pooling/config.json"
+      },
+      {
+        "length": 10502,
+        "path": "README.md"
+      },
+      {
+        "length": 612,
+        "path": "config.json"
+      },
+      {
+        "length": 116,
+        "path": "config_sentence_transformers.json"
+      },
+      {
+        "length": 39265,
+        "path": "data_config.json"
+      },
+      {
+        "length": 90868376,
+        "path": "model.safetensors"
+      },
+      {
+        "length": 349,
+        "path": "modules.json"
+      },
+      {
+        "length": 90405214,
+        "path": "onnx/model.onnx"
+      },
+      {
+        "length": 90360328,
+        "path": "onnx/model_O1.onnx"
+      },
+      {
+        "length": 90326566,
+        "path": "onnx/model_O2.onnx"
+      },
+      {
+        "length": 90326497,
+        "path": "onnx/model_O3.onnx"
+      },
+      {
+        "length": 45212349,
+        "path": "onnx/model_O4.onnx"
+      },
+      {
+        "length": 23026053,
+        "path": "onnx/model_qint8_arm64.onnx"
+      },
+      {
+        "length": 23026053,
+        "path": "onnx/model_qint8_avx512.onnx"
+      },
+      {
+        "length": 23026053,
+        "path": "onnx/model_qint8_avx512_vnni.onnx"
+      },
+      {
+        "length": 23046789,
+        "path": "onnx/model_quint8_avx2.onnx"
+      },
+      {
+        "length": 90265744,
+        "path": "openvino/openvino_model.bin"
+      },
+      {
+        "length": 211315,
+        "path": "openvino/openvino_model.xml"
+      },
+      {
+        "length": 22933664,
+        "path": "openvino/openvino_model_qint8_quantized.bin"
+      },
+      {
+        "length": 368006,
+        "path": "openvino/openvino_model_qint8_quantized.xml"
+      },
+      {
+        "length": 90888945,
+        "path": "pytorch_model.bin"
+      },
+      {
+        "length": 90887379,
+        "path": "rust_model.ot"
+      },
+      {
+        "length": 53,
+        "path": "sentence_bert_config.json"
+      },
+      {
+        "length": 112,
+        "path": "special_tokens_map.json"
+      },
+      {
+        "length": 91005696,
+        "path": "tf_model.h5"
+      },
+      {
+        "length": 466247,
+        "path": "tokenizer.json"
+      },
+      {
+        "length": 350,
+        "path": "tokenizer_config.json"
+      },
+      {
+        "length": 13156,
+        "path": "train_script.py"
+      },
+      {
+        "length": 231508,
+        "path": "vocab.txt"
+      }
+    ],
+    "has_web_seed_in_metainfo": false,
+    "info_hash_sha1": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+    "is_private": false,
+    "metainfo_bytes": 38962,
+    "metainfo_sha256": "f18ff283095e07de552f6828d6cd13fa45d4c969b780ae58622ca181edaf63e0",
+    "name": "sentence-transformers__all-MiniLM-L6-v2",
+    "piece_count": 1864,
+    "piece_length": 524288,
+    "piece_table_sha1": "285c73f37b7799280b1764880b1aa85251cdb122",
+    "torrent_file": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf.torrent",
+    "total_length": 976947487,
+    "url_list_web_seeds": null
+  },
+  "same_info_hash": true,
+  "same_piece_table_and_file_list": true,
+  "swarm_only_retrieval_metainfo": {
+    "announce_list": [
+      [
+        "udp://tracker.pirateface.co:6969/announce"
+      ],
+      [
+        "http://tracker.pirateface.co:6969/announce"
+      ]
+    ],
+    "comment": null,
+    "creation_date_utc": null,
+    "creator": null,
+    "file_count": 29,
+    "files": [
+      {
+        "length": 190,
+        "path": "1_Pooling/config.json"
+      },
+      {
+        "length": 10502,
+        "path": "README.md"
+      },
+      {
+        "length": 612,
+        "path": "config.json"
+      },
+      {
+        "length": 116,
+        "path": "config_sentence_transformers.json"
+      },
+      {
+        "length": 39265,
+        "path": "data_config.json"
+      },
+      {
+        "length": 90868376,
+        "path": "model.safetensors"
+      },
+      {
+        "length": 349,
+        "path": "modules.json"
+      },
+      {
+        "length": 90405214,
+        "path": "onnx/model.onnx"
+      },
+      {
+        "length": 90360328,
+        "path": "onnx/model_O1.onnx"
+      },
+      {
+        "length": 90326566,
+        "path": "onnx/model_O2.onnx"
+      },
+      {
+        "length": 90326497,
+        "path": "onnx/model_O3.onnx"
+      },
+      {
+        "length": 45212349,
+        "path": "onnx/model_O4.onnx"
+      },
+      {
+        "length": 23026053,
+        "path": "onnx/model_qint8_arm64.onnx"
+      },
+      {
+        "length": 23026053,
+        "path": "onnx/model_qint8_avx512.onnx"
+      },
+      {
+        "length": 23026053,
+        "path": "onnx/model_qint8_avx512_vnni.onnx"
+      },
+      {
+        "length": 23046789,
+        "path": "onnx/model_quint8_avx2.onnx"
+      },
+      {
+        "length": 90265744,
+        "path": "openvino/openvino_model.bin"
+      },
+      {
+        "length": 211315,
+        "path": "openvino/openvino_model.xml"
+      },
+      {
+        "length": 22933664,
+        "path": "openvino/openvino_model_qint8_quantized.bin"
+      },
+      {
+        "length": 368006,
+        "path": "openvino/openvino_model_qint8_quantized.xml"
+      },
+      {
+        "length": 90888945,
+        "path": "pytorch_model.bin"
+      },
+      {
+        "length": 90887379,
+        "path": "rust_model.ot"
+      },
+      {
+        "length": 53,
+        "path": "sentence_bert_config.json"
+      },
+      {
+        "length": 112,
+        "path": "special_tokens_map.json"
+      },
+      {
+        "length": 91005696,
+        "path": "tf_model.h5"
+      },
+      {
+        "length": 466247,
+        "path": "tokenizer.json"
+      },
+      {
+        "length": 350,
+        "path": "tokenizer_config.json"
+      },
+      {
+        "length": 13156,
+        "path": "train_script.py"
+      },
+      {
+        "length": 231508,
+        "path": "vocab.txt"
+      }
+    ],
+    "has_web_seed_in_metainfo": false,
+    "info_hash_sha1": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+    "is_private": false,
+    "metainfo_bytes": 38962,
+    "metainfo_sha256": "f18ff283095e07de552f6828d6cd13fa45d4c969b780ae58622ca181edaf63e0",
+    "name": "sentence-transformers__all-MiniLM-L6-v2",
+    "piece_count": 1864,
+    "piece_length": 524288,
+    "piece_table_sha1": "285c73f37b7799280b1764880b1aa85251cdb122",
+    "torrent_file": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf.torrent",
+    "total_length": 976947487,
+    "url_list_web_seeds": null
+  }
+}

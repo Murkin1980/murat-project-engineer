@@ -1,0 +1,84 @@
+
+09/30 05:21:13 [[1;32mNOTICE[0m] Downloading 1 item(s)
+
+09/30 05:21:13 [[1;33mWARN[0m] Neither --rpc-secret nor a combination of --rpc-user and --rpc-passwd is set. This is insecure. It is extremely recommended to specify --rpc-secret with the adequate secrecy or now deprecated --rpc-user and --rpc-passwd.
+
+09/30 05:21:13 [[1;32mNOTICE[0m] IPv4 RPC: listening on TCP port 6800
+
+09/30 05:21:13 [[1;32mNOTICE[0m] IPv6 RPC: listening on TCP port 6800
+
+09/30 05:21:13 [[1;31mERROR[0m] Exception caught while loading DHT routing table from /home/runner/.cache/aria2/dht.dat
+Exception: [DHTRoutingTableDeserializer.cc:82] errorCode=1 Failed to load DHT routing table from /home/runner/.cache/aria2/dht.dat
+
+09/30 05:21:13 [[1;32mNOTICE[0m] IPv4 DHT: listening on UDP port 6881
+
+09/30 05:21:13 [[1;32mNOTICE[0m] IPv4 BitTorrent: listening on TCP port 6881
+
+09/30 05:21:13 [[1;32mNOTICE[0m] IPv6 BitTorrent: listening on TCP port 6881
+[#24f94f 0B/0B CN:19 SD:0 DL:0B]
+[#24f94f 37KiB/37KiB(100%) CN:10 SD:1]
+
+09/30 05:21:15 [[1;32mNOTICE[0m] Download complete: [MEMORY][METADATA]fed3a1e271827a2094b93ecbe738dbf3bd58c5cf
+
+09/30 05:21:15 [[1;32mNOTICE[0m] Saved metadata as /home/runner/work/_temp/exp18-work/pf_run/fed3a1e271827a2094b93ecbe738dbf3bd58c5cf.torrent.
+[#97d0df 0B/0.9GiB(0%) CN:19 SD:0 DL:0B]
+[#97d0df 2.3MiB/0.9GiB(0%) CN:19 SD:7 DL:2.7MiB ETA:5m35s]
+[#97d0df 10MiB/0.9GiB(1%) CN:19 SD:8 DL:5.7MiB ETA:2m39s]
+[#97d0df 27MiB/0.9GiB(2%) CN:19 SD:9 DL:9.5MiB ETA:1m34s]
+[#97d0df 54MiB/0.9GiB(5%) CN:19 SD:9 DL:14MiB ETA:1m1s]
+[#97d0df 92MiB/0.9GiB(9%) CN:19 SD:9 DL:19MiB ETA:44s]
+[#97d0df 132MiB/0.9GiB(14%) CN:19 SD:9 DL:22MiB ETA:35s]
+[#97d0df 190MiB/0.9GiB(20%) CN:19 SD:9 DL:28MiB ETA:26s]
+[#97d0df 302MiB/0.9GiB(32%) CN:19 SD:9 DL:38MiB ETA:16s]
+[#97d0df 448MiB/0.9GiB(48%) CN:19 SD:9 DL:50MiB ETA:9s]
+[#97d0df 621MiB/0.9GiB(66%) CN:19 SD:9 DL:63MiB ETA:4s]
+[#97d0df 794MiB/0.9GiB(85%) CN:24 SD:9 DL:80MiB ETA:1s]
+[#97d0df 919MiB/0.9GiB(98%) CN:24 SD:9 DL:92MiB]
+
+09/30 05:21:28 [[1;32mNOTICE[0m] Seeding is over.
+ *** Download Progress Summary as of Wed Sep 30 05:21:29 2026 *** 
+===============================================================================
+[#97d0df SEED(0.0) CN:13 SD:0]
+FILE: /home/runner/work/_temp/exp18-work/pf_run/sentence-transformers__all-MiniLM-L6-v2/1_Pooling/config.json (28more)
+-------------------------------------------------------------------------------
+
+[#97d0df SEED(0.0) CN:13 SD:0]
+
+09/30 05:21:31 [[1;32mNOTICE[0m] Download complete: /home/runner/work/_temp/exp18-work/pf_run/sentence-transformers__all-MiniLM-L6-v2
+
+09/30 05:21:31 [[1;32mNOTICE[0m] Your share ratio was 0.0, uploaded/downloaded=0B/0.9GiB
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+09/30 05:21:53 [[1;32mNOTICE[0m] 3 second(s) has passed. Stopping application.
+
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+24f94f|OK  |       0B/s|[MEMORY][METADATA]fed3a1e271827a2094b93ecbe738dbf3bd58c5cf
+97d0df|OK  |    72MiB/s|/home/runner/work/_temp/exp18-work/pf_run/sentence-transformers__all-MiniLM-L6-v2/1_Pooling/config.json (28more)
+
+Status Legend:
+(OK):download completed.

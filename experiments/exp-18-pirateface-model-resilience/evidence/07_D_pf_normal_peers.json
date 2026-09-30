@@ -1,0 +1,291 @@
+{
+  "distinct_peer_network_count": 10,
+  "distinct_peer_networks": {
+    "146.212.x.x": {
+      "seeder": true,
+      "seen": 11
+    },
+    "147.90.x.x": {
+      "seeder": true,
+      "seen": 11
+    },
+    "178.162.x.x": {
+      "seeder": true,
+      "seen": 11
+    },
+    "180.149.x.x": {
+      "seeder": true,
+      "seen": 11
+    },
+    "181.41.x.x": {
+      "seeder": true,
+      "seen": 11
+    },
+    "185.21.x.x": {
+      "seeder": true,
+      "seen": 11
+    },
+    "187.127.x.x": {
+      "seeder": true,
+      "seen": 11
+    },
+    "5.79.x.x": {
+      "seeder": true,
+      "seen": 11
+    },
+    "69.42.x.x": {
+      "seeder": true,
+      "seen": 11
+    },
+    "79.127.x.x": {
+      "seeder": true,
+      "seen": 11
+    }
+  },
+  "elapsed_seconds": 37.3,
+  "info_hash": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+  "last_completed_bytes": 976947487,
+  "last_total_bytes": 976947487,
+  "max_connections": 24,
+  "max_download_speed_bps": 105801223,
+  "max_seeders": 9,
+  "peer_networks_that_were_seeders": [
+    "146.212.x.x",
+    "147.90.x.x",
+    "178.162.x.x",
+    "180.149.x.x",
+    "181.41.x.x",
+    "185.21.x.x",
+    "187.127.x.x",
+    "5.79.x.x",
+    "69.42.x.x",
+    "79.127.x.x"
+  ],
+  "sample_count": 17,
+  "samples": [
+    {
+      "bittorrent_mode": null,
+      "completed": 0,
+      "connections": 0,
+      "error": "active",
+      "gid": "24f94f77dad0bfed",
+      "info_hash": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+      "num_seeders": 0,
+      "peers_listed": 0,
+      "speed_bps": 0,
+      "t": 0.0,
+      "total": 0
+    },
+    {
+      "bittorrent_mode": null,
+      "completed": 0,
+      "connections": 19,
+      "error": "active",
+      "gid": "24f94f77dad0bfed",
+      "info_hash": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+      "num_seeders": 0,
+      "peers_listed": 0,
+      "speed_bps": 0,
+      "t": 1.0,
+      "total": 0
+    },
+    {
+      "bittorrent_mode": "multi",
+      "completed": 0,
+      "connections": 0,
+      "error": "active",
+      "gid": "97d0dfef73724c94",
+      "info_hash": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+      "num_seeders": 0,
+      "peers_listed": 0,
+      "speed_bps": 0,
+      "t": 2.0,
+      "total": 976947487
+    },
+    {
+      "bittorrent_mode": "multi",
+      "completed": 0,
+      "connections": 19,
+      "error": "active",
+      "gid": "97d0dfef73724c94",
+      "info_hash": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+      "num_seeders": 0,
+      "peers_listed": 0,
+      "speed_bps": 0,
+      "t": 3.0,
+      "total": 976947487
+    },
+    {
+      "bittorrent_mode": "multi",
+      "completed": 2555904,
+      "connections": 19,
+      "error": "active",
+      "gid": "97d0dfef73724c94",
+      "info_hash": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+      "num_seeders": 7,
+      "peers_listed": 9,
+      "speed_bps": 2917698,
+      "t": 4.0,
+      "total": 976947487
+    },
+    {
+      "bittorrent_mode": "multi",
+      "completed": 11501568,
+      "connections": 19,
+      "error": "active",
+      "gid": "97d0dfef73724c94",
+      "info_hash": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+      "num_seeders": 8,
+      "peers_listed": 10,
+      "speed_bps": 6164708,
+      "t": 5.0,
+      "total": 976947487
+    },
+    {
+      "bittorrent_mode": "multi",
+      "completed": 29769728,
+      "connections": 19,
+      "error": "active",
+      "gid": "97d0dfef73724c94",
+      "info_hash": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+      "num_seeders": 9,
+      "peers_listed": 10,
+      "speed_bps": 10367244,
+      "t": 6.1,
+      "total": 976947487
+    },
+    {
+      "bittorrent_mode": "multi",
+      "completed": 59555840,
+      "connections": 19,
+      "error": "active",
+      "gid": "97d0dfef73724c94",
+      "info_hash": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+      "num_seeders": 9,
+      "peers_listed": 10,
+      "speed_bps": 15358945,
+      "t": 7.1,
+      "total": 976947487
+    },
+    {
+      "bittorrent_mode": "multi",
+      "completed": 97861632,
+      "connections": 19,
+      "error": "active",
+      "gid": "97d0dfef73724c94",
+      "info_hash": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+      "num_seeders": 9,
+      "peers_listed": 10,
+      "speed_bps": 20049106,
+      "t": 8.1,
+      "total": 976947487
+    },
+    {
+      "bittorrent_mode": "multi",
+      "completed": 144506880,
+      "connections": 19,
+      "error": "active",
+      "gid": "97d0dfef73724c94",
+      "info_hash": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+      "num_seeders": 9,
+      "peers_listed": 10,
+      "speed_bps": 24555133,
+      "t": 9.1,
+      "total": 976947487
+    },
+    {
+      "bittorrent_mode": "multi",
+      "completed": 202964992,
+      "connections": 19,
+      "error": "active",
+      "gid": "97d0dfef73724c94",
+      "info_hash": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+      "num_seeders": 9,
+      "peers_listed": 10,
+      "speed_bps": 29467899,
+      "t": 10.1,
+      "total": 976947487
+    },
+    {
+      "bittorrent_mode": "multi",
+      "completed": 330989568,
+      "connections": 19,
+      "error": "active",
+      "gid": "97d0dfef73724c94",
+      "info_hash": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+      "num_seeders": 9,
+      "peers_listed": 10,
+      "speed_bps": 41904552,
+      "t": 11.1,
+      "total": 976947487
+    },
+    {
+      "bittorrent_mode": "multi",
+      "completed": 485146624,
+      "connections": 19,
+      "error": "active",
+      "gid": "97d0dfef73724c94",
+      "info_hash": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+      "num_seeders": 9,
+      "peers_listed": 10,
+      "speed_bps": 54503530,
+      "t": 12.1,
+      "total": 976947487
+    },
+    {
+      "bittorrent_mode": "multi",
+      "completed": 688359711,
+      "connections": 24,
+      "error": "active",
+      "gid": "97d0dfef73724c94",
+      "info_hash": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+      "num_seeders": 9,
+      "peers_listed": 10,
+      "speed_bps": 76101710,
+      "t": 13.2,
+      "total": 976947487
+    },
+    {
+      "bittorrent_mode": "multi",
+      "completed": 861604127,
+      "connections": 24,
+      "error": "active",
+      "gid": "97d0dfef73724c94",
+      "info_hash": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+      "num_seeders": 9,
+      "peers_listed": 10,
+      "speed_bps": 93695522,
+      "t": 14.2,
+      "total": 976947487
+    },
+    {
+      "bittorrent_mode": "multi",
+      "completed": 976947487,
+      "connections": 14,
+      "error": "active",
+      "gid": "97d0dfef73724c94",
+      "info_hash": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+      "num_seeders": 1,
+      "peers_listed": 1,
+      "speed_bps": 105801223,
+      "t": 15.2,
+      "total": 976947487
+    },
+    {
+      "bittorrent_mode": "multi",
+      "completed": 976947487,
+      "connections": 0,
+      "error": "active",
+      "gid": "97d0dfef73724c94",
+      "info_hash": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+      "num_seeders": 0,
+      "peers_listed": 0,
+      "speed_bps": 102368590,
+      "t": 16.2,
+      "total": 976947487
+    }
+  ],
+  "saw_active_download": true,
+  "stop_detail": "nothing active for 20 consecutive polls after the transfer started; aria2c stopped via aria2.shutdown",
+  "stop_reason": "no_active_download"
+}

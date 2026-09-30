@@ -1,0 +1,34 @@
+{
+  "announce": {
+    "interval_seconds": 1642,
+    "leechers": 0,
+    "ok": true,
+    "peer_networks": [
+      "129.222.x.x",
+      "146.212.x.x",
+      "147.90.x.x",
+      "151.243.x.x",
+      "178.162.x.x",
+      "180.149.x.x",
+      "181.41.x.x",
+      "185.21.x.x",
+      "187.127.x.x",
+      "20.118.x.x",
+      "20.171.x.x",
+      "46.188.x.x",
+      "5.79.x.x",
+      "64.236.x.x",
+      "64.238.x.x",
+      "69.42.x.x",
+      "79.127.x.x",
+      "9.234.x.x"
+    ],
+    "peers_returned": 18,
+    "seeders": 18
+  },
+  "elapsed_seconds": 0.47,
+  "infohash": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+  "observed_utc": "2026-09-30T05:21:13Z",
+  "resolved_ip": "187.127.110.248",
+  "tracker": "udp://tracker.pirateface.co:6969/announce"
+}

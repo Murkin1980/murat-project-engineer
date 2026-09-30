@@ -1,0 +1,9 @@
+tag=E_swarm_only
+aria2c_exit_code=0
+wall_seconds=36
+client_reported_payload_download_complete=yes
+download_result_lines_ok=2
+download_result_lines_in_progress=0
+sampler_last_completed_bytes=976947487
+sampler_last_total_bytes=976947487
+webseed_mentions_in_client_log=0
