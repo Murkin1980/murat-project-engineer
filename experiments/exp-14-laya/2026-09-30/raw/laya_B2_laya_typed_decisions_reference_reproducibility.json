@@ -1,0 +1,47 @@
+{
+  "sequence": "B_LAYA_ZERO_SHOT",
+  "arm": "B2_laya_typed_decisions_reference",
+  "dataset_id": "exp-14-frozen-v1",
+  "dataset_sha256": "aef7d8bfcefd2b4132073eaf52e570aee2b5d5aebf318e5d556f6d4d3803b648",
+  "candidate": {
+    "sdk_pin": "laya==0.3.22",
+    "sdk_version_observed": "0.3.22",
+    "hf_repo": "convaiinnovations/laya",
+    "subfolder": "typed-decisions",
+    "requested_revision": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+    "resolved_revision": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+    "revision_matches_pin": true,
+    "device": "cpu",
+    "dtype": "torch.float32",
+    "max_len": 1024,
+    "head_max_len": 256,
+    "model_dir": "None",
+    "load_seconds": 7.247,
+    "questions_sha256": "19575f23d121b2f0ff2276a2fe3be5cf096a3689d0061dca414bccf7e2cefc27",
+    "noul_threshold": 0.5,
+    "zero_shot": true,
+    "few_shot_examples_supplied": 0,
+    "oracle_values_supplied": false,
+    "calibration_applied": false,
+    "fine_tuning_applied": true,
+    "checkpoint_note": "typed-decisions = the vendor checkpoint already fine-tuned on its own typed-decisions benchmark training split; run as a clearly separated SECONDARY reference arm (B2), never mixed into the primary zero-shot result"
+  },
+  "passes": 3,
+  "pass_files": [
+    "raw/laya_B2_laya_typed_decisions_reference_pass1.json",
+    "raw/laya_B2_laya_typed_decisions_reference_pass2.json",
+    "raw/laya_B2_laya_typed_decisions_reference_pass3.json"
+  ],
+  "pass_file_sha256": [
+    "a4e81ccf6f471c276381855379a35da5c9df056ff30cc5200cbab02183fe54d7",
+    "b6cd6fa7ce29f4a518b6e390249a893496acc20951139139d298f330104a104c",
+    "f5d5e7ee40342bf0ef0c3457bba22ea7faadfab9885d44ffb0a532a65ee558c1"
+  ],
+  "decisions_identical_across_passes": true,
+  "reproducible": true,
+  "warmup": {
+    "ok": true,
+    "seconds": 3.008
+  },
+  "status": "EXECUTED"
+}

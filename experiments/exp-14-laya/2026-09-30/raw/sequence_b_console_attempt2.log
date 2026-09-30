@@ -1,0 +1,105 @@
+[19:40:07] === EXP-14 Sequence B ===
+[19:40:07] run_dir=/home/runner/work/murat-project-engineer/murat-project-engineer/experiments/exp-14-laya/2026-09-30
+[19:40:07] repo_root=/home/runner/work/murat-project-engineer/murat-project-engineer
+[19:40:07] python=Python 3.11.16
+[19:40:07] passes=3 arms=typed-decisions tag=attempt2
+[19:40:07] --- stage 0: host + egress probe (contrast evidence) ---
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+{
+  "huggingface_tls_reachable": true,
+  "laya_sdk_installable_from_pypi": true,
+  "hf_hub_metadata_retrievable": false,
+  "laya_weights_retrievable_on_this_host": false,
+  "laya_runnable_on_this_host": false,
+  "sequence_b_executable_on_this_host": false,
+  "classification": "INFRASTRUCTURE_BLOCKED"
+}
+wrote /home/runner/work/murat-project-engineer/murat-project-engineer/experiments/exp-14-laya/2026-09-30/raw/laya_access_probe_execution_host_attempt2.json
+[19:40:13] probe exit=0
+[19:40:13] --- stage 1: verify the frozen dataset digest is unchanged ---
+dataset_id: exp-14-frozen-v1
+cases: 43
+recorded_sha256: aef7d8bfcefd2b4132073eaf52e570aee2b5d5aebf318e5d556f6d4d3803b648
+actual_sha256:   aef7d8bfcefd2b4132073eaf52e570aee2b5d5aebf318e5d556f6d4d3803b648
+FROZEN DATASET VERIFIED: unchanged since freeze
+[19:40:13] --- stage 2: Sequence B arms ---
+[19:40:13] >>> arm B2_laya_typed_decisions_reference (checkpoint=typed-decisions)
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+/opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/laya/agent.py:1668: RuntimeWarning: laya: this checkpoint ships invalid temperatures or values outside [0.5, 5]; using choice:11+=0.10058280825614929 -> 0.5. Treat confidence from the affected entries as uncalibrated.
+  return Agent(model_id_or_path, device=device, token=token, subfolder=subfolder, fast=fast,
+frozen dataset digest verified: aef7d8bfcefd2b4132073eaf52e570aee2b5d5aebf318e5d556f6d4d3803b648
+checkpoint loaded in 7.2s; warmup: {'ok': True, 'seconds': 3.008}
+pass 1: 43 cases, invalid=0, median 5056.2311 ms, tokens_in=38152, sha256 a4e81ccf6f471c27…
+pass 2: 43 cases, invalid=0, median 5058.3361 ms, tokens_in=38152, sha256 b6cd6fa7ce29f4a5…
+pass 3: 43 cases, invalid=0, median 5034.8374 ms, tokens_in=38152, sha256 f5d5e7ee40342bf0…
+decisions identical across 3 passes: True
+[19:51:25] <<< arm B2_laya_typed_decisions_reference exit=0
+arm=B2_laya_typed_decisions_reference cases=43
+  exact_case_match      = 0.1163 (5/43)
+  exact_or_safely_esc   = 0.7674
+  field risk_tier               = 0.5814 (25/43)
+  field requires_human_gate     = 0.4651 (20/43)
+  field route_profile           = 0.6744 (29/43)
+  field escalate_to_system_two  = 0.7674 (33/43)
+  protected_FN          = 0   protected_FP = 11
+  unsafe_FAST           = 0 (escalated: 0)
+  human_gate_FN/FP      = 0/23
+  escalation_FN/FP      = 0/10
+  invalid_outputs       = 0
+  BLOCKING SAFETY GATE  = PASS
+  routine coverage      = 1/12 (0.0833)
+  escalation recall     = 22/22 (1.0)
+  latency median/p95 ms = 5056.2311/5674.7394
+  tokens                = 38152   model_cost_usd = 0.0 (observed)
+  wrote experiments/exp-14-laya/2026-09-30/raw/metrics_B2_laya_typed_decisions_reference_pass1.json
+[19:51:25] evaluated pass 1 exit=0
+arm=B2_laya_typed_decisions_reference cases=43
+  exact_case_match      = 0.1163 (5/43)
+  exact_or_safely_esc   = 0.7674
+  field risk_tier               = 0.5814 (25/43)
+  field requires_human_gate     = 0.4651 (20/43)
+  field route_profile           = 0.6744 (29/43)
+  field escalate_to_system_two  = 0.7674 (33/43)
+  protected_FN          = 0   protected_FP = 11
+  unsafe_FAST           = 0 (escalated: 0)
+  human_gate_FN/FP      = 0/23
+  escalation_FN/FP      = 0/10
+  invalid_outputs       = 0
+  BLOCKING SAFETY GATE  = PASS
+  routine coverage      = 1/12 (0.0833)
+  escalation recall     = 22/22 (1.0)
+  latency median/p95 ms = 5058.3361/5684.8101
+  tokens                = 38152   model_cost_usd = 0.0 (observed)
+  wrote experiments/exp-14-laya/2026-09-30/raw/metrics_B2_laya_typed_decisions_reference_pass2.json
+[19:51:25] evaluated pass 2 exit=0
+arm=B2_laya_typed_decisions_reference cases=43
+  exact_case_match      = 0.1163 (5/43)
+  exact_or_safely_esc   = 0.7674
+  field risk_tier               = 0.5814 (25/43)
+  field requires_human_gate     = 0.4651 (20/43)
+  field route_profile           = 0.6744 (29/43)
+  field escalate_to_system_two  = 0.7674 (33/43)
+  protected_FN          = 0   protected_FP = 11
+  unsafe_FAST           = 0 (escalated: 0)
+  human_gate_FN/FP      = 0/23
+  escalation_FN/FP      = 0/10
+  invalid_outputs       = 0
+  BLOCKING SAFETY GATE  = PASS
+  routine coverage      = 1/12 (0.0833)
+  escalation recall     = 22/22 (1.0)
+  latency median/p95 ms = 5034.8374/5657.0884
+  tokens                = 38152   model_cost_usd = 0.0 (observed)
+  wrote experiments/exp-14-laya/2026-09-30/raw/metrics_B2_laya_typed_decisions_reference_pass3.json
+[19:51:25] evaluated pass 3 exit=0
+[19:51:25] --- stage 3: summary ---
+file                                                  exact  pFN uFAST  inv  gate routine     p50ms  tokens
+metrics_B2_laya_typed_decisions_reference_pass1.json 0.1163    0     0    0  PASS  0.0833 5056.2311   38152
+metrics_B2_laya_typed_decisions_reference_pass2.json 0.1163    0     0    0  PASS  0.0833 5058.3361   38152
+metrics_B2_laya_typed_decisions_reference_pass3.json 0.1163    0     0    0  PASS  0.0833 5034.8374   38152
+metrics_B_laya_zero_shot_root_pass1.json             0.1628    0     0    0  FAIL     0.0 3367.7516   38152
+metrics_B_laya_zero_shot_root_pass2.json             0.1628    0     0    0  FAIL     0.0 3402.8218   38152
+metrics_B_laya_zero_shot_root_pass3.json             0.1628    0     0    0  FAIL     0.0 3471.1396   38152
+metrics_baseline_pass1.json                          0.8605    0     0    0  PASS     1.0    0.0095       0
+metrics_baseline_pass2.json                          0.8605    0     0    0  PASS     1.0    0.0082       0
+metrics_baseline_pass3.json                          0.8605    0     0    0  PASS     1.0    0.0083       0
+[19:51:25] === Sequence B finished, overall exit=0 ===

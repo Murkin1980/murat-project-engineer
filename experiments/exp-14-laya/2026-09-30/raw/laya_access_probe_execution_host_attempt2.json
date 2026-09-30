@@ -1,0 +1,233 @@
+{
+  "experiment_id": "EXP-14",
+  "checkpoint": "EXP-14-CP-01",
+  "dataset_id": "exp-14-frozen-v1",
+  "probe": "laya_access",
+  "probed_at_utc": "2026-09-30T19:40:07Z",
+  "candidate_pin": {
+    "sdk": "laya==0.3.22",
+    "hf_repo": "convaiinnovations/laya",
+    "pinned_revision": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+    "revision_source": "laya/revisions.py PINNED_REVISIONS['convaiinnovations/laya']",
+    "expected_primary_artifact": "model.safetensors (~843 MB, repo root)"
+  },
+  "host": {
+    "python": "3.11.16",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "MemTotal_kB": 16373452,
+    "MemAvailable_kB": 15326612,
+    "SwapTotal_kB": 3145724,
+    "disk_free_bytes": 91125559296,
+    "disk_total_bytes": 154894188544,
+    "cpu_count": 4
+  },
+  "cuda_available": false,
+  "modules": [
+    {
+      "module": "torch",
+      "importable": true,
+      "version": "2.14.1+cpu"
+    },
+    {
+      "module": "transformers",
+      "importable": true,
+      "version": "5.18.0"
+    },
+    {
+      "module": "safetensors",
+      "importable": true,
+      "version": "0.8.0"
+    },
+    {
+      "module": "huggingface_hub",
+      "importable": true,
+      "version": "1.33.0"
+    },
+    {
+      "module": "laya",
+      "importable": true,
+      "version": "0.3.22"
+    },
+    {
+      "module": "numpy",
+      "importable": true,
+      "version": "2.4.6"
+    }
+  ],
+  "tcp_tls": [
+    {
+      "host": "huggingface.co",
+      "port": 443,
+      "tcp": "CONNECTED",
+      "tls": "OK: TLSv1.3 / TLS_AES_128_GCM_SHA256",
+      "elapsed_ms": 55.3
+    },
+    {
+      "host": "cdn-lfs.huggingface.co",
+      "port": 443,
+      "tcp": "FAILED: gaierror: [Errno -5] No address associated with hostname",
+      "tls": "NOT_ATTEMPTED",
+      "elapsed_ms": 13.2
+    },
+    {
+      "host": "hf.co",
+      "port": 443,
+      "tcp": "CONNECTED",
+      "tls": "OK: TLSv1.3 / TLS_AES_128_GCM_SHA256",
+      "elapsed_ms": 147.5
+    },
+    {
+      "host": "cas-bridge.xethub.hf.co",
+      "port": 443,
+      "tcp": "CONNECTED",
+      "tls": "OK: TLSv1.3 / TLS_AES_128_GCM_SHA256",
+      "elapsed_ms": 137.6
+    },
+    {
+      "host": "hf-mirror.com",
+      "port": 443,
+      "tcp": "CONNECTED",
+      "tls": "OK: TLSv1.3 / TLS_AES_128_GCM_SHA256",
+      "elapsed_ms": 596.3
+    },
+    {
+      "host": "modelscope.cn",
+      "port": 443,
+      "tcp": "CONNECTED",
+      "tls": "OK: TLSv1.3 / TLS_AES_256_GCM_SHA384",
+      "elapsed_ms": 987.1
+    },
+    {
+      "host": "pirateface.co",
+      "port": 443,
+      "tcp": "CONNECTED",
+      "tls": "OK: TLSv1.3 / TLS_AES_128_GCM_SHA256",
+      "elapsed_ms": 160.5
+    },
+    {
+      "host": "systemonemodels.tech",
+      "port": 443,
+      "tcp": "CONNECTED",
+      "tls": "OK: TLSv1.3 / TLS_AES_256_GCM_SHA384",
+      "elapsed_ms": 121.7
+    },
+    {
+      "host": "pypi.org",
+      "port": 443,
+      "tcp": "CONNECTED",
+      "tls": "OK: TLSv1.3 / TLS_AES_128_GCM_SHA256",
+      "elapsed_ms": 26.5
+    },
+    {
+      "host": "files.pythonhosted.org",
+      "port": 443,
+      "tcp": "CONNECTED",
+      "tls": "OK: TLSv1.3 / TLS_AES_128_GCM_SHA256",
+      "elapsed_ms": 26.2
+    },
+    {
+      "host": "github.com",
+      "port": 443,
+      "tcp": "CONNECTED",
+      "tls": "OK: TLSv1.3 / TLS_AES_128_GCM_SHA256",
+      "elapsed_ms": 97.7
+    },
+    {
+      "host": "api.github.com",
+      "port": 443,
+      "tcp": "CONNECTED",
+      "tls": "OK: TLSv1.3 / TLS_AES_128_GCM_SHA256",
+      "elapsed_ms": 75.7
+    },
+    {
+      "host": "codeload.github.com",
+      "port": 443,
+      "tcp": "CONNECTED",
+      "tls": "OK: TLSv1.3 / TLS_AES_128_GCM_SHA256",
+      "elapsed_ms": 84.9
+    },
+    {
+      "host": "objects.githubusercontent.com",
+      "port": 443,
+      "tcp": "CONNECTED",
+      "tls": "OK: TLSv1.3 / TLS_AES_128_GCM_SHA256",
+      "elapsed_ms": 49.3
+    }
+  ],
+  "http": [
+    {
+      "url": "https://huggingface.co/api/models/convaiinnovations/laya",
+      "status": 200,
+      "bytes_read": 4352,
+      "body_sha256_prefix": "a2948f18da26d034",
+      "elapsed_ms": 61.7,
+      "result": "REACHABLE"
+    },
+    {
+      "url": "https://huggingface.co/convaiinnovations/laya/resolve/55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851/config.json",
+      "status": 404,
+      "result": "HTTP_ERROR",
+      "elapsed_ms": 60.9
+    },
+    {
+      "url": "https://pypi.org/pypi/laya/json",
+      "status": 200,
+      "bytes_read": 65536,
+      "body_sha256_prefix": "b25a129fe3438e76",
+      "elapsed_ms": 47.1,
+      "result": "REACHABLE"
+    },
+    {
+      "url": "https://api.github.com/repos/NandhaKishorM/laya/commits/55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+      "status": 422,
+      "result": "HTTP_ERROR",
+      "elapsed_ms": 176.2
+    }
+  ],
+  "commands": [
+    {
+      "label": "pip index versions laya",
+      "argv": [
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
+        "-m",
+        "pip",
+        "index",
+        "versions",
+        "laya"
+      ],
+      "returncode": 0,
+      "stdout_tail": "laya (0.3.22)\nAvailable versions: 0.3.22, 0.3.21, 0.3.20, 0.3.19, 0.3.18, 0.3.17, 0.3.16, 0.3.15, 0.3.14, 0.3.13, 0.3.12, 0.3.11, 0.3.10, 0.3.9, 0.3.6, 0.3.5, 0.3.4, 0.3.3, 0.3.2, 0.3.1, 0.3.0, 0.2.1, 0.2.0, 0.1.6, 0.1.5, 0.1.4, 0.1.3, 0.1.2, 0.1.1, 0.1.0\n  INSTALLED: 0.3.22\n  LATEST:    0.3.22",
+      "stderr_tail": "",
+      "elapsed_ms": 394.1
+    },
+    {
+      "label": "nvidia-smi",
+      "argv": [
+        "nvidia-smi"
+      ],
+      "returncode": null,
+      "error": "NOT_FOUND: [Errno 2] No such file or directory: 'nvidia-smi'",
+      "elapsed_ms": 0.6
+    }
+  ],
+  "hf_hub_retrieval_attempt": {
+    "attempted": true,
+    "result": "FAILED",
+    "error": "RemoteEntryNotFoundError: 404 Client Error. (Request ID: Root=1-6abd659c-0d0022702d51d8bd14d92656;4324e5df-2a7c-46cf-b80a-5dea27e27629)\n\nEntry Not Found for url: https://huggingface.co/convaiinnovations/laya/resolve/55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851/config.json.",
+    "elapsed_ms": 94.6
+  },
+  "laya_load_attempt": {
+    "attempted": false,
+    "reason": "skipped by --skip-load-probe"
+  },
+  "verdict": {
+    "huggingface_tls_reachable": true,
+    "laya_sdk_installable_from_pypi": true,
+    "hf_hub_metadata_retrievable": false,
+    "laya_weights_retrievable_on_this_host": false,
+    "laya_runnable_on_this_host": false,
+    "sequence_b_executable_on_this_host": false,
+    "classification": "INFRASTRUCTURE_BLOCKED"
+  }
+}
