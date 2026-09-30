@@ -1,9 +1,9 @@
 # EXP-09 pre-run boundary review — 2026-09-30
 
-**RESULT: NEEDS_REVIEW**  
-**Checkpoint:** EXP-09 — Personalized Assessment Engine v0  
-**Previous result:** REWORK (RUN-09; recorded 2026-08-15)  
-**Branch/base inspected:** `arena/01a0f188-murat-project-engineer` at `66dc1c57ef894586677b200274d06e6003699fe2`  
+**RESULT: NEEDS_REVIEW**
+**Checkpoint:** EXP-09 — Personalized Assessment Engine v0
+**Previous result:** REWORK (RUN-09; recorded 2026-08-15)
+**Branch/base inspected:** `arena/01a0f188-murat-project-engineer` at `66dc1c57ef894586677b200274d06e6003699fe2`
 **Run type:** Read-only pre-run inspection and repository validation. No Stage-2 assessment scenarios or external provider calls were run.
 
 ## Decision
