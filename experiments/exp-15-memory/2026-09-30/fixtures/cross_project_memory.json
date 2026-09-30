@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0.0",
+  "updated_at": "2026-09-30T00:00:00Z",
+  "items": [
+    {
+      "item_id": "MEM-MPE-001",
+      "project": "Murkin1980/murat-project-engineer",
+      "category": "decision",
+      "topic": "browseract acquisition role",
+      "summary": "BrowserAct approved under New Idea Filter as REUSE_COMPONENT for public-web browser acquisition role only.",
+      "provenance": "docs/evaluations/BROWSERACT_EVALUATION.md#L45",
+      "status": "active"
+    },
+    {
+      "item_id": "MEM-MH-001",
+      "project": "Murkin1980/Murat-house",
+      "category": "decision",
+      "topic": "rankcontrol ai visibility",
+      "summary": "EXP-RANKCONTROL: draft plan only; after owner registration, run and record the first fixed-query baseline on live Murat House site.",
+      "provenance": "src/content/experiments/rankcontrol-ai-visibility.md#L1",
+      "status": "active"
+    },
+    {
+      "item_id": "MEM-MH-002",
+      "project": "Murkin1980/Murat-house",
+      "category": "constraint",
+      "topic": "astro framework boundary",
+      "summary": "Murat House static site generated via Astro; no backend database or auth runtime.",
+      "provenance": "README.md#L10",
+      "status": "active"
+    },
+    {
+      "item_id": "MEM-MAO-001",
+      "project": "Murkin1980/Murat-AI-Orchestrator",
+      "category": "decision",
+      "topic": "alexandria source discovery",
+      "summary": "EXP-ALEXANDRIA: test whether Alexandria improves source discovery on real research tasks without becoming a runtime dependency.",
+      "provenance": "docs/experiments/alexandria/README.md#L1",
+      "status": "active"
+    },
+    {
+      "item_id": "MEM-MAO-002",
+      "project": "Murkin1980/Murat-AI-Orchestrator",
+      "category": "constraint",
+      "topic": "orchestrator runtime authority",
+      "summary": "Stateless orchestrator; no autonomous task dispatch without explicit operator session.",
+      "provenance": "docs/architecture/ORCHESTRATOR.md#L25",
+      "status": "active"
+    }
+  ]
+}

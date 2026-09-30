@@ -1,0 +1,233 @@
+{
+  "tasks_tested": 4,
+  "total_baseline_reads": 17,
+  "total_memory_reads": 0,
+  "total_baseline_lines": 1838,
+  "total_memory_lines": 104,
+  "read_reduction_absolute": 17,
+  "read_reduction_percent": 100.0,
+  "context_footprint_reduction_percent": 94.3,
+  "unauthorized_writes": 0,
+  "cross_project_leakage": 0,
+  "all_decisions_recalled": true,
+  "contradictory_guidance_observed": false,
+  "task_results": [
+    {
+      "task_id": "TASK-MPE-08",
+      "name": "BrowserAct Scraping and Automation Boundaries",
+      "baseline": {
+        "mode": "BASELINE_A",
+        "decision_recalled": true,
+        "contradictory_guidance": false,
+        "unnecessary_repo_reads": 5,
+        "files_inspected": [
+          "docs/NEW_IDEA_FILTER_POLICY.md",
+          "docs/evaluations/BROWSERACT_EVALUATION.md",
+          "docs/evaluations/BROWSER_ACQUISITION_ROLE.md",
+          "evidence/stage2/RUN-08_REPORT.json",
+          "STATUS.md"
+        ],
+        "lines_inspected": 465,
+        "rediscovery_steps": 6,
+        "provenance_correctness": "MANUAL_INFERRED",
+        "proposed_memory_delta": null,
+        "unauthorized_canonical_writes": 0
+      },
+      "memory": {
+        "mode": "MEMORY_B",
+        "decision_recalled": true,
+        "contradictory_guidance": false,
+        "unnecessary_repo_reads": 0,
+        "files_inspected": [],
+        "lines_inspected": 26,
+        "rediscovery_steps": 1,
+        "provenance_correctness": "100%_AUTOMATED",
+        "proposed_memory_delta": {
+          "task_id": "TASK-MPE-08",
+          "project": "Murkin1980/murat-project-engineer",
+          "proposed_by": "mpe-coding-agent",
+          "actions": [
+            {
+              "action": "NO_CHANGE",
+              "target_item_id": null,
+              "reason": "No changes to canonical rules needed",
+              "item": null
+            }
+          ],
+          "created_at": "2026-09-30T18:33:35.272424+00:00",
+          "approval_status": "PENDING_APPROVAL",
+          "approved_by": null,
+          "approval_notes": ""
+        },
+        "unauthorized_canonical_writes": 0
+      },
+      "metrics": {
+        "doc_reads_reduction": 5,
+        "lines_reduced": 439,
+        "percentage_lines_reduced": 94.4
+      }
+    },
+    {
+      "task_id": "TASK-MPE-11",
+      "name": "Runtime Coordination Messaging Architecture",
+      "baseline": {
+        "mode": "BASELINE_A",
+        "decision_recalled": true,
+        "contradictory_guidance": false,
+        "unnecessary_repo_reads": 4,
+        "files_inspected": [
+          "docs/architecture/RUNTIME_COORDINATION_PATTERNS.md",
+          "evidence/stage2/RUN-10_REPORT.json",
+          "evidence/stage2/RUN-11_REPORT.json",
+          "docs/OPINIONATED_WORKSPACE_POLICY.md"
+        ],
+        "lines_inspected": 382,
+        "rediscovery_steps": 5,
+        "provenance_correctness": "MANUAL_INFERRED",
+        "proposed_memory_delta": null,
+        "unauthorized_canonical_writes": 0
+      },
+      "memory": {
+        "mode": "MEMORY_B",
+        "decision_recalled": true,
+        "contradictory_guidance": false,
+        "unnecessary_repo_reads": 0,
+        "files_inspected": [],
+        "lines_inspected": 26,
+        "rediscovery_steps": 1,
+        "provenance_correctness": "100%_AUTOMATED",
+        "proposed_memory_delta": {
+          "task_id": "TASK-MPE-11",
+          "project": "Murkin1980/murat-project-engineer",
+          "proposed_by": "mpe-coding-agent",
+          "actions": [
+            {
+              "action": "NO_CHANGE",
+              "target_item_id": null,
+              "reason": "No changes to canonical rules needed",
+              "item": null
+            }
+          ],
+          "created_at": "2026-09-30T18:33:35.272699+00:00",
+          "approval_status": "PENDING_APPROVAL",
+          "approved_by": null,
+          "approval_notes": ""
+        },
+        "unauthorized_canonical_writes": 0
+      },
+      "metrics": {
+        "doc_reads_reduction": 4,
+        "lines_reduced": 356,
+        "percentage_lines_reduced": 93.2
+      }
+    },
+    {
+      "task_id": "TASK-MPE-12",
+      "name": "CLEARS Triage Engine Operational Reliance",
+      "baseline": {
+        "mode": "BASELINE_A",
+        "decision_recalled": true,
+        "contradictory_guidance": false,
+        "unnecessary_repo_reads": 4,
+        "files_inspected": [
+          "docs/experiments/EXP-12_CLEARS_TRIAGE.md",
+          "evidence/stage2/RUN-12_REPORT.json",
+          "scripts/triage_engine.py",
+          "datasets/exp-12-backtest.json"
+        ],
+        "lines_inspected": 564,
+        "rediscovery_steps": 5,
+        "provenance_correctness": "MANUAL_INFERRED",
+        "proposed_memory_delta": null,
+        "unauthorized_canonical_writes": 0
+      },
+      "memory": {
+        "mode": "MEMORY_B",
+        "decision_recalled": true,
+        "contradictory_guidance": false,
+        "unnecessary_repo_reads": 0,
+        "files_inspected": [],
+        "lines_inspected": 26,
+        "rediscovery_steps": 1,
+        "provenance_correctness": "100%_AUTOMATED",
+        "proposed_memory_delta": {
+          "task_id": "TASK-MPE-12",
+          "project": "Murkin1980/murat-project-engineer",
+          "proposed_by": "mpe-coding-agent",
+          "actions": [
+            {
+              "action": "NO_CHANGE",
+              "target_item_id": null,
+              "reason": "No changes to canonical rules needed",
+              "item": null
+            }
+          ],
+          "created_at": "2026-09-30T18:33:35.272891+00:00",
+          "approval_status": "PENDING_APPROVAL",
+          "approved_by": null,
+          "approval_notes": ""
+        },
+        "unauthorized_canonical_writes": 0
+      },
+      "metrics": {
+        "doc_reads_reduction": 4,
+        "lines_reduced": 538,
+        "percentage_lines_reduced": 95.4
+      }
+    },
+    {
+      "task_id": "TASK-MPE-18",
+      "name": "Pirate Face Model Resilience Distribution Architecture",
+      "baseline": {
+        "mode": "BASELINE_A",
+        "decision_recalled": true,
+        "contradictory_guidance": false,
+        "unnecessary_repo_reads": 4,
+        "files_inspected": [
+          "experiments/exp-18-pirateface-model-resilience/README.md",
+          "experiments/exp-18-pirateface-model-resilience/FINDINGS.md",
+          "experiments/exp-18-pirateface-model-resilience/METHOD.md",
+          "experiments/EXPERIMENT_REGISTRY.json"
+        ],
+        "lines_inspected": 427,
+        "rediscovery_steps": 5,
+        "provenance_correctness": "MANUAL_INFERRED",
+        "proposed_memory_delta": null,
+        "unauthorized_canonical_writes": 0
+      },
+      "memory": {
+        "mode": "MEMORY_B",
+        "decision_recalled": true,
+        "contradictory_guidance": false,
+        "unnecessary_repo_reads": 0,
+        "files_inspected": [],
+        "lines_inspected": 26,
+        "rediscovery_steps": 1,
+        "provenance_correctness": "100%_AUTOMATED",
+        "proposed_memory_delta": {
+          "task_id": "TASK-MPE-18",
+          "project": "Murkin1980/murat-project-engineer",
+          "proposed_by": "mpe-coding-agent",
+          "actions": [
+            {
+              "action": "NO_CHANGE",
+              "target_item_id": null,
+              "reason": "No changes to canonical rules needed",
+              "item": null
+            }
+          ],
+          "created_at": "2026-09-30T18:33:35.273069+00:00",
+          "approval_status": "PENDING_APPROVAL",
+          "approved_by": null,
+          "approval_notes": ""
+        },
+        "unauthorized_canonical_writes": 0
+      },
+      "metrics": {
+        "doc_reads_reduction": 4,
+        "lines_reduced": 401,
+        "percentage_lines_reduced": 93.9
+      }
+    }
+  ]
+}
