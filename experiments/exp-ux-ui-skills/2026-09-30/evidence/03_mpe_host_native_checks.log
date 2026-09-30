@@ -1,0 +1,71 @@
+# EXP-UX-UI-SKILLS host-repository native checks (Murkin1980/murat-project-engineer)
+# UTC timestamp: 2026-09-30T17:57:03Z
+# IMPORTANT: this is the HOST repository, NOT the registered fixture.
+# It is captured only to document harness state; it is NOT the experiment baseline.
+
+$ git rev-parse HEAD
+8f9e958900fc52e4354cd98a943374326446cd03
+$ git status --porcelain
+?? experiments/exp-ux-ui-skills/
+(clean = no output above)
+
+$ node --version
+v22.22.3
+$ python3 --version
+Python 3.11.2
+
+=== CHECK A: dashboard deploy check (build + serve + route/asset/parity/view/390px) ===
+$ npm run check
+> murat-project-engineer-dashboard@1.0.0 check
+> node scripts/check_dashboard_deploy.mjs
+DASHBOARD BUILD PASSED
+source:      dashboard/public
+output dir:  dist
+assets:      6 files, 40881 bytes (0 written, 6 unchanged)
+views:       desktop /registry/portfolio.svg; mobile 4 status views (<= 390px, 14px)
+  19c817858cd2   12974 B  /index.html
+  3a742610af74    3122 B  /registry/mobile/status-hold.svg
+  946651d1d3f1    3716 B  /registry/mobile/status-pass.svg
+  63821e204874    5498 B  /registry/mobile/status-planned.svg
+  1c08b6a2585e    2640 B  /registry/mobile/status-ready_to_test.svg
+  2ca94346abc7   12931 B  /registry/portfolio.svg
+DASHBOARD DEPLOY CHECKS
+PASS  config (5/5)
+PASS  build (1/1)
+PASS  preview (1/1)
+PASS  route (5/5)
+PASS  asset (5/5)
+PASS  parity (5/5)
+PASS  views (7/7)
+PASS  mobile-390 (6/6)
+PASS  content (8/8)
+ALL CHECKS PASSED: 43/43
+exit=0
+
+=== CHECK B: python unit suite ===
+$ python3 -m unittest discover -s ./tests -t ./tests -p 'test_*.py'
+----------------------------------------------------------------------
+Ran 343 tests in 0.544s
+
+FAILED (failures=12, skipped=1)
+
+=== CHECK B detail: failing tests at baseline (pre-existing, not caused by this run) ===
+      1 FAIL: test_committed_diagram_is_fresh
+      1 FAIL: test_committed_mobile_views_are_fresh
+     10 FAIL: test_rendered_dashboard_text_tracks_registry_ids_names_and_next_steps
+
+=== CHECK C: independent clean-clone cross-check (proves CHECK B failures are pre-existing) ===
+$ git clone <repo> /tmp/murat-project-engineer && git checkout 8f9e9589...
+HEAD=8f9e958900fc52e4354cd98a943374326446cd03  working_tree=0 modified files
+$ python3 -m unittest discover -s ./tests -t ./tests -p 'test_*.py'
+Ran 343 tests in 0.524s
+
+FAILED (failures=12, skipped=1)
+
+# Identical failure set in the clean clone => failures are baseline conditions at 8f9e958,
+# not effects of this experiment run.
+
+# Control observation: cloning the same SHA into a directory with a DIFFERENT name
+# (/tmp/mpe-pristine) adds 7 name-dependent failures (test_package_contracts +
+#  6x test_package_validation_unchanged => 19 total), because scripts/validate_package.py
+# compares package.json name with directory_slug(root). Not an experiment finding.

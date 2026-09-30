@@ -1,0 +1,20 @@
+# EXP-UX-UI-SKILLS / 2026-09-30 — environment capture
+utc_timestamp: 2026-09-30T17:57:57Z
+host_repo: Murkin1980/murat-project-engineer
+baseline_commit: 8f9e958900fc52e4354cd98a943374326446cd03
+baseline_commit_date: 2026-09-30T16:48:02+05:00
+branch: arena/01a0f375-murat-project-engineer
+baseline_parent_main: 8f9e958900fc52e4354cd98a943374326446cd03
+worktree_modified_tracked_files: 0
+worktree_untracked_entries: 1
+
+node: v22.22.3
+python3: Python 3.11.2
+gh: gh version 2.23.0 (2023-02-27 Debian 2.23.0+dfsg1-1)
+git: git version 2.39.5
+os: Linux 6.1.158+ x86_64
+
+network_tools_used: gh api (read-only metadata), curl (HTTP status probes), git ls-remote (read-only)
+packages_installed_by_this_run: NONE
+processes_left_running_by_this_run: NONE (npm run check starts a temporary local preview and exits)
+secrets_or_credentials_logged: NONE
