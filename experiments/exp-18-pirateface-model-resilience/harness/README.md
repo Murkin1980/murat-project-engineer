@@ -73,8 +73,29 @@ identity of the torrent metainfo captured in stages D and E), `tracker_announce.
   ends, so stages waited for their wrapper timeouts.
 - attempt 03 (run 36669718210, prior session, commit 6d236b6): RPC shutdown added;
   superseded by this session's run before evidence was committed.
-- attempt 04 (this session, run id recorded in `evidence/01_environment.txt`):
-  the stage runner gained a hard harness budget and per-stage budgets (a stalled
-  stage is now stopped and recorded as incomplete) and the RPC sampler stops
-  aria2c on completion, error, or when no download is active. Results are in
-  `../FINDINGS.md`.
+- attempt 04 (run 36670736828, commit `bef8985`, this session): the stage runner
+  gained a hard harness budget and per-stage budgets, and the RPC sampler was
+  made responsible for stopping aria2c. All three retrievals produced
+  byte-identical payloads, but each torrent stage then sat until its budget
+  timeout because the sampler stopped sampling as soon as the magnet's metadata
+  job was replaced by the payload job (new GID, old GID answers
+  `400 Bad Request`). Evidence archived in `../evidence/run-36670736828/`.
+- attempt 05 (run 36672153216, commit `5dcfacc`): **defect**. The sampler had
+  been changed to treat the `400 Bad Request` as "the transfer is over" and shut
+  aria2c down 21 s into the transfer, so every retrieval was truncated
+  (`INPR`, `281MiB/0.9GiB`). Evidence kept as a defect record in
+  `../evidence/run-36672153216/`.
+- attempt 06 (run 36672975009, commit `e408717`): fix — the sampler re-reads the
+  active download list every poll, never pins a GID, and shuts the client down
+  only after 20 consecutive polls with no active download; the stage runner now
+  records the client's own payload "Download complete" line, the result-block
+  status counts and the sampler byte counters. All three retrievals completed
+  cleanly (`exit=0`) and verified byte-identical to the canonical artifact.
+  This is the authoritative evidence set; results are in `../FINDINGS.md`.
+
+## Temporary CI wrapper
+
+`.github/workflows/exp18-harness.yml` is deleted once the experiment has recorded
+its evidence (as it now has). A verbatim copy is kept at
+`exp18-harness.workflow.yml` in this directory so the run can be reproduced by
+placing it back under `.github/workflows/` with the branch filter adjusted.
