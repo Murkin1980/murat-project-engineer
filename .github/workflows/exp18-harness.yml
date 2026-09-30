@@ -1,0 +1,61 @@
+# EXP-18 harness — TEMPORARY experiment runner.
+#
+# This workflow exists only to run the bounded EXP-18 retrieval test
+# (experiments/exp-18-pirateface-model-resilience/README.md) on a host that can
+# reach both huggingface.co and pirateface.co. It is not used by production,
+# deploys nothing, publishes nothing, and is removed once the experiment has
+# recorded its evidence. No secrets are used: /etc/hosts on the ephemeral runner
+# is the only "outage" mechanism.
+#
+# Note: workflow_dispatch requires the file on the default branch, so this
+# harness is triggered by pushes that touch the harness directory instead. It is
+# never merged to main.
+name: EXP-18 harness (temporary)
+
+on:
+  push:
+    branches:
+      - arena/01a0f07b-murat-project-engineer
+    paths:
+      - 'experiments/exp-18-pirateface-model-resilience/harness/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: exp18-harness
+  cancel-in-progress: false
+
+jobs:
+  exp18:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install aria2 (ephemeral runner tool, not a repository dependency)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq aria2
+
+      - name: Run EXP-18 harness
+        run: bash experiments/exp-18-pirateface-model-resilience/harness/run_exp18.sh
+
+      - name: Print key evidence to the job log
+        if: always()
+        run: |
+          E=experiments/exp-18-pirateface-model-resilience/evidence
+          for f in 12_comparison.json 14_exp18_run_summary.json 09_source_loss_proof.txt; do
+            echo "===== $f ====="
+            cat "$E/$f" 2>/dev/null || echo "(missing)"
+          done
+
+      - name: Upload evidence bundle
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: exp18-evidence
+          path: experiments/exp-18-pirateface-model-resilience/evidence/**
+          if-no-files-found: warn
+          retention-days: 14
