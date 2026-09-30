@@ -5,12 +5,17 @@ Records, over time: completed length, download speed, connection count, seeder
 count and the peer set. Peer addresses are stored only as masked /16 networks so
 third-party seeder IPs are not published in the evidence.
 
-The sampler is also the component that stops aria2c: aria2c started with
-``--enable-rpc`` keeps its RPC server alive after the transfer ends, so the
-sampler issues ``aria2.shutdown`` as soon as the download reports *complete*,
-*error*, or disappears from the active list (stopped by ``--bt-stop-timeout`` or
-finished). Without that, a stage would only end when the wrapper ``timeout``
-kills aria2c.
+The sampler is also the component that stops aria2c. aria2c started with
+``--enable-rpc`` keeps its RPC server alive after the transfer ends, so a stage
+would otherwise wait for its wrapper timeout even though the payload is already
+on disk. It issues ``aria2.shutdown`` only when no download is *active* any more
+(verified over consecutive polls), because that is the one state that means the
+transfer is over - succeeded, stopped by ``--bt-stop-timeout``, or failed.
+
+Careful: a magnet download starts as a metadata-only job and is replaced by a
+new job (new GID) once the metadata arrives; the old GID then answers
+``400 Bad Request``. The sampler therefore never pins a GID - it re-reads the
+active list every poll and only samples the downloads that are still active.
 
 Usage: peer_sample.py <rpc_port> <out.json> [max_seconds]
 """
@@ -22,7 +27,7 @@ import time
 import urllib.request
 
 RPC = "http://127.0.0.1:{port}/jsonrpc"
-IDLE_POLLS_BEFORE_STOP = 20  # consecutive polls with no active download
+IDLE_POLLS_BEFORE_STOP = 20  # consecutive polls with nothing active before shutdown
 
 
 def call(port: int, method: str, params=None):
@@ -51,7 +56,7 @@ def shutdown(port: int) -> str:
             return method
         except Exception:
             continue
-    return "shutdown-failed"
+    return "shutdown-request-failed"
 
 
 def main() -> int:
@@ -59,90 +64,97 @@ def main() -> int:
     max_seconds = int(sys.argv[3]) if len(sys.argv) > 3 else 900
     started = time.time()
     samples, seen_peers, max_seeders, max_connections, max_speed = [], {}, 0, 0, 0
-    gid = None
     idle_polls = 0
+    rpc_failures = 0
+    seen_active = False
     stop_reason, stop_detail = "max_seconds_elapsed", None
 
     # Wait for aria2c's RPC server before giving up; aria2c may still be starting.
+    rpc_up = False
     for _ in range(20):
         try:
             call(port, "aria2.getVersion")
+            rpc_up = True
             break
         except Exception:
             if time.time() - started >= max_seconds:
-                stop_reason = "rpc_never_available"
-                raise SystemExit(f"peer sample: RPC on port {port} never became available")
+                break
             time.sleep(1)
+    if not rpc_up:
+        stop_reason = "rpc_never_available"
+        stop_detail = f"no JSON-RPC answer on port {port}"
 
-    while time.time() - started < max_seconds:
+    while rpc_up and time.time() - started < max_seconds:
         try:
-            if gid is None:
-                active = call(port, "aria2.tellActive")
-                if not active:
-                    idle_polls += 1
-                    if idle_polls >= IDLE_POLLS_BEFORE_STOP:
-                        # The transfer left the active queue: it either completed
-                        # or was stopped by --bt-stop-timeout. Stop aria2c here so
-                        # a finished stage does not sit until the wrapper timeout.
-                        stop_reason = "no_active_download"
-                        stop_detail = f"tellActive empty for {idle_polls} consecutive polls"
-                        stop_detail += f"; aria2c stopped via {shutdown(port)}"
-                        break
-                    time.sleep(1)
-                    continue
-                gid = active[0]["gid"]
-                idle_polls = 0
-            status = call(port, "aria2.tellStatus", [gid])
-            peers = call(port, "aria2.getPeers", [gid])
-        except Exception as exc:  # download dropped out of the queue, or RPC gone
-            idle_polls += 1
-            if idle_polls >= IDLE_POLLS_BEFORE_STOP:
-                # aria2 removes the entry once the transfer is over, so tellStatus
-                # and getPeers start failing with "400 Bad Request" on the stale gid.
-                stop_reason = "status_unavailable"
-                stop_detail = f"{type(exc).__name__}: {exc}"
-                stop_detail += f"; aria2c stopped via {shutdown(port)}"
+            active = call(port, "aria2.tellActive")
+            rpc_failures = 0
+        except Exception as exc:  # aria2c gone, or RPC temporarily busy
+            rpc_failures += 1
+            if rpc_failures >= IDLE_POLLS_BEFORE_STOP:
+                stop_reason = "rpc_unavailable"
+                stop_detail = f"{type(exc).__name__}: {exc} (client gone; nothing to stop)"
                 break
             time.sleep(1)
             continue
-        seeders = int(status.get("numSeeders", 0) or 0)
-        conns = int(status.get("connections", 0) or 0)
-        speed = int(status.get("downloadSpeed", 0) or 0)
-        max_seeders, max_connections, max_speed = (
-            max(max_seeders, seeders), max(max_connections, conns), max(max_speed, speed)
-        )
-        for peer in peers:
-            key = mask(peer.get("ip", "?"))
-            entry = seen_peers.setdefault(key, {"seen": 0, "seeder": False})
-            entry["seen"] += 1
-            if peer.get("seeder"):
-                entry["seeder"] = True
-        samples.append(
-            {
-                "t": round(time.time() - started, 1),
-                "completed": int(status.get("completedLength", 0) or 0),
-                "speed_bps": speed,
-                "connections": conns,
-                "num_seeders": seeders,
-                "peers_listed": len(peers),
-                "info_hash": status.get("infoHash"),
-                "error": status.get("errorMessage") or status.get("status"),
-            }
-        )
-        state = status.get("status")
-        error_message = status.get("errorMessage")
-        if state == "complete":
-            stop_reason = "download_complete"
-            stop_detail = "aria2 reported status=complete"
-            stop_method = shutdown(port)
-            stop_detail += f"; aria2c stopped via {stop_method}"
-            break
-        if state in ("error", "removed") or error_message:
-            stop_reason = f"download_{state or 'error'}"
-            stop_detail = error_message or f"aria2 status={state}"
-            stop_method = shutdown(port)
-            stop_detail += f"; aria2c stopped via {stop_method}"
-            break
+
+        # Only downloads still in state "active" count; a finished or
+        # timeout-stopped job is removed from there (and its GID becomes invalid).
+        running = []
+        for entry in active:
+            try:
+                status = call(port, "aria2.tellStatus", [entry["gid"]])
+            except Exception:
+                continue
+            if status.get("status") == "active":
+                running.append(status)
+
+        if not running:
+            idle_polls += 1
+            if seen_active and idle_polls >= IDLE_POLLS_BEFORE_STOP:
+                stop_reason = "no_active_download"
+                stop_detail = (
+                    f"nothing active for {idle_polls} consecutive polls after the transfer started; "
+                    f"aria2c stopped via {shutdown(port)}"
+                )
+                break
+            time.sleep(1)
+            continue
+
+        seen_active = True
+        idle_polls = 0
+        for status in running:
+            gid = status["gid"]
+            try:
+                peers = call(port, "aria2.getPeers", [gid])
+            except Exception:
+                peers = []
+            seeders = int(status.get("numSeeders", 0) or 0)
+            conns = int(status.get("connections", 0) or 0)
+            speed = int(status.get("downloadSpeed", 0) or 0)
+            max_seeders, max_connections, max_speed = (
+                max(max_seeders, seeders), max(max_connections, conns), max(max_speed, speed)
+            )
+            for peer in peers:
+                key = mask(peer.get("ip", "?"))
+                entry = seen_peers.setdefault(key, {"seen": 0, "seeder": False})
+                entry["seen"] += 1
+                if peer.get("seeder"):
+                    entry["seeder"] = True
+            samples.append(
+                {
+                    "t": round(time.time() - started, 1),
+                    "gid": gid,
+                    "completed": int(status.get("completedLength", 0) or 0),
+                    "total": int(status.get("totalLength", 0) or 0),
+                    "speed_bps": speed,
+                    "connections": conns,
+                    "num_seeders": seeders,
+                    "peers_listed": len(peers),
+                    "info_hash": status.get("infoHash"),
+                    "bittorrent_mode": (status.get("bittorrent") or {}).get("mode"),
+                    "error": status.get("errorMessage") or status.get("status"),
+                }
+            )
         time.sleep(1)
 
     result = {
@@ -155,6 +167,9 @@ def main() -> int:
         "distinct_peer_network_count": len(seen_peers),
         "peer_networks_that_were_seeders": sorted(k for k, v in seen_peers.items() if v["seeder"]),
         "info_hash": (samples[0]["info_hash"] if samples else None),
+        "saw_active_download": seen_active,
+        "last_completed_bytes": (samples[-1]["completed"] if samples else None),
+        "last_total_bytes": (samples[-1]["total"] if samples else None),
         "stop_reason": stop_reason,
         "stop_detail": stop_detail,
         "elapsed_seconds": round(time.time() - started, 1),
@@ -166,6 +181,7 @@ def main() -> int:
         f"peer sample: networks={result['distinct_peer_network_count']} "
         f"max_seeders={max_seeders} max_connections={max_connections} "
         f"max_speed={max_speed/1048576:.1f}MiB/s samples={len(samples)} "
+        f"completed={result['last_completed_bytes']}/{result['last_total_bytes']} "
         f"info_hash={result['info_hash']} stop_reason={stop_reason}"
     )
     return 0

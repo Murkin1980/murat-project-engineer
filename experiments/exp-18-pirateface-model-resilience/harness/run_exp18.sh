@@ -164,13 +164,29 @@ run_torrent() {
   log "[${tag}] aria2c exit=${rc} wall_seconds=$((t1 - t0))"
   cp "${WORK}/${tag}_aria2c.log" "${EVID}/07_${tag}_aria2c.log"
   # Truth about whether the client finished the payload lives in the client log,
-  # not in the exit code (a stage stopped at its budget also exits non-zero).
-  if grep -qi 'Download complete' "${WORK}/${tag}_aria2c.log"; then
-    log "[${tag}] client reported: Download complete"
-  else
-    log "[${tag}] client did NOT report a completed download"
+  # not in the exit code: a magnet first completes a metadata-only job
+  # ([MEMORY][METADATA] ...), which is NOT the payload, and a stage stopped at
+  # its budget also exits non-zero.
+  local payload_done="no" ok_lines inpr_lines sampler_completed sampler_total
+  if grep -E 'Download complete: ' "${WORK}/${tag}_aria2c.log" | grep -qv '\[MEMORY\]'; then
+    payload_done="yes"
   fi
-  grep -cE '\|OK  \|' "${WORK}/${tag}_aria2c.log" | sed "s/^/[${tag}] download-result lines with OK status: /" | tee -a "$LOG" > /dev/null
+  ok_lines="$(grep -cE '\|OK  \|' "${WORK}/${tag}_aria2c.log" || true)"
+  inpr_lines="$(grep -cE '\|INPR\|' "${WORK}/${tag}_aria2c.log" || true)"
+  sampler_completed="$(jq -r '.last_completed_bytes // "n/a"' "${WORK}/${tag}_peers.json" 2>/dev/null || echo n/a)"
+  sampler_total="$(jq -r '.last_total_bytes // "n/a"' "${WORK}/${tag}_peers.json" 2>/dev/null || echo n/a)"
+  {
+    echo "tag=${tag}"
+    echo "aria2c_exit_code=${rc}"
+    echo "wall_seconds=$((t1 - t0))"
+    echo "client_reported_payload_download_complete=${payload_done}"
+    echo "download_result_lines_ok=${ok_lines}"
+    echo "download_result_lines_in_progress=${inpr_lines}"
+    echo "sampler_last_completed_bytes=${sampler_completed}"
+    echo "sampler_last_total_bytes=${sampler_total}"
+    echo "webseed_mentions_in_client_log=$(grep -ci 'web seed' "${WORK}/${tag}_aria2c.log" || true)"
+  } > "${EVID}/07_${tag}_client_status.txt"
+  log "[${tag}] client reported payload 'Download complete': ${payload_done} (exit=${rc}, ok_result_lines=${ok_lines}, in_progress_lines=${inpr_lines}, sampler=${sampler_completed}/${sampler_total} bytes)"
   echo "$rc" > "${WORK}/${tag}_rc"; echo "$((t1 - t0))" > "${WORK}/${tag}_seconds"
   local t
   t="$(find "$dir" -maxdepth 1 -name '*.torrent' | head -1)"

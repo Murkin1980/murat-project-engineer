@@ -1,0 +1,173 @@
+{
+  "file_count": 30,
+  "files": [
+    {
+      "path": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf.torrent",
+      "sha256": "f18ff283095e07de552f6828d6cd13fa45d4c969b780ae58622ca181edaf63e0",
+      "size": 38962
+    },
+    {
+      "path": "sentence-transformers__all-MiniLM-L6-v2/1_Pooling/config.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "sentence-transformers__all-MiniLM-L6-v2/README.md",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "sentence-transformers__all-MiniLM-L6-v2/config.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "sentence-transformers__all-MiniLM-L6-v2/config_sentence_transformers.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "sentence-transformers__all-MiniLM-L6-v2/data_config.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "sentence-transformers__all-MiniLM-L6-v2/model.safetensors",
+      "sha256": "dfe9eb794369f497272b6d0d3e2f8a1c025e2d675188bf9dd4fd48c6ca57335a",
+      "size": 89602563
+    },
+    {
+      "path": "sentence-transformers__all-MiniLM-L6-v2/modules.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "sentence-transformers__all-MiniLM-L6-v2/onnx/model.onnx",
+      "sha256": "c2af17570dc6524c7a7ad6ae09b1b9f4e1b3902dc48620bd1c1d9596b1508bdc",
+      "size": 89435662
+    },
+    {
+      "path": "sentence-transformers__all-MiniLM-L6-v2/onnx/model_O1.onnx",
+      "sha256": "b4d57bcfc3b5df03ea97ce1b7d9b4ffd8b0d2d6eb4059de3f83638a7c79b47e0",
+      "size": 90360328
+    },
+    {
+      "path": "sentence-transformers__all-MiniLM-L6-v2/onnx/model_O2.onnx",
+      "sha256": "2c0b332b4086822e60be613a08948ec6bd2ef560f25d8ff793c0298e10df3063",
+      "size": 90073768
+    },
+    {
+      "path": "sentence-transformers__all-MiniLM-L6-v2/onnx/model_O3.onnx",
+      "sha256": "9358748f9a7c610842248c93ce709097509e9f532bd1733adf8efea290ad77c3",
+      "size": 89875586
+    },
+    {
+      "path": "sentence-transformers__all-MiniLM-L6-v2/onnx/model_O4.onnx",
+      "sha256": "4698d48397b648de0c39dfff3d739530688fbc73d136cdcd6032fe9af9c1f82e",
+      "size": 44687009
+    },
+    {
+      "path": "sentence-transformers__all-MiniLM-L6-v2/onnx/model_qint8_arm64.onnx",
+      "sha256": "bb327ff5f85b39c071a3e174687ea7f3ebbc6a1fbd11041a2e23f114ffa776dc",
+      "size": 22543332
+    },
+    {
+      "path": "sentence-transformers__all-MiniLM-L6-v2/onnx/model_qint8_avx512.onnx",
+      "sha256": "37e681037948fd5fc52cf434696b338121e3c8d4ef31314539df59373a68418d",
+      "size": 22061663
+    },
+    {
+      "path": "sentence-transformers__all-MiniLM-L6-v2/onnx/model_qint8_avx512_vnni.onnx",
+      "sha256": "7fd7e41fcc8157a6924e46ba3641b3684356f9944ad0a02b3a9eee09d351686f",
+      "size": 23026053
+    },
+    {
+      "path": "sentence-transformers__all-MiniLM-L6-v2/onnx/model_quint8_avx2.onnx",
+      "sha256": "618a26be0315a63fd032f20789a7a707fcf3f3e0c72946f96e4bb22b7854c7ae",
+      "size": 20049749
+    },
+    {
+      "path": "sentence-transformers__all-MiniLM-L6-v2/openvino/openvino_model.bin",
+      "sha256": "fed49fc95c1bd2652a739b24fe3424cfbb7aae162bcb9452dd34ff2ffaf0c833",
+      "size": 90265744
+    },
+    {
+      "path": "sentence-transformers__all-MiniLM-L6-v2/openvino/openvino_model.xml",
+      "sha256": "5dd3d93c9097192c6c9ab430856dabe00692d389fa205861f10c65953c35b5cf",
+      "size": 60480
+    },
+    {
+      "path": "sentence-transformers__all-MiniLM-L6-v2/openvino/openvino_model_qint8_quantized.bin",
+      "sha256": "28f7b2538ba6f6c3264426933d489494e2194779ee9f721d67941dc1b80e1f43",
+      "size": 20820685
+    },
+    {
+      "path": "sentence-transformers__all-MiniLM-L6-v2/openvino/openvino_model_qint8_quantized.xml",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "sentence-transformers__all-MiniLM-L6-v2/pytorch_model.bin",
+      "sha256": "1f040b985bb18c8d4f0e8039db4ba5af4d095fa1bba3a52cff198b0e209db835",
+      "size": 85075111
+    },
+    {
+      "path": "sentence-transformers__all-MiniLM-L6-v2/rust_model.ot",
+      "sha256": "61492fc17df4218f2b504c750462e00dbaeac65693111f0ca4e2ec29affb761a",
+      "size": 90130870
+    },
+    {
+      "path": "sentence-transformers__all-MiniLM-L6-v2/sentence_bert_config.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "sentence-transformers__all-MiniLM-L6-v2/special_tokens_map.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "sentence-transformers__all-MiniLM-L6-v2/tf_model.h5",
+      "sha256": "daddc983e865ea8eaa349125434098cc1dc34f4c0c40ed408d2b8332d2fc35b5",
+      "size": 88896574
+    },
+    {
+      "path": "sentence-transformers__all-MiniLM-L6-v2/tokenizer.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "sentence-transformers__all-MiniLM-L6-v2/tokenizer_config.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "sentence-transformers__all-MiniLM-L6-v2/train_script.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "sentence-transformers__all-MiniLM-L6-v2/vocab.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    }
+  ],
+  "generated_utc": "2026-09-30T05:11:02Z",
+  "root": "pf_run",
+  "total_bytes": 957004139,
+  "zero_byte_files": [
+    "sentence-transformers__all-MiniLM-L6-v2/1_Pooling/config.json",
+    "sentence-transformers__all-MiniLM-L6-v2/README.md",
+    "sentence-transformers__all-MiniLM-L6-v2/config.json",
+    "sentence-transformers__all-MiniLM-L6-v2/config_sentence_transformers.json",
+    "sentence-transformers__all-MiniLM-L6-v2/data_config.json",
+    "sentence-transformers__all-MiniLM-L6-v2/modules.json",
+    "sentence-transformers__all-MiniLM-L6-v2/openvino/openvino_model_qint8_quantized.xml",
+    "sentence-transformers__all-MiniLM-L6-v2/sentence_bert_config.json",
+    "sentence-transformers__all-MiniLM-L6-v2/special_tokens_map.json",
+    "sentence-transformers__all-MiniLM-L6-v2/tokenizer.json",
+    "sentence-transformers__all-MiniLM-L6-v2/tokenizer_config.json",
+    "sentence-transformers__all-MiniLM-L6-v2/train_script.py",
+    "sentence-transformers__all-MiniLM-L6-v2/vocab.txt"
+  ]
+}

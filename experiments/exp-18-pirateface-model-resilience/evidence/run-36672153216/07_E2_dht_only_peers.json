@@ -1,0 +1,77 @@
+{
+  "distinct_peer_network_count": 2,
+  "distinct_peer_networks": {
+    "5.79.x.x": {
+      "seeder": true,
+      "seen": 1
+    },
+    "79.127.x.x": {
+      "seeder": true,
+      "seen": 1
+    }
+  },
+  "elapsed_seconds": 24.0,
+  "info_hash": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+  "max_connections": 5,
+  "max_download_speed_bps": 0,
+  "max_seeders": 1,
+  "peer_networks_that_were_seeders": [
+    "5.79.x.x",
+    "79.127.x.x"
+  ],
+  "sample_count": 5,
+  "samples": [
+    {
+      "completed": 0,
+      "connections": 0,
+      "error": "active",
+      "info_hash": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+      "num_seeders": 0,
+      "peers_listed": 0,
+      "speed_bps": 0,
+      "t": 0.0
+    },
+    {
+      "completed": 0,
+      "connections": 0,
+      "error": "active",
+      "info_hash": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+      "num_seeders": 0,
+      "peers_listed": 0,
+      "speed_bps": 0,
+      "t": 1.0
+    },
+    {
+      "completed": 0,
+      "connections": 5,
+      "error": "active",
+      "info_hash": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+      "num_seeders": 0,
+      "peers_listed": 0,
+      "speed_bps": 0,
+      "t": 2.0
+    },
+    {
+      "completed": 0,
+      "connections": 5,
+      "error": "active",
+      "info_hash": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+      "num_seeders": 0,
+      "peers_listed": 0,
+      "speed_bps": 0,
+      "t": 3.0
+    },
+    {
+      "completed": 16384,
+      "connections": 5,
+      "error": "active",
+      "info_hash": "fed3a1e271827a2094b93ecbe738dbf3bd58c5cf",
+      "num_seeders": 1,
+      "peers_listed": 2,
+      "speed_bps": 0,
+      "t": 4.0
+    }
+  ],
+  "stop_detail": "HTTPError: HTTP Error 400: Bad Request; aria2c stopped via aria2.shutdown",
+  "stop_reason": "status_unavailable"
+}

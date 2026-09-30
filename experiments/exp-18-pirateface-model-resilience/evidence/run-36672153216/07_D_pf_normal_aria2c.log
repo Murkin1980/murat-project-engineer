@@ -1,0 +1,68 @@
+
+09/30 05:10:34 [[1;32mNOTICE[0m] Downloading 1 item(s)
+
+09/30 05:10:34 [[1;33mWARN[0m] Neither --rpc-secret nor a combination of --rpc-user and --rpc-passwd is set. This is insecure. It is extremely recommended to specify --rpc-secret with the adequate secrecy or now deprecated --rpc-user and --rpc-passwd.
+
+09/30 05:10:34 [[1;32mNOTICE[0m] IPv4 RPC: listening on TCP port 6800
+
+09/30 05:10:34 [[1;32mNOTICE[0m] IPv6 RPC: listening on TCP port 6800
+
+09/30 05:10:34 [[1;31mERROR[0m] Exception caught while loading DHT routing table from /home/runner/.cache/aria2/dht.dat
+Exception: [DHTRoutingTableDeserializer.cc:82] errorCode=1 Failed to load DHT routing table from /home/runner/.cache/aria2/dht.dat
+
+09/30 05:10:34 [[1;32mNOTICE[0m] IPv4 DHT: listening on UDP port 6881
+
+09/30 05:10:34 [[1;32mNOTICE[0m] IPv4 BitTorrent: listening on TCP port 6881
+
+09/30 05:10:34 [[1;32mNOTICE[0m] IPv6 BitTorrent: listening on TCP port 6881
+[#0c85e2 0B/0B CN:18 SD:0 DL:0B]
+[#0c85e2 37KiB/37KiB(100%) CN:9 SD:1]
+
+09/30 05:10:36 [[1;32mNOTICE[0m] Download complete: [MEMORY][METADATA]fed3a1e271827a2094b93ecbe738dbf3bd58c5cf
+
+09/30 05:10:36 [[1;32mNOTICE[0m] Saved metadata as /home/runner/work/_temp/exp18-work/pf_run/fed3a1e271827a2094b93ecbe738dbf3bd58c5cf.torrent.
+[#9c205d 0B/0.9GiB(0%) CN:18 SD:0 DL:0B]
+[#9c205d 560KiB/0.9GiB(0%) CN:18 SD:7 DL:858KiB ETA:18m30s]
+[#9c205d 2.6MiB/0.9GiB(0%) CN:18 SD:9 DL:1.6MiB ETA:9m34s]
+[#9c205d 5.2MiB/0.9GiB(0%) CN:18 SD:9 DL:1.9MiB ETA:7m47s]
+[#9c205d 7.8MiB/0.9GiB(0%) CN:18 SD:9 DL:2.1MiB ETA:7m6s]
+[#9c205d 10MiB/0.9GiB(1%) CN:18 SD:9 DL:2.3MiB ETA:6m27s]
+[#9c205d 14MiB/0.9GiB(1%) CN:18 SD:9 DL:2.5MiB ETA:5m57s]
+[#9c205d 18MiB/0.9GiB(2%) CN:18 SD:9 DL:2.8MiB ETA:5m20s]
+[#9c205d 24MiB/0.9GiB(2%) CN:18 SD:9 DL:3.2MiB ETA:4m38s]
+[#9c205d 30MiB/0.9GiB(3%) CN:18 SD:9 DL:3.6MiB ETA:4m9s]
+[#9c205d 38MiB/0.9GiB(4%) CN:18 SD:9 DL:3.9MiB ETA:3m43s]
+[#9c205d 50MiB/0.9GiB(5%) CN:23 SD:9 DL:5.1MiB ETA:2m51s]
+[#9c205d 67MiB/0.9GiB(7%) CN:23 SD:10 DL:6.6MiB ETA:2m9s]
+ *** Download Progress Summary as of Wed Sep 30 05:10:50 2026 *** 
+===============================================================================
+[#9c205d 85MiB/0.9GiB(9%) CN:23 SD:10 DL:8.2MiB ETA:1m41s]
+FILE: /home/runner/work/_temp/exp18-work/pf_run/sentence-transformers__all-MiniLM-L6-v2/1_Pooling/config.json (28more)
+-------------------------------------------------------------------------------
+
+[#9c205d 85MiB/0.9GiB(9%) CN:23 SD:10 DL:8.2MiB ETA:1m41s]
+[#9c205d 104MiB/0.9GiB(11%) CN:23 SD:10 DL:10MiB ETA:1m22s]
+[#9c205d 124MiB/0.9GiB(13%) CN:23 SD:10 DL:11MiB ETA:1m8s]
+[#9c205d 145MiB/0.9GiB(15%) CN:23 SD:10 DL:13MiB ETA:57s]
+[#9c205d 171MiB/0.9GiB(18%) CN:23 SD:10 DL:15MiB ETA:47s]
+[#9c205d 198MiB/0.9GiB(21%) CN:23 SD:10 DL:18MiB ETA:40s]
+[#9c205d 226MiB/0.9GiB(24%) CN:23 SD:10 DL:20MiB ETA:34s]
+[#9c205d 250MiB/0.9GiB(26%) CN:23 SD:10 DL:22MiB ETA:30s]
+[#9c205d 276MiB/0.9GiB(29%) CN:55 SD:10 DL:23MiB ETA:28s]
+
+09/30 05:10:58 [[1;32mNOTICE[0m] 3 second(s) has passed. Stopping application.
+[#9c205d 281MiB/0.9GiB(30%) CN:38 SD:1 DL:20MiB ETA:31s]
+
+09/30 05:11:01 [[1;32mNOTICE[0m] Download GID#9c205d3163a3c15e not complete: /home/runner/work/_temp/exp18-work/pf_run/sentence-transformers__all-MiniLM-L6-v2
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+0c85e2|OK  |       0B/s|[MEMORY][METADATA]fed3a1e271827a2094b93ecbe738dbf3bd58c5cf
+9c205d|INPR|    12MiB/s|/home/runner/work/_temp/exp18-work/pf_run/sentence-transformers__all-MiniLM-L6-v2/1_Pooling/config.json (28more)
+
+Status Legend:
+(OK):download completed.(INPR):download in-progress.
+
+aria2 will resume download if the transfer is restarted.
+If there are any errors, then see the log file. See '-l' option in help/man page for details.
