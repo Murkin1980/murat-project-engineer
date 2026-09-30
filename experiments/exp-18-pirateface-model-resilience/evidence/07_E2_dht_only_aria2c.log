@@ -1,68 +1,153 @@
 
-09/30 05:11:30 [[1;32mNOTICE[0m] Downloading 1 item(s)
+09/30 05:22:32 [[1;32mNOTICE[0m] Downloading 1 item(s)
 
-09/30 05:11:30 [[1;33mWARN[0m] Neither --rpc-secret nor a combination of --rpc-user and --rpc-passwd is set. This is insecure. It is extremely recommended to specify --rpc-secret with the adequate secrecy or now deprecated --rpc-user and --rpc-passwd.
+09/30 05:22:32 [[1;33mWARN[0m] Neither --rpc-secret nor a combination of --rpc-user and --rpc-passwd is set. This is insecure. It is extremely recommended to specify --rpc-secret with the adequate secrecy or now deprecated --rpc-user and --rpc-passwd.
 
-09/30 05:11:30 [[1;32mNOTICE[0m] IPv4 RPC: listening on TCP port 6802
+09/30 05:22:32 [[1;32mNOTICE[0m] IPv4 RPC: listening on TCP port 6802
 
-09/30 05:11:30 [[1;32mNOTICE[0m] IPv6 RPC: listening on TCP port 6802
+09/30 05:22:32 [[1;32mNOTICE[0m] IPv6 RPC: listening on TCP port 6802
 
-09/30 05:11:30 [[1;32mNOTICE[0m] IPv4 DHT: listening on UDP port 6881
+09/30 05:22:32 [[1;32mNOTICE[0m] IPv4 DHT: listening on UDP port 6881
 
-09/30 05:11:30 [[1;32mNOTICE[0m] IPv4 BitTorrent: listening on TCP port 6881
+09/30 05:22:32 [[1;32mNOTICE[0m] IPv4 BitTorrent: listening on TCP port 6881
 
-09/30 05:11:30 [[1;32mNOTICE[0m] IPv6 BitTorrent: listening on TCP port 6881
-[#572e7e 0B/0B CN:0 SD:0 DL:0B]
-[#572e7e 0B/0B CN:0 SD:0 DL:0B]
-[#572e7e 0B/0B CN:5 SD:0 DL:0B]
-[#572e7e 16KiB/37KiB(42%) CN:5 SD:1 DL:0B]
-[#572e7e 37KiB/37KiB(100%) CN:3 SD:0]
+09/30 05:22:32 [[1;32mNOTICE[0m] IPv6 BitTorrent: listening on TCP port 6881
+[#3bd7bb 0B/0B CN:0 SD:0 DL:0B]
+[#3bd7bb 0B/0B CN:0 SD:0 DL:0B]
+[#3bd7bb 0B/0B CN:5 SD:0 DL:0B]
+[#3bd7bb 37KiB/37KiB(100%) CN:5 SD:1]
 
-09/30 05:11:35 [[1;32mNOTICE[0m] Download complete: [MEMORY][METADATA]fed3a1e271827a2094b93ecbe738dbf3bd58c5cf
+09/30 05:22:36 [[1;32mNOTICE[0m] Download complete: [MEMORY][METADATA]fed3a1e271827a2094b93ecbe738dbf3bd58c5cf
 
-09/30 05:11:35 [[1;32mNOTICE[0m] Saved metadata as /home/runner/work/_temp/exp18-work/dht_run/fed3a1e271827a2094b93ecbe738dbf3bd58c5cf.torrent.
-[#24c76b 0B/0.9GiB(0%) CN:0 SD:0 DL:0B]
-[#24c76b 0B/0.9GiB(0%) CN:0 SD:0 DL:0B]
-[#24c76b 0B/0.9GiB(0%) CN:0 SD:0 DL:0B]
-[#24c76b 0B/0.9GiB(0%) CN:0 SD:0 DL:0B]
-[#24c76b 0B/0.9GiB(0%) CN:0 SD:0 DL:0B]
-[#24c76b 0B/0.9GiB(0%) CN:0 SD:0 DL:0B]
-[#24c76b 0B/0.9GiB(0%) CN:0 SD:0 DL:0B]
-[#24c76b 0B/0.9GiB(0%) CN:0 SD:0 DL:0B]
-[#24c76b 0B/0.9GiB(0%) CN:0 SD:0 DL:0B]
- *** Download Progress Summary as of Wed Sep 30 05:11:45 2026 *** 
+09/30 05:22:36 [[1;32mNOTICE[0m] Saved metadata as /home/runner/work/_temp/exp18-work/dht_run/fed3a1e271827a2094b93ecbe738dbf3bd58c5cf.torrent.
+[#02d7a6 0B/0.9GiB(0%) CN:0 SD:0 DL:0B]
+[#02d7a6 0B/0.9GiB(0%) CN:0 SD:0 DL:0B]
+[#02d7a6 0B/0.9GiB(0%) CN:0 SD:0 DL:0B]
+[#02d7a6 0B/0.9GiB(0%) CN:0 SD:0 DL:0B]
+[#02d7a6 0B/0.9GiB(0%) CN:0 SD:0 DL:0B]
+[#02d7a6 0B/0.9GiB(0%) CN:0 SD:0 DL:0B]
+[#02d7a6 0B/0.9GiB(0%) CN:0 SD:0 DL:0B]
+[#02d7a6 0B/0.9GiB(0%) CN:0 SD:0 DL:0B]
+[#02d7a6 0B/0.9GiB(0%) CN:0 SD:0 DL:0B]
+[#02d7a6 0B/0.9GiB(0%) CN:0 SD:0 DL:0B]
+ *** Download Progress Summary as of Wed Sep 30 05:22:47 2026 *** 
 ===============================================================================
-[#24c76b 0B/0.9GiB(0%) CN:0 SD:0 DL:0B]
+[#02d7a6 0B/0.9GiB(0%) CN:5 SD:0 DL:0B]
 FILE: /home/runner/work/_temp/exp18-work/dht_run/sentence-transformers__all-MiniLM-L6-v2/1_Pooling/config.json (28more)
 -------------------------------------------------------------------------------
 
-[#24c76b 0B/0.9GiB(0%) CN:0 SD:0 DL:0B]
-[#24c76b 0B/0.9GiB(0%) CN:5 SD:0 DL:0B]
-[#24c76b 16KiB/0.9GiB(0%) CN:5 SD:3 DL:200KiB ETA:1h19m30s]
-[#24c76b 592KiB/0.9GiB(0%) CN:5 SD:3 DL:549KiB ETA:28m54s]
-[#24c76b 1.2MiB/0.9GiB(0%) CN:5 SD:3 DL:618KiB ETA:25m39s]
-[#24c76b 2.5MiB/0.9GiB(0%) CN:5 SD:3 DL:856KiB ETA:18m31s]
-[#24c76b 4.0MiB/0.9GiB(0%) CN:5 SD:3 DL:0.9MiB ETA:15m30s]
-[#24c76b 6.9MiB/0.9GiB(0%) CN:5 SD:3 DL:1.3MiB ETA:11m18s]
-[#24c76b 10MiB/0.9GiB(1%) CN:5 SD:3 DL:1.6MiB ETA:9m14s]
-[#24c76b 13MiB/0.9GiB(1%) CN:5 SD:3 DL:1.8MiB ETA:8m11s]
-[#24c76b 16MiB/0.9GiB(1%) CN:5 SD:3 DL:2.0MiB ETA:7m31s]
-[#24c76b 19MiB/0.9GiB(2%) CN:10 SD:3 DL:2.1MiB ETA:7m2s]
-[#24c76b 22MiB/0.9GiB(2%) CN:10 SD:4 DL:2.3MiB ETA:6m20s]
+[#02d7a6 0B/0.9GiB(0%) CN:5 SD:0 DL:0B]
+[#02d7a6 128KiB/0.9GiB(0%) CN:5 SD:1 DL:405KiB ETA:39m15s]
+[#02d7a6 528KiB/0.9GiB(0%) CN:5 SD:1 DL:396KiB ETA:40m1s]
+[#02d7a6 0.9MiB/0.9GiB(0%) CN:5 SD:1 DL:397KiB ETA:39m55s]
+[#02d7a6 1.2MiB/0.9GiB(0%) CN:5 SD:1 DL:398KiB ETA:39m51s]
+[#02d7a6 1.6MiB/0.9GiB(0%) CN:5 SD:1 DL:398KiB ETA:39m49s]
+[#02d7a6 2.0MiB/0.9GiB(0%) CN:5 SD:1 DL:398KiB ETA:39m48s]
+[#02d7a6 2.4MiB/0.9GiB(0%) CN:5 SD:1 DL:396KiB ETA:39m57s]
+[#02d7a6 2.8MiB/0.9GiB(0%) CN:5 SD:1 DL:392KiB ETA:40m22s]
+[#02d7a6 3.2MiB/0.9GiB(0%) CN:5 SD:1 DL:393KiB ETA:40m18s]
+[#02d7a6 3.5MiB/0.9GiB(0%) CN:10 SD:1 DL:393KiB ETA:40m14s]
+[#02d7a6 3.9MiB/0.9GiB(0%) CN:10 SD:1 DL:394KiB ETA:40m6s]
+[#02d7a6 4.3MiB/0.9GiB(0%) CN:10 SD:1 DL:395KiB ETA:40m1s]
+[#02d7a6 4.7MiB/0.9GiB(0%) CN:10 SD:1 DL:396KiB ETA:39m56s]
+[#02d7a6 5.1MiB/0.9GiB(0%) CN:10 SD:1 DL:397KiB ETA:39m48s]
+ *** Download Progress Summary as of Wed Sep 30 05:23:02 2026 *** 
+===============================================================================
+[#02d7a6 5.5MiB/0.9GiB(0%) CN:10 SD:1 DL:394KiB ETA:40m5s]
+FILE: /home/runner/work/_temp/exp18-work/dht_run/sentence-transformers__all-MiniLM-L6-v2/1_Pooling/config.json (28more)
+-------------------------------------------------------------------------------
 
-09/30 05:11:57 [[1;32mNOTICE[0m] 3 second(s) has passed. Stopping application.
-[#24c76b 22MiB/0.9GiB(2%) CN:6 SD:1 DL:2.2MiB ETA:6m45s]
+[#02d7a6 5.5MiB/0.9GiB(0%) CN:10 SD:1 DL:394KiB ETA:40m5s]
+[#02d7a6 5.9MiB/0.9GiB(0%) CN:10 SD:1 DL:394KiB ETA:40m2s]
+[#02d7a6 6.2MiB/0.9GiB(0%) CN:10 SD:1 DL:395KiB ETA:39m58s]
+[#02d7a6 6.6MiB/0.9GiB(0%) CN:10 SD:1 DL:395KiB ETA:39m53s]
+[#02d7a6 7.0MiB/0.9GiB(0%) CN:10 SD:1 DL:396KiB ETA:39m48s]
+[#02d7a6 7.4MiB/0.9GiB(0%) CN:15 SD:1 DL:397KiB ETA:39m43s]
+[#02d7a6 7.8MiB/0.9GiB(0%) CN:15 SD:1 DL:396KiB ETA:39m46s]
+[#02d7a6 8.2MiB/0.9GiB(0%) CN:15 SD:3 DL:396KiB ETA:39m42s]
+[#02d7a6 8.9MiB/0.9GiB(0%) CN:15 SD:3 DL:435KiB ETA:36m8s]
+[#02d7a6 10MiB/0.9GiB(1%) CN:15 SD:4 DL:508KiB ETA:30m56s]
+[#02d7a6 14MiB/0.9GiB(1%) CN:15 SD:4 DL:0.9MiB ETA:15m37s]
+[#02d7a6 23MiB/0.9GiB(2%) CN:15 SD:4 DL:1.8MiB ETA:8m6s]
+[#02d7a6 31MiB/0.9GiB(3%) CN:15 SD:4 DL:2.7MiB ETA:5m29s]
+[#02d7a6 42MiB/0.9GiB(4%) CN:15 SD:4 DL:3.8MiB ETA:3m49s]
+[#02d7a6 67MiB/0.9GiB(7%) CN:15 SD:4 DL:6.5MiB ETA:2m11s]
+ *** Download Progress Summary as of Wed Sep 30 05:23:17 2026 *** 
+===============================================================================
+[#02d7a6 93MiB/0.9GiB(10%) CN:20 SD:4 DL:9.5MiB ETA:1m28s]
+FILE: /home/runner/work/_temp/exp18-work/dht_run/sentence-transformers__all-MiniLM-L6-v2/1_Pooling/config.json (28more)
+-------------------------------------------------------------------------------
 
-09/30 05:11:59 [[1;32mNOTICE[0m] Download GID#24c76b8f8bf16053 not complete: /home/runner/work/_temp/exp18-work/dht_run/sentence-transformers__all-MiniLM-L6-v2
+[#02d7a6 93MiB/0.9GiB(10%) CN:20 SD:4 DL:9.5MiB ETA:1m28s]
+[#02d7a6 118MiB/0.9GiB(12%) CN:20 SD:5 DL:12MiB ETA:1m6s]
+[#02d7a6 144MiB/0.9GiB(15%) CN:20 SD:6 DL:15MiB ETA:51s]
+[#02d7a6 171MiB/0.9GiB(18%) CN:20 SD:6 DL:16MiB ETA:46s]
+[#02d7a6 197MiB/0.9GiB(21%) CN:20 SD:7 DL:18MiB ETA:39s]
+[#02d7a6 224MiB/0.9GiB(24%) CN:20 SD:7 DL:21MiB ETA:33s]
+[#02d7a6 251MiB/0.9GiB(26%) CN:20 SD:7 DL:22MiB ETA:29s]
+[#02d7a6 278MiB/0.9GiB(29%) CN:20 SD:7 DL:24MiB ETA:26s]
+[#02d7a6 305MiB/0.9GiB(32%) CN:20 SD:7 DL:26MiB ETA:23s]
+[#02d7a6 334MiB/0.9GiB(35%) CN:20 SD:7 DL:26MiB ETA:22s]
+[#02d7a6 363MiB/0.9GiB(39%) CN:20 SD:7 DL:27MiB ETA:20s]
+[#02d7a6 394MiB/0.9GiB(42%) CN:25 SD:7 DL:27MiB ETA:19s]
+[#02d7a6 430MiB/0.9GiB(46%) CN:25 SD:7 DL:28MiB ETA:17s]
+[#02d7a6 463MiB/0.9GiB(49%) CN:25 SD:7 DL:29MiB ETA:15s]
+[#02d7a6 498MiB/0.9GiB(53%) CN:25 SD:7 DL:30MiB ETA:14s]
+ *** Download Progress Summary as of Wed Sep 30 05:23:32 2026 *** 
+===============================================================================
+[#02d7a6 527MiB/0.9GiB(56%) CN:25 SD:7 DL:29MiB ETA:13s]
+FILE: /home/runner/work/_temp/exp18-work/dht_run/sentence-transformers__all-MiniLM-L6-v2/1_Pooling/config.json (28more)
+-------------------------------------------------------------------------------
+
+[#02d7a6 527MiB/0.9GiB(56%) CN:25 SD:7 DL:29MiB ETA:13s]
+[#02d7a6 568MiB/0.9GiB(60%) CN:24 SD:8 DL:30MiB ETA:11s]
+[#02d7a6 605MiB/0.9GiB(65%) CN:24 SD:8 DL:32MiB ETA:10s]
+[#02d7a6 643MiB/0.9GiB(69%) CN:24 SD:8 DL:32MiB ETA:8s]
+[#02d7a6 678MiB/0.9GiB(72%) CN:24 SD:8 DL:33MiB ETA:7s]
+[#02d7a6 714MiB/0.9GiB(76%) CN:24 SD:8 DL:34MiB ETA:6s]
+[#02d7a6 752MiB/0.9GiB(80%) CN:25 SD:8 DL:34MiB ETA:5s]
+[#02d7a6 788MiB/0.9GiB(84%) CN:23 SD:8 DL:34MiB ETA:4s]
+[#02d7a6 822MiB/0.9GiB(88%) CN:20 SD:8 DL:34MiB ETA:3s]
+[#02d7a6 858MiB/0.9GiB(92%) CN:18 SD:8 DL:37MiB ETA:1s]
+[#02d7a6 896MiB/0.9GiB(96%) CN:18 SD:8 DL:37MiB]
+[#02d7a6 0.9GiB/0.9GiB(99%) CN:18 SD:8 DL:36MiB]
+
+09/30 05:23:44 [[1;32mNOTICE[0m] Seeding is over.
+[#02d7a6 SEED(0.0) CN:11 SD:1]
+
+09/30 05:23:45 [[1;32mNOTICE[0m] Download complete: /home/runner/work/_temp/exp18-work/dht_run/sentence-transformers__all-MiniLM-L6-v2
+
+09/30 05:23:45 [[1;32mNOTICE[0m] Your share ratio was 0.0, uploaded/downloaded=0B/0.9GiB
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+09/30 05:24:07 [[1;32mNOTICE[0m] 3 second(s) has passed. Stopping application.
+
 
 Download Results:
 gid   |stat|avg speed  |path/URI
 ======+====+===========+=======================================================
-572e7e|OK  |       0B/s|[MEMORY][METADATA]fed3a1e271827a2094b93ecbe738dbf3bd58c5cf
-24c76b|INPR|   0.9MiB/s|/home/runner/work/_temp/exp18-work/dht_run/sentence-transformers__all-MiniLM-L6-v2/1_Pooling/config.json (28more)
+3bd7bb|OK  |       0B/s|[MEMORY][METADATA]fed3a1e271827a2094b93ecbe738dbf3bd58c5cf
+02d7a6|OK  |    13MiB/s|/home/runner/work/_temp/exp18-work/dht_run/sentence-transformers__all-MiniLM-L6-v2/1_Pooling/config.json (28more)
 
 Status Legend:
-(OK):download completed.(INPR):download in-progress.
-
-aria2 will resume download if the transfer is restarted.
-If there are any errors, then see the log file. See '-l' option in help/man page for details.
+(OK):download completed.

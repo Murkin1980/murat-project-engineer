@@ -8,127 +8,127 @@
     },
     {
       "path": "sentence-transformers__all-MiniLM-L6-v2/1_Pooling/config.json",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "size": 0
+      "sha256": "4be450dde3b0273bb9787637cfbd28fe04a7ba6ab9d36ac48e92b11e350ffc23",
+      "size": 190
     },
     {
       "path": "sentence-transformers__all-MiniLM-L6-v2/README.md",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "size": 0
+      "sha256": "dcd602d2fd35c203a247304a06fec6654a12f7941b739f9221a064fe8dc3b7f0",
+      "size": 10502
     },
     {
       "path": "sentence-transformers__all-MiniLM-L6-v2/config.json",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "size": 0
+      "sha256": "953f9c0d463486b10a6871cc2fd59f223b2c70184f49815e7efbcab5d8908b41",
+      "size": 612
     },
     {
       "path": "sentence-transformers__all-MiniLM-L6-v2/config_sentence_transformers.json",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "size": 0
+      "sha256": "061ca9d39661d6c6d6de5ba27f79a1cd5770ea247f8d46412a68a498dc5ac9f3",
+      "size": 116
     },
     {
       "path": "sentence-transformers__all-MiniLM-L6-v2/data_config.json",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "size": 0
+      "sha256": "32edcb108fc2516b920734a862ae0692bcae1c5d45d5f8d972cb0d53434a4c54",
+      "size": 39265
     },
     {
       "path": "sentence-transformers__all-MiniLM-L6-v2/model.safetensors",
-      "sha256": "bdeb85980663eb5434a84780e00b188b7e32fdebb0fb79a27fd34fec4c6d8a03",
-      "size": 90651139
+      "sha256": "53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db",
+      "size": 90868376
     },
     {
       "path": "sentence-transformers__all-MiniLM-L6-v2/modules.json",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "size": 0
+      "sha256": "84e40c8e006c9b1d6c122e02cba9b02458120b5fb0c87b746c41e0207cf642cf",
+      "size": 349
     },
     {
       "path": "sentence-transformers__all-MiniLM-L6-v2/onnx/model.onnx",
-      "sha256": "8f1a77b3385b5e54e72a412ab508f15c309cef9ddd7016442ea8e8aa22ce5621",
-      "size": 89959950
+      "sha256": "6fd5d72fe4589f189f8ebc006442dbb529bb7ce38f8082112682524616046452",
+      "size": 90405214
     },
     {
       "path": "sentence-transformers__all-MiniLM-L6-v2/onnx/model_O1.onnx",
-      "sha256": "fb27c616aa4ee9c8f98e4abfbf06a02f51d013521c7f5f9b7c6271634f8e239a",
+      "sha256": "1391c6fc20b5530250bc15cbe1f47578ffeca55ab0551d335cc668b6299a88ec",
       "size": 90360328
     },
     {
       "path": "sentence-transformers__all-MiniLM-L6-v2/onnx/model_O2.onnx",
-      "sha256": "9acf603a64a9e267cdd77d51865badb065a974037b3705c5b3c287849956e16a",
-      "size": 89549480
+      "sha256": "1de3905029190b398c7d300b530e320cf4b5e7d3dfb9af1429ebd73fd9a16faf",
+      "size": 90326566
     },
     {
       "path": "sentence-transformers__all-MiniLM-L6-v2/onnx/model_O3.onnx",
-      "sha256": "6dbcb9446a8286c08620f6b16cec6a464fa0ddd987103fe4f6085c02fd96b5d3",
-      "size": 88876162
+      "sha256": "a44f671e364dddbac31f203f07b91be6b0a35e51936e5ebfab65b6d9538b83ff",
+      "size": 90326497
     },
     {
       "path": "sentence-transformers__all-MiniLM-L6-v2/onnx/model_O4.onnx",
-      "sha256": "3eace51361078d1377d5ce6bac226a21d19eecdd182bdfef0dac26980fdc86a3",
-      "size": 45211297
+      "sha256": "1667d7f3ba669048b13a96ee3a44456d5e42c8f44588ae8b603430e16160c485",
+      "size": 45212349
     },
     {
       "path": "sentence-transformers__all-MiniLM-L6-v2/onnx/model_qint8_arm64.onnx",
-      "sha256": "f71277ae53a9b1a0f83714bf6d548035c76d98a56551fce1ac41004b011ffa41",
-      "size": 21494756
+      "sha256": "4278337fd0ff3c68bfb6291042cad8ab363e1d9fbc43dcb499fe91c871902474",
+      "size": 23026053
     },
     {
       "path": "sentence-transformers__all-MiniLM-L6-v2/onnx/model_qint8_avx512.onnx",
-      "sha256": "44e5ba80357d97a006ebef0ab93b2ca598cd811ae18604cd64a48bba359b92c6",
+      "sha256": "4278337fd0ff3c68bfb6291042cad8ab363e1d9fbc43dcb499fe91c871902474",
       "size": 23026053
     },
     {
       "path": "sentence-transformers__all-MiniLM-L6-v2/onnx/model_qint8_avx512_vnni.onnx",
-      "sha256": "93812da4c719e0f2e621ac6ac8e0e79ac9e90a74b6f2eb38c8ca73f6014bfeda",
-      "size": 20531418
+      "sha256": "4278337fd0ff3c68bfb6291042cad8ab363e1d9fbc43dcb499fe91c871902474",
+      "size": 23026053
     },
     {
       "path": "sentence-transformers__all-MiniLM-L6-v2/onnx/model_quint8_avx2.onnx",
-      "sha256": "5e61fd1873d29e1d3d6471eee26c1571876147314893532b510f1bdf034d0755",
-      "size": 22671189
+      "sha256": "b941bf19f1f1283680f449fa6a7336bb5600bdcd5f84d10ddc5cd72218a0fd21",
+      "size": 23046789
     },
     {
       "path": "sentence-transformers__all-MiniLM-L6-v2/openvino/openvino_model.bin",
-      "sha256": "03c21b6f726bb4bb877ff1fd853902e911316aa1e6a7a785ee4140fac8a560b0",
-      "size": 89801936
+      "sha256": "8b86cab4722e2aefab310cf96d4d5a9eb3b187f7d9670a082afc55c7fa0d392a",
+      "size": 90265744
     },
     {
       "path": "sentence-transformers__all-MiniLM-L6-v2/openvino/openvino_model.xml",
-      "sha256": "8e3f164aff1ac6c3c0cf58d0cf1ae0abcf02eddaddb1ae1821e5d5f113c81cf5",
+      "sha256": "f87dd1482b2a745f8c699b81ddd9cbcad666a193be4693abcea44b7ac8c67c1e",
       "size": 211315
     },
     {
       "path": "sentence-transformers__all-MiniLM-L6-v2/openvino/openvino_model_qint8_quantized.bin",
-      "sha256": "9706f19e9cb85fd5bdef26df8a2ed4666590c3ad96922fc69021b41574c77def",
-      "size": 22393549
+      "sha256": "c92ea4af3c6bc7b4a0f3b3d61b147c850f4dbdd7c9e7beee0c0c70dc12da289b",
+      "size": 22933664
     },
     {
       "path": "sentence-transformers__all-MiniLM-L6-v2/openvino/openvino_model_qint8_quantized.xml",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "size": 0
+      "sha256": "a19425e3f56f7736f752923f0a0b5a8d61c7878017f02e1fc9086615391105dd",
+      "size": 368006
     },
     {
       "path": "sentence-transformers__all-MiniLM-L6-v2/pytorch_model.bin",
-      "sha256": "c0902fac1520cf2222b6cdd638c109c8a9882ed577d53b76d80a3248ee6fe652",
+      "sha256": "c3a85f238711653950f6a79ece63eb0ea93d76f6a6284be04019c53733baf256",
       "size": 90888945
     },
     {
       "path": "sentence-transformers__all-MiniLM-L6-v2/rust_model.ot",
-      "sha256": "edff098fb794fd8f00f46d0060fc841cf0029c6461e4d0f72a3dc1f89ec2c70e",
-      "size": 90655158
+      "sha256": "2d98d96d278348988f2744e6445b8bc16d921c3f6e17c667362f3cb353007aea",
+      "size": 90887379
     },
     {
       "path": "sentence-transformers__all-MiniLM-L6-v2/sentence_bert_config.json",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "size": 0
+      "sha256": "fc1993fde0a95c24ec6c022539d41cf6e2f7c9721e5415d6fb6897472a9cd4b7",
+      "size": 53
     },
     {
       "path": "sentence-transformers__all-MiniLM-L6-v2/special_tokens_map.json",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "size": 0
+      "sha256": "303df45a03609e4ead04bc3dc1536d0ab19b5358db685b6f3da123d05ec200e3",
+      "size": 112
     },
     {
       "path": "sentence-transformers__all-MiniLM-L6-v2/tf_model.h5",
-      "sha256": "4d37a8afe5b1869e742733c78f71f12af374621682ba0407399ff4fdf1cc894f",
+      "sha256": "24c06a7429b843d46e40c6b167122053921bf94dce2e5550ea5c07fabc597646",
       "size": 91005696
     },
     {
@@ -152,18 +152,8 @@
       "size": 231508
     }
   ],
-  "generated_utc": "2026-09-30T05:11:30Z",
+  "generated_utc": "2026-09-30T05:22:32Z",
   "root": "swarm_run",
-  "total_bytes": 968038594,
-  "zero_byte_files": [
-    "sentence-transformers__all-MiniLM-L6-v2/1_Pooling/config.json",
-    "sentence-transformers__all-MiniLM-L6-v2/README.md",
-    "sentence-transformers__all-MiniLM-L6-v2/config.json",
-    "sentence-transformers__all-MiniLM-L6-v2/config_sentence_transformers.json",
-    "sentence-transformers__all-MiniLM-L6-v2/data_config.json",
-    "sentence-transformers__all-MiniLM-L6-v2/modules.json",
-    "sentence-transformers__all-MiniLM-L6-v2/openvino/openvino_model_qint8_quantized.xml",
-    "sentence-transformers__all-MiniLM-L6-v2/sentence_bert_config.json",
-    "sentence-transformers__all-MiniLM-L6-v2/special_tokens_map.json"
-  ]
+  "total_bytes": 976986449,
+  "zero_byte_files": []
 }
