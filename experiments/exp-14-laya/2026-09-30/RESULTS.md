@@ -1,6 +1,7 @@
 # EXP-14 — Results
 
 Checkpoint: `EXP-14-CP-01` · Run date: 2026-09-30 (UTC) · Closed: 2026-10-01 (UTC)
+Pull request: https://github.com/Murkin1980/murat-project-engineer/pull/47
 Candidate: Laya by Convai Innovations (`laya==0.3.22`, HF repo
 `convaiinnovations/laya` @ revision `55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851`)
 Dataset: `exp-14-frozen-v1`, 43 cases, sha256

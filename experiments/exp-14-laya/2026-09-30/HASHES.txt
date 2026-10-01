@@ -1,5 +1,5 @@
 # EXP-14 — Cryptographic artifact hashes (SHA-256)
-# Generated: 2026-10-01T02:55:55Z
+# Generated: 2026-10-01T02:57:07Z
 # Run directory: experiments/exp-14-laya/2026-09-30
 # main SHA at freeze: d2ec64531e4cac4f5076263f8317dfaaa36e2a9f
 #
@@ -25,7 +25,7 @@ c34d146ca886ee870b2877ab58505220910b5beb783b0200fd7c5465c321fbc7  LAYA_ZERO_SHOT
 aeb8656bd7fe71fafbd17e0079137dd0b77a2003c77a2a8b04cb1f887a0a539d  METHOD.md
 8cdb8ce9ce26df3b465aabf0d4973a0075f8f5e440aecf2aa24d3d57f26e47eb  ORACLE.md
 53e0118ad73c6707b3f3ab0e32f12179c5be9e90096fa2357a74329676d0cce0  README.md
-3af204808bf3643a474b6c9e627be1fc06c5d8bde9d24664dca9f0af8112fcda  RESULTS.md
+7817e08020ca720669a1f33521df2a1df9502a4790ec602de438a86a194b8eb6  RESULTS.md
 4760af9a7eafffdff6d3a8ed8d30ade470a42c0acae2dd19dbe31862d0f9867f  SEQUENCE_B_REVIEW.md
 8cdfcde3c8a4538f9dcd08a9ff8295d072839cccb32514a9b47e931f3c1ae81f  fixtures/B2_FIX_DIFF.patch
 f08f9d3081ee7868ec367d53465c735edafbbb1e9dc5c4cd8c62fbfe116a29ea  fixtures/PRE_EXPERIMENT_REPO_STATE.txt
@@ -120,10 +120,10 @@ cbb3e20cca4a3ae5eaaaa8c97c0361cd6bf73a1693b96a7e3d3a7ea550c5a9b3  wrangler.jsonc
 ## 3b. Evidence-record files intentionally updated by EXP-14
 # Registry/status records only: no routing, no authority, no decision rule.
 968d47ad10910c5875f83f6c74933369aa0b70486e51cbd2bcb7b65ccb2d96e5  STATUS.md   # UPDATED (evidence record) vs d2ec64531e4c
-394f218ae2cf7c580fe392cc0f58417c1ef24e9249645eef34dee93f51531994  experiments/EXPERIMENT_REGISTRY.json   # UPDATED (evidence record) vs d2ec64531e4c
+3d702c0986eb336bf84076a521d0fb386bb6cd1d79da3ab29e8ae676064f927d  experiments/EXPERIMENT_REGISTRY.json   # UPDATED (evidence record) vs d2ec64531e4c
 3ebcb23cbb525322b18d1480554a164e6addd685a92fac65593d0af825330ecb  CHANGELOG.md   # UPDATED (evidence record) vs d2ec64531e4c
-fd769c9e0f72d3fa777ef62c54efa4c75a5c09f39dd5cdef47bd13c1c63d04a5  experiments/exp-14-laya-system-one/EXECUTION_RECORD.md   # UPDATED (evidence record) vs d2ec64531e4c
-aa572738f4344d41beab8b91a8acbdcdff2c344d71cf55e7278ac8f39bbe7778  experiments/exp-14-laya-system-one/EXECUTION_RECORD.json   # UPDATED (evidence record) vs d2ec64531e4c
+1800a339e41d957e258a1cfa53708f391df2c8bca865f7d9d6f8cf821f7a31a9  experiments/exp-14-laya-system-one/EXECUTION_RECORD.md   # UPDATED (evidence record) vs d2ec64531e4c
+fdc5273da636a1a9dc9c81813cad8e11b4d2fef5c24d99fc8ec4fa637472a0b0  experiments/exp-14-laya-system-one/EXECUTION_RECORD.json   # UPDATED (evidence record) vs d2ec64531e4c
 
 ## 4. Git state
 # NOTE: `head` below is necessarily the commit immediately preceding the commit
@@ -131,9 +131,9 @@ aa572738f4344d41beab8b91a8acbdcdff2c344d71cf55e7278ac8f39bbe7778  experiments/ex
 #       written into, so it cannot contain its own commit SHA. Sections 1-3
 #       describe working-tree bytes, which are the bytes that get committed.
 # branch: arena/01a0f3b0-murat-project-engineer
-# head: d43c5f683ebcf43d104a9c235c8d5ef5a9188f0f
+# head: 8962e290e9678b7bf36b39fab1b489a6a5c09688
 # merge_base_with_main: d2ec64531e4cac4f5076263f8317dfaaa36e2a9f
-# files changed since d2ec64531e4c: 65
+# files changed since d2ec64531e4c: 66
 # of those, OUTSIDE experiments/exp-14-laya/: 5
 # status letter: A=added, M=modified, D=deleted, R=renamed
 #   M  CHANGELOG.md

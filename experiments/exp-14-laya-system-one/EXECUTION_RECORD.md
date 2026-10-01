@@ -2,6 +2,7 @@
 
 Status: **EXECUTED — checkpoint `EXP-14-CP-01` closed with `RESULT = FAIL`**
 Executed: 2026-09-30 → 2026-10-01 (UTC)
+Pull request: https://github.com/Murkin1980/murat-project-engineer/pull/47
 Pre-registration: `PRE_REGISTRATION.json` and `README.md` in this directory —
 **both byte-identical to `main` @ `d2ec64531e4cac4f5076263f8317dfaaa36e2a9f`; they
 were not edited after execution.** This file is additive.

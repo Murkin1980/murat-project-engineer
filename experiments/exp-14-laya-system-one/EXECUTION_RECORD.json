@@ -31,7 +31,11 @@
     "sha256": "a18bfb7ea3d7dcd49534052eb5a8e7d1fcded0f0ec82cf1cc6d3e25917b945c3",
     "frozen_before_model_run": true,
     "changed_after_results": false,
-    "validation_gates": {"G1": "43/43", "G2": "25/25", "G3": "43/43"}
+    "validation_gates": {
+      "G1": "43/43",
+      "G2": "25/25",
+      "G3": "43/43"
+    }
   },
   "candidate": {
     "name": "Laya",
@@ -70,7 +74,12 @@
       "exact_match": 0.1628,
       "exact_or_safely_escalated": 0.6512,
       "mean_field_accuracy": 0.686,
-      "field_accuracy": {"risk_tier": 0.5581, "requires_human_gate": 0.6977, "route_profile": 0.7674, "escalate_to_system_two": 0.7209},
+      "field_accuracy": {
+        "risk_tier": 0.5581,
+        "requires_human_gate": 0.6977,
+        "route_profile": 0.7674,
+        "escalate_to_system_two": 0.7209
+      },
       "protected_false_negatives": 0,
       "unsafe_fast_decisions": 0,
       "deep_change_false_negatives_unescalated": 0,
@@ -109,7 +118,12 @@
       "exact_match": 0.1163,
       "exact_or_safely_escalated": 0.7674,
       "mean_field_accuracy": 0.6221,
-      "field_accuracy": {"risk_tier": 0.5814, "requires_human_gate": 0.4651, "route_profile": 0.6744, "escalate_to_system_two": 0.7674},
+      "field_accuracy": {
+        "risk_tier": 0.5814,
+        "requires_human_gate": 0.4651,
+        "route_profile": 0.6744,
+        "escalate_to_system_two": 0.7674
+      },
       "protected_false_negatives": 0,
       "unsafe_fast_decisions": 0,
       "deep_change_false_negatives_unescalated": 0,
@@ -136,7 +150,10 @@
     "blocking_safety_gate": "FAILED_BY_ARM_B",
     "exact_match_accuracy_min_0_9": false,
     "all_errors_safely_escalated": false,
-    "wrong_and_unescalated_cases": {"B": 15, "B2": 10},
+    "wrong_and_unescalated_cases": {
+      "B": 15,
+      "B2": 10
+    },
     "routine_fraction_min_0_5": false,
     "meaningful_latency_or_cost_advantage": false,
     "llm_decision_path_comparison": "null/unobserved - no metered general-purpose LLM decision call exists in this repository (EXP-13 Pilot Batch 1 never executed); not estimated",
@@ -154,14 +171,32 @@
   },
   "confidence_signal": {
     "verdict": "NOT_USEFUL",
-    "risk_tier_confidence_auc": {"B": 0.5263, "B2": 0.4878},
-    "requires_human_gate_confidence_auc": {"B": 0.6077, "B2": 0.8011},
-    "route_profile_confidence_auc": {"B": 0.7758, "B2": 0.7463},
-    "escalate_to_system_two_confidence_auc": {"B": 0.6868, "B2": 0.7515},
+    "risk_tier_confidence_auc": {
+      "B": 0.5263,
+      "B2": 0.4878
+    },
+    "requires_human_gate_confidence_auc": {
+      "B": 0.6077,
+      "B2": 0.8011
+    },
+    "route_profile_confidence_auc": {
+      "B": 0.7758,
+      "B2": 0.7463
+    },
+    "escalate_to_system_two_confidence_auc": {
+      "B": 0.6868,
+      "B2": 0.7515
+    },
     "act_probability": "constant 1.0 on all answers in arm B; AUC 0.5 by construction",
     "high_confidence_wrong_answers_at_0_80": 0,
-    "best_threshold_cut": {"B": 0.0, "B2": 0.0},
-    "routine_coverage_at_best_cut": {"B": 0.0, "B2": 0.0833},
+    "best_threshold_cut": {
+      "B": 0.0,
+      "B2": 0.0
+    },
+    "routine_coverage_at_best_cut": {
+      "B": 0.0,
+      "B2": 0.0833
+    },
     "used_to_improve_any_reported_number": false
   },
   "calibration_justified": false,
@@ -193,5 +228,24 @@
     ]
   },
   "next_action": "Close EXP-14-CP-01 as a recorded negative result. Do not integrate Laya. Do not fine-tune on the 43-case evaluation dataset. Any continuation requires a new pre-registration with a new, separately frozen dataset whose splits do not overlap these 43 cases.",
-  "handoff": "experiments/exp-14-laya/2026-09-30/SEQUENCE_B_REVIEW.md section 7; RESULTS.md sections 9-10"
+  "handoff": "experiments/exp-14-laya/2026-09-30/SEQUENCE_B_REVIEW.md section 7; RESULTS.md sections 9-10",
+  "pr_links": [
+    "https://github.com/Murkin1980/murat-project-engineer/pull/6",
+    "https://github.com/Murkin1980/murat-project-engineer/pull/47"
+  ],
+  "closing_commits": {
+    "freeze_and_sequence_a": "1559243cd8f7ce342bd274782a64f46c1a23d792",
+    "temporary_ci_harness_added": "55f6db76bc917ec65ff0996e7d7899d2f8c7e5bd",
+    "sequence_b_attempt1_evidence": "3d8e220ec6aff5ffadf2de3124b02a258e81aad9",
+    "b2_pin_fix": "2acd481d2faa3862af80250325cb45e50bb873fd",
+    "sequence_b_attempt2_evidence": "f210a7c56c5081c4b6089a8180e8de7fe865cb24"
+  },
+  "temporary_ci_workflow": {
+    "path": ".github/workflows/exp14-laya-harness.yml",
+    "added_at": "55f6db76bc917ec65ff0996e7d7899d2f8c7e5bd",
+    "deleted_at_close": true,
+    "reason": "the authoring sandbox cannot reach huggingface.co (TLS reset on every zone/mirror) and cannot host a 421M model; an ephemeral CI runner was the only host that could load the pinned checkpoint",
+    "harness_copy_retained": "experiments/exp-14-laya/2026-09-30/harness/exp14-laya.workflow.yml",
+    "new_infrastructure_remaining": false
+  }
 }
