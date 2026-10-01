@@ -97,6 +97,38 @@ For value-bearing automation changes, evidence should distinguish hypothesis/obs
 
 GitHub enforcement is a backstop, not a replacement for the ChatGPT/Codex decision gate.
 
+
+## Mandatory post-merge status and portfolio synchronization
+
+For every MPE-governed project and repository that uses checkpoint-based execution, the checkpoint lifecycle includes a factual post-merge status update.
+
+After a checkpoint PR is merged, the coding agent/Arena MUST:
+1. verify the actual merge result and required validation;
+2. update the project's canonical `PROJECT_STATUS.md` (or explicitly designated equivalent) with the factual current state;
+3. record the completed checkpoint, merge commit SHA/PR, validation result, blocker if any, current progress, and next authorized checkpoint/action;
+4. never mark a checkpoint `DONE` solely because the PR merged;
+5. use `VALIDATION` or `BLOCKED` when required evidence is pending or a real blocker remains;
+6. only then consider the checkpoint closed and advance to the next authorized checkpoint.
+
+### Portfolio synchronization invariant
+
+After project status updates, the Portfolio Monitoring source must be reconciled across **all repositories/projects included in the canonical portfolio**, not only the repository that just changed.
+
+The Salamat Projects Dashboard is the read-only portfolio observer. Its synchronization process MUST:
+- re-read canonical status/evidence sources for the full configured portfolio;
+- analyze repository activity, checkpoint/status changes, blockers, progress and other attributable evidence;
+- reconcile normalized state for every portfolio project;
+- preserve explicit `UNKNOWN` / `UNAVAILABLE` states where evidence cannot be read;
+- never infer one project's state from another project's activity;
+- never write status back into project repositories;
+- never replace repository/MPE source-of-truth with dashboard state.
+
+A project status update is therefore a source event for portfolio reconciliation, not a manual dashboard-edit request.
+
+The synchronization result must leave the dashboard consistent with the latest attributable state across the whole portfolio. Failed or partial repository reads must remain explicit and must not silently present stale data as current.
+
+This rule applies to every current and future MPE-governed project/repository unless an explicitly approved project-specific governance rule defines a stricter equivalent.
+
 ## Mandatory graceful-handoff invariant
 
 A substantial workflow that stops because of quota, credentials, approval, unavailable integration, external dependency, budget, model/context boundary, or another blocker must preserve enough information to resume safely.
