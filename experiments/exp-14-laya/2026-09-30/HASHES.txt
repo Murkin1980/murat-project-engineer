@@ -1,0 +1,144 @@
+# EXP-14 — Cryptographic artifact hashes (SHA-256)
+# Generated: 2026-10-01T02:55:55Z
+# Run directory: experiments/exp-14-laya/2026-09-30
+# main SHA at freeze: d2ec64531e4cac4f5076263f8317dfaaa36e2a9f
+#
+# Section 1 proves the freeze is intact and that Sequence A/B were scored
+# against the frozen bytes. Section 2 lists every EXP-14 artifact.
+# Section 3 proves no production or governing file was modified: the
+# working-tree digest equals the digest of the same path at the frozen
+# main SHA.
+
+## 1. Frozen inputs — integrity anchor
+aef7d8bfcefd2b4132073eaf52e570aee2b5d5aebf318e5d556f6d4d3803b648  frozen/dataset_v1.json
+# recorded at freeze: aef7d8bfcefd2b4132073eaf52e570aee2b5d5aebf318e5d556f6d4d3803b648
+# matches now:        True
+
+## 2. EXP-14 artifacts
+9e7d1ffe749746b1fdfca0e75afa34d2e9fd1a4d7ea6b88853e3bb0065f43928  B2.md
+88d1ee4ddc4dc3f31a4f41c4393f81d697f43ed55b024e4a34e731183008dc6f  BASELINE.md
+71c8aae2f3e0b57e967a1c2e872beaaa029419b210c58d3a4af6ae7bdf2db246  CALIBRATION.md
+0abee17fdfaf9e950a144ebfc403aedda356360e051cf6763e650d9847c0d9d6  CONTRACT.md
+d5195d1ce2073d8b4491ba09c204d28a6bad10de6d35b31bb89b181c2d43d581  DATASET.md
+133d7bc4e884e2281534f9dde79ae61ffea8df846edbcef97744aa49eec3e755  FINE_TUNING.md
+c34d146ca886ee870b2877ab58505220910b5beb783b0200fd7c5465c321fbc7  LAYA_ZERO_SHOT.md
+aeb8656bd7fe71fafbd17e0079137dd0b77a2003c77a2a8b04cb1f887a0a539d  METHOD.md
+8cdb8ce9ce26df3b465aabf0d4973a0075f8f5e440aecf2aa24d3d57f26e47eb  ORACLE.md
+53e0118ad73c6707b3f3ab0e32f12179c5be9e90096fa2357a74329676d0cce0  README.md
+3af204808bf3643a474b6c9e627be1fc06c5d8bde9d24664dca9f0af8112fcda  RESULTS.md
+4760af9a7eafffdff6d3a8ed8d30ade470a42c0acae2dd19dbe31862d0f9867f  SEQUENCE_B_REVIEW.md
+8cdfcde3c8a4538f9dcd08a9ff8295d072839cccb32514a9b47e931f3c1ae81f  fixtures/B2_FIX_DIFF.patch
+f08f9d3081ee7868ec367d53465c735edafbbb1e9dc5c4cd8c62fbfe116a29ea  fixtures/PRE_EXPERIMENT_REPO_STATE.txt
+9431473181dfda1506818062d87ec07041f119e87dd1799a78ef70de54026213  frozen/DATASET_SHA256.txt
+aef7d8bfcefd2b4132073eaf52e570aee2b5d5aebf318e5d556f6d4d3803b648  frozen/dataset_v1.json
+cf0ec665d7eb7a2f19255011b313cb77407220ee2f176fe6a926fa665f47c526  harness/README.md
+2070da9dd4a9f8630f3d3e9ad39cb454f3c2b77b9fb3f22896f9f7abf01f84e9  harness/analyse_confidence.py
+b5dc12ae492ab0701c40c29a24e8b0eed3b2388b2da4c7ba79a0f4f07c140260  harness/build_dataset.py
+834db54e1804b89fea0947998c219e13797582723adeabdd41dff99a087c6f7a  harness/evaluate.py
+616f3d5f55b0e988a822ff7f3e9c6ddd0588c04e8bf401168e68233435581dab  harness/exp14-laya.workflow.yml
+c9886edd70f490599585b2f39869ef29053921206e75d4565f4b3ad313764d6b  harness/exp14_common.py
+0951e7edb4be03a31e457e7a9eef63574f1e1b6d90733767ee98dd725277de7c  harness/make_hashes.py
+a18bfb7ea3d7dcd49534052eb5a8e7d1fcded0f0ec82cf1cc6d3e25917b945c3  harness/mpe_oracle_rules.py
+e9baba41547dd4eeb31f0a2924771b9ec0eb4be557c266531de47a49e02f6a4a  harness/probe_laya_access.py
+b3a1369e8ee679aad5a856b9abacd547f53893e1605e5fa707cddde784a74d6f  harness/render_dataset_md.py
+ae344fb4c842fe1b132bcdff8faf829dd1df4e95e55292817a75763867ad0f0a  harness/run_baseline.py
+597355b09edd14dca861f5bda75e17dd2799ce03a2cfe4815d3153e92e0fc807  harness/run_laya.py
+34ce9e895fdd166103dad31021e283f6a4569482d568601cf7f5fba601479b21  harness/run_sequence_b.sh
+459da9a2e583c24984f89fc0ad2e82001c8cc01a894d727a08610c27b9f47405  raw/analysis_confidence_signal.json
+33a065ae29f98ce4adcb53e81df30554feedc399e09a309959a70fc6407625dc  raw/analysis_confidence_signal_B2.json
+d3df1b530b41a1fcbd4231443b53235702374205aff419db004569a58271987f  raw/baseline_pass1.json
+cbb7cccfd2d7f93ce1a77cd8850df0d403c1d5a567d9fd9d88e09109761a809f  raw/baseline_pass2.json
+d90d87a3d14971b2b7432f5fe3e3497a9db3e52b12517c50b2c964a3924341fd  raw/baseline_pass3.json
+c580a07b3f87e62b71f3c7f4b664e0eeb902e65306be7092067b7a324c48bae1  raw/baseline_reproducibility.json
+89e7f46585aa5f50dc03f320bf618021c2c327ff1806013590dffb67299678fa  raw/laya_B2_attempt1_INFRASTRUCTURE_BLOCKED.json
+a4e81ccf6f471c276381855379a35da5c9df056ff30cc5200cbab02183fe54d7  raw/laya_B2_laya_typed_decisions_reference_pass1.json
+b6cd6fa7ce29f4a518b6e390249a893496acc20951139139d298f330104a104c  raw/laya_B2_laya_typed_decisions_reference_pass2.json
+f5d5e7ee40342bf0ef0c3457bba22ea7faadfab9885d44ffb0a532a65ee558c1  raw/laya_B2_laya_typed_decisions_reference_pass3.json
+5da49572d3638c126111a287ea2002599b5506534f0cbd9599976c81f3445ead  raw/laya_B2_laya_typed_decisions_reference_reproducibility.json
+5c2bd3200163deac8448a7beef63ae65c97e40a3cd3194dabfe8284c7984df56  raw/laya_B_laya_zero_shot_root_pass1.json
+9756ed25057d041818c55930f6b55f68e53ddea836f624ab31e52b2a358e1fab  raw/laya_B_laya_zero_shot_root_pass2.json
+a5c4fd8f148729ab4379fcc111db98cbd33255c1b160202258f7bf7ad5e27170  raw/laya_B_laya_zero_shot_root_pass3.json
+31711a495479a7cee09e3e1070b66cbe6707e733504a07d24f6091b76c56a52a  raw/laya_B_laya_zero_shot_root_reproducibility.json
+d60e783e581a714bd323d338192acf5d86c1eaee085e12f88d16cf570ccad7b7  raw/laya_access_probe_execution_host.json
+d60e783e581a714bd323d338192acf5d86c1eaee085e12f88d16cf570ccad7b7  raw/laya_access_probe_execution_host_attempt1.json
+56c1ca008f63b6016c63b4b7b1d64bc30afeac6f008e6c2c564f7a33c733f91a  raw/laya_access_probe_execution_host_attempt2.json
+0faf3f1d9539d9f06862dd0f59732fa615a287a56ea6b460b600e0937ab804cf  raw/laya_access_probe_sandbox.json
+a148e42b379eea62f90242ab628c8a7b24217774f32a114d14b1674b13679792  raw/metrics_B2_laya_typed_decisions_reference_pass1.json
+e25e5045c52baaedb6d0a92424ff1f4a8a4b16dafddf17a562fd655b84c76a7e  raw/metrics_B2_laya_typed_decisions_reference_pass2.json
+e7ab024e1ad61c235200e1d495f3707be31d7ef2db17d2c36e2ed8d3d16677d1  raw/metrics_B2_laya_typed_decisions_reference_pass3.json
+13f3914f2e76c2f605f91021bf579a9e190b4103849a1eeb89bbe15e8b3a5b38  raw/metrics_B_laya_zero_shot_root_pass1.json
+47d929beda383cedaef316c4f8857815f8243c5dac1866b2845d77fe59b73a94  raw/metrics_B_laya_zero_shot_root_pass2.json
+5c7023d80c903846e7a714c39ea6e4ee85cbb93003423245eb113cefca7618ee  raw/metrics_B_laya_zero_shot_root_pass3.json
+76b51ec0fb3360565df0a48dd363d84791b2d44818faaacc2a9657d989954877  raw/metrics_baseline_pass1.json
+6ad45157bfb37c7f3d9d3ce8ee6a1c1226757219e7347a94058fcb5f0086975b  raw/metrics_baseline_pass2.json
+9c316e358e7148da51d476ad9de0faae2e44e64c47660bb94bc0f0c475061dca  raw/metrics_baseline_pass3.json
+a8f58fa9f11aaaf9ef952de5ca77590c7fd5d70686a253252f71060330a10aff  raw/sequence_b_console.log
+a8f58fa9f11aaaf9ef952de5ca77590c7fd5d70686a253252f71060330a10aff  raw/sequence_b_console_attempt1.log
+c81a5488e2dc4d8c8fd30baef8a9072f35dee928c4b30fdaa7b2e0eadfd55858  raw/sequence_b_console_attempt2.log
+
+## 3. Production and governing files — must be unchanged by EXP-14
+fe46acc4f48e4f52e92da6b0d6dca3279fc76db014c8f1b5e81170927037d528  AGENTS.md   # UNCHANGED since d2ec64531e4c
+c4b747249f37d94dab9e5597b6e03692d2064846a4b7903a5b68036f996a0f9e  docs/governance/SCOPE-CHANGE-CONTROL.md   # UNCHANGED since d2ec64531e4c
+da38ccd45b843e403b08972cac1e6993faf1ba38f69135d1eefd168c014fc9eb  docs/GLOBAL_MPE_ENFORCEMENT.md   # UNCHANGED since d2ec64531e4c
+c8244ed1a41f7db107bd34608214dd9d98f70cf0e3e05e805b6e62258f289f56  docs/OPERATING_MODEL.md   # UNCHANGED since d2ec64531e4c
+f289fed56aad3e67b09411b23f2d7cac05936252919319938142968d0c7dcb22  docs/NEW_IDEA_FILTER_POLICY.md   # UNCHANGED since d2ec64531e4c
+0594354d37fd3b03743667829d9737dc05f130a9797917cffc793ffbf4cbadbb  docs/HUMAN_VALUE_DELIVERY_PRINCIPLES.md   # UNCHANGED since d2ec64531e4c
+d29a4a1c272c89909b44baf757490b8bf7382f47651b7bb3c3231596d0b5abea  docs/VALUE_UNIT_ECONOMICS.md   # UNCHANGED since d2ec64531e4c
+96974048a393a9a1ceee85cb754f428569cd6176d0d3d2b41616c57893e240e2  docs/OPINIONATED_WORKSPACE_POLICY.md   # UNCHANGED since d2ec64531e4c
+a0a13de5c4a74d9c573740ce36562e3050bf23c850161f9b43dbb9bca871fc0c  docs/COMPUTE_BUDGET_GATE.md   # UNCHANGED since d2ec64531e4c
+a7e7167fbd36ca17d4748fa49174ab3a5aacae8d2ec8f7735600980cf3793ecd  docs/MURAT_AI_STACK_V2_DECISION.md   # UNCHANGED since d2ec64531e4c
+5a6d4a4477ca24cf7b2feee479fd6276716e59f0f4e0c60618c548a34b93316c  docs/experiments/EXP-13_LOW_COST_EVALUATION_HARNESS.md   # UNCHANGED since d2ec64531e4c
+afad61860c690c6495b74a5bf5b1f738d160dc3aecc4ab9c9684c9509342c094  contracts/TRIAGE_INPUT.schema.json   # UNCHANGED since d2ec64531e4c
+38d31f8e7c9fac9f126ac0c4f6f9970eda2496f36923dcbf943821230c477c3d  contracts/TRIAGE_OUTPUT.schema.json   # UNCHANGED since d2ec64531e4c
+4e74c3a2c5ca53215d7a8b281479cc66c228158fda8ce35b0eaaec05e0879650  contracts/EXPERIMENT_REGISTRY.schema.json   # UNCHANGED since d2ec64531e4c
+25732b512de7396f8026b4d23991a99362f1b44e3ae9b77ba819481a23199886  scripts/triage_engine.py   # UNCHANGED since d2ec64531e4c
+a39b9f8648449f293fc5e2e8d3ce60c158d8379d60125ac72f7da421255104f2  gates/registry.yaml   # UNCHANGED since d2ec64531e4c
+7fd930590aca9d10c766b3460481e17aaf0ebdde12ec6a8f82a3339fe455e468  playbooks/fast.md   # UNCHANGED since d2ec64531e4c
+dd159f48fc8aeb852275d54420e0a5d8b160d233ab8337c93595c2a673054224  playbooks/verified.md   # UNCHANGED since d2ec64531e4c
+bda21d78232085f1878d5024c35e7a492ccd39c1aa19a5931323a42e119b8695  playbooks/deep-change.md   # UNCHANGED since d2ec64531e4c
+c3cf8ef23c9025124a8cab1590ba7239f2a4bb5d33a12291a8d80ecfe01606dd  experts/architect.md   # UNCHANGED since d2ec64531e4c
+35f4d5d51fc9eba4a548fee95cecff4f1b8bf1b6b2ef28a1e293b7f146c4c247  experts/coder.md   # UNCHANGED since d2ec64531e4c
+636872effa14319cb957119729d487ca0867739e5977ea7b10f752915f856705  experts/researcher.md   # UNCHANGED since d2ec64531e4c
+855e59cb999ce67ece617148db35c417af5ae09b8d78ac52b16dcb8d9f93f7c7  experts/reviewer.md   # UNCHANGED since d2ec64531e4c
+0b858e80c095faaea141dbf9f31d58a699df79b82083fcdec49ba58a2f33c292  teams/software-standard.md   # UNCHANGED since d2ec64531e4c
+500ebdfc39c48a395958df8597cfa300968137dd45d20a3cb59c02d497693dcd  teams/software-verified.md   # UNCHANGED since d2ec64531e4c
+19cfad25e71de69fa7e5f4383aaad0febb33f239db49165fb418d328daac0fb1  teams/research-verified.md   # UNCHANGED since d2ec64531e4c
+3378d706619202300071cb796314fb16fdf4d50113436896c8e4f71341d67423  skills/murat-project-engineer/references/risk-and-routing.md   # UNCHANGED since d2ec64531e4c
+4386b0e78337ebfe95406db1c5df86591e36e4b315e2e14ca3517b8fc5afbf94  skills/murat-project-engineer/references/route-profiles.md   # UNCHANGED since d2ec64531e4c
+474898358674914484b2a07e606916f886a25df9839aa404061e258f22174f97  datasets/exp-12-backtest.json   # UNCHANGED since d2ec64531e4c
+882762044d548d3cf9308c2c67d1fa239f65579bb15169c078047bc309b99021  experiments/exp-13/tasks_v2.json   # UNCHANGED since d2ec64531e4c
+f5f3c0e051b7019905a6edfa2ed6a8beebaeb62b4b851eccb43a4651cda614ba  experiments/exp-13/routes.json   # UNCHANGED since d2ec64531e4c
+00107b0b247f0a5d8dbcdd19d985b25f093a14dfd3234e12961669df4420a7b7  experiments/exp-13/thresholds.json   # UNCHANGED since d2ec64531e4c
+57fec8062d51af6bb59bc19172fe2c4f1b7a826c2fb99771ff0d8f44428e89ca  experiments/exp-14-laya-system-one/README.md   # UNCHANGED since d2ec64531e4c
+e9148d651d1aa5ce0e96d9ef50c22d1ac480754848d41b3f911191478c6e5553  experiments/exp-14-laya-system-one/PRE_REGISTRATION.json   # UNCHANGED since d2ec64531e4c
+3da9161c606c23bef0b31ac06e3a8d6b9ccb9abff93c56fe528163b73f55c0ba  package.json   # UNCHANGED since d2ec64531e4c
+cbb3e20cca4a3ae5eaaaa8c97c0361cd6bf73a1693b96a7e3d3a7ea550c5a9b3  wrangler.jsonc   # UNCHANGED since d2ec64531e4c
+
+# unchanged: 36/36
+# changed:   none
+
+## 3b. Evidence-record files intentionally updated by EXP-14
+# Registry/status records only: no routing, no authority, no decision rule.
+968d47ad10910c5875f83f6c74933369aa0b70486e51cbd2bcb7b65ccb2d96e5  STATUS.md   # UPDATED (evidence record) vs d2ec64531e4c
+394f218ae2cf7c580fe392cc0f58417c1ef24e9249645eef34dee93f51531994  experiments/EXPERIMENT_REGISTRY.json   # UPDATED (evidence record) vs d2ec64531e4c
+3ebcb23cbb525322b18d1480554a164e6addd685a92fac65593d0af825330ecb  CHANGELOG.md   # UPDATED (evidence record) vs d2ec64531e4c
+fd769c9e0f72d3fa777ef62c54efa4c75a5c09f39dd5cdef47bd13c1c63d04a5  experiments/exp-14-laya-system-one/EXECUTION_RECORD.md   # UPDATED (evidence record) vs d2ec64531e4c
+aa572738f4344d41beab8b91a8acbdcdff2c344d71cf55e7278ac8f39bbe7778  experiments/exp-14-laya-system-one/EXECUTION_RECORD.json   # UPDATED (evidence record) vs d2ec64531e4c
+
+## 4. Git state
+# NOTE: `head` below is necessarily the commit immediately preceding the commit
+#       that contains this HASHES.txt file: the ledger hashes the tree it is
+#       written into, so it cannot contain its own commit SHA. Sections 1-3
+#       describe working-tree bytes, which are the bytes that get committed.
+# branch: arena/01a0f3b0-murat-project-engineer
+# head: d43c5f683ebcf43d104a9c235c8d5ef5a9188f0f
+# merge_base_with_main: d2ec64531e4cac4f5076263f8317dfaaa36e2a9f
+# files changed since d2ec64531e4c: 65
+# of those, OUTSIDE experiments/exp-14-laya/: 5
+# status letter: A=added, M=modified, D=deleted, R=renamed
+#   M  CHANGELOG.md
+#   M  STATUS.md
+#   M  experiments/EXPERIMENT_REGISTRY.json
+#   A  experiments/exp-14-laya-system-one/EXECUTION_RECORD.json
+#   A  experiments/exp-14-laya-system-one/EXECUTION_RECORD.md
+
