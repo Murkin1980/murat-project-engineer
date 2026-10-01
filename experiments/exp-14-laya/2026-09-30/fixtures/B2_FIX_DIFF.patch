@@ -1,0 +1,118 @@
+commit 2acd481d2faa3862af80250325cb45e50bb873fd
+Author: Murkin1980 <36252218+Murkin1980@users.noreply.github.com>
+Date:   Wed Sep 30 19:39:21 2026 +0000
+
+    EXP-14: correct the arm-B2 checkpoint pin and re-run only the secondary reference arm
+    
+    Arm B2's first attempt failed with RevisionNotFoundError because the harness used
+    the SDK pin of the SEPARATE repository convaiinnovations/laya-typed-decisions
+    (1a793eb5...) as a revision of the BUNDLED repository convaiinnovations/laya,
+    where typed-decisions is a subfolder and therefore shares the repo revision
+    55cf4c4e.... The blocked record is preserved verbatim as
+    raw/laya_B2_attempt1_INFRASTRUCTURE_BLOCKED.json together with the attempt-1
+    console log and host probe.
+    
+    Arm B is untouched: it used the same code path and the same revision before and
+    after this correction, so raw/laya_B_laya_zero_shot_root_pass{1,2,3}.json and
+    their metrics are not regenerated. Attempt 2 runs the typed-decisions arm only.
+    
+    Co-authored-by: arena-agent <297053741+arena-agent@users.noreply.github.com>
+
+diff --git a/.github/workflows/exp14-laya-harness.yml b/.github/workflows/exp14-laya-harness.yml
+index 2303c88..425987d 100644
+--- a/.github/workflows/exp14-laya-harness.yml
++++ b/.github/workflows/exp14-laya-harness.yml
+@@ -72,13 +72,16 @@ jobs:
+         env:
+           HF_HUB_DISABLE_PROGRESS_BARS: '1'
+           OMP_NUM_THREADS: '4'
+-        run: bash harness/run_sequence_b.sh 3 "root typed-decisions"
++        # Attempt 2 re-runs ONLY the secondary reference arm B2, whose first
++        # attempt was blocked by a harness revision-pin defect (see the comment
++        # in harness/run_laya.py). Arm B's frozen evidence is not regenerated.
++        run: bash harness/run_sequence_b.sh 3 "typed-decisions" "attempt2"
+ 
+       - name: Print key evidence to the job log
+         if: always()
+         working-directory: experiments/exp-14-laya/2026-09-30
+         run: |
+-          for f in raw/sequence_b_console.log raw/laya_access_probe_execution_host.json \
++          for f in raw/sequence_b_console*.log raw/laya_access_probe_execution_host*.json \
+                    raw/metrics_*.json raw/laya_*_reproducibility.json; do
+             for match in $f; do
+               echo "===== $match ====="
+diff --git a/experiments/exp-14-laya/2026-09-30/harness/run_laya.py b/experiments/exp-14-laya/2026-09-30/harness/run_laya.py
+index 0b83ebb..6faf0e1 100644
+--- a/experiments/exp-14-laya/2026-09-30/harness/run_laya.py
++++ b/experiments/exp-14-laya/2026-09-30/harness/run_laya.py
+@@ -54,10 +54,27 @@ from exp14_common import (  # noqa: E402
+ 
+ LAYA_SDK_PIN = "laya==0.3.22"
+ HF_REPO = "convaiinnovations/laya"
++# laya/revisions.py PINNED_REVISIONS, read from the installed SDK, not guessed.
++#
++# HARNESS DEFECT CORRECTED (arm B2 only, after arm B was already frozen):
++# the SDK pins one revision per *repository*. `typed-decisions` is a SUBFOLDER of
++# the bundled repository `convaiinnovations/laya`, so it shares that repository's
++# revision; `1a793eb5…` is the pin of the separate repository
++# `convaiinnovations/laya-typed-decisions` and is not a valid rev id of the
++# bundled repo. The first B2 attempt therefore failed with
++# RevisionNotFoundError (preserved verbatim in
++# raw/laya_B2_laya_typed_decisions_reference.json). Arm B (root) used the same
++# code path and the same revision before and after this correction, so no primary
++# result changed; raw/laya_B_laya_zero_shot_root_pass{1,2,3}.json are untouched.
++REPO_REVISION = "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+ PINNED_REVISIONS = {
+-    # laya/revisions.py PINNED_REVISIONS, read from the installed SDK, not guessed
+-    "root": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+-    "typed-decisions": "1a793eb568e6718f15941d08f85432581df534e3",
++    "root": REPO_REVISION,
++    "typed-decisions": REPO_REVISION,
++}
++STANDALONE_REPO_PINS = {
++    "convaiinnovations/laya": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
++    "convaiinnovations/laya-multilingual": "e4e9ddf21a7b1903b7acffd8814ad4307bf63a67",
++    "convaiinnovations/laya-typed-decisions": "1a793eb568e6718f15941d08f85432581df534e3",
+ }
+ 
+ # ---------------------------------------------------------------------------
+diff --git a/experiments/exp-14-laya/2026-09-30/harness/run_sequence_b.sh b/experiments/exp-14-laya/2026-09-30/harness/run_sequence_b.sh
+index d140f98..91192ab 100755
+--- a/experiments/exp-14-laya/2026-09-30/harness/run_sequence_b.sh
++++ b/experiments/exp-14-laya/2026-09-30/harness/run_sequence_b.sh
+@@ -11,6 +11,11 @@ set -uo pipefail
+ 
+ PASSES="${1:-3}"
+ ARMS="${2:-root typed-decisions}"
++# TAG keeps repeat invocations from overwriting an earlier run's console log or
++# host probe. Attempt 1 (arms "root typed-decisions") is preserved as
++# raw/sequence_b_console_attempt1.log and
++# raw/laya_access_probe_execution_host_attempt1.json.
++TAG="${3:-}"
+ 
+ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ RUN_DIR="$(dirname "$HERE")"
+@@ -18,7 +23,7 @@ REPO_ROOT="$(cd "$RUN_DIR/../../.." && pwd)"
+ cd "$RUN_DIR"
+ 
+ PY="${PYTHON:-python3}"
+-LOG="$RUN_DIR/raw/sequence_b_console.log"
++LOG="$RUN_DIR/raw/sequence_b_console${TAG:+_$TAG}.log"
+ mkdir -p "$RUN_DIR/raw"
+ : > "$LOG"
+ 
+@@ -28,12 +33,12 @@ log "=== EXP-14 Sequence B ==="
+ log "run_dir=$RUN_DIR"
+ log "repo_root=$REPO_ROOT"
+ log "python=$($PY -V 2>&1)"
+-log "passes=$PASSES arms=$ARMS"
++log "passes=$PASSES arms=$ARMS tag=${TAG:-<none>}"
+ 
+ # ---------------------------------------------------------------- stage 0
+ log "--- stage 0: host + egress probe (contrast evidence) ---"
+ $PY "$HERE/probe_laya_access.py" --timeout 20 \
+-    --out "$RUN_DIR/raw/laya_access_probe_execution_host.json" \
++    --out "$RUN_DIR/raw/laya_access_probe_execution_host${TAG:+_$TAG}.json" \
+     --skip-load-probe >> "$LOG" 2>&1
+ log "probe exit=$?"
+ 

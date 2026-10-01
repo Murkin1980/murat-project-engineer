@@ -68,6 +68,8 @@ EVIDENCE_RECORD_FILES = [
     "STATUS.md",
     "experiments/EXPERIMENT_REGISTRY.json",
     "CHANGELOG.md",
+    "experiments/exp-14-laya-system-one/EXECUTION_RECORD.md",
+    "experiments/exp-14-laya-system-one/EXECUTION_RECORD.json",
 ]
 
 
@@ -162,6 +164,10 @@ def main() -> int:
     lines.append("")
 
     lines.append("## 4. Git state")
+    lines.append("# NOTE: `head` below is necessarily the commit immediately preceding the commit")
+    lines.append("#       that contains this HASHES.txt file: the ledger hashes the tree it is")
+    lines.append("#       written into, so it cannot contain its own commit SHA. Sections 1-3")
+    lines.append("#       describe working-tree bytes, which are the bytes that get committed.")
     for label, argv in [
         ("branch", ["git", "rev-parse", "--abbrev-ref", "HEAD"]),
         ("head", ["git", "rev-parse", "HEAD"]),
@@ -170,14 +176,18 @@ def main() -> int:
         value = subprocess.run(["git", "-C", str(REPO_ROOT)] + argv[1:],
                                capture_output=True, text=True).stdout.strip()
         lines.append(f"# {label}: {value}")
+    # --name-status so a deletion is visible as a deletion (A/M/D/R), not as a
+    # bare path that would look like a modification.
     diff = subprocess.run(
-        ["git", "-C", str(REPO_ROOT), "diff", "--name-only", f"{MAIN_SHA}..HEAD"],
+        ["git", "-C", str(REPO_ROOT), "diff", "--name-status", f"{MAIN_SHA}..HEAD"],
         capture_output=True, text=True).stdout.strip().splitlines()
-    outside = [f for f in diff if not f.startswith("experiments/exp-14-laya/")]
-    lines.append(f"# files changed since {MAIN_SHA[:12]}: {len(diff)}")
+    entries = [tuple(line.split("\t")) for line in diff if line.strip()]
+    outside = [e for e in entries if not e[-1].startswith("experiments/exp-14-laya/")]
+    lines.append(f"# files changed since {MAIN_SHA[:12]}: {len(entries)}")
     lines.append(f"# of those, OUTSIDE experiments/exp-14-laya/: {len(outside)}")
-    for f in outside:
-        lines.append(f"#   {f}")
+    lines.append("# status letter: A=added, M=modified, D=deleted, R=renamed")
+    for status, *paths in outside:
+        lines.append(f"#   {status}  {' -> '.join(paths)}")
     lines.append("")
 
     out = RUN_DIR / "HASHES.txt"
