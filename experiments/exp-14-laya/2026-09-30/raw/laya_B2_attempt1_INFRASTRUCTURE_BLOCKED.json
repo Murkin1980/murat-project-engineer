@@ -1,0 +1,26 @@
+{
+  "experiment_id": "EXP-14",
+  "checkpoint": "EXP-14-CP-01",
+  "sequence": "B_LAYA_ZERO_SHOT",
+  "arm": "B2_laya_typed_decisions_reference",
+  "status": "INFRASTRUCTURE_BLOCKED",
+  "dataset_id": "exp-14-frozen-v1",
+  "dataset_sha256_expected": "aef7d8bfcefd2b4132073eaf52e570aee2b5d5aebf318e5d556f6d4d3803b648",
+  "reason": "the pinned Laya checkpoint could not be loaded on this host",
+  "error": "RevisionNotFoundError: 404 Client Error. (Request ID: Root=1-6abd64bb-757475193a8ca65f3b768827;8ef99c24-e21d-40f1-8134-2b30f271cf9a)\n\nRevision Not Found for url: https://huggingface.co/api/models/convaiinnovations/laya/tree/1a793eb568e6718f15941d08f85432581df534e3?recursive=true&expand=false.\nInvalid rev id: 1a793eb568e6718f15941d08f85432581df534e3",
+  "host": {
+    "python": "3.11.16",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "cpu_count": 4,
+    "MemTotal_kB": 16373448,
+    "MemAvailable_kB": 15202984,
+    "torch_version": "2.14.1+cpu",
+    "transformers_version": "5.18.0",
+    "laya_version": "0.3.22",
+    "safetensors_version": "0.8.0",
+    "huggingface_hub_version": "1.33.0",
+    "numpy_version": "2.4.6"
+  },
+  "results": []
+}

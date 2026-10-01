@@ -1,0 +1,47 @@
+{
+  "sequence": "B_LAYA_ZERO_SHOT",
+  "arm": "B_laya_zero_shot_root",
+  "dataset_id": "exp-14-frozen-v1",
+  "dataset_sha256": "aef7d8bfcefd2b4132073eaf52e570aee2b5d5aebf318e5d556f6d4d3803b648",
+  "candidate": {
+    "sdk_pin": "laya==0.3.22",
+    "sdk_version_observed": "0.3.22",
+    "hf_repo": "convaiinnovations/laya",
+    "subfolder": null,
+    "requested_revision": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+    "resolved_revision": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+    "revision_matches_pin": true,
+    "device": "cpu",
+    "dtype": "torch.float32",
+    "max_len": 512,
+    "head_max_len": 192,
+    "model_dir": "None",
+    "load_seconds": 10.029,
+    "questions_sha256": "19575f23d121b2f0ff2276a2fe3be5cf096a3689d0061dca414bccf7e2cefc27",
+    "noul_threshold": 0.5,
+    "zero_shot": true,
+    "few_shot_examples_supplied": 0,
+    "oracle_values_supplied": false,
+    "calibration_applied": false,
+    "fine_tuning_applied": false,
+    "checkpoint_note": "root = the pre-registered candidate convaiinnovations/laya (English, ModernBERT-large, 421M)"
+  },
+  "passes": 3,
+  "pass_files": [
+    "raw/laya_B_laya_zero_shot_root_pass1.json",
+    "raw/laya_B_laya_zero_shot_root_pass2.json",
+    "raw/laya_B_laya_zero_shot_root_pass3.json"
+  ],
+  "pass_file_sha256": [
+    "5c2bd3200163deac8448a7beef63ae65c97e40a3cd3194dabfe8284c7984df56",
+    "9756ed25057d041818c55930f6b55f68e53ddea836f624ab31e52b2a358e1fab",
+    "a5c4fd8f148729ab4379fcc111db98cbd33255c1b160202258f7bf7ad5e27170"
+  ],
+  "decisions_identical_across_passes": true,
+  "reproducible": true,
+  "warmup": {
+    "ok": true,
+    "seconds": 1.985
+  },
+  "status": "EXECUTED"
+}

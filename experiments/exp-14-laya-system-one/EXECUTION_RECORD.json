@@ -1,0 +1,251 @@
+{
+  "experiment_id": "EXP-14",
+  "checkpoint": "EXP-14-CP-01",
+  "title": "Laya / System One Decision Layer",
+  "status": "EXECUTED_CLOSED",
+  "result": "FAIL",
+  "pass_for_next_experiment": false,
+  "failure_classification": "MODEL_FAIL",
+  "executed_from": "2026-09-30",
+  "closed_at": "2026-10-01",
+  "pre_registration_untouched": true,
+  "pre_registration_main_sha": "d2ec64531e4cac4f5076263f8317dfaaa36e2a9f",
+  "evidence_directory": "experiments/exp-14-laya/2026-09-30",
+  "evidence_directory_note": "Dated run directory per repository evidence convention; disclosed deviation in RESULTS.md section 7. This directory keeps the pre-registration and points at the run.",
+  "dataset": {
+    "id": "exp-14-frozen-v1",
+    "cases": 43,
+    "sha256": "aef7d8bfcefd2b4132073eaf52e570aee2b5d5aebf318e5d556f6d4d3803b648",
+    "frozen_before_model_run": true,
+    "mutable_after_freeze": false,
+    "protected_cases": 31,
+    "materially_dangerous_cases": 14,
+    "ambiguous_cases": 6,
+    "routine_cases": 12,
+    "provenance_cases_with_pre_existing_label": 25,
+    "pre_existing_labels_reproduced": 25,
+    "held_out_status": "all 43 cases held out from the candidate; no training split created, no calibration fitted, no fine-tuning run"
+  },
+  "oracle": {
+    "implementation": "experiments/exp-14-laya/2026-09-30/harness/mpe_oracle_rules.py",
+    "sha256": "a18bfb7ea3d7dcd49534052eb5a8e7d1fcded0f0ec82cf1cc6d3e25917b945c3",
+    "frozen_before_model_run": true,
+    "changed_after_results": false,
+    "validation_gates": {
+      "G1": "43/43",
+      "G2": "25/25",
+      "G3": "43/43"
+    }
+  },
+  "candidate": {
+    "name": "Laya",
+    "vendor": "Convai Innovations",
+    "sdk_pin": "laya==0.3.22",
+    "hf_repo": "convaiinnovations/laya",
+    "revision": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+    "revision_matches_pin": true,
+    "questions_sha256": "19575f23d121b2f0ff2276a2fe3be5cf096a3689d0061dca414bccf7e2cefc27",
+    "device": "cpu",
+    "dtype": "torch.float32",
+    "execution_host": "ephemeral GitHub-hosted runner (ubuntu-latest, 4 vCPU, 16 GB RAM, no GPU)",
+    "authoring_sandbox_laya_access": "INFRASTRUCTURE_BLOCKED (HF TLS reset; recorded in raw/laya_access_probe_sandbox.json)"
+  },
+  "arms": {
+    "A_deterministic_baseline": {
+      "role": "control",
+      "result": "PASS",
+      "exact_match": 0.8605,
+      "exact_or_safely_escalated": 1.0,
+      "protected_false_negatives": 0,
+      "unsafe_fast_decisions": 0,
+      "blocking_safety_gate": "PASS",
+      "routine_coverage": 1.0,
+      "escalation_recall": 1.0,
+      "latency_median_ms": 0.0095,
+      "tokens_in": 0,
+      "model_cost_usd": 0.0,
+      "reproducible_3_passes": true
+    },
+    "B_laya_zero_shot_root": {
+      "role": "pre-registered primary candidate",
+      "result": "FAIL",
+      "subfolder": null,
+      "max_len": 512,
+      "exact_match": 0.1628,
+      "exact_or_safely_escalated": 0.6512,
+      "mean_field_accuracy": 0.686,
+      "field_accuracy": {
+        "risk_tier": 0.5581,
+        "requires_human_gate": 0.6977,
+        "route_profile": 0.7674,
+        "escalate_to_system_two": 0.7209
+      },
+      "protected_false_negatives": 0,
+      "unsafe_fast_decisions": 0,
+      "deep_change_false_negatives_unescalated": 0,
+      "human_gate_false_negatives_unescalated": 0,
+      "protected_escalation_false_negatives": 5,
+      "human_gate_false_positives": 0,
+      "escalation_false_negatives": 5,
+      "escalation_false_positives": 7,
+      "blocking_safety_gate": "FAIL",
+      "gate_recall": 0.1875,
+      "escalation_recall": 0.7727,
+      "routine_coverage": 0.0,
+      "invalid_outputs": 0,
+      "latency_median_ms": 3367.7516,
+      "latency_total_ms": 145882.4674,
+      "tokens_in": 38152,
+      "model_cost_usd": 0.0,
+      "reproducible_3_passes": true,
+      "actions_run_id": "36765874259",
+      "classification": "MODEL_FAIL"
+    },
+    "B2_laya_typed_decisions_reference": {
+      "role": "secondary reference only; never mixed into the arm-B verdict",
+      "result": "FAIL",
+      "status": "EXECUTED_VALID",
+      "attempt_1_status": "INFRASTRUCTURE_BLOCKED",
+      "attempt_1_reason": "RevisionNotFoundError: harness used the SDK pin of the separate repository convaiinnovations/laya-typed-decisions as a revision of the bundled repository convaiinnovations/laya, where typed-decisions is a subfolder sharing revision 55cf4c4e",
+      "attempt_1_record": "raw/laya_B2_attempt1_INFRASTRUCTURE_BLOCKED.json",
+      "fix_commit": "2acd481d2faa3862af80250325cb45e50bb873fd",
+      "fix_diff": "fixtures/B2_FIX_DIFF.patch",
+      "arm_b_evidence_regenerated_by_fix": false,
+      "subfolder": "typed-decisions",
+      "max_len": 1024,
+      "fine_tuning_applied": true,
+      "fine_tuning_note": "vendor fine-tuning on its own typed-decisions benchmark split; not MPE fine-tuning",
+      "exact_match": 0.1163,
+      "exact_or_safely_escalated": 0.7674,
+      "mean_field_accuracy": 0.6221,
+      "field_accuracy": {
+        "risk_tier": 0.5814,
+        "requires_human_gate": 0.4651,
+        "route_profile": 0.6744,
+        "escalate_to_system_two": 0.7674
+      },
+      "protected_false_negatives": 0,
+      "unsafe_fast_decisions": 0,
+      "deep_change_false_negatives_unescalated": 0,
+      "human_gate_false_negatives_unescalated": 0,
+      "protected_escalation_false_negatives": 0,
+      "human_gate_false_positives": 23,
+      "escalation_false_negatives": 0,
+      "escalation_false_positives": 10,
+      "blocking_safety_gate": "PASS",
+      "gate_recall": 1.0,
+      "escalation_recall": 1.0,
+      "routine_coverage": 0.0833,
+      "invalid_outputs": 0,
+      "latency_median_ms": 5056.2311,
+      "latency_total_ms": 220737.1232,
+      "tokens_in": 38152,
+      "model_cost_usd": 0.0,
+      "reproducible_3_passes": true,
+      "actions_run_id": "36767177438"
+    }
+  },
+  "pass_criteria_evaluation": {
+    "protected_false_negatives_zero": true,
+    "blocking_safety_gate": "FAILED_BY_ARM_B",
+    "exact_match_accuracy_min_0_9": false,
+    "all_errors_safely_escalated": false,
+    "wrong_and_unescalated_cases": {
+      "B": 15,
+      "B2": 10
+    },
+    "routine_fraction_min_0_5": false,
+    "meaningful_latency_or_cost_advantage": false,
+    "llm_decision_path_comparison": "null/unobserved - no metered general-purpose LLM decision call exists in this repository (EXP-13 Pilot Batch 1 never executed); not estimated",
+    "reproducible_from_frozen_artifacts": true,
+    "no_production_or_authority_boundary_changed": true,
+    "no_governance_violations": true
+  },
+  "phases": {
+    "EXP-14A_DETERMINISTIC_BASELINE": "DONE",
+    "EXP-14B_LAYA_ZERO_SHOT": "DONE",
+    "EXP-14B2_TYPED_DECISIONS_REFERENCE": "DONE",
+    "EXP-14C_CALIBRATION": "NOT_RUN",
+    "EXP-14D_BOUNDED_FINE_TUNE_CONDITIONAL": "NOT_RUN",
+    "EXP-14E_JEV_REFERENCE_OPTIONAL": "NOT_RUN"
+  },
+  "confidence_signal": {
+    "verdict": "NOT_USEFUL",
+    "risk_tier_confidence_auc": {
+      "B": 0.5263,
+      "B2": 0.4878
+    },
+    "requires_human_gate_confidence_auc": {
+      "B": 0.6077,
+      "B2": 0.8011
+    },
+    "route_profile_confidence_auc": {
+      "B": 0.7758,
+      "B2": 0.7463
+    },
+    "escalate_to_system_two_confidence_auc": {
+      "B": 0.6868,
+      "B2": 0.7515
+    },
+    "act_probability": "constant 1.0 on all answers in arm B; AUC 0.5 by construction",
+    "high_confidence_wrong_answers_at_0_80": 0,
+    "best_threshold_cut": {
+      "B": 0.0,
+      "B2": 0.0
+    },
+    "routine_coverage_at_best_cut": {
+      "B": 0.0,
+      "B2": 0.0833
+    },
+    "used_to_improve_any_reported_number": false
+  },
+  "calibration_justified": false,
+  "calibration_justification_failure": [
+    "no falsifiable hypothesis survives the data: risk_tier confidence AUC is at chance (B 0.5263) or below chance (B2 0.4878)",
+    "the exhaustive threshold search returns the trivial cut as optimal, so thresholding cannot create routine coverage",
+    "the 5 protected escalation false negatives have mean answer confidence 0.4940-0.6035, inside the correct-answer band, so a cut near it would mask rather than fix them"
+  ],
+  "automatic_fail_conditions": {
+    "held_out_deep_change_false_negative_without_escalation": 0,
+    "held_out_required_human_gate_removed_without_escalation": 0,
+    "production_routing_or_router_authority_change_inside_exp14": 0
+  },
+  "governance": {
+    "PRODUCTION_CHANGED": "NO",
+    "NEW_INFRASTRUCTURE": "NO",
+    "DEEP_CHANGE": "NO",
+    "PRODUCTION_ROUTING_CHANGED": "NO",
+    "AUTHORITY_CHANGED": "NO",
+    "integration_authorized": false,
+    "production_and_governing_files_verified_unchanged": "36/36",
+    "temporary_ci_workflow": "added at 55f6db76 to reach the pinned checkpoint from an ephemeral runner; deleted in the closing commit so no new infrastructure remains",
+    "files_written_outside_evidence_directory": [
+      "experiments/exp-14-laya-system-one/EXECUTION_RECORD.md",
+      "experiments/exp-14-laya-system-one/EXECUTION_RECORD.json",
+      "experiments/EXPERIMENT_REGISTRY.json",
+      "STATUS.md",
+      "CHANGELOG.md"
+    ]
+  },
+  "next_action": "Close EXP-14-CP-01 as a recorded negative result. Do not integrate Laya. Do not fine-tune on the 43-case evaluation dataset. Any continuation requires a new pre-registration with a new, separately frozen dataset whose splits do not overlap these 43 cases.",
+  "handoff": "experiments/exp-14-laya/2026-09-30/SEQUENCE_B_REVIEW.md section 7; RESULTS.md sections 9-10",
+  "pr_links": [
+    "https://github.com/Murkin1980/murat-project-engineer/pull/6",
+    "https://github.com/Murkin1980/murat-project-engineer/pull/47"
+  ],
+  "closing_commits": {
+    "freeze_and_sequence_a": "1559243cd8f7ce342bd274782a64f46c1a23d792",
+    "temporary_ci_harness_added": "55f6db76bc917ec65ff0996e7d7899d2f8c7e5bd",
+    "sequence_b_attempt1_evidence": "3d8e220ec6aff5ffadf2de3124b02a258e81aad9",
+    "b2_pin_fix": "2acd481d2faa3862af80250325cb45e50bb873fd",
+    "sequence_b_attempt2_evidence": "f210a7c56c5081c4b6089a8180e8de7fe865cb24"
+  },
+  "temporary_ci_workflow": {
+    "path": ".github/workflows/exp14-laya-harness.yml",
+    "added_at": "55f6db76bc917ec65ff0996e7d7899d2f8c7e5bd",
+    "deleted_at_close": true,
+    "reason": "the authoring sandbox cannot reach huggingface.co (TLS reset on every zone/mirror) and cannot host a 421M model; an ephemeral CI runner was the only host that could load the pinned checkpoint",
+    "harness_copy_retained": "experiments/exp-14-laya/2026-09-30/harness/exp14-laya.workflow.yml",
+    "new_infrastructure_remaining": false
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "sequence": "A_DETERMINISTIC_BASELINE",
+  "dataset_id": "exp-14-frozen-v1",
+  "dataset_sha256": "aef7d8bfcefd2b4132073eaf52e570aee2b5d5aebf318e5d556f6d4d3803b648",
+  "passes": 3,
+  "pass_files": [
+    "experiments/exp-14-laya/2026-09-30/raw/baseline_pass1.json",
+    "experiments/exp-14-laya/2026-09-30/raw/baseline_pass2.json",
+    "experiments/exp-14-laya/2026-09-30/raw/baseline_pass3.json"
+  ],
+  "pass_file_sha256": [
+    "d3df1b530b41a1fcbd4231443b53235702374205aff419db004569a58271987f",
+    "cbb7cccfd2d7f93ce1a77cd8850df0d403c1d5a567d9fd9d88e09109761a809f",
+    "d90d87a3d14971b2b7432f5fe3e3497a9db3e52b12517c50b2c964a3924341fd"
+  ],
+  "decisions_identical_across_passes": true,
+  "reproducible": true,
+  "model_calls": 0,
+  "model_cost_usd": 0.0
+}

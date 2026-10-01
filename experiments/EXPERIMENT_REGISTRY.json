@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-09-30",
+  "updated_at": "2026-10-01",
   "experiments": [
     {
       "experiment_id": "EXP-ALEXANDRIA",
@@ -169,20 +169,27 @@
       "experiment_id": "EXP-14",
       "name": "Laya / System One Decision Layer",
       "owning_project": "Murat Project Engineer",
-      "status": "PLANNED",
+      "status": "FAIL",
       "why": "Compare a narrow System One model with deterministic MPE decisions without changing production routing.",
       "date_added": "2026-09-21",
-      "next_action": "Freeze the labelled decision dataset before model runs.",
-      "result_summary": "Registered and not executed; Jev is optional comparator only.",
+      "next_action": "Closed. Do not integrate Laya and do not grant it decision authority. Do not fine-tune on the 43-case evaluation dataset. A continuation requires a new pre-registration with a new, separately frozen dataset whose splits do not overlap these cases, GPU-measured latency, and routine coverage as the primary metric (SEQUENCE_B_REVIEW.md section 7). Separately, the deterministic engine's five DEEP-CHANGE under-tierings are a rule-coverage gap worth its own New Idea Filter decision, not a model change.",
+      "result_summary": "FAIL at checkpoint EXP-14-CP-01 (executed 2026-09-30, closed 2026-10-01). Frozen 43-case dataset + rule-derived oracle (25/25 pre-existing labels reproduced, gates G1/G2/G3) fixed before any model call. Deterministic control: exact 0.8605, gate PASS, routine coverage 12/12, 0.0095 ms, $0.0. Laya zero-shot (laya==0.3.22, convaiinnovations/laya @ 55cf4c4e, CPU, 3 reproducible passes, 0 invalid outputs): exact 7/43 = 0.1628, routine coverage 0/12, protected false negatives 0, unsafe FAST 0, but 5 protected escalation false negatives -> blocking safety gate FAIL; 3367.8 ms median. Reference arm B2 (vendor fine-tuned typed-decisions; attempt 1 INFRASTRUCTURE_BLOCKED by a harness revision-pin defect, fixed minimally in 2acd481d and re-run): exact 5/43 = 0.1163, routine coverage 1/12, gate PASS with 23 gate false positives. CONFIDENCE_SIGNAL = NOT_USEFUL (risk_tier confidence AUC 0.5263 / 0.4878; exhaustive threshold search returns the trivial cut, coverage 0.0 / 0.0833), so calibration NOT_RUN / NOT_JUSTIFIED and fine-tuning NOT_RUN. Classification MODEL_FAIL (not EXPERIMENT_FAIL, not INFRASTRUCTURE_BLOCKED, not DATA_BLOCKED). PASS_FOR_NEXT_EXPERIMENT = NO. No production routing, authority, gate or autonomy change: 36/36 production and governing files digest-identical to d2ec6453; the temporary branch-scoped CI workflow was deleted at close.",
       "repo": "Murkin1980/murat-project-engineer",
-      "experiment_path": "experiments/exp-14-laya-system-one",
+      "experiment_path": "experiments/exp-14-laya/2026-09-30",
       "evidence_links": [
-        "https://github.com/Murkin1980/murat-project-engineer/blob/main/experiments/exp-14-laya-system-one/README.md"
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/experiments/exp-14-laya/2026-09-30/RESULTS.md",
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/experiments/exp-14-laya/2026-09-30/SEQUENCE_B_REVIEW.md",
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/experiments/exp-14-laya/2026-09-30/LAYA_ZERO_SHOT.md",
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/experiments/exp-14-laya/2026-09-30/B2.md",
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/experiments/exp-14-laya/2026-09-30/CALIBRATION.md",
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/experiments/exp-14-laya/2026-09-30/HASHES.txt",
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/experiments/exp-14-laya-system-one/EXECUTION_RECORD.md"
       ],
       "pr_or_issue_links": [
-        "https://github.com/Murkin1980/murat-project-engineer/pull/6"
+        "https://github.com/Murkin1980/murat-project-engineer/pull/6",
+        "https://github.com/Murkin1980/murat-project-engineer/pull/47"
       ],
-      "updated_at": "2026-09-21"
+      "updated_at": "2026-10-01"
     },
     {
       "experiment_id": "EXP-15",

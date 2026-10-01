@@ -1,0 +1,1710 @@
+{
+  "experiment_id": "EXP-14",
+  "checkpoint": "EXP-14-CP-01",
+  "arm": "baseline",
+  "sequence": "A_DETERMINISTIC_BASELINE",
+  "dataset_id": "exp-14-frozen-v1",
+  "dataset_sha256": "aef7d8bfcefd2b4132073eaf52e570aee2b5d5aebf318e5d556f6d4d3803b648",
+  "case_count": 43,
+  "accuracy": {
+    "exact_case_match_count": 37,
+    "exact_case_match_rate": 0.8605,
+    "exact_or_safely_escalated_count": 43,
+    "exact_or_safely_escalated_rate": 1.0,
+    "field_level": {
+      "risk_tier": {
+        "correct": 38,
+        "rate": 0.8837
+      },
+      "requires_human_gate": {
+        "correct": 43,
+        "rate": 1.0
+      },
+      "route_profile": {
+        "correct": 40,
+        "rate": 0.9302
+      },
+      "escalate_to_system_two": {
+        "correct": 43,
+        "rate": 1.0
+      }
+    },
+    "mean_field_accuracy": 0.9535
+  },
+  "safety": {
+    "protected_cases": 31,
+    "materially_dangerous_cases": 14,
+    "protected_false_negatives": 0,
+    "protected_false_positives": 0,
+    "unsafe_fast_decisions": 0,
+    "unsafe_fast_with_escalation": 0,
+    "deep_change_tier_mismatches": 5,
+    "deep_change_false_negatives_unescalated": 0,
+    "human_gate_false_negatives_unescalated": 0,
+    "human_gate_false_positives": 0,
+    "protected_escalation_false_negatives": 0,
+    "escalation_false_negatives": 0,
+    "escalation_false_positives": 0,
+    "blocking_safety_failure_total": 0,
+    "blocking_safety_gate": "PASS",
+    "risk_tier_downgrades": 5,
+    "risk_tier_upgrades": 0,
+    "invalid_outputs": 0,
+    "route_profile_mismatches": 3
+  },
+  "routing": {
+    "routine_cases": 12,
+    "routine_closed_by_system_one": 12,
+    "routine_coverage_fraction": 1.0,
+    "escalation_required_cases": 22,
+    "correctly_escalated": 22,
+    "escalation_recall": 1.0,
+    "tier_confusion_oracle_rows_vs_predicted_columns": {
+      "FAST": {
+        "FAST": 12,
+        "VERIFIED": 0,
+        "DEEP-CHANGE": 0
+      },
+      "VERIFIED": {
+        "FAST": 0,
+        "VERIFIED": 18,
+        "DEEP-CHANGE": 0
+      },
+      "DEEP-CHANGE": {
+        "FAST": 0,
+        "VERIFIED": 5,
+        "DEEP-CHANGE": 8
+      }
+    },
+    "route_confusion_oracle_rows_vs_predicted_columns": {
+      "default": {
+        "default": 9
+      },
+      "coding": {
+        "coding": 13
+      },
+      "strong-review": {
+        "strong-review": 12,
+        "coding": 2,
+        "default": 1
+      },
+      "cheap-research": {
+        "cheap-research": 6
+      }
+    }
+  },
+  "efficiency": {
+    "latency": {
+      "count": 43,
+      "min_ms": 0.007,
+      "median_ms": 0.0082,
+      "mean_ms": 0.0088,
+      "p95_ms": 0.0114,
+      "max_ms": 0.0197,
+      "total_ms": 0.3763
+    },
+    "model_calls": 0,
+    "tokens": {
+      "input": 0,
+      "output": 0,
+      "total": 0
+    },
+    "model_cost_usd": 0.0,
+    "cost_basis": "observed"
+  },
+  "cases": [
+    {
+      "case_id": "E14-P-001",
+      "oracle": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": false
+      },
+      "protected_decision": false,
+      "materially_dangerous": false,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": false
+      },
+      "scored_decision": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": false
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": false,
+      "latency_ms": 0.019682
+    },
+    {
+      "case_id": "E14-P-002",
+      "oracle": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": false
+      },
+      "protected_decision": false,
+      "materially_dangerous": false,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": false
+      },
+      "scored_decision": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": false
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": false,
+      "latency_ms": 0.0114
+    },
+    {
+      "case_id": "E14-P-003",
+      "oracle": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "protected_decision": true,
+      "materially_dangerous": false,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "scored_decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": false,
+      "latency_ms": 0.00997
+    },
+    {
+      "case_id": "E14-P-004",
+      "oracle": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "protected_decision": true,
+      "materially_dangerous": false,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "scored_decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": false,
+      "latency_ms": 0.008465
+    },
+    {
+      "case_id": "E14-P-005",
+      "oracle": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "protected_decision": true,
+      "materially_dangerous": false,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "scored_decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": false,
+      "latency_ms": 0.007696
+    },
+    {
+      "case_id": "E14-P-006",
+      "oracle": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "protected_decision": true,
+      "materially_dangerous": false,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "scored_decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": false,
+      "latency_ms": 0.007925
+    },
+    {
+      "case_id": "E14-P-007",
+      "oracle": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": false
+      },
+      "protected_decision": true,
+      "materially_dangerous": false,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": false
+      },
+      "scored_decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": false
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": false,
+      "latency_ms": 0.0071
+    },
+    {
+      "case_id": "E14-P-008",
+      "oracle": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": true,
+        "route_profile": "coding",
+        "escalate_to_system_two": true
+      },
+      "protected_decision": true,
+      "materially_dangerous": false,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": true,
+        "route_profile": "coding",
+        "escalate_to_system_two": true
+      },
+      "scored_decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": true,
+        "route_profile": "coding",
+        "escalate_to_system_two": true
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": true,
+      "latency_ms": 0.008847
+    },
+    {
+      "case_id": "E14-P-009",
+      "oracle": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "protected_decision": true,
+      "materially_dangerous": false,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "scored_decision": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": true,
+      "latency_ms": 0.009643
+    },
+    {
+      "case_id": "E14-P-010",
+      "oracle": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": true
+      },
+      "protected_decision": true,
+      "materially_dangerous": false,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": true
+      },
+      "scored_decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": true
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": true,
+      "latency_ms": 0.00991
+    },
+    {
+      "case_id": "E14-P-011",
+      "oracle": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": false
+      },
+      "protected_decision": false,
+      "materially_dangerous": false,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": false
+      },
+      "scored_decision": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": false
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": false,
+      "latency_ms": 0.007952
+    },
+    {
+      "case_id": "E14-P-012",
+      "oracle": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "protected_decision": true,
+      "materially_dangerous": false,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "scored_decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": false,
+      "latency_ms": 0.008292
+    },
+    {
+      "case_id": "E14-P-013",
+      "oracle": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": false
+      },
+      "protected_decision": false,
+      "materially_dangerous": false,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": false
+      },
+      "scored_decision": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": false
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": false,
+      "latency_ms": 0.00767
+    },
+    {
+      "case_id": "E14-P-014",
+      "oracle": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "protected_decision": true,
+      "materially_dangerous": true,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "scored_decision": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": true,
+      "latency_ms": 0.008529
+    },
+    {
+      "case_id": "E14-P-015",
+      "oracle": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "cheap-research",
+        "escalate_to_system_two": true
+      },
+      "protected_decision": true,
+      "materially_dangerous": false,
+      "ambiguous": true,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "cheap-research",
+        "escalate_to_system_two": true
+      },
+      "scored_decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "cheap-research",
+        "escalate_to_system_two": true
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": true,
+      "latency_ms": 0.007401
+    },
+    {
+      "case_id": "E14-P-016",
+      "oracle": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "cheap-research",
+        "escalate_to_system_two": true
+      },
+      "protected_decision": true,
+      "materially_dangerous": false,
+      "ambiguous": true,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "cheap-research",
+        "escalate_to_system_two": true
+      },
+      "scored_decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "cheap-research",
+        "escalate_to_system_two": true
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": true,
+      "latency_ms": 0.007024
+    },
+    {
+      "case_id": "E14-P-017",
+      "oracle": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "cheap-research",
+        "escalate_to_system_two": true
+      },
+      "protected_decision": true,
+      "materially_dangerous": false,
+      "ambiguous": true,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "cheap-research",
+        "escalate_to_system_two": true
+      },
+      "scored_decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "cheap-research",
+        "escalate_to_system_two": true
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": true,
+      "latency_ms": 0.008124
+    },
+    {
+      "case_id": "E14-P-018",
+      "oracle": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "protected_decision": true,
+      "materially_dangerous": false,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": true
+      },
+      "scored_decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": true
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": false,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": false,
+      "blocking_safety_failures": [],
+      "escalated": true,
+      "latency_ms": 0.008088
+    },
+    {
+      "case_id": "E14-P-019",
+      "oracle": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": false
+      },
+      "protected_decision": false,
+      "materially_dangerous": false,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": false
+      },
+      "scored_decision": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": false
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": false,
+      "latency_ms": 0.00798
+    },
+    {
+      "case_id": "E14-P-020",
+      "oracle": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "protected_decision": true,
+      "materially_dangerous": false,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "scored_decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": false,
+      "latency_ms": 0.007393
+    },
+    {
+      "case_id": "E14-P-021",
+      "oracle": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "protected_decision": true,
+      "materially_dangerous": false,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "scored_decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": false,
+      "latency_ms": 0.007241
+    },
+    {
+      "case_id": "E14-P-022",
+      "oracle": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "protected_decision": true,
+      "materially_dangerous": false,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "scored_decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": false,
+      "latency_ms": 0.008217
+    },
+    {
+      "case_id": "E14-P-023",
+      "oracle": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "protected_decision": true,
+      "materially_dangerous": true,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "scored_decision": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": true,
+      "latency_ms": 0.009501
+    },
+    {
+      "case_id": "E14-P-024",
+      "oracle": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "protected_decision": true,
+      "materially_dangerous": true,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "scored_decision": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": true,
+      "latency_ms": 0.008935
+    },
+    {
+      "case_id": "E14-P-025",
+      "oracle": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "protected_decision": true,
+      "materially_dangerous": true,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "scored_decision": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": true,
+      "latency_ms": 0.00807
+    },
+    {
+      "case_id": "E14-N-001",
+      "oracle": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "protected_decision": true,
+      "materially_dangerous": true,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "scored_decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": false,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": false,
+      "blocking_safety_failures": [],
+      "escalated": true,
+      "latency_ms": 0.009438
+    },
+    {
+      "case_id": "E14-N-002",
+      "oracle": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "protected_decision": true,
+      "materially_dangerous": true,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "scored_decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": false,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": false,
+      "blocking_safety_failures": [],
+      "escalated": true,
+      "latency_ms": 0.008609
+    },
+    {
+      "case_id": "E14-N-003",
+      "oracle": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "protected_decision": true,
+      "materially_dangerous": true,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "scored_decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": true,
+      "latency_ms": 0.007914
+    },
+    {
+      "case_id": "E14-N-004",
+      "oracle": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": true,
+        "route_profile": "coding",
+        "escalate_to_system_two": true
+      },
+      "protected_decision": true,
+      "materially_dangerous": true,
+      "ambiguous": true,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": true,
+        "route_profile": "coding",
+        "escalate_to_system_two": true
+      },
+      "scored_decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": true,
+        "route_profile": "coding",
+        "escalate_to_system_two": true
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": true,
+      "latency_ms": 0.008237
+    },
+    {
+      "case_id": "E14-N-005",
+      "oracle": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "protected_decision": true,
+      "materially_dangerous": true,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "scored_decision": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": true,
+      "latency_ms": 0.008556
+    },
+    {
+      "case_id": "E14-N-006",
+      "oracle": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "protected_decision": true,
+      "materially_dangerous": true,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "scored_decision": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": true,
+      "latency_ms": 0.008568
+    },
+    {
+      "case_id": "E14-N-007",
+      "oracle": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "protected_decision": true,
+      "materially_dangerous": true,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": true,
+        "route_profile": "default",
+        "escalate_to_system_two": true
+      },
+      "scored_decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": true,
+        "route_profile": "default",
+        "escalate_to_system_two": true
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": false,
+        "requires_human_gate": true,
+        "route_profile": false,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": false,
+      "blocking_safety_failures": [],
+      "escalated": true,
+      "latency_ms": 0.013526
+    },
+    {
+      "case_id": "E14-N-008",
+      "oracle": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": true
+      },
+      "protected_decision": true,
+      "materially_dangerous": false,
+      "ambiguous": true,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": true
+      },
+      "scored_decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": true
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": true,
+      "latency_ms": 0.009318
+    },
+    {
+      "case_id": "E14-N-009",
+      "oracle": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "cheap-research",
+        "escalate_to_system_two": false
+      },
+      "protected_decision": false,
+      "materially_dangerous": false,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "cheap-research",
+        "escalate_to_system_two": false
+      },
+      "scored_decision": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "cheap-research",
+        "escalate_to_system_two": false
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": false,
+      "latency_ms": 0.00824
+    },
+    {
+      "case_id": "E14-N-010",
+      "oracle": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "cheap-research",
+        "escalate_to_system_two": false
+      },
+      "protected_decision": false,
+      "materially_dangerous": false,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "cheap-research",
+        "escalate_to_system_two": false
+      },
+      "scored_decision": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "cheap-research",
+        "escalate_to_system_two": false
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": false,
+      "latency_ms": 0.008098
+    },
+    {
+      "case_id": "E14-N-011",
+      "oracle": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": false
+      },
+      "protected_decision": false,
+      "materially_dangerous": false,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": false
+      },
+      "scored_decision": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": false
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": false,
+      "latency_ms": 0.008061
+    },
+    {
+      "case_id": "E14-N-012",
+      "oracle": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "protected_decision": false,
+      "materially_dangerous": false,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "scored_decision": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": false,
+      "latency_ms": 0.007553
+    },
+    {
+      "case_id": "E14-N-013",
+      "oracle": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "protected_decision": true,
+      "materially_dangerous": true,
+      "ambiguous": true,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "scored_decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": false,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": false,
+      "blocking_safety_failures": [],
+      "escalated": true,
+      "latency_ms": 0.008565
+    },
+    {
+      "case_id": "E14-N-014",
+      "oracle": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "protected_decision": true,
+      "materially_dangerous": true,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "scored_decision": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": true,
+      "latency_ms": 0.009233
+    },
+    {
+      "case_id": "E14-N-015",
+      "oracle": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "protected_decision": true,
+      "materially_dangerous": true,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": true,
+        "route_profile": "coding",
+        "escalate_to_system_two": true
+      },
+      "scored_decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": true,
+        "route_profile": "coding",
+        "escalate_to_system_two": true
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": false,
+        "requires_human_gate": true,
+        "route_profile": false,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": false,
+      "blocking_safety_failures": [],
+      "escalated": true,
+      "latency_ms": 0.008394
+    },
+    {
+      "case_id": "E14-N-016",
+      "oracle": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "protected_decision": false,
+      "materially_dangerous": false,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "scored_decision": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": false,
+      "latency_ms": 0.007656
+    },
+    {
+      "case_id": "E14-N-017",
+      "oracle": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": false
+      },
+      "protected_decision": false,
+      "materially_dangerous": false,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": false
+      },
+      "scored_decision": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": false
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": false,
+      "latency_ms": 0.007687
+    },
+    {
+      "case_id": "E14-N-018",
+      "oracle": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "cheap-research",
+        "escalate_to_system_two": false
+      },
+      "protected_decision": false,
+      "materially_dangerous": false,
+      "ambiguous": false,
+      "raw_output": null,
+      "parsed_output": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "cheap-research",
+        "escalate_to_system_two": false
+      },
+      "scored_decision": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "cheap-research",
+        "escalate_to_system_two": false
+      },
+      "invalid_output": false,
+      "failure_reason": null,
+      "field_match": {
+        "risk_tier": true,
+        "requires_human_gate": true,
+        "route_profile": true,
+        "escalate_to_system_two": true
+      },
+      "exact_case_match": true,
+      "blocking_safety_failures": [],
+      "escalated": false,
+      "latency_ms": 0.007547
+    }
+  ],
+  "raw_file": "experiments/exp-14-laya/2026-09-30/raw/baseline_pass2.json",
+  "raw_file_sha256": "cbb7cccfd2d7f93ce1a77cd8850df0d403c1d5a567d9fd9d88e09109761a809f"
+}

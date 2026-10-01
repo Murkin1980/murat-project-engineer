@@ -1,0 +1,2023 @@
+{
+  "experiment_id": "EXP-14",
+  "checkpoint": "EXP-14-CP-01",
+  "sequence": "A_DETERMINISTIC_BASELINE",
+  "arm": "baseline",
+  "pass_index": 1,
+  "dataset_id": "exp-14-frozen-v1",
+  "dataset_sha256_expected": "aef7d8bfcefd2b4132073eaf52e570aee2b5d5aebf318e5d556f6d4d3803b648",
+  "baseline": {
+    "implementation": "scripts/triage_engine.py (imported unmodified)",
+    "engine_version": "0.1.0",
+    "derivation_layer_version": "exp14-baseline-derivation-1.0.0",
+    "derivation_layer": {
+      "route_profile": [
+        "B-R1 recommended_risk_tier == DEEP-CHANGE -> strong-review",
+        "B-R2 architectural_impact >= 4 or data_sensitivity >= 4 -> strong-review",
+        "B-R3 work_kind research|implementation|review|coordination -> cheap-research|coding|strong-review|default"
+      ],
+      "escalate_to_system_two": [
+        "B-E DEEP-CHANGE or human_approval_required or execution_confidence < 80 or acceptance_criteria_present == false or rollback_known == false or affected_repositories == []"
+      ]
+    },
+    "model": null,
+    "provider": null
+  },
+  "host": {
+    "python": "3.11.2",
+    "platform": "Linux-6.1.158+-x86_64-with-glibc2.36",
+    "processor": null,
+    "machine": "x86_64",
+    "cpu_count": 2
+  },
+  "case_count": 43,
+  "latency_ms": {
+    "min": 0.007436,
+    "median": 0.009474,
+    "mean": 0.011705116279069767,
+    "p95": 0.021311,
+    "max": 0.056977,
+    "total": 0.50332
+  },
+  "invalid_output_count": 0,
+  "model_calls": 0,
+  "tokens": {
+    "input": 0,
+    "output": 0
+  },
+  "model_cost_usd": 0.0,
+  "results": [
+    {
+      "case_id": "E14-P-001",
+      "input_sha256": "456c586c42ff897b45bc6efd5b4f0608cafc3e433ababf491eaed41661ecd4ec",
+      "rendered_state_sha256": "456c586c42ff897b45bc6efd5b4f0608cafc3e433ababf491eaed41661ecd4ec",
+      "decision": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": false
+      },
+      "engine_output": {
+        "task_id": "T-001",
+        "execution_confidence": 100,
+        "complexity": 1,
+        "risk": 1,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 0,
+        "data_sensitivity": 0,
+        "unknowns": 0,
+        "deep_change_probability": 0,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "FAST",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R3",
+        "escalate_reasons": []
+      },
+      "latency_ms": 0.026224,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-P-002",
+      "input_sha256": "47094b6dd7444d061cc90c83d9b4b4a08de0b16ff0d13f8dfb6bf5d7ebd42317",
+      "rendered_state_sha256": "47094b6dd7444d061cc90c83d9b4b4a08de0b16ff0d13f8dfb6bf5d7ebd42317",
+      "decision": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": false
+      },
+      "engine_output": {
+        "task_id": "T-002",
+        "execution_confidence": 85,
+        "complexity": 1,
+        "risk": 1,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 0,
+        "data_sensitivity": 0,
+        "unknowns": 1,
+        "deep_change_probability": 5,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "FAST",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R3",
+        "escalate_reasons": []
+      },
+      "latency_ms": 0.013905,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-P-003",
+      "input_sha256": "7b65131ab1be1de0d773687c1dbc96bdde1876ad12f60db0e5eb32366c39515a",
+      "rendered_state_sha256": "7b65131ab1be1de0d773687c1dbc96bdde1876ad12f60db0e5eb32366c39515a",
+      "decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "engine_output": {
+        "task_id": "T-003",
+        "execution_confidence": 85,
+        "complexity": 3,
+        "risk": 2,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "furniture-configurator"
+        ],
+        "architectural_impact": 1,
+        "data_sensitivity": 0,
+        "unknowns": 1,
+        "deep_change_probability": 17,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R3",
+        "escalate_reasons": []
+      },
+      "latency_ms": 0.01175,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-P-004",
+      "input_sha256": "ec99579418af8abcbf39bbd25bce94c4439b09b7217cd22a03dbd1b5d8a1cb00",
+      "rendered_state_sha256": "ec99579418af8abcbf39bbd25bce94c4439b09b7217cd22a03dbd1b5d8a1cb00",
+      "decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "engine_output": {
+        "task_id": "T-004",
+        "execution_confidence": 85,
+        "complexity": 3,
+        "risk": 2,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "mebeldocs-ai"
+        ],
+        "architectural_impact": 1,
+        "data_sensitivity": 2,
+        "unknowns": 1,
+        "deep_change_probability": 17,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R3",
+        "escalate_reasons": []
+      },
+      "latency_ms": 0.01396,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-P-005",
+      "input_sha256": "4ee028743b20e39919df57527b447727d8954eb32f69f125f35c04aaf9260312",
+      "rendered_state_sha256": "4ee028743b20e39919df57527b447727d8954eb32f69f125f35c04aaf9260312",
+      "decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "engine_output": {
+        "task_id": "T-005",
+        "execution_confidence": 85,
+        "complexity": 2,
+        "risk": 3,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "mebel-legal-kz"
+        ],
+        "architectural_impact": 0,
+        "data_sensitivity": 3,
+        "unknowns": 1,
+        "deep_change_probability": 5,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R3",
+        "escalate_reasons": []
+      },
+      "latency_ms": 0.011402,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-P-006",
+      "input_sha256": "c8524e40a899fbf1877794d71fe5179b5a681214c97471843b416a6c07b03552",
+      "rendered_state_sha256": "c8524e40a899fbf1877794d71fe5179b5a681214c97471843b416a6c07b03552",
+      "decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "engine_output": {
+        "task_id": "T-006",
+        "execution_confidence": 85,
+        "complexity": 3,
+        "risk": 2,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 2,
+        "data_sensitivity": 0,
+        "unknowns": 1,
+        "deep_change_probability": 29,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R3",
+        "escalate_reasons": []
+      },
+      "latency_ms": 0.011627,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-P-007",
+      "input_sha256": "0d649b0aafa89929866968a56ea39fe36aefb2e37fcffcd5ffd593bf235b87ff",
+      "rendered_state_sha256": "0d649b0aafa89929866968a56ea39fe36aefb2e37fcffcd5ffd593bf235b87ff",
+      "decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": false
+      },
+      "engine_output": {
+        "task_id": "T-007",
+        "execution_confidence": 85,
+        "complexity": 2,
+        "risk": 1,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 1,
+        "data_sensitivity": 0,
+        "unknowns": 1,
+        "deep_change_probability": 17,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R3",
+        "escalate_reasons": []
+      },
+      "latency_ms": 0.00952,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-P-008",
+      "input_sha256": "4e1687e5e696045660eda2764d8d07eddb4551ed5beca6c76ec8cf7ffd9f2001",
+      "rendered_state_sha256": "4e1687e5e696045660eda2764d8d07eddb4551ed5beca6c76ec8cf7ffd9f2001",
+      "decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": true,
+        "route_profile": "coding",
+        "escalate_to_system_two": true
+      },
+      "engine_output": {
+        "task_id": "T-008",
+        "execution_confidence": 85,
+        "complexity": 3,
+        "risk": 3,
+        "blast_radius": 1,
+        "affected_repositories": [
+          "mebeldocs-ai"
+        ],
+        "architectural_impact": 2,
+        "data_sensitivity": 2,
+        "unknowns": 1,
+        "deep_change_probability": 29,
+        "human_approval_required": true,
+        "human_approval_reasons": [
+          "production_change"
+        ],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R3",
+        "escalate_reasons": [
+          "human_approval_required"
+        ]
+      },
+      "latency_ms": 0.021311,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-P-009",
+      "input_sha256": "a1f4a6d3e22e0ebb052df0dfb7e439ed9a020b7c6548eb898f15769816316a52",
+      "rendered_state_sha256": "a1f4a6d3e22e0ebb052df0dfb7e439ed9a020b7c6548eb898f15769816316a52",
+      "decision": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "engine_output": {
+        "task_id": "T-009",
+        "execution_confidence": 70,
+        "complexity": 4,
+        "risk": 4,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 4,
+        "data_sensitivity": 1,
+        "unknowns": 2,
+        "deep_change_probability": 98,
+        "human_approval_required": true,
+        "human_approval_reasons": [
+          "architecture_redesign",
+          "workflow_engine"
+        ],
+        "recommended_risk_tier": "DEEP-CHANGE",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R1",
+        "escalate_reasons": [
+          "deep_change_tier",
+          "human_approval_required",
+          "execution_confidence_below_80"
+        ]
+      },
+      "latency_ms": 0.013559,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-P-010",
+      "input_sha256": "d2f4a820c194982561a934992b94d685201d89b1b5782c9cefe63f160571f137",
+      "rendered_state_sha256": "d2f4a820c194982561a934992b94d685201d89b1b5782c9cefe63f160571f137",
+      "decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": true
+      },
+      "engine_output": {
+        "task_id": "T-010",
+        "execution_confidence": 70,
+        "complexity": 3,
+        "risk": 3,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "mebel-legal-kz"
+        ],
+        "architectural_impact": 1,
+        "data_sensitivity": 3,
+        "unknowns": 2,
+        "deep_change_probability": 22,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R3",
+        "escalate_reasons": [
+          "execution_confidence_below_80"
+        ]
+      },
+      "latency_ms": 0.010155,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-P-011",
+      "input_sha256": "a55935d908b9828320fed27d3099c7df7d84a8568b1668b21d66b2cc1dc8d30d",
+      "rendered_state_sha256": "a55935d908b9828320fed27d3099c7df7d84a8568b1668b21d66b2cc1dc8d30d",
+      "decision": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": false
+      },
+      "engine_output": {
+        "task_id": "T-011",
+        "execution_confidence": 100,
+        "complexity": 1,
+        "risk": 1,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "mebeldocs-ai"
+        ],
+        "architectural_impact": 0,
+        "data_sensitivity": 1,
+        "unknowns": 0,
+        "deep_change_probability": 0,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "FAST",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R3",
+        "escalate_reasons": []
+      },
+      "latency_ms": 0.010306,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-P-012",
+      "input_sha256": "d122504fb8f40a67915305a86cece6dd5ddf9a0f34abaf60a26a642f166da08d",
+      "rendered_state_sha256": "d122504fb8f40a67915305a86cece6dd5ddf9a0f34abaf60a26a642f166da08d",
+      "decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "engine_output": {
+        "task_id": "T-012",
+        "execution_confidence": 85,
+        "complexity": 3,
+        "risk": 2,
+        "blast_radius": 1,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 2,
+        "data_sensitivity": 0,
+        "unknowns": 1,
+        "deep_change_probability": 29,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R3",
+        "escalate_reasons": []
+      },
+      "latency_ms": 0.009395,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-P-013",
+      "input_sha256": "b7ab87daead839594748a14da671dc8a037fcff2891adf2cd934091edccba431",
+      "rendered_state_sha256": "b7ab87daead839594748a14da671dc8a037fcff2891adf2cd934091edccba431",
+      "decision": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": false
+      },
+      "engine_output": {
+        "task_id": "hist-01",
+        "execution_confidence": 100,
+        "complexity": 1,
+        "risk": 1,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 0,
+        "data_sensitivity": 0,
+        "unknowns": 0,
+        "deep_change_probability": 0,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "FAST",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R3",
+        "escalate_reasons": []
+      },
+      "latency_ms": 0.008851,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-P-014",
+      "input_sha256": "0582f2f98ab9904ef95c5c2531d074754f5de6cd05734f3b35108d8474918667",
+      "rendered_state_sha256": "0582f2f98ab9904ef95c5c2531d074754f5de6cd05734f3b35108d8474918667",
+      "decision": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "engine_output": {
+        "task_id": "hist-04",
+        "execution_confidence": 70,
+        "complexity": 4,
+        "risk": 4,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "mebel-legal-kz"
+        ],
+        "architectural_impact": 4,
+        "data_sensitivity": 3,
+        "unknowns": 2,
+        "deep_change_probability": 78,
+        "human_approval_required": true,
+        "human_approval_reasons": [
+          "architecture_redesign"
+        ],
+        "recommended_risk_tier": "DEEP-CHANGE",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R1",
+        "escalate_reasons": [
+          "deep_change_tier",
+          "human_approval_required",
+          "execution_confidence_below_80"
+        ]
+      },
+      "latency_ms": 0.009382,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-P-015",
+      "input_sha256": "1ee64e6ae1f71f94ab330e35003c3b4fd8199baed6a4a3557136ea6170a7104a",
+      "rendered_state_sha256": "1ee64e6ae1f71f94ab330e35003c3b4fd8199baed6a4a3557136ea6170a7104a",
+      "decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "cheap-research",
+        "escalate_to_system_two": true
+      },
+      "engine_output": {
+        "task_id": "hist-07",
+        "execution_confidence": 55,
+        "complexity": 3,
+        "risk": 3,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 2,
+        "data_sensitivity": 2,
+        "unknowns": 3,
+        "deep_change_probability": 39,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R3",
+        "escalate_reasons": [
+          "execution_confidence_below_80"
+        ]
+      },
+      "latency_ms": 0.007958,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-P-016",
+      "input_sha256": "eab6d60997de66a6034139076fe92050f5aee842f7e5fe58fd26f7228d720b09",
+      "rendered_state_sha256": "eab6d60997de66a6034139076fe92050f5aee842f7e5fe58fd26f7228d720b09",
+      "decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "cheap-research",
+        "escalate_to_system_two": true
+      },
+      "engine_output": {
+        "task_id": "hist-08",
+        "execution_confidence": 70,
+        "complexity": 2,
+        "risk": 2,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 1,
+        "data_sensitivity": 1,
+        "unknowns": 2,
+        "deep_change_probability": 22,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R3",
+        "escalate_reasons": [
+          "execution_confidence_below_80"
+        ]
+      },
+      "latency_ms": 0.008485,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-P-017",
+      "input_sha256": "04a8e3ebdb022cb7904429b8e2b11c357afe4dc1c9c1653cd1dd347a81404c9e",
+      "rendered_state_sha256": "04a8e3ebdb022cb7904429b8e2b11c357afe4dc1c9c1653cd1dd347a81404c9e",
+      "decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "cheap-research",
+        "escalate_to_system_two": true
+      },
+      "engine_output": {
+        "task_id": "hist-09",
+        "execution_confidence": 45,
+        "complexity": 4,
+        "risk": 3,
+        "blast_radius": 2,
+        "affected_repositories": [
+          "murat-project-engineer",
+          "salamat-kitchen-configurator"
+        ],
+        "architectural_impact": 2,
+        "data_sensitivity": 2,
+        "unknowns": 3,
+        "deep_change_probability": 44,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R3",
+        "escalate_reasons": [
+          "execution_confidence_below_80",
+          "rollback_unknown"
+        ]
+      },
+      "latency_ms": 0.00867,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-P-018",
+      "input_sha256": "d97c3fe716886d48de02bef1dcb41f383f9d54a1d792bccba79360e82774fbe8",
+      "rendered_state_sha256": "d97c3fe716886d48de02bef1dcb41f383f9d54a1d792bccba79360e82774fbe8",
+      "decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": true
+      },
+      "engine_output": {
+        "task_id": "hist-11",
+        "execution_confidence": 70,
+        "complexity": 4,
+        "risk": 3,
+        "blast_radius": 1,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 3,
+        "data_sensitivity": 1,
+        "unknowns": 2,
+        "deep_change_probability": 46,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R3",
+        "escalate_reasons": [
+          "execution_confidence_below_80"
+        ]
+      },
+      "latency_ms": 0.008202,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-P-019",
+      "input_sha256": "0fb7fa503a01e512012d5e0091d499748f909f6d05c924064c6f4dac521ab09a",
+      "rendered_state_sha256": "0fb7fa503a01e512012d5e0091d499748f909f6d05c924064c6f4dac521ab09a",
+      "decision": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": false
+      },
+      "engine_output": {
+        "task_id": "hist-13",
+        "execution_confidence": 100,
+        "complexity": 1,
+        "risk": 1,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 1,
+        "data_sensitivity": 0,
+        "unknowns": 0,
+        "deep_change_probability": 12,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "FAST",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R3",
+        "escalate_reasons": []
+      },
+      "latency_ms": 0.008802,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-P-020",
+      "input_sha256": "167505cd5788a224639058d19c42e5028f2f7ab2ae4691cb38520ef6fadae287",
+      "rendered_state_sha256": "167505cd5788a224639058d19c42e5028f2f7ab2ae4691cb38520ef6fadae287",
+      "decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "engine_output": {
+        "task_id": "hist-14",
+        "execution_confidence": 85,
+        "complexity": 3,
+        "risk": 3,
+        "blast_radius": 1,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 2,
+        "data_sensitivity": 1,
+        "unknowns": 1,
+        "deep_change_probability": 29,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R3",
+        "escalate_reasons": []
+      },
+      "latency_ms": 0.007836,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-P-021",
+      "input_sha256": "d753a9b2431994453803e6fc44fb5597b09cdfd325e31c9842729cd068fb28b6",
+      "rendered_state_sha256": "d753a9b2431994453803e6fc44fb5597b09cdfd325e31c9842729cd068fb28b6",
+      "decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "engine_output": {
+        "task_id": "hist-15",
+        "execution_confidence": 85,
+        "complexity": 3,
+        "risk": 2,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 1,
+        "data_sensitivity": 0,
+        "unknowns": 1,
+        "deep_change_probability": 17,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R3",
+        "escalate_reasons": []
+      },
+      "latency_ms": 0.008772,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-P-022",
+      "input_sha256": "d2896235ba6c56b3223885d739e1fe66b672c55ea41edb44b948c7952a74fcfa",
+      "rendered_state_sha256": "d2896235ba6c56b3223885d739e1fe66b672c55ea41edb44b948c7952a74fcfa",
+      "decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "engine_output": {
+        "task_id": "hist-17",
+        "execution_confidence": 100,
+        "complexity": 2,
+        "risk": 2,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 1,
+        "data_sensitivity": 1,
+        "unknowns": 0,
+        "deep_change_probability": 12,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R3",
+        "escalate_reasons": []
+      },
+      "latency_ms": 0.056977,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-P-023",
+      "input_sha256": "2a9b0b6cbae13e288662e9f8bfeb63a482574dca7f54d3cc0e1cd3fb9873aae3",
+      "rendered_state_sha256": "2a9b0b6cbae13e288662e9f8bfeb63a482574dca7f54d3cc0e1cd3fb9873aae3",
+      "decision": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "engine_output": {
+        "task_id": "hist-18",
+        "execution_confidence": 10,
+        "complexity": 4,
+        "risk": 4,
+        "blast_radius": 1,
+        "affected_repositories": [
+          "murat-project-engineer",
+          "codex-router"
+        ],
+        "architectural_impact": 4,
+        "data_sensitivity": 2,
+        "unknowns": 4,
+        "deep_change_probability": 100,
+        "human_approval_required": true,
+        "human_approval_reasons": [
+          "new_orchestration_authority",
+          "router_authority_change"
+        ],
+        "recommended_risk_tier": "DEEP-CHANGE",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R1",
+        "escalate_reasons": [
+          "deep_change_tier",
+          "human_approval_required",
+          "execution_confidence_below_80",
+          "acceptance_criteria_absent",
+          "rollback_unknown"
+        ]
+      },
+      "latency_ms": 0.014113,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-P-024",
+      "input_sha256": "5b63a21057b03a75b85a9d16423abcbd7e36404b1c2c16237d5fd4ac1e1d677a",
+      "rendered_state_sha256": "5b63a21057b03a75b85a9d16423abcbd7e36404b1c2c16237d5fd4ac1e1d677a",
+      "decision": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "engine_output": {
+        "task_id": "hist-19",
+        "execution_confidence": 10,
+        "complexity": 4,
+        "risk": 4,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 4,
+        "data_sensitivity": 2,
+        "unknowns": 4,
+        "deep_change_probability": 100,
+        "human_approval_required": true,
+        "human_approval_reasons": [
+          "persistent_runtime_state",
+          "workflow_engine"
+        ],
+        "recommended_risk_tier": "DEEP-CHANGE",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R1",
+        "escalate_reasons": [
+          "deep_change_tier",
+          "human_approval_required",
+          "execution_confidence_below_80",
+          "acceptance_criteria_absent",
+          "rollback_unknown"
+        ]
+      },
+      "latency_ms": 0.011054,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-P-025",
+      "input_sha256": "d69820aa7027a70db5ccc07c80c2d10408958a4eee2277868e87d52a436ccb4e",
+      "rendered_state_sha256": "d69820aa7027a70db5ccc07c80c2d10408958a4eee2277868e87d52a436ccb4e",
+      "decision": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "engine_output": {
+        "task_id": "hist-20",
+        "execution_confidence": 10,
+        "complexity": 4,
+        "risk": 4,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 4,
+        "data_sensitivity": 3,
+        "unknowns": 4,
+        "deep_change_probability": 100,
+        "human_approval_required": true,
+        "human_approval_reasons": [
+          "architecture_redesign",
+          "persistent_agents"
+        ],
+        "recommended_risk_tier": "DEEP-CHANGE",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R1",
+        "escalate_reasons": [
+          "deep_change_tier",
+          "human_approval_required",
+          "execution_confidence_below_80",
+          "acceptance_criteria_absent",
+          "rollback_unknown"
+        ]
+      },
+      "latency_ms": 0.010287,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-N-001",
+      "input_sha256": "4a7cae07805030c6259bd0d9d6094e8673fbb8854a7b455d01ddab1dfa238ecc",
+      "rendered_state_sha256": "4a7cae07805030c6259bd0d9d6094e8673fbb8854a7b455d01ddab1dfa238ecc",
+      "decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "engine_output": {
+        "task_id": "e14_n_001",
+        "execution_confidence": 75,
+        "complexity": 3,
+        "risk": 4,
+        "blast_radius": 1,
+        "affected_repositories": [
+          "mebeldocs-ai"
+        ],
+        "architectural_impact": 2,
+        "data_sensitivity": 4,
+        "unknowns": 1,
+        "deep_change_probability": 29,
+        "human_approval_required": true,
+        "human_approval_reasons": [
+          "destructive_operation",
+          "production_change",
+          "sensitive_data_write"
+        ],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R2",
+        "escalate_reasons": [
+          "human_approval_required",
+          "execution_confidence_below_80",
+          "rollback_unknown"
+        ]
+      },
+      "latency_ms": 0.01189,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-N-002",
+      "input_sha256": "0d7a3cf0cc7784a1fedaf7329648a44c7dd005887339fbfa577b46706e36a7ce",
+      "rendered_state_sha256": "0d7a3cf0cc7784a1fedaf7329648a44c7dd005887339fbfa577b46706e36a7ce",
+      "decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "engine_output": {
+        "task_id": "e14_n_002",
+        "execution_confidence": 85,
+        "complexity": 2,
+        "risk": 4,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 1,
+        "data_sensitivity": 4,
+        "unknowns": 1,
+        "deep_change_probability": 17,
+        "human_approval_required": true,
+        "human_approval_reasons": [
+          "security_or_permissions_change",
+          "high_data_sensitivity"
+        ],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R2",
+        "escalate_reasons": [
+          "human_approval_required"
+        ]
+      },
+      "latency_ms": 0.008859,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-N-003",
+      "input_sha256": "ef0e9deaf5483d7fbf778bb90bc6551ae58a97f124b8713b6429c9d5fbcc9ff9",
+      "rendered_state_sha256": "ef0e9deaf5483d7fbf778bb90bc6551ae58a97f124b8713b6429c9d5fbcc9ff9",
+      "decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "engine_output": {
+        "task_id": "e14_n_003",
+        "execution_confidence": 85,
+        "complexity": 2,
+        "risk": 4,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "mebel-legal-kz"
+        ],
+        "architectural_impact": 1,
+        "data_sensitivity": 4,
+        "unknowns": 1,
+        "deep_change_probability": 17,
+        "human_approval_required": true,
+        "human_approval_reasons": [
+          "sensitive_data_write"
+        ],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R2",
+        "escalate_reasons": [
+          "human_approval_required"
+        ]
+      },
+      "latency_ms": 0.008361,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-N-004",
+      "input_sha256": "864e557192c0c965901420c77647eff1769e84e80bc376bbe1f1fe131deff8c8",
+      "rendered_state_sha256": "864e557192c0c965901420c77647eff1769e84e80bc376bbe1f1fe131deff8c8",
+      "decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": true,
+        "route_profile": "coding",
+        "escalate_to_system_two": true
+      },
+      "engine_output": {
+        "task_id": "e14_n_004",
+        "execution_confidence": 50,
+        "complexity": 3,
+        "risk": 3,
+        "blast_radius": 1,
+        "affected_repositories": [
+          "furniture-configurator"
+        ],
+        "architectural_impact": 1,
+        "data_sensitivity": 1,
+        "unknowns": 2,
+        "deep_change_probability": 22,
+        "human_approval_required": true,
+        "human_approval_reasons": [
+          "production_change"
+        ],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R3",
+        "escalate_reasons": [
+          "human_approval_required",
+          "execution_confidence_below_80",
+          "acceptance_criteria_absent"
+        ]
+      },
+      "latency_ms": 0.00928,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-N-005",
+      "input_sha256": "5b4a3a323600816fe644a60308c394af2e9b58e39071b25553a258585df5f84a",
+      "rendered_state_sha256": "5b4a3a323600816fe644a60308c394af2e9b58e39071b25553a258585df5f84a",
+      "decision": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "engine_output": {
+        "task_id": "e14_n_005",
+        "execution_confidence": 75,
+        "complexity": 4,
+        "risk": 4,
+        "blast_radius": 1,
+        "affected_repositories": [
+          "murat-project-engineer",
+          "codex-router"
+        ],
+        "architectural_impact": 4,
+        "data_sensitivity": 0,
+        "unknowns": 1,
+        "deep_change_probability": 98,
+        "human_approval_required": true,
+        "human_approval_reasons": [
+          "new_orchestration_authority",
+          "router_authority_change"
+        ],
+        "recommended_risk_tier": "DEEP-CHANGE",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R1",
+        "escalate_reasons": [
+          "deep_change_tier",
+          "human_approval_required",
+          "execution_confidence_below_80",
+          "rollback_unknown"
+        ]
+      },
+      "latency_ms": 0.0096,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-N-006",
+      "input_sha256": "f953cace885f74bbea88c85b264abe250bde3eacf05dac2d01024307875e89b2",
+      "rendered_state_sha256": "f953cace885f74bbea88c85b264abe250bde3eacf05dac2d01024307875e89b2",
+      "decision": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "engine_output": {
+        "task_id": "e14_n_006",
+        "execution_confidence": 60,
+        "complexity": 4,
+        "risk": 4,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 4,
+        "data_sensitivity": 0,
+        "unknowns": 2,
+        "deep_change_probability": 98,
+        "human_approval_required": true,
+        "human_approval_reasons": [
+          "new_orchestration_authority",
+          "persistent_agents",
+          "persistent_runtime_state"
+        ],
+        "recommended_risk_tier": "DEEP-CHANGE",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R1",
+        "escalate_reasons": [
+          "deep_change_tier",
+          "human_approval_required",
+          "execution_confidence_below_80",
+          "rollback_unknown"
+        ]
+      },
+      "latency_ms": 0.011246,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-N-007",
+      "input_sha256": "60cbd074bf9459863f703391e7833e6759013b656da77b31aa7b934a426729ad",
+      "rendered_state_sha256": "60cbd074bf9459863f703391e7833e6759013b656da77b31aa7b934a426729ad",
+      "decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": true,
+        "route_profile": "default",
+        "escalate_to_system_two": true
+      },
+      "engine_output": {
+        "task_id": "e14_n_007",
+        "execution_confidence": 100,
+        "complexity": 1,
+        "risk": 3,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 1,
+        "data_sensitivity": 2,
+        "unknowns": 0,
+        "deep_change_probability": 12,
+        "human_approval_required": true,
+        "human_approval_reasons": [
+          "destructive_operation"
+        ],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R3",
+        "escalate_reasons": [
+          "human_approval_required"
+        ]
+      },
+      "latency_ms": 0.008898,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-N-008",
+      "input_sha256": "6812aa568d306c2ca1d39309f123c6ff7d4c13b09a0ffef3f78e229655b71116",
+      "rendered_state_sha256": "6812aa568d306c2ca1d39309f123c6ff7d4c13b09a0ffef3f78e229655b71116",
+      "decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": true
+      },
+      "engine_output": {
+        "task_id": "e14_n_008",
+        "execution_confidence": 0,
+        "complexity": 2,
+        "risk": 1,
+        "blast_radius": 0,
+        "affected_repositories": [],
+        "architectural_impact": 1,
+        "data_sensitivity": 0,
+        "unknowns": 4,
+        "deep_change_probability": 32,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R3",
+        "escalate_reasons": [
+          "execution_confidence_below_80",
+          "acceptance_criteria_absent",
+          "rollback_unknown",
+          "no_repository_scope"
+        ]
+      },
+      "latency_ms": 0.008962,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-N-009",
+      "input_sha256": "dbb774e7e049da56ea6b333339f417b85e8bdbed0ddbd7f50141ca896bda48e6",
+      "rendered_state_sha256": "dbb774e7e049da56ea6b333339f417b85e8bdbed0ddbd7f50141ca896bda48e6",
+      "decision": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "cheap-research",
+        "escalate_to_system_two": false
+      },
+      "engine_output": {
+        "task_id": "e14_n_009",
+        "execution_confidence": 100,
+        "complexity": 1,
+        "risk": 1,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 0,
+        "data_sensitivity": 1,
+        "unknowns": 0,
+        "deep_change_probability": 0,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "FAST",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R3",
+        "escalate_reasons": []
+      },
+      "latency_ms": 0.01351,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-N-010",
+      "input_sha256": "b7d20e0b5c32bccfcaebd464cb34a522b764fae869c6e0301ac1e93247949414",
+      "rendered_state_sha256": "b7d20e0b5c32bccfcaebd464cb34a522b764fae869c6e0301ac1e93247949414",
+      "decision": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "cheap-research",
+        "escalate_to_system_two": false
+      },
+      "engine_output": {
+        "task_id": "e14_n_010",
+        "execution_confidence": 85,
+        "complexity": 1,
+        "risk": 1,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "furniture-configurator"
+        ],
+        "architectural_impact": 0,
+        "data_sensitivity": 0,
+        "unknowns": 1,
+        "deep_change_probability": 5,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "FAST",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R3",
+        "escalate_reasons": []
+      },
+      "latency_ms": 0.009704,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-N-011",
+      "input_sha256": "77dce078822243fedcabb93e7baeb437a4b337e1c20f253644b007b5e7f60fb3",
+      "rendered_state_sha256": "77dce078822243fedcabb93e7baeb437a4b337e1c20f253644b007b5e7f60fb3",
+      "decision": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": false
+      },
+      "engine_output": {
+        "task_id": "e14_n_011",
+        "execution_confidence": 100,
+        "complexity": 0,
+        "risk": 0,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 0,
+        "data_sensitivity": 0,
+        "unknowns": 0,
+        "deep_change_probability": 0,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "FAST",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R3",
+        "escalate_reasons": []
+      },
+      "latency_ms": 0.011032,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-N-012",
+      "input_sha256": "6505d519db70510026383ca342f6ecfe4b00c3c4c55ecea71042d49147d2220e",
+      "rendered_state_sha256": "6505d519db70510026383ca342f6ecfe4b00c3c4c55ecea71042d49147d2220e",
+      "decision": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "engine_output": {
+        "task_id": "e14_n_012",
+        "execution_confidence": 100,
+        "complexity": 1,
+        "risk": 1,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 0,
+        "data_sensitivity": 0,
+        "unknowns": 0,
+        "deep_change_probability": 0,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "FAST",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R3",
+        "escalate_reasons": []
+      },
+      "latency_ms": 0.00837,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-N-013",
+      "input_sha256": "ee12e27093ee3f0214bda6f87d3dd0df98651e463e7b43562a979c90286cf85a",
+      "rendered_state_sha256": "ee12e27093ee3f0214bda6f87d3dd0df98651e463e7b43562a979c90286cf85a",
+      "decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "engine_output": {
+        "task_id": "e14_n_013",
+        "execution_confidence": 20,
+        "complexity": 3,
+        "risk": 3,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 2,
+        "data_sensitivity": 3,
+        "unknowns": 4,
+        "deep_change_probability": 44,
+        "human_approval_required": true,
+        "human_approval_reasons": [
+          "security_or_permissions_change"
+        ],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R3",
+        "escalate_reasons": [
+          "human_approval_required",
+          "execution_confidence_below_80",
+          "acceptance_criteria_absent"
+        ]
+      },
+      "latency_ms": 0.008927,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-N-014",
+      "input_sha256": "a7967beb5ffcd35707c535c6c8ff8ea6f7a8a5ee8f9fd9a3801c628262143b5c",
+      "rendered_state_sha256": "a7967beb5ffcd35707c535c6c8ff8ea6f7a8a5ee8f9fd9a3801c628262143b5c",
+      "decision": {
+        "risk_tier": "DEEP-CHANGE",
+        "requires_human_gate": true,
+        "route_profile": "strong-review",
+        "escalate_to_system_two": true
+      },
+      "engine_output": {
+        "task_id": "e14_n_014",
+        "execution_confidence": 75,
+        "complexity": 3,
+        "risk": 4,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 4,
+        "data_sensitivity": 1,
+        "unknowns": 1,
+        "deep_change_probability": 93,
+        "human_approval_required": true,
+        "human_approval_reasons": [
+          "architecture_redesign",
+          "persistent_runtime_state"
+        ],
+        "recommended_risk_tier": "DEEP-CHANGE",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R1",
+        "escalate_reasons": [
+          "deep_change_tier",
+          "human_approval_required",
+          "execution_confidence_below_80",
+          "rollback_unknown"
+        ]
+      },
+      "latency_ms": 0.009474,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-N-015",
+      "input_sha256": "94ef86da3bad1b1a58c8ce5250853d5a7e6687b65c77c21a8ea4df90f401e85e",
+      "rendered_state_sha256": "94ef86da3bad1b1a58c8ce5250853d5a7e6687b65c77c21a8ea4df90f401e85e",
+      "decision": {
+        "risk_tier": "VERIFIED",
+        "requires_human_gate": true,
+        "route_profile": "coding",
+        "escalate_to_system_two": true
+      },
+      "engine_output": {
+        "task_id": "e14_n_015",
+        "execution_confidence": 100,
+        "complexity": 1,
+        "risk": 3,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 1,
+        "data_sensitivity": 3,
+        "unknowns": 0,
+        "deep_change_probability": 12,
+        "human_approval_required": true,
+        "human_approval_reasons": [
+          "security_or_permissions_change"
+        ],
+        "recommended_risk_tier": "VERIFIED",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R3",
+        "escalate_reasons": [
+          "human_approval_required"
+        ]
+      },
+      "latency_ms": 0.008577,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-N-016",
+      "input_sha256": "3465dffc10dfa5b553b230126c73bbf44bcefb80e0e62d357f8189a7d732f480",
+      "rendered_state_sha256": "3465dffc10dfa5b553b230126c73bbf44bcefb80e0e62d357f8189a7d732f480",
+      "decision": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "coding",
+        "escalate_to_system_two": false
+      },
+      "engine_output": {
+        "task_id": "e14_n_016",
+        "execution_confidence": 100,
+        "complexity": 1,
+        "risk": 1,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 0,
+        "data_sensitivity": 0,
+        "unknowns": 0,
+        "deep_change_probability": 0,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "FAST",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R3",
+        "escalate_reasons": []
+      },
+      "latency_ms": 0.008656,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-N-017",
+      "input_sha256": "e400572fa1fcb8ac7dc101cbfd56a267ee6d1e23d4e6e522d74549b7c96438f2",
+      "rendered_state_sha256": "e400572fa1fcb8ac7dc101cbfd56a267ee6d1e23d4e6e522d74549b7c96438f2",
+      "decision": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "default",
+        "escalate_to_system_two": false
+      },
+      "engine_output": {
+        "task_id": "e14_n_017",
+        "execution_confidence": 100,
+        "complexity": 1,
+        "risk": 0,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 0,
+        "data_sensitivity": 0,
+        "unknowns": 0,
+        "deep_change_probability": 0,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "FAST",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R3",
+        "escalate_reasons": []
+      },
+      "latency_ms": 0.008035,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    },
+    {
+      "case_id": "E14-N-018",
+      "input_sha256": "f1b1993f4478a7eb38aa8b2188433d480ac3ef8952416728b11e43ad3fdd08aa",
+      "rendered_state_sha256": "f1b1993f4478a7eb38aa8b2188433d480ac3ef8952416728b11e43ad3fdd08aa",
+      "decision": {
+        "risk_tier": "FAST",
+        "requires_human_gate": false,
+        "route_profile": "cheap-research",
+        "escalate_to_system_two": false
+      },
+      "engine_output": {
+        "task_id": "e14_n_018",
+        "execution_confidence": 100,
+        "complexity": 1,
+        "risk": 1,
+        "blast_radius": 0,
+        "affected_repositories": [
+          "murat-project-engineer"
+        ],
+        "architectural_impact": 0,
+        "data_sensitivity": 1,
+        "unknowns": 0,
+        "deep_change_probability": 0,
+        "human_approval_required": false,
+        "human_approval_reasons": [],
+        "recommended_risk_tier": "FAST",
+        "engine_version": "0.1.0"
+      },
+      "derivation": {
+        "route_profile_rule": "B-R3",
+        "escalate_reasons": []
+      },
+      "latency_ms": 0.007436,
+      "invalid_output": false,
+      "failure_reason": null,
+      "model_calls": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0
+      },
+      "model_cost_usd": 0.0,
+      "cost_basis": "observed_zero_no_provider_call"
+    }
+  ]
+}
