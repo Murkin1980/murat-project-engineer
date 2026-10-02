@@ -401,6 +401,23 @@
       ],
       "pr_or_issue_links": [],
       "updated_at": "2026-10-02"
+    },
+    {
+      "experiment_id": "EXP-21",
+      "name": "EasyKitchen / SketchUp production backend",
+      "owning_project": "MebelFlow AI",
+      "status": "PLANNED",
+      "why": "Test whether SketchUp + EasyKitchen can serve as the production execution layer behind MebelFlow's strict furniture-command architecture, including modeling, drilling, nesting, and production documentation, without building a parallel CAD.",
+      "date_added": "2026-10-02",
+      "next_action": "Perform focused technical reconnaissance of SketchUp Ruby + EasyKitchen automation and licensing, then freeze the first minimal straight-kitchen fixture before writing an adapter.",
+      "result_summary": "Planned. Primary disposition EXPERIMENT. MPE-only research; no MebelFlow production integration, source-of-truth change, arbitrary code execution, or new repository is authorized.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/exp-21-easykitchen-sketchup-production-backend",
+      "evidence_links": [
+        "experiments/exp-21-easykitchen-sketchup-production-backend/README.md"
+      ],
+      "pr_or_issue_links": [],
+      "updated_at": "2026-10-02"
     }
   ]
 }
