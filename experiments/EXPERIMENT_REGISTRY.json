@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-10-01",
+  "updated_at": "2026-10-02",
   "experiments": [
     {
       "experiment_id": "EXP-ALEXANDRIA",
@@ -384,6 +384,23 @@
         "https://github.com/Murkin1980/murat-project-engineer/issues/33"
       ],
       "updated_at": "2026-09-29"
+    },
+    {
+      "experiment_id": "EXP-20",
+      "name": "Dify/OpenHands component extraction",
+      "owning_project": "Murat Project Engineer",
+      "status": "PLANNED",
+      "why": "Identify reusable AI workflow and coding-agent capabilities from Dify and OpenHands without adopting either platform wholesale or creating a parallel system.",
+      "date_added": "2026-10-02",
+      "next_action": "Run a comparative architecture audit against existing MPE, Business Discovery, MebelFlow AI, AI gateway, transcription gateway, and agent/orchestration components; select the smallest bounded proof.",
+      "result_summary": "Planned. Primary disposition REUSE_COMPONENT. No production integration, full-platform adoption, or new repository is authorized.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/exp-20-dify-openhands-component-extraction",
+      "evidence_links": [
+        "experiments/exp-20-dify-openhands-component-extraction/README.md"
+      ],
+      "pr_or_issue_links": [],
+      "updated_at": "2026-10-02"
     }
   ]
 }
