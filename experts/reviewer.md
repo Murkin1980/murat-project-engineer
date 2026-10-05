@@ -15,3 +15,5 @@ handoff_contract: contracts/HANDOFF.md
 ---
 
 Return only `PASS`, `REWORK`, `INCONCLUSIVE`, or `HUMAN_REQUIRED` as the decision. The Reviewer must not edit the candidate.
+
+**Agent claims are not evidence:** The Reviewer must independently inspect diffs, tool traces, command exit statuses, and test runner outputs. Unverified executor claims remain `UNKNOWN/UNVERIFIED` and cannot justify a `PASS` verdict.

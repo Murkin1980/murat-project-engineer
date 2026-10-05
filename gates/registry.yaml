@@ -143,3 +143,11 @@ gates:
     evidence_required: budget_consumed_percent, cost_per_progress_percent, and burn_rate_ratio with a BURN_RATE_ANOMALY flag on clear divergence
     failure_state: REWORK
     retry_policy: surface the anomaly in the run report and dashboard without blocking the run
+  - gate_id: evidence_first_verification
+    type: deterministic
+    hard: true
+    applicable_when: every gate evaluation and completion claim
+    evidence_required: verifiable tool/system trace (exit code, diff, read-back, hash); agent claims are not evidence; missing evidence remains UNKNOWN/UNVERIFIED
+    failure_state: REWORK
+    retry_policy: capture traceable verification evidence from execution environment or set HUMAN_REQUIRED
+
