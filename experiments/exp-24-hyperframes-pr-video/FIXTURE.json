@@ -1,0 +1,41 @@
+{
+  "experiment": "EXP-24 HyperFrames PR to video",
+  "frozen_date": "2026-10-06",
+  "repository": "Murkin1980/murat-project-engineer",
+  "pull_request": {
+    "number": 46,
+    "title": "EXP-15: controlled MVP experiment for bounded project memory layer",
+    "url": "https://github.com/Murkin1980/murat-project-engineer/pull/46",
+    "merged_at": "2026-09-30T18:47:30Z",
+    "merge_commit": "f36c97212a812f7591c6e554fac07491754d7b9b",
+    "head_commit": "b1265e4b8fc297a3ed51219bea6c0a51ace69267"
+  },
+  "problem": "Repeated context rediscovery across MPE sessions required repository/document searches to recover prior decisions and constraints.",
+  "meaningful_changes": [
+    "Added an experiment-only, file-backed project-memory prototype and its bounded memory model.",
+    "Added a deterministic acceptance harness for RECALL, UPDATE, DELETE, ISOLATION, PROVENANCE, and FAILURE behavior.",
+    "Added frozen benchmark fixtures and a Mode A baseline versus Mode B memory-layer evaluator with recorded evidence.",
+    "Kept Git as the sole source of truth; memory writes remain approval-gated, with no production code or persistent service added."
+  ],
+  "verification": {
+    "acceptance_tests": "6/6 passed deterministically",
+    "benchmark_tasks": ["RUN-08", "RUN-11", "RUN-12", "EXP-18"],
+    "document_reads": "17 to 0",
+    "context_lines": "1838 to 104 (94.3% reduction)",
+    "rediscovery_steps": "21 to 4 (81.0% reduction)",
+    "prior_decision_recall": "4/4 (100%)",
+    "unauthorized_writes": 0,
+    "cross_project_leakage": 0
+  },
+  "final_result": "PASS",
+  "remaining_limitation": "This is a controlled four-task experiment, not production validation or proof of broad generalization; no production integration or persistent service was introduced.",
+  "source_refs": [
+    "https://github.com/Murkin1980/murat-project-engineer/pull/46",
+    "experiments/exp-15-memory/2026-09-30/README.md",
+    "experiments/exp-15-memory/2026-09-30/RESULTS.md",
+    "experiments/exp-15-memory/2026-09-30/BASELINE.md",
+    "experiments/exp-15-memory/2026-09-30/ACCEPTANCE_TESTS.md",
+    "experiments/exp-15-memory/2026-09-30/evidence/01_acceptance_tests.log",
+    "experiments/exp-15-memory/2026-09-30/evidence/02_baseline_comparison.log"
+  ]
+}

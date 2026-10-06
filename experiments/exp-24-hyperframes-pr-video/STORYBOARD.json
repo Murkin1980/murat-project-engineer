@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "title": "MPE Project Memory — measured relief, bounded scope",
+  "source": "https://github.com/Murkin1980/murat-project-engineer/pull/46",
+  "format": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "duration_seconds": 32
+  },
+  "narration": null,
+  "scenes": [
+    {
+      "id": "baseline",
+      "start_seconds": 0,
+      "duration_seconds": 8,
+      "headline": "Stop rediscovering settled decisions",
+      "facts": [
+        "EXP-15 compared a baseline and a bounded memory prototype across four completed MPE tasks.",
+        "The baseline recorded 17 document reads and 1,838 lines of context."
+      ],
+      "metric": "17 baseline document reads",
+      "source_refs": [
+        "experiments/exp-15-memory/2026-09-30/BASELINE.md",
+        "experiments/exp-15-memory/2026-09-30/RESULTS.md"
+      ]
+    },
+    {
+      "id": "bounded-design",
+      "start_seconds": 8,
+      "duration_seconds": 8,
+      "headline": "Memory, without a second source of truth",
+      "facts": [
+        "The experiment used a bounded, file-backed, provenance-aware memory prototype.",
+        "Git remained canonical; writes were approval-gated; no production service or code was added."
+      ],
+      "metric": "Git stays canonical",
+      "source_refs": [
+        "experiments/exp-15-memory/2026-09-30/MEMORY_MODEL.md",
+        "experiments/exp-15-memory/2026-09-30/README.md",
+        "https://github.com/Murkin1980/murat-project-engineer/pull/46"
+      ]
+    },
+    {
+      "id": "measured-change",
+      "start_seconds": 16,
+      "duration_seconds": 8,
+      "headline": "Less context. Fewer rediscovery steps.",
+      "facts": [
+        "Context fell from 1,838 to 104 lines (94.3%); rediscovery steps fell from 21 to 4 (81.0%).",
+        "Prior decisions were recalled correctly on all four benchmark tasks."
+      ],
+      "metric": "17 → 0 reads  ·  21 → 4 steps",
+      "source_refs": [
+        "experiments/exp-15-memory/2026-09-30/RESULTS.md",
+        "experiments/exp-15-memory/2026-09-30/evidence/02_baseline_comparison.log"
+      ]
+    },
+    {
+      "id": "outcome-and-boundary",
+      "start_seconds": 24,
+      "duration_seconds": 8,
+      "headline": "Guardrails held; the result stays bounded",
+      "facts": [
+        "All six acceptance checks passed; unauthorized writes and cross-project leakage were both zero.",
+        "EXP-15 reported PASS. Its evidence covers four tasks; it is not production validation."
+      ],
+      "metric": "6 / 6 checks passed",
+      "source_refs": [
+        "experiments/exp-15-memory/2026-09-30/ACCEPTANCE_TESTS.md",
+        "experiments/exp-15-memory/2026-09-30/evidence/01_acceptance_tests.log",
+        "experiments/exp-15-memory/2026-09-30/RESULTS.md"
+      ]
+    }
+  ]
+}
