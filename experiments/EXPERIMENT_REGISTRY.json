@@ -474,6 +474,24 @@
       ],
       "pr_or_issue_links": [],
       "updated_at": "2026-10-06"
+    },
+    {
+      "experiment_id": "EXP-25",
+      "name": "Atomic CRM component extraction",
+      "owning_project": "Murat Project Engineer",
+      "status": "PLANNED",
+      "why": "Extract reusable CRM domain, workflow, UI, import/export, activity-history, and AI/API patterns from Atomic CRM for existing Murat tools—primarily minibase-cloudflare—without adopting a parallel CRM or second source of truth.",
+      "date_added": "2026-10-06",
+      "next_action": "Run CP-01 architecture extraction, then CP-02 Minibase fit. Only if both pass, build the bounded test-data slice contact → deal → task → activity timeline and a read-first AI/tool surface.",
+      "result_summary": "Planned. Primary disposition REUSE_COMPONENT. Atomic CRM is a donor/reference only; no new repository, production CRM deployment, live customer migration, second database, autonomous writes, or source-of-truth change is authorized.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/exp-25-atomic-crm-component-extraction",
+      "evidence_links": [
+        "experiments/exp-25-atomic-crm-component-extraction/README.md",
+        "https://github.com/marmelab/atomic-crm"
+      ],
+      "pr_or_issue_links": [],
+      "updated_at": "2026-10-06"
     }
   ]
 }
