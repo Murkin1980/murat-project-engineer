@@ -492,6 +492,25 @@
       ],
       "pr_or_issue_links": [],
       "updated_at": "2026-10-06"
+    },
+    {
+      "experiment_id": "EXP-26",
+      "name": "TencentDB Agent Memory component extraction",
+      "owning_project": "Murat Project Engineer",
+      "status": "PLANNED",
+      "why": "Evaluate reusable symbolic short-term compaction and layered progressive-disclosure recall patterns from TencentDB Agent Memory against the existing EXP-15 MPE memory baseline, without adopting a parallel memory platform or changing Git as canonical source of truth.",
+      "date_added": "2026-10-06",
+      "next_action": "Arena runs a bounded EXP-15-compatible A/B/C comparison: current baseline vs symbolic compaction vs layered recall, then returns PASS/PARTIAL/FAIL and exact component-level adoption guidance.",
+      "result_summary": "Planned. Primary disposition REUSE_COMPONENT. TencentDB Agent Memory is a donor/reference only; no new repository, service, database, vector store, autonomous writes, Router change, production integration, or source-of-truth change is authorized.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/exp-26-tencentdb-agent-memory-components",
+      "evidence_links": [
+        "experiments/exp-26-tencentdb-agent-memory-components/README.md",
+        "experiments/exp-26-tencentdb-agent-memory-components/ARENA_TASK.md",
+        "https://github.com/TencentCloud/TencentDB-Agent-Memory"
+      ],
+      "pr_or_issue_links": [],
+      "updated_at": "2026-10-06"
     }
   ]
 }
