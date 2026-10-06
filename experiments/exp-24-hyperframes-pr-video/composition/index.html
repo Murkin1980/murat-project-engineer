@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MPE Project Memory — EXP-15</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #f3f4ee;
+      --muted: #aeb7bb;
+      --panel: #17232a;
+      --line: #30434b;
+      --mint: #8de0bc;
+      --amber: #ffc978;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 100%; height: 100%; background: #0b1217; color: var(--ink); }
+    #stage {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: #0b1217;
+    }
+    .scene {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 96px 128px;
+      background:
+        radial-gradient(ellipse at 84% 18%, rgba(141, 224, 188, .13), transparent 34%),
+        linear-gradient(135deg, #0b1217 0%, #111d23 100%);
+    }
+    .scene:nth-of-type(even) {
+      background:
+        radial-gradient(ellipse at 16% 85%, rgba(255, 201, 120, .10), transparent 35%),
+        linear-gradient(135deg, #0b1217 0%, #111d23 100%);
+    }
+    .scene-content { width: 100%; max-width: 1540px; }
+    .eyebrow {
+      margin: 0 0 34px;
+      color: var(--mint);
+      font-size: 27px;
+      font-weight: 750;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: 1400px;
+      margin: 0 0 30px;
+      font-size: 78px;
+      line-height: 1.06;
+      letter-spacing: -.045em;
+      font-weight: 760;
+    }
+    .lede {
+      max-width: 1320px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 38px;
+      line-height: 1.38;
+    }
+    .metric {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 22px;
+      margin-top: 58px;
+      padding: 22px 32px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(23, 35, 42, .92);
+      font-size: 70px;
+      font-weight: 780;
+      letter-spacing: -.04em;
+      white-space: nowrap;
+    }
+    .metric .arrow { color: var(--mint); }
+    .metric-label {
+      display: block;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 27px;
+      letter-spacing: .02em;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 44px;
+    }
+    .card {
+      min-height: 210px;
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(23, 35, 42, .88);
+    }
+    .card strong {
+      display: block;
+      margin-bottom: 14px;
+      color: var(--mint);
+      font-size: 28px;
+      letter-spacing: .02em;
+    }
+    .card span { color: var(--ink); font-size: 30px; line-height: 1.3; }
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .result {
+      padding: 30px;
+      border-left: 5px solid var(--mint);
+      background: rgba(23, 35, 42, .8);
+    }
+    .result b { display: block; margin-bottom: 10px; font-size: 52px; letter-spacing: -.035em; }
+    .result span { color: var(--muted); font-size: 27px; line-height: 1.3; }
+    .footer {
+      margin-top: 44px;
+      color: var(--muted);
+      font-size: 26px;
+      line-height: 1.4;
+    }
+    .pill {
+      display: inline-block;
+      padding: 10px 16px;
+      border: 1px solid rgba(141, 224, 188, .55);
+      border-radius: 999px;
+      color: var(--mint);
+      font-size: 23px;
+      font-weight: 750;
+      letter-spacing: .09em;
+    }
+    @media (max-width: 1000px) {
+      #stage { transform-origin: top left; }
+      .scene { padding: 72px; }
+      h1 { font-size: 70px; }
+      .cards, .results-grid { gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div data-hf-id="hf-sf7k" id="stage" data-composition-id="exp15-memory-summary" data-start="0" data-duration="32" data-width="1920" data-height="1080">
+    <div data-hf-id="hf-2c4l" id="baseline" class="scene clip" data-start="0" data-duration="8" data-track-index="0">
+      <div data-hf-id="hf-cn5c" class="scene-content">
+        <p data-hf-id="hf-smoo" class="eyebrow">Murat Project Engineer · PR #46 · EXP-15</p>
+        <h1 data-hf-id="hf-ekdk">Stop rediscovering settled decisions.</h1>
+        <p data-hf-id="hf-ih9d" class="lede">Four completed MPE tasks compared manual context search with a bounded project-memory prototype.</p>
+        <div data-hf-id="hf-dq4c" class="metric"><span data-hf-id="hf-0551">17</span><span data-hf-id="hf-v68i" class="arrow">→</span><span data-hf-id="hf-i6df">0</span></div>
+        <span data-hf-id="hf-qhh1" class="metric-label">unnecessary document reads · baseline to prototype</span>
+      </div>
+    </div>
+
+    <div data-hf-id="hf-d5am" id="bounded-design" class="scene clip" data-start="8" data-duration="8" data-track-index="0">
+      <div data-hf-id="hf-o0eg" class="scene-content">
+        <p data-hf-id="hf-uz6v" class="eyebrow">The design boundary</p>
+        <h1 data-hf-id="hf-y437">Memory, without a second source of truth.</h1>
+        <div data-hf-id="hf-5cwd" class="cards">
+          <div data-hf-id="hf-vn2y" class="card"><strong data-hf-id="hf-crxp">PROVENANCE</strong><span data-hf-id="hf-0yzq">Recalled facts point back to canonical project files.</span></div>
+          <div data-hf-id="hf-i08u" class="card"><strong data-hf-id="hf-plqh">APPROVAL</strong><span data-hf-id="hf-kr8k">Proposed memory writes do not bypass human approval.</span></div>
+          <div data-hf-id="hf-iejv" class="card"><strong data-hf-id="hf-twow">BOUNDARY</strong><span data-hf-id="hf-0kbq">Git stays canonical; no production service or code was added.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div data-hf-id="hf-q7w4" id="measured-change" class="scene clip" data-start="16" data-duration="8" data-track-index="0">
+      <div data-hf-id="hf-mthd" class="scene-content">
+        <p data-hf-id="hf-hnk4" class="eyebrow">Mode A baseline → Mode B prototype</p>
+        <h1 data-hf-id="hf-81ux">Less context. Fewer rediscovery steps.</h1>
+        <div data-hf-id="hf-1zan" class="results-grid">
+          <div data-hf-id="hf-ycrv" class="result"><b data-hf-id="hf-7mbe">94.3%</b><span data-hf-id="hf-ogar">less context<br data-hf-id="hf-x5px">1,838 → 104 lines</span></div>
+          <div data-hf-id="hf-qarv" class="result"><b data-hf-id="hf-yfiz">81.0%</b><span data-hf-id="hf-ti1c">fewer steps<br data-hf-id="hf-rsrt">21 → 4 rediscovery steps</span></div>
+          <div data-hf-id="hf-pwgu" class="result"><b data-hf-id="hf-hwl2">4 / 4</b><span data-hf-id="hf-bhvx">prior decisions recalled correctly</span></div>
+        </div>
+        <p data-hf-id="hf-oz9c" class="footer">Document reads also fell from 17 to 0 across the frozen four-task benchmark.</p>
+      </div>
+    </div>
+
+    <div data-hf-id="hf-pvu5" id="outcome-and-boundary" class="scene clip" data-start="24" data-duration="8" data-track-index="0">
+      <div data-hf-id="hf-n7se" class="scene-content">
+        <p data-hf-id="hf-s1qu" class="eyebrow">Verification and scope</p>
+        <h1 data-hf-id="hf-58ig">Guardrails held. The result stays bounded.</h1>
+        <div data-hf-id="hf-i49b" class="results-grid">
+          <div data-hf-id="hf-pi5t" class="result"><b data-hf-id="hf-pewm">6 / 6</b><span data-hf-id="hf-ttcl">acceptance checks passed</span></div>
+          <div data-hf-id="hf-p3us" class="result"><b data-hf-id="hf-sqbz">0</b><span data-hf-id="hf-x8cj">unauthorized canonical writes</span></div>
+          <div data-hf-id="hf-opjr" class="result"><b data-hf-id="hf-e7ov">0</b><span data-hf-id="hf-c10a">cross-project memory leaks</span></div>
+        </div>
+        <p data-hf-id="hf-50me" class="footer"><span data-hf-id="hf-4esi" class="pill">EXP-15 RESULT: PASS</span> &#160; Four-task experiment evidence only; not production validation.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
