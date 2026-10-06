@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-10-02",
+  "updated_at": "2026-10-06",
   "experiments": [
     {
       "experiment_id": "EXP-ALEXANDRIA",
@@ -435,6 +435,24 @@
       "evidence_links": [
         "experiments/exp-22-colibri-local-inference/README.md",
         "experiments/exp-22-colibri-local-inference/ARENA_TASK.md"
+      ],
+      "pr_or_issue_links": [],
+      "updated_at": "2026-10-06"
+    },
+    {
+      "experiment_id": "EXP-23",
+      "name": "Papermorph document → interactive artifact",
+      "owning_project": "Murat Project Engineer",
+      "status": "PLANNED",
+      "why": "Test whether Papermorph's document/script → structured storyboard → narration → procedural animation/interaction pipeline yields reusable value for existing Murat projects without creating a parallel product or repository.",
+      "date_added": "2026-10-06",
+      "next_action": "After EXP-22 Colibri completes, Arena runs one technical/business document fixture, one bounded AI-serial script fixture, then maps reusable components to existing projects.",
+      "result_summary": "Planned. Primary disposition EXPERIMENT. No new repository, production integration, autonomous service, automatic publishing, or AI-serial canon change is authorized.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/exp-23-papermorph-interactive-artifact",
+      "evidence_links": [
+        "experiments/exp-23-papermorph-interactive-artifact/README.md",
+        "experiments/exp-23-papermorph-interactive-artifact/ARENA_TASK.md"
       ],
       "pr_or_issue_links": [],
       "updated_at": "2026-10-06"
