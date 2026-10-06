@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="355" height="279" viewBox="0 0 355 279" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
+  <defs>
+  </defs>
+  <rect x="0" y="0" width="355" height="279" fill="#ffffff"/>
+  <path d="M48 40 H307 a8 8 0 0 1 8 8 V231 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <text x="54" y="68.4" fill="#1f2328" text-anchor="start">PARTIAL (1)</text>
+  <path d="M62 83 H293 a8 8 0 0 1 8 8 V217 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V91 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="177.5" y="111.4" fill="#1f2328" text-anchor="middle">EXP-26 · MPE</text>
+  <text x="177.5" y="130.4" fill="#1f2328" text-anchor="middle">TencentDB Agent Memory</text>
+  <text x="177.5" y="149.4" fill="#1f2328" text-anchor="middle">component extrac…</text>
+  <text x="177.5" y="168.4" fill="#1f2328" text-anchor="middle">→ Closed at bounded</text>
+  <text x="177.5" y="187.4" fill="#1f2328" text-anchor="middle">component extraction. No</text>
+  <text x="177.5" y="206.4" fill="#1f2328" text-anchor="middle">production integration or…</text>
+</svg>

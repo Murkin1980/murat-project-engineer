@@ -1,29 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="355" height="602" viewBox="0 0 355 602" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
+<svg xmlns="http://www.w3.org/2000/svg" width="346" height="279" viewBox="0 0 346 279" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
   <defs>
   </defs>
-  <rect x="0" y="0" width="355" height="602" fill="#ffffff"/>
-  <path d="M48 40 H307 a8 8 0 0 1 8 8 V554 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
-  <text x="54" y="68.4" fill="#1f2328" text-anchor="start">READY_TO_TEST (3)</text>
-  <path d="M62 83 H293 a8 8 0 0 1 8 8 V236 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V91 a8 8 0 0 1 8 -8 Z" fill="#dbeafe" stroke="#2563eb"/>
-  <text x="177.5" y="111.4" fill="#1f2328" text-anchor="middle">EXP-09 · MPE</text>
-  <text x="177.5" y="130.4" fill="#1f2328" text-anchor="middle">Personalized Assessment</text>
-  <text x="177.5" y="149.4" fill="#1f2328" text-anchor="middle">Engine v0</text>
-  <text x="177.5" y="168.4" fill="#1f2328" text-anchor="middle">→ Resolve the recorded</text>
-  <text x="177.5" y="187.4" fill="#1f2328" text-anchor="middle">production-rule,</text>
-  <text x="177.5" y="206.4" fill="#1f2328" text-anchor="middle">external-LLM, Git-boundary</text>
-  <text x="177.5" y="225.4" fill="#1f2328" text-anchor="middle">and…</text>
-  <path d="M62 254 H293 a8 8 0 0 1 8 8 V388 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V262 a8 8 0 0 1 8 -8 Z" fill="#dbeafe" stroke="#2563eb"/>
-  <text x="177.5" y="282.4" fill="#1f2328" text-anchor="middle">EXP-13 · MPE</text>
-  <text x="177.5" y="301.4" fill="#1f2328" text-anchor="middle">Low-cost evaluation</text>
-  <text x="177.5" y="320.4" fill="#1f2328" text-anchor="middle">harness</text>
-  <text x="177.5" y="339.4" fill="#1f2328" text-anchor="middle">→ Run the frozen 18-entry</text>
-  <text x="177.5" y="358.4" fill="#1f2328" text-anchor="middle">Pilot Batch 1 only when</text>
-  <text x="177.5" y="377.4" fill="#1f2328" text-anchor="middle">every proceeding rout…</text>
-  <path d="M62 406 H293 a8 8 0 0 1 8 8 V540 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V414 a8 8 0 0 1 8 -8 Z" fill="#dbeafe" stroke="#2563eb"/>
-  <text x="177.5" y="434.4" fill="#1f2328" text-anchor="middle">EXP-UX-UI-SKILLS · MPE</text>
-  <text x="177.5" y="453.4" fill="#1f2328" text-anchor="middle">UX/UI Agent Skills</text>
-  <text x="177.5" y="472.4" fill="#1f2328" text-anchor="middle">→ Capture the</text>
-  <text x="177.5" y="491.4" fill="#1f2328" text-anchor="middle">ai-microtask-factory</text>
-  <text x="177.5" y="510.4" fill="#1f2328" text-anchor="middle">baseline and run the</text>
-  <text x="177.5" y="529.4" fill="#1f2328" text-anchor="middle">selective upstr…</text>
+  <rect x="0" y="0" width="346" height="279" fill="#ffffff"/>
+  <path d="M48 40 H298 a8 8 0 0 1 8 8 V231 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <text x="54" y="68.4" fill="#1f2328" text-anchor="start">READY_TO_TEST (1)</text>
+  <path d="M62 83 H284 a8 8 0 0 1 8 8 V217 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V91 a8 8 0 0 1 8 -8 Z" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="173" y="111.4" fill="#1f2328" text-anchor="middle">EXP-13 · MPE</text>
+  <text x="173" y="130.4" fill="#1f2328" text-anchor="middle">Low-cost evaluation</text>
+  <text x="173" y="149.4" fill="#1f2328" text-anchor="middle">harness</text>
+  <text x="173" y="168.4" fill="#1f2328" text-anchor="middle">→ Run the frozen 18-entry</text>
+  <text x="173" y="187.4" fill="#1f2328" text-anchor="middle">Pilot Batch 1 only when</text>
+  <text x="173" y="206.4" fill="#1f2328" text-anchor="middle">every proceeding rout…</text>
 </svg>

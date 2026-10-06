@@ -1,0 +1,132 @@
+{
+ "context_refs": {
+  "artifact_path": "/tmp/exp-27-proof-exc1vs8g/cp04/artifact.json",
+  "fixture_path": "/home/user/murat-project-engineer/experiments/exp-27-paperclip-orchestration-patterns/harness/fixtures.json",
+  "packet_path": "/tmp/exp-27-proof-exc1vs8g/cp04/packet.json",
+  "state_path": "/tmp/exp-27-proof-exc1vs8g/cp04/state.json"
+ },
+ "created_at": "2026-10-06T19:05:05Z",
+ "goal_ancestry": {
+  "checkpoints": [
+   "CP-01",
+   "CP-02",
+   "CP-03",
+   "CP-04",
+   "CP-05"
+  ],
+  "experiment_id": "EXP-27",
+  "parent_goal": "Extract and test high-value orchestration patterns from Paperclip—goal context, atomic task lease, persistent resumable evidence, budget/runaway guards, and approval gates—inside existing MPE/murat-ai-orchestrator components without adopting a parallel control plane.",
+  "project": "Murat Project Engineer",
+  "stop_conditions": [
+   "new repo;",
+   "persistent Paperclip service;",
+   "new DB/queue/daemon;",
+   "Router authority change;",
+   "governance replacement;",
+   "Git/source-of-truth change;",
+   "autonomous merge/deploy;",
+   "recurring paid infrastructure;",
+   "production integration."
+  ]
+ },
+ "handoff": {
+  "BLOCKER": "none",
+  "CHANGES": "3 step records persisted",
+  "EVIDENCE": "persisted step outputs in /tmp/exp-27-proof-exc1vs8g/cp04/state.json",
+  "HANDOFF": "state file /tmp/exp-27-proof-exc1vs8g/cp04/state.json is self-sufficient for another fresh executor",
+  "NEXT ACTION": "run the remaining pending bounded steps and finalize",
+  "RESULT": "resume completed 2 remaining steps without re-execution",
+  "STATE": "DONE: all 5 bounded steps completed across two processes"
+ },
+ "next_action": "run the remaining pending bounded steps and finalize",
+ "run_id": "EXP-27-PROOF",
+ "state": "DONE",
+ "state_version": "exp-27-run-state-v1",
+ "steps": [
+  {
+   "completed_at": "2026-10-06T19:05:05Z",
+   "output": {
+    "fixture_ref": "/home/user/murat-project-engineer/experiments/exp-27-paperclip-orchestration-patterns/harness/fixtures.json",
+    "fixture_version": "exp-27-bounded-task-fixture-v1",
+    "input_digest": "ea63f1351c44b39456969e01eeec3f943cd0882ec1d8dcd27fb80b5a08a47bb4"
+   },
+   "status": "DONE",
+   "step_id": "S1_input_digest"
+  },
+  {
+   "completed_at": "2026-10-06T19:05:05Z",
+   "output": {
+    "experiment_id": "EXP-27",
+    "packet_sha256": "fb322c061784ebda4a05591d4709c4b3ea3a619072b683b9c79808028fd36235",
+    "parent_goal": "Extract and test high-value orchestration patterns from Paperclip—goal context, atomic task lease, persistent resumable evidence, budget/runaway guards, and approval gates—inside existing MPE/murat-ai-orchestrator components without adopting a parallel control plane.",
+    "project": "Murat Project Engineer",
+    "task_id": "EXP-27/CP-04"
+   },
+   "status": "DONE",
+   "step_id": "S2_goal_binding"
+  },
+  {
+   "completed_at": "2026-10-06T19:05:05Z",
+   "output": {
+    "artifact_digest": "f0ccf95e0bf2c7ef07ae1cd97978c33851ce6020d66f4cbcb2da878ba9d49595",
+    "artifact_path": "/tmp/exp-27-proof-exc1vs8g/cp04/artifact.json"
+   },
+   "status": "DONE",
+   "step_id": "S3_artifact_write"
+  },
+  {
+   "completed_at": "2026-10-06T19:05:05Z",
+   "output": {
+    "artifact_verified": true,
+    "verified_digest": "f0ccf95e0bf2c7ef07ae1cd97978c33851ce6020d66f4cbcb2da878ba9d49595"
+   },
+   "status": "DONE",
+   "step_id": "S4_artifact_verify"
+  },
+  {
+   "completed_at": "2026-10-06T19:05:05Z",
+   "output": {
+    "result_digest": "2bbf2811afd13f1ecc2925c883d75b71b8fb4d18e3c01ce63d0eb5352d28da40",
+    "terminal": "DONE"
+   },
+   "status": "DONE",
+   "step_id": "S5_finalize"
+  }
+ ],
+ "task_id": "EXP-27/CP-04",
+ "typed_handoff": {
+  "acceptance_criteria": [
+   "all 5 bounded steps DONE with stable digests"
+  ],
+  "artifact_refs": [
+   "/tmp/exp-27-proof-exc1vs8g/cp04/artifact.json"
+  ],
+  "assumptions": [
+   "bounded proof only; no production integration"
+  ],
+  "changed_files": [],
+  "checks_already_run": [
+   "ancestry_packet_built",
+   "fresh_process_resume"
+  ],
+  "consumer_role": "exp-27-proof-fresh-executor",
+  "do_not_change": [
+   "experiments/exp-27-paperclip-orchestration-patterns/ARENA_TASK.md"
+  ],
+  "input_refs": [
+   "/home/user/murat-project-engineer/experiments/exp-27-paperclip-orchestration-patterns/harness/fixtures.json",
+   "/tmp/exp-27-proof-exc1vs8g/cp04/packet.json"
+  ],
+  "producer_role": "exp-27-proof-parent",
+  "required_next_checks": [
+   "resume_without_rediscovery"
+  ],
+  "run_id": "EXP-27-PROOF",
+  "task_id": "EXP-27/CP-04",
+  "task_summary": "Execute CP-04 of EXP-27 inside the approved experiment boundary",
+  "unresolved_risks": [
+   "single-host file-backed proof, not a distributed lock"
+  ]
+ },
+ "updated_at": "2026-10-06T19:05:05Z"
+}

@@ -1,0 +1,86 @@
+{
+ "cases": [
+  {
+   "checkpoint": "CP-05",
+   "context_overhead_ratio_packet_vs_rediscovery": 0.0466,
+   "experiment_id": "EXP-27",
+   "fresh_process_read_from_chat": false,
+   "goal_preserved_by_fresh_process": true,
+   "packet_bytes": 2316,
+   "packet_source_refs": [
+    {
+     "path": "experiments/EXPERIMENT_REGISTRY.json",
+     "sha256": "cd68ebc9ba2139d6cdbbc3f8a5655b2544ba62cc2c3194fa64bc6076966ebd5d"
+    },
+    {
+     "path": "experiments/exp-27-paperclip-orchestration-patterns/ARENA_TASK.md",
+     "sha256": "ed3bed1a1de39eecbc2167efd25e41aece0f7876c6b02b26a61ed88fc803c1e3"
+    },
+    {
+     "path": "experiments/exp-27-paperclip-orchestration-patterns/README.md",
+     "sha256": "dba4d48d997e155e91ec220e2fb13e2525e6100f3ffb110a01086b3689216ef4"
+    }
+   ],
+   "per_question_match": {
+    "checkpoints": true,
+    "disposition": true,
+    "experiment_id": true,
+    "first_stop_conditions": true,
+    "parent_goal": true,
+    "project": true,
+    "stop_condition_count": true,
+    "task_id": true
+   },
+   "rediscovery_answers_match_packet": true,
+   "rediscovery_bytes_read": 49656,
+   "rediscovery_files_read": 3,
+   "task_id": "EXP-27/CP-05"
+  },
+  {
+   "checkpoint": "CP-04",
+   "context_overhead_ratio_packet_vs_rediscovery": 0.0464,
+   "experiment_id": "EXP-25",
+   "fresh_process_read_from_chat": false,
+   "goal_preserved_by_fresh_process": true,
+   "packet_bytes": 2013,
+   "packet_source_refs": [
+    {
+     "path": "experiments/EXPERIMENT_REGISTRY.json",
+     "sha256": "cd68ebc9ba2139d6cdbbc3f8a5655b2544ba62cc2c3194fa64bc6076966ebd5d"
+    },
+    {
+     "path": "experiments/exp-25-atomic-crm-component-extraction/ARENA_TASK.md",
+     "sha256": "a65ec4438a1ef60c0fa9af78ca13a8fb11e8fd9e57ae58e59fc0a583641c5ea4"
+    }
+   ],
+   "per_question_match": {
+    "checkpoints": true,
+    "disposition": true,
+    "experiment_id": true,
+    "first_stop_conditions": true,
+    "parent_goal": true,
+    "project": true,
+    "stop_condition_count": true,
+    "task_id": true
+   },
+   "rediscovery_answers_match_packet": true,
+   "rediscovery_bytes_read": 43429,
+   "rediscovery_files_read": 2,
+   "task_id": "EXP-25/CP-04"
+  }
+ ],
+ "checks": {
+  "every_case_preserves_parent_goal": true,
+  "independent_rediscovery_agrees_with_packet": true,
+  "no_chat_context_required": true,
+  "no_extra_canonical_source_created": true
+ },
+ "measurements": {
+  "mean_bytes_scanned_without_packet": 46542.5,
+  "mean_packet_bytes": 2164.5,
+  "mean_rediscovery_steps_without_packet": 2.5,
+  "rediscovery_steps_packet_arm": 0
+ },
+ "pattern": "goal_ancestry_context",
+ "result": "PASS"
+}

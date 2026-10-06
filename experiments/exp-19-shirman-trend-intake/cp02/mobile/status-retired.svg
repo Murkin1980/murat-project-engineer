@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="355" height="583" viewBox="0 0 355 583" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
+  <defs>
+  </defs>
+  <rect x="0" y="0" width="355" height="583" fill="#ffffff"/>
+  <path d="M48 40 H307 a8 8 0 0 1 8 8 V535 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <text x="54" y="68.4" fill="#1f2328" text-anchor="start">RETIRED (3)</text>
+  <path d="M62 83 H293 a8 8 0 0 1 8 8 V217 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V91 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="177.5" y="111.4" fill="#1f2328" text-anchor="middle">EXP-QOOPIA-MEMORY · MPE</text>
+  <text x="177.5" y="130.4" fill="#1f2328" text-anchor="middle">Qoopia cross-session</text>
+  <text x="177.5" y="149.4" fill="#1f2328" text-anchor="middle">memory</text>
+  <text x="177.5" y="168.4" fill="#1f2328" text-anchor="middle">→ Do not run. Revisit only</text>
+  <text x="177.5" y="187.4" fill="#1f2328" text-anchor="middle">if a concrete external</text>
+  <text x="177.5" y="206.4" fill="#1f2328" text-anchor="middle">cross-session require…</text>
+  <path d="M62 235 H293 a8 8 0 0 1 8 8 V350 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V243 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="177.5" y="263.4" fill="#1f2328" text-anchor="middle">EXP-UX-UI-SKILLS · MPE</text>
+  <text x="177.5" y="282.4" fill="#1f2328" text-anchor="middle">UX/UI Agent Skills</text>
+  <text x="177.5" y="301.4" fill="#1f2328" text-anchor="middle">→ Historical fixture</text>
+  <text x="177.5" y="320.4" fill="#1f2328" text-anchor="middle">remains retired. Reuse the</text>
+  <text x="177.5" y="339.4" fill="#1f2328" text-anchor="middle">existing harness only t…</text>
+  <path d="M62 368 H293 a8 8 0 0 1 8 8 V521 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V376 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="177.5" y="396.4" fill="#1f2328" text-anchor="middle">EXP-16 · MPE</text>
+  <text x="177.5" y="415.4" fill="#1f2328" text-anchor="middle">Minimalist Entrepreneur</text>
+  <text x="177.5" y="434.4" fill="#1f2328" text-anchor="middle">Skills Reuse</text>
+  <text x="177.5" y="453.4" fill="#1f2328" text-anchor="middle">→ Do not run as a</text>
+  <text x="177.5" y="472.4" fill="#1f2328" text-anchor="middle">standalone experiment.</text>
+  <text x="177.5" y="491.4" fill="#1f2328" text-anchor="middle">Revisit the underlying</text>
+  <text x="177.5" y="510.4" fill="#1f2328" text-anchor="middle">skills…</text>
+</svg>
