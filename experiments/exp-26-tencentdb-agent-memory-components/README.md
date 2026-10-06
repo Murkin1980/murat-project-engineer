@@ -1,10 +1,22 @@
 # EXP-26 — TencentDB Agent Memory component extraction
 
-Status: PLANNED  
-Decision: REUSE_COMPONENT  
-Owner: Murat Project Engineer  
-Repository: `Murkin1980/murat-project-engineer`  
+Status: COMPLETED — PARTIAL
+Primary Decision: REUSE_COMPONENT
+Adoption Recommendation: ADOPT_WITH_CHANGES
+Run Date: 2026-10-06 UTC
+Owner: Murat Project Engineer
+Repository: `Murkin1980/murat-project-engineer`
 Upstream: `TencentCloud/TencentDB-Agent-Memory`
+
+## Execution result — 2026-10-06
+
+- **Experiment:** `PARTIAL`
+- **Adoption:** `ADOPT_WITH_CHANGES` — reuse only a transient, provenance-preserving symbolic task packet and a project-scoped, read-only L2 scenario card over existing EXP-15 records. No production integration is authorized by this result.
+- **Frozen cases:** `TASK-MPE-08`, `TASK-MPE-11`, `TASK-MPE-12`, `TASK-MPE-18` from EXP-15 (fixture hashes and arm interpretation in [`FIXED_CASES.md`](FIXED_CASES.md)). A is current EXP-15 memory, as requested; original EXP-15 no-memory Mode A is historical context only.
+- **Signal:** B retained 4/4 decisions and constraints with 51.1% fewer context bytes than A; C retained 4/4 with 41.7% fewer initial context bytes. No arm needed canonical document reads for the frozen questions. C's optional full-detail drill-down increased total context beyond A.
+- **Limitations:** EXP-15 has no frozen raw tool/session logs; B is a deterministic representation proxy, not a test of upstream offloading. One inherited EXP-15 citation anchor is out of range (`MEM-MPE-006` → `RUN-12_REPORT.json#L41`), although its alternate documentation citation exists. No VRU is claimed.
+- **Upstream:** audited at `8b86874a2daea49e3ff0fb53d699203146c5c77d`; MIT text found in the pinned `LICENSE`. No upstream platform or code installed/copied.
+- **Evidence:** [`UPSTREAM_AUDIT.md`](UPSTREAM_AUDIT.md), [`COMPONENT_MAP.md`](COMPONENT_MAP.md), [`RESULTS.md`](RESULTS.md), and [`evidence/comparison.json`](evidence/comparison.json).
 
 ## Purpose
 
