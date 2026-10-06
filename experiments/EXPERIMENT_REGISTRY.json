@@ -418,6 +418,24 @@
       ],
       "pr_or_issue_links": [],
       "updated_at": "2026-10-02"
+    },
+    {
+      "experiment_id": "EXP-22",
+      "name": "Colibri local inference / Brio routing",
+      "owning_project": "Murat Project Engineer",
+      "status": "PLANNED",
+      "why": "Test whether Colibri can provide measurable value as an optional local inference component for constrained MPE classification and routing without creating a parallel orchestration system.",
+      "date_added": "2026-10-06",
+      "next_action": "Arena: execute CP-01 READY/WARNING/BLOCKED classification, CP-02 fixed-agent routing, and CP-03 isolated provider compatibility only if earlier checkpoints show useful signal.",
+      "result_summary": "Planned. Primary disposition EXPERIMENT. No new repository, production deployment, provider switch, control plane, or deep-change is authorized.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/exp-22-colibri-local-inference",
+      "evidence_links": [
+        "experiments/exp-22-colibri-local-inference/README.md",
+        "experiments/exp-22-colibri-local-inference/ARENA_TASK.md"
+      ],
+      "pr_or_issue_links": [],
+      "updated_at": "2026-10-06"
     }
   ]
 }
