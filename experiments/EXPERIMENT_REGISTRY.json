@@ -525,6 +525,26 @@
       ],
       "pr_or_issue_links": [],
       "updated_at": "2026-10-06"
+    },
+    {
+      "experiment_id": "EXP-27",
+      "name": "Paperclip orchestration patterns",
+      "owning_project": "Murat Project Engineer",
+      "status": "PLANNED",
+      "why": "Extract and test high-value orchestration patterns from Paperclip—goal context, atomic task lease, persistent resumable evidence, budget/runaway guards, and approval gates—inside existing MPE/murat-ai-orchestrator components without adopting a parallel control plane.",
+      "date_added": "2026-10-06",
+      "next_action": "Arena runs CP-01 through CP-05 against one bounded MPE engineering workflow and returns PASS/PARTIAL/FAIL plus exact component-level adoption guidance.",
+      "result_summary": "Planned. Primary disposition REUSE_COMPONENT. Paperclip is a donor/reference only. No new repository, permanent Paperclip service, database, queue/daemon, Router change, source-of-truth change, production integration, or governance replacement is authorized.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/exp-27-paperclip-orchestration-patterns",
+      "evidence_links": [
+        "experiments/exp-27-paperclip-orchestration-patterns/README.md",
+        "experiments/exp-27-paperclip-orchestration-patterns/ARENA_TASK.md",
+        "https://github.com/paperclipai/paperclip",
+        "https://habr.com/ru/articles/1012490/"
+      ],
+      "pr_or_issue_links": [],
+      "updated_at": "2026-10-06"
     }
   ]
 }
