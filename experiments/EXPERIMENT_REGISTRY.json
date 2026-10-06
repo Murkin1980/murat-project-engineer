@@ -464,8 +464,8 @@
       "status": "PLANNED",
       "why": "Test whether HyperFrames can be reused as a bounded deterministic rendering component that converts a completed engineering PR into a concise 30–60 second evidence-backed video report without creating a parallel video platform.",
       "date_added": "2026-10-06",
-      "next_action": "Arena executes one real completed Murat PR fixture through evidence extraction, narrow storyboard generation, HyperFrames composition, preview, and repeatable MP4 rendering, then returns PASS/PARTIAL/FAIL and an adoption recommendation.",
-      "result_summary": "Planned. Primary disposition EXPERIMENT. No new repository, persistent rendering service, database, queue, paid recurring API, automatic publishing, or source-of-truth change is authorized.",
+      "next_action": "Cancel the hung Arena run and start one fresh run from current main using RECOVERY.md + the closure-first ARENA_TASK.md. Do not continue environment repair; persist RESULTS.md and terminate.",
+      "result_summary": "Execution recovery required: the prior Arena run hung before persisting a terminal result or canonical experiment artifacts. No HyperFrames outcome is claimed yet. A closure-first recovery path is now recorded.",
       "repo": "Murkin1980/murat-project-engineer",
       "experiment_path": "experiments/exp-24-hyperframes-pr-video",
       "evidence_links": [
