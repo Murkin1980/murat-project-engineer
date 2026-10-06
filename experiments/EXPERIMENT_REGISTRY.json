@@ -273,18 +273,20 @@
       "status": "RETIRED",
       "why": "Find additional actionable UI quality defects beyond native project checks.",
       "date_added": "2026-09-15",
-      "next_action": "Do not rerun the old fixture. If UI-agent evaluation becomes necessary, register a new bounded experiment around an accessible real project.",
-      "result_summary": "Retired in current form: the registered target is inaccessible and there is no demonstrated current need that justifies creating a new fixture.",
+      "next_action": "Historical fixture remains retired. Reuse the existing harness only through the bounded 2026-10-06 Emil Kowalski run against accessible Murkin1980/salamat-projects-dashboard; diagnostic pass only, no automatic fixes or production deployment.",
+      "result_summary": "Original experiment retired because its registered fixture was inaccessible. A bounded REUSE_COMPONENT follow-up run was authorized on 2026-10-06 against the accessible Salamat Projects Dashboard using emilkowalski/skills, without reactivating the old fixture or creating a new EXP ID.",
       "repo": "Murkin1980/murat-project-engineer",
       "experiment_path": "UX_UI_AGENT_SKILLS_EXPERIMENT.md",
       "evidence_links": [
         "https://github.com/Murkin1980/murat-project-engineer/blob/main/experiments/exp-ux-ui-skills/2026-09-30/README.md",
-        "https://github.com/Murkin1980/murat-project-engineer/blob/main/experiments/exp-ux-ui-skills/2026-09-30/FINDINGS.md"
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/experiments/exp-ux-ui-skills/2026-09-30/FINDINGS.md",
+        "experiments/exp-ux-ui-skills/2026-10-06-emil-kowalski/README.md",
+        "experiments/exp-ux-ui-skills/2026-10-06-emil-kowalski/ARENA_TASK.md"
       ],
       "pr_or_issue_links": [
         "https://github.com/Murkin1980/murat-project-engineer/pull/45"
       ],
-      "updated_at": "2026-10-01"
+      "updated_at": "2026-10-06"
     },
     {
       "experiment_id": "EXP-16",
