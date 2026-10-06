@@ -32,7 +32,7 @@
     "generation": 1,
     "owner": "executor-0-0",
     "release_reason": "TERMINAL_DONE",
-    "released_at": "2026-10-06T19:04:37Z",
+    "released_at": "2026-10-06T19:05:04Z",
     "status": "RELEASED"
    },
    "winner": "executor-0-0",
@@ -50,7 +50,7 @@
     "generation": 1,
     "owner": "executor-1-0",
     "release_reason": "TERMINAL_DONE",
-    "released_at": "2026-10-06T19:04:38Z",
+    "released_at": "2026-10-06T19:05:04Z",
     "status": "RELEASED"
    },
    "winner": "executor-1-0",
@@ -68,7 +68,7 @@
     "generation": 1,
     "owner": "executor-2-0",
     "release_reason": "TERMINAL_DONE",
-    "released_at": "2026-10-06T19:04:38Z",
+    "released_at": "2026-10-06T19:05:05Z",
     "status": "RELEASED"
    },
    "winner": "executor-2-0",

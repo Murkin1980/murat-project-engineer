@@ -2,7 +2,7 @@
  "cases": [
   {
    "checkpoint": "CP-05",
-   "context_overhead_ratio_packet_vs_rediscovery": 0.0467,
+   "context_overhead_ratio_packet_vs_rediscovery": 0.0466,
    "experiment_id": "EXP-27",
    "fresh_process_read_from_chat": false,
    "goal_preserved_by_fresh_process": true,
@@ -10,7 +10,7 @@
    "packet_source_refs": [
     {
      "path": "experiments/EXPERIMENT_REGISTRY.json",
-     "sha256": "2f68ea7fd912a2c17b29dbd6608609a05b0955c17b528f68f5d6e6f1398104ac"
+     "sha256": "cd68ebc9ba2139d6cdbbc3f8a5655b2544ba62cc2c3194fa64bc6076966ebd5d"
     },
     {
      "path": "experiments/exp-27-paperclip-orchestration-patterns/ARENA_TASK.md",
@@ -32,7 +32,7 @@
     "task_id": true
    },
    "rediscovery_answers_match_packet": true,
-   "rediscovery_bytes_read": 49584,
+   "rediscovery_bytes_read": 49656,
    "rediscovery_files_read": 3,
    "task_id": "EXP-27/CP-05"
   },
@@ -46,7 +46,7 @@
    "packet_source_refs": [
     {
      "path": "experiments/EXPERIMENT_REGISTRY.json",
-     "sha256": "2f68ea7fd912a2c17b29dbd6608609a05b0955c17b528f68f5d6e6f1398104ac"
+     "sha256": "cd68ebc9ba2139d6cdbbc3f8a5655b2544ba62cc2c3194fa64bc6076966ebd5d"
     },
     {
      "path": "experiments/exp-25-atomic-crm-component-extraction/ARENA_TASK.md",
@@ -64,7 +64,7 @@
     "task_id": true
    },
    "rediscovery_answers_match_packet": true,
-   "rediscovery_bytes_read": 43357,
+   "rediscovery_bytes_read": 43429,
    "rediscovery_files_read": 2,
    "task_id": "EXP-25/CP-04"
   }
@@ -76,7 +76,7 @@
   "no_extra_canonical_source_created": true
  },
  "measurements": {
-  "mean_bytes_scanned_without_packet": 46470.5,
+  "mean_bytes_scanned_without_packet": 46542.5,
   "mean_packet_bytes": 2164.5,
   "mean_rediscovery_steps_without_packet": 2.5,
   "rediscovery_steps_packet_arm": 0
