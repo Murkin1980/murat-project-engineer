@@ -1,0 +1,35 @@
+EXP-25 CP-03/CP-04 proof — Atomic CRM component extraction onto the MiniBase contract
+Fixture now (UTC): 2026-10-06T09:00:00.000Z   dataset: exp-25-test   actor: exp-25-owner
+
+CP-03 — contact → deal → task → activity timeline (test data only)
+  [PASS] fixture written through the slice (contacts/deals/tasks) — {'contacts': 3, 'deals': 4, 'tasks': 6}
+  [PASS] every object keeps one canonical record ID — ['contact-c-001', 'deal-d-001', 'task-t-001']
+  [PASS] references repeat the same canonical identity (no second id scheme) — {'deal.contactIds': ['contact-c-001'], 'task.contactId': 'contact-c-001'}
+  [PASS] entity + its history event are written as one CP-05 command (one event per entity: 3+4+6) — {'activityEvents': 13, 'createdEvents': 13}
+  [PASS] referential integrity is enforced in the app layer (mb_records has no FK) — {'errorCode': 'record_not_found', 'danglingDealWritten': False}
+  [PASS] activity timeline merges contact/deal/task events, newest first, for one contact — {'count': 5, 'types': ['task.created', 'task.created', 'deal.created', 'deal.created', 'contact.created']}
+  [PASS] timeline events reference subjects instead of duplicating entity documents — {'sampleSubjects': {'contactIds': ['contact-c-001'], 'taskIds': ['task-t-003']}}
+  [PASS] MiniBase refuses a filter on an arbitrary JSON field (the CP-02 fit limit) — {'errorCode': 'invalid_filter'}
+  [PASS] keyset paging with hasMore returns every task exactly once — {'pages': 3, 'ids': ['task-t-001', 'task-t-002', 'task-t-003', 'task-t-004', 'task-t-005', 'task-t-006']}
+
+CP-04 — read-first tool surface, one approval-gated write
+  [PASS] tool surface exposes 3 reads and exactly 1 write — {'reads': ['list_open_deals', 'get_client_context', 'list_due_tasks'], 'writes': ['create_follow_up_task']}
+  [PASS] read: list_open_deals excludes won/lost and totals the open amount — {'openDeals': ['deal-d-001', 'deal-d-002'], 'openAmountTotal': 2430.0, 'byStage': {'opportunity': 1, 'proposal-sent': 1}, 'read': {'scanned': 4, 'pages': 1, 'truncated': False}}
+  [PASS] read: get_client_context returns identity, deals, tasks, and timeline for one canonical contact — {'contactId': 'contact-c-001', 'deals': ['deal-d-001', 'deal-d-004'], 'openDealCount': 1, 'pendingTaskCount': 2, 'activityEventCount': 5, 'reads': {'deals': {'scanned': 4, 'pages': 1, 'truncated': False}, 'tasks': {'scanned': 6, 'pages': 1, 'truncated': False}, 'activity': {'scanned': 14, 'pages': 1, 'truncated': False}}}
+  [PASS] read: list_due_tasks buckets pending tasks and drops the completed one — {'bucketCounts': {'overdue': 1, 'today': 1, 'tomorrow': 1, 'this-week': 1, 'later': 1}, 'read': {'scanned': 6, 'pages': 1, 'truncated': False}}
+  [PASS] UTC day boundaries drive the buckets (Atomic uses browser-local day boundaries) — {'weekEndExclusiveUtc': '2026-10-11T00:00:00Z'}
+  [PASS] write without explicit approval is refused and changes nothing — {'errorCode': 'approval_required', 'tasksBefore': 6, 'tasksAfter': 6}
+  [PASS] an approved write is still refused against a record outside the EXP-25 test dataset — {'errorCode': 'write_out_of_bounds'}
+  [PASS] the second candidate write (change_deal_stage) is declared but not exposed — {'errorCode': 'tool_not_available'}
+  [PASS] approved write creates task + activity event in one atomic command — {'taskId': 'task-fu-c-001-proposal', 'writtenRecords': ['crm_tasks/task-fu-c-001-proposal', 'crm_activity_events/event-task-fu-c-001-proposal.task.created'], 'commandId': 'ff4c82f6bb15797b6d806fa811bcd89e9fbc', 'preservedIds': {'contactId': 'contact-c-001', 'dealId': 'deal-d-001'}}
+  [PASS] resending the identical command under the same key replays instead of duplicating — {'replayed': True, 'taskCount': 7}
+  [PASS] same key with a different payload is an opaque conflict — {'errorCode': 'idempotency_conflict'}
+  [PASS] the write budget is finite: a second approved write is refused — {'errorCode': 'write_budget_exhausted', 'writesUsed': 1}
+  [PASS] the written follow-up is visible to a later read in its UTC bucket — {'tomorrow': ['task-fu-c-001-proposal', 'task-t-003']}
+  [PASS] the same canonical contact now shows one more pending task and one more event — {'pendingTaskCount': 3, 'activityEventCount': 6, 'recent': ['task.created', 'task.created']}
+  [PASS] audit trail records every write and denial, with a key digest instead of the key — {'outcomes': ['denied', 'denied', 'success', 'denied'], 'entries': 4}
+  [PASS] successful reads are not audited (MiniBase audits denials and mutations only) — {'actions': ['crm.task.created', 'crm.tool.write_refused']}
+
+MiniBase statements executed by the whole proof (pages, record reads, commands): 75
+
+Checks: 25 passed, 0 failed, 25 total

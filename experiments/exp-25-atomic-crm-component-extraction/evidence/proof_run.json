@@ -1,0 +1,752 @@
+{
+  "experiment": "EXP-25",
+  "checkpoints": [
+    "CP-03",
+    "CP-04"
+  ],
+  "runDate": "2026-10-06",
+  "upstreamPin": {
+    "donor": "marmelab/atomic-crm",
+    "commit": "8b5d47ba32190c68801a427ef7682d7a6afc14e0"
+  },
+  "hostContractPin": {
+    "host": "Murkin1980/minibase-cloudflare",
+    "commit": "9ab38d832970b3956cf0f831f9b578f7b9fd9001"
+  },
+  "fixture": {
+    "dataset": "exp-25-test",
+    "now": "2026-10-06T09:00:00.000Z",
+    "counts": {
+      "contacts": 3,
+      "deals": 4,
+      "tasks": 6,
+      "completedTasks": 1
+    }
+  },
+  "checks": [
+    {
+      "check": "fixture written through the slice (contacts/deals/tasks)",
+      "pass": true,
+      "observed": {
+        "contacts": 3,
+        "deals": 4,
+        "tasks": 6
+      }
+    },
+    {
+      "check": "every object keeps one canonical record ID",
+      "pass": true,
+      "observed": [
+        "contact-c-001",
+        "deal-d-001",
+        "task-t-001"
+      ]
+    },
+    {
+      "check": "references repeat the same canonical identity (no second id scheme)",
+      "pass": true,
+      "observed": {
+        "deal.contactIds": [
+          "contact-c-001"
+        ],
+        "task.contactId": "contact-c-001"
+      }
+    },
+    {
+      "check": "entity + its history event are written as one CP-05 command (one event per entity: 3+4+6)",
+      "pass": true,
+      "observed": {
+        "activityEvents": 13,
+        "createdEvents": 13
+      }
+    },
+    {
+      "check": "referential integrity is enforced in the app layer (mb_records has no FK)",
+      "pass": true,
+      "observed": {
+        "errorCode": "record_not_found",
+        "danglingDealWritten": false
+      }
+    },
+    {
+      "check": "activity timeline merges contact/deal/task events, newest first, for one contact",
+      "pass": true,
+      "observed": {
+        "count": 5,
+        "types": [
+          "task.created",
+          "task.created",
+          "deal.created",
+          "deal.created",
+          "contact.created"
+        ]
+      }
+    },
+    {
+      "check": "timeline events reference subjects instead of duplicating entity documents",
+      "pass": true,
+      "observed": {
+        "sampleSubjects": {
+          "contactIds": [
+            "contact-c-001"
+          ],
+          "taskIds": [
+            "task-t-003"
+          ]
+        }
+      }
+    },
+    {
+      "check": "MiniBase refuses a filter on an arbitrary JSON field (the CP-02 fit limit)",
+      "pass": true,
+      "observed": {
+        "errorCode": "invalid_filter"
+      }
+    },
+    {
+      "check": "keyset paging with hasMore returns every task exactly once",
+      "pass": true,
+      "observed": {
+        "pages": 3,
+        "ids": [
+          "task-t-001",
+          "task-t-002",
+          "task-t-003",
+          "task-t-004",
+          "task-t-005",
+          "task-t-006"
+        ]
+      }
+    },
+    {
+      "check": "tool surface exposes 3 reads and exactly 1 write",
+      "pass": true,
+      "observed": {
+        "reads": [
+          "list_open_deals",
+          "get_client_context",
+          "list_due_tasks"
+        ],
+        "writes": [
+          "create_follow_up_task"
+        ]
+      }
+    },
+    {
+      "check": "read: list_open_deals excludes won/lost and totals the open amount",
+      "pass": true,
+      "observed": {
+        "openDeals": [
+          "deal-d-001",
+          "deal-d-002"
+        ],
+        "openAmountTotal": 2430.0,
+        "byStage": {
+          "opportunity": 1,
+          "proposal-sent": 1
+        },
+        "read": {
+          "scanned": 4,
+          "pages": 1,
+          "truncated": false
+        }
+      }
+    },
+    {
+      "check": "read: get_client_context returns identity, deals, tasks, and timeline for one canonical contact",
+      "pass": true,
+      "observed": {
+        "contactId": "contact-c-001",
+        "deals": [
+          "deal-d-001",
+          "deal-d-004"
+        ],
+        "openDealCount": 1,
+        "pendingTaskCount": 2,
+        "activityEventCount": 5,
+        "reads": {
+          "deals": {
+            "scanned": 4,
+            "pages": 1,
+            "truncated": false
+          },
+          "tasks": {
+            "scanned": 6,
+            "pages": 1,
+            "truncated": false
+          },
+          "activity": {
+            "scanned": 14,
+            "pages": 1,
+            "truncated": false
+          }
+        }
+      }
+    },
+    {
+      "check": "read: list_due_tasks buckets pending tasks and drops the completed one",
+      "pass": true,
+      "observed": {
+        "bucketCounts": {
+          "overdue": 1,
+          "today": 1,
+          "tomorrow": 1,
+          "this-week": 1,
+          "later": 1
+        },
+        "read": {
+          "scanned": 6,
+          "pages": 1,
+          "truncated": false
+        }
+      }
+    },
+    {
+      "check": "UTC day boundaries drive the buckets (Atomic uses browser-local day boundaries)",
+      "pass": true,
+      "observed": {
+        "weekEndExclusiveUtc": "2026-10-11T00:00:00Z"
+      }
+    },
+    {
+      "check": "write without explicit approval is refused and changes nothing",
+      "pass": true,
+      "observed": {
+        "errorCode": "approval_required",
+        "tasksBefore": 6,
+        "tasksAfter": 6
+      }
+    },
+    {
+      "check": "an approved write is still refused against a record outside the EXP-25 test dataset",
+      "pass": true,
+      "observed": {
+        "errorCode": "write_out_of_bounds"
+      }
+    },
+    {
+      "check": "the second candidate write (change_deal_stage) is declared but not exposed",
+      "pass": true,
+      "observed": {
+        "errorCode": "tool_not_available"
+      }
+    },
+    {
+      "check": "approved write creates task + activity event in one atomic command",
+      "pass": true,
+      "observed": {
+        "taskId": "task-fu-c-001-proposal",
+        "writtenRecords": [
+          "crm_tasks/task-fu-c-001-proposal",
+          "crm_activity_events/event-task-fu-c-001-proposal.task.created"
+        ],
+        "commandId": "ff4c82f6bb15797b6d806fa811bcd89e9fbc",
+        "preservedIds": {
+          "contactId": "contact-c-001",
+          "dealId": "deal-d-001"
+        }
+      }
+    },
+    {
+      "check": "resending the identical command under the same key replays instead of duplicating",
+      "pass": true,
+      "observed": {
+        "replayed": true,
+        "taskCount": 7
+      }
+    },
+    {
+      "check": "same key with a different payload is an opaque conflict",
+      "pass": true,
+      "observed": {
+        "errorCode": "idempotency_conflict"
+      }
+    },
+    {
+      "check": "the write budget is finite: a second approved write is refused",
+      "pass": true,
+      "observed": {
+        "errorCode": "write_budget_exhausted",
+        "writesUsed": 1
+      }
+    },
+    {
+      "check": "the written follow-up is visible to a later read in its UTC bucket",
+      "pass": true,
+      "observed": {
+        "tomorrow": [
+          "task-fu-c-001-proposal",
+          "task-t-003"
+        ]
+      }
+    },
+    {
+      "check": "the same canonical contact now shows one more pending task and one more event",
+      "pass": true,
+      "observed": {
+        "pendingTaskCount": 3,
+        "activityEventCount": 6,
+        "recent": [
+          "task.created",
+          "task.created"
+        ]
+      }
+    },
+    {
+      "check": "audit trail records every write and denial, with a key digest instead of the key",
+      "pass": true,
+      "observed": {
+        "outcomes": [
+          "denied",
+          "denied",
+          "success",
+          "denied"
+        ],
+        "entries": 4
+      }
+    },
+    {
+      "check": "successful reads are not audited (MiniBase audits denials and mutations only)",
+      "pass": true,
+      "observed": {
+        "actions": [
+          "crm.task.created",
+          "crm.tool.write_refused"
+        ]
+      }
+    }
+  ],
+  "summary": {
+    "total": 25,
+    "passed": 25,
+    "failed": 0,
+    "minibaseStatements": 75,
+    "writesUsed": 1,
+    "auditOutcomes": {
+      "success": 1,
+      "denied": 3
+    }
+  },
+  "results": {
+    "openDeals": {
+      "openDeals": [
+        {
+          "dealId": "deal-d-001",
+          "name": "Kitchen set - Bek Mebel",
+          "stage": "opportunity",
+          "amount": 1450.0,
+          "contactIds": [
+            "contact-c-001"
+          ],
+          "expectedClosingDate": "2026-10-20"
+        },
+        {
+          "dealId": "deal-d-002",
+          "name": "Wardrobe - Grand Mebel",
+          "stage": "proposal-sent",
+          "amount": 980.0,
+          "contactIds": [
+            "contact-c-002"
+          ],
+          "expectedClosingDate": "2026-10-30"
+        }
+      ],
+      "byStage": {
+        "opportunity": 1,
+        "proposal-sent": 1
+      },
+      "openAmountTotal": 2430.0,
+      "read": {
+        "scanned": 4,
+        "pages": 1,
+        "truncated": false
+      }
+    },
+    "clientContextBefore": {
+      "contactId": "contact-c-001",
+      "contact": {
+        "companyName": "Bek Mebel",
+        "dataset": "exp-25-test",
+        "email": "aigul@bek-mebel.test",
+        "firstName": "Aigul",
+        "lastName": "Serikova",
+        "schemaVersion": 1,
+        "status": "cold"
+      },
+      "identityDigest": "adb8259137d3195f",
+      "deals": [
+        "deal-d-001",
+        "deal-d-004"
+      ],
+      "openDealIds": [
+        "deal-d-001"
+      ],
+      "openDealCount": 1,
+      "taskIds": [
+        "task-t-001",
+        "task-t-003"
+      ],
+      "pendingTaskCount": 2,
+      "activityEventCount": 5,
+      "recentActivity": [
+        {
+          "id": "event-task-t-003.task.created",
+          "type": "task.created",
+          "summary": "Task created: Confirm delivery slot"
+        },
+        {
+          "id": "event-task-t-001.task.created",
+          "type": "task.created",
+          "summary": "Task created: Send measurement follow-up"
+        },
+        {
+          "id": "event-deal-d-004.deal.created",
+          "type": "deal.created",
+          "summary": "Deal created: Shop counter - Bek Mebel at stage lost"
+        },
+        {
+          "id": "event-deal-d-001.deal.created",
+          "type": "deal.created",
+          "summary": "Deal created: Kitchen set - Bek Mebel at stage opportunity"
+        },
+        {
+          "id": "event-contact-c-001.contact.created",
+          "type": "contact.created",
+          "summary": "Contact created: Aigul Serikova (Bek Mebel)"
+        }
+      ],
+      "reads": {
+        "deals": {
+          "scanned": 4,
+          "pages": 1,
+          "truncated": false
+        },
+        "tasks": {
+          "scanned": 6,
+          "pages": 1,
+          "truncated": false
+        },
+        "activity": {
+          "scanned": 14,
+          "pages": 1,
+          "truncated": false
+        }
+      },
+      "asOf": "2026-10-06T09:00:29.000Z"
+    },
+    "clientContextAfter": {
+      "contactId": "contact-c-001",
+      "contact": {
+        "companyName": "Bek Mebel",
+        "dataset": "exp-25-test",
+        "email": "aigul@bek-mebel.test",
+        "firstName": "Aigul",
+        "lastName": "Serikova",
+        "schemaVersion": 1,
+        "status": "cold"
+      },
+      "identityDigest": "adb8259137d3195f",
+      "deals": [
+        "deal-d-001",
+        "deal-d-004"
+      ],
+      "openDealIds": [
+        "deal-d-001"
+      ],
+      "openDealCount": 1,
+      "taskIds": [
+        "task-fu-c-001-proposal",
+        "task-t-001",
+        "task-t-003"
+      ],
+      "pendingTaskCount": 3,
+      "activityEventCount": 6,
+      "recentActivity": [
+        {
+          "id": "event-task-fu-c-001-proposal.task.created",
+          "type": "task.created",
+          "summary": "Task created: Send proposal draft to Aigul (reason: Owner approved one bounded follow-up on the test contact)"
+        },
+        {
+          "id": "event-task-t-003.task.created",
+          "type": "task.created",
+          "summary": "Task created: Confirm delivery slot"
+        },
+        {
+          "id": "event-task-t-001.task.created",
+          "type": "task.created",
+          "summary": "Task created: Send measurement follow-up"
+        },
+        {
+          "id": "event-deal-d-004.deal.created",
+          "type": "deal.created",
+          "summary": "Deal created: Shop counter - Bek Mebel at stage lost"
+        },
+        {
+          "id": "event-deal-d-001.deal.created",
+          "type": "deal.created",
+          "summary": "Deal created: Kitchen set - Bek Mebel at stage opportunity"
+        }
+      ],
+      "reads": {
+        "deals": {
+          "scanned": 4,
+          "pages": 1,
+          "truncated": false
+        },
+        "tasks": {
+          "scanned": 7,
+          "pages": 1,
+          "truncated": false
+        },
+        "activity": {
+          "scanned": 15,
+          "pages": 1,
+          "truncated": false
+        }
+      },
+      "asOf": "2026-10-06T09:00:37.000Z"
+    },
+    "dueTasksBefore": {
+      "buckets": {
+        "overdue": [
+          {
+            "taskId": "task-t-001",
+            "text": "Send measurement follow-up",
+            "dueDate": "2026-10-05T15:00:00.000Z",
+            "contactId": "contact-c-001",
+            "dealId": null
+          }
+        ],
+        "today": [
+          {
+            "taskId": "task-t-002",
+            "text": "Call about proposal",
+            "dueDate": "2026-10-06T16:00:00.000Z",
+            "contactId": "contact-c-002",
+            "dealId": null
+          }
+        ],
+        "tomorrow": [
+          {
+            "taskId": "task-t-003",
+            "text": "Confirm delivery slot",
+            "dueDate": "2026-10-07T10:00:00.000Z",
+            "contactId": "contact-c-001",
+            "dealId": null
+          }
+        ],
+        "this-week": [
+          {
+            "taskId": "task-t-004",
+            "text": "Schedule site visit",
+            "dueDate": "2026-10-09T09:00:00.000Z",
+            "contactId": "contact-c-003",
+            "dealId": null
+          }
+        ],
+        "later": [
+          {
+            "taskId": "task-t-005",
+            "text": "Renew contract discussion",
+            "dueDate": "2026-10-20T12:00:00.000Z",
+            "contactId": "contact-c-002",
+            "dealId": null
+          }
+        ]
+      },
+      "bucketCounts": {
+        "overdue": 1,
+        "today": 1,
+        "tomorrow": 1,
+        "this-week": 1,
+        "later": 1
+      },
+      "read": {
+        "scanned": 6,
+        "pages": 1,
+        "truncated": false
+      }
+    },
+    "dueTasksAfter": {
+      "buckets": {
+        "overdue": [
+          {
+            "taskId": "task-t-001",
+            "text": "Send measurement follow-up",
+            "dueDate": "2026-10-05T15:00:00.000Z",
+            "contactId": "contact-c-001",
+            "dealId": null
+          }
+        ],
+        "today": [
+          {
+            "taskId": "task-t-002",
+            "text": "Call about proposal",
+            "dueDate": "2026-10-06T16:00:00.000Z",
+            "contactId": "contact-c-002",
+            "dealId": null
+          }
+        ],
+        "tomorrow": [
+          {
+            "taskId": "task-fu-c-001-proposal",
+            "text": "Send proposal draft to Aigul",
+            "dueDate": "2026-10-07T10:00:00.000Z",
+            "contactId": "contact-c-001",
+            "dealId": "deal-d-001"
+          },
+          {
+            "taskId": "task-t-003",
+            "text": "Confirm delivery slot",
+            "dueDate": "2026-10-07T10:00:00.000Z",
+            "contactId": "contact-c-001",
+            "dealId": null
+          }
+        ],
+        "this-week": [
+          {
+            "taskId": "task-t-004",
+            "text": "Schedule site visit",
+            "dueDate": "2026-10-09T09:00:00.000Z",
+            "contactId": "contact-c-003",
+            "dealId": null
+          }
+        ],
+        "later": [
+          {
+            "taskId": "task-t-005",
+            "text": "Renew contract discussion",
+            "dueDate": "2026-10-20T12:00:00.000Z",
+            "contactId": "contact-c-002",
+            "dealId": null
+          }
+        ]
+      },
+      "bucketCounts": {
+        "overdue": 1,
+        "today": 1,
+        "tomorrow": 2,
+        "this-week": 1,
+        "later": 1
+      },
+      "read": {
+        "scanned": 7,
+        "pages": 1,
+        "truncated": false
+      }
+    },
+    "approvedWrite": {
+      "taskId": "task-fu-c-001-proposal",
+      "contactId": "contact-c-001",
+      "dealId": "deal-d-001",
+      "commandId": "ff4c82f6bb15797b6d806fa811bcd89e9fbc",
+      "operationCount": 2,
+      "replayed": false,
+      "writtenRecords": [
+        "crm_tasks/task-fu-c-001-proposal",
+        "crm_activity_events/event-task-fu-c-001-proposal.task.created"
+      ],
+      "provenance": "exp-25-test",
+      "audited": true
+    },
+    "replayedWrite": {
+      "replayed": true,
+      "commandId": "ff4c82f6bb15797b6d806fa811bcd89e9fbc"
+    },
+    "timelineForContactC001": {
+      "types": [
+        "task.created",
+        "task.created",
+        "deal.created",
+        "deal.created",
+        "contact.created"
+      ],
+      "scanned": 14,
+      "pages": 1,
+      "truncated": false
+    },
+    "denials": [
+      {
+        "tool": "create_follow_up_task",
+        "code": "approval_required"
+      },
+      {
+        "tool": "create_follow_up_task",
+        "code": "write_out_of_bounds"
+      },
+      {
+        "tool": "change_deal_stage",
+        "code": "tool_not_available"
+      },
+      {
+        "tool": "create_follow_up_task",
+        "code": "write_budget_exhausted"
+      }
+    ]
+  },
+  "auditTrail": [
+    {
+      "seq": 1,
+      "occurredAt": "2026-10-06T09:00:30.000Z",
+      "action": "crm.tool.write_refused",
+      "outcome": "denied",
+      "actor": "exp-25-agent",
+      "entity": "task",
+      "entity_id": "fu-c-001-unapproved",
+      "correlation_id": "exp25-write-deny",
+      "metadata": {
+        "reason": "approval_required",
+        "tool": "create_follow_up_task"
+      }
+    },
+    {
+      "seq": 2,
+      "occurredAt": "2026-10-06T09:00:32.000Z",
+      "action": "crm.tool.write_refused",
+      "outcome": "denied",
+      "actor": "exp-25-agent",
+      "entity": "contact",
+      "entity_id": "contact-x-live-001",
+      "correlation_id": "exp25-write-bounds",
+      "metadata": {
+        "reason": "write_out_of_bounds",
+        "expectedDataset": "exp-25-test"
+      }
+    },
+    {
+      "seq": 3,
+      "occurredAt": "2026-10-06T09:00:35.000Z",
+      "action": "crm.task.created",
+      "outcome": "success",
+      "actor": "exp-25-agent",
+      "entity": "task",
+      "entity_id": "task-fu-c-001-proposal",
+      "correlation_id": "exp25-write-1",
+      "metadata": {
+        "contactId": "contact-c-001",
+        "dealId": "deal-d-001",
+        "reason": "Owner approved one bounded follow-up on the test contact",
+        "tool": "create_follow_up_task",
+        "commandId": "ff4c82f6bb15797b6d806fa811bcd89e9fbc",
+        "operationCount": 2,
+        "replayed": false,
+        "idempotencyDigest": "d315aa7a4284ba9f"
+      }
+    },
+    {
+      "seq": 4,
+      "occurredAt": "2026-10-06T09:00:36.000Z",
+      "action": "crm.tool.write_refused",
+      "outcome": "denied",
+      "actor": "exp-25-agent",
+      "entity": "task",
+      "entity_id": "-",
+      "correlation_id": "exp25-write-2",
+      "metadata": {
+        "reason": "write_budget_exhausted",
+        "budget": 1
+      }
+    }
+  ]
+}
