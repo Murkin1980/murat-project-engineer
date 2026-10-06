@@ -1,0 +1,614 @@
+{
+  "experiment_id": "EXP-26",
+  "run_date_utc": "2026-10-06",
+  "primary_disposition": "REUSE_COMPONENT",
+  "result": "PARTIAL",
+  "adoption": "ADOPT_WITH_CHANGES",
+  "upstream_pin": {
+    "repository": "https://github.com/TencentCloud/TencentDB-Agent-Memory",
+    "audited_default_branch": "feat/server_team",
+    "audited_commit": "8b86874a2daea49e3ff0fb53d699203146c5c77d",
+    "latest_stable_release_at_audit": "v2.0.1",
+    "latest_stable_commit": "a5dcbe6e9fee0d1d1e32d935326f1d3bcf927fdb",
+    "license_text": "MIT",
+    "upstream_source_copied": false,
+    "platform_installed": false
+  },
+  "case_freeze": {
+    "source": "EXP-15 2026-09-30 frozen benchmark; no EXP-15 fixture changes",
+    "arm_a_definition": "User-directed current memory: EXP-15 file-backed memory recall (the memory-enabled arm in the original EXP-15 comparison).",
+    "case_count": 4,
+    "task_ids": [
+      "TASK-MPE-08",
+      "TASK-MPE-11",
+      "TASK-MPE-12",
+      "TASK-MPE-18"
+    ],
+    "frozen_input_sha256_before": {
+      "benchmark_tasks.json": "dcb0d2f920ba8d95e9a2dfd6641f6855c20a5aa586fb021c21ab8303a70951e1",
+      "canonical_memory.json": "24b2a00bc9627ebda9cf92bb6b06a269e4f0857577d1d57185dbe09f8a6623df",
+      "cross_project_memory.json": "9705d797f766558ecffb7a1a4038a4e1f4e649fed42daff8b91cda51716e543e",
+      "memory_layer.py": "15266ce759223c43973c7a3cb1d2a5bad1e7e3615d98d1859df080f45eab3de7"
+    },
+    "frozen_input_sha256_after": {
+      "benchmark_tasks.json": "dcb0d2f920ba8d95e9a2dfd6641f6855c20a5aa586fb021c21ab8303a70951e1",
+      "canonical_memory.json": "24b2a00bc9627ebda9cf92bb6b06a269e4f0857577d1d57185dbe09f8a6623df",
+      "cross_project_memory.json": "9705d797f766558ecffb7a1a4038a4e1f4e649fed42daff8b91cda51716e543e",
+      "memory_layer.py": "15266ce759223c43973c7a3cb1d2a5bad1e7e3615d98d1859df080f45eab3de7"
+    },
+    "note": "Original EXP-15 no-memory Mode A was not re-run or relabeled as this task's A arm."
+  },
+  "measurement_scope": {
+    "b_short_term_compaction": "Serialization-only proxy over current memory records: concise symbolic board retains full summaries, item IDs, and file/line refs. No frozen raw tool logs exist, so no claim is made about long-log compression or task success.",
+    "c_progressive_recall": "Ephemeral L2 topic/scenario card preserves exact decision/constraint text, provenance refs, and L1 item IDs; optional details require one batched L1 pointer lookup. No persistent index was created.",
+    "token_estimate": "ceil(UTF-8 bytes / 4); deterministic approximation, not model-tokenizer measurement.",
+    "source_validation": "Shared evaluator read-only validation checks every referenced path and line-anchor range; it does not semantically re-adjudicate cited text."
+  },
+  "summary": {
+    "modes": {
+      "A": {
+        "cases": 4,
+        "prior_decisions_recalled": 4,
+        "constraints_recalled": 4,
+        "false_positive_items": 0,
+        "context_lines_total": 104,
+        "context_lines_per_case": [
+          26,
+          26,
+          26,
+          26
+        ],
+        "context_utf8_bytes_total": 5099,
+        "context_utf8_bytes_per_case": [
+          1229,
+          1291,
+          1241,
+          1338
+        ],
+        "approx_tokens_utf8_bytes_div_4_total": 1277,
+        "approx_tokens_per_case": [
+          308,
+          323,
+          311,
+          335
+        ],
+        "source_doc_or_raw_log_reads_for_recall": 0,
+        "logical_case_lookup_count": 4,
+        "provenance_drilldown_lookups": 0,
+        "optional_detail_drilldown_lookups": 0,
+        "optional_detail_context_lines_total": 0,
+        "optional_detail_context_utf8_bytes_total": 0,
+        "optional_detail_approx_tokens_total": 0,
+        "provenance_paths_in_initial_context_cases": 4,
+        "implementation_complexity": "None beyond the existing EXP-15 file-backed memory lookup.",
+        "new_production_files": 0,
+        "new_dependencies": 0,
+        "new_services_databases_or_vector_stores": 0,
+        "persistent_writes": 0,
+        "context_line_reduction_vs_A_percent": 0.0,
+        "context_byte_reduction_vs_A_percent": 0.0,
+        "approx_token_reduction_vs_A_percent": 0.0
+      },
+      "B": {
+        "cases": 4,
+        "prior_decisions_recalled": 4,
+        "constraints_recalled": 4,
+        "false_positive_items": 0,
+        "context_lines_total": 24,
+        "context_lines_per_case": [
+          6,
+          6,
+          6,
+          6
+        ],
+        "context_utf8_bytes_total": 2492,
+        "context_utf8_bytes_per_case": [
+          580,
+          642,
+          597,
+          673
+        ],
+        "approx_tokens_utf8_bytes_div_4_total": 625,
+        "approx_tokens_per_case": [
+          145,
+          161,
+          150,
+          169
+        ],
+        "source_doc_or_raw_log_reads_for_recall": 0,
+        "logical_case_lookup_count": 4,
+        "provenance_drilldown_lookups": 0,
+        "optional_detail_drilldown_lookups": 0,
+        "optional_detail_context_lines_total": 0,
+        "optional_detail_context_utf8_bytes_total": 0,
+        "optional_detail_approx_tokens_total": 0,
+        "provenance_paths_in_initial_context_cases": 4,
+        "implementation_complexity": "Low: one transient deterministic renderer; no persistent state or dependency.",
+        "new_production_files": 0,
+        "new_dependencies": 0,
+        "new_services_databases_or_vector_stores": 0,
+        "persistent_writes": 0,
+        "context_line_reduction_vs_A_percent": 76.9,
+        "context_byte_reduction_vs_A_percent": 51.1,
+        "approx_token_reduction_vs_A_percent": 51.1
+      },
+      "C": {
+        "cases": 4,
+        "prior_decisions_recalled": 4,
+        "constraints_recalled": 4,
+        "false_positive_items": 0,
+        "context_lines_total": 64,
+        "context_lines_per_case": [
+          16,
+          16,
+          16,
+          16
+        ],
+        "context_utf8_bytes_total": 2975,
+        "context_utf8_bytes_per_case": [
+          699,
+          771,
+          713,
+          792
+        ],
+        "approx_tokens_utf8_bytes_div_4_total": 745,
+        "approx_tokens_per_case": [
+          175,
+          193,
+          179,
+          198
+        ],
+        "source_doc_or_raw_log_reads_for_recall": 0,
+        "logical_case_lookup_count": 4,
+        "provenance_drilldown_lookups": 0,
+        "optional_detail_drilldown_lookups": 4,
+        "optional_detail_context_lines_total": 164,
+        "optional_detail_context_utf8_bytes_total": 8082,
+        "optional_detail_approx_tokens_total": 2021,
+        "provenance_paths_in_initial_context_cases": 4,
+        "implementation_complexity": "Low-medium: transient scoped scenario index plus L1 pointer resolver; one optional extra lookup for full item details.",
+        "new_production_files": 0,
+        "new_dependencies": 0,
+        "new_services_databases_or_vector_stores": 0,
+        "persistent_writes": 0,
+        "context_line_reduction_vs_A_percent": 38.5,
+        "context_byte_reduction_vs_A_percent": 41.7,
+        "approx_token_reduction_vs_A_percent": 41.7
+      }
+    },
+    "provenance_validation": {
+      "references_checked": 16,
+      "source_paths_found": 16,
+      "line_anchors_valid": 15,
+      "unique_source_files_read_for_validation": 10,
+      "invalid_references": [
+        {
+          "item_id": "MEM-MPE-006",
+          "reference": "evidence/stage2/RUN-12_REPORT.json#L41",
+          "path_exists": true,
+          "line_number": 41,
+          "source_line_count": 37,
+          "anchor_valid": false
+        }
+      ],
+      "scope_note": "Line-range and path checks only; source text was not semantically re-adjudicated."
+    },
+    "isolation": {
+      "fixture": "EXP-15 cross_project_memory.json",
+      "expected_scoped_item_ids": [
+        "MEM-MPE-001"
+      ],
+      "foreign_item_ids_checked": [
+        "MEM-MAO-001",
+        "MEM-MAO-002",
+        "MEM-MH-001",
+        "MEM-MH-002"
+      ],
+      "A_leaked_ids": [],
+      "B_leaked_ids": [],
+      "C_leaked_ids": [],
+      "isolation_violations": 0
+    },
+    "unauthorized_write_probes": {
+      "A": {
+        "attempted": 1,
+        "rejected_by_approval_gate": 1,
+        "temporary_store_changed": false,
+        "canonical_store_touched": false
+      },
+      "B": {
+        "attempted": 1,
+        "rejected_by_approval_gate": 1,
+        "temporary_store_changed": false,
+        "canonical_store_touched": false
+      },
+      "C": {
+        "attempted": 1,
+        "rejected_by_approval_gate": 1,
+        "temporary_store_changed": false,
+        "canonical_store_touched": false
+      }
+    },
+    "unauthorized_write_attempts": 3,
+    "unauthorized_mutations": 0,
+    "canonical_fixture_mutated": false,
+    "all_frozen_input_hashes_match": true,
+    "all_frozen_inputs_unchanged": true
+  },
+  "cases": [
+    {
+      "task_id": "TASK-MPE-08",
+      "name": "BrowserAct Scraping and Automation Boundaries",
+      "query": "Can BrowserAct be used for authenticated scraping and form submission across private client portals?",
+      "topic_key_used_by_all_arms": "browseract",
+      "expected_memory_ids": [
+        "MEM-MPE-001",
+        "MEM-MPE-002"
+      ],
+      "mode_results": {
+        "A": {
+          "context": {
+            "context_lines": 26,
+            "context_utf8_bytes": 1229,
+            "approx_tokens_utf8_bytes_div_4": 308
+          },
+          "recalled_ids": [
+            "MEM-MPE-001",
+            "MEM-MPE-002"
+          ],
+          "false_positive_ids": [],
+          "recall": {
+            "decision_ok": true,
+            "constraint_ok": true,
+            "missing_decision_predicates": [],
+            "missing_constraint_predicates": []
+          },
+          "provenance_refs_in_initial_context": true,
+          "provenance_drilldown_lookups": 0,
+          "optional_detail_drilldown_lookups": 0,
+          "logical_case_lookup_count": 1,
+          "context_text": "{\n  \"item_id\": \"MEM-MPE-001\",\n  \"project\": \"Murkin1980/murat-project-engineer\",\n  \"category\": \"decision\",\n  \"topic\": \"browseract acquisition role\",\n  \"summary\": \"BrowserAct approved under New Idea Filter as REUSE_COMPONENT for public-web browser acquisition role only.\",\n  \"provenance\": \"docs/evaluations/BROWSERACT_EVALUATION.md#L45, evidence/stage2/RUN-08_REPORT.json#L24\",\n  \"rationale\": \"Reuses existing CLI/skill instead of building new browser automation.\",\n  \"status\": \"active\",\n  \"superseded_by\": null,\n  \"created_at\": \"2026-08-15T00:00:00Z\",\n  \"approved_by\": \"MPE-Core-Gate\"\n}\n{\n  \"item_id\": \"MEM-MPE-002\",\n  \"project\": \"Murkin1980/murat-project-engineer\",\n  \"category\": \"constraint\",\n  \"topic\": \"browseract scraping policy\",\n  \"summary\": \"Strictly PUBLIC_WEB_ONLY: no authentication, no forms, no messaging, no purchase, no CAPTCHA bypass; isolated Chrome must be deleted after use.\",\n  \"provenance\": \"evidence/stage2/RUN-08_REPORT.json#L29, docs/evaluations/BROWSER_ACQUISITION_ROLE.md#L15\",\n  \"rationale\": \"Safety boundary prevents unauthorized private data access or permanent resource leaks.\",\n  \"status\": \"active\",\n  \"superseded_by\": null,\n  \"created_at\": \"2026-08-15T00:00:00Z\",\n  \"approved_by\": \"MPE-Core-Gate\"\n}"
+        },
+        "B": {
+          "context": {
+            "context_lines": 6,
+            "context_utf8_bytes": 580,
+            "approx_tokens_utf8_bytes_div_4": 145
+          },
+          "recalled_ids": [
+            "MEM-MPE-001",
+            "MEM-MPE-002"
+          ],
+          "false_positive_ids": [],
+          "recall": {
+            "decision_ok": true,
+            "constraint_ok": true,
+            "missing_decision_predicates": [],
+            "missing_constraint_predicates": []
+          },
+          "provenance_refs_in_initial_context": true,
+          "provenance_drilldown_lookups": 0,
+          "optional_detail_drilldown_lookups": 0,
+          "logical_case_lookup_count": 1,
+          "context_text": "flowchart LR\n%% scope: Murkin1980/murat-project-engineer\n  F1[\"decision: BrowserAct approved under New Idea Filter as REUSE_COMPONENT for public-web browser acquisition role only.\"]\n  F1 -. MEM-MPE-001 .-> R1[\"docs/evaluations/BROWSERACT_EVALUATION.md#L45, evidence/stage2/RUN-08_REPORT.json#L24\"]\n  F2[\"constraint: Strictly PUBLIC_WEB_ONLY: no authentication, no forms, no messaging, no purchase, no CAPTCHA bypass; isolated Chrome must be deleted after use.\"]\n  F2 -. MEM-MPE-002 .-> R2[\"evidence/stage2/RUN-08_REPORT.json#L29, docs/evaluations/BROWSER_ACQUISITION_ROLE.md#L15\"]"
+        },
+        "C": {
+          "context": {
+            "context_lines": 16,
+            "context_utf8_bytes": 699,
+            "approx_tokens_utf8_bytes_div_4": 175
+          },
+          "recalled_ids": [
+            "MEM-MPE-001",
+            "MEM-MPE-002"
+          ],
+          "false_positive_ids": [],
+          "recall": {
+            "decision_ok": true,
+            "constraint_ok": true,
+            "missing_decision_predicates": [],
+            "missing_constraint_predicates": []
+          },
+          "provenance_refs_in_initial_context": true,
+          "provenance_pointer_ids": [
+            "MEM-MPE-001",
+            "MEM-MPE-002"
+          ],
+          "provenance_resolved_via_l1": true,
+          "provenance_drilldown_lookups": 0,
+          "optional_detail_drilldown_lookups": 1,
+          "optional_detail_context": {
+            "context_lines": 41,
+            "context_utf8_bytes": 1930,
+            "approx_tokens_utf8_bytes_div_4": 483
+          },
+          "logical_case_lookup_count": 1,
+          "full_item_provenance_refs_resolved": 4,
+          "context_text": "{\n  \"project\": \"Murkin1980/murat-project-engineer\",\n  \"scenario\": \"browseract\",\n  \"decision_or_outcome\": \"BrowserAct approved under New Idea Filter as REUSE_COMPONENT for public-web browser acquisition role only.\",\n  \"constraints\": \"Strictly PUBLIC_WEB_ONLY: no authentication, no forms, no messaging, no purchase, no CAPTCHA bypass; isolated Chrome must be deleted after use.\",\n  \"fact_refs\": [\n    {\n      \"id\": \"MEM-MPE-001\",\n      \"provenance\": \"docs/evaluations/BROWSERACT_EVALUATION.md#L45, evidence/stage2/RUN-08_REPORT.json#L24\"\n    },\n    {\n      \"id\": \"MEM-MPE-002\",\n      \"provenance\": \"evidence/stage2/RUN-08_REPORT.json#L29, docs/evaluations/BROWSER_ACQUISITION_ROLE.md#L15\"\n    }\n  ]\n}"
+        }
+      }
+    },
+    {
+      "task_id": "TASK-MPE-11",
+      "name": "Runtime Coordination Messaging Architecture",
+      "query": "Should MPE use a background Redis daemon or persistent process broker for multi-expert handoffs?",
+      "topic_key_used_by_all_arms": "runtime coordination",
+      "expected_memory_ids": [
+        "MEM-MPE-003",
+        "MEM-MPE-004"
+      ],
+      "mode_results": {
+        "A": {
+          "context": {
+            "context_lines": 26,
+            "context_utf8_bytes": 1291,
+            "approx_tokens_utf8_bytes_div_4": 323
+          },
+          "recalled_ids": [
+            "MEM-MPE-003",
+            "MEM-MPE-004"
+          ],
+          "false_positive_ids": [],
+          "recall": {
+            "decision_ok": true,
+            "constraint_ok": true,
+            "missing_decision_predicates": [],
+            "missing_constraint_predicates": []
+          },
+          "provenance_refs_in_initial_context": true,
+          "provenance_drilldown_lookups": 0,
+          "optional_detail_drilldown_lookups": 0,
+          "logical_case_lookup_count": 1,
+          "context_text": "{\n  \"item_id\": \"MEM-MPE-003\",\n  \"project\": \"Murkin1980/murat-project-engineer\",\n  \"category\": \"decision\",\n  \"topic\": \"runtime coordination architecture\",\n  \"summary\": \"Approved lightweight file-based coordination (typed mailbox envelopes, append-only JSONL events, ephemeral state).\",\n  \"provenance\": \"docs/architecture/RUNTIME_COORDINATION_PATTERNS.md#L1, evidence/stage2/RUN-11_REPORT.json#L24\",\n  \"rationale\": \"EXTEND_EXISTING pattern avoiding daemons or distributed schedulers.\",\n  \"status\": \"active\",\n  \"superseded_by\": null,\n  \"created_at\": \"2026-08-15T15:00:00Z\",\n  \"approved_by\": \"MPE-Core-Gate\"\n}\n{\n  \"item_id\": \"MEM-MPE-004\",\n  \"project\": \"Murkin1980/murat-project-engineer\",\n  \"category\": \"constraint\",\n  \"topic\": \"runtime coordination boundaries\",\n  \"summary\": \"NO daemon, background scheduler, persistent agent, shared database, or Router authority change allowed. Atomic publication single-filesystem only; Windows junction rejection enforced.\",\n  \"provenance\": \"evidence/stage2/RUN-11_REPORT.json#L39, docs/architecture/RUNTIME_COORDINATION_PATTERNS.md#L20\",\n  \"rationale\": \"Opinionated Workspace and deep-change invariants prohibit parallel authority.\",\n  \"status\": \"active\",\n  \"superseded_by\": null,\n  \"created_at\": \"2026-08-15T15:00:00Z\",\n  \"approved_by\": \"MPE-Core-Gate\"\n}"
+        },
+        "B": {
+          "context": {
+            "context_lines": 6,
+            "context_utf8_bytes": 642,
+            "approx_tokens_utf8_bytes_div_4": 161
+          },
+          "recalled_ids": [
+            "MEM-MPE-003",
+            "MEM-MPE-004"
+          ],
+          "false_positive_ids": [],
+          "recall": {
+            "decision_ok": true,
+            "constraint_ok": true,
+            "missing_decision_predicates": [],
+            "missing_constraint_predicates": []
+          },
+          "provenance_refs_in_initial_context": true,
+          "provenance_drilldown_lookups": 0,
+          "optional_detail_drilldown_lookups": 0,
+          "logical_case_lookup_count": 1,
+          "context_text": "flowchart LR\n%% scope: Murkin1980/murat-project-engineer\n  F1[\"decision: Approved lightweight file-based coordination (typed mailbox envelopes, append-only JSONL events, ephemeral state).\"]\n  F1 -. MEM-MPE-003 .-> R1[\"docs/architecture/RUNTIME_COORDINATION_PATTERNS.md#L1, evidence/stage2/RUN-11_REPORT.json#L24\"]\n  F2[\"constraint: NO daemon, background scheduler, persistent agent, shared database, or Router authority change allowed. Atomic publication single-filesystem only; Windows junction rejection enforced.\"]\n  F2 -. MEM-MPE-004 .-> R2[\"evidence/stage2/RUN-11_REPORT.json#L39, docs/architecture/RUNTIME_COORDINATION_PATTERNS.md#L20\"]"
+        },
+        "C": {
+          "context": {
+            "context_lines": 16,
+            "context_utf8_bytes": 771,
+            "approx_tokens_utf8_bytes_div_4": 193
+          },
+          "recalled_ids": [
+            "MEM-MPE-003",
+            "MEM-MPE-004"
+          ],
+          "false_positive_ids": [],
+          "recall": {
+            "decision_ok": true,
+            "constraint_ok": true,
+            "missing_decision_predicates": [],
+            "missing_constraint_predicates": []
+          },
+          "provenance_refs_in_initial_context": true,
+          "provenance_pointer_ids": [
+            "MEM-MPE-003",
+            "MEM-MPE-004"
+          ],
+          "provenance_resolved_via_l1": true,
+          "provenance_drilldown_lookups": 0,
+          "optional_detail_drilldown_lookups": 1,
+          "optional_detail_context": {
+            "context_lines": 41,
+            "context_utf8_bytes": 2064,
+            "approx_tokens_utf8_bytes_div_4": 516
+          },
+          "logical_case_lookup_count": 1,
+          "full_item_provenance_refs_resolved": 4,
+          "context_text": "{\n  \"project\": \"Murkin1980/murat-project-engineer\",\n  \"scenario\": \"runtime coordination\",\n  \"decision_or_outcome\": \"Approved lightweight file-based coordination (typed mailbox envelopes, append-only JSONL events, ephemeral state).\",\n  \"constraints\": \"NO daemon, background scheduler, persistent agent, shared database, or Router authority change allowed. Atomic publication single-filesystem only; Windows junction rejection enforced.\",\n  \"fact_refs\": [\n    {\n      \"id\": \"MEM-MPE-003\",\n      \"provenance\": \"docs/architecture/RUNTIME_COORDINATION_PATTERNS.md#L1, evidence/stage2/RUN-11_REPORT.json#L24\"\n    },\n    {\n      \"id\": \"MEM-MPE-004\",\n      \"provenance\": \"evidence/stage2/RUN-11_REPORT.json#L39, docs/architecture/RUNTIME_COORDINATION_PATTERNS.md#L20\"\n    }\n  ]\n}"
+        }
+      }
+    },
+    {
+      "task_id": "TASK-MPE-12",
+      "name": "CLEARS Triage Engine Operational Reliance",
+      "query": "Can deep_change_probability from CLEARS triage engine be used as an autonomous gate in production routing?",
+      "topic_key_used_by_all_arms": "clears",
+      "expected_memory_ids": [
+        "MEM-MPE-005",
+        "MEM-MPE-006"
+      ],
+      "mode_results": {
+        "A": {
+          "context": {
+            "context_lines": 26,
+            "context_utf8_bytes": 1241,
+            "approx_tokens_utf8_bytes_div_4": 311
+          },
+          "recalled_ids": [
+            "MEM-MPE-005",
+            "MEM-MPE-006"
+          ],
+          "false_positive_ids": [],
+          "recall": {
+            "decision_ok": true,
+            "constraint_ok": true,
+            "missing_decision_predicates": [],
+            "missing_constraint_predicates": []
+          },
+          "provenance_refs_in_initial_context": true,
+          "provenance_drilldown_lookups": 0,
+          "optional_detail_drilldown_lookups": 0,
+          "logical_case_lookup_count": 1,
+          "context_text": "{\n  \"item_id\": \"MEM-MPE-005\",\n  \"project\": \"Murkin1980/murat-project-engineer\",\n  \"category\": \"outcome\",\n  \"topic\": \"clears triage engine\",\n  \"summary\": \"EXP-12 CLEARS deterministic backtest passed 20/20 retrospective cases, but status remains EXPERIMENT.\",\n  \"provenance\": \"evidence/stage2/RUN-12_REPORT.json#L26, docs/experiments/EXP-12_CLEARS_TRIAGE.md#L1\",\n  \"rationale\": \"100% fit on curated retrospective cases does not prove prospective generalization.\",\n  \"status\": \"active\",\n  \"superseded_by\": null,\n  \"created_at\": \"2026-08-18T12:00:00Z\",\n  \"approved_by\": \"MPE-Core-Gate\"\n}\n{\n  \"item_id\": \"MEM-MPE-006\",\n  \"project\": \"Murkin1980/murat-project-engineer\",\n  \"category\": \"constraint\",\n  \"topic\": \"clears operational reliance\",\n  \"summary\": \"deep_change_probability is a deterministic heuristic score, NOT a calibrated statistical probability; prospective pre-registered cases required before operational reliance.\",\n  \"provenance\": \"evidence/stage2/RUN-12_REPORT.json#L41, docs/experiments/EXP-12_CLEARS_TRIAGE.md#L80\",\n  \"rationale\": \"Prevents false precision and premature deployment into production routing.\",\n  \"status\": \"active\",\n  \"superseded_by\": null,\n  \"created_at\": \"2026-08-18T12:00:00Z\",\n  \"approved_by\": \"MPE-Core-Gate\"\n}"
+        },
+        "B": {
+          "context": {
+            "context_lines": 6,
+            "context_utf8_bytes": 597,
+            "approx_tokens_utf8_bytes_div_4": 150
+          },
+          "recalled_ids": [
+            "MEM-MPE-005",
+            "MEM-MPE-006"
+          ],
+          "false_positive_ids": [],
+          "recall": {
+            "decision_ok": true,
+            "constraint_ok": true,
+            "missing_decision_predicates": [],
+            "missing_constraint_predicates": []
+          },
+          "provenance_refs_in_initial_context": true,
+          "provenance_drilldown_lookups": 0,
+          "optional_detail_drilldown_lookups": 0,
+          "logical_case_lookup_count": 1,
+          "context_text": "flowchart LR\n%% scope: Murkin1980/murat-project-engineer\n  F1[\"outcome: EXP-12 CLEARS deterministic backtest passed 20/20 retrospective cases, but status remains EXPERIMENT.\"]\n  F1 -. MEM-MPE-005 .-> R1[\"evidence/stage2/RUN-12_REPORT.json#L26, docs/experiments/EXP-12_CLEARS_TRIAGE.md#L1\"]\n  F2[\"constraint: deep_change_probability is a deterministic heuristic score, NOT a calibrated statistical probability; prospective pre-registered cases required before operational reliance.\"]\n  F2 -. MEM-MPE-006 .-> R2[\"evidence/stage2/RUN-12_REPORT.json#L41, docs/experiments/EXP-12_CLEARS_TRIAGE.md#L80\"]"
+        },
+        "C": {
+          "context": {
+            "context_lines": 16,
+            "context_utf8_bytes": 713,
+            "approx_tokens_utf8_bytes_div_4": 179
+          },
+          "recalled_ids": [
+            "MEM-MPE-005",
+            "MEM-MPE-006"
+          ],
+          "false_positive_ids": [],
+          "recall": {
+            "decision_ok": true,
+            "constraint_ok": true,
+            "missing_decision_predicates": [],
+            "missing_constraint_predicates": []
+          },
+          "provenance_refs_in_initial_context": true,
+          "provenance_pointer_ids": [
+            "MEM-MPE-005",
+            "MEM-MPE-006"
+          ],
+          "provenance_resolved_via_l1": true,
+          "provenance_drilldown_lookups": 0,
+          "optional_detail_drilldown_lookups": 1,
+          "optional_detail_context": {
+            "context_lines": 41,
+            "context_utf8_bytes": 1956,
+            "approx_tokens_utf8_bytes_div_4": 489
+          },
+          "logical_case_lookup_count": 1,
+          "full_item_provenance_refs_resolved": 4,
+          "context_text": "{\n  \"project\": \"Murkin1980/murat-project-engineer\",\n  \"scenario\": \"clears\",\n  \"decision_or_outcome\": \"EXP-12 CLEARS deterministic backtest passed 20/20 retrospective cases, but status remains EXPERIMENT.\",\n  \"constraints\": \"deep_change_probability is a deterministic heuristic score, NOT a calibrated statistical probability; prospective pre-registered cases required before operational reliance.\",\n  \"fact_refs\": [\n    {\n      \"id\": \"MEM-MPE-005\",\n      \"provenance\": \"evidence/stage2/RUN-12_REPORT.json#L26, docs/experiments/EXP-12_CLEARS_TRIAGE.md#L1\"\n    },\n    {\n      \"id\": \"MEM-MPE-006\",\n      \"provenance\": \"evidence/stage2/RUN-12_REPORT.json#L41, docs/experiments/EXP-12_CLEARS_TRIAGE.md#L80\"\n    }\n  ]\n}"
+        }
+      }
+    },
+    {
+      "task_id": "TASK-MPE-18",
+      "name": "Pirate Face Model Resilience Distribution Architecture",
+      "query": "Should Pirate Face be deployed as an active model registry and seeding cluster in production?",
+      "topic_key_used_by_all_arms": "pirateface",
+      "expected_memory_ids": [
+        "MEM-MPE-007",
+        "MEM-MPE-008"
+      ],
+      "mode_results": {
+        "A": {
+          "context": {
+            "context_lines": 26,
+            "context_utf8_bytes": 1338,
+            "approx_tokens_utf8_bytes_div_4": 335
+          },
+          "recalled_ids": [
+            "MEM-MPE-007",
+            "MEM-MPE-008"
+          ],
+          "false_positive_ids": [],
+          "recall": {
+            "decision_ok": true,
+            "constraint_ok": true,
+            "missing_decision_predicates": [],
+            "missing_constraint_predicates": []
+          },
+          "provenance_refs_in_initial_context": true,
+          "provenance_drilldown_lookups": 0,
+          "optional_detail_drilldown_lookups": 0,
+          "logical_case_lookup_count": 1,
+          "context_text": "{\n  \"item_id\": \"MEM-MPE-007\",\n  \"project\": \"Murkin1980/murat-project-engineer\",\n  \"category\": \"decision\",\n  \"topic\": \"pirateface model resilience\",\n  \"summary\": \"EXP-18 PASS: verified byte-for-byte retrieval (29/29 files) of pinned sentence-transformers/all-MiniLM-L6-v2 artifact under primary source loss.\",\n  \"provenance\": \"experiments/exp-18-pirateface-model-resilience/FINDINGS.md#L5, experiments/EXPERIMENT_REGISTRY.json#L20\",\n  \"rationale\": \"Demonstrated BitTorrent/DHT fallback distribution viability for pinned open-weight models.\",\n  \"status\": \"active\",\n  \"superseded_by\": null,\n  \"created_at\": \"2026-09-30T00:00:00Z\",\n  \"approved_by\": \"MPE-Core-Gate\"\n}\n{\n  \"item_id\": \"MEM-MPE-008\",\n  \"project\": \"Murkin1980/murat-project-engineer\",\n  \"category\": \"constraint\",\n  \"topic\": \"pirateface deployment boundaries\",\n  \"summary\": \"Optional last-resort fallback path ONLY; mandatory SHA-256 manifest check; DO NOT add production routing, a registry, or seeding infrastructure.\",\n  \"provenance\": \"experiments/exp-18-pirateface-model-resilience/FINDINGS.md#L12, experiments/exp-18-pirateface-model-resilience/METHOD.md#L10\",\n  \"rationale\": \"Prevents adding external dependencies or production torrent daemons to MPE.\",\n  \"status\": \"active\",\n  \"superseded_by\": null,\n  \"created_at\": \"2026-09-30T00:00:00Z\",\n  \"approved_by\": \"MPE-Core-Gate\"\n}"
+        },
+        "B": {
+          "context": {
+            "context_lines": 6,
+            "context_utf8_bytes": 673,
+            "approx_tokens_utf8_bytes_div_4": 169
+          },
+          "recalled_ids": [
+            "MEM-MPE-007",
+            "MEM-MPE-008"
+          ],
+          "false_positive_ids": [],
+          "recall": {
+            "decision_ok": true,
+            "constraint_ok": true,
+            "missing_decision_predicates": [],
+            "missing_constraint_predicates": []
+          },
+          "provenance_refs_in_initial_context": true,
+          "provenance_drilldown_lookups": 0,
+          "optional_detail_drilldown_lookups": 0,
+          "logical_case_lookup_count": 1,
+          "context_text": "flowchart LR\n%% scope: Murkin1980/murat-project-engineer\n  F1[\"decision: EXP-18 PASS: verified byte-for-byte retrieval (29/29 files) of pinned sentence-transformers/all-MiniLM-L6-v2 artifact under primary source loss.\"]\n  F1 -. MEM-MPE-007 .-> R1[\"experiments/exp-18-pirateface-model-resilience/FINDINGS.md#L5, experiments/EXPERIMENT_REGISTRY.json#L20\"]\n  F2[\"constraint: Optional last-resort fallback path ONLY; mandatory SHA-256 manifest check; DO NOT add production routing, a registry, or seeding infrastructure.\"]\n  F2 -. MEM-MPE-008 .-> R2[\"experiments/exp-18-pirateface-model-resilience/FINDINGS.md#L12, experiments/exp-18-pirateface-model-resilience/METHOD.md#L10\"]"
+        },
+        "C": {
+          "context": {
+            "context_lines": 16,
+            "context_utf8_bytes": 792,
+            "approx_tokens_utf8_bytes_div_4": 198
+          },
+          "recalled_ids": [
+            "MEM-MPE-007",
+            "MEM-MPE-008"
+          ],
+          "false_positive_ids": [],
+          "recall": {
+            "decision_ok": true,
+            "constraint_ok": true,
+            "missing_decision_predicates": [],
+            "missing_constraint_predicates": []
+          },
+          "provenance_refs_in_initial_context": true,
+          "provenance_pointer_ids": [
+            "MEM-MPE-007",
+            "MEM-MPE-008"
+          ],
+          "provenance_resolved_via_l1": true,
+          "provenance_drilldown_lookups": 0,
+          "optional_detail_drilldown_lookups": 1,
+          "optional_detail_context": {
+            "context_lines": 41,
+            "context_utf8_bytes": 2132,
+            "approx_tokens_utf8_bytes_div_4": 533
+          },
+          "logical_case_lookup_count": 1,
+          "full_item_provenance_refs_resolved": 4,
+          "context_text": "{\n  \"project\": \"Murkin1980/murat-project-engineer\",\n  \"scenario\": \"pirateface\",\n  \"decision_or_outcome\": \"EXP-18 PASS: verified byte-for-byte retrieval (29/29 files) of pinned sentence-transformers/all-MiniLM-L6-v2 artifact under primary source loss.\",\n  \"constraints\": \"Optional last-resort fallback path ONLY; mandatory SHA-256 manifest check; DO NOT add production routing, a registry, or seeding infrastructure.\",\n  \"fact_refs\": [\n    {\n      \"id\": \"MEM-MPE-007\",\n      \"provenance\": \"experiments/exp-18-pirateface-model-resilience/FINDINGS.md#L5, experiments/EXPERIMENT_REGISTRY.json#L20\"\n    },\n    {\n      \"id\": \"MEM-MPE-008\",\n      \"provenance\": \"experiments/exp-18-pirateface-model-resilience/FINDINGS.md#L12, experiments/exp-18-pirateface-model-resilience/METHOD.md#L10\"\n    }\n  ]\n}"
+        }
+      }
+    }
+  ],
+  "disposition_rationale": [
+    "B and C preserve all required decision and constraint predicates in the four frozen cases while reducing the injected context footprint.",
+    "C carries source refs in the initial L2 card; a separate optional detail request costs one L1 lookup per case.",
+    "The EXP-15 fixture has one inherited out-of-range citation (MEM-MPE-006 -> evidence/stage2/RUN-12_REPORT.json#L41); the alternate documentation citation remains present. No frozen fixture was edited.",
+    "B cannot validate upstream raw tool-result offloading on this dataset; the result is a representation-level signal, not a production-performance claim."
+  ]
+}

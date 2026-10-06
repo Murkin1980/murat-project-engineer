@@ -1,0 +1,21 @@
+EXP-26 deterministic A/B/C memory-component comparison
+Date (UTC): 2026-10-06
+A = current EXP-15 file-backed memory; B = symbolic packet; C = layered scenario card.
+Frozen cases: TASK-MPE-08, TASK-MPE-11, TASK-MPE-12, TASK-MPE-18
+
+Aggregate injected-context footprint (4 cases):
+  A: 104 lines, 5099 UTF-8 bytes, ~1277 tokens (bytes/4); decision 4/4, constraints 4/4, false positives 0, source-doc/raw-log reads 0, provenance drilldowns 0, optional detail drilldowns 0
+  B: 24 lines, 2492 UTF-8 bytes, ~625 tokens (bytes/4); decision 4/4, constraints 4/4, false positives 0, source-doc/raw-log reads 0, provenance drilldowns 0, optional detail drilldowns 0
+  C: 64 lines, 2975 UTF-8 bytes, ~745 tokens (bytes/4); decision 4/4, constraints 4/4, false positives 0, source-doc/raw-log reads 0, provenance drilldowns 0, optional detail drilldowns 4
+
+C with optional L1 detail: 164 lines, 8082 UTF-8 bytes, ~2021 tokens; 4 batched L1 lookups.
+Context reduction vs A: B 76.9% lines / 51.1% bytes; C 38.5% lines / 41.7% bytes.
+Provenance: 16/16 paths exist; 15/16 line anchors in range; 10 unique source files read by the shared validator.
+Isolation violations: 0
+Approval-gate probes: 3 rejected; unauthorized mutations: 0; canonical fixture mutated: False.
+
+INHERITED INVALID ANCHOR:
+  MEM-MPE-006: evidence/stage2/RUN-12_REPORT.json#L41
+
+LIMITATION: B is a deterministic context-format proxy; frozen EXP-15 cases have no raw session/tool-log fixture.
+RESULT: PARTIAL / ADOPT_WITH_CHANGES; do not install the upstream platform or integrate into production.
