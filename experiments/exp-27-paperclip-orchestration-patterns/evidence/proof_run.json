@@ -1,0 +1,354 @@
+{
+ "cp02_goal_ancestry": {
+  "cases": [
+   {
+    "checkpoint": "CP-05",
+    "context_overhead_ratio_packet_vs_rediscovery": 0.0467,
+    "experiment_id": "EXP-27",
+    "fresh_process_read_from_chat": false,
+    "goal_preserved_by_fresh_process": true,
+    "packet_bytes": 2316,
+    "packet_source_refs": [
+     {
+      "path": "experiments/EXPERIMENT_REGISTRY.json",
+      "sha256": "2f68ea7fd912a2c17b29dbd6608609a05b0955c17b528f68f5d6e6f1398104ac"
+     },
+     {
+      "path": "experiments/exp-27-paperclip-orchestration-patterns/ARENA_TASK.md",
+      "sha256": "ed3bed1a1de39eecbc2167efd25e41aece0f7876c6b02b26a61ed88fc803c1e3"
+     },
+     {
+      "path": "experiments/exp-27-paperclip-orchestration-patterns/README.md",
+      "sha256": "dba4d48d997e155e91ec220e2fb13e2525e6100f3ffb110a01086b3689216ef4"
+     }
+    ],
+    "per_question_match": {
+     "checkpoints": true,
+     "disposition": true,
+     "experiment_id": true,
+     "first_stop_conditions": true,
+     "parent_goal": true,
+     "project": true,
+     "stop_condition_count": true,
+     "task_id": true
+    },
+    "rediscovery_answers_match_packet": true,
+    "rediscovery_bytes_read": 49584,
+    "rediscovery_files_read": 3,
+    "task_id": "EXP-27/CP-05"
+   },
+   {
+    "checkpoint": "CP-04",
+    "context_overhead_ratio_packet_vs_rediscovery": 0.0464,
+    "experiment_id": "EXP-25",
+    "fresh_process_read_from_chat": false,
+    "goal_preserved_by_fresh_process": true,
+    "packet_bytes": 2013,
+    "packet_source_refs": [
+     {
+      "path": "experiments/EXPERIMENT_REGISTRY.json",
+      "sha256": "2f68ea7fd912a2c17b29dbd6608609a05b0955c17b528f68f5d6e6f1398104ac"
+     },
+     {
+      "path": "experiments/exp-25-atomic-crm-component-extraction/ARENA_TASK.md",
+      "sha256": "a65ec4438a1ef60c0fa9af78ca13a8fb11e8fd9e57ae58e59fc0a583641c5ea4"
+     }
+    ],
+    "per_question_match": {
+     "checkpoints": true,
+     "disposition": true,
+     "experiment_id": true,
+     "first_stop_conditions": true,
+     "parent_goal": true,
+     "project": true,
+     "stop_condition_count": true,
+     "task_id": true
+    },
+    "rediscovery_answers_match_packet": true,
+    "rediscovery_bytes_read": 43357,
+    "rediscovery_files_read": 2,
+    "task_id": "EXP-25/CP-04"
+   }
+  ],
+  "checks": {
+   "every_case_preserves_parent_goal": true,
+   "independent_rediscovery_agrees_with_packet": true,
+   "no_chat_context_required": true,
+   "no_extra_canonical_source_created": true
+  },
+  "measurements": {
+   "mean_bytes_scanned_without_packet": 46470.5,
+   "mean_packet_bytes": 2164.5,
+   "mean_rediscovery_steps_without_packet": 2.5,
+   "rediscovery_steps_packet_arm": 0
+  },
+  "pattern": "goal_ancestry_context",
+  "result": "PASS"
+ },
+ "cp03_task_lease": {
+  "checks": {
+   "conflict_is_explicit_and_inspectable": true,
+   "exactly_one_winner_per_race": true,
+   "expired_lease_reclaimed_with_reason": true,
+   "generation_history_preserved": true,
+   "no_duplicate_execution": true,
+   "only_owner_can_release": true,
+   "single_active_owner_record": true,
+   "stale_owner_cannot_release": true,
+   "terminal_state_visible_after_release": true
+  },
+  "measurements": {
+   "concurrent_executors_per_round": 8,
+   "daemons_or_services_required": 0,
+   "databases_required": 0,
+   "duplicate_executions": 0,
+   "lease_conflicts": 21,
+   "rounds": 3
+  },
+  "pattern": "atomic_task_lease",
+  "race_rounds": [
+   {
+    "acquired": 1,
+    "active_record_owner_matches_winner": true,
+    "conflict_report_has_owner_and_expiry": true,
+    "conflicts": 7,
+    "owners": 8,
+    "release_status": "LEASE_RELEASED",
+    "round": 0,
+    "terminal_record_visible": {
+     "generation": 1,
+     "owner": "executor-0-0",
+     "release_reason": "TERMINAL_DONE",
+     "released_at": "2026-10-06T19:04:37Z",
+     "status": "RELEASED"
+    },
+    "winner": "executor-0-0",
+    "work_markers": 1
+   },
+   {
+    "acquired": 1,
+    "active_record_owner_matches_winner": true,
+    "conflict_report_has_owner_and_expiry": true,
+    "conflicts": 7,
+    "owners": 8,
+    "release_status": "LEASE_RELEASED",
+    "round": 1,
+    "terminal_record_visible": {
+     "generation": 1,
+     "owner": "executor-1-0",
+     "release_reason": "TERMINAL_DONE",
+     "released_at": "2026-10-06T19:04:38Z",
+     "status": "RELEASED"
+    },
+    "winner": "executor-1-0",
+    "work_markers": 1
+   },
+   {
+    "acquired": 1,
+    "active_record_owner_matches_winner": true,
+    "conflict_report_has_owner_and_expiry": true,
+    "conflicts": 7,
+    "owners": 8,
+    "release_status": "LEASE_RELEASED",
+    "round": 2,
+    "terminal_record_visible": {
+     "generation": 1,
+     "owner": "executor-2-0",
+     "release_reason": "TERMINAL_DONE",
+     "released_at": "2026-10-06T19:04:38Z",
+     "status": "RELEASED"
+    },
+    "winner": "executor-2-0",
+    "work_markers": 1
+   }
+  ],
+  "result": "PASS",
+  "stale_recovery": {
+   "acquire_after_release": {
+    "generation": 3,
+    "previous_owner": "recovery-executor",
+    "status": "LEASE_ACQUIRED"
+   },
+   "reclaim": {
+    "generation": 2,
+    "reason": "LEASE_EXPIRED",
+    "reclaimed_from": "stale-executor",
+    "status": "LEASE_ACQUIRED_RECLAIMED"
+   },
+   "recovery_release": "LEASE_RELEASED",
+   "stale_claim": "LEASE_ACQUIRED",
+   "stale_release": {
+    "reason": "LEASE_OWNED_BY_OTHER",
+    "status": "LEASE_RELEASE_DENIED"
+   }
+  }
+ },
+ "cp04_resume": {
+  "checks": {
+   "evidence_complete": true,
+   "final_state_done": true,
+   "fresh_process_resume_succeeded": true,
+   "no_rediscovery_required": true,
+   "no_step_reexecuted": true,
+   "runtime_events_valid": true
+  },
+  "evidence_completeness": {
+   "missing_fields": [],
+   "present_fields": 21,
+   "required_fields": 21
+  },
+  "first_process": {
+   "executed_steps": [
+    "S1_input_digest",
+    "S2_goal_binding",
+    "S3_artifact_write"
+   ],
+   "guard_stop_reason": "MAX_TOOL_CALLS",
+   "state_after_stop": "BLOCKED",
+   "tool_calls": 3
+  },
+  "fresh_process": {
+   "executed_steps": [
+    "S4_artifact_verify",
+    "S5_finalize"
+   ],
+   "input_bytes": 4706,
+   "previously_completed_steps": [
+    "S1_input_digest",
+    "S2_goal_binding",
+    "S3_artifact_write"
+   ],
+   "re_executed_steps": [],
+   "read_from_chat": false,
+   "recomputed_input_digest_matches": true,
+   "rediscovery_steps": 0
+  },
+  "measurements": {
+   "evidence_completeness_ratio": 1.0,
+   "rediscovery_steps": 0,
+   "redundant_step_executions": 0,
+   "resume_success": true,
+   "steps_completed_after_resume": 2,
+   "steps_completed_before_interruption": 3
+  },
+  "pattern": "persistent_resumable_evidence",
+  "result": "PASS",
+  "runtime_events": {
+   "count": 6,
+   "summary": {
+    "deterministic_gate_results": [],
+    "event_count": 6,
+    "experts_invoked": [
+     "exp-27-proof-fresh-executor",
+     "exp-27-proof-parent"
+    ],
+    "handoff_count": 0,
+    "handoff_refs": [],
+    "outcome": "DONE"
+   }
+  }
+ },
+ "cp05_budget_gate": {
+  "approval_gate": {
+   "deep_change_task": {
+    "acceptance_state": "BLOCKED",
+    "allowed_action": "OBSERVE",
+    "blocking_reasons": [
+     "architecture_redesign",
+     "deep_change_approval_required",
+     "human_approval_required",
+     "stop_condition"
+    ],
+    "executor_invoked_with_recorded_approval": false,
+    "risk_tier": "DEEP-CHANGE",
+    "task_id": "EXP-27-T-DEEP-CHANGE"
+   },
+   "integration_sensitive_task": {
+    "acceptance_state": "HUMAN_REQUIRED",
+    "allowed_action": "EXECUTE_WITH_APPROVAL",
+    "executor_invoked_with_recorded_approval": true,
+    "executor_invoked_without_approval": false,
+    "human_gate_required": true,
+    "risk_tier": "FAST",
+    "task_id": "EXP-27-T-INTEGRATION"
+   },
+   "source": "scripts/task_acceptance.accept_task + enforce_execution (existing MPE path)"
+  },
+  "checks": {
+   "approval_gate_allows_with_recorded_approval": true,
+   "approval_gate_blocks_without_approval": true,
+   "budget_cannot_override_approval_gate": true,
+   "deep_change_requires_human_gate": true,
+   "hard_block_never_executes_even_with_approval": true,
+   "hard_limit_maps_to_canonical_RED": true,
+   "retry_limit_stops": true,
+   "tool_call_limit_stops": true,
+   "wall_time_limit_stops": true
+  },
+  "composition": {
+   "approval_gate": "HUMAN_REQUIRED",
+   "budget_guard": "OK",
+   "budget_override_possible": false,
+   "final_outcome": "HUMAN_REQUIRED"
+  },
+  "guards": [
+   {
+    "attempts_allowed": 3,
+    "guard": "max_retries",
+    "limit": 2,
+    "outcome": "STOP/BLOCKED",
+    "retries_executed": 2,
+    "silent_continue": false,
+    "stop_reason": "MAX_RETRIES"
+   },
+   {
+    "blocked_call": true,
+    "executed_calls": 5,
+    "guard": "max_tool_calls",
+    "limit": 5,
+    "outcome": "STOP/BLOCKED",
+    "silent_continue": false,
+    "stop_reason": "MAX_TOOL_CALLS"
+   },
+   {
+    "clock": "injected deterministic ticks (0.1s per call)",
+    "guard": "max_wall_seconds",
+    "limit": 0.25,
+    "measured_wall_seconds": 1e-05,
+    "outcome": "STOP/BLOCKED",
+    "silent_continue": false,
+    "stop_reason": "MAX_WALL_TIME"
+   },
+   {
+    "budget_status": "RED",
+    "guard": "compute_budget_hard_limit",
+    "hard_limit": 1.0,
+    "outcome": "STOP/BLOCKED",
+    "projected_total": 1.8,
+    "silent_continue": false,
+    "source": "scripts/compute_budget.budget_health",
+    "status_within_limit": "GREEN"
+   }
+  ],
+  "measurements": {
+   "execution_attempts_without_approval_that_ran": 0,
+   "hard_block_executions_with_approval_that_ran": 0,
+   "hard_boundaries_demonstrated": 4,
+   "human_approval_points": 1
+  },
+  "pattern": "budget_runaway_guard_with_existing_approval_gate",
+  "result": "PASS"
+ },
+ "experiment_id": "EXP-27",
+ "generated_at": "2026-10-06T19:04:37Z",
+ "harness": "experiments/exp-27-paperclip-orchestration-patterns/harness/fresh_worker.py",
+ "run_id": "EXP-27-PROOF",
+ "summary": {
+  "governance_or_source_of_truth_changed": false,
+  "parallel_control_plane_created": false,
+  "patterns_total": 4,
+  "patterns_verified": 4,
+  "production_integration_performed": false,
+  "result": "PASS"
+ }
+}

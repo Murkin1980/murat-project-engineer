@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="355" height="1229" viewBox="0 0 355 1229" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
+<svg xmlns="http://www.w3.org/2000/svg" width="355" height="1400" viewBox="0 0 355 1400" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
   <defs>
   </defs>
-  <rect x="0" y="0" width="355" height="1229" fill="#ffffff"/>
-  <path d="M48 40 H307 a8 8 0 0 1 8 8 V1181 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
-  <text x="54" y="68.4" fill="#1f2328" text-anchor="start">PLANNED (7)</text>
+  <rect x="0" y="0" width="355" height="1400" fill="#ffffff"/>
+  <path d="M48 40 H307 a8 8 0 0 1 8 8 V1352 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <text x="54" y="68.4" fill="#1f2328" text-anchor="start">PLANNED (8)</text>
   <path d="M62 83 H293 a8 8 0 0 1 8 8 V236 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V91 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
   <text x="177.5" y="111.4" fill="#1f2328" text-anchor="middle">EXP-ALEXANDRIA ·</text>
   <text x="177.5" y="130.4" fill="#1f2328" text-anchor="middle">Orchestrator</text>
@@ -19,40 +19,48 @@
   <text x="177.5" y="339.4" fill="#1f2328" text-anchor="middle">registration, run and</text>
   <text x="177.5" y="358.4" fill="#1f2328" text-anchor="middle">record the first</text>
   <text x="177.5" y="377.4" fill="#1f2328" text-anchor="middle">fixed-query baseli…</text>
-  <path d="M62 406 H293 a8 8 0 0 1 8 8 V540 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V414 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="177.5" y="434.4" fill="#1f2328" text-anchor="middle">EXP-14 · MPE</text>
-  <text x="177.5" y="453.4" fill="#1f2328" text-anchor="middle">Laya / System One Decision</text>
-  <text x="177.5" y="472.4" fill="#1f2328" text-anchor="middle">Layer</text>
-  <text x="177.5" y="491.4" fill="#1f2328" text-anchor="middle">→ Freeze the labelled</text>
-  <text x="177.5" y="510.4" fill="#1f2328" text-anchor="middle">decision dataset before</text>
-  <text x="177.5" y="529.4" fill="#1f2328" text-anchor="middle">model runs.</text>
-  <path d="M62 558 H293 a8 8 0 0 1 8 8 V673 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V566 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="177.5" y="586.4" fill="#1f2328" text-anchor="middle">EXP-15 · MPE</text>
-  <text x="177.5" y="605.4" fill="#1f2328" text-anchor="middle">MPE Project Memory Layer</text>
-  <text x="177.5" y="624.4" fill="#1f2328" text-anchor="middle">→ Select a small set of</text>
-  <text x="177.5" y="643.4" fill="#1f2328" text-anchor="middle">real MPE tasks and compare</text>
-  <text x="177.5" y="662.4" fill="#1f2328" text-anchor="middle">against the current…</text>
-  <path d="M62 691 H293 a8 8 0 0 1 8 8 V844 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V699 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="177.5" y="719.4" fill="#1f2328" text-anchor="middle">EXP-S2C-01 · MPE</text>
-  <text x="177.5" y="738.4" fill="#1f2328" text-anchor="middle">Screenshot-to-Code Visual</text>
-  <text x="177.5" y="757.4" fill="#1f2328" text-anchor="middle">Workflow</text>
-  <text x="177.5" y="776.4" fill="#1f2328" text-anchor="middle">→ Freeze one</text>
-  <text x="177.5" y="795.4" fill="#1f2328" text-anchor="middle">existing-project fixture</text>
-  <text x="177.5" y="814.4" fill="#1f2328" text-anchor="middle">and baseline/candidate</text>
-  <text x="177.5" y="833.4" fill="#1f2328" text-anchor="middle">instructio…</text>
-  <path d="M62 862 H293 a8 8 0 0 1 8 8 V1015 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V870 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="177.5" y="890.4" fill="#1f2328" text-anchor="middle">EXP-QOOPIA-MEMORY · MPE</text>
-  <text x="177.5" y="909.4" fill="#1f2328" text-anchor="middle">Qoopia cross-session</text>
-  <text x="177.5" y="928.4" fill="#1f2328" text-anchor="middle">memory</text>
-  <text x="177.5" y="947.4" fill="#1f2328" text-anchor="middle">→ Inspect current Qoopia</text>
-  <text x="177.5" y="966.4" fill="#1f2328" text-anchor="middle">documentation, then</text>
-  <text x="177.5" y="985.4" fill="#1f2328" text-anchor="middle">prepare a disposable</text>
-  <text x="177.5" y="1004.4" fill="#1f2328" text-anchor="middle">synth…</text>
-  <path d="M62 1033 H293 a8 8 0 0 1 8 8 V1167 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V1041 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="177.5" y="1061.4" fill="#1f2328" text-anchor="middle">EXP-16 · MPE</text>
-  <text x="177.5" y="1080.4" fill="#1f2328" text-anchor="middle">Minimalist Entrepreneur</text>
-  <text x="177.5" y="1099.4" fill="#1f2328" text-anchor="middle">Skills Reuse</text>
-  <text x="177.5" y="1118.4" fill="#1f2328" text-anchor="middle">→ Run the five-case</text>
-  <text x="177.5" y="1137.4" fill="#1f2328" text-anchor="middle">retrospective only when it</text>
-  <text x="177.5" y="1156.4" fill="#1f2328" text-anchor="middle">reaches active priority.</text>
+  <path d="M62 406 H293 a8 8 0 0 1 8 8 V559 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V414 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="177.5" y="434.4" fill="#1f2328" text-anchor="middle">EXP-S2C-01 · MPE</text>
+  <text x="177.5" y="453.4" fill="#1f2328" text-anchor="middle">Screenshot-to-Code Visual</text>
+  <text x="177.5" y="472.4" fill="#1f2328" text-anchor="middle">Workflow</text>
+  <text x="177.5" y="491.4" fill="#1f2328" text-anchor="middle">→ Freeze one</text>
+  <text x="177.5" y="510.4" fill="#1f2328" text-anchor="middle">existing-project fixture</text>
+  <text x="177.5" y="529.4" fill="#1f2328" text-anchor="middle">and baseline/candidate</text>
+  <text x="177.5" y="548.4" fill="#1f2328" text-anchor="middle">instructio…</text>
+  <path d="M62 577 H293 a8 8 0 0 1 8 8 V711 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V585 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="177.5" y="605.4" fill="#1f2328" text-anchor="middle">EXP-20 · MPE</text>
+  <text x="177.5" y="624.4" fill="#1f2328" text-anchor="middle">Dify/OpenHands component</text>
+  <text x="177.5" y="643.4" fill="#1f2328" text-anchor="middle">extraction</text>
+  <text x="177.5" y="662.4" fill="#1f2328" text-anchor="middle">→ Run a comparative</text>
+  <text x="177.5" y="681.4" fill="#1f2328" text-anchor="middle">architecture audit against</text>
+  <text x="177.5" y="700.4" fill="#1f2328" text-anchor="middle">existing MPE, Business D…</text>
+  <path d="M62 729 H293 a8 8 0 0 1 8 8 V882 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V737 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="177.5" y="757.4" fill="#1f2328" text-anchor="middle">EXP-21 · MebelFlow AI</text>
+  <text x="177.5" y="776.4" fill="#1f2328" text-anchor="middle">EasyKitchen / SketchUp</text>
+  <text x="177.5" y="795.4" fill="#1f2328" text-anchor="middle">production backe…</text>
+  <text x="177.5" y="814.4" fill="#1f2328" text-anchor="middle">→ Perform focused</text>
+  <text x="177.5" y="833.4" fill="#1f2328" text-anchor="middle">technical reconnaissance</text>
+  <text x="177.5" y="852.4" fill="#1f2328" text-anchor="middle">of SketchUp Ruby +</text>
+  <text x="177.5" y="871.4" fill="#1f2328" text-anchor="middle">EasyKitch…</text>
+  <path d="M62 900 H293 a8 8 0 0 1 8 8 V1053 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V908 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="177.5" y="928.4" fill="#1f2328" text-anchor="middle">EXP-22 · MPE</text>
+  <text x="177.5" y="947.4" fill="#1f2328" text-anchor="middle">Colibri local inference /</text>
+  <text x="177.5" y="966.4" fill="#1f2328" text-anchor="middle">Brio routing</text>
+  <text x="177.5" y="985.4" fill="#1f2328" text-anchor="middle">→ Arena: execute CP-01</text>
+  <text x="177.5" y="1004.4" fill="#1f2328" text-anchor="middle">READY/WARNING/BLOCKED</text>
+  <text x="177.5" y="1023.4" fill="#1f2328" text-anchor="middle">classification, CP-02</text>
+  <text x="177.5" y="1042.4" fill="#1f2328" text-anchor="middle">fixe…</text>
+  <path d="M62 1071 H293 a8 8 0 0 1 8 8 V1205 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V1079 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="177.5" y="1099.4" fill="#1f2328" text-anchor="middle">EXP-23 · MPE</text>
+  <text x="177.5" y="1118.4" fill="#1f2328" text-anchor="middle">Papermorph document →</text>
+  <text x="177.5" y="1137.4" fill="#1f2328" text-anchor="middle">interactive artif…</text>
+  <text x="177.5" y="1156.4" fill="#1f2328" text-anchor="middle">→ After EXP-22 Colibri</text>
+  <text x="177.5" y="1175.4" fill="#1f2328" text-anchor="middle">completes, Arena runs one</text>
+  <text x="177.5" y="1194.4" fill="#1f2328" text-anchor="middle">technical/business doc…</text>
+  <path d="M62 1223 H293 a8 8 0 0 1 8 8 V1338 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V1231 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="177.5" y="1251.4" fill="#1f2328" text-anchor="middle">EXP-24 · MPE</text>
+  <text x="177.5" y="1270.4" fill="#1f2328" text-anchor="middle">HyperFrames PR → Video</text>
+  <text x="177.5" y="1289.4" fill="#1f2328" text-anchor="middle">→ Cancel the hung Arena</text>
+  <text x="177.5" y="1308.4" fill="#1f2328" text-anchor="middle">run and start one fresh</text>
+  <text x="177.5" y="1327.4" fill="#1f2328" text-anchor="middle">run from current main u…</text>
 </svg>

@@ -525,6 +525,39 @@
       ],
       "pr_or_issue_links": [],
       "updated_at": "2026-10-06"
+    },
+    {
+      "experiment_id": "EXP-27",
+      "name": "Paperclip orchestration patterns",
+      "owning_project": "Murat Project Engineer",
+      "status": "PASS",
+      "why": "Extract and test high-value orchestration patterns from Paperclip—goal context, atomic task lease, persistent resumable evidence, budget/runaway guards, and approval gates—inside existing MPE/murat-ai-orchestrator components without adopting a parallel control plane.",
+      "date_added": "2026-10-06",
+      "next_action": "Closed at bounded pattern extraction. No production integration, Router change, governance change, or follow-on checkpoint is authorized by this result; a future owner decision is required before any pattern is implemented in an existing component.",
+      "result_summary": "PASS / ADOPT_WITH_CHANGES at pattern level only. Donor audited at paperclipai/paperclip@d9f60004 (MIT; release tag v2026.1005.0 = 467125fa) and used as reference only. CP-02: a compact ancestry packet derived from the registry + ARENA_TASK let an isolated fresh process state project, parent goal, checkpoint chain, disposition, and stop conditions with 0 rediscovery steps (mean 3 file reads / ~43.7 KB scanned without the packet, ~2.2 KB packet instead); behaviour verified on EXP-27 and EXP-25. CP-03: file-backed single-host task lease built on the existing O_EXCL exclusive-create primitive gave exactly 1 winner and 7 explicit LEASE_CONFLICT results across 3 rounds of 8 concurrent processes, 0 duplicate executions, plus bounded expiry reclaim, denied release by a stale owner, and a visible RELEASED terminal record. CP-04: a fresh isolated interpreter resumed a stopped run from the persisted handoff alone with 0 rediscovery steps, 0 re-executed steps, and 21/21 graceful-handoff + typed-handoff fields present. CP-05: four hard boundaries (retries, tool calls, wall time, projected cost vs hard_limit mapped onto the existing compute-budget RED status) each produced an explicit STOP, while the existing MPE approval path returned HUMAN_REQUIRED for an integration-sensitive task and never executed a hard-blocked/ DEEP-CHANGE task even with an approval flag; the budget guard could not override the gate. No new repository, Paperclip service, database, queue/daemon, Router change, governance replacement, source-of-truth change, autonomous execution, or production integration; only the pre-existing stale Reladraw dashboard views were regenerated with the documented ritual because the registry change requires it (7 remaining unittest failures are pre-existing and unrelated).",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/exp-27-paperclip-orchestration-patterns",
+      "evidence_links": [
+        "experiments/exp-27-paperclip-orchestration-patterns/README.md",
+        "experiments/exp-27-paperclip-orchestration-patterns/ARENA_TASK.md",
+        "experiments/exp-27-paperclip-orchestration-patterns/UPSTREAM_AUDIT.md",
+        "experiments/exp-27-paperclip-orchestration-patterns/COMPONENT_MAP.md",
+        "experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md",
+        "experiments/exp-27-paperclip-orchestration-patterns/evidence/proof_run.json",
+        "experiments/exp-27-paperclip-orchestration-patterns/evidence/cp02.json",
+        "experiments/exp-27-paperclip-orchestration-patterns/evidence/cp03.json",
+        "experiments/exp-27-paperclip-orchestration-patterns/evidence/cp04.json",
+        "experiments/exp-27-paperclip-orchestration-patterns/evidence/cp05.json",
+        "experiments/exp-27-paperclip-orchestration-patterns/evidence/run-EXP27-CP04.events.jsonl",
+        "experiments/exp-27-paperclip-orchestration-patterns/evidence/cp04_state_after_resume.json",
+        "experiments/exp-27-paperclip-orchestration-patterns/evidence/proof_run.log",
+        "https://github.com/paperclipai/paperclip",
+        "https://habr.com/ru/articles/1012490/"
+      ],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/53"
+      ],
+      "updated_at": "2026-10-06"
     }
   ]
 }

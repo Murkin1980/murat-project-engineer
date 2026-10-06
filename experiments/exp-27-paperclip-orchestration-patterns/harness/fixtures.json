@@ -1,0 +1,6 @@
+{
+  "fixture_version": "exp-27-bounded-task-fixture-v1",
+  "task_input": "EXP-27 bounded orchestration proof: goal ancestry, atomic task lease, resumable persistent evidence, hard budget guard, existing MPE approval gate.",
+  "expected_checkpoints": ["CP-01", "CP-02", "CP-03", "CP-04", "CP-05"],
+  "note": "Frozen fixture for the CP-02..CP-05 proof. No production data, customer data, secret, or external provider content."
+}

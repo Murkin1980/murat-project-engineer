@@ -1,0 +1,91 @@
+{
+ "approval_gate": {
+  "deep_change_task": {
+   "acceptance_state": "BLOCKED",
+   "allowed_action": "OBSERVE",
+   "blocking_reasons": [
+    "architecture_redesign",
+    "deep_change_approval_required",
+    "human_approval_required",
+    "stop_condition"
+   ],
+   "executor_invoked_with_recorded_approval": false,
+   "risk_tier": "DEEP-CHANGE",
+   "task_id": "EXP-27-T-DEEP-CHANGE"
+  },
+  "integration_sensitive_task": {
+   "acceptance_state": "HUMAN_REQUIRED",
+   "allowed_action": "EXECUTE_WITH_APPROVAL",
+   "executor_invoked_with_recorded_approval": true,
+   "executor_invoked_without_approval": false,
+   "human_gate_required": true,
+   "risk_tier": "FAST",
+   "task_id": "EXP-27-T-INTEGRATION"
+  },
+  "source": "scripts/task_acceptance.accept_task + enforce_execution (existing MPE path)"
+ },
+ "checks": {
+  "approval_gate_allows_with_recorded_approval": true,
+  "approval_gate_blocks_without_approval": true,
+  "budget_cannot_override_approval_gate": true,
+  "deep_change_requires_human_gate": true,
+  "hard_block_never_executes_even_with_approval": true,
+  "hard_limit_maps_to_canonical_RED": true,
+  "retry_limit_stops": true,
+  "tool_call_limit_stops": true,
+  "wall_time_limit_stops": true
+ },
+ "composition": {
+  "approval_gate": "HUMAN_REQUIRED",
+  "budget_guard": "OK",
+  "budget_override_possible": false,
+  "final_outcome": "HUMAN_REQUIRED"
+ },
+ "guards": [
+  {
+   "attempts_allowed": 3,
+   "guard": "max_retries",
+   "limit": 2,
+   "outcome": "STOP/BLOCKED",
+   "retries_executed": 2,
+   "silent_continue": false,
+   "stop_reason": "MAX_RETRIES"
+  },
+  {
+   "blocked_call": true,
+   "executed_calls": 5,
+   "guard": "max_tool_calls",
+   "limit": 5,
+   "outcome": "STOP/BLOCKED",
+   "silent_continue": false,
+   "stop_reason": "MAX_TOOL_CALLS"
+  },
+  {
+   "clock": "injected deterministic ticks (0.1s per call)",
+   "guard": "max_wall_seconds",
+   "limit": 0.25,
+   "measured_wall_seconds": 1e-05,
+   "outcome": "STOP/BLOCKED",
+   "silent_continue": false,
+   "stop_reason": "MAX_WALL_TIME"
+  },
+  {
+   "budget_status": "RED",
+   "guard": "compute_budget_hard_limit",
+   "hard_limit": 1.0,
+   "outcome": "STOP/BLOCKED",
+   "projected_total": 1.8,
+   "silent_continue": false,
+   "source": "scripts/compute_budget.budget_health",
+   "status_within_limit": "GREEN"
+  }
+ ],
+ "measurements": {
+  "execution_attempts_without_approval_that_ran": 0,
+  "hard_block_executions_with_approval_that_ran": 0,
+  "hard_boundaries_demonstrated": 4,
+  "human_approval_points": 1
+ },
+ "pattern": "budget_runaway_guard_with_existing_approval_gate",
+ "result": "PASS"
+}

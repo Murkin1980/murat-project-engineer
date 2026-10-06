@@ -1,0 +1,65 @@
+{
+ "checks": {
+  "evidence_complete": true,
+  "final_state_done": true,
+  "fresh_process_resume_succeeded": true,
+  "no_rediscovery_required": true,
+  "no_step_reexecuted": true,
+  "runtime_events_valid": true
+ },
+ "evidence_completeness": {
+  "missing_fields": [],
+  "present_fields": 21,
+  "required_fields": 21
+ },
+ "first_process": {
+  "executed_steps": [
+   "S1_input_digest",
+   "S2_goal_binding",
+   "S3_artifact_write"
+  ],
+  "guard_stop_reason": "MAX_TOOL_CALLS",
+  "state_after_stop": "BLOCKED",
+  "tool_calls": 3
+ },
+ "fresh_process": {
+  "executed_steps": [
+   "S4_artifact_verify",
+   "S5_finalize"
+  ],
+  "input_bytes": 4706,
+  "previously_completed_steps": [
+   "S1_input_digest",
+   "S2_goal_binding",
+   "S3_artifact_write"
+  ],
+  "re_executed_steps": [],
+  "read_from_chat": false,
+  "recomputed_input_digest_matches": true,
+  "rediscovery_steps": 0
+ },
+ "measurements": {
+  "evidence_completeness_ratio": 1.0,
+  "rediscovery_steps": 0,
+  "redundant_step_executions": 0,
+  "resume_success": true,
+  "steps_completed_after_resume": 2,
+  "steps_completed_before_interruption": 3
+ },
+ "pattern": "persistent_resumable_evidence",
+ "result": "PASS",
+ "runtime_events": {
+  "count": 6,
+  "summary": {
+   "deterministic_gate_results": [],
+   "event_count": 6,
+   "experts_invoked": [
+    "exp-27-proof-fresh-executor",
+    "exp-27-proof-parent"
+   ],
+   "handoff_count": 0,
+   "handoff_refs": [],
+   "outcome": "DONE"
+  }
+ }
+}

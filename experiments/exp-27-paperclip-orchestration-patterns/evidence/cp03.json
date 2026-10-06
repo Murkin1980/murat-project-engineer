@@ -1,0 +1,98 @@
+{
+ "checks": {
+  "conflict_is_explicit_and_inspectable": true,
+  "exactly_one_winner_per_race": true,
+  "expired_lease_reclaimed_with_reason": true,
+  "generation_history_preserved": true,
+  "no_duplicate_execution": true,
+  "only_owner_can_release": true,
+  "single_active_owner_record": true,
+  "stale_owner_cannot_release": true,
+  "terminal_state_visible_after_release": true
+ },
+ "measurements": {
+  "concurrent_executors_per_round": 8,
+  "daemons_or_services_required": 0,
+  "databases_required": 0,
+  "duplicate_executions": 0,
+  "lease_conflicts": 21,
+  "rounds": 3
+ },
+ "pattern": "atomic_task_lease",
+ "race_rounds": [
+  {
+   "acquired": 1,
+   "active_record_owner_matches_winner": true,
+   "conflict_report_has_owner_and_expiry": true,
+   "conflicts": 7,
+   "owners": 8,
+   "release_status": "LEASE_RELEASED",
+   "round": 0,
+   "terminal_record_visible": {
+    "generation": 1,
+    "owner": "executor-0-0",
+    "release_reason": "TERMINAL_DONE",
+    "released_at": "2026-10-06T19:04:37Z",
+    "status": "RELEASED"
+   },
+   "winner": "executor-0-0",
+   "work_markers": 1
+  },
+  {
+   "acquired": 1,
+   "active_record_owner_matches_winner": true,
+   "conflict_report_has_owner_and_expiry": true,
+   "conflicts": 7,
+   "owners": 8,
+   "release_status": "LEASE_RELEASED",
+   "round": 1,
+   "terminal_record_visible": {
+    "generation": 1,
+    "owner": "executor-1-0",
+    "release_reason": "TERMINAL_DONE",
+    "released_at": "2026-10-06T19:04:38Z",
+    "status": "RELEASED"
+   },
+   "winner": "executor-1-0",
+   "work_markers": 1
+  },
+  {
+   "acquired": 1,
+   "active_record_owner_matches_winner": true,
+   "conflict_report_has_owner_and_expiry": true,
+   "conflicts": 7,
+   "owners": 8,
+   "release_status": "LEASE_RELEASED",
+   "round": 2,
+   "terminal_record_visible": {
+    "generation": 1,
+    "owner": "executor-2-0",
+    "release_reason": "TERMINAL_DONE",
+    "released_at": "2026-10-06T19:04:38Z",
+    "status": "RELEASED"
+   },
+   "winner": "executor-2-0",
+   "work_markers": 1
+  }
+ ],
+ "result": "PASS",
+ "stale_recovery": {
+  "acquire_after_release": {
+   "generation": 3,
+   "previous_owner": "recovery-executor",
+   "status": "LEASE_ACQUIRED"
+  },
+  "reclaim": {
+   "generation": 2,
+   "reason": "LEASE_EXPIRED",
+   "reclaimed_from": "stale-executor",
+   "status": "LEASE_ACQUIRED_RECLAIMED"
+  },
+  "recovery_release": "LEASE_RELEASED",
+  "stale_claim": "LEASE_ACQUIRED",
+  "stale_release": {
+   "reason": "LEASE_OWNED_BY_OTHER",
+   "status": "LEASE_RELEASE_DENIED"
+  }
+ }
+}
