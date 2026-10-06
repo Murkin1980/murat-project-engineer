@@ -456,6 +456,24 @@
       ],
       "pr_or_issue_links": [],
       "updated_at": "2026-10-06"
+    },
+    {
+      "experiment_id": "EXP-24",
+      "name": "HyperFrames PR → Video",
+      "owning_project": "Murat Project Engineer",
+      "status": "PLANNED",
+      "why": "Test whether HyperFrames can be reused as a bounded deterministic rendering component that converts a completed engineering PR into a concise 30–60 second evidence-backed video report without creating a parallel video platform.",
+      "date_added": "2026-10-06",
+      "next_action": "Arena executes one real completed Murat PR fixture through evidence extraction, narrow storyboard generation, HyperFrames composition, preview, and repeatable MP4 rendering, then returns PASS/PARTIAL/FAIL and an adoption recommendation.",
+      "result_summary": "Planned. Primary disposition EXPERIMENT. No new repository, persistent rendering service, database, queue, paid recurring API, automatic publishing, or source-of-truth change is authorized.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/exp-24-hyperframes-pr-video",
+      "evidence_links": [
+        "experiments/exp-24-hyperframes-pr-video/README.md",
+        "experiments/exp-24-hyperframes-pr-video/ARENA_TASK.md"
+      ],
+      "pr_or_issue_links": [],
+      "updated_at": "2026-10-06"
     }
   ]
 }
