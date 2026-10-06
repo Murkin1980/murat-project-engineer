@@ -1,0 +1,114 @@
+{
+  "note": "EXP-25 CP-03/CP-04 test data. Synthetic names, no live customer data, no production project.",
+  "dataset": "exp-25-test",
+  "actor": "exp-25-owner",
+  "now": "2026-10-06T09:00:00.000Z",
+  "contacts": [
+    {
+      "contact_id": "c-001",
+      "first_name": "Aigul",
+      "last_name": "Serikova",
+      "email": "Aigul@bek-mebel.test",
+      "company_name": "Bek Mebel"
+    },
+    {
+      "contact_id": "c-002",
+      "first_name": "Dmitri",
+      "last_name": "Volkov",
+      "email": "dmitri@grand-mebel.test",
+      "company_name": "Grand Mebel"
+    },
+    {
+      "contact_id": "c-003",
+      "first_name": "Saule",
+      "last_name": "Abenova",
+      "email": "saule@salamat.test",
+      "company_name": "Salamat Mebel"
+    }
+  ],
+  "deals": [
+    {
+      "deal_id": "d-001",
+      "name": "Kitchen set - Bek Mebel",
+      "contact_ids": ["c-001"],
+      "amount": 1450.0,
+      "stage": "opportunity",
+      "expected_closing_date": "2026-10-20"
+    },
+    {
+      "deal_id": "d-002",
+      "name": "Wardrobe - Grand Mebel",
+      "contact_ids": ["c-002"],
+      "amount": 980.0,
+      "stage": "proposal-sent",
+      "expected_closing_date": "2026-10-30"
+    },
+    {
+      "deal_id": "d-003",
+      "name": "Office fit-out - Salamat",
+      "contact_ids": ["c-003"],
+      "amount": 4200.0,
+      "stage": "won",
+      "expected_closing_date": "2026-09-15"
+    },
+    {
+      "deal_id": "d-004",
+      "name": "Shop counter - Bek Mebel",
+      "contact_ids": ["c-001"],
+      "amount": 610.0,
+      "stage": "lost",
+      "expected_closing_date": "2026-09-28"
+    }
+  ],
+  "tasks": [
+    {
+      "task_id": "t-001",
+      "text": "Send measurement follow-up",
+      "contact_id": "c-001",
+      "due_date": "2026-10-05T15:00:00Z",
+      "task_type": "follow-up"
+    },
+    {
+      "task_id": "t-002",
+      "text": "Call about proposal",
+      "contact_id": "c-002",
+      "due_date": "2026-10-06T16:00:00Z",
+      "task_type": "call"
+    },
+    {
+      "task_id": "t-003",
+      "text": "Confirm delivery slot",
+      "contact_id": "c-001",
+      "due_date": "2026-10-07T10:00:00Z",
+      "task_type": "email"
+    },
+    {
+      "task_id": "t-004",
+      "text": "Schedule site visit",
+      "contact_id": "c-003",
+      "due_date": "2026-10-09T09:00:00Z",
+      "task_type": "meeting"
+    },
+    {
+      "task_id": "t-005",
+      "text": "Renew contract discussion",
+      "contact_id": "c-002",
+      "due_date": "2026-10-20T12:00:00Z",
+      "task_type": "meeting"
+    },
+    {
+      "task_id": "t-006",
+      "text": "Send thank-you note",
+      "contact_id": "c-003",
+      "due_date": "2026-10-06T08:00:00Z",
+      "task_type": "thank-you"
+    }
+  ],
+  "completedTasks": [
+    {
+      "task_id": "t-006",
+      "done_at": "2026-10-06T08:20:00.000Z",
+      "note": "Marked done directly on the stored document during fixture setup, so the pending-task filter has a real negative case."
+    }
+  ]
+}
