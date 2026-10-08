@@ -1,0 +1,12 @@
+# EXP-24 media pipeline — machine-generated data and vendor artifacts.
+# Purpose: keep size statistics (GitHub "lines of code", reviews, diffs) from reading
+# generated JSON and the vendored lockfile as handwritten implementation.
+# Rule of record: SALAMAT_PROMO_ARENA_TASK.md § HARD CHANGE-SIZE BUDGET
+# (handwritten <= 1200 preferred · > 1500 warning · > 2500 hard stop; generated,
+# vendor, lockfiles, binaries and media are never counted as own code).
+# No file content is changed by these attributes.
+
+experiments/exp-24-hyperframes-pr-video/EDITORIAL_STORYBOARD.json        linguist-generated=true
+experiments/exp-24-hyperframes-pr-video/MEDIA_MANIFEST.json              linguist-generated=true
+experiments/exp-24-hyperframes-pr-video/promo-remotion/src/generated/timeline.json linguist-generated=true
+experiments/exp-24-hyperframes-pr-video/promo-remotion/package-lock.json linguist-vendored=true linguist-generated=true

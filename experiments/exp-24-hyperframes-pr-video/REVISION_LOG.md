@@ -303,3 +303,31 @@ last audio-bearing commit and were never committed.
 rule), no audio regenerated, no mix rebuilt, no manifests changed beyond recording the recovery.
 **Impact if only these two are restored:** the mix can be rebuilt immediately — expected 69.616 s
 (69.642 − 10.606 + 10.501 − 3.709 + 3.788).
+
+## REV-009 — Owner decision after the LOC audit: R5 applied, pilot scoped to three projects
+
+**Type:** owner decision (EXTEND_EXISTING) + governance action
+**Owner verdict on the audit:** accepted — handwritten LOC = 1,183, budget respected.
+
+**Decisions and how they were executed:**
+
+| # | Owner decision | Action taken |
+| --- | --- | --- |
+| 1 | Do not perform R1–R4; keep existing tools and artifacts | no deletion, no rewrite, no merge — nothing removed |
+| 2 | R5 allowed: minimal `.gitattributes` for generated JSON and the vendor lockfile; do not change file contents | added repo-root `.gitattributes` (12 lines, config only); verified with `git check-attr`: the three generated JSONs and `package-lock.json` resolve `linguist-generated=true` / `linguist-vendored`; `Promo.tsx`, tools, `VOICE_MANIFEST.json` stay unmarked and remain counted as code |
+| 3 | Keep `loc_report.py` as the mandatory budget gate | tool kept unchanged; run again this turn (see the report) |
+| 4 | Future reports must show handwritten / generated / vendor / total diff separately | adopted; this report uses the four-way breakdown |
+| 5 | Return to CP-08 recovery: restore the two approved MP3s with SHA-256 verification, no regeneration | **partially blocked:** the two files are not attached yet; the seven other approved clips are restored and re-verified; **no regeneration performed** (explicitly forbidden) |
+| 6 | Continue the CP-07 owner-media pilot, max three real Salamat Mebel projects | pilot block added to `OWNER_MEDIA_SHORTLIST.json` v2 (3 project slots with the beats each covers, per-project ask, scenes outside the pilot); audit §6a records the scope; intake 0 of 3 |
+| 7 | Do not expand the architecture, do not create new services | no new source files, no new dependencies, no new services; the only new file is the `.gitattributes` config |
+
+**CP-08 recovery status (facts):** `scene1/2/3/4/5/7/8.mp3` present and re-hashed this turn —
+`bb1c226b`, `64837c13`, `b877ebce`, `96f4ca4f`, `053a1a7a`, `61a2b3d8`, `b56603cf` (7/7 MATCH).
+`scene6-brand-fixed.mp3` (`70e20d0e…`) and `scene9-brand-fixed.mp3` (`9a622b99…`) are still absent; they can only
+return as the owner's own attachment. The mix rebuild stays deferred until they arrive.
+
+**Instagram availability re-checked 2026-10-08:** still blocked — TLS handshake reset by the egress policy on
+`www.instagram.com`, `instagram.com`, `i.instagram.com`, `graph.instagram.com` (HTTP 000) while DNS resolves to
+`2a03:2880:f36c:22:face:b00c:0:4420`. No scraping, no bypass, nothing inspected.
+
+**Still gated:** final render and publication (owner STOP GATE), CP-10…CP-12, any further architecture work.

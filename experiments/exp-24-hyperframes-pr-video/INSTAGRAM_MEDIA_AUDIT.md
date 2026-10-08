@@ -86,11 +86,31 @@ as blocked, not silently worked around.
 - vertical (9:16) material is cropped to 16:9 — leave headroom, or supply horizontal if possible;
 - no generative replacement for missing furniture/production/interior shots.
 
+## 6a. Pilot scope (owner decision, 2026-10-08)
+
+The owner limited the CP-07 owner-media pilot to **three real Salamat Mebel projects**. The per-scene mapping in
+`OWNER_MEDIA_SHORTLIST.json` is unchanged, but the request to the owner is consolidated into three project
+slots — one project can cover several scenes:
+
+| Slot | Project type | Beats it would cover |
+| --- | --- | --- |
+| 1 | kitchen or kitchen-living room | open-interior, range-kitchen-storage, tactile-hero, materials-hardware |
+| 2 | wardrobe / built-in storage or TV zone | range-home-rooms, open-detail, install-adjust |
+| 3 | commercial / office, or a second finished interior | range-commercial, install-fitting, result-space |
+
+Per project: one slow walkthrough (or 2–3 stills per room type) of the finished space, plus 1–2 detail/macro
+moments (facade edge, handle, hinge, soft-close), optionally one installation or adjustment moment. Scenes
+outside the pilot stay Storyblocks-first or on neutral placeholders.
+
+**Current intake: 0 of 3 projects received.** No media has been attached to the conversation yet.
+
 ## 7. Status
 
 ```text
 INSTAGRAM MEDIA AUDIT: BLOCKED_OWNER_MEDIA_ACCESS (0 candidates, nothing inspected)
+RE-PROBE 2026-10-08: still blocked — TLS reset by egress policy on all four hosts (HTTP 000), DNS resolves
+PILOT SCOPE: max 3 real Salamat Mebel projects (consolidated request, see §6a) · intake 0 of 3
 DELIVERABLES: INSTAGRAM_MEDIA_AUDIT.md · OWNER_MEDIA_SHORTLIST.json · scene mapping inside both
-NEEDS ORIGINAL UPLOAD: 10 beats (see shortlist § needs_original_upload)
+SUBMISSION: chat attachment preferred (owner decision) — files land in the workspace, copied to owner-media/
 STOP GATE: AWAITING_OWNER_MEDIA_REVIEW — no render, no CP-10…CP-12, no publishing
 ```

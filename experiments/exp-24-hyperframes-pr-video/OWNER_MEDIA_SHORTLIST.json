@@ -1,10 +1,9 @@
 {
   "contract": "OWNER_MEDIA_SHORTLIST",
-  "version": 1,
+  "version": 2,
   "fixture": "Salamat Mebel 2-minute promo",
   "created": "2026-10-08",
   "decision": "EXTEND_EXISTING",
-
   "owner_media_source": {
     "provider": "OWNER_INSTAGRAM",
     "profile_url": "https://www.instagram.com/salamat_mebelkz/",
@@ -21,7 +20,6 @@
     "candidates": [],
     "candidates_note": "No post, Reel or image was inspected. This file deliberately contains no invented URLs, captions, counts or media ids — everything below is a request to the owner, not a claim about profile content."
   },
-
   "media_priority_in_force": {
     "finished_furniture_and_portfolio_scenes": [
       "1. owner original photo/video files (highest quality, preferred)",
@@ -35,170 +33,244 @@
     ],
     "hard_rule": "no generative substitution for missing furniture imagery, and no unrelated stock imagery presented as the owner's completed projects"
   },
-
   "scene_mapping": [
     {
-      "scene_id": "open-interior", "script_scene": 1, "script_timecode": "0:00-0:08",
-      "beat_duration_seconds": 5.0, "block": "A",
-      "owner_category": "kitchens", "owner_source_priority": 1,
-      "preferred_media_type": "video", "status": "NEEDS_ORIGINAL_UPLOAD",
+      "scene_id": "open-interior",
+      "script_scene": 1,
+      "script_timecode": "0:00-0:08",
+      "beat_duration_seconds": 5.0,
+      "block": "A",
+      "owner_category": "kitchens",
+      "owner_source_priority": 1,
+      "preferred_media_type": "video",
+      "status": "NEEDS_ORIGINAL_UPLOAD",
       "what_is_needed": "A finished premium kitchen, slow move or the longest calm segment available; enough material for a 5 s push-in.",
       "storyblocks_fallback": "premium modern kitchen interior slow dolly warm evening light",
       "note": "Also carries the allowlisted wordmark reveal, so the frame needs clean space in the lower third."
     },
     {
-      "scene_id": "open-detail", "script_scene": 1, "script_timecode": "0:00-0:08",
-      "beat_duration_seconds": 3.0, "block": "A",
-      "owner_category": "furniture details, facades and hardware", "owner_source_priority": 1,
-      "preferred_media_type": "video (macro if possible)", "status": "NEEDS_ORIGINAL_UPLOAD",
+      "scene_id": "open-detail",
+      "script_scene": 1,
+      "script_timecode": "0:00-0:08",
+      "beat_duration_seconds": 3.0,
+      "block": "A",
+      "owner_category": "furniture details, facades and hardware",
+      "owner_source_priority": 1,
+      "preferred_media_type": "video (macro if possible)",
+      "status": "NEEDS_ORIGINAL_UPLOAD",
       "what_is_needed": "Macro detail of a facade, edge or handle from the owner's own projects; 3 s of usable motion.",
       "storyblocks_fallback": "cabinet front material texture macro brass handle detail",
       "note": "Owner macro footage is the most valuable asset here — stock rarely matches the actual product range."
     },
     {
-      "scene_id": "task-measure", "script_scene": 2, "script_timecode": "0:08-0:22",
-      "beat_duration_seconds": 7.0, "block": "B",
-      "owner_category": "process (measurement)", "owner_source_priority": 3,
-      "preferred_media_type": "video", "status": "STORYBLOCKS_FIRST",
+      "scene_id": "task-measure",
+      "script_scene": 2,
+      "script_timecode": "0:08-0:22",
+      "beat_duration_seconds": 7.0,
+      "block": "B",
+      "owner_category": "process (measurement)",
+      "owner_source_priority": 3,
+      "preferred_media_type": "video",
+      "status": "STORYBLOCKS_FIRST",
       "what_is_needed": "Only if the owner has measurement footage; otherwise licensed stock.",
       "storyblocks_fallback": "carpenter measuring wall laser distance meter interior",
       "note": "Workshop/process beats stay Storyblocks-first per the task."
     },
     {
-      "scene_id": "task-habits", "script_scene": 2, "script_timecode": "0:08-0:22",
-      "beat_duration_seconds": 7.0, "block": "B",
-      "owner_category": "process (client consultation)", "owner_source_priority": 3,
-      "preferred_media_type": "video", "status": "STORYBLOCKS_FIRST",
+      "scene_id": "task-habits",
+      "script_scene": 2,
+      "script_timecode": "0:08-0:22",
+      "beat_duration_seconds": 7.0,
+      "block": "B",
+      "owner_category": "process (client consultation)",
+      "owner_source_priority": 3,
+      "preferred_media_type": "video",
+      "status": "STORYBLOCKS_FIRST",
       "what_is_needed": "Only if the owner has consultation footage without identifiable clients.",
       "storyblocks_fallback": "designer reviewing plans with client interior table",
       "note": "Privacy: avoid footage with identifiable customers."
     },
     {
-      "scene_id": "project-drawings", "script_scene": 3, "script_timecode": "0:22-0:36",
-      "beat_duration_seconds": 7.0, "block": "B",
-      "owner_category": "process (design/project)", "owner_source_priority": 3,
-      "preferred_media_type": "video", "status": "STORYBLOCKS_FIRST",
+      "scene_id": "project-drawings",
+      "script_scene": 3,
+      "script_timecode": "0:22-0:36",
+      "beat_duration_seconds": 7.0,
+      "block": "B",
+      "owner_category": "process (design/project)",
+      "owner_source_priority": 3,
+      "preferred_media_type": "video",
+      "status": "STORYBLOCKS_FIRST",
       "what_is_needed": "Only if the owner has drawing/design footage that does not reveal client data.",
       "storyblocks_fallback": "interior designer drawing furniture plan hands workshop"
     },
     {
-      "scene_id": "project-selection", "script_scene": 3, "script_timecode": "0:22-0:36",
-      "beat_duration_seconds": 7.0, "block": "B",
-      "owner_category": "material selection", "owner_source_priority": 2,
-      "preferred_media_type": "video", "status": "OWNER_MEDIA_OPTIONAL",
+      "scene_id": "project-selection",
+      "script_scene": 3,
+      "script_timecode": "0:22-0:36",
+      "beat_duration_seconds": 7.0,
+      "block": "B",
+      "owner_category": "material selection",
+      "owner_source_priority": 2,
+      "preferred_media_type": "video",
+      "status": "OWNER_MEDIA_OPTIONAL",
       "what_is_needed": "Owner samples/boards in motion would be stronger than stock; no supplier branding in frame.",
       "storyblocks_fallback": "material samples boards laminate veneer selection hands table"
     },
     {
-      "scene_id": "prod-cutting", "script_scene": 4, "script_timecode": "0:36-0:55",
-      "beat_duration_seconds": 6.0, "block": "C",
-      "owner_category": "production machinery / CNC / panel cutting", "owner_source_priority": 3,
-      "preferred_media_type": "video", "status": "STORYBLOCKS_FIRST",
+      "scene_id": "prod-cutting",
+      "script_scene": 4,
+      "script_timecode": "0:36-0:55",
+      "beat_duration_seconds": 6.0,
+      "block": "C",
+      "owner_category": "production machinery / CNC / panel cutting",
+      "owner_source_priority": 3,
+      "preferred_media_type": "video",
+      "status": "STORYBLOCKS_FIRST",
       "what_is_needed": "Owner workshop footage if available; otherwise licensed stock.",
       "storyblocks_fallback": "panel saw cutting laminated board furniture factory"
     },
     {
-      "scene_id": "prod-processing", "script_scene": 4, "script_timecode": "0:36-0:55",
-      "beat_duration_seconds": 6.0, "block": "C",
-      "owner_category": "production (edge banding / drilling)", "owner_source_priority": 3,
-      "preferred_media_type": "video", "status": "STORYBLOCKS_FIRST",
+      "scene_id": "prod-processing",
+      "script_scene": 4,
+      "script_timecode": "0:36-0:55",
+      "beat_duration_seconds": 6.0,
+      "block": "C",
+      "owner_category": "production (edge banding / drilling)",
+      "owner_source_priority": 3,
+      "preferred_media_type": "video",
+      "status": "STORYBLOCKS_FIRST",
       "what_is_needed": "Owner workshop footage if available.",
       "storyblocks_fallback": "edge banding machine processing panel furniture factory closeup"
     },
     {
-      "scene_id": "prod-assembly", "script_scene": 4, "script_timecode": "0:36-0:55",
-      "beat_duration_seconds": 7.0, "block": "C",
-      "owner_category": "production (assembly)", "owner_source_priority": 2,
-      "preferred_media_type": "video", "status": "OWNER_MEDIA_OPTIONAL",
+      "scene_id": "prod-assembly",
+      "script_scene": 4,
+      "script_timecode": "0:36-0:55",
+      "beat_duration_seconds": 7.0,
+      "block": "C",
+      "owner_category": "production (assembly)",
+      "owner_source_priority": 2,
+      "preferred_media_type": "video",
+      "status": "OWNER_MEDIA_OPTIONAL",
       "what_is_needed": "Owner assembly footage is preferable — it shows the real workshop.",
       "storyblocks_fallback": "cabinet assembly workshop clamps furniture carcase"
     },
     {
-      "scene_id": "tactile-hero", "script_scene": 5, "script_timecode": "0:55-1:08",
-      "beat_duration_seconds": 7.0, "block": "C",
-      "owner_category": "furniture details (countertop, hand on surface)", "owner_source_priority": 1,
-      "preferred_media_type": "video", "status": "NEEDS_ORIGINAL_UPLOAD",
+      "scene_id": "tactile-hero",
+      "script_scene": 5,
+      "script_timecode": "0:55-1:08",
+      "beat_duration_seconds": 7.0,
+      "block": "C",
+      "owner_category": "furniture details (countertop, hand on surface)",
+      "owner_source_priority": 1,
+      "preferred_media_type": "video",
+      "status": "NEEDS_ORIGINAL_UPLOAD",
       "what_is_needed": "Owner-directed hero shot: slow glide along a real countertop with a hand crossing the surface so texture and finish read. If the owner has this on their own project video, it beats stock.",
       "storyblocks_fallback": "hand sliding across kitchen countertop surface texture slow glide",
       "note": "Owner note requires real footage; generated media is forbidden for this beat."
     },
     {
-      "scene_id": "materials-hardware", "script_scene": 5, "script_timecode": "0:55-1:08",
-      "beat_duration_seconds": 6.0, "block": "C",
-      "owner_category": "furniture details, facades and hardware", "owner_source_priority": 1,
-      "preferred_media_type": "video", "status": "NEEDS_ORIGINAL_UPLOAD",
+      "scene_id": "materials-hardware",
+      "script_scene": 5,
+      "script_timecode": "0:55-1:08",
+      "beat_duration_seconds": 6.0,
+      "block": "C",
+      "owner_category": "furniture details, facades and hardware",
+      "owner_source_priority": 1,
+      "preferred_media_type": "video",
+      "status": "NEEDS_ORIGINAL_UPLOAD",
       "what_is_needed": "A smooth closing movement, hinges/runners, edge and facade details from owner projects.",
       "storyblocks_fallback": "soft close drawer runner hinge mechanism closeup slow motion",
       "note": "No hardware brand names may be legible."
     },
     {
-      "scene_id": "range-kitchen-storage", "script_scene": 6, "script_timecode": "1:08-1:27",
-      "beat_duration_seconds": 6.0, "block": "D",
-      "owner_category": "kitchens + wardrobes and built-in storage", "owner_source_priority": 1,
-      "preferred_media_type": "video", "status": "NEEDS_ORIGINAL_UPLOAD",
+      "scene_id": "range-kitchen-storage",
+      "script_scene": 6,
+      "script_timecode": "1:08-1:27",
+      "beat_duration_seconds": 6.0,
+      "block": "D",
+      "owner_category": "kitchens + wardrobes and built-in storage",
+      "owner_source_priority": 1,
+      "preferred_media_type": "video",
+      "status": "NEEDS_ORIGINAL_UPLOAD",
       "what_is_needed": "Two segments (~3 s each): a finished kitchen interior, then built-in storage or a walk-in system opening.",
       "storyblocks_fallback": "finished modern kitchen interior slow pan cabinets",
       "note": "Highest-value owner beat: these are the projects the owner wants to sell."
     },
     {
-      "scene_id": "range-home-rooms", "script_scene": 6, "script_timecode": "1:08-1:27",
-      "beat_duration_seconds": 6.0, "block": "D",
-      "owner_category": "children's furniture / bathroom furniture / TV units", "owner_source_priority": 1,
-      "preferred_media_type": "video (3 short clips, ~2 s each)", "status": "NEEDS_ORIGINAL_UPLOAD",
+      "scene_id": "range-home-rooms",
+      "script_scene": 6,
+      "script_timecode": "1:08-1:27",
+      "beat_duration_seconds": 6.0,
+      "block": "D",
+      "owner_category": "children's furniture / bathroom furniture / TV units",
+      "owner_source_priority": 1,
+      "preferred_media_type": "video (3 short clips, ~2 s each)",
+      "status": "NEEDS_ORIGINAL_UPLOAD",
       "what_is_needed": "One clip per room type, matched camera language; if only stills exist, say so and they will be motion-treated like the rest.",
       "storyblocks_fallback": "children room built in furniture interior daylight",
       "note": "If a category has no owner material, that category is dropped from the film rather than filled with unrelated stock."
     },
     {
-      "scene_id": "range-commercial", "script_scene": 6, "script_timecode": "1:08-1:27",
-      "beat_duration_seconds": 7.0, "block": "D",
-      "owner_category": "commercial and office projects", "owner_source_priority": 1,
-      "preferred_media_type": "video", "status": "NEEDS_ORIGINAL_UPLOAD",
+      "scene_id": "range-commercial",
+      "script_scene": 6,
+      "script_timecode": "1:08-1:27",
+      "beat_duration_seconds": 7.0,
+      "block": "D",
+      "owner_category": "commercial and office projects",
+      "owner_source_priority": 1,
+      "preferred_media_type": "video",
+      "status": "NEEDS_ORIGINAL_UPLOAD",
       "what_is_needed": "Reception/office/retail project footage; no readable client signage or logos.",
       "storyblocks_fallback": "reception desk millwork modern office interior",
       "note": "Client consent matters: remove recognisable branding before use."
     },
     {
-      "scene_id": "install-fitting", "script_scene": 7, "script_timecode": "1:27-1:42",
-      "beat_duration_seconds": 8.0, "block": "E",
-      "owner_category": "installation", "owner_source_priority": 1,
-      "preferred_media_type": "video", "status": "NEEDS_ORIGINAL_UPLOAD",
+      "scene_id": "install-fitting",
+      "script_scene": 7,
+      "script_timecode": "1:27-1:42",
+      "beat_duration_seconds": 8.0,
+      "block": "E",
+      "owner_category": "installation",
+      "owner_source_priority": 1,
+      "preferred_media_type": "video",
+      "status": "NEEDS_ORIGINAL_UPLOAD",
       "what_is_needed": "Installers levelling/aligning cabinetry on site; privacy-safe framing (no identifiable client home details).",
       "storyblocks_fallback": "furniture installers fitting kitchen cabinets interior level",
       "note": "Home privacy: prefer tight shots on furniture and hands."
     },
     {
-      "scene_id": "install-adjust", "script_scene": 7, "script_timecode": "1:27-1:42",
-      "beat_duration_seconds": 7.0, "block": "E",
-      "owner_category": "installation (adjustment, details)", "owner_source_priority": 1,
-      "preferred_media_type": "video", "status": "NEEDS_ORIGINAL_UPLOAD",
+      "scene_id": "install-adjust",
+      "script_scene": 7,
+      "script_timecode": "1:27-1:42",
+      "beat_duration_seconds": 7.0,
+      "block": "E",
+      "owner_category": "installation (adjustment, details)",
+      "owner_source_priority": 1,
+      "preferred_media_type": "video",
+      "status": "NEEDS_ORIGINAL_UPLOAD",
       "what_is_needed": "Hinge/door adjustment detail, final alignment check.",
       "storyblocks_fallback": "adjusting cabinet hinge door alignment closeup"
     },
     {
-      "scene_id": "result-space", "script_scene": 8, "script_timecode": "1:42-1:53",
-      "beat_duration_seconds": 11.0, "block": "E",
-      "owner_category": "finished interiors", "owner_source_priority": 1,
-      "preferred_media_type": "video", "status": "NEEDS_ORIGINAL_UPLOAD",
+      "scene_id": "result-space",
+      "script_scene": 8,
+      "script_timecode": "1:42-1:53",
+      "beat_duration_seconds": 11.0,
+      "block": "E",
+      "owner_category": "finished interiors",
+      "owner_source_priority": 1,
+      "preferred_media_type": "video",
+      "status": "NEEDS_ORIGINAL_UPLOAD",
       "what_is_needed": "The film's longest hold (11 s): the best finished interior the owner has, with calm light and real interaction (a cabinet opening).",
       "storyblocks_fallback": "finished interior kitchen built in furniture wide daylight",
       "note": "This beat decides whether the film feels like the owner's portfolio or like generic advertising."
     }
   ],
-
   "needs_original_upload": [
-    "open-interior — kitchens (video, >=5 s)",
-    "open-detail — facade/edge/handle macro (video, >=3 s)",
-    "tactile-hero — countertop with hand crossing the surface (video, >=7 s, owner-directed shot)",
-    "materials-hardware — hinge/runner/close movement detail (video, >=6 s)",
-    "range-kitchen-storage — kitchen + built-in storage/walk-in (2 x ~3 s)",
-    "range-home-rooms — children's room / bathroom / TV zone (3 x ~2 s)",
-    "range-commercial — reception, office or retail project (video, >=7 s)",
-    "install-fitting — installation on site (video, >=8 s)",
-    "install-adjust — adjustment detail (video, >=7 s)",
-    "result-space — best finished interior (video, >=11 s)"
+    "PILOT — 3 project slots (see pilot.slots): each project's finished-space walkthrough + detail moments; one project can cover several scenes",
+    "outside the pilot (only if the pilot proves the intake): open-interior, open-detail, tactile-hero, materials-hardware, range-home-rooms, install-fitting, install-adjust, result-space"
   ],
-
   "submission_paths": [
     {
       "path": "attach_to_chat",
@@ -219,7 +291,6 @@
       "why": "only usable if the host is on the sandbox egress allowlist; Drive/Dropbox/Instagram links are not reachable from here"
     }
   ],
-
   "requested_file_conventions": {
     "naming": "<scene-id>__<category>__<short-description>.<ext> — e.g. range-kitchen-storage__kitchen__almaty-project-1.mp4",
     "requirements": [
@@ -232,7 +303,6 @@
     ],
     "provenance": "for every file, record the source post/Reel URL if it exists; the manifest keeps source post/reel URL, media type, category, target scene, availability and review status for each asset"
   },
-
   "licensing_and_rights_notes": [
     "Owner-supplied files: the owner grants usage for the Salamat Mebel promo; confirm footage rights for commercial clients' premises before publication.",
     "Instagram Reels downloaded from the owner profile: confirm that each clip is the owner's own work and that any music in the source is NOT carried into the film (source audio is muted in the composition; the music bed is licensed separately).",
@@ -240,14 +310,64 @@
     "Storyblocks remains the licensed fallback and stays the primary source for workshop/process beats.",
     "No generative substitution for furniture, interiors, workers, installation or the tactile countertop shot."
   ],
-
   "review": {
     "status": "AWAITING_OWNER_MEDIA_REVIEW",
     "what_to_review": [
-      "the requested-media list and the scene mapping above",
-      "whether any listed category should be dropped instead of sourced",
-      "the submission path you prefer"
+      "the 3 pilot project types and the beats each would cover (pilot.slots)",
+      "whether any category should be dropped instead of sourced",
+      "the submission path (chat attachment preferred)"
     ],
-    "blocked_until_review": ["MEDIA_MANIFEST resolution", "CP-10 mobile QA", "CP-11 revisions", "CP-12 final render"]
+    "blocked_until_review": [
+      "MEDIA_MANIFEST resolution",
+      "CP-10 mobile QA",
+      "CP-11 revisions",
+      "CP-12 final render"
+    ]
+  },
+  "pilot": {
+    "decided": "2026-10-08",
+    "limit": 3,
+    "unit": "real Salamat Mebel project",
+    "rationale": "the owner scoped the CP-07 owner-media pilot to three real projects: validate intake, mapping and treatment on a small truthful subset before requesting the whole portfolio",
+    "slots": [
+      {
+        "slot": 1,
+        "project_type": "kitchen or kitchen-living room",
+        "covers_beats": [
+          "open-interior",
+          "range-kitchen-storage",
+          "tactile-hero",
+          "materials-hardware"
+        ],
+        "why": "the film opens on a kitchen; the owner-directed tactile countertop shot lives here"
+      },
+      {
+        "slot": 2,
+        "project_type": "wardrobe / built-in storage or TV zone",
+        "covers_beats": [
+          "range-home-rooms",
+          "open-detail",
+          "install-adjust"
+        ],
+        "why": "storage craft, facade and hinge detail"
+      },
+      {
+        "slot": 3,
+        "project_type": "commercial / office, or a second finished interior",
+        "covers_beats": [
+          "range-commercial",
+          "install-fitting",
+          "result-space"
+        ],
+        "why": "covers the business half of the message and the film's longest hold"
+      }
+    ],
+    "per_project_ask": [
+      "one slow walkthrough (or 2-3 stills per room type) of the finished project",
+      "1-2 detail/macro moments: facade edge, handle, hinge, soft-close",
+      "optional: one installation or adjustment moment"
+    ],
+    "scenes_outside_the_pilot": "stay Storyblocks-first (workshop beats) or neutral placeholder until the pilot ends; no unrelated stock is presented as the owner's project",
+    "status": "AWAITING_OWNER_MEDIA"
   }
 }
