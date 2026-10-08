@@ -87,3 +87,24 @@ If an implementation materially conflicts with `docs/HUMAN_VALUE_DELIVERY_PRINCI
 ## Scope
 
 These instructions apply to human contributors and coding agents, including Arena, Codex, Claude Code, and other automated coding systems operating on this repository.
+
+
+## Chat handoff format for Arena / Codex / coding-agent tasks
+
+When the owner asks for instructions for Arena, Codex, Claude Code, or another coding agent:
+
+1. Put the **complete authoritative instruction** in the relevant project repository, experiment directory, checkpoint file, or task file.
+2. In chat, provide only a **short handoff block intended for copy/paste**.
+3. The chat handoff block must include at minimum:
+   - repository;
+   - branch, when applicable;
+   - exact path to the full instruction;
+   - concise objective;
+   - starting checkpoint/action;
+   - critical stop/deep-change boundary when relevant.
+4. Format the short handoff as a fenced code block so it can be copied directly.
+5. Do not paste the full repository instruction into chat unless the owner explicitly asks for the full text.
+6. If the repository instruction has not yet been created or updated, do that first; then return the short copyable handoff.
+7. This rule applies even when the full instruction was just written during the same conversation.
+
+The repository version is authoritative; the chat block is only a compact launch pointer.
