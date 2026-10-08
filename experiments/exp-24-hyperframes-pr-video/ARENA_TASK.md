@@ -123,3 +123,82 @@ If the minimal CLI itself requires disproportionate engineering or unstable infr
 
 STOP after the terminal result is recorded.
 No production integration.
+
+
+---
+
+# Phase 2 Arena Task — agentic text → film
+
+Owner authorization: 2026-10-08  
+Disposition: **MERGE into EXP-24**  
+Phase 1 result remains historical: **PARTIAL / ADOPT_WITH_CHANGES**.
+
+## Objective
+
+Run CP-06…CP-12 from README.md. The critical path is no longer HyperFrames-specific.
+
+Preferred baseline:
+
+```text
+bounded source
+→ editorial storyboard JSON
+→ media manifest
+→ voice
+→ Remotion preview
+→ 360 px mobile QA
+→ natural-language revision
+→ final render
+```
+
+HyperFrames is optional and must not block Phase 2.
+
+## Constraints
+
+- No new repo.
+- No persistent service, DB, queue or control plane.
+- Do not rebuild a stock library, TTS platform or editor.
+- Use provider adapters; do not hard-wire Storyblocks/ElevenLabs into the core contract.
+- Keep licensed-media provenance.
+- Preserve existing Phase 1 files/evidence.
+- Do not auto-publish.
+- Do not change AI-serial canon.
+- Stop at any deep-change boundary.
+
+## CP-06
+Freeze one source and generate `EDITORIAL_STORYBOARD.json`.
+
+## CP-07
+Generate `MEDIA_MANIFEST.json` with scene-to-asset mapping and provenance. Test assets/local assets are acceptable if provider authorization is unavailable.
+
+## CP-08
+Generate narration through a `VoiceProvider` adapter and preserve reproducibility metadata.
+
+## CP-09
+Create the smallest Remotion composition that consumes the frozen storyboard/media/voice contracts. Render a preview.
+
+## CP-10
+Run mobile acceptance at 360 px effective width. Preserve machine-readable checks plus representative frame evidence.
+
+## CP-11
+Apply at least three natural-language revision requests and prove minimal-diff behavior: approved voice/media should remain unchanged unless the request requires changing them.
+
+## CP-12
+Render the accepted final version. Publishing is evidence-only/planned unless separately authorized by the owner.
+
+## Mandatory terminal report
+
+Update RESULTS.md with a distinct **Phase 2 Result** section:
+- RESULT
+- ADOPTION
+- source fixture
+- provider/adapters used
+- CP-06…CP-12 status
+- mobile QA
+- revision commands and resulting diffs
+- render evidence
+- cost/credits if observable
+- blockers
+- changed files
+- next action
+
+Do not overwrite the Phase 1 terminal record.
