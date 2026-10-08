@@ -1,580 +1,469 @@
 {
-  "version": 1,
-  "generatedAt": "2026-10-08T04:31:48+00:00",
+  "version": 4,
+  "generatedAt": "2026-10-08T04:40:02+00:00",
   "fps": 30,
   "width": 1920,
   "height": 1080,
-  "totalSeconds": 121.0,
-  "totalFrames": 3630,
+  "totalSeconds": 120.0,
+  "totalFrames": 3600,
   "audioMix": null,
   "musicGainDb": -21.0,
-  "sourceContracts": {
-    "storyboard": "EDITORIAL_STORYBOARD.json",
-    "media": "MEDIA_MANIFEST.json",
-    "voice": null,
-    "music": null
-  },
   "scenes": [
     {
-      "id": "hook-reveal",
+      "id": "open-interior",
       "order": 1,
-      "block": "A",
-      "durationSeconds": 6.0,
-      "title": "SALAMAT MEBEL",
-      "subtitle": null,
-      "label": null,
-      "captionLines": [
-        "Salamat Mebel. Мебель, которую создают под",
-        "ваше пространство."
-      ],
-      "narration": "Salamat Mebel. Мебель, которую создают под ваше пространство.",
-      "audio": null,
-      "audioOffset": null,
-      "motion": "drift-right",
-      "asset": {
-        "file": "assets/img/01-hook-kitchen.jpg",
-        "kind": "GENERATIVE",
-        "provider": "arena-generate-image",
-        "providerKind": "generative_fallback",
-        "status": "PLANNED",
-        "focalPoint": [
-          0.5,
-          0.5
-        ]
-      },
-      "brand": false,
-      "durationSource": "storyboard intent (6s); no voice yet",
-      "startSeconds": 0.0,
+      "scriptScene": 1,
+      "scriptTimecode": "0:00–0:08",
       "startFrame": 0,
-      "durationFrames": 180
-    },
-    {
-      "id": "hook-claim",
-      "order": 2,
-      "block": "A",
-      "durationSeconds": 5.0,
-      "title": "Корпусная мебель на заказ",
-      "subtitle": "от замера до установки",
+      "durationFrames": 150,
+      "narrationPart": "Дом становится по-настоящему вашим тогда,",
+      "captionLines": [
+        "Дом становится по-настоящему вашим тогда,"
+      ],
+      "title": "SALAMAT MEBEL",
+      "subtitle": "Мебель, созданная под ваше пространство",
       "label": null,
-      "captionLines": [
-        "Корпусная мебель на заказ в Алматы и",
-        "Алматинской области."
-      ],
-      "narration": "Корпусная мебель на заказ в Алматы и Алматинской области.",
+      "motion": "push-in",
+      "ownerDirected": false,
       "audio": null,
-      "audioOffset": null,
-      "motion": "drift-left",
+      "durationSource": "script timing 5.0s; voice not generated yet",
       "asset": {
-        "file": "assets/img/02-hook-wide-interior.jpg",
-        "kind": "GENERATIVE",
-        "provider": "arena-generate-image",
-        "providerKind": "generative_fallback",
-        "status": "PLANNED",
-        "focalPoint": [
-          0.5,
-          0.5
-        ]
-      },
-      "brand": false,
-      "durationSource": "storyboard intent (5s); no voice yet",
-      "startSeconds": 6.0,
-      "startFrame": 180,
-      "durationFrames": 150
+        "file": null,
+        "query": "premium modern kitchen interior slow dolly warm evening light",
+        "status": "BLOCKED_PROVIDER",
+        "provider": "storyblocks"
+      }
     },
     {
-      "id": "what-process",
+      "id": "open-detail",
+      "order": 2,
+      "scriptScene": 1,
+      "scriptTimecode": "0:00–0:08",
+      "startFrame": 150,
+      "durationFrames": 90,
+      "narrationPart": "когда каждая вещь находится на своём месте.",
+      "captionLines": [
+        "когда каждая вещь находится на своём месте."
+      ],
+      "title": null,
+      "subtitle": null,
+      "label": null,
+      "motion": "push-in",
+      "ownerDirected": false,
+      "audio": null,
+      "durationSource": "script timing 3.0s; voice not generated yet",
+      "asset": {
+        "file": null,
+        "query": "cabinet front material texture macro brass handle detail",
+        "status": "BLOCKED_PROVIDER",
+        "provider": "storyblocks"
+      }
+    },
+    {
+      "id": "task-measure",
       "order": 3,
-      "block": "B",
-      "durationSeconds": 8.0,
-      "title": "Замер · проект · производство · установка",
-      "subtitle": null,
-      "label": "01 · Процесс",
+      "scriptScene": 2,
+      "scriptTimecode": "0:08–0:22",
+      "startFrame": 240,
+      "durationFrames": 210,
+      "narrationPart": "Поэтому мы не просто изготавливаем мебель.",
       "captionLines": [
-        "Один подрядчик на весь путь: замер, проект,",
-        "производство и установка."
+        "Поэтому мы не просто изготавливаем мебель."
       ],
-      "narration": "Один подрядчик на весь путь: замер, проект, производство и установка.",
-      "audio": null,
-      "audioOffset": null,
-      "motion": "push-out",
-      "asset": {
-        "file": "assets/img/03-process-measure.jpg",
-        "kind": "GENERATIVE",
-        "provider": "arena-generate-image",
-        "providerKind": "generative_fallback",
-        "status": "PLANNED",
-        "focalPoint": [
-          0.5,
-          0.5
-        ]
-      },
-      "brand": false,
-      "durationSource": "storyboard intent (8s); no voice yet",
-      "startSeconds": 11.0,
-      "startFrame": 330,
-      "durationFrames": 240
-    },
-    {
-      "id": "what-measure",
-      "order": 4,
-      "block": "B",
-      "durationSeconds": 9.0,
-      "title": "Проект под вашу планировку",
+      "title": "Замер → проект → производство → монтаж",
       "subtitle": null,
-      "label": "02 · Задачи и планировка",
-      "captionLines": [
-        "Начинаем с задачи и планировки: где будет",
-        "удобно готовить, хранить и отдыхать."
-      ],
-      "narration": "Начинаем с задачи и планировки: где будет удобно готовить, хранить и отдыхать.",
-      "audio": null,
-      "audioOffset": null,
-      "motion": "push-in",
-      "asset": {
-        "file": "assets/img/04-measure-consult.jpg",
-        "kind": "GENERATIVE",
-        "provider": "arena-generate-image",
-        "providerKind": "generative_fallback",
-        "status": "PLANNED",
-        "focalPoint": [
-          0.5,
-          0.5
-        ]
-      },
-      "brand": false,
-      "durationSource": "storyboard intent (9s); no voice yet",
-      "startSeconds": 19.0,
-      "startFrame": 570,
-      "durationFrames": 270
-    },
-    {
-      "id": "what-materials",
-      "order": 5,
-      "block": "B",
-      "durationSeconds": 8.0,
-      "title": "Материалы и фурнитура",
-      "subtitle": null,
-      "label": "03 · Выбор",
-      "captionLines": [
-        "Материалы и фурнитуру выбираем вместе — под",
-        "задачу и стиль интерьера."
-      ],
-      "narration": "Материалы и фурнитуру выбираем вместе — под задачу и стиль интерьера.",
-      "audio": null,
-      "audioOffset": null,
-      "motion": "drift-right",
-      "asset": {
-        "file": "assets/img/05-materials-samples.jpg",
-        "kind": "GENERATIVE",
-        "provider": "arena-generate-image",
-        "providerKind": "generative_fallback",
-        "status": "PLANNED",
-        "focalPoint": [
-          0.5,
-          0.5
-        ]
-      },
-      "brand": false,
-      "durationSource": "storyboard intent (8s); no voice yet",
-      "startSeconds": 28.0,
-      "startFrame": 840,
-      "durationFrames": 240
-    },
-    {
-      "id": "craft-material",
-      "order": 6,
-      "block": "C",
-      "durationSeconds": 7.0,
-      "title": "Производство",
-      "subtitle": null,
-      "label": "04 · Материалы",
-      "captionLines": [
-        "Основа проекта — качественные материалы и",
-        "надёжная фурнитура."
-      ],
-      "narration": "Основа проекта — качественные материалы и надёжная фурнитура.",
-      "audio": null,
-      "audioOffset": null,
-      "motion": "push-in",
-      "asset": {
-        "file": "assets/img/06-craft-panels.jpg",
-        "kind": "GENERATIVE",
-        "provider": "arena-generate-image",
-        "providerKind": "generative_fallback",
-        "status": "PLANNED",
-        "focalPoint": [
-          0.5,
-          0.5
-        ]
-      },
-      "brand": false,
-      "durationSource": "storyboard intent (7s); no voice yet",
-      "startSeconds": 36.0,
-      "startFrame": 1080,
-      "durationFrames": 210
-    },
-    {
-      "id": "craft-cnc",
-      "order": 7,
-      "block": "C",
-      "durationSeconds": 7.0,
-      "title": "Раскрой и ЧПУ",
-      "subtitle": null,
-      "label": "05 · Точность по проекту",
-      "captionLines": [
-        "Раскрой и ЧПУ: детали делают на станках, по",
-        "проекту."
-      ],
-      "narration": "Раскрой и ЧПУ: детали делают на станках, по проекту.",
-      "audio": null,
-      "audioOffset": null,
-      "motion": "drift-right",
-      "asset": {
-        "file": "assets/img/07-craft-cnc.jpg",
-        "kind": "GENERATIVE",
-        "provider": "arena-generate-image",
-        "providerKind": "generative_fallback",
-        "status": "PLANNED",
-        "focalPoint": [
-          0.5,
-          0.5
-        ]
-      },
-      "brand": false,
-      "durationSource": "storyboard intent (7s); no voice yet",
-      "startSeconds": 43.0,
-      "startFrame": 1290,
-      "durationFrames": 210
-    },
-    {
-      "id": "craft-edge",
-      "order": 8,
-      "block": "C",
-      "durationSeconds": 7.0,
-      "title": "Кромка и обработка",
-      "subtitle": null,
-      "label": "06 · Финиш деталей",
-      "captionLines": [
-        "Кромку обрабатывают на производстве — торцы",
-        "ровные, стыки аккуратные."
-      ],
-      "narration": "Кромку обрабатывают на производстве — торцы ровные, стыки аккуратные.",
-      "audio": null,
-      "audioOffset": null,
+      "label": null,
       "motion": "drift-left",
+      "ownerDirected": false,
+      "audio": null,
+      "durationSource": "script timing 7.0s; voice not generated yet",
       "asset": {
-        "file": "assets/img/08-craft-edge.jpg",
-        "kind": "GENERATIVE",
-        "provider": "arena-generate-image",
-        "providerKind": "generative_fallback",
-        "status": "PLANNED",
-        "focalPoint": [
-          0.5,
-          0.5
-        ]
-      },
-      "brand": false,
-      "durationSource": "storyboard intent (7s); no voice yet",
-      "startSeconds": 50.0,
-      "startFrame": 1500,
-      "durationFrames": 210
+        "file": null,
+        "query": "carpenter measuring wall laser distance meter interior",
+        "status": "BLOCKED_PROVIDER",
+        "provider": "storyblocks"
+      }
     },
     {
-      "id": "craft-hardware",
+      "id": "task-habits",
+      "order": 4,
+      "scriptScene": 2,
+      "scriptTimecode": "0:08–0:22",
+      "startFrame": 450,
+      "durationFrames": 210,
+      "narrationPart": "Мы начинаем с пространства, задачи и привычек человека, который будет ею пользоваться.",
+      "captionLines": [
+        "Мы начинаем с пространства, задачи и",
+        "привычек человека, который будет ею пользоваться."
+      ],
+      "title": null,
+      "subtitle": null,
+      "label": null,
+      "motion": "drift-left",
+      "ownerDirected": false,
+      "audio": null,
+      "durationSource": "script timing 7.0s; voice not generated yet",
+      "asset": {
+        "file": null,
+        "query": "designer reviewing plans with client interior table",
+        "status": "BLOCKED_PROVIDER",
+        "provider": "storyblocks"
+      }
+    },
+    {
+      "id": "project-drawings",
+      "order": 5,
+      "scriptScene": 3,
+      "scriptTimecode": "0:22–0:36",
+      "startFrame": 660,
+      "durationFrames": 210,
+      "narrationPart": "Кухня, шкаф, гардеробная или мебель для бизнеса начинается с проекта.",
+      "captionLines": [
+        "Кухня, шкаф, гардеробная или мебель для",
+        "бизнеса начинается с проекта."
+      ],
+      "title": "Мебель под конкретное помещение",
+      "subtitle": null,
+      "label": null,
+      "motion": "drift-right",
+      "ownerDirected": false,
+      "audio": null,
+      "durationSource": "script timing 7.0s; voice not generated yet",
+      "asset": {
+        "file": null,
+        "query": "interior designer drawing furniture plan hands workshop",
+        "status": "BLOCKED_PROVIDER",
+        "provider": "storyblocks"
+      }
+    },
+    {
+      "id": "project-selection",
+      "order": 6,
+      "scriptScene": 3,
+      "scriptTimecode": "0:22–0:36",
+      "startFrame": 870,
+      "durationFrames": 210,
+      "narrationPart": "Размеры, материалы, цвет, наполнение — всё собирается в одно решение.",
+      "captionLines": [
+        "Размеры, материалы, цвет, наполнение — всё",
+        "собирается в одно решение."
+      ],
+      "title": null,
+      "subtitle": null,
+      "label": null,
+      "motion": "drift-right",
+      "ownerDirected": false,
+      "audio": null,
+      "durationSource": "script timing 7.0s; voice not generated yet",
+      "asset": {
+        "file": null,
+        "query": "material samples boards laminate veneer selection hands table",
+        "status": "BLOCKED_PROVIDER",
+        "provider": "storyblocks"
+      }
+    },
+    {
+      "id": "prod-cutting",
+      "order": 7,
+      "scriptScene": 4,
+      "scriptTimecode": "0:36–0:55",
+      "startFrame": 1080,
+      "durationFrames": 180,
+      "narrationPart": "Затем проект переходит в производство.",
+      "captionLines": [
+        "Затем проект переходит в производство."
+      ],
+      "title": "Точность в каждой детали",
+      "subtitle": null,
+      "label": null,
+      "motion": "push-in",
+      "ownerDirected": false,
+      "audio": null,
+      "durationSource": "script timing 6.0s; voice not generated yet",
+      "asset": {
+        "file": null,
+        "query": "panel saw cutting laminated board furniture factory",
+        "status": "BLOCKED_PROVIDER",
+        "provider": "storyblocks"
+      }
+    },
+    {
+      "id": "prod-processing",
+      "order": 8,
+      "scriptScene": 4,
+      "scriptTimecode": "0:36–0:55",
+      "startFrame": 1260,
+      "durationFrames": 180,
+      "narrationPart": "Детали раскраиваются, обрабатываются",
+      "captionLines": [
+        "Детали раскраиваются, обрабатываются"
+      ],
+      "title": null,
+      "subtitle": null,
+      "label": null,
+      "motion": "push-in",
+      "ownerDirected": false,
+      "audio": null,
+      "durationSource": "script timing 6.0s; voice not generated yet",
+      "asset": {
+        "file": null,
+        "query": "edge banding machine processing panel furniture factory closeup",
+        "status": "BLOCKED_PROVIDER",
+        "provider": "storyblocks"
+      }
+    },
+    {
+      "id": "prod-assembly",
       "order": 9,
-      "block": "C",
-      "durationSeconds": 7.0,
-      "title": "Фурнитура и доводчики",
-      "subtitle": null,
-      "label": "07 · Детали",
+      "scriptScene": 4,
+      "scriptTimecode": "0:36–0:55",
+      "startFrame": 1440,
+      "durationFrames": 210,
+      "narrationPart": "и собираются с точностью, от которой зависит конечный результат.",
       "captionLines": [
-        "Фурнитура, доводчики, направляющие: двери и",
-        "ящики работают мягко."
+        "и собираются с точностью, от которой зависит",
+        "конечный результат."
       ],
-      "narration": "Фурнитура, доводчики, направляющие: двери и ящики работают мягко.",
+      "title": null,
+      "subtitle": null,
+      "label": null,
+      "motion": "push-in",
+      "ownerDirected": false,
       "audio": null,
-      "audioOffset": null,
-      "motion": "push-out",
+      "durationSource": "script timing 7.0s; voice not generated yet",
       "asset": {
-        "file": "assets/img/09-craft-hardware.jpg",
-        "kind": "GENERATIVE",
-        "provider": "arena-generate-image",
-        "providerKind": "generative_fallback",
-        "status": "PLANNED",
-        "focalPoint": [
-          0.5,
-          0.5
-        ]
-      },
-      "brand": false,
-      "durationSource": "storyboard intent (7s); no voice yet",
-      "startSeconds": 57.0,
-      "startFrame": 1710,
-      "durationFrames": 210
+        "file": null,
+        "query": "cabinet assembly workshop clamps furniture carcase",
+        "status": "BLOCKED_PROVIDER",
+        "provider": "storyblocks"
+      }
     },
     {
-      "id": "craft-assembly",
+      "id": "tactile-hero",
       "order": 10,
-      "block": "C",
-      "durationSeconds": 7.0,
-      "title": "Сборка и контроль",
-      "subtitle": null,
-      "label": "08 · Цех",
+      "scriptScene": 5,
+      "scriptTimecode": "0:55–1:08",
+      "startFrame": 1650,
+      "durationFrames": 210,
+      "narrationPart": "Хорошая мебель ощущается сразу — в фактуре поверхности,",
       "captionLines": [
-        "Корпуса собирают и проверяют в цеху, до",
-        "выезда на объект."
+        "Хорошая мебель ощущается сразу — в фактуре",
+        "поверхности,"
       ],
-      "narration": "Корпуса собирают и проверяют в цеху, до выезда на объект.",
-      "audio": null,
-      "audioOffset": null,
+      "title": null,
+      "subtitle": null,
+      "label": null,
       "motion": "push-in",
+      "ownerDirected": true,
+      "audio": null,
+      "durationSource": "script timing 7.0s; voice not generated yet",
       "asset": {
-        "file": "assets/img/10-craft-assembly.jpg",
-        "kind": "GENERATIVE",
-        "provider": "arena-generate-image",
-        "providerKind": "generative_fallback",
-        "status": "PLANNED",
-        "focalPoint": [
-          0.5,
-          0.5
-        ]
-      },
-      "brand": false,
-      "durationSource": "storyboard intent (7s); no voice yet",
-      "startSeconds": 64.0,
-      "startFrame": 1920,
-      "durationFrames": 210
+        "file": null,
+        "query": "hand sliding across kitchen countertop surface texture slow glide",
+        "status": "BLOCKED_PROVIDER",
+        "provider": "storyblocks"
+      }
     },
     {
-      "id": "range-kitchen",
+      "id": "materials-hardware",
       "order": 11,
-      "block": "D",
-      "durationSeconds": 8.0,
-      "title": "Кухни",
-      "subtitle": null,
-      "label": "09 · Кухни",
+      "scriptScene": 5,
+      "scriptTimecode": "0:55–1:08",
+      "startFrame": 1860,
+      "durationFrames": 180,
+      "narrationPart": "в точности деталей и в том, как ею пользуешься каждый день.",
       "captionLines": [
-        "Кухни: от компактных до просторных, с",
-        "островом и барной зоной."
+        "в точности деталей и в том, как ею",
+        "пользуешься каждый день."
       ],
-      "narration": "Кухни: от компактных до просторных, с островом и барной зоной.",
-      "audio": null,
-      "audioOffset": null,
-      "motion": "drift-right",
-      "asset": {
-        "file": "assets/img/11-range-kitchen.jpg",
-        "kind": "GENERATIVE",
-        "provider": "arena-generate-image",
-        "providerKind": "generative_fallback",
-        "status": "PLANNED",
-        "focalPoint": [
-          0.5,
-          0.5
-        ]
-      },
-      "brand": false,
-      "durationSource": "storyboard intent (8s); no voice yet",
-      "startSeconds": 71.0,
-      "startFrame": 2130,
-      "durationFrames": 240
-    },
-    {
-      "id": "range-storage",
-      "order": 12,
-      "block": "D",
-      "durationSeconds": 8.0,
-      "title": "Шкафы и хранение",
+      "title": "Материалы • фасады • фурнитура",
       "subtitle": null,
-      "label": "10 · Встроенные решения",
-      "captionLines": [
-        "Шкафы, встроенное хранение и прихожие — под",
-        "размеры помещения."
-      ],
-      "narration": "Шкафы, встроенное хранение и прихожие — под размеры помещения.",
-      "audio": null,
-      "audioOffset": null,
+      "label": null,
       "motion": "push-in",
+      "ownerDirected": false,
+      "audio": null,
+      "durationSource": "script timing 6.0s; voice not generated yet",
       "asset": {
-        "file": "assets/img/12-range-storage.jpg",
-        "kind": "GENERATIVE",
-        "provider": "arena-generate-image",
-        "providerKind": "generative_fallback",
-        "status": "PLANNED",
-        "focalPoint": [
-          0.5,
-          0.5
-        ]
-      },
-      "brand": false,
-      "durationSource": "storyboard intent (8s); no voice yet",
-      "startSeconds": 79.0,
-      "startFrame": 2370,
-      "durationFrames": 240
+        "file": null,
+        "query": "soft close drawer runner hinge mechanism closeup slow motion",
+        "status": "BLOCKED_PROVIDER",
+        "provider": "storyblocks"
+      }
     },
     {
-      "id": "range-family",
-      "order": 13,
-      "block": "D",
-      "durationSeconds": 7.0,
-      "title": "Детская · Ванная · ТВ-зоны",
-      "subtitle": null,
-      "label": "11 · Для каждой комнаты",
+      "id": "range-kitchen-storage",
+      "order": 12,
+      "scriptScene": 6,
+      "scriptTimecode": "1:08–1:27",
+      "startFrame": 2040,
+      "durationFrames": 180,
+      "narrationPart": "Salamat Mebel делает кухни, шкафы и системы хранения,",
       "captionLines": [
-        "Детская, ванная, ТВ-зоны и мебель для",
-        "небольших комнат."
+        "Salamat Mebel делает кухни, шкафы и системы",
+        "хранения,"
       ],
-      "narration": "Детская, ванная, ТВ-зоны и мебель для небольших комнат.",
+      "title": "Для дома и бизнеса",
+      "subtitle": null,
+      "label": null,
+      "motion": "drift-left",
+      "ownerDirected": false,
       "audio": null,
-      "audioOffset": null,
-      "motion": "drift-right",
+      "durationSource": "script timing 6.0s; voice not generated yet",
       "asset": {
-        "file": "assets/img/13a-children.jpg",
-        "kind": "GENERATIVE",
-        "provider": "arena-generate-image",
-        "providerKind": "generative_fallback",
-        "status": "PLANNED",
-        "focalPoint": [
-          0.5,
-          0.5
-        ]
-      },
-      "brand": false,
-      "durationSource": "storyboard intent (7s); no voice yet",
-      "startSeconds": 87.0,
-      "startFrame": 2610,
-      "durationFrames": 210
+        "file": null,
+        "query": "finished modern kitchen interior slow pan cabinets",
+        "status": "BLOCKED_PROVIDER",
+        "provider": "storyblocks"
+      }
+    },
+    {
+      "id": "range-home-rooms",
+      "order": 13,
+      "scriptScene": 6,
+      "scriptTimecode": "1:08–1:27",
+      "startFrame": 2220,
+      "durationFrames": 180,
+      "narrationPart": "мебель для детских, ванных и гостиных,",
+      "captionLines": [
+        "мебель для детских, ванных и гостиных,"
+      ],
+      "title": null,
+      "subtitle": null,
+      "label": null,
+      "motion": "drift-left",
+      "ownerDirected": false,
+      "audio": null,
+      "durationSource": "script timing 6.0s; voice not generated yet",
+      "asset": {
+        "file": null,
+        "query": "children room built in furniture interior daylight",
+        "status": "BLOCKED_PROVIDER",
+        "provider": "storyblocks"
+      }
     },
     {
       "id": "range-commercial",
       "order": 14,
-      "block": "D",
-      "durationSeconds": 7.0,
-      "title": "Коммерческая мебель",
-      "subtitle": null,
-      "label": "12 · Ресепшн · Офис · Медицина",
+      "scriptScene": 6,
+      "scriptTimecode": "1:08–1:27",
+      "startFrame": 2400,
+      "durationFrames": 210,
+      "narrationPart": "а также решения для магазинов, офисов и других коммерческих пространств.",
       "captionLines": [
-        "Отдельное направление — ресепшн, офисы,",
-        "медицинские и коммерческие помещения."
+        "а также решения для магазинов, офисов и",
+        "других коммерческих пространств."
       ],
-      "narration": "Отдельное направление — ресепшн, офисы, медицинские и коммерческие помещения.",
-      "audio": null,
-      "audioOffset": null,
-      "motion": "drift-left",
-      "asset": {
-        "file": "assets/img/14-commercial-reception.jpg",
-        "kind": "GENERATIVE",
-        "provider": "arena-generate-image",
-        "providerKind": "generative_fallback",
-        "status": "PLANNED",
-        "focalPoint": [
-          0.5,
-          0.5
-        ]
-      },
-      "brand": false,
-      "durationSource": "storyboard intent (7s); no voice yet",
-      "startSeconds": 94.0,
-      "startFrame": 2820,
-      "durationFrames": 210
-    },
-    {
-      "id": "install",
-      "order": 15,
-      "block": "E",
-      "durationSeconds": 7.0,
-      "title": "Доставка и монтаж",
-      "subtitle": null,
-      "label": "13 · Установка",
-      "captionLines": [
-        "Доставка и монтаж на объекте — завершающий",
-        "этап проекта."
-      ],
-      "narration": "Доставка и монтаж на объекте — завершающий этап проекта.",
-      "audio": null,
-      "audioOffset": null,
-      "motion": "push-out",
-      "asset": {
-        "file": "assets/img/15-install-level.jpg",
-        "kind": "GENERATIVE",
-        "provider": "arena-generate-image",
-        "providerKind": "generative_fallback",
-        "status": "PLANNED",
-        "focalPoint": [
-          0.5,
-          0.5
-        ]
-      },
-      "brand": false,
-      "durationSource": "storyboard intent (7s); no voice yet",
-      "startSeconds": 101.0,
-      "startFrame": 3030,
-      "durationFrames": 210
-    },
-    {
-      "id": "result",
-      "order": 16,
-      "block": "E",
-      "durationSeconds": 7.0,
-      "title": "Мебель в вашем интерьере",
+      "title": null,
       "subtitle": null,
       "label": null,
-      "captionLines": [
-        "Результат: мебель, которая встроена в ваше",
-        "пространство."
-      ],
-      "narration": "Результат: мебель, которая встроена в ваше пространство.",
+      "motion": "drift-left",
+      "ownerDirected": false,
       "audio": null,
-      "audioOffset": null,
-      "motion": "push-in",
+      "durationSource": "script timing 7.0s; voice not generated yet",
       "asset": {
-        "file": "assets/img/16-result-interior.jpg",
-        "kind": "GENERATIVE",
-        "provider": "arena-generate-image",
-        "providerKind": "generative_fallback",
-        "status": "PLANNED",
-        "focalPoint": [
-          0.5,
-          0.5
-        ]
-      },
-      "brand": false,
-      "durationSource": "storyboard intent (7s); no voice yet",
-      "startSeconds": 108.0,
-      "startFrame": 3240,
-      "durationFrames": 210
+        "file": null,
+        "query": "reception desk millwork modern office interior",
+        "status": "BLOCKED_PROVIDER",
+        "provider": "storyblocks"
+      }
+    },
+    {
+      "id": "install-fitting",
+      "order": 15,
+      "scriptScene": 7,
+      "scriptTimecode": "1:27–1:42",
+      "startFrame": 2610,
+      "durationFrames": 240,
+      "narrationPart": "Но хороший проект заканчивается не в цеху.",
+      "captionLines": [
+        "Но хороший проект заканчивается не в цеху."
+      ],
+      "title": "От проекта до установки",
+      "subtitle": null,
+      "label": null,
+      "motion": "drift-right",
+      "ownerDirected": false,
+      "audio": null,
+      "durationSource": "script timing 8.0s; voice not generated yet",
+      "asset": {
+        "file": null,
+        "query": "furniture installers fitting kitchen cabinets interior level",
+        "status": "BLOCKED_PROVIDER",
+        "provider": "storyblocks"
+      }
+    },
+    {
+      "id": "install-adjust",
+      "order": 16,
+      "scriptScene": 7,
+      "scriptTimecode": "1:27–1:42",
+      "startFrame": 2850,
+      "durationFrames": 210,
+      "narrationPart": "Он заканчивается тогда, когда мебель установлена, всё отрегулировано и пространство начинает работать так, как было задумано.",
+      "captionLines": [
+        "Он заканчивается тогда, когда мебель установлена, всё отрегулировано",
+        "и пространство начинает работать так, как было задумано."
+      ],
+      "title": null,
+      "subtitle": null,
+      "label": null,
+      "motion": "drift-right",
+      "ownerDirected": false,
+      "audio": null,
+      "durationSource": "script timing 7.0s; voice not generated yet",
+      "asset": {
+        "file": null,
+        "query": "adjusting cabinet hinge door alignment closeup",
+        "status": "BLOCKED_PROVIDER",
+        "provider": "storyblocks"
+      }
+    },
+    {
+      "id": "result-space",
+      "order": 17,
+      "scriptScene": 8,
+      "scriptTimecode": "1:42–1:53",
+      "startFrame": 3060,
+      "durationFrames": 330,
+      "narrationPart": "В результате получается не просто набор шкафов. Получается пространство, сделанное именно для вас.",
+      "captionLines": [
+        "В результате получается не просто набор",
+        "шкафов. Получается пространство, сделанное именно для вас."
+      ],
+      "title": null,
+      "subtitle": null,
+      "label": null,
+      "motion": "push-out",
+      "ownerDirected": false,
+      "audio": null,
+      "durationSource": "script timing 11.0s; voice not generated yet",
+      "asset": {
+        "file": null,
+        "query": "finished interior kitchen built in furniture wide daylight",
+        "status": "BLOCKED_PROVIDER",
+        "provider": "storyblocks"
+      }
     },
     {
       "id": "brand-close",
-      "order": 17,
-      "block": "F",
-      "durationSeconds": 6.0,
-      "title": "SALAMAT MEBEL",
-      "subtitle": "мебель, созданная под ваше пространство",
-      "label": null,
+      "order": 18,
+      "scriptScene": 9,
+      "scriptTimecode": "1:53–2:00",
+      "startFrame": 3390,
+      "durationFrames": 210,
+      "narrationPart": "Salamat Mebel. Мебель, созданная под ваше пространство.",
       "captionLines": [
-        "Salamat Mebel — мебель, созданная под ваше",
+        "Salamat Mebel. Мебель, созданная под ваше",
         "пространство."
       ],
-      "narration": "Salamat Mebel — мебель, созданная под ваше пространство.",
+      "title": "SALAMAT MEBEL",
+      "subtitle": "Мебель, созданная под ваше пространство",
+      "label": null,
+      "motion": "hold",
+      "ownerDirected": false,
       "audio": null,
-      "audioOffset": null,
-      "motion": "drift-right",
-      "asset": {
-        "file": null,
-        "kind": "GENERATIVE",
-        "provider": "in-house",
-        "providerKind": "branded_motion_graphic",
-        "status": null,
-        "focalPoint": [
-          0.5,
-          0.5
-        ]
-      },
-      "brand": true,
-      "durationSource": "storyboard intent (6s); no voice yet",
-      "startSeconds": 115.0,
-      "startFrame": 3450,
-      "durationFrames": 180
+      "durationSource": "script timing 7.0s; voice not generated yet",
+      "asset": null
     }
   ]
 }

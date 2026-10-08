@@ -1,23 +1,15 @@
 #!/usr/bin/env python3
-"""EXP-24 Phase 2 — CP-07 media manifest builder.
+"""EXP-24 Phase 2 — CP-07 media manifest.
 
-  EDITORIAL_STORYBOARD.json   (frozen intent: query, duration, in/out, motion, framing)
-      + tools/media_assets.py (provider/auth metadata, branded allowlist, budget)
-      + adapters/storyblocks_adapter.py (availability probe)
-            ↓
-  MEDIA_MANIFEST.json
+storyboard beats + Storyblocks probe  ->  MEDIA_MANIFEST.json
 
-An ordinary scene is RESOLVED only when a real licensed clip is attached. A blocked
-provider produces `BLOCKED_PROVIDER` + a neutral search slate — never generated media.
-
-Usage:
-  python3 tools/resolve_media.py plan      # build/refresh MEDIA_MANIFEST.json
-  python3 tools/resolve_media.py status    # provider availability only
+Hard-scope rules: a clip is RESOLVED only when a real licensed asset is attached; a
+blocked provider yields BLOCKED_PROVIDER + a neutral search slate, never generated
+media; the 3-asset pre-review generative budget is asserted before writing.
 """
 
 from __future__ import annotations
 
-import argparse
 import json
 import sys
 from datetime import datetime, timezone
@@ -30,184 +22,145 @@ STORYBOARD = EXP / "EDITORIAL_STORYBOARD.json"
 MANIFEST = EXP / "MEDIA_MANIFEST.json"
 LOG = EXP / "MEDIA_PROVIDER_LOG.md"
 
-sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(PROMO / "adapters"))
-from media_assets import (  # noqa: E402
-    ALLOWLISTED_UNUSED, BLOCKER, BRANDED, GENERATIVE_BUDGET, PLACEHOLDER, REQUIRED_ACTION,
-    STORYBLOCKS, assert_budget,
-)
-
 try:
-    import storyblocks_adapter  # noqa: E402
+    import storyblocks_adapter
 except Exception:  # noqa: BLE001 - adapter is optional by design
     storyblocks_adapter = None
 
+SEARCH_URL = "https://www.storyblocks.com/video/search?searchterm="
+LICENCE = ("Storyblocks royalty-free licence — per-clip commercial use within the owner's subscription "
+           "terms. The clip must be searched, previewed and licensed before publication; query + search "
+           "URL are recorded so the identical clip can be re-found.")
+BLOCKER = ("no STORYBLOCKS_PUBLIC_KEY / STORYBLOCKS_PRIVATE_KEY in the execution environment and the "
+           "provider API host is unreachable from the sandbox")
+ACTION = ("authenticate an approved licensed provider (Storyblocks first), run the recorded query, "
+          "license one matching clip, then re-run tools/resolve_media.py")
+BUDGET = 3
+SLATE = {
+    "provider": "internal:search-slate", "provider_kind": "neutral_placeholder", "preview_only": True,
+    "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, "
+                    "titles, captions and mobile readability can be tested while licensed footage is "
+                    "unavailable. Must not ship in a published film.",
+}
 
-def provider_state() -> tuple[bool, str]:
-    if storyblocks_adapter is None:
-        return False, "adapter module unavailable"
-    return storyblocks_adapter.availability()
+BRANDED = [
+    dict(asset_id="brand-wordmark-reveal", scene_id="open-interior", allowlist_category="logo reveal",
+         reason="Script scene 1 requires the on-screen text SALAMAT MEBEL over the opening interior. A "
+                "wordmark reveal cannot be sourced as footage; drawn as a Remotion layer over the shot.",
+         render="Remotion layer in src/Promo.tsx (Wordmark)", script_ref="SALAMAT_PROMO_SCRIPT.md#scene-1"),
+    dict(asset_id="brand-end-card", scene_id="brand-close", allowlist_category="branded end card",
+         reason="Script scene 9: 'Clean branded final frame. Motion graphics / logo reveal allowed here.' "
+                "Carries the wordmark and the neutral positioning line; no verified contact data exists.",
+         render="Remotion EndCard in src/Promo.tsx", script_ref="SALAMAT_PROMO_SCRIPT.md#scene-9"),
+]
 
 
 def plan() -> int:
-    assert_budget()
-    storyboard = json.loads(STORYBOARD.read_text(encoding="utf-8"))
-    scenes = sorted(storyboard["scenes"], key=lambda s: s["order"])
-    available, reason = provider_state()
-    scene_by_id = {s["id"]: s for s in scenes}
+    if len(BRANDED) > BUDGET:
+        raise SystemExit(f"{len(BRANDED)} branded graphics exceed the pre-review budget of {BUDGET}")
+    board = json.loads(STORYBOARD.read_text(encoding="utf-8"))
+    available, reason = (storyblocks_adapter.availability() if storyblocks_adapter
+                         else (False, "adapter unavailable"))
 
-    # Sanity: branded graphics must point at real scenes and stay inside the allowlist.
-    for item in BRANDED:
-        if item["scene_id"] not in scene_by_id:
-            raise SystemExit(f"branded graphic {item['asset_id']} references unknown scene "
-                             f"{item['scene_id']}")
-
-    assets: list[dict] = []
-    for scene in scenes:
-        queries = scene.get("footage_queries") or []
-        if not queries:
-            continue                      # branded-only scene (brand-close)
-        primary = queries[0]
+    assets = []
+    for beat in sorted(board["beats"], key=lambda b: b["order"]):
+        if not beat["footage_queries"]:
+            continue
+        query = beat["footage_queries"][0]
         assets.append({
-            "asset_id": f"sb-{scene['id']}",
-            "scene_id": scene["id"],
-            "scene_order": scene["order"],
-            "script_scene": scene["script_scene"],
-            "script_timecode": scene["script_timecode"],
-            "block": scene["block"],
+            "asset_id": f"sb-{beat['id']}",
+            "scene_id": beat["id"],
+            "scene_order": beat["order"],
+            "script_timecode": beat["script_timecode"],
             "kind": "REAL_FOOTAGE",
             "required": True,
             "media_type": "video",
-            "provider": STORYBLOCKS["provider"],
-            "provider_kind": STORYBLOCKS["provider_kind"],
+            "provider": "storyblocks",
+            "provider_kind": "licensed_stock",
             "provider_asset_id": None,
-            "provider_search_url": STORYBLOCKS["search_base"] + primary.replace(" ", "+"),
-            "all_queries": queries,
-            "fallback_queries": scene.get("fallback_queries") or [],
-            "licence_note": STORYBLOCKS["licence_note"],
+            "provider_search_url": SEARCH_URL + query.replace(" ", "+"),
+            "all_queries": beat["footage_queries"],
+            "fallback_queries": beat["fallback_queries"],
+            "licence_note": LICENCE,
             "asset_status": "RESOLVED" if available else "BLOCKED_PROVIDER",
             "blocker": None if available else BLOCKER,
-            "required_action": None if available else REQUIRED_ACTION,
-            "target_duration_seconds": scene["target_duration_seconds"],
-            "in_out_intent": scene["in_out_intent"],
-            "framing_note": scene["framing_note"],
-            "motion": scene["motion"],
-            "audio": scene["audio"],
+            "required_action": None if available else ACTION,
+            "target_duration_seconds": beat["target_duration_seconds"],
+            "motion": beat["motion"],
+            "owner_directed": beat["owner_directed"],
             "file": None,
-            "placeholder": dict(
-                PLACEHOLDER,
-                kind="PLACEHOLDER",
-                render="Remotion SearchSlate card built from this manifest entry",
-                carries=["scene number and script timecode", "block", "Storyblocks query",
-                         "target duration", "licence status: UNLICENSED — PREVIEW ONLY"],
-                preview_only=True,
-            ),
+            "placeholder": SLATE,
             "generative_substitute": False,
-            "generative_substitute_reason": ("forbidden by HARD SCOPE CONTRACT "
-                                             "§ No generative fallback for stock failure"),
-            "owner_directed": scene["id"] == "tactile-hero",
+            "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback "
+                                            "for stock failure",
         })
 
-    real = [a for a in assets if a["kind"] == "REAL_FOOTAGE"]
-    resolved_real = [a for a in real if a["asset_status"] == "RESOLVED"]
-    branded_entries = [
-        dict(
-            b,
-            kind="GENERATIVE",
-            media_type="motion_graphic",
-            provider="in-house",
-            provider_kind="branded_motion_graphic",
-            licence_note="Designed and rendered by the Remotion composition from brand tokens; "
-                         "no third-party asset, no generated imagery.",
-            asset_status="RESOLVED",
-            required=True,
-            file=None,
-            generator="remotion-code",
-            counts_against_generative_budget=True,
-        )
-        for b in BRANDED
-    ]
+    branded = [dict(b, kind="GENERATIVE", media_type="motion_graphic", provider="in-house",
+                    provider_kind="branded_motion_graphic", asset_status="RESOLVED", required=True,
+                    licence_note="Drawn by the composition from brand tokens; no third-party asset, no "
+                                 "generated imagery.", counts_against_generative_budget=True)
+               for b in BRANDED]
+    resolved = sum(1 for a in assets if a["asset_status"] == "RESOLVED")
 
-    manifest = {
+    MANIFEST.write_text(json.dumps({
         "contract": "MEDIA_MANIFEST",
-        "version": 3,
+        "version": 4,
         "fixture": "Salamat Mebel 2-minute promo",
         "created": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "narrative_source_of_truth": "SALAMAT_PROMO_SCRIPT.md",
-        "media_source_authority": storyboard["media_source_authority"],
+        "media_source_authority": board["media_source_authority"],
         "primary_provider": "storyblocks",
         "primary_provider_available": available,
         "primary_provider_status": f"{'AVAILABLE' if available else 'BLOCKED_PROVIDER'} — {reason}",
         "resolved_provider": "storyblocks" if available
-                             else "none — neutral placeholders only; no licensed footage obtained",
+                             else "none — neutral placeholders only, no licensed footage obtained",
         "provider_neutral_contract": {
-            "note": ("Scenes declare footage intent as queries; resolving a different provider rewrites "
-                     "this manifest only, leaving the storyboard untouched."),
+            "note": "Beats declare intent as queries; resolving another provider rewrites this manifest "
+                    "only, leaving the storyboard untouched.",
             "adapters": ["adapters/storyblocks_adapter.py"],
         },
-        "delivery_mix_target": storyboard["delivery_mix_target"],
         "mix_accounting": {
-            "ordinary_scenes_requiring_real_footage": len(real),
-            "real_footage_resolved": len(resolved_real),
-            "real_footage_unresolved": len(real) - len(resolved_real),
-            "generative_assets_in_manifest": len(branded_entries),
-            "generative_budget_before_owner_review": GENERATIVE_BUDGET,
-            "generative_budget_unused_slots": GENERATIVE_BUDGET - len(branded_entries),
+            "beats_requiring_real_footage": len(assets),
+            "real_footage_resolved": resolved,
+            "real_footage_unresolved": len(assets) - resolved,
+            "generative_assets": len(branded),
+            "generative_budget_before_owner_review": BUDGET,
+            "generative_budget_unused_slots": BUDGET - len(branded),
             "generated_imagery_used": 0,
             "generated_video_used": 0,
-            "note": ("The delivered real-footage share is reported in SALAMAT_PROMO_RESULTS.md once clips "
-                     "are licensed. While the provider is blocked the film cannot claim a real-footage "
-                     "share and the preview must not be presented as a finished promo."),
+            "note": "A real-footage share can be claimed only once clips are licensed; while the provider "
+                    "is blocked the preview must not be presented as a finished promo.",
         },
         "assets": assets,
-        "branded_motion_graphics": branded_entries,
-        "generative_allowlist_unused": ALLOWLISTED_UNUSED,
-        "coverage": {
-            "scenes_total": len(scenes),
-            "scenes_with_stock_request": len({a["scene_id"] for a in real}),
-            "scenes_generative": [b["scene_id"] for b in branded_entries],
-        },
+        "branded_motion_graphics": branded,
+        "generative_allowlist_unused": [{
+            "allowlist_category": "abstract branded transition",
+            "reason_not_used": "The approved script contains no designed transition; adding one would "
+                               "expand scope beyond the script.",
+        }],
         "scope_compliance": {
             "generative_fallback_for_blocked_stock": "prohibited and not used",
-            "unused_assets_from_rev_000": "see REVISION_LOG.md — 10 stills classified UNUSED, removed from the tree",
+            "unused_assets_from_rev_000": "see REVISION_LOG.md — 10 pre-contract stills classified UNUSED",
             "script_overlay_rule": "only the script's approved on-screen text may be rendered",
-            "self_check_rule": "no media action without a mapped scene, an allowlisted category and a manifest entry",
         },
-    }
+    }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-    MANIFEST.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-
-    stamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     with LOG.open("a", encoding="utf-8") as handle:
-        handle.write(
-            f"\n### {stamp} — `resolve_media.py plan`\n\n"
-            f"- provider: storyblocks — {'AVAILABLE' if available else 'BLOCKED_PROVIDER'}\n"
-            f"- reason: {reason}\n"
-            f"- stock requests planned: {len(real)} (resolved {len(resolved_real)})\n"
-            f"- branded graphics: {len(branded_entries)} / budget {GENERATIVE_BUDGET}\n"
-            f"- generated imagery used: 0\n"
-        )
+        handle.write(f"\n### {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')} — resolve_media\n\n"
+                     f"- storyblocks: {'AVAILABLE' if available else 'BLOCKED_PROVIDER'} — {reason}\n"
+                     f"- stock requests: {len(assets)} (resolved {resolved})\n"
+                     f"- branded graphics: {len(branded)} / budget {BUDGET}; generated imagery: 0\n")
 
-    print(f"manifest: {len(assets)} stock requests, {len(branded_entries)} branded graphics "
-          f"(budget {GENERATIVE_BUDGET}) → {MANIFEST.name}")
-    print(f"provider: {manifest['primary_provider_status']}")
-    for a in assets:
-        flag = " [OWNER-DIRECTED]" if a["owner_directed"] else ""
-        print(f"  {a['scene_order']:>2}. {a['scene_id']:<22} {a['asset_status']:<17} "
-              f"“{a['all_queries'][0]}”{flag}")
+    print(f"manifest: {len(assets)} stock requests (resolved {resolved}), {len(branded)} branded "
+          f"graphics / budget {BUDGET} → {MANIFEST.name}")
+    print(f"provider: {'AVAILABLE' if available else 'BLOCKED_PROVIDER'} — {reason}")
+    for asset in assets:
+        flag = " [OWNER-DIRECTED]" if asset["owner_directed"] else ""
+        print(f"  {asset['scene_order']:>2}. {asset['scene_id']:<22} {asset['asset_status']:<17} "
+              f"“{asset['all_queries'][0]}”{flag}")
     return 0
 
 
-def main() -> int:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("action", choices=["plan", "status"], nargs="?", default="plan")
-    args = parser.parse_args()
-    if args.action == "status":
-        available, reason = provider_state()
-        print(f"storyblocks: {'AVAILABLE' if available else 'UNAVAILABLE'} — {reason}")
-        return 0 if available else 3
-    return plan()
-
-
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(plan())

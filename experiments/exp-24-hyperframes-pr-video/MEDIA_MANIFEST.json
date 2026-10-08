@@ -1,8 +1,8 @@
 {
   "contract": "MEDIA_MANIFEST",
-  "version": 3,
+  "version": 4,
   "fixture": "Salamat Mebel 2-minute promo",
-  "created": "2026-10-08T04:36:42+00:00",
+  "created": "2026-10-08T04:39:54+00:00",
   "narrative_source_of_truth": "SALAMAT_PROMO_SCRIPT.md",
   "media_source_authority": [
     "REAL LICENSED VIDEO FOOTAGE — Storyblocks first",
@@ -14,43 +14,30 @@
   "primary_provider": "storyblocks",
   "primary_provider_available": false,
   "primary_provider_status": "BLOCKED_PROVIDER — no STORYBLOCKS_PUBLIC_KEY / STORYBLOCKS_PRIVATE_KEY in the environment (credentials were not supplied to this execution environment)",
-  "resolved_provider": "none — neutral placeholders only; no licensed footage obtained",
+  "resolved_provider": "none — neutral placeholders only, no licensed footage obtained",
   "provider_neutral_contract": {
-    "note": "Scenes declare footage intent as queries; resolving a different provider rewrites this manifest only, leaving the storyboard untouched.",
+    "note": "Beats declare intent as queries; resolving another provider rewrites this manifest only, leaving the storyboard untouched.",
     "adapters": [
       "adapters/storyblocks_adapter.py"
     ]
   },
-  "delivery_mix_target": {
-    "REAL_FOOTAGE_percent": [
-      75,
-      80
-    ],
-    "GENERATIVE_percent": [
-      20,
-      25
-    ],
-    "note": "Design target inherited from the task; the authoritative script allows generative media only in scenes 1 (wordmark) and 9 (end card), so the achievable generative share of this 120 s edit is ~7 % once real footage is licensed."
-  },
   "mix_accounting": {
-    "ordinary_scenes_requiring_real_footage": 17,
+    "beats_requiring_real_footage": 17,
     "real_footage_resolved": 0,
     "real_footage_unresolved": 17,
-    "generative_assets_in_manifest": 2,
+    "generative_assets": 2,
     "generative_budget_before_owner_review": 3,
     "generative_budget_unused_slots": 1,
     "generated_imagery_used": 0,
     "generated_video_used": 0,
-    "note": "The delivered real-footage share is reported in SALAMAT_PROMO_RESULTS.md once clips are licensed. While the provider is blocked the film cannot claim a real-footage share and the preview must not be presented as a finished promo."
+    "note": "A real-footage share can be claimed only once clips are licensed; while the provider is blocked the preview must not be presented as a finished promo."
   },
   "assets": [
     {
       "asset_id": "sb-open-interior",
       "scene_id": "open-interior",
       "scene_order": 1,
-      "script_scene": 1,
       "script_timecode": "0:00–0:08",
-      "block": "A",
       "kind": "REAL_FOOTAGE",
       "required": true,
       "media_type": "video",
@@ -59,49 +46,33 @@
       "provider_asset_id": null,
       "provider_search_url": "https://www.storyblocks.com/video/search?searchterm=premium+modern+kitchen+interior+slow+dolly+warm+evening+light",
       "all_queries": [
-        "premium modern kitchen interior slow dolly warm evening light",
-        "contemporary interior cabinetry slow push in"
+        "premium modern kitchen interior slow dolly warm evening light"
       ],
       "fallback_queries": [
-        "luxury kitchen dark wood surfaces slow pan",
-        "modern apartment interior warm light slow move"
+        "luxury kitchen dark wood surfaces slow pan"
       ],
-      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the terms of the owner's subscription. A clip must be searched, previewed and licensed before publication. The exact query + search URL are recorded so the identical clip can be re-found and licensed.",
+      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the owner's subscription terms. The clip must be searched, previewed and licensed before publication; query + search URL are recorded so the identical clip can be re-found.",
       "asset_status": "BLOCKED_PROVIDER",
       "blocker": "no STORYBLOCKS_PUBLIC_KEY / STORYBLOCKS_PRIVATE_KEY in the execution environment and the provider API host is unreachable from the sandbox",
-      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip and re-resolve this manifest",
+      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip, then re-run tools/resolve_media.py",
       "target_duration_seconds": 5.0,
-      "in_out_intent": "0.0–5.0 s · hold on the strongest part of the clip; wordmark layer fades in at 3.6 s and holds into the next beat",
-      "framing_note": "interior first, brand second; no readable text inside the footage",
       "motion": "push-in",
-      "audio": "narration + low-profile music bed; footage audio muted",
+      "owner_directed": false,
       "file": null,
       "placeholder": {
         "provider": "internal:search-slate",
         "provider_kind": "neutral_placeholder",
-        "licence_note": "Not media. A neutral, text-only search slate drawn by the Remotion composition so assembly, timing, titles, subtitles and mobile readability can be tested while licensed footage is unavailable. It contains no generated imagery and must not ship in a published film.",
-        "kind": "PLACEHOLDER",
-        "render": "Remotion SearchSlate card built from this manifest entry",
-        "carries": [
-          "scene number and script timecode",
-          "block",
-          "Storyblocks query",
-          "target duration",
-          "licence status: UNLICENSED — PREVIEW ONLY"
-        ],
-        "preview_only": true
+        "preview_only": true,
+        "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
-      "owner_directed": false
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
     },
     {
       "asset_id": "sb-open-detail",
       "scene_id": "open-detail",
       "scene_order": 2,
-      "script_scene": 1,
       "script_timecode": "0:00–0:08",
-      "block": "A",
       "kind": "REAL_FOOTAGE",
       "required": true,
       "media_type": "video",
@@ -110,49 +81,33 @@
       "provider_asset_id": null,
       "provider_search_url": "https://www.storyblocks.com/video/search?searchterm=cabinet+front+material+texture+macro+brass+handle+detail",
       "all_queries": [
-        "cabinet front material texture macro brass handle detail",
-        "furniture joinery detail macro slow motion"
+        "cabinet front material texture macro brass handle detail"
       ],
       "fallback_queries": [
-        "kitchen drawer handle closeup slow motion",
         "wood surface texture macro interior detail"
       ],
-      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the terms of the owner's subscription. A clip must be searched, previewed and licensed before publication. The exact query + search URL are recorded so the identical clip can be re-found and licensed.",
+      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the owner's subscription terms. The clip must be searched, previewed and licensed before publication; query + search URL are recorded so the identical clip can be re-found.",
       "asset_status": "BLOCKED_PROVIDER",
       "blocker": "no STORYBLOCKS_PUBLIC_KEY / STORYBLOCKS_PRIVATE_KEY in the execution environment and the provider API host is unreachable from the sandbox",
-      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip and re-resolve this manifest",
+      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip, then re-run tools/resolve_media.py",
       "target_duration_seconds": 3.0,
-      "in_out_intent": "0.0–3.0 s · short macro beat, continues the opening move without a cut",
-      "framing_note": "macro only; no people, no readable branding",
       "motion": "push-in",
-      "audio": "narration + low-profile music bed; footage audio muted",
+      "owner_directed": false,
       "file": null,
       "placeholder": {
         "provider": "internal:search-slate",
         "provider_kind": "neutral_placeholder",
-        "licence_note": "Not media. A neutral, text-only search slate drawn by the Remotion composition so assembly, timing, titles, subtitles and mobile readability can be tested while licensed footage is unavailable. It contains no generated imagery and must not ship in a published film.",
-        "kind": "PLACEHOLDER",
-        "render": "Remotion SearchSlate card built from this manifest entry",
-        "carries": [
-          "scene number and script timecode",
-          "block",
-          "Storyblocks query",
-          "target duration",
-          "licence status: UNLICENSED — PREVIEW ONLY"
-        ],
-        "preview_only": true
+        "preview_only": true,
+        "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
-      "owner_directed": false
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
     },
     {
       "asset_id": "sb-task-measure",
       "scene_id": "task-measure",
       "scene_order": 3,
-      "script_scene": 2,
       "script_timecode": "0:08–0:22",
-      "block": "B",
       "kind": "REAL_FOOTAGE",
       "required": true,
       "media_type": "video",
@@ -161,49 +116,33 @@
       "provider_asset_id": null,
       "provider_search_url": "https://www.storyblocks.com/video/search?searchterm=carpenter+measuring+wall+laser+distance+meter+interior",
       "all_queries": [
-        "carpenter measuring wall laser distance meter interior",
-        "hand holding tape measure wall renovation closeup"
+        "carpenter measuring wall laser distance meter interior"
       ],
       "fallback_queries": [
-        "measuring room dimensions interior planning",
-        "worker laser meter wall marking closeup"
+        "hand holding tape measure wall renovation closeup"
       ],
-      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the terms of the owner's subscription. A clip must be searched, previewed and licensed before publication. The exact query + search URL are recorded so the identical clip can be re-found and licensed.",
+      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the owner's subscription terms. The clip must be searched, previewed and licensed before publication; query + search URL are recorded so the identical clip can be re-found.",
       "asset_status": "BLOCKED_PROVIDER",
       "blocker": "no STORYBLOCKS_PUBLIC_KEY / STORYBLOCKS_PRIVATE_KEY in the execution environment and the provider API host is unreachable from the sandbox",
-      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip and re-resolve this manifest",
+      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip, then re-run tools/resolve_media.py",
       "target_duration_seconds": 7.0,
-      "in_out_intent": "0.0–7.0 s · overlay enters at 0.8 s and holds for the whole beat",
-      "framing_note": "hands/tools only, no faces",
       "motion": "drift-left",
-      "audio": "narration + low-profile music bed; footage audio muted",
+      "owner_directed": false,
       "file": null,
       "placeholder": {
         "provider": "internal:search-slate",
         "provider_kind": "neutral_placeholder",
-        "licence_note": "Not media. A neutral, text-only search slate drawn by the Remotion composition so assembly, timing, titles, subtitles and mobile readability can be tested while licensed footage is unavailable. It contains no generated imagery and must not ship in a published film.",
-        "kind": "PLACEHOLDER",
-        "render": "Remotion SearchSlate card built from this manifest entry",
-        "carries": [
-          "scene number and script timecode",
-          "block",
-          "Storyblocks query",
-          "target duration",
-          "licence status: UNLICENSED — PREVIEW ONLY"
-        ],
-        "preview_only": true
+        "preview_only": true,
+        "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
-      "owner_directed": false
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
     },
     {
       "asset_id": "sb-task-habits",
       "scene_id": "task-habits",
       "scene_order": 4,
-      "script_scene": 2,
       "script_timecode": "0:08–0:22",
-      "block": "B",
       "kind": "REAL_FOOTAGE",
       "required": true,
       "media_type": "video",
@@ -212,49 +151,33 @@
       "provider_asset_id": null,
       "provider_search_url": "https://www.storyblocks.com/video/search?searchterm=designer+reviewing+plans+with+client+interior+table",
       "all_queries": [
-        "designer reviewing plans with client interior table",
-        "interior designer explaining drawings client consultation"
+        "designer reviewing plans with client interior table"
       ],
       "fallback_queries": [
-        "two people looking at floor plan table interior design",
         "architect hands pointing at kitchen drawing"
       ],
-      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the terms of the owner's subscription. A clip must be searched, previewed and licensed before publication. The exact query + search URL are recorded so the identical clip can be re-found and licensed.",
+      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the owner's subscription terms. The clip must be searched, previewed and licensed before publication; query + search URL are recorded so the identical clip can be re-found.",
       "asset_status": "BLOCKED_PROVIDER",
       "blocker": "no STORYBLOCKS_PUBLIC_KEY / STORYBLOCKS_PRIVATE_KEY in the execution environment and the provider API host is unreachable from the sandbox",
-      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip and re-resolve this manifest",
+      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip, then re-run tools/resolve_media.py",
       "target_duration_seconds": 7.0,
-      "in_out_intent": "0.0–7.0 s · slow lateral move across the table",
-      "framing_note": "avoid close faces so no real person is identifiable; drawings must not be readable documents",
       "motion": "drift-left",
-      "audio": "narration + low-profile music bed; footage audio muted",
+      "owner_directed": false,
       "file": null,
       "placeholder": {
         "provider": "internal:search-slate",
         "provider_kind": "neutral_placeholder",
-        "licence_note": "Not media. A neutral, text-only search slate drawn by the Remotion composition so assembly, timing, titles, subtitles and mobile readability can be tested while licensed footage is unavailable. It contains no generated imagery and must not ship in a published film.",
-        "kind": "PLACEHOLDER",
-        "render": "Remotion SearchSlate card built from this manifest entry",
-        "carries": [
-          "scene number and script timecode",
-          "block",
-          "Storyblocks query",
-          "target duration",
-          "licence status: UNLICENSED — PREVIEW ONLY"
-        ],
-        "preview_only": true
+        "preview_only": true,
+        "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
-      "owner_directed": false
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
     },
     {
       "asset_id": "sb-project-drawings",
       "scene_id": "project-drawings",
       "scene_order": 5,
-      "script_scene": 3,
       "script_timecode": "0:22–0:36",
-      "block": "B",
       "kind": "REAL_FOOTAGE",
       "required": true,
       "media_type": "video",
@@ -263,49 +186,33 @@
       "provider_asset_id": null,
       "provider_search_url": "https://www.storyblocks.com/video/search?searchterm=interior+designer+drawing+furniture+plan+hands+workshop",
       "all_queries": [
-        "interior designer drawing furniture plan hands workshop",
-        "technical furniture drawing cad screen designer closeup"
+        "interior designer drawing furniture plan hands workshop"
       ],
       "fallback_queries": [
-        "architect sketching kitchen layout paper",
-        "designer working on furniture project desk"
+        "architect sketching kitchen layout paper"
       ],
-      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the terms of the owner's subscription. A clip must be searched, previewed and licensed before publication. The exact query + search URL are recorded so the identical clip can be re-found and licensed.",
+      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the owner's subscription terms. The clip must be searched, previewed and licensed before publication; query + search URL are recorded so the identical clip can be re-found.",
       "asset_status": "BLOCKED_PROVIDER",
       "blocker": "no STORYBLOCKS_PUBLIC_KEY / STORYBLOCKS_PRIVATE_KEY in the execution environment and the provider API host is unreachable from the sandbox",
-      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip and re-resolve this manifest",
+      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip, then re-run tools/resolve_media.py",
       "target_duration_seconds": 7.0,
-      "in_out_intent": "0.0–7.0 s · push across the drawings; overlay enters at 0.8 s",
-      "framing_note": "hands and drawings; no readable client data",
       "motion": "drift-right",
-      "audio": "narration + low-profile music bed; footage audio muted",
+      "owner_directed": false,
       "file": null,
       "placeholder": {
         "provider": "internal:search-slate",
         "provider_kind": "neutral_placeholder",
-        "licence_note": "Not media. A neutral, text-only search slate drawn by the Remotion composition so assembly, timing, titles, subtitles and mobile readability can be tested while licensed footage is unavailable. It contains no generated imagery and must not ship in a published film.",
-        "kind": "PLACEHOLDER",
-        "render": "Remotion SearchSlate card built from this manifest entry",
-        "carries": [
-          "scene number and script timecode",
-          "block",
-          "Storyblocks query",
-          "target duration",
-          "licence status: UNLICENSED — PREVIEW ONLY"
-        ],
-        "preview_only": true
+        "preview_only": true,
+        "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
-      "owner_directed": false
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
     },
     {
       "asset_id": "sb-project-selection",
       "scene_id": "project-selection",
       "scene_order": 6,
-      "script_scene": 3,
       "script_timecode": "0:22–0:36",
-      "block": "B",
       "kind": "REAL_FOOTAGE",
       "required": true,
       "media_type": "video",
@@ -314,49 +221,33 @@
       "provider_asset_id": null,
       "provider_search_url": "https://www.storyblocks.com/video/search?searchterm=material+samples+boards+laminate+veneer+selection+hands+table",
       "all_queries": [
-        "material samples boards laminate veneer selection hands table",
-        "cabinet hardware samples handles hinges comparison"
+        "material samples boards laminate veneer selection hands table"
       ],
       "fallback_queries": [
-        "wood and stone samples interior design selection",
-        "choosing fabric and finish swatches showroom"
+        "wood and stone samples interior design selection"
       ],
-      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the terms of the owner's subscription. A clip must be searched, previewed and licensed before publication. The exact query + search URL are recorded so the identical clip can be re-found and licensed.",
+      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the owner's subscription terms. The clip must be searched, previewed and licensed before publication; query + search URL are recorded so the identical clip can be re-found.",
       "asset_status": "BLOCKED_PROVIDER",
       "blocker": "no STORYBLOCKS_PUBLIC_KEY / STORYBLOCKS_PRIVATE_KEY in the execution environment and the provider API host is unreachable from the sandbox",
-      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip and re-resolve this manifest",
+      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip, then re-run tools/resolve_media.py",
       "target_duration_seconds": 7.0,
-      "in_out_intent": "0.0–7.0 s · glide across the samples, no cut inside the beat",
-      "framing_note": "samples/hardware only, no supplier branding",
       "motion": "drift-right",
-      "audio": "narration + low-profile music bed; footage audio muted",
+      "owner_directed": false,
       "file": null,
       "placeholder": {
         "provider": "internal:search-slate",
         "provider_kind": "neutral_placeholder",
-        "licence_note": "Not media. A neutral, text-only search slate drawn by the Remotion composition so assembly, timing, titles, subtitles and mobile readability can be tested while licensed footage is unavailable. It contains no generated imagery and must not ship in a published film.",
-        "kind": "PLACEHOLDER",
-        "render": "Remotion SearchSlate card built from this manifest entry",
-        "carries": [
-          "scene number and script timecode",
-          "block",
-          "Storyblocks query",
-          "target duration",
-          "licence status: UNLICENSED — PREVIEW ONLY"
-        ],
-        "preview_only": true
+        "preview_only": true,
+        "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
-      "owner_directed": false
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
     },
     {
       "asset_id": "sb-prod-cutting",
       "scene_id": "prod-cutting",
       "scene_order": 7,
-      "script_scene": 4,
       "script_timecode": "0:36–0:55",
-      "block": "C",
       "kind": "REAL_FOOTAGE",
       "required": true,
       "media_type": "video",
@@ -365,49 +256,33 @@
       "provider_asset_id": null,
       "provider_search_url": "https://www.storyblocks.com/video/search?searchterm=panel+saw+cutting+laminated+board+furniture+factory",
       "all_queries": [
-        "panel saw cutting laminated board furniture factory",
-        "cnc nesting machine cutting wood panel workshop"
+        "panel saw cutting laminated board furniture factory"
       ],
       "fallback_queries": [
-        "industrial cutting machine wood panel production",
-        "furniture factory cutting line panels"
+        "industrial cutting machine wood panel production"
       ],
-      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the terms of the owner's subscription. A clip must be searched, previewed and licensed before publication. The exact query + search URL are recorded so the identical clip can be re-found and licensed.",
+      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the owner's subscription terms. The clip must be searched, previewed and licensed before publication; query + search URL are recorded so the identical clip can be re-found.",
       "asset_status": "BLOCKED_PROVIDER",
       "blocker": "no STORYBLOCKS_PUBLIC_KEY / STORYBLOCKS_PRIVATE_KEY in the execution environment and the provider API host is unreachable from the sandbox",
-      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip and re-resolve this manifest",
+      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip, then re-run tools/resolve_media.py",
       "target_duration_seconds": 6.0,
-      "in_out_intent": "0.0–6.0 s · push toward the cut; overlay enters at 0.6 s",
-      "framing_note": "no readable machine branding or software UI",
       "motion": "push-in",
-      "audio": "narration + low-profile music bed; footage audio muted",
+      "owner_directed": false,
       "file": null,
       "placeholder": {
         "provider": "internal:search-slate",
         "provider_kind": "neutral_placeholder",
-        "licence_note": "Not media. A neutral, text-only search slate drawn by the Remotion composition so assembly, timing, titles, subtitles and mobile readability can be tested while licensed footage is unavailable. It contains no generated imagery and must not ship in a published film.",
-        "kind": "PLACEHOLDER",
-        "render": "Remotion SearchSlate card built from this manifest entry",
-        "carries": [
-          "scene number and script timecode",
-          "block",
-          "Storyblocks query",
-          "target duration",
-          "licence status: UNLICENSED — PREVIEW ONLY"
-        ],
-        "preview_only": true
+        "preview_only": true,
+        "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
-      "owner_directed": false
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
     },
     {
       "asset_id": "sb-prod-processing",
       "scene_id": "prod-processing",
       "scene_order": 8,
-      "script_scene": 4,
       "script_timecode": "0:36–0:55",
-      "block": "C",
       "kind": "REAL_FOOTAGE",
       "required": true,
       "media_type": "video",
@@ -416,49 +291,33 @@
       "provider_asset_id": null,
       "provider_search_url": "https://www.storyblocks.com/video/search?searchterm=edge+banding+machine+processing+panel+furniture+factory+closeup",
       "all_queries": [
-        "edge banding machine processing panel furniture factory closeup",
-        "drilling machine cabinet parts workshop production"
+        "edge banding machine processing panel furniture factory closeup"
       ],
       "fallback_queries": [
-        "edgebander applying edge to panel closeup",
-        "cnc drilling cabinet part holes workshop"
+        "edgebander applying edge to panel closeup"
       ],
-      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the terms of the owner's subscription. A clip must be searched, previewed and licensed before publication. The exact query + search URL are recorded so the identical clip can be re-found and licensed.",
+      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the owner's subscription terms. The clip must be searched, previewed and licensed before publication; query + search URL are recorded so the identical clip can be re-found.",
       "asset_status": "BLOCKED_PROVIDER",
       "blocker": "no STORYBLOCKS_PUBLIC_KEY / STORYBLOCKS_PRIVATE_KEY in the execution environment and the provider API host is unreachable from the sandbox",
-      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip and re-resolve this manifest",
+      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip, then re-run tools/resolve_media.py",
       "target_duration_seconds": 6.0,
-      "in_out_intent": "0.0–6.0 s · macro push-in following the panel through the machine",
-      "framing_note": "machine and panel must stay the subject; no faces required",
       "motion": "push-in",
-      "audio": "narration + low-profile music bed; footage audio muted",
+      "owner_directed": false,
       "file": null,
       "placeholder": {
         "provider": "internal:search-slate",
         "provider_kind": "neutral_placeholder",
-        "licence_note": "Not media. A neutral, text-only search slate drawn by the Remotion composition so assembly, timing, titles, subtitles and mobile readability can be tested while licensed footage is unavailable. It contains no generated imagery and must not ship in a published film.",
-        "kind": "PLACEHOLDER",
-        "render": "Remotion SearchSlate card built from this manifest entry",
-        "carries": [
-          "scene number and script timecode",
-          "block",
-          "Storyblocks query",
-          "target duration",
-          "licence status: UNLICENSED — PREVIEW ONLY"
-        ],
-        "preview_only": true
+        "preview_only": true,
+        "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
-      "owner_directed": false
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
     },
     {
       "asset_id": "sb-prod-assembly",
       "scene_id": "prod-assembly",
       "scene_order": 9,
-      "script_scene": 4,
       "script_timecode": "0:36–0:55",
-      "block": "C",
       "kind": "REAL_FOOTAGE",
       "required": true,
       "media_type": "video",
@@ -467,49 +326,33 @@
       "provider_asset_id": null,
       "provider_search_url": "https://www.storyblocks.com/video/search?searchterm=cabinet+assembly+workshop+clamps+furniture+carcase",
       "all_queries": [
-        "cabinet assembly workshop clamps furniture carcase",
-        "craftsman assembling cabinet frame workshop hands"
+        "cabinet assembly workshop clamps furniture carcase"
       ],
       "fallback_queries": [
-        "furniture assembly bench worker hands closeup",
-        "joining cabinet parts workshop detail"
+        "furniture assembly bench worker hands closeup"
       ],
-      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the terms of the owner's subscription. A clip must be searched, previewed and licensed before publication. The exact query + search URL are recorded so the identical clip can be re-found and licensed.",
+      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the owner's subscription terms. The clip must be searched, previewed and licensed before publication; query + search URL are recorded so the identical clip can be re-found.",
       "asset_status": "BLOCKED_PROVIDER",
       "blocker": "no STORYBLOCKS_PUBLIC_KEY / STORYBLOCKS_PRIVATE_KEY in the execution environment and the provider API host is unreachable from the sandbox",
-      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip and re-resolve this manifest",
+      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip, then re-run tools/resolve_media.py",
       "target_duration_seconds": 7.0,
-      "in_out_intent": "0.0–7.0 s · move along the assembly bench, hold on the hands at the end",
-      "framing_note": "hands/gloved hands, no identifiable faces",
       "motion": "push-in",
-      "audio": "narration + low-profile music bed; footage audio muted",
+      "owner_directed": false,
       "file": null,
       "placeholder": {
         "provider": "internal:search-slate",
         "provider_kind": "neutral_placeholder",
-        "licence_note": "Not media. A neutral, text-only search slate drawn by the Remotion composition so assembly, timing, titles, subtitles and mobile readability can be tested while licensed footage is unavailable. It contains no generated imagery and must not ship in a published film.",
-        "kind": "PLACEHOLDER",
-        "render": "Remotion SearchSlate card built from this manifest entry",
-        "carries": [
-          "scene number and script timecode",
-          "block",
-          "Storyblocks query",
-          "target duration",
-          "licence status: UNLICENSED — PREVIEW ONLY"
-        ],
-        "preview_only": true
+        "preview_only": true,
+        "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
-      "owner_directed": false
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
     },
     {
       "asset_id": "sb-tactile-hero",
       "scene_id": "tactile-hero",
       "scene_order": 10,
-      "script_scene": 5,
       "script_timecode": "0:55–1:08",
-      "block": "C",
       "kind": "REAL_FOOTAGE",
       "required": true,
       "media_type": "video",
@@ -518,49 +361,33 @@
       "provider_asset_id": null,
       "provider_search_url": "https://www.storyblocks.com/video/search?searchterm=hand+sliding+across+kitchen+countertop+surface+texture+slow+glide",
       "all_queries": [
-        "hand sliding across kitchen countertop surface texture slow glide",
-        "touching countertop stone surface texture slow motion closeup"
+        "hand sliding across kitchen countertop surface texture slow glide"
       ],
       "fallback_queries": [
-        "fingers running across wooden worktop surface",
-        "hand feeling marble countertop texture kitchen"
+        "touching countertop stone surface texture slow motion closeup"
       ],
-      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the terms of the owner's subscription. A clip must be searched, previewed and licensed before publication. The exact query + search URL are recorded so the identical clip can be re-found and licensed.",
+      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the owner's subscription terms. The clip must be searched, previewed and licensed before publication; query + search URL are recorded so the identical clip can be re-found.",
       "asset_status": "BLOCKED_PROVIDER",
       "blocker": "no STORYBLOCKS_PUBLIC_KEY / STORYBLOCKS_PRIVATE_KEY in the execution environment and the provider API host is unreachable from the sandbox",
-      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip and re-resolve this manifest",
+      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip, then re-run tools/resolve_media.py",
       "target_duration_seconds": 7.0,
-      "in_out_intent": "0.0–7.0 s · one uninterrupted glide; the hand crosses the surface once, slowly, with no cut inside the beat",
-      "framing_note": "REAL licensed footage only. If Storyblocks is unavailable, this beat stays unresolved and the blocker is recorded — it is never replaced by generated media (owner script, scene 5).",
       "motion": "push-in",
-      "audio": "narration + low-profile music bed; footage audio muted",
+      "owner_directed": true,
       "file": null,
       "placeholder": {
         "provider": "internal:search-slate",
         "provider_kind": "neutral_placeholder",
-        "licence_note": "Not media. A neutral, text-only search slate drawn by the Remotion composition so assembly, timing, titles, subtitles and mobile readability can be tested while licensed footage is unavailable. It contains no generated imagery and must not ship in a published film.",
-        "kind": "PLACEHOLDER",
-        "render": "Remotion SearchSlate card built from this manifest entry",
-        "carries": [
-          "scene number and script timecode",
-          "block",
-          "Storyblocks query",
-          "target duration",
-          "licence status: UNLICENSED — PREVIEW ONLY"
-        ],
-        "preview_only": true
+        "preview_only": true,
+        "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
-      "owner_directed": true
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
     },
     {
       "asset_id": "sb-materials-hardware",
       "scene_id": "materials-hardware",
       "scene_order": 11,
-      "script_scene": 5,
       "script_timecode": "0:55–1:08",
-      "block": "C",
       "kind": "REAL_FOOTAGE",
       "required": true,
       "media_type": "video",
@@ -569,49 +396,33 @@
       "provider_asset_id": null,
       "provider_search_url": "https://www.storyblocks.com/video/search?searchterm=soft+close+drawer+runner+hinge+mechanism+closeup+slow+motion",
       "all_queries": [
-        "soft close drawer runner hinge mechanism closeup slow motion",
-        "cabinet facade edge finishing detail kitchen closeup"
+        "soft close drawer runner hinge mechanism closeup slow motion"
       ],
       "fallback_queries": [
-        "drawer closing smoothly kitchen hardware detail",
-        "handle and hinge macro furniture craftsmanship"
+        "drawer closing smoothly kitchen hardware detail"
       ],
-      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the terms of the owner's subscription. A clip must be searched, previewed and licensed before publication. The exact query + search URL are recorded so the identical clip can be re-found and licensed.",
+      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the owner's subscription terms. The clip must be searched, previewed and licensed before publication; query + search URL are recorded so the identical clip can be re-found.",
       "asset_status": "BLOCKED_PROVIDER",
       "blocker": "no STORYBLOCKS_PUBLIC_KEY / STORYBLOCKS_PRIVATE_KEY in the execution environment and the provider API host is unreachable from the sandbox",
-      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip and re-resolve this manifest",
+      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip, then re-run tools/resolve_media.py",
       "target_duration_seconds": 6.0,
-      "in_out_intent": "0.0–6.0 s · two micro-beats inside one move; overlay enters at 0.8 s",
-      "framing_note": "no hardware brand names visible",
       "motion": "push-in",
-      "audio": "narration + low-profile music bed; footage audio muted",
+      "owner_directed": false,
       "file": null,
       "placeholder": {
         "provider": "internal:search-slate",
         "provider_kind": "neutral_placeholder",
-        "licence_note": "Not media. A neutral, text-only search slate drawn by the Remotion composition so assembly, timing, titles, subtitles and mobile readability can be tested while licensed footage is unavailable. It contains no generated imagery and must not ship in a published film.",
-        "kind": "PLACEHOLDER",
-        "render": "Remotion SearchSlate card built from this manifest entry",
-        "carries": [
-          "scene number and script timecode",
-          "block",
-          "Storyblocks query",
-          "target duration",
-          "licence status: UNLICENSED — PREVIEW ONLY"
-        ],
-        "preview_only": true
+        "preview_only": true,
+        "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
-      "owner_directed": false
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
     },
     {
       "asset_id": "sb-range-kitchen-storage",
       "scene_id": "range-kitchen-storage",
       "scene_order": 12,
-      "script_scene": 6,
       "script_timecode": "1:08–1:27",
-      "block": "D",
       "kind": "REAL_FOOTAGE",
       "required": true,
       "media_type": "video",
@@ -620,49 +431,33 @@
       "provider_asset_id": null,
       "provider_search_url": "https://www.storyblocks.com/video/search?searchterm=finished+modern+kitchen+interior+slow+pan+cabinets",
       "all_queries": [
-        "finished modern kitchen interior slow pan cabinets",
-        "built in wardrobe storage system interior opening"
+        "finished modern kitchen interior slow pan cabinets"
       ],
       "fallback_queries": [
-        "handleless kitchen interior premium",
         "walk in closet built in shelves interior"
       ],
-      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the terms of the owner's subscription. A clip must be searched, previewed and licensed before publication. The exact query + search URL are recorded so the identical clip can be re-found and licensed.",
+      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the owner's subscription terms. The clip must be searched, previewed and licensed before publication; query + search URL are recorded so the identical clip can be re-found.",
       "asset_status": "BLOCKED_PROVIDER",
       "blocker": "no STORYBLOCKS_PUBLIC_KEY / STORYBLOCKS_PRIVATE_KEY in the execution environment and the provider API host is unreachable from the sandbox",
-      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip and re-resolve this manifest",
+      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip, then re-run tools/resolve_media.py",
       "target_duration_seconds": 6.0,
-      "in_out_intent": "0.0–6.0 s · two matched moves, kitchen then storage; overlay enters at 0.8 s",
-      "framing_note": "no people; interiors must be finished and styled, not construction sites",
       "motion": "drift-left",
-      "audio": "narration + low-profile music bed; footage audio muted",
+      "owner_directed": false,
       "file": null,
       "placeholder": {
         "provider": "internal:search-slate",
         "provider_kind": "neutral_placeholder",
-        "licence_note": "Not media. A neutral, text-only search slate drawn by the Remotion composition so assembly, timing, titles, subtitles and mobile readability can be tested while licensed footage is unavailable. It contains no generated imagery and must not ship in a published film.",
-        "kind": "PLACEHOLDER",
-        "render": "Remotion SearchSlate card built from this manifest entry",
-        "carries": [
-          "scene number and script timecode",
-          "block",
-          "Storyblocks query",
-          "target duration",
-          "licence status: UNLICENSED — PREVIEW ONLY"
-        ],
-        "preview_only": true
+        "preview_only": true,
+        "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
-      "owner_directed": false
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
     },
     {
       "asset_id": "sb-range-home-rooms",
       "scene_id": "range-home-rooms",
       "scene_order": 13,
-      "script_scene": 6,
       "script_timecode": "1:08–1:27",
-      "block": "D",
       "kind": "REAL_FOOTAGE",
       "required": true,
       "media_type": "video",
@@ -671,51 +466,33 @@
       "provider_asset_id": null,
       "provider_search_url": "https://www.storyblocks.com/video/search?searchterm=children+room+built+in+furniture+interior+daylight",
       "all_queries": [
-        "children room built in furniture interior daylight",
-        "bathroom vanity cabinet modern interior",
-        "tv wall unit living room built in furniture"
+        "children room built in furniture interior daylight"
       ],
       "fallback_queries": [
-        "kids bedroom storage furniture interior",
-        "bathroom wood cabinet interior design",
-        "media wall tv unit living room interior"
+        "kids bedroom storage furniture interior"
       ],
-      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the terms of the owner's subscription. A clip must be searched, previewed and licensed before publication. The exact query + search URL are recorded so the identical clip can be re-found and licensed.",
+      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the owner's subscription terms. The clip must be searched, previewed and licensed before publication; query + search URL are recorded so the identical clip can be re-found.",
       "asset_status": "BLOCKED_PROVIDER",
       "blocker": "no STORYBLOCKS_PUBLIC_KEY / STORYBLOCKS_PRIVATE_KEY in the execution environment and the provider API host is unreachable from the sandbox",
-      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip and re-resolve this manifest",
+      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip, then re-run tools/resolve_media.py",
       "target_duration_seconds": 6.0,
-      "in_out_intent": "0.0–6.0 s · three ~2 s matched shots in identical camera language",
-      "framing_note": "same grade and framing logic across the three shots so the sequence reads as one film",
       "motion": "drift-left",
-      "audio": "narration + low-profile music bed; footage audio muted",
+      "owner_directed": false,
       "file": null,
       "placeholder": {
         "provider": "internal:search-slate",
         "provider_kind": "neutral_placeholder",
-        "licence_note": "Not media. A neutral, text-only search slate drawn by the Remotion composition so assembly, timing, titles, subtitles and mobile readability can be tested while licensed footage is unavailable. It contains no generated imagery and must not ship in a published film.",
-        "kind": "PLACEHOLDER",
-        "render": "Remotion SearchSlate card built from this manifest entry",
-        "carries": [
-          "scene number and script timecode",
-          "block",
-          "Storyblocks query",
-          "target duration",
-          "licence status: UNLICENSED — PREVIEW ONLY"
-        ],
-        "preview_only": true
+        "preview_only": true,
+        "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
-      "owner_directed": false
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
     },
     {
       "asset_id": "sb-range-commercial",
       "scene_id": "range-commercial",
       "scene_order": 14,
-      "script_scene": 6,
       "script_timecode": "1:08–1:27",
-      "block": "D",
       "kind": "REAL_FOOTAGE",
       "required": true,
       "media_type": "video",
@@ -724,49 +501,33 @@
       "provider_asset_id": null,
       "provider_search_url": "https://www.storyblocks.com/video/search?searchterm=reception+desk+millwork+modern+office+interior",
       "all_queries": [
-        "reception desk millwork modern office interior",
-        "retail store fit out wooden counter interior"
+        "reception desk millwork modern office interior"
       ],
       "fallback_queries": [
-        "modern office interior built in cabinetry",
         "shop counter furniture commercial interior"
       ],
-      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the terms of the owner's subscription. A clip must be searched, previewed and licensed before publication. The exact query + search URL are recorded so the identical clip can be re-found and licensed.",
+      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the owner's subscription terms. The clip must be searched, previewed and licensed before publication; query + search URL are recorded so the identical clip can be re-found.",
       "asset_status": "BLOCKED_PROVIDER",
       "blocker": "no STORYBLOCKS_PUBLIC_KEY / STORYBLOCKS_PRIVATE_KEY in the execution environment and the provider API host is unreachable from the sandbox",
-      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip and re-resolve this manifest",
+      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip, then re-run tools/resolve_media.py",
       "target_duration_seconds": 7.0,
-      "in_out_intent": "0.0–7.0 s · slow drift across the commercial interior; last shot of the range sequence",
-      "framing_note": "no readable company names or signage",
       "motion": "drift-left",
-      "audio": "narration + low-profile music bed; footage audio muted",
+      "owner_directed": false,
       "file": null,
       "placeholder": {
         "provider": "internal:search-slate",
         "provider_kind": "neutral_placeholder",
-        "licence_note": "Not media. A neutral, text-only search slate drawn by the Remotion composition so assembly, timing, titles, subtitles and mobile readability can be tested while licensed footage is unavailable. It contains no generated imagery and must not ship in a published film.",
-        "kind": "PLACEHOLDER",
-        "render": "Remotion SearchSlate card built from this manifest entry",
-        "carries": [
-          "scene number and script timecode",
-          "block",
-          "Storyblocks query",
-          "target duration",
-          "licence status: UNLICENSED — PREVIEW ONLY"
-        ],
-        "preview_only": true
+        "preview_only": true,
+        "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
-      "owner_directed": false
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
     },
     {
       "asset_id": "sb-install-fitting",
       "scene_id": "install-fitting",
       "scene_order": 15,
-      "script_scene": 7,
       "script_timecode": "1:27–1:42",
-      "block": "E",
       "kind": "REAL_FOOTAGE",
       "required": true,
       "media_type": "video",
@@ -775,49 +536,33 @@
       "provider_asset_id": null,
       "provider_search_url": "https://www.storyblocks.com/video/search?searchterm=furniture+installers+fitting+kitchen+cabinets+interior+level",
       "all_queries": [
-        "furniture installers fitting kitchen cabinets interior level",
-        "workers installing cabinet units home alignment"
+        "furniture installers fitting kitchen cabinets interior level"
       ],
       "fallback_queries": [
-        "kitchen installation worker mounting cabinet doors",
-        "fitting countertop installers kitchen"
+        "kitchen installation worker mounting cabinet doors"
       ],
-      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the terms of the owner's subscription. A clip must be searched, previewed and licensed before publication. The exact query + search URL are recorded so the identical clip can be re-found and licensed.",
+      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the owner's subscription terms. The clip must be searched, previewed and licensed before publication; query + search URL are recorded so the identical clip can be re-found.",
       "asset_status": "BLOCKED_PROVIDER",
       "blocker": "no STORYBLOCKS_PUBLIC_KEY / STORYBLOCKS_PRIVATE_KEY in the execution environment and the provider API host is unreachable from the sandbox",
-      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip and re-resolve this manifest",
+      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip, then re-run tools/resolve_media.py",
       "target_duration_seconds": 8.0,
-      "in_out_intent": "0.0–8.0 s · follow the fitting work; overlay enters at 0.8 s",
-      "framing_note": "hands, tools, tools-on-furniture; avoid identifiable faces",
       "motion": "drift-right",
-      "audio": "narration + low-profile music bed; footage audio muted",
+      "owner_directed": false,
       "file": null,
       "placeholder": {
         "provider": "internal:search-slate",
         "provider_kind": "neutral_placeholder",
-        "licence_note": "Not media. A neutral, text-only search slate drawn by the Remotion composition so assembly, timing, titles, subtitles and mobile readability can be tested while licensed footage is unavailable. It contains no generated imagery and must not ship in a published film.",
-        "kind": "PLACEHOLDER",
-        "render": "Remotion SearchSlate card built from this manifest entry",
-        "carries": [
-          "scene number and script timecode",
-          "block",
-          "Storyblocks query",
-          "target duration",
-          "licence status: UNLICENSED — PREVIEW ONLY"
-        ],
-        "preview_only": true
+        "preview_only": true,
+        "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
-      "owner_directed": false
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
     },
     {
       "asset_id": "sb-install-adjust",
       "scene_id": "install-adjust",
       "scene_order": 16,
-      "script_scene": 7,
       "script_timecode": "1:27–1:42",
-      "block": "E",
       "kind": "REAL_FOOTAGE",
       "required": true,
       "media_type": "video",
@@ -826,49 +571,33 @@
       "provider_asset_id": null,
       "provider_search_url": "https://www.storyblocks.com/video/search?searchterm=adjusting+cabinet+hinge+door+alignment+closeup",
       "all_queries": [
-        "adjusting cabinet hinge door alignment closeup",
-        "installer checking kitchen cabinet doors alignment"
+        "adjusting cabinet hinge door alignment closeup"
       ],
       "fallback_queries": [
-        "screwdriver adjusting furniture hinge detail",
         "final check kitchen installation cabinets"
       ],
-      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the terms of the owner's subscription. A clip must be searched, previewed and licensed before publication. The exact query + search URL are recorded so the identical clip can be re-found and licensed.",
+      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the owner's subscription terms. The clip must be searched, previewed and licensed before publication; query + search URL are recorded so the identical clip can be re-found.",
       "asset_status": "BLOCKED_PROVIDER",
       "blocker": "no STORYBLOCKS_PUBLIC_KEY / STORYBLOCKS_PRIVATE_KEY in the execution environment and the provider API host is unreachable from the sandbox",
-      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip and re-resolve this manifest",
+      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip, then re-run tools/resolve_media.py",
       "target_duration_seconds": 7.0,
-      "in_out_intent": "0.0–7.0 s · push in on the adjustment, end on the aligned facade",
-      "framing_note": "detail level; the last beat before the result section",
       "motion": "drift-right",
-      "audio": "narration + low-profile music bed; footage audio muted",
+      "owner_directed": false,
       "file": null,
       "placeholder": {
         "provider": "internal:search-slate",
         "provider_kind": "neutral_placeholder",
-        "licence_note": "Not media. A neutral, text-only search slate drawn by the Remotion composition so assembly, timing, titles, subtitles and mobile readability can be tested while licensed footage is unavailable. It contains no generated imagery and must not ship in a published film.",
-        "kind": "PLACEHOLDER",
-        "render": "Remotion SearchSlate card built from this manifest entry",
-        "carries": [
-          "scene number and script timecode",
-          "block",
-          "Storyblocks query",
-          "target duration",
-          "licence status: UNLICENSED — PREVIEW ONLY"
-        ],
-        "preview_only": true
+        "preview_only": true,
+        "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
-      "owner_directed": false
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
     },
     {
       "asset_id": "sb-result-space",
       "scene_id": "result-space",
       "scene_order": 17,
-      "script_scene": 8,
       "script_timecode": "1:42–1:53",
-      "block": "E",
       "kind": "REAL_FOOTAGE",
       "required": true,
       "media_type": "video",
@@ -877,41 +606,27 @@
       "provider_asset_id": null,
       "provider_search_url": "https://www.storyblocks.com/video/search?searchterm=finished+interior+kitchen+built+in+furniture+wide+daylight",
       "all_queries": [
-        "finished interior kitchen built in furniture wide daylight",
-        "opening cabinet doors modern kitchen slow motion interior"
+        "finished interior kitchen built in furniture wide daylight"
       ],
       "fallback_queries": [
-        "bright modern interior cabinetry wide shot",
-        "person opening kitchen cabinet interior warm light"
+        "bright modern interior cabinetry wide shot"
       ],
-      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the terms of the owner's subscription. A clip must be searched, previewed and licensed before publication. The exact query + search URL are recorded so the identical clip can be re-found and licensed.",
+      "licence_note": "Storyblocks royalty-free licence — per-clip commercial use within the owner's subscription terms. The clip must be searched, previewed and licensed before publication; query + search URL are recorded so the identical clip can be re-found.",
       "asset_status": "BLOCKED_PROVIDER",
       "blocker": "no STORYBLOCKS_PUBLIC_KEY / STORYBLOCKS_PRIVATE_KEY in the execution environment and the provider API host is unreachable from the sandbox",
-      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip and re-resolve this manifest",
+      "required_action": "authenticate an approved licensed provider (Storyblocks first), run the recorded query, license one matching clip, then re-run tools/resolve_media.py",
       "target_duration_seconds": 11.0,
-      "in_out_intent": "0.0–11.0 s · the film's longest hold: light, then detail, then the cabinet opening; no overlay copy",
-      "framing_note": "no overlay text in this beat — let the interior carry it",
       "motion": "push-out",
-      "audio": "narration + low-profile music bed; footage audio muted",
+      "owner_directed": false,
       "file": null,
       "placeholder": {
         "provider": "internal:search-slate",
         "provider_kind": "neutral_placeholder",
-        "licence_note": "Not media. A neutral, text-only search slate drawn by the Remotion composition so assembly, timing, titles, subtitles and mobile readability can be tested while licensed footage is unavailable. It contains no generated imagery and must not ship in a published film.",
-        "kind": "PLACEHOLDER",
-        "render": "Remotion SearchSlate card built from this manifest entry",
-        "carries": [
-          "scene number and script timecode",
-          "block",
-          "Storyblocks query",
-          "target duration",
-          "licence status: UNLICENSED — PREVIEW ONLY"
-        ],
-        "preview_only": true
+        "preview_only": true,
+        "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
-      "owner_directed": false
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
     }
   ],
   "branded_motion_graphics": [
@@ -919,59 +634,44 @@
       "asset_id": "brand-wordmark-reveal",
       "scene_id": "open-interior",
       "allowlist_category": "logo reveal",
-      "reason": "Owner script scene 1 requires the on-screen text SALAMAT MEBEL over the opening interior. A wordmark reveal cannot be sourced as real footage; it is an allowlisted branded graphic drawn as a Remotion layer over the licensed shot (no generated imagery).",
-      "render": "Remotion layer over scene 1 footage",
-      "in_out": "appears at 3.6 s, holds into the next beat",
+      "reason": "Script scene 1 requires the on-screen text SALAMAT MEBEL over the opening interior. A wordmark reveal cannot be sourced as footage; drawn as a Remotion layer over the shot.",
+      "render": "Remotion layer in src/Promo.tsx (Wordmark)",
       "script_ref": "SALAMAT_PROMO_SCRIPT.md#scene-1",
       "kind": "GENERATIVE",
       "media_type": "motion_graphic",
       "provider": "in-house",
       "provider_kind": "branded_motion_graphic",
-      "licence_note": "Designed and rendered by the Remotion composition from brand tokens; no third-party asset, no generated imagery.",
       "asset_status": "RESOLVED",
       "required": true,
-      "file": null,
-      "generator": "remotion-code",
+      "licence_note": "Drawn by the composition from brand tokens; no third-party asset, no generated imagery.",
       "counts_against_generative_budget": true
     },
     {
       "asset_id": "brand-end-card",
       "scene_id": "brand-close",
       "allowlist_category": "branded end card",
-      "reason": "Owner script scene 9: 'Clean branded final frame. Motion graphics / logo reveal allowed here.' Carries the wordmark and the neutral positioning line; no verified contact data exists, so no contact block is rendered.",
-      "render": "Remotion composition BrandClose (src/BrandClose.tsx)",
-      "in_out": "7.0 s closing card, tagline holds for the final 2 s",
+      "reason": "Script scene 9: 'Clean branded final frame. Motion graphics / logo reveal allowed here.' Carries the wordmark and the neutral positioning line; no verified contact data exists.",
+      "render": "Remotion EndCard in src/Promo.tsx",
       "script_ref": "SALAMAT_PROMO_SCRIPT.md#scene-9",
       "kind": "GENERATIVE",
       "media_type": "motion_graphic",
       "provider": "in-house",
       "provider_kind": "branded_motion_graphic",
-      "licence_note": "Designed and rendered by the Remotion composition from brand tokens; no third-party asset, no generated imagery.",
       "asset_status": "RESOLVED",
       "required": true,
-      "file": null,
-      "generator": "remotion-code",
+      "licence_note": "Drawn by the composition from brand tokens; no third-party asset, no generated imagery.",
       "counts_against_generative_budget": true
     }
   ],
   "generative_allowlist_unused": [
     {
       "allowlist_category": "abstract branded transition",
-      "reason_not_used": "The approved script contains no designed transition. Adding one would be scope expansion beyond the script, so the slot is left unused."
+      "reason_not_used": "The approved script contains no designed transition; adding one would expand scope beyond the script."
     }
   ],
-  "coverage": {
-    "scenes_total": 18,
-    "scenes_with_stock_request": 17,
-    "scenes_generative": [
-      "open-interior",
-      "brand-close"
-    ]
-  },
   "scope_compliance": {
     "generative_fallback_for_blocked_stock": "prohibited and not used",
-    "unused_assets_from_rev_000": "see REVISION_LOG.md — 10 stills classified UNUSED, removed from the tree",
-    "script_overlay_rule": "only the script's approved on-screen text may be rendered",
-    "self_check_rule": "no media action without a mapped scene, an allowlisted category and a manifest entry"
+    "unused_assets_from_rev_000": "see REVISION_LOG.md — 10 pre-contract stills classified UNUSED",
+    "script_overlay_rule": "only the script's approved on-screen text may be rendered"
   }
 }
