@@ -281,3 +281,158 @@ Stop and ask the owner before:
 This experiment ends after one real PR fixture has been rendered/evaluated and the adoption recommendation is recorded.
 
 Do not continue into productionization without a new owner-authorized checkpoint.
+
+
+---
+
+# Owner-authorized Phase 2 — Agentic text → film pipeline
+
+Authorized: 2026-10-08  
+New Idea Filter disposition: **MERGE**  
+Reference case: https://alexeykrol.com/blog/2026/10/07/video1/
+
+## Why EXP-24 is being extended
+
+The Phase 1 HyperFrames run remains valid historical evidence: **PARTIAL / ADOPT_WITH_CHANGES**. It proved the PR-evidence → storyboard → composition path, but rendering was blocked by the Arena runtime.
+
+The owner has now supplied a stronger production reference: an agent receives source text and manages the production chain from semantic breakdown and storyboard through stock-footage search, voice, music, subtitles, programmatic editing, mobile-readability revisions, final render and publication.
+
+Therefore EXP-24 is no longer centered on HyperFrames. HyperFrames becomes one optional renderer/component candidate.
+
+The experiment's new question is:
+
+> Can MPE/Arena turn an existing text or structured source into a reviewable, agent-managed film through a stable storyboard contract, pluggable media/voice/render adapters, deterministic assembly, mobile QA, and natural-language revision—without creating a parallel video platform?
+
+## Updated target architecture
+
+```text
+source text / article / script / PR evidence
+  -> semantic/editorial breakdown
+  -> EDITORIAL_STORYBOARD.json
+  -> visual intent + footage queries
+  -> media adapter
+       -> stock footage
+       -> generated footage
+       -> local/project assets
+  -> voice adapter
+  -> music/audio mix
+  -> Remotion-first assembly adapter
+       -> HyperFrames optional
+  -> subtitles + titles + graphics
+  -> mobile QA / acceptance
+  -> preview
+  -> natural-language revision loop
+  -> final render
+  -> optional publish adapter
+```
+
+## Reuse rule
+
+Reuse the Phase 1 fixture/storyboard/evidence where useful. Do not create another video repository, database, queue, control plane or media platform.
+
+Provider-specific code must sit behind narrow adapters. Storyblocks and ElevenLabs are useful reference providers, not mandatory dependencies.
+
+## Two intended modes
+
+### REAL_FOOTAGE
+For articles, business explanations, educational material, case studies, Murat House and marketing/reporting content. Prefer licensed stock or existing project assets when realism is more valuable than generated imagery.
+
+### GENERATIVE
+For AI-serial and other synthetic visual work. The storyboard, narration, subtitle, assembly, QA and revision layers remain shared; only the visual-source adapter changes.
+
+## Phase 2 checkpoints
+
+### CP-06 — Source → Editorial JSON
+Convert one bounded source into structured scenes containing:
+- scene id/order;
+- narration;
+- editorial purpose;
+- visual intent;
+- footage search queries;
+- titles/graphics;
+- estimated duration;
+- source grounding.
+
+PASS requires a human-reviewable storyboard before any expensive media/render step.
+
+### CP-07 — Media acquisition adapter
+Resolve scene media through a provider-neutral contract.
+
+Start with local/free/test assets if credentials or licensing are unavailable. Record provider, asset id/source, license/usage note and scene mapping.
+
+Storyblocks may be tested when the owner's connected account is available, but it is not architecture authority.
+
+### CP-08 — Voice adapter
+Create narration through a narrow `VoiceProvider` contract.
+
+ElevenLabs is the preferred reference provider when credentials/credits are available. Preserve voice/model/settings metadata sufficient to reproduce the run. A local/test voice is acceptable for pipeline validation.
+
+### CP-09 — Programmatic assembly
+Use **Remotion as the preferred baseline compositor** for Phase 2 because it gives the agent direct control over timing, footage, titles, graphics, subtitles, music and repeatable code changes.
+
+HyperFrames remains an optional alternative/component; do not force it into the critical path.
+
+PASS requires one preview generated from the frozen storyboard and media manifest.
+
+### CP-10 — Mobile QA
+Treat mobile readability as an acceptance test, not a subjective afterthought.
+
+At minimum verify at an effective 360 px player width:
+- titles and key labels remain readable;
+- subtitles are broken into short phrases with no more than two lines;
+- no critical text is outside safe areas;
+- no obvious overflow/clipping;
+- no tiny service/debug text;
+- visual hierarchy survives downscaling.
+
+Automate what can be checked deterministically; preserve screenshots/frames where useful.
+
+### CP-11 — Natural-language revision loop
+Test at least three plain-language edits such as:
+- “text is too small on a phone”;
+- “this footage repeats”;
+- “make the voice older/slower”;
+- “replace scene 7 but keep narration”.
+
+The agent must translate the request into bounded project changes, preserve unaffected approved assets where appropriate, and emit a new preview.
+
+### CP-12 — Final render and publish boundary
+Produce a final render only after CP-06…CP-11 are accepted.
+
+Publishing (for example YouTube upload) is a separate adapter and remains approval-gated. Do not auto-publish during the experiment unless the owner explicitly authorizes that exact action.
+
+## Phase 2 acceptance
+
+### PASS
+One source is converted end-to-end into a useful film with:
+- reviewable editorial storyboard;
+- traceable media;
+- narration/audio;
+- programmatic composition;
+- mobile acceptance checks;
+- at least one successful natural-language revision;
+- final render;
+- no parallel platform/infrastructure.
+
+### PARTIAL
+The core contracts and preview/revision path work, but one external provider/render/publish dependency blocks final completion.
+
+### FAIL
+The agentic approach requires disproportionate manual production work, cannot keep source/media provenance, or becomes materially less controllable than a normal lightweight editing workflow.
+
+## Deep-change stop conditions for Phase 2
+
+Stop and request explicit owner approval before:
+- creating a new repository or persistent video service;
+- introducing a database/queue/control plane;
+- making a paid provider mandatory across projects;
+- changing MPE/Arena authority boundaries;
+- changing AI-serial canon automatically;
+- publishing publicly without explicit authorization;
+- storing third-party licensed media outside permitted terms.
+
+## Phase 2 priority
+
+The smallest useful proof is **one source → storyboard → media/voice → Remotion preview → mobile QA → natural-language revision → final render**.
+
+Do not optimize for a five-minute film first. Prove control and repeatability on the smallest source that exercises the pipeline.
