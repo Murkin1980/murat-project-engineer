@@ -276,3 +276,30 @@ re-wrap. The data claim was true; the rendered claim was not. It is corrected th
 **Not fixed now because:** the fix belongs to CP-10 (mobile acceptance), and CP-10 may not run while the media
 blockers are open. Suggested fix, for when it is authorised: set the caption budget to ~28 characters at
 112 px (or reduce caption font / widen the box) and reserve a caption band that slate layouts keep clear.
+
+## REV-008 — Partial audio restore: 7 of 9 approved clips recovered byte-for-byte
+
+**Type:** recovery (evidence, not a change)
+**What was done:** after REV-005 recorded the loss, the git history was re-checked for audio blobs. The
+nine narration clips (pre-correction set) are still present in commit `6edcf9f`. Exported with
+`git show 6edcf9f:…/public/audio/sceneN.mp3 > public/audio/sceneN.mp3` (export to file — deliberately not
+`git checkout`, which would re-stage binaries that are forbidden in the repository).
+**Verification:** every restored file was hashed and compared with the approved-hash list:
+
+| Clip | Bytes | sha256 (first 8) | Expected | Result |
+| --- | --- | --- | --- | --- |
+| scene1.mp3 | 43,276 | `bb1c226b` | `bb1c226b` | MATCH |
+| scene2.mp3 | 63,129 | `64837c13` | `64837c13` | MATCH |
+| scene3.mp3 | 81,102 | `b877ebce` | `b877ebce` | MATCH |
+| scene4.mp3 | 67,727 | `96f4ca4f` | `96f4ca4f` | MATCH |
+| scene5.mp3 | 56,233 | `053a1a7a` | `053a1a7a` | MATCH |
+| scene7.mp3 | 84,236 | `61a2b3d8` | `61a2b3d8` | MATCH |
+| scene8.mp3 | 48,501 | `b56603cf` | `b56603cf` | MATCH |
+
+**Remaining gap:** only the two corrected clips are still missing — `scene6-brand-fixed.mp3`
+(`70e20d0e…`, 10.501 s) and `scene9-brand-fixed.mp3` (`9a622b99…`, 3.788 s). They were created after the
+last audio-bearing commit and were never committed.
+**Scope check:** seven files rewritten on disk, zero files added to git (audio is git-ignored by owner
+rule), no audio regenerated, no mix rebuilt, no manifests changed beyond recording the recovery.
+**Impact if only these two are restored:** the mix can be rebuilt immediately — expected 69.616 s
+(69.642 − 10.606 + 10.501 − 3.709 + 3.788).
