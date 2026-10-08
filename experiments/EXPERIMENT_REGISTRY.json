@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-10-06",
+  "updated_at": "2026-10-08",
   "experiments": [
     {
       "experiment_id": "EXP-ALEXANDRIA",
@@ -459,21 +459,23 @@
     },
     {
       "experiment_id": "EXP-24",
-      "name": "HyperFrames PR → Video",
+      "name": "Agentic text → film pipeline (HyperFrames/Remotion)",
       "owning_project": "Murat Project Engineer",
       "status": "PLANNED",
-      "why": "Test whether HyperFrames can be reused as a bounded deterministic rendering component that converts a completed engineering PR into a concise 30–60 second evidence-backed video report without creating a parallel video platform.",
+      "why": "Extend the completed HyperFrames PR→video proof into a provider-neutral agentic production pipeline: source→editorial storyboard→stock/generated media→voice→programmatic composition→mobile QA→natural-language revision→final render, without creating a parallel video platform.",
       "date_added": "2026-10-06",
-      "next_action": "Cancel the hung Arena run and start one fresh run from current main using RECOVERY.md + the closure-first ARENA_TASK.md. Do not continue environment repair; persist RESULTS.md and terminate.",
-      "result_summary": "Execution recovery required: the prior Arena run hung before persisting a terminal result or canonical experiment artifacts. No HyperFrames outcome is claimed yet. A closure-first recovery path is now recorded.",
+      "next_action": "Run owner-authorized Phase 2 CP-06…CP-12. Start with one bounded source, freeze EDITORIAL_STORYBOARD.json and MEDIA_MANIFEST.json, use Remotion as the preferred baseline compositor, treat HyperFrames as optional, validate mobile readability at 360 px, then prove natural-language revision before final render.",
+      "result_summary": "Phase 1 remains PARTIAL / ADOPT_WITH_CHANGES due Arena Chrome/FFmpeg blockers. On 2026-10-08 the owner authorized MERGE into a broader Phase 2 based on a real agentic film-production reference. HyperFrames is no longer the critical path; Remotion is preferred for the next proof, provider-specific stock/TTS sit behind adapters, and mobile QA plus natural-language revisions are mandatory acceptance checkpoints.",
       "repo": "Murkin1980/murat-project-engineer",
       "experiment_path": "experiments/exp-24-hyperframes-pr-video",
       "evidence_links": [
         "experiments/exp-24-hyperframes-pr-video/README.md",
-        "experiments/exp-24-hyperframes-pr-video/ARENA_TASK.md"
+        "experiments/exp-24-hyperframes-pr-video/ARENA_TASK.md",
+        "experiments/exp-24-hyperframes-pr-video/RESULTS.md",
+        "https://alexeykrol.com/blog/2026/10/07/video1/"
       ],
       "pr_or_issue_links": [],
-      "updated_at": "2026-10-06"
+      "updated_at": "2026-10-08"
     },
     {
       "experiment_id": "EXP-25",
