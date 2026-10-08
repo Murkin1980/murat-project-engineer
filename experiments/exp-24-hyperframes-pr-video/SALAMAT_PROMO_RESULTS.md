@@ -98,3 +98,46 @@ Also fixed here: the tracked branch carried 23 generated files (10 audio + 13 re
 Patterns re-anchored and the files untracked in `602b8a5`; 0 media files remain tracked inside EXP-24.
 
 STOP GATE: awaiting owner audio review of the two files.
+
+---
+
+## Owner media integration addendum (2026-10-08)
+
+**Audio approval — recorded.** The owner approved `scene6-brand-fixed.mp3`
+(`70e20d0e…`, 10.501 s) and `scene9-brand-fixed.mp3` (`9a622b99…`, 3.788 s) on 2026-10-08;
+`VOICE_MANIFEST.json` now carries `owner_review.decision = OWNER_APPROVED`, per-clip approval flags and the
+approved hashes. All other clips remain approved and unchanged.
+
+**Mix rebuild — BLOCKED_RESTORE, not executed.** The sandbox restarted and reset the working tree to the
+branch base. Audio artifacts are deliberately not committed (owner rule: no binaries in git), so the two
+approved MP3s, the other seven clips, the mix and the preview MP4 were lost. They cannot be recovered from git:
+the corrected clips were created after the last audio-bearing commit and never committed. Nothing was
+regenerated and no substitute was inserted — the owner's approval applies to specific audited bytes, and the
+other seven clips were explicitly ordered not to be regenerated. Expected total after replacement, once the
+files are back: **69.616 s** (69.642 − 10.606 + 10.501 − 3.709 + 3.788). Restore options: (A) the owner
+attaches the two MP3s to the chat → exact bytes return; (B) the owner authorises regeneration with `voice-00`
+and the same Cyrillic text → new hashes plus one more listening check.
+
+**Owner Instagram portfolio — new first media source, access blocked.** The profile
+`https://www.instagram.com/salamat_mebelkz/` is now recorded as `OWNER_INSTAGRAM` in `MEDIA_MANIFEST.json`,
+with the priority owner originals → owner Instagram → licensed stock → placeholders for finished-furniture and
+portfolio beats, while workshop/CNC beats stay Storyblocks-first. Twelve of seventeen stock beats now prefer
+owner material; ten explicitly need owner uploads. **Nothing could be inspected**: Instagram is unreachable
+from this runtime (HTTP 000 on four hosts while DNS resolves), no credentials exist, and Arena offers no
+Instagram connector. No scraping, no bypass, and no invented candidates — see `INSTAGRAM_MEDIA_AUDIT.md` and
+`OWNER_MEDIA_SHORTLIST.json`. Blocker: `BLOCKED_OWNER_MEDIA_ACCESS`.
+
+**Two render defects recorded for CP-10** (found while verifying the compressed composition, not fixed because
+CP-10 may not run while media blockers are open):
+
+1. captions prepared at 44 characters per line re-wrap in the browser at 112 px, so a beat can render four
+   visual lines instead of two (frame 1800 = 60.0 s);
+2. the same extra lines make the caption block overlap the centred placeholder-slate text.
+
+**Correction of an earlier verification claim:** the CP-09 statement "captions 1–2 lines (measured)" was a
+data-level check of `timeline.json`, not a rendered check; it did not account for browser re-wrap. Corrected.
+
+**Deliverables for this request:** `INSTAGRAM_MEDIA_AUDIT.md`, `OWNER_MEDIA_SHORTLIST.json` (candidates +
+scene mapping + upload list + submission paths + rights notes), updated `MEDIA_MANIFEST.json`,
+`VOICE_MANIFEST.json`, `REVISION_LOG.md` (REV-004…REV-007). LOC after the change: 1,183 (preferred ≤ 1,200).
+No render, no publication, no CP-10…CP-12.

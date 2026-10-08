@@ -20,6 +20,7 @@ PROMO = HERE.parent
 EXP = PROMO.parent
 STORYBOARD = EXP / "EDITORIAL_STORYBOARD.json"
 MANIFEST = EXP / "MEDIA_MANIFEST.json"
+SHORTLIST = EXP / "OWNER_MEDIA_SHORTLIST.json"
 LOG = EXP / "MEDIA_PROVIDER_LOG.md"
 
 sys.path.insert(0, str(PROMO / "adapters"))
@@ -56,6 +57,29 @@ BRANDED = [
 ]
 
 
+def owner_priority() -> dict[str, dict]:
+    """Owner-media beats (finished furniture / portfolio) from OWNER_MEDIA_SHORTLIST.json."""
+    if not SHORTLIST.exists():
+        return {}
+    data = json.loads(SHORTLIST.read_text(encoding="utf-8"))
+    src = data["owner_media_source"]
+    wanted = {m["scene_id"]: m for m in data["scene_mapping"] if m["owner_source_priority"] <= 2}
+    return {
+        sid: {
+            "provider": "OWNER_INSTAGRAM" if m["owner_source_priority"] <= 2 else "OWNER_ORIGINALS",
+            "profile_url": src["profile_url"],
+            "post_or_reel_url": None,
+            "category": m["owner_category"],
+            "preferred_media_type": m["preferred_media_type"],
+            "availability": src["access"],
+            "review_status": data["review"]["status"],
+            "priority_rank": m["owner_source_priority"],
+            "what_is_needed": m["what_is_needed"],
+        }
+        for sid, m in wanted.items()
+    }
+
+
 def plan() -> int:
     if len(BRANDED) > BUDGET:
         raise SystemExit(f"{len(BRANDED)} branded graphics exceed the pre-review budget of {BUDGET}")
@@ -63,6 +87,7 @@ def plan() -> int:
     available, reason = (storyblocks_adapter.availability() if storyblocks_adapter
                          else (False, "adapter unavailable"))
 
+    owner_beats = owner_priority()
     assets = []
     for beat in sorted(board["beats"], key=lambda b: b["order"]):
         if not beat["footage_queries"]:
@@ -94,6 +119,10 @@ def plan() -> int:
             "generative_substitute": False,
             "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback "
                                             "for stock failure",
+            "source_priority": (["OWNER_ORIGINALS", "OWNER_INSTAGRAM", "LICENSED_STOCK", "PLACEHOLDER"]
+                                if beat["id"] in owner_beats
+                                else ["LICENSED_STOCK", "PLACEHOLDER"]),
+            "owner_source": owner_beats.get(beat["id"]),
         })
 
     branded = [dict(b, kind="GENERATIVE", media_type="motion_graphic", provider="in-house",
@@ -133,6 +162,8 @@ def plan() -> int:
                     "is blocked the preview must not be presented as a finished promo.",
         },
         "assets": assets,
+        "owner_media_source": (json.loads(SHORTLIST.read_text(encoding="utf-8"))["owner_media_source"]
+                               if SHORTLIST.exists() else None),
         "branded_motion_graphics": branded,
         "generative_allowlist_unused": [{
             "allowlist_category": "abstract branded transition",

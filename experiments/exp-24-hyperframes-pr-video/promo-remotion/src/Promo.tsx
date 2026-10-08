@@ -59,21 +59,15 @@ const captionStyle: React.CSSProperties = {
   background: "rgba(15,14,12,0.34)", textShadow: "0 2px 14px rgba(0,0,0,0.55)",
 };
 
+const GRADE_TOP =
+  "linear-gradient(180deg, rgba(15,14,12,0.42) 0%, rgba(15,14,12,0.06) 26%, " +
+  "rgba(15,14,12,0.16) 62%, rgba(15,14,12,0.72) 100%)";
+const GRADE_BRASS = "radial-gradient(120% 80% at 50% 45%, rgba(200,161,90,0.10) 0%, rgba(0,0,0,0) 60%)";
+
 const grade = (
   <>
-    <AbsoluteFill
-      style={{
-        background:
-          "linear-gradient(180deg, rgba(15,14,12,0.42) 0%, rgba(15,14,12,0.06) 26%, rgba(15,14,12,0.16) 62%, rgba(15,14,12,0.72) 100%)",
-      }}
-    />
-    <AbsoluteFill
-      style={{
-        background:
-          "radial-gradient(120% 80% at 50% 45%, rgba(200,161,90,0.10) 0%, rgba(0,0,0,0) 60%)",
-        mixBlendMode: "soft-light",
-      }}
-    />
+    <AbsoluteFill style={{ background: GRADE_TOP }} />
+    <AbsoluteFill style={{ background: GRADE_BRASS, mixBlendMode: "soft-light" }} />
   </>
 );
 
@@ -117,13 +111,9 @@ const SearchSlate: React.FC<{ shot: Shot }> = ({ shot }) => (
       <div style={{ fontSize: 72, fontWeight: 700, color: BRASS, letterSpacing: 2 }}>
         STORYBLOCKS · UNLICENSED · PREVIEW ONLY
       </div>
-      <div style={{ fontSize: 64, fontWeight: 600, color: PAPER, marginTop: 26 }}>
-        {shot.query}
-      </div>
+      <div style={{ fontSize: 64, fontWeight: 600, color: PAPER, marginTop: 26 }}>{shot.query}</div>
       <div style={{ fontSize: 48, fontWeight: 400, color: "rgba(244,239,230,0.62)", marginTop: 18 }}>
-        {`scene ${shot.order} · script ${shot.scriptTimecode} · target ${Math.round(
-          shot.durationFrames / 30,
-        )}s`}
+        {`scene ${shot.order} · script ${shot.scriptTimecode} · target ${Math.round(shot.durationFrames / 30)}s`}
       </div>
     </div>
   </AbsoluteFill>
@@ -166,13 +156,9 @@ const Overlay: React.FC<{ shot: Shot }> = ({ shot }) => {
   });
   if (opening) {
     return (
-      <div
-        style={{
-          position: "absolute", left: SAFE_X, bottom: 210, opacity, fontFamily: FONT,
-          fontSize: TYPE.brand, fontWeight: 800, letterSpacing: 4, color: PAPER,
-          textShadow: "0 4px 30px rgba(0,0,0,0.5)",
-        }}
-      >
+      <div style={{ position: "absolute", left: SAFE_X, bottom: 210, opacity, fontFamily: FONT,
+                    fontSize: TYPE.brand, fontWeight: 800, letterSpacing: 4, color: PAPER,
+                    textShadow: "0 4px 30px rgba(0,0,0,0.5)" }}>
         {shot.title}
       </div>
     );
@@ -201,18 +187,8 @@ const Overlay: React.FC<{ shot: Shot }> = ({ shot }) => {
 const Captions: React.FC<{ lines: string[] }> = ({ lines }) => {
   if (!lines.length) return null;
   return (
-    <div
-      style={{
-        position: "absolute",
-        left: SAFE_X,
-        right: SAFE_X,
-        bottom: 72,
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: 6,
-      }}
-    >
+    <div style={{ position: "absolute", left: SAFE_X, right: SAFE_X, bottom: 72, display: "flex",
+                  flexDirection: "column", alignItems: "center", gap: 6 }}>
       {lines.map((line) => (
         <div key={line} style={captionStyle}>
           {line}
@@ -242,6 +218,10 @@ const ShotView: React.FC<{ shot: Shot; captions: boolean }> = ({ shot, captions 
   );
 };
 
+const END_CARD_BG =
+  "radial-gradient(90% 60% at 22% 18%, rgba(200,161,90,0.20) 0%, rgba(0,0,0,0) 58%), " +
+  "linear-gradient(160deg, #12100E 0%, #1B1714 55%, #0C0B0A 100%)";
+
 /** Allowlisted branded graphic 2/2: closing end card with the neutral CTA (script scene 9). */
 const EndCard: React.FC<{ shot: Shot; captions: boolean }> = ({ shot, captions }) => {
   const frame = useCurrentFrame();
@@ -270,37 +250,14 @@ const EndCard: React.FC<{ shot: Shot; captions: boolean }> = ({ shot, captions }
         paddingRight: SAFE_X,
       }}
     >
-      <AbsoluteFill
-        style={{
-          background:
-            "radial-gradient(90% 60% at 22% 18%, rgba(200,161,90,0.20) 0%, rgba(0,0,0,0) 58%), " +
-            "linear-gradient(160deg, #12100E 0%, #1B1714 55%, #0C0B0A 100%)",
-        }}
-      />
-      <div
-        style={{
-          fontFamily: FONT,
-          fontSize: TYPE.brand,
-          fontWeight: 800,
-          letterSpacing: 6,
-          color: PAPER,
-          textAlign: "center",
-        }}
-      >
+      <AbsoluteFill style={{ background: END_CARD_BG }} />
+      <div style={{ fontFamily: FONT, fontSize: TYPE.brand, fontWeight: 800, letterSpacing: 6,
+                    color: PAPER, textAlign: "center" }}>
         {shot.title}
       </div>
       <div style={{ marginTop: 34, width: 460 * rule, height: 4, background: BRASS }} />
-      <div
-        style={{
-          marginTop: 40,
-          fontFamily: FONT,
-          fontSize: TYPE.subtitle,
-          fontWeight: 500,
-          color: "rgba(244,239,230,0.94)",
-          opacity: cta,
-          textAlign: "center",
-        }}
-      >
+      <div style={{ marginTop: 40, fontFamily: FONT, fontSize: TYPE.subtitle, fontWeight: 500,
+                    color: "rgba(244,239,230,0.94)", opacity: cta, textAlign: "center" }}>
         {shot.subtitle}
       </div>
       {captions ? <Captions lines={shot.captionLines} /> : null}

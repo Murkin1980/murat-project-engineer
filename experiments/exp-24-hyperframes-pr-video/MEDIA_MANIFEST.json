@@ -2,7 +2,7 @@
   "contract": "MEDIA_MANIFEST",
   "version": 4,
   "fixture": "Salamat Mebel 2-minute promo",
-  "created": "2026-10-08T04:53:53+00:00",
+  "created": "2026-10-08T07:48:28+00:00",
   "narrative_source_of_truth": "SALAMAT_PROMO_SCRIPT.md",
   "media_source_authority": [
     "REAL LICENSED VIDEO FOOTAGE — Storyblocks first",
@@ -66,7 +66,24 @@
         "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
+      "source_priority": [
+        "OWNER_ORIGINALS",
+        "OWNER_INSTAGRAM",
+        "LICENSED_STOCK",
+        "PLACEHOLDER"
+      ],
+      "owner_source": {
+        "provider": "OWNER_INSTAGRAM",
+        "profile_url": "https://www.instagram.com/salamat_mebelkz/",
+        "post_or_reel_url": null,
+        "category": "kitchens",
+        "preferred_media_type": "video",
+        "availability": "BLOCKED_OWNER_MEDIA_ACCESS",
+        "review_status": "AWAITING_OWNER_MEDIA_REVIEW",
+        "priority_rank": 1,
+        "what_is_needed": "A finished premium kitchen, slow move or the longest calm segment available; enough material for a 5 s push-in."
+      }
     },
     {
       "asset_id": "sb-open-detail",
@@ -101,7 +118,24 @@
         "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
+      "source_priority": [
+        "OWNER_ORIGINALS",
+        "OWNER_INSTAGRAM",
+        "LICENSED_STOCK",
+        "PLACEHOLDER"
+      ],
+      "owner_source": {
+        "provider": "OWNER_INSTAGRAM",
+        "profile_url": "https://www.instagram.com/salamat_mebelkz/",
+        "post_or_reel_url": null,
+        "category": "furniture details, facades and hardware",
+        "preferred_media_type": "video (macro if possible)",
+        "availability": "BLOCKED_OWNER_MEDIA_ACCESS",
+        "review_status": "AWAITING_OWNER_MEDIA_REVIEW",
+        "priority_rank": 1,
+        "what_is_needed": "Macro detail of a facade, edge or handle from the owner's own projects; 3 s of usable motion."
+      }
     },
     {
       "asset_id": "sb-task-measure",
@@ -136,7 +170,12 @@
         "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
+      "source_priority": [
+        "LICENSED_STOCK",
+        "PLACEHOLDER"
+      ],
+      "owner_source": null
     },
     {
       "asset_id": "sb-task-habits",
@@ -171,7 +210,12 @@
         "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
+      "source_priority": [
+        "LICENSED_STOCK",
+        "PLACEHOLDER"
+      ],
+      "owner_source": null
     },
     {
       "asset_id": "sb-project-drawings",
@@ -206,7 +250,12 @@
         "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
+      "source_priority": [
+        "LICENSED_STOCK",
+        "PLACEHOLDER"
+      ],
+      "owner_source": null
     },
     {
       "asset_id": "sb-project-selection",
@@ -241,7 +290,24 @@
         "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
+      "source_priority": [
+        "OWNER_ORIGINALS",
+        "OWNER_INSTAGRAM",
+        "LICENSED_STOCK",
+        "PLACEHOLDER"
+      ],
+      "owner_source": {
+        "provider": "OWNER_INSTAGRAM",
+        "profile_url": "https://www.instagram.com/salamat_mebelkz/",
+        "post_or_reel_url": null,
+        "category": "material selection",
+        "preferred_media_type": "video",
+        "availability": "BLOCKED_OWNER_MEDIA_ACCESS",
+        "review_status": "AWAITING_OWNER_MEDIA_REVIEW",
+        "priority_rank": 2,
+        "what_is_needed": "Owner samples/boards in motion would be stronger than stock; no supplier branding in frame."
+      }
     },
     {
       "asset_id": "sb-prod-cutting",
@@ -276,7 +342,12 @@
         "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
+      "source_priority": [
+        "LICENSED_STOCK",
+        "PLACEHOLDER"
+      ],
+      "owner_source": null
     },
     {
       "asset_id": "sb-prod-processing",
@@ -311,7 +382,12 @@
         "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
+      "source_priority": [
+        "LICENSED_STOCK",
+        "PLACEHOLDER"
+      ],
+      "owner_source": null
     },
     {
       "asset_id": "sb-prod-assembly",
@@ -346,7 +422,24 @@
         "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
+      "source_priority": [
+        "OWNER_ORIGINALS",
+        "OWNER_INSTAGRAM",
+        "LICENSED_STOCK",
+        "PLACEHOLDER"
+      ],
+      "owner_source": {
+        "provider": "OWNER_INSTAGRAM",
+        "profile_url": "https://www.instagram.com/salamat_mebelkz/",
+        "post_or_reel_url": null,
+        "category": "production (assembly)",
+        "preferred_media_type": "video",
+        "availability": "BLOCKED_OWNER_MEDIA_ACCESS",
+        "review_status": "AWAITING_OWNER_MEDIA_REVIEW",
+        "priority_rank": 2,
+        "what_is_needed": "Owner assembly footage is preferable — it shows the real workshop."
+      }
     },
     {
       "asset_id": "sb-tactile-hero",
@@ -381,7 +474,24 @@
         "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
+      "source_priority": [
+        "OWNER_ORIGINALS",
+        "OWNER_INSTAGRAM",
+        "LICENSED_STOCK",
+        "PLACEHOLDER"
+      ],
+      "owner_source": {
+        "provider": "OWNER_INSTAGRAM",
+        "profile_url": "https://www.instagram.com/salamat_mebelkz/",
+        "post_or_reel_url": null,
+        "category": "furniture details (countertop, hand on surface)",
+        "preferred_media_type": "video",
+        "availability": "BLOCKED_OWNER_MEDIA_ACCESS",
+        "review_status": "AWAITING_OWNER_MEDIA_REVIEW",
+        "priority_rank": 1,
+        "what_is_needed": "Owner-directed hero shot: slow glide along a real countertop with a hand crossing the surface so texture and finish read. If the owner has this on their own project video, it beats stock."
+      }
     },
     {
       "asset_id": "sb-materials-hardware",
@@ -416,7 +526,24 @@
         "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
+      "source_priority": [
+        "OWNER_ORIGINALS",
+        "OWNER_INSTAGRAM",
+        "LICENSED_STOCK",
+        "PLACEHOLDER"
+      ],
+      "owner_source": {
+        "provider": "OWNER_INSTAGRAM",
+        "profile_url": "https://www.instagram.com/salamat_mebelkz/",
+        "post_or_reel_url": null,
+        "category": "furniture details, facades and hardware",
+        "preferred_media_type": "video",
+        "availability": "BLOCKED_OWNER_MEDIA_ACCESS",
+        "review_status": "AWAITING_OWNER_MEDIA_REVIEW",
+        "priority_rank": 1,
+        "what_is_needed": "A smooth closing movement, hinges/runners, edge and facade details from owner projects."
+      }
     },
     {
       "asset_id": "sb-range-kitchen-storage",
@@ -451,7 +578,24 @@
         "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
+      "source_priority": [
+        "OWNER_ORIGINALS",
+        "OWNER_INSTAGRAM",
+        "LICENSED_STOCK",
+        "PLACEHOLDER"
+      ],
+      "owner_source": {
+        "provider": "OWNER_INSTAGRAM",
+        "profile_url": "https://www.instagram.com/salamat_mebelkz/",
+        "post_or_reel_url": null,
+        "category": "kitchens + wardrobes and built-in storage",
+        "preferred_media_type": "video",
+        "availability": "BLOCKED_OWNER_MEDIA_ACCESS",
+        "review_status": "AWAITING_OWNER_MEDIA_REVIEW",
+        "priority_rank": 1,
+        "what_is_needed": "Two segments (~3 s each): a finished kitchen interior, then built-in storage or a walk-in system opening."
+      }
     },
     {
       "asset_id": "sb-range-home-rooms",
@@ -486,7 +630,24 @@
         "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
+      "source_priority": [
+        "OWNER_ORIGINALS",
+        "OWNER_INSTAGRAM",
+        "LICENSED_STOCK",
+        "PLACEHOLDER"
+      ],
+      "owner_source": {
+        "provider": "OWNER_INSTAGRAM",
+        "profile_url": "https://www.instagram.com/salamat_mebelkz/",
+        "post_or_reel_url": null,
+        "category": "children's furniture / bathroom furniture / TV units",
+        "preferred_media_type": "video (3 short clips, ~2 s each)",
+        "availability": "BLOCKED_OWNER_MEDIA_ACCESS",
+        "review_status": "AWAITING_OWNER_MEDIA_REVIEW",
+        "priority_rank": 1,
+        "what_is_needed": "One clip per room type, matched camera language; if only stills exist, say so and they will be motion-treated like the rest."
+      }
     },
     {
       "asset_id": "sb-range-commercial",
@@ -521,7 +682,24 @@
         "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
+      "source_priority": [
+        "OWNER_ORIGINALS",
+        "OWNER_INSTAGRAM",
+        "LICENSED_STOCK",
+        "PLACEHOLDER"
+      ],
+      "owner_source": {
+        "provider": "OWNER_INSTAGRAM",
+        "profile_url": "https://www.instagram.com/salamat_mebelkz/",
+        "post_or_reel_url": null,
+        "category": "commercial and office projects",
+        "preferred_media_type": "video",
+        "availability": "BLOCKED_OWNER_MEDIA_ACCESS",
+        "review_status": "AWAITING_OWNER_MEDIA_REVIEW",
+        "priority_rank": 1,
+        "what_is_needed": "Reception/office/retail project footage; no readable client signage or logos."
+      }
     },
     {
       "asset_id": "sb-install-fitting",
@@ -556,7 +734,24 @@
         "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
+      "source_priority": [
+        "OWNER_ORIGINALS",
+        "OWNER_INSTAGRAM",
+        "LICENSED_STOCK",
+        "PLACEHOLDER"
+      ],
+      "owner_source": {
+        "provider": "OWNER_INSTAGRAM",
+        "profile_url": "https://www.instagram.com/salamat_mebelkz/",
+        "post_or_reel_url": null,
+        "category": "installation",
+        "preferred_media_type": "video",
+        "availability": "BLOCKED_OWNER_MEDIA_ACCESS",
+        "review_status": "AWAITING_OWNER_MEDIA_REVIEW",
+        "priority_rank": 1,
+        "what_is_needed": "Installers levelling/aligning cabinetry on site; privacy-safe framing (no identifiable client home details)."
+      }
     },
     {
       "asset_id": "sb-install-adjust",
@@ -591,7 +786,24 @@
         "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
+      "source_priority": [
+        "OWNER_ORIGINALS",
+        "OWNER_INSTAGRAM",
+        "LICENSED_STOCK",
+        "PLACEHOLDER"
+      ],
+      "owner_source": {
+        "provider": "OWNER_INSTAGRAM",
+        "profile_url": "https://www.instagram.com/salamat_mebelkz/",
+        "post_or_reel_url": null,
+        "category": "installation (adjustment, details)",
+        "preferred_media_type": "video",
+        "availability": "BLOCKED_OWNER_MEDIA_ACCESS",
+        "review_status": "AWAITING_OWNER_MEDIA_REVIEW",
+        "priority_rank": 1,
+        "what_is_needed": "Hinge/door adjustment detail, final alignment check."
+      }
     },
     {
       "asset_id": "sb-result-space",
@@ -626,9 +838,42 @@
         "licence_note": "Not media. Text-only search slate drawn by the composition so assembly, timing, titles, captions and mobile readability can be tested while licensed footage is unavailable. Must not ship in a published film."
       },
       "generative_substitute": false,
-      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure"
+      "generative_substitute_reason": "forbidden by HARD SCOPE CONTRACT § No generative fallback for stock failure",
+      "source_priority": [
+        "OWNER_ORIGINALS",
+        "OWNER_INSTAGRAM",
+        "LICENSED_STOCK",
+        "PLACEHOLDER"
+      ],
+      "owner_source": {
+        "provider": "OWNER_INSTAGRAM",
+        "profile_url": "https://www.instagram.com/salamat_mebelkz/",
+        "post_or_reel_url": null,
+        "category": "finished interiors",
+        "preferred_media_type": "video",
+        "availability": "BLOCKED_OWNER_MEDIA_ACCESS",
+        "review_status": "AWAITING_OWNER_MEDIA_REVIEW",
+        "priority_rank": 1,
+        "what_is_needed": "The film's longest hold (11 s): the best finished interior the owner has, with calm light and real interaction (a cabinet opening)."
+      }
     }
   ],
+  "owner_media_source": {
+    "provider": "OWNER_INSTAGRAM",
+    "profile_url": "https://www.instagram.com/salamat_mebelkz/",
+    "authorization": "designated by the owner as the Salamat Mebel portfolio source, 2026-10-08",
+    "scope_of_authorization": "this exact profile only; similarly named accounts are NOT authorized",
+    "content_inspected": false,
+    "access": "BLOCKED_OWNER_MEDIA_ACCESS",
+    "access_blocker": {
+      "network": "the execution sandbox egress allowlist covers github.com, codeload.github.com, api.github.com, registry.npmjs.org, pypi.org and files.pythonhosted.org only. www.instagram.com, instagram.com, graph.instagram.com and i.instagram.com all return HTTP 000 (connection refused by policy) although DNS resolves (www.instagram.com -> 2a03:2880:f36c:22:face:b00c:0:4420).",
+      "credentials": "no Instagram/Meta credentials exist in this environment (0 matches for instagram|meta_|facebook in the environment)",
+      "platform_connector": "Arena offers no Instagram connector (list_connector_tools -> unsupported), so the profile cannot be read through a supported integration either",
+      "policy": "authentication bypass, scraping endpoints and anti-bot circumvention are prohibited by the task and were not attempted"
+    },
+    "candidates": [],
+    "candidates_note": "No post, Reel or image was inspected. This file deliberately contains no invented URLs, captions, counts or media ids — everything below is a request to the owner, not a claim about profile content."
+  },
   "branded_motion_graphics": [
     {
       "asset_id": "brand-wordmark-reveal",

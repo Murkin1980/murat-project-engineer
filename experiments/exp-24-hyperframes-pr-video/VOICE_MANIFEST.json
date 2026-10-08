@@ -62,7 +62,9 @@
       "text_seconds": 8.0,
       "fits": true,
       "scene_clip_seconds": 5.381,
-      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)",
+      "approval": "OWNER_APPROVED (preserved)",
+      "artifact_present": false
     },
     {
       "scene_id": "open-detail",
@@ -73,7 +75,9 @@
       "fits": true,
       "shared_with": "open-interior",
       "scene_clip_seconds": 5.381,
-      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)",
+      "approval": "OWNER_APPROVED (preserved)",
+      "artifact_present": false
     },
     {
       "scene_id": "task-measure",
@@ -83,7 +87,9 @@
       "text_seconds": 14.0,
       "fits": true,
       "scene_clip_seconds": 7.863,
-      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)",
+      "approval": "OWNER_APPROVED (preserved)",
+      "artifact_present": false
     },
     {
       "scene_id": "task-habits",
@@ -94,7 +100,9 @@
       "fits": true,
       "shared_with": "task-measure",
       "scene_clip_seconds": 7.863,
-      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)",
+      "approval": "OWNER_APPROVED (preserved)",
+      "artifact_present": false
     },
     {
       "scene_id": "project-drawings",
@@ -104,7 +112,9 @@
       "text_seconds": 14.0,
       "fits": true,
       "scene_clip_seconds": 10.109,
-      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)",
+      "approval": "OWNER_APPROVED (preserved)",
+      "artifact_present": false
     },
     {
       "scene_id": "project-selection",
@@ -115,7 +125,9 @@
       "fits": true,
       "shared_with": "project-drawings",
       "scene_clip_seconds": 10.109,
-      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)",
+      "approval": "OWNER_APPROVED (preserved)",
+      "artifact_present": false
     },
     {
       "scene_id": "prod-cutting",
@@ -125,7 +137,9 @@
       "text_seconds": 19.0,
       "fits": true,
       "scene_clip_seconds": 8.438,
-      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)",
+      "approval": "OWNER_APPROVED (preserved)",
+      "artifact_present": false
     },
     {
       "scene_id": "prod-processing",
@@ -136,7 +150,9 @@
       "fits": true,
       "shared_with": "prod-cutting",
       "scene_clip_seconds": 8.438,
-      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)",
+      "approval": "OWNER_APPROVED (preserved)",
+      "artifact_present": false
     },
     {
       "scene_id": "prod-assembly",
@@ -147,7 +163,9 @@
       "fits": true,
       "shared_with": "prod-cutting",
       "scene_clip_seconds": 8.438,
-      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)",
+      "approval": "OWNER_APPROVED (preserved)",
+      "artifact_present": false
     },
     {
       "scene_id": "tactile-hero",
@@ -157,7 +175,9 @@
       "text_seconds": 13.0,
       "fits": true,
       "scene_clip_seconds": 7.001,
-      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)",
+      "approval": "OWNER_APPROVED (preserved)",
+      "artifact_present": false
     },
     {
       "scene_id": "materials-hardware",
@@ -168,39 +188,47 @@
       "fits": true,
       "shared_with": "tactile-hero",
       "scene_clip_seconds": 7.001,
-      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)",
+      "approval": "OWNER_APPROVED (preserved)",
+      "artifact_present": false
     },
     {
       "scene_id": "range-kitchen-storage",
       "script_scene": 6,
-      "path": "audio/scene6.mp3",
+      "path": "audio/scene6-brand-fixed.mp3",
       "duration_seconds": 3.449,
       "text_seconds": 19.0,
       "fits": true,
-      "scene_clip_seconds": 10.606,
-      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+      "scene_clip_seconds": 10.501,
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)",
+      "approval": "OWNER_APPROVED",
+      "artifact_present": false
     },
     {
       "scene_id": "range-home-rooms",
       "script_scene": 6,
-      "path": "audio/scene6.mp3",
+      "path": "audio/scene6-brand-fixed.mp3",
       "duration_seconds": 2.473,
       "text_seconds": 19.0,
       "fits": true,
       "shared_with": "range-kitchen-storage",
-      "scene_clip_seconds": 10.606,
-      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+      "scene_clip_seconds": 10.501,
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)",
+      "approval": "OWNER_APPROVED",
+      "artifact_present": false
     },
     {
       "scene_id": "range-commercial",
       "script_scene": 6,
-      "path": "audio/scene6.mp3",
+      "path": "audio/scene6-brand-fixed.mp3",
       "duration_seconds": 4.685,
       "text_seconds": 19.0,
       "fits": true,
       "shared_with": "range-kitchen-storage",
-      "scene_clip_seconds": 10.606,
-      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+      "scene_clip_seconds": 10.501,
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)",
+      "approval": "OWNER_APPROVED",
+      "artifact_present": false
     },
     {
       "scene_id": "install-fitting",
@@ -210,7 +238,9 @@
       "text_seconds": 15.0,
       "fits": true,
       "scene_clip_seconds": 10.501,
-      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)",
+      "approval": "OWNER_APPROVED (preserved)",
+      "artifact_present": false
     },
     {
       "scene_id": "install-adjust",
@@ -221,7 +251,9 @@
       "fits": true,
       "shared_with": "install-fitting",
       "scene_clip_seconds": 10.501,
-      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)",
+      "approval": "OWNER_APPROVED (preserved)",
+      "artifact_present": false
     },
     {
       "scene_id": "result-space",
@@ -231,17 +263,21 @@
       "text_seconds": 11.0,
       "fits": true,
       "scene_clip_seconds": 6.034,
-      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)",
+      "approval": "OWNER_APPROVED (preserved)",
+      "artifact_present": false
     },
     {
       "scene_id": "brand-close",
       "script_scene": 9,
-      "path": "audio/scene9.mp3",
+      "path": "audio/scene9-brand-fixed.mp3",
       "duration_seconds": 3.709,
       "text_seconds": 7.0,
       "fits": true,
-      "scene_clip_seconds": 3.709,
-      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+      "scene_clip_seconds": 3.788,
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)",
+      "approval": "OWNER_APPROVED",
+      "artifact_present": false
     }
   ],
   "narration_total_seconds": 69.642,
@@ -264,5 +300,70 @@
   ],
   "cost": {
     "credits_observed": "not exposed by the adapter; no paid provider was used"
+  },
+  "owner_review": {
+    "decision": "OWNER_APPROVED",
+    "date": "2026-10-08",
+    "scope": [
+      "scene6-brand-fixed.mp3",
+      "scene9-brand-fixed.mp3"
+    ],
+    "approved_artifact_hashes": {
+      "scene6-brand-fixed.mp3": "70e20d0e645f23e9760bfebf67c48cb08c819b2875246c249c66fbe427e1c743",
+      "scene9-brand-fixed.mp3": "9a622b991b2a0a3a64e8172625652a324fff783b924aecaea4d38bb7b6136e80"
+    },
+    "approved_artifact_durations": {
+      "scene6-brand-fixed.mp3": 10.501,
+      "scene9-brand-fixed.mp3": 3.788
+    },
+    "statement": "The owner accepted the corrected Russian pronunciation «Саламат Мебель» in both clips."
+  },
+  "artifact_state": {
+    "present_in_workspace": false,
+    "detected_at": "2026-10-08",
+    "what_happened": "the execution sandbox restarted and reset the working tree to the branch base; audio and render artifacts are deliberately not committed to git (owner rule: no binary audio in the repository), so all narration clips, the mix and the preview were lost",
+    "lost_artifacts": [
+      "audio/scene1.mp3 .. audio/scene9.mp3 (9 narration clips, hashes recorded)",
+      "audio/scene6-brand-fixed.mp3, audio/scene9-brand-fixed.mp3 (the two OWNER_APPROVED files)",
+      "audio/narration-ru-salamat-mebel.mp3 (mix)",
+      "out/preview-salamat-mebel-v1.mp4 and the review frames"
+    ],
+    "recoverable_from_git": false,
+    "why_not_recoverable": "the two corrected clips were created after the last commit that ever contained audio, and were never committed; the earlier tracked copies (f10f092) were the pre-correction files, since superseded and untracked in 602b8a5",
+    "hashes_preserved": true,
+    "restore_options": [
+      {
+        "option": "A",
+        "action": "owner attaches the two approved mp3 files to the chat",
+        "result": "exact approved bytes return; mix rebuild uses them unchanged"
+      },
+      {
+        "option": "B",
+        "action": "owner authorises regeneration with voice-00 and the same Cyrillic text",
+        "result": "new bytes, therefore new hashes; the owner must listen once more before final use"
+      }
+    ],
+    "blocked_until_restored": [
+      "narration mix rebuild",
+      "VOICE_MANIFEST duration/hash refresh for scenes 6 and 9",
+      "timeline re-run against new durations",
+      "preview regeneration"
+    ]
+  },
+  "mix_state": {
+    "status": "NOT_REBUILT_WITH_APPROVED_CLIPS",
+    "detail": "the mix rebuild was deferred to owner approval per the REV-003 STOP gate; approval arrived, but the workspace artifacts were already lost (see artifact_state)",
+    "last_built_mix_hash": "98ce2c638fdbb5666c6c6495",
+    "last_built_mix_contained": "the superseded clips scene6.mp3 and scene9.mp3",
+    "expected_total_after_replacement_seconds": 69.616,
+    "calculation": "69.642 s (previous total) - 10.606 + 10.501 (scene 6) - 3.709 + 3.788 (scene 9)"
+  },
+  "approval": {
+    "clips": {
+      "scenes_1_5_7_8": "OWNER_APPROVED (preserved; not regenerated)",
+      "scenes_6_9": "OWNER_APPROVED after the brand-name pronunciation correction (2026-10-08)"
+    },
+    "final_voice_over_approved": false,
+    "note": "the owner approved the corrected pronunciation; a final voice-over sign-off remains separate and cannot be given while the approved files are absent from the workspace"
   }
 }

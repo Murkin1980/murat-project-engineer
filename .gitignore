@@ -18,3 +18,7 @@ dist/
 **/promo-remotion/out/
 **/promo-remotion/node_modules/
 **/promo-remotion/public/audio/
+
+# EXP-24 promo: owner-supplied media stays out of the repo
+**/promo-remotion/owner-media/
+**/owner-media/

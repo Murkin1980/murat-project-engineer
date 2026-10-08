@@ -185,3 +185,94 @@ never matched the experiment subdirectory. Fixed in `602b8a5`: patterns re-ancho
 4. regenerate the technical preview.
 
 Not executed: CP-10…CP-12, full video render, any publishing.
+
+---
+
+## REV-004 — Owner approval of the corrected voice clips (issue #55)
+
+**Type:** owner decision (approval)
+**Request:** "Owner has approved both corrected voice clips" → mark `scene6-brand-fixed.mp3` and
+`scene9-brand-fixed.mp3` as `OWNER_APPROVED`, replace only the corresponding scene audio in the mix, update
+`VOICE_MANIFEST.json`, verify hashes and timing, preserve all other approved clips.
+**Changed:** `VOICE_MANIFEST.json` — `owner_review` (decision, date, approved hashes and durations, statement),
+`approval` block per clip group, and per-clip `approval` / `artifact_present` fields.
+**Preserved:** script, storyboard, composition, provider choice (`voice-00`), every other clip's hash record.
+**Result:** approval registered; **mix rebuild could not be executed** — see REV-005.
+
+## REV-005 — Approved audio artifacts lost in a sandbox reset (BLOCKED_RESTORE)
+
+**Type:** environment loss / blocker
+**Detected:** 2026-10-08, at the start of the media-integration task.
+**What happened:** the execution sandbox restarted and reset the working tree to the branch base
+(`95f7eb4`). Audio and render artifacts are deliberately **not** committed to git (owner rule: no binary
+audio in the repository), so all 11 audio files and the preview MP4 were lost. The text artifacts survived
+and the commits were restored from `origin` (`773c675`).
+**Evidence:**
+
+| Artifact | Expected hash (recorded) | State now |
+| --- | --- | --- |
+| `scene6-brand-fixed.mp3` | `70e20d0e645f23e9760bfebf67c48cb08c819b2875246c249c66fbe427e1c743` | MISSING |
+| `scene9-brand-fixed.mp3` | `9a622b991b2a0a3a64e8172625652a324fff783b924aecaea4d38bb7b6136e80` | MISSING |
+| `scene1..5,7,8.mp3` | `bb1c226b…`, `64837c13…`, `b877ebce…`, `96f4ca4f…`, `053a1a7a…`, `61a2b3d8…`, `b56603cf…` | MISSING |
+| `narration-ru-salamat-mebel.mp3` | `98ce2c638fdbb5666c6c6495…` (pre-correction mix) | MISSING |
+| `preview-salamat-mebel-v1.mp4` | `50f4bece0d4a09285a53cc34a4e254e7…` | MISSING |
+
+**Recoverable from git:** no — the corrected clips were created after the last audio-bearing commit and were
+never committed; the tracked copies in `f10f092` were the superseded pre-correction files.
+**Action taken:** approval recorded, artifact state recorded in `VOICE_MANIFEST.json`
+(`artifact_state`, `mix_state`), nothing regenerated, no substitute inserted, no mix rebuilt.
+**Why regeneration was not performed:** the owner's approval applies to specific audited bytes; regenerating
+would silently replace approved audio with material the owner has not heard, and the other seven clips were
+explicitly ordered not to be regenerated. The narrower action is the blocker.
+**Restore options:** (A) owner attaches the two approved MP3 files to the chat — exact bytes return;
+(B) owner authorises regeneration with `voice-00` and the same Cyrillic text — new hashes and a further
+listening check.
+**Blocked until restored:** mix rebuild · manifest duration/hash refresh for scenes 6 and 9 · timeline re-run ·
+preview regeneration. CP-10…CP-12 remain not started either way.
+
+## REV-006 — Owner Instagram portfolio becomes the first media source (issue: media integration)
+
+**Type:** owner-directed media-source change (EXTEND_EXISTING)
+**Request:** the profile `https://www.instagram.com/salamat_mebelkz/` is the designated Salamat Mebel
+portfolio source; for finished furniture and portfolio scenes the priority becomes owner originals →
+owner Instagram media → licensed stock → neutral placeholders, while workshop/CNC beats stay Storyblocks-first.
+**Changed:** `OWNER_MEDIA_SHORTLIST.json` (new — requests, scene mapping, submission paths, rights notes),
+`INSTAGRAM_MEDIA_AUDIT.md` (new — access audit), `MEDIA_MANIFEST.json` (each asset now carries
+`source_priority` and `owner_source` with provider `OWNER_INSTAGRAM`, profile URL, category, availability and
+review status), `tools/resolve_media.py` (reads the shortlist; ~15 lines).
+**Preserved:** script, storyboard beats, scene structure, brand meaning, Storyblocks requests for the seven
+workshop/process beats, the two branded motion graphics, the 3-asset generative budget.
+**Result:** 12 of 17 stock-request beats now prefer owner material (10 explicitly need owner upload);
+0 owner assets resolved because access is blocked.
+**Blocker:** `BLOCKED_OWNER_MEDIA_ACCESS` — Instagram is unreachable from this runtime (HTTP 000 on four
+hosts while DNS resolves), no credentials exist, and Arena provides no Instagram connector. Nothing was
+scraped, no authentication was bypassed, and no candidate was invented.
+**Next:** owner review of the shortlist — attach originals (preferred) or point the pipeline at a reachable
+copy (e.g. a GitHub release asset).
+
+## REV-007 — Render verification of the compressed composition + two defects recorded for CP-10
+
+**Type:** verification (no behaviour change intended) + defect record
+**Why:** the LOC compression of `src/Promo.tsx` (REV-006, style hoisting only) had to be proven
+layout-neutral before it was trusted.
+**How verified:** reinstalled the toolchain after the sandbox reset (npm install; Chromium re-extracted to
+`/tmp/chromium` with `LD_LIBRARY_PATH=/tmp/al2023/lib`), bundled the TSX with esbuild (clean), then rendered
+one frame: `npx remotion still src/index.ts SalamatPromo out/verify-frame.png --frame=1800`.
+**Result:** the composition renders; the style hoisting is visually neutral.
+
+**Two defects found in that frame — NOT fixed here, recorded for CP-10:**
+
+1. **Captions re-wrap in the browser → more than two visual lines.** `tools/build_timeline.py` wraps captions
+   at 44 characters per line, but a 112 px caption inside `maxWidth: 1560` fits only ~26–28 characters. The
+   browser therefore re-wraps each prepared line, so the beat at 60.0 s (`tactile-hero`) renders four visual
+   lines instead of two. Requirement affected: "subtitles ≤ 2 lines".
+2. **Slate content and captions collide.** On placeholder beats the slate text is vertically centred while the
+   caption block is bottom-anchored and grows upward; with extra wrapped lines the two overlap and both become
+   hard to read (visible in the same frame).
+
+**Correction of an earlier claim:** `SALAMAT_PROMO_RESULTS.md` previously recorded "captions 1–2 lines
+(measured)" — that measurement was taken from `timeline.json` data and did not account for browser
+re-wrap. The data claim was true; the rendered claim was not. It is corrected there.
+**Not fixed now because:** the fix belongs to CP-10 (mobile acceptance), and CP-10 may not run while the media
+blockers are open. Suggested fix, for when it is authorised: set the caption budget to ~28 characters at
+112 px (or reduce caption font / widen the box) and reserve a caption band that slate layouts keep clear.
