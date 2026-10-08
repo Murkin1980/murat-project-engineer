@@ -6,6 +6,158 @@ Repository: `Murkin1980/murat-project-engineer`
 Experiment: `experiments/exp-24-hyperframes-pr-video/`  
 Fixture: **Salamat Mebel 2-minute promo**
 
+
+
+## HARD SCOPE CONTRACT — AUTHORITATIVE
+
+This section overrides any ambiguous wording elsewhere in this task.
+
+### Interpretation rule
+
+**If an action is not explicitly allowed by this task, do not perform it.**
+
+Do not infer permission from:
+- a desired final result;
+- tool availability;
+- convenience;
+- quota availability;
+- prior habits;
+- a generated plan;
+- a model suggestion;
+- an available API;
+- the existence of an image/video generation tool.
+
+When uncertain, choose the narrower action and preserve a blocker/handoff instead of expanding scope.
+
+### Ordered checkpoint gate
+
+Execution order is mandatory:
+
+```text
+CP-06 storyboard
+THEN owner-reviewable artifact exists
+THEN CP-07 stock/media search
+THEN media manifest exists
+THEN CP-08 voice/music
+THEN CP-09 assembly
+THEN CP-10 mobile QA
+THEN CP-11 revisions
+THEN CP-12 final render
+```
+
+Do not execute a later checkpoint before the required artifacts of the previous checkpoint exist in the repository.
+
+### Media-source authority
+
+For all ordinary visual scenes, the source priority is mandatory:
+
+1. **REAL LICENSED VIDEO FOOTAGE — Storyblocks first**
+2. other explicitly approved licensed real footage
+3. existing owner/project media
+4. bounded placeholder for pipeline testing
+5. generative media only where explicitly allowed below
+
+Do not reorder this priority.
+
+### Generative media — explicit allowlist only
+
+Generative media is allowed only for:
+- logo reveal;
+- abstract branded transition;
+- simple diagram/graphic;
+- branded end card;
+- visual bridge that cannot reasonably be sourced as real footage.
+
+Generative media is **not allowed** for:
+- furniture production;
+- CNC/cutting/edgebanding;
+- workers or craftspeople;
+- client consultation;
+- installation;
+- kitchens;
+- wardrobes;
+- finished furniture;
+- interiors;
+- hands touching furniture/materials;
+- countertop tactile shot;
+- hardware/detail footage;
+- any scene for which suitable real stock footage can reasonably exist.
+
+Do not generate an image/video for a disallowed category even if Storyblocks access is blocked.
+
+### No generative fallback for stock failure
+
+If Storyblocks search/auth/download is blocked:
+
+- complete the storyboard;
+- complete Storyblocks search queries;
+- complete the media manifest with unresolved assets;
+- record the exact blocker;
+- use neutral local/test placeholders only when necessary to prove assembly;
+- mark the checkpoint PARTIAL if required.
+
+**Do not convert blocked stock scenes into generated images or generated video.**
+
+### No quota-driven production
+
+Never generate media merely because:
+- a previous plan mentioned N assets;
+- a quota remains;
+- a batch has already started;
+- the tool can generate more;
+- a scene count exists.
+
+Asset count is not a target.
+
+Generate only an explicitly permitted asset that is required by the approved storyboard.
+
+### Maximum generative budget before owner review
+
+Before the owner reviews the first assembled preview:
+- maximum **3 generated visual assets total**;
+- each must map to an allowed generative category;
+- each must be listed in `MEDIA_MANIFEST.json` with reason for generation.
+
+Do not generate asset #4 without explicit owner authorization.
+
+### Real-video rule
+
+The core promo must remain motion-video-first.
+
+Static generated images must not become the main visual language and must not be used as substitutes for stock video across consecutive ordinary scenes.
+
+### Minimal-diff correction rule
+
+If this hard scope is added after work has already begun:
+- do not restart automatically;
+- classify already produced assets as KEEP / REVIEW / UNUSED;
+- preserve only assets compliant with this contract;
+- continue from the earliest incomplete mandatory checkpoint.
+
+### Mandatory self-check before every media action
+
+Before acquiring or generating any visual asset, answer internally:
+
+1. Which scene requires this asset?
+2. Is this scene allowed to use generative media?
+3. Has Storyblocks-first search already been completed for this scene?
+4. Is this asset recorded/planned in MEDIA_MANIFEST?
+5. Does this action keep generated visual assets within the allowed budget?
+
+If any answer is NO, do not perform the media action.
+
+### Scope violation handling
+
+If any prior step violated this contract:
+- stop the violating activity;
+- do not continue the batch;
+- record the deviation in `REVISION_LOG.md` or handoff evidence;
+- preserve useful compliant outputs;
+- resume from the correct checkpoint.
+
+Do not hide or silently normalize the deviation.
+
+
 ## Objective
 
 Create the first production-like Phase 2 fixture for EXP-24:
