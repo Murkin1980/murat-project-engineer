@@ -11,15 +11,22 @@ Disposition: **MERGE into EXP-24** — no new repository, service, database, que
 
 ## 1. Bounded source
 
-The bounded source for this fixture is the owner-supplied promo task itself (`SALAMAT_PROMO_ARENA_TASK.md`,
-objective, production rule, business context, editorial structure, duration and claims policy) plus the
-existing Salamat Mebel project context already recorded in this repository:
+**Narrative source-of-truth: `SALAMAT_PROMO_SCRIPT.md`** (owner-approved baseline script, 9 scenes,
+0:00–2:00). CP-06 transforms that script into a shot-level storyboard; it does not create a new concept.
 
 | Source ref | Used for |
 | --- | --- |
-| `experiments/exp-24-hyperframes-pr-video/SALAMAT_PROMO_ARENA_TASK.md` | objective, mix rule, blocks A–F, claims policy, publishing boundary |
+| `SALAMAT_PROMO_SCRIPT.md` | **narrative source of truth** — scene intent, narration wording, on-screen text, timecodes, mandatory tactile countertop shot |
+| `SALAMAT_PROMO_ARENA_TASK.md` | HARD SCOPE CONTRACT (checkpoint order, media-source authority, generative allowlist and budget), business context, claims policy, publishing boundary |
+| `SALAMAT_PROMO_OWNER_NOTES.md` | mandatory tactile countertop shot and its narration meaning |
 | `docs/evaluations/PERSONALIZED_ASSESSMENT_ENGINE_V0.md` | confirms `salamat-mebel-kz` / `salamat-kitchen-configurator` are existing Salamat Mebel project tracks in this repository's evidence |
 | `docs/GLOBAL_MPE_ENFORCEMENT.md` (§ Salamat Projects Dashboard) | confirms the Salamat portfolio observer is read-only; not a data source for public claims |
+
+Narration wording may be adapted **only** for voice timing, subtitle readability, natural speech or scene
+timing — meaning and scene intent are preserved. `promo-remotion/tools/build_storyboard_from_script.py`
+enforces this mechanically: the shot narration parts must reproduce the script narration verbatim, shot
+durations must sum to the script's own timecodes, and no overlay may contain text that is not in the
+script's approved on-screen text. A mismatch aborts the build.
 
 No live Salamat Mebel website, catalogue, price list, contact data or client data was read for this fixture.
 Everything in the film is limited to the business context explicitly authorized in the task.
@@ -39,9 +46,10 @@ Everything in the film is limited to the business context explicitly authorized 
 
 - Primary: homeowner / apartment owner considering a custom kitchen or built-in furniture.
 - Secondary: small business / retail / office customer (reception, office, medical, commercial furniture).
-- Tone: premium, contemporary, trustworthy, calm. Not "generic AI ad", not a hard-sell radio spot.
+- Tone: premium, contemporary, tactile, trustworthy, calm — explicitly **not** a generic AI advertisement.
 - Narration: mature, unhurried, confident; no announcer exaggeration; no young-startup voice; Russian.
 - Music: low-profile premium corporate / architectural mood; narration stays clearly dominant.
+- Central brand idea (script): *Мы проектируем мебель не вокруг каталога, а вокруг вашего пространства.*
 
 ## 4. Business context the film may reflect
 
@@ -69,16 +77,29 @@ superlatives, named partners or suppliers, medical/office compliance claims.
 Every narration line and overlay in `EDITORIAL_STORYBOARD.json` carries a `source_grounding` list.
 A validator (`promo-remotion/tools/validate_contracts.py`) fails the build if a scene is missing grounding.
 
-## 6. Production mix rule (design intent)
+## 6. Media policy (HARD SCOPE CONTRACT)
 
-| Share | Source | Used for |
-| --- | --- | --- |
-| 75–80 % | `REAL_FOOTAGE` — Storyblocks (primary) via a provider adapter | manufacturing, CNC/cutting/edgebanding/painting, assembly, installers, kitchens/wardrobes/interiors, consultation/design review, hardware details |
-| 20–25 % | `GENERATIVE` / branded motion | logo reveal, brand transitions, text/graphic cards, bridge shots, branded final frame |
+**Media-source authority — mandatory, do not reorder:**
 
-People, factory shots, installations and finished furniture must **not** be generated while suitable real
-footage is available. If the provider is unavailable, the media plan is still completed and a bounded
-fallback is used; the actual delivered mix is reported honestly in `SALAMAT_PROMO_RESULTS.md`.
+1. **REAL LICENSED VIDEO FOOTAGE — Storyblocks first** (every ordinary scene);
+2. other explicitly approved licensed real footage;
+3. existing owner/project media;
+4. bounded neutral placeholder — pipeline testing only;
+5. generative media — **allowlist only**.
+
+Generative media is allowed for: logo reveal · abstract branded transition · simple diagram/graphic ·
+branded end card · a visual bridge with no reasonable real source. It is **not** allowed for furniture
+production, CNC/cutting/edgebanding, workers or craftspeople, client consultation, installation,
+kitchens, wardrobes, finished furniture, interiors, hands touching furniture or materials, the
+countertop tactile shot, hardware/detail footage, or any scene for which real stock can reasonably exist.
+
+**If Storyblocks is blocked:** complete the storyboard, complete the search queries, complete the media
+manifest with unresolved assets, record the exact blocker, and use neutral test placeholders only where
+needed to prove assembly — mark the checkpoint PARTIAL. **Never convert a blocked stock scene into
+generated imagery.** Generated visual assets before owner review: **maximum 3**.
+
+**Real-video rule:** the promo stays motion-first. Static imagery must not become the main visual
+language or stand in for stock video across consecutive ordinary scenes.
 
 ## 7. Provider plan (adapters, not dependencies)
 
@@ -92,16 +113,22 @@ fallback is used; the actual delivered mix is reported honestly in `SALAMAT_PROM
 No provider is hard-wired into the storyboard contract: a scene declares *intent* (`visual_source_preference`,
 `footage_queries`) and the manifest resolves it.
 
-## 8. Editorial structure (owner-supplied, kept as intent)
+## 8. Editorial structure (from the owner script)
 
-| Block | Time | Purpose |
-| --- | --- | --- |
-| A — Hook | 0–11 s | premium visual impact, brand, one positioning phrase |
-| B — What we do | 11–36 s | custom furniture; idea/measurement → finished installation; interiors tailored to the room |
-| C — Production & craftsmanship | 36–71 s | materials, cutting/CNC, edge processing, finishing, hardware, assembly (real footage wherever possible) |
-| D — Product range | 71–101 s | kitchens; wardrobes/storage; children's/bathroom/TV; commercial — representative shots, no catalogue overload |
-| E — Quality + installation | 101–115 s | detail quality, installation, fit/finish, result in the interior |
-| F — Brand close / CTA | 115–120 s | logo, concise neutral CTA, no invented contact data |
+The shot-level storyboard is generated from `SALAMAT_PROMO_SCRIPT.md`; the script's own timecodes are
+authoritative and the film is **120 s**:
+
+| Script scene | Timecode | Shots | Notes |
+| --- | --- | --- | --- |
+| 1 Opening | 0:00–0:08 | 2 | interior first, wordmark second |
+| 2 Not ready-made furniture, but a solution | 0:08–0:22 | 2 | measurement + client discussion |
+| 3 Project | 0:22–0:36 | 2 | drawings + material selection |
+| 4 Production | 0:36–0:55 | 3 | cutting → processing → assembly |
+| 5 Materials and tactile quality | 0:55–1:08 | 2 | **mandatory tactile hero shot**, real footage only |
+| 6 What we make | 1:08–1:27 | 3 | kitchen/storage · home rooms · commercial |
+| 7 Installation | 1:27–1:42 | 2 | fitting + adjustment |
+| 8 Result | 1:42–1:53 | 1 | no overlay copy |
+| 9 Brand close | 1:53–2:00 | 1 | branded end card, neutral CTA |
 
 ## 9. Acceptance gates carried into this fixture
 

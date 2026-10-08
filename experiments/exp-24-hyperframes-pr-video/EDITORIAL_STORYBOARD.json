@@ -1,9 +1,20 @@
 {
   "contract": "EDITORIAL_STORYBOARD",
-  "version": 1,
+  "version": 2,
   "experiment": "EXP-24 Phase 2",
   "fixture": "Salamat Mebel 2-minute promo",
   "created": "2026-10-08",
+  "narrative_source_of_truth": {
+    "file": "SALAMAT_PROMO_SCRIPT.md",
+    "status": "OWNER-APPROVED BASELINE SCRIPT",
+    "rule": "Scene meaning, narration wording and the mandatory tactile countertop shot are preserved; only shot decomposition, footage queries and timing detail are added.",
+    "adaptation_allowed_for": [
+      "voice timing",
+      "subtitle readability",
+      "natural speech",
+      "scene timing"
+    ]
+  },
   "mode": "REAL_FOOTAGE",
   "language": "ru",
   "format": {
@@ -11,21 +22,198 @@
     "height": 1080,
     "aspect": "16:9",
     "fps": 30,
-    "target_duration_seconds": 121,
-    "accepted_duration_range_seconds": [110, 125],
-    "hard_cap_seconds": 130
+    "target_duration_seconds": 120.0,
+    "accepted_duration_range_seconds": [
+      110,
+      125
+    ],
+    "hard_cap_seconds": 130,
+    "timecode_source": "sum of the script's own scene timecodes"
+  },
+  "media_source_authority": [
+    "REAL LICENSED VIDEO FOOTAGE — Storyblocks first",
+    "other explicitly approved licensed real footage",
+    "existing owner/project media",
+    "bounded neutral placeholder (pipeline testing only)",
+    "generative media, allowlist only (max 3 before owner review)"
+  ],
+  "generative_media_policy": {
+    "budget_before_owner_review": 3,
+    "allowlist": [
+      "logo reveal",
+      "abstract branded transition",
+      "simple diagram/graphic",
+      "branded end card",
+      "visual bridge with no reasonable real source"
+    ],
+    "used": [
+      "brand-close"
+    ],
+    "forbidden_categories_never_generated": [
+      "furniture production",
+      "CNC/cutting/edgebanding",
+      "workers or craftspeople",
+      "client consultation",
+      "installation",
+      "kitchens",
+      "wardrobes",
+      "finished furniture",
+      "interiors",
+      "hands touching furniture/materials",
+      "countertop tactile shot",
+      "hardware/detail footage"
+    ],
+    "generated_imagery_count": 0,
+    "generated_video_count": 0
   },
   "delivery_mix_target": {
-    "REAL_FOOTAGE_percent": [75, 80],
-    "GENERATIVE_percent": [20, 25],
-    "rule": "Do not generate people, factory shots, installations or finished furniture while suitable real licensed footage is available."
+    "REAL_FOOTAGE_percent": [
+      75,
+      80
+    ],
+    "GENERATIVE_percent": [
+      20,
+      25
+    ],
+    "note": "Design target inherited from the task; the authoritative script allows generative media only in scenes 1 (wordmark) and 9 (end card), so the achievable generative share of this 120 s edit is ~7 % once real footage is licensed."
   },
-  "source": {
-    "task": "experiments/exp-24-hyperframes-pr-video/SALAMAT_PROMO_ARENA_TASK.md",
-    "brief": "experiments/exp-24-hyperframes-pr-video/PROMO_BRIEF.md",
-    "owner_supplied": true,
-    "external_assets_read": false
-  },
+  "script_scenes": [
+    {
+      "number": 1,
+      "title": "Opening",
+      "timecode": "0:00–0:08",
+      "duration_seconds": 8.0,
+      "video_direction": "Premium contemporary interior. Close shots of kitchen, cabinetry, wood/material texture and hardware.",
+      "on_screen_text": [
+        "SALAMAT MEBEL",
+        "Мебель, созданная под ваше пространство"
+      ],
+      "narration": "Дом становится по-настоящему вашим тогда, когда каждая вещь находится на своём месте.",
+      "storyboard_scene_ids": [
+        "open-interior",
+        "open-detail"
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Not ready-made furniture, but a solution",
+      "timecode": "0:08–0:22",
+      "duration_seconds": 14.0,
+      "video_direction": "Room measurement, laser measure/tape, designer reviewing a project, sketches, discussion with a client.",
+      "on_screen_text": [
+        "Замер → проект → производство → монтаж"
+      ],
+      "narration": "Поэтому мы не просто изготавливаем мебель. Мы начинаем с пространства, задачи и привычек человека, который будет ею пользоваться.",
+      "storyboard_scene_ids": [
+        "task-measure",
+        "task-habits"
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Project",
+      "timecode": "0:22–0:36",
+      "duration_seconds": 14.0,
+      "video_direction": "Designer work, drawings, material samples, board/finish/hardware selection.",
+      "on_screen_text": [
+        "Мебель под конкретное помещение"
+      ],
+      "narration": "Кухня, шкаф, гардеробная или мебель для бизнеса начинается с проекта. Размеры, материалы, цвет, наполнение — всё собирается в одно решение.",
+      "storyboard_scene_ids": [
+        "project-drawings",
+        "project-selection"
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Production",
+      "timecode": "0:36–0:55",
+      "duration_seconds": 19.0,
+      "video_direction": "Panel cutting, CNC, edge processing, drilling, facade/finishing work where relevant, assembly, craft/detail shots.",
+      "on_screen_text": [
+        "Точность в каждой детали"
+      ],
+      "narration": "Затем проект переходит в производство. Детали раскраиваются, обрабатываются и собираются с точностью, от которой зависит конечный результат.",
+      "storyboard_scene_ids": [
+        "prod-cutting",
+        "prod-processing",
+        "prod-assembly"
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Materials and tactile quality",
+      "timecode": "0:55–1:08",
+      "duration_seconds": 13.0,
+      "video_direction": "",
+      "on_screen_text": [
+        "Материалы • фасады • фурнитура"
+      ],
+      "narration": "Хорошая мебель ощущается сразу — в фактуре поверхности, в точности деталей и в том, как ею пользуешься каждый день.",
+      "storyboard_scene_ids": [
+        "tactile-hero",
+        "materials-hardware"
+      ]
+    },
+    {
+      "number": 6,
+      "title": "What we make",
+      "timecode": "1:08–1:27",
+      "duration_seconds": 19.0,
+      "video_direction": "Calm sequence of:\n- kitchen;\n- built-in wardrobe;\n- walk-in/storage system;\n- bathroom furniture;\n- TV zone;\n- children's furniture;\n- office/retail/commercial furniture.",
+      "on_screen_text": [
+        "Для дома и бизнеса"
+      ],
+      "narration": "Salamat Mebel делает кухни, шкафы и системы хранения, мебель для детских, ванных и гостиных, а также решения для магазинов, офисов и других коммерческих пространств.",
+      "storyboard_scene_ids": [
+        "range-kitchen-storage",
+        "range-home-rooms",
+        "range-commercial"
+      ]
+    },
+    {
+      "number": 7,
+      "title": "Installation",
+      "timecode": "1:27–1:42",
+      "duration_seconds": 15.0,
+      "video_direction": "Installers fitting cabinetry, aligning facades, fitting countertop, adjusting hinges and hardware.",
+      "on_screen_text": [
+        "От проекта до установки"
+      ],
+      "narration": "Но хороший проект заканчивается не в цеху. Он заканчивается тогда, когда мебель установлена, всё отрегулировано и пространство начинает работать так, как было задумано.",
+      "storyboard_scene_ids": [
+        "install-fitting",
+        "install-adjust"
+      ]
+    },
+    {
+      "number": 8,
+      "title": "Result",
+      "timecode": "1:42–1:53",
+      "duration_seconds": 11.0,
+      "video_direction": "Strong finished-interior shots. Light, details, opening cabinetry, real interaction with furniture.",
+      "on_screen_text": [],
+      "narration": "В результате получается не просто набор шкафов. Получается пространство, сделанное именно для вас.",
+      "storyboard_scene_ids": [
+        "result-space"
+      ]
+    },
+    {
+      "number": 9,
+      "title": "Brand close",
+      "timecode": "1:53–2:00",
+      "duration_seconds": 7.0,
+      "video_direction": "Clean branded final frame. Motion graphics / logo reveal allowed here.",
+      "on_screen_text": [
+        "SALAMAT MEBEL",
+        "Мебель, созданная под ваше пространство"
+      ],
+      "narration": "Salamat Mebel. Мебель, созданная под ваше пространство.",
+      "storyboard_scene_ids": [
+        "brand-close"
+      ]
+    }
+  ],
   "claims_policy": {
     "forbidden": [
       "certifications",
@@ -39,563 +227,706 @@
       "price levels and superlatives",
       "named partners, suppliers or compliance claims"
     ],
-    "cta": "Salamat Mebel — мебель, созданная под ваше пространство."
+    "cta": "Salamat Mebel — Мебель, созданная под ваше пространство"
   },
-  "blocks": [
-    {
-      "id": "A",
-      "name": "Hook",
-      "target": "0–11 s",
-      "purpose": "immediate premium visual impact; Salamat Mebel name/logo; one concise positioning phrase"
-    },
-    {
-      "id": "B",
-      "name": "What we do",
-      "target": "11–36 s",
-      "purpose": "custom furniture; from idea and measurements to finished installation; interiors tailored to the actual room and customer task"
-    },
-    {
-      "id": "C",
-      "name": "Production and craftsmanship",
-      "target": "36–71 s",
-      "purpose": "material selection, cutting/CNC, edge processing, finishing, hardware/details, assembly — real footage wherever possible"
-    },
-    {
-      "id": "D",
-      "name": "Product range",
-      "target": "71–101 s",
-      "purpose": "kitchens; wardrobes/storage; children's / bathroom / TV units; commercial furniture — strong representative shots, no catalogue overload"
-    },
-    {
-      "id": "E",
-      "name": "Quality + installation",
-      "target": "101–115 s",
-      "purpose": "detail quality, installation, fit/finish, result in the interior"
-    },
-    {
-      "id": "F",
-      "name": "Brand close / CTA",
-      "target": "115–121 s",
-      "purpose": "logo; concise call to action; no invented contact data"
-    }
-  ],
   "scenes": [
     {
-      "id": "hook-reveal",
+      "id": "open-interior",
       "order": 1,
+      "script_scene": 1,
+      "script_scene_title": "Opening",
+      "script_timecode": "0:00–0:08",
+      "script_narration": "Дом становится по-настоящему вашим тогда, когда каждая вещь находится на своём месте.",
+      "narration": "Дом становится по-настоящему вашим тогда,",
+      "start_seconds": 0.0,
+      "target_duration_seconds": 5.0,
       "block": "A",
-      "start_seconds": 0,
-      "target_duration_seconds": 6,
-      "narration": "Salamat Mebel. Мебель, которую создают под ваше пространство.",
-      "editorial_purpose": "Open on a premium interior detail so the first impression is the product, not the brand.",
-      "visual_intent": "Slow deliberate push-in on a modern kitchen in warm evening light; a single brass/dark handle detail in focus; wordmark fades in over the last two seconds.",
+      "editorial_purpose": "Premium contemporary interior in warm evening light; slow push-in through the kitchen toward the cabinetry so material and finish read first.",
+      "visual_intent": "Premium contemporary interior in warm evening light; slow push-in through the kitchen toward the cabinetry so material and finish read first.",
       "visual_source_preference": "REAL_FOOTAGE",
+      "media_authority_rank": 1,
+      "media_authority": "REAL LICENSED VIDEO — Storyblocks first",
+      "generative_allowance": "logo_reveal_overlay",
       "footage_queries": [
-        "modern kitchen interior slow dolly evening warm light",
-        "premium kitchen detail cabinet handle macro"
+        "premium modern kitchen interior slow dolly warm evening light",
+        "contemporary interior cabinetry slow push in"
       ],
       "fallback_queries": [
-        "luxury kitchen dark wood countertop closeup",
-        "minimalist kitchen island soft light"
+        "luxury kitchen dark wood surfaces slow pan",
+        "modern apartment interior warm light slow move"
       ],
-      "fallback_asset_intent": "one cinematic still of a premium modern kitchen with a single hardware detail, no people, no readable text",
+      "motion": "push-in",
+      "in_out_intent": "0.0–5.0 s · hold on the strongest part of the clip; wordmark layer fades in at 3.6 s and holds into the next beat",
+      "framing_note": "interior first, brand second; no readable text inside the footage",
       "overlay_text": {
         "title": "SALAMAT MEBEL",
-        "subtitle": null,
+        "subtitle": "Мебель, созданная под ваше пространство",
         "label": null
       },
+      "audio": "narration + low-profile music bed; footage audio muted",
       "source_grounding": [
-        "owner-brief:business_context:custom_case_furniture",
-        "owner-brief:business_context:premium_positioning",
-        "owner-brief:editorial:block_A_hook"
+        "SALAMAT_PROMO_SCRIPT.md#scene-1"
       ],
-      "approval_notes": "Wordmark must be simple text; no invented slogan and no contact data at the hook."
+      "approval_notes": "interior first, brand second; no readable text inside the footage"
     },
     {
-      "id": "hook-claim",
+      "id": "open-detail",
       "order": 2,
+      "script_scene": 1,
+      "script_scene_title": "Opening",
+      "script_timecode": "0:00–0:08",
+      "script_narration": "Дом становится по-настоящему вашим тогда, когда каждая вещь находится на своём месте.",
+      "narration": "когда каждая вещь находится на своём месте.",
+      "start_seconds": 5.0,
+      "target_duration_seconds": 3.0,
       "block": "A",
-      "start_seconds": 6,
-      "target_duration_seconds": 5,
-      "narration": "Корпусная мебель на заказ в Алматы и Алматинской области.",
-      "editorial_purpose": "State what the company does and where, in one readable sentence.",
-      "visual_intent": "Wide interior shot opening up behind the title; the room tells the geography is not the point — the result is.",
+      "editorial_purpose": "Macro of cabinet fronts and a single hardware detail, matching the tone of the opening shot — the film's promise shown as craft, not copy.",
+      "visual_intent": "Macro of cabinet fronts and a single hardware detail, matching the tone of the opening shot — the film's promise shown as craft, not copy.",
       "visual_source_preference": "REAL_FOOTAGE",
+      "media_authority_rank": 1,
+      "media_authority": "REAL LICENSED VIDEO — Storyblocks first",
+      "generative_allowance": "none",
       "footage_queries": [
-        "modern apartment interior wide shot open plan kitchen",
-        "scandinavian living room kitchen wide interior"
+        "cabinet front material texture macro brass handle detail",
+        "furniture joinery detail macro slow motion"
       ],
       "fallback_queries": [
-        "bright modern apartment interior wide angle",
-        "kitchen dining area wide interior daylight"
+        "kitchen drawer handle closeup slow motion",
+        "wood surface texture macro interior detail"
       ],
-      "fallback_asset_intent": "wide bright apartment interior with built-in cabinetry, no people, no readable text",
+      "motion": "push-in",
+      "in_out_intent": "0.0–3.0 s · short macro beat, continues the opening move without a cut",
+      "framing_note": "macro only; no people, no readable branding",
       "overlay_text": {
-        "title": "Корпусная мебель на заказ",
-        "subtitle": "от замера до установки",
+        "title": null,
+        "subtitle": null,
         "label": null
       },
+      "audio": "narration + low-profile music bed; footage audio muted",
       "source_grounding": [
-        "owner-brief:business_context:almaty_region_focus",
-        "owner-brief:business_context:project_to_installation_workflow",
-        "owner-brief:editorial:block_A_hook"
+        "SALAMAT_PROMO_SCRIPT.md#scene-1"
       ],
-      "approval_notes": "Geography limited to Almaty / Almaty region as supplied; no address, no phone."
+      "approval_notes": "macro only; no people, no readable branding"
     },
     {
-      "id": "what-process",
+      "id": "task-measure",
       "order": 3,
+      "script_scene": 2,
+      "script_scene_title": "Not ready-made furniture, but a solution",
+      "script_timecode": "0:08–0:22",
+      "script_narration": "Поэтому мы не просто изготавливаем мебель. Мы начинаем с пространства, задачи и привычек человека, который будет ею пользоваться.",
+      "narration": "Поэтому мы не просто изготавливаем мебель.",
+      "start_seconds": 8.0,
+      "target_duration_seconds": 7.0,
       "block": "B",
-      "start_seconds": 11,
-      "target_duration_seconds": 8,
-      "narration": "Один подрядчик на весь путь: замер, проект, производство и установка.",
-      "editorial_purpose": "Explain the end-to-end workflow before showing the factory.",
-      "visual_intent": "Designer at a wall with a laser measure, then hands over drawings on a table; cut on the drawing, not the face.",
+      "editorial_purpose": "Room measurement: laser measure or tape against a wall, floor plan in hand. Hands and instruments carry the shot.",
+      "visual_intent": "Room measurement: laser measure or tape against a wall, floor plan in hand. Hands and instruments carry the shot.",
       "visual_source_preference": "REAL_FOOTAGE",
+      "media_authority_rank": 1,
+      "media_authority": "REAL LICENSED VIDEO — Storyblocks first",
+      "generative_allowance": "none",
       "footage_queries": [
-        "carpenter measuring wall laser meter interior",
-        "interior designer drawing blueprint hands table"
+        "carpenter measuring wall laser distance meter interior",
+        "hand holding tape measure wall renovation closeup"
       ],
       "fallback_queries": [
-        "measuring tape wall cabinet installation planning",
-        "architect hands sketch kitchen plan"
+        "measuring room dimensions interior planning",
+        "worker laser meter wall marking closeup"
       ],
-      "fallback_asset_intent": "process still: measurement and planning at a wall with drawings, hands only, anonymous",
+      "motion": "drift-left",
+      "in_out_intent": "0.0–7.0 s · overlay enters at 0.8 s and holds for the whole beat",
+      "framing_note": "hands/tools only, no faces",
       "overlay_text": {
-        "title": "Замер · проект · производство · установка",
+        "title": "Замер → проект → производство → монтаж",
         "subtitle": null,
-        "label": "01 · Процесс"
+        "label": null
       },
+      "audio": "narration + low-profile music bed; footage audio muted",
       "source_grounding": [
-        "owner-brief:business_context:project_to_installation_workflow",
-        "owner-brief:editorial:block_B_what_we_do"
+        "SALAMAT_PROMO_SCRIPT.md#scene-2"
       ],
-      "approval_notes": "Process statement only; no timing or delivery promise."
+      "approval_notes": "hands/tools only, no faces"
     },
     {
-      "id": "what-measure",
+      "id": "task-habits",
       "order": 4,
+      "script_scene": 2,
+      "script_scene_title": "Not ready-made furniture, but a solution",
+      "script_timecode": "0:08–0:22",
+      "script_narration": "Поэтому мы не просто изготавливаем мебель. Мы начинаем с пространства, задачи и привычек человека, который будет ею пользоваться.",
+      "narration": "Мы начинаем с пространства, задачи и привычек человека, который будет ею пользоваться.",
+      "start_seconds": 15.0,
+      "target_duration_seconds": 7.0,
       "block": "B",
-      "start_seconds": 19,
-      "target_duration_seconds": 9,
-      "narration": "Начинаем с задачи и планировки: где будет удобно готовить, хранить и отдыхать.",
-      "editorial_purpose": "Show that the project starts from the room and the customer's habits, not from a catalogue.",
-      "visual_intent": "Consultation at the kitchen table: plans, samples, a phone with a floor plan; over-the-shoulder framing.",
+      "editorial_purpose": "Designer reviewing the project with the client: sketches, screen or drawings on the table while the room's real geometry is discussed.",
+      "visual_intent": "Designer reviewing the project with the client: sketches, screen or drawings on the table while the room's real geometry is discussed.",
       "visual_source_preference": "REAL_FOOTAGE",
+      "media_authority_rank": 1,
+      "media_authority": "REAL LICENSED VIDEO — Storyblocks first",
+      "generative_allowance": "none",
       "footage_queries": [
-        "client consultation interior design samples table",
-        "couple reviewing kitchen plan blueprints table"
+        "designer reviewing plans with client interior table",
+        "interior designer explaining drawings client consultation"
       ],
       "fallback_queries": [
-        "hands pointing at kitchen floor plan on table",
-        "material samples swatches on table consultation"
+        "two people looking at floor plan table interior design",
+        "architect hands pointing at kitchen drawing"
       ],
-      "fallback_asset_intent": "consultation still: floor plan and material samples on a table, hands only, no faces",
+      "motion": "drift-left",
+      "in_out_intent": "0.0–7.0 s · slow lateral move across the table",
+      "framing_note": "avoid close faces so no real person is identifiable; drawings must not be readable documents",
       "overlay_text": {
-        "title": "Проект под вашу планировку",
+        "title": null,
         "subtitle": null,
-        "label": "02 · Задачи и планировка"
+        "label": null
       },
+      "audio": "narration + low-profile music bed; footage audio muted",
       "source_grounding": [
-        "owner-brief:editorial:block_B_what_we_do",
-        "owner-brief:target_audience:homeowner"
+        "SALAMAT_PROMO_SCRIPT.md#scene-2"
       ],
-      "approval_notes": "No claim of free design service, no timing."
+      "approval_notes": "avoid close faces so no real person is identifiable; drawings must not be readable documents"
     },
     {
-      "id": "what-materials",
+      "id": "project-drawings",
       "order": 5,
+      "script_scene": 3,
+      "script_scene_title": "Project",
+      "script_timecode": "0:22–0:36",
+      "script_narration": "Кухня, шкаф, гардеробная или мебель для бизнеса начинается с проекта. Размеры, материалы, цвет, наполнение — всё собирается в одно решение.",
+      "narration": "Кухня, шкаф, гардеробная или мебель для бизнеса начинается с проекта.",
+      "start_seconds": 22.0,
+      "target_duration_seconds": 7.0,
       "block": "B",
-      "start_seconds": 28,
-      "target_duration_seconds": 8,
-      "narration": "Материалы и фурнитуру выбираем вместе — под задачу и стиль интерьера.",
-      "editorial_purpose": "Hand control of the look and feel to the customer before the factory block.",
-      "visual_intent": "Fan of decor samples and hardware pieces on a worktop; hands moving slowly across the samples.",
+      "editorial_purpose": "Designer at work: drawings and technical plans, hands on paper, screen with cabinet geometry.",
+      "visual_intent": "Designer at work: drawings and technical plans, hands on paper, screen with cabinet geometry.",
       "visual_source_preference": "REAL_FOOTAGE",
+      "media_authority_rank": 1,
+      "media_authority": "REAL LICENSED VIDEO — Storyblocks first",
+      "generative_allowance": "none",
       "footage_queries": [
-        "material samples laminate wood swatches table hands",
-        "cabinet hardware samples hinges handles display"
+        "interior designer drawing furniture plan hands workshop",
+        "technical furniture drawing cad screen designer closeup"
       ],
       "fallback_queries": [
-        "wood veneer samples closeup workshop",
-        "color swatches interior design flat lay"
+        "architect sketching kitchen layout paper",
+        "designer working on furniture project desk"
       ],
-      "fallback_asset_intent": "flat-lay still of surface samples and cabinet hardware in warm light",
+      "motion": "drift-right",
+      "in_out_intent": "0.0–7.0 s · push across the drawings; overlay enters at 0.8 s",
+      "framing_note": "hands and drawings; no readable client data",
       "overlay_text": {
-        "title": "Материалы и фурнитура",
+        "title": "Мебель под конкретное помещение",
         "subtitle": null,
-        "label": "03 · Выбор"
+        "label": null
       },
+      "audio": "narration + low-profile music bed; footage audio muted",
       "source_grounding": [
-        "owner-brief:business_context:quality_materials_and_hardware",
-        "owner-brief:editorial:block_B_what_we_do"
+        "SALAMAT_PROMO_SCRIPT.md#scene-3"
       ],
-      "approval_notes": "No brand names of suppliers, no certification claims."
+      "approval_notes": "hands and drawings; no readable client data"
     },
     {
-      "id": "craft-material",
+      "id": "project-selection",
       "order": 6,
-      "block": "C",
-      "start_seconds": 36,
-      "target_duration_seconds": 7,
-      "narration": "Основа проекта — качественные материалы и надёжная фурнитура.",
-      "editorial_purpose": "Enter the production block by naming the raw material standard.",
-      "visual_intent": "Stack of laminated panels and a sheet being lifted onto a cutting table; slow lateral move.",
+      "script_scene": 3,
+      "script_scene_title": "Project",
+      "script_timecode": "0:22–0:36",
+      "script_narration": "Кухня, шкаф, гардеробная или мебель для бизнеса начинается с проекта. Размеры, материалы, цвет, наполнение — всё собирается в одно решение.",
+      "narration": "Размеры, материалы, цвет, наполнение — всё собирается в одно решение.",
+      "start_seconds": 29.0,
+      "target_duration_seconds": 7.0,
+      "block": "B",
+      "editorial_purpose": "Selection: material samples, boards and hardware laid out and compared; hands moving pieces into a decision.",
+      "visual_intent": "Selection: material samples, boards and hardware laid out and compared; hands moving pieces into a decision.",
       "visual_source_preference": "REAL_FOOTAGE",
+      "media_authority_rank": 1,
+      "media_authority": "REAL LICENSED VIDEO — Storyblocks first",
+      "generative_allowance": "none",
       "footage_queries": [
-        "furniture factory panel sheets stacking workshop",
-        "melamine board stack production line slow pan"
+        "material samples boards laminate veneer selection hands table",
+        "cabinet hardware samples handles hinges comparison"
       ],
       "fallback_queries": [
-        "mdf panel stack workshop closeup",
-        "wooden boards production storage rack"
+        "wood and stone samples interior design selection",
+        "choosing fabric and finish swatches showroom"
       ],
-      "fallback_asset_intent": "workshop still of panel sheets stacked and lifted, industrial warm light",
+      "motion": "drift-right",
+      "in_out_intent": "0.0–7.0 s · glide across the samples, no cut inside the beat",
+      "framing_note": "samples/hardware only, no supplier branding",
       "overlay_text": {
-        "title": "Производство",
+        "title": null,
         "subtitle": null,
-        "label": "04 · Материалы"
+        "label": null
       },
+      "audio": "narration + low-profile music bed; footage audio muted",
       "source_grounding": [
-        "owner-brief:business_context:quality_materials_and_hardware",
-        "owner-brief:editorial:block_C_production"
+        "SALAMAT_PROMO_SCRIPT.md#scene-3"
       ],
-      "approval_notes": "Generic material statement only; no supplier or grade specification."
+      "approval_notes": "samples/hardware only, no supplier branding"
     },
     {
-      "id": "craft-cnc",
+      "id": "prod-cutting",
       "order": 7,
+      "script_scene": 4,
+      "script_scene_title": "Production",
+      "script_timecode": "0:36–0:55",
+      "script_narration": "Затем проект переходит в производство. Детали раскраиваются, обрабатываются и собираются с точностью, от которой зависит конечный результат.",
+      "narration": "Затем проект переходит в производство.",
+      "start_seconds": 36.0,
+      "target_duration_seconds": 6.0,
       "block": "C",
-      "start_seconds": 43,
-      "target_duration_seconds": 7,
-      "narration": "Раскрой и ЧПУ: детали делают на станках, по проекту.",
-      "editorial_purpose": "Prove machine-based precision without inventing numbers.",
-      "visual_intent": "CNC router cutting a panel with dust extraction; close on the cutter path and the panel groove.",
+      "editorial_purpose": "Panel cutting on industrial equipment; the project becomes parts.",
+      "visual_intent": "Panel cutting on industrial equipment; the project becomes parts.",
       "visual_source_preference": "REAL_FOOTAGE",
+      "media_authority_rank": 1,
+      "media_authority": "REAL LICENSED VIDEO — Storyblocks first",
+      "generative_allowance": "none",
       "footage_queries": [
-        "cnc router cutting wood panel furniture factory closeup",
-        "nesting cnc machine drilling cabinet parts"
+        "panel saw cutting laminated board furniture factory",
+        "cnc nesting machine cutting wood panel workshop"
       ],
       "fallback_queries": [
-        "cnc machine wood dust extraction production",
-        "panel saw cutting board factory"
+        "industrial cutting machine wood panel production",
+        "furniture factory cutting line panels"
       ],
-      "fallback_asset_intent": "machining still: CNC head cutting a panel, dust and warm light, no branding",
+      "motion": "push-in",
+      "in_out_intent": "0.0–6.0 s · push toward the cut; overlay enters at 0.6 s",
+      "framing_note": "no readable machine branding or software UI",
       "overlay_text": {
-        "title": "Раскрой и ЧПУ",
+        "title": "Точность в каждой детали",
         "subtitle": null,
-        "label": "05 · Точность по проекту"
+        "label": null
       },
+      "audio": "narration + low-profile music bed; footage audio muted",
       "source_grounding": [
-        "owner-brief:factory_footage:cnc_cutting",
-        "owner-brief:editorial:block_C_production"
+        "SALAMAT_PROMO_SCRIPT.md#scene-4"
       ],
-      "approval_notes": "Do not state tolerance numbers (e.g. 'до миллиметра') — not verified."
+      "approval_notes": "no readable machine branding or software UI"
     },
     {
-      "id": "craft-edge",
+      "id": "prod-processing",
       "order": 8,
+      "script_scene": 4,
+      "script_scene_title": "Production",
+      "script_timecode": "0:36–0:55",
+      "script_narration": "Затем проект переходит в производство. Детали раскраиваются, обрабатываются и собираются с точностью, от которой зависит конечный результат.",
+      "narration": "Детали раскраиваются, обрабатываются",
+      "start_seconds": 42.0,
+      "target_duration_seconds": 6.0,
       "block": "C",
-      "start_seconds": 50,
-      "target_duration_seconds": 7,
-      "narration": "Кромку обрабатывают на производстве — торцы ровные, стыки аккуратные.",
-      "editorial_purpose": "Show the finishing step that a customer can actually see at home.",
-      "visual_intent": "Edge banding machine feeding a panel; macro of the finished edge and the joinery line.",
+      "editorial_purpose": "Edgebanding and drilling: the processing step where the quality of the future surface is decided.",
+      "visual_intent": "Edgebanding and drilling: the processing step where the quality of the future surface is decided.",
       "visual_source_preference": "REAL_FOOTAGE",
+      "media_authority_rank": 1,
+      "media_authority": "REAL LICENSED VIDEO — Storyblocks first",
+      "generative_allowance": "none",
       "footage_queries": [
-        "edge banding machine furniture factory panel closeup",
-        "edgebander gluing pvc edge panel macro"
+        "edge banding machine processing panel furniture factory closeup",
+        "drilling machine cabinet parts workshop production"
       ],
       "fallback_queries": [
-        "furniture panel edge finish closeup workshop",
-        "sanding cabinet edge production"
+        "edgebander applying edge to panel closeup",
+        "cnc drilling cabinet part holes workshop"
       ],
-      "fallback_asset_intent": "macro still of a finished panel edge and tight joinery, workshop light",
+      "motion": "push-in",
+      "in_out_intent": "0.0–6.0 s · macro push-in following the panel through the machine",
+      "framing_note": "machine and panel must stay the subject; no faces required",
       "overlay_text": {
-        "title": "Кромка и обработка",
+        "title": null,
         "subtitle": null,
-        "label": "06 · Финиш деталей"
+        "label": null
       },
+      "audio": "narration + low-profile music bed; footage audio muted",
       "source_grounding": [
-        "owner-brief:factory_footage:edgebanding",
-        "owner-brief:editorial:block_C_production"
+        "SALAMAT_PROMO_SCRIPT.md#scene-4"
       ],
-      "approval_notes": "Quality described visually; no durability guarantee."
+      "approval_notes": "machine and panel must stay the subject; no faces required"
     },
     {
-      "id": "craft-hardware",
+      "id": "prod-assembly",
       "order": 9,
+      "script_scene": 4,
+      "script_scene_title": "Production",
+      "script_timecode": "0:36–0:55",
+      "script_narration": "Затем проект переходит в производство. Детали раскраиваются, обрабатываются и собираются с точностью, от которой зависит конечный результат.",
+      "narration": "и собираются с точностью, от которой зависит конечный результат.",
+      "start_seconds": 48.0,
+      "target_duration_seconds": 7.0,
       "block": "C",
-      "start_seconds": 57,
-      "target_duration_seconds": 7,
-      "narration": "Фурнитура, доводчики, направляющие: двери и ящики работают мягко.",
-      "editorial_purpose": "Move from structure to the parts the customer touches every day.",
-      "visual_intent": "Macro of hinges, soft-close damper and drawer runners; a drawer closing slowly into place.",
+      "editorial_purpose": "Assembly and craft detail: parts coming together, clamps, checking the fit.",
+      "visual_intent": "Assembly and craft detail: parts coming together, clamps, checking the fit.",
       "visual_source_preference": "REAL_FOOTAGE",
+      "media_authority_rank": 1,
+      "media_authority": "REAL LICENSED VIDEO — Storyblocks first",
+      "generative_allowance": "none",
       "footage_queries": [
-        "cabinet hinge soft close mechanism macro slow motion",
-        "drawer runner slides close up furniture hardware"
+        "cabinet assembly workshop clamps furniture carcase",
+        "craftsman assembling cabinet frame workshop hands"
       ],
       "fallback_queries": [
-        "kitchen drawer closing smoothly closeup",
-        "furniture fittings macro workshop"
+        "furniture assembly bench worker hands closeup",
+        "joining cabinet parts workshop detail"
       ],
-      "fallback_asset_intent": "hardware macro still: hinges and runners on a panel with cinematic side light",
+      "motion": "push-in",
+      "in_out_intent": "0.0–7.0 s · move along the assembly bench, hold on the hands at the end",
+      "framing_note": "hands/gloved hands, no identifiable faces",
       "overlay_text": {
-        "title": "Фурнитура и доводчики",
+        "title": null,
         "subtitle": null,
-        "label": "07 · Детали"
+        "label": null
       },
+      "audio": "narration + low-profile music bed; footage audio muted",
       "source_grounding": [
-        "owner-brief:business_context:quality_materials_and_hardware",
-        "owner-brief:factory_footage:hardware_details",
-        "owner-brief:editorial:block_C_production"
+        "SALAMAT_PROMO_SCRIPT.md#scene-4"
       ],
-      "approval_notes": "No hardware brand names; 'работают мягко' describes the visible mechanism, not a warranty."
+      "approval_notes": "hands/gloved hands, no identifiable faces"
     },
     {
-      "id": "craft-assembly",
+      "id": "tactile-hero",
       "order": 10,
+      "script_scene": 5,
+      "script_scene_title": "Materials and tactile quality",
+      "script_timecode": "0:55–1:08",
+      "script_narration": "Хорошая мебель ощущается сразу — в фактуре поверхности, в точности деталей и в том, как ею пользуешься каждый день.",
+      "narration": "Хорошая мебель ощущается сразу — в фактуре поверхности,",
+      "start_seconds": 55.0,
+      "target_duration_seconds": 7.0,
       "block": "C",
-      "start_seconds": 64,
-      "target_duration_seconds": 7,
-      "narration": "Корпуса собирают и проверяют в цеху, до выезда на объект.",
-      "editorial_purpose": "Close block C: assembly and check happen before the customer's home.",
-      "visual_intent": "Two workers clamping and aligning a cabinet carcase; measured camera move along the assembly bench.",
+      "editorial_purpose": "MANDATORY HERO SHOT (owner note). Slow camera glide along a kitchen countertop, close/medium-close; a hand runs across the surface and visibly feels the texture; soft side light rakes the surface so texture, edge and finish read clearly. Communicates tactile quality, craftsmanship and the pleasure of touching good furniture — not a catalogue product shot.",
+      "visual_intent": "MANDATORY HERO SHOT (owner note). Slow camera glide along a kitchen countertop, close/medium-close; a hand runs across the surface and visibly feels the texture; soft side light rakes the surface so texture, edge and finish read clearly. Communicates tactile quality, craftsmanship and the pleasure of touching good furniture — not a catalogue product shot.",
       "visual_source_preference": "REAL_FOOTAGE",
+      "media_authority_rank": 1,
+      "media_authority": "REAL LICENSED VIDEO — Storyblocks first",
+      "generative_allowance": "none",
       "footage_queries": [
-        "cabinet assembly workshop workers clamps furniture",
-        "furniture factory assembly line cabinet carcase"
+        "hand sliding across kitchen countertop surface texture slow glide",
+        "touching countertop stone surface texture slow motion closeup"
       ],
       "fallback_queries": [
-        "carpenter assembling cabinet frame workshop",
-        "workshop bench furniture parts assembly hands"
+        "fingers running across wooden worktop surface",
+        "hand feeling marble countertop texture kitchen"
       ],
-      "fallback_asset_intent": "assembly still: cabinet carcase clamped on a bench, gloved hands, no faces",
+      "motion": "push-in",
+      "in_out_intent": "0.0–7.0 s · one uninterrupted glide; the hand crosses the surface once, slowly, with no cut inside the beat",
+      "framing_note": "REAL licensed footage only. If Storyblocks is unavailable, this beat stays unresolved and the blocker is recorded — it is never replaced by generated media (owner script, scene 5).",
       "overlay_text": {
-        "title": "Сборка и контроль",
+        "title": null,
         "subtitle": null,
-        "label": "08 · Цех"
+        "label": null
       },
+      "audio": "narration + low-profile music bed; footage audio muted",
       "source_grounding": [
-        "owner-brief:factory_footage:assembly",
-        "owner-brief:business_context:project_to_installation_workflow",
-        "owner-brief:editorial:block_C_production"
+        "SALAMAT_PROMO_SCRIPT.md#scene-5"
       ],
-      "approval_notes": "No claim about quality-control certificates or staff numbers."
+      "approval_notes": "REAL licensed footage only. If Storyblocks is unavailable, this beat stays unresolved and the blocker is recorded — it is never replaced by generated media (owner script, scene 5)."
     },
     {
-      "id": "range-kitchen",
+      "id": "materials-hardware",
       "order": 11,
-      "block": "D",
-      "start_seconds": 71,
-      "target_duration_seconds": 8,
-      "narration": "Кухни: от компактных до просторных, с островом и барной зоной.",
-      "editorial_purpose": "Open the range block with the strongest single category.",
-      "visual_intent": "Slow arc across a finished kitchen: fronts, worktop, island; then a detail of the joinery line.",
+      "script_scene": 5,
+      "script_scene_title": "Materials and tactile quality",
+      "script_timecode": "0:55–1:08",
+      "script_narration": "Хорошая мебель ощущается сразу — в фактуре поверхности, в точности деталей и в том, как ею пользуешься каждый день.",
+      "narration": "в точности деталей и в том, как ею пользуешься каждый день.",
+      "start_seconds": 62.0,
+      "target_duration_seconds": 6.0,
+      "block": "C",
+      "editorial_purpose": "Supporting detail: facades, hardware, drawer runners and hinges, a smooth closing movement, material edges and finishing.",
+      "visual_intent": "Supporting detail: facades, hardware, drawer runners and hinges, a smooth closing movement, material edges and finishing.",
       "visual_source_preference": "REAL_FOOTAGE",
+      "media_authority_rank": 1,
+      "media_authority": "REAL LICENSED VIDEO — Storyblocks first",
+      "generative_allowance": "none",
       "footage_queries": [
-        "modern kitchen island interior slow pan premium",
-        "designer kitchen with bar counter interior"
+        "soft close drawer runner hinge mechanism closeup slow motion",
+        "cabinet facade edge finishing detail kitchen closeup"
       ],
       "fallback_queries": [
-        "kitchen cabinets handleless design interior",
-        "kitchen worktop stone island daylight"
+        "drawer closing smoothly kitchen hardware detail",
+        "handle and hinge macro furniture craftsmanship"
       ],
-      "fallback_asset_intent": "premium finished kitchen still with island, no people, no readable text",
+      "motion": "push-in",
+      "in_out_intent": "0.0–6.0 s · two micro-beats inside one move; overlay enters at 0.8 s",
+      "framing_note": "no hardware brand names visible",
       "overlay_text": {
-        "title": "Кухни",
+        "title": "Материалы • фасады • фурнитура",
         "subtitle": null,
-        "label": "09 · Кухни"
+        "label": null
       },
+      "audio": "narration + low-profile music bed; footage audio muted",
       "source_grounding": [
-        "owner-brief:business_context:kitchens",
-        "owner-brief:editorial:block_D_range"
+        "SALAMAT_PROMO_SCRIPT.md#scene-5"
       ],
-      "approval_notes": "Category naming only; no configuration or price claims."
+      "approval_notes": "no hardware brand names visible"
     },
     {
-      "id": "range-storage",
+      "id": "range-kitchen-storage",
       "order": 12,
+      "script_scene": 6,
+      "script_scene_title": "What we make",
+      "script_timecode": "1:08–1:27",
+      "script_narration": "Salamat Mebel делает кухни, шкафы и системы хранения, мебель для детских, ванных и гостиных, а также решения для магазинов, офисов и других коммерческих пространств.",
+      "narration": "Salamat Mebel делает кухни, шкафы и системы хранения,",
+      "start_seconds": 68.0,
+      "target_duration_seconds": 6.0,
       "block": "D",
-      "start_seconds": 79,
-      "target_duration_seconds": 8,
-      "narration": "Шкафы, встроенное хранение и прихожие — под размеры помещения.",
-      "editorial_purpose": "Show built-in storage as a fit-to-room capability.",
-      "visual_intent": "Sliding wardrobe doors opening to a lit interior; then hallway storage with vertical lines.",
+      "editorial_purpose": "Calm sequence opens with a finished kitchen, then built-in storage or a walk-in system — one idea per shot, no catalogue rush.",
+      "visual_intent": "Calm sequence opens with a finished kitchen, then built-in storage or a walk-in system — one idea per shot, no catalogue rush.",
       "visual_source_preference": "REAL_FOOTAGE",
+      "media_authority_rank": 1,
+      "media_authority": "REAL LICENSED VIDEO — Storyblocks first",
+      "generative_allowance": "none",
       "footage_queries": [
-        "built in wardrobe sliding doors interior opening",
-        "hallway storage cabinets modern interior"
+        "finished modern kitchen interior slow pan cabinets",
+        "built in wardrobe storage system interior opening"
       ],
       "fallback_queries": [
-        "walk in closet built in shelves interior",
-        "entryway built in closet interior design"
+        "handleless kitchen interior premium",
+        "walk in closet built in shelves interior"
       ],
-      "fallback_asset_intent": "built-in storage still: full-height wardrobe with interior lighting, no people",
+      "motion": "drift-left",
+      "in_out_intent": "0.0–6.0 s · two matched moves, kitchen then storage; overlay enters at 0.8 s",
+      "framing_note": "no people; interiors must be finished and styled, not construction sites",
       "overlay_text": {
-        "title": "Шкафы и хранение",
+        "title": "Для дома и бизнеса",
         "subtitle": null,
-        "label": "10 · Встроенные решения"
+        "label": null
       },
+      "audio": "narration + low-profile music bed; footage audio muted",
       "source_grounding": [
-        "owner-brief:business_context:wardrobes_builtin_storage",
-        "owner-brief:business_context:hallways",
-        "owner-brief:editorial:block_D_range"
+        "SALAMAT_PROMO_SCRIPT.md#scene-6"
       ],
-      "approval_notes": "No modular/fitted terminology that implies a different product line."
+      "approval_notes": "no people; interiors must be finished and styled, not construction sites"
     },
     {
-      "id": "range-family",
+      "id": "range-home-rooms",
       "order": 13,
+      "script_scene": 6,
+      "script_scene_title": "What we make",
+      "script_timecode": "1:08–1:27",
+      "script_narration": "Salamat Mebel делает кухни, шкафы и системы хранения, мебель для детских, ванных и гостиных, а также решения для магазинов, офисов и других коммерческих пространств.",
+      "narration": "мебель для детских, ванных и гостиных,",
+      "start_seconds": 74.0,
+      "target_duration_seconds": 6.0,
       "block": "D",
-      "start_seconds": 87,
-      "target_duration_seconds": 7,
-      "narration": "Детская, ванная, ТВ-зоны и мебель для небольших комнат.",
-      "editorial_purpose": "Cover the secondary room categories in one calm beat.",
-      "visual_intent": "Three short matched shots: children's room cabinetry, bathroom vanity unit, living-room TV wall.",
+      "editorial_purpose": "Three short matched shots: children's room, bathroom furniture, TV zone / living room.",
+      "visual_intent": "Three short matched shots: children's room, bathroom furniture, TV zone / living room.",
       "visual_source_preference": "REAL_FOOTAGE",
+      "media_authority_rank": 1,
+      "media_authority": "REAL LICENSED VIDEO — Storyblocks first",
+      "generative_allowance": "none",
       "footage_queries": [
-        "children room built in wardrobe furniture interior",
+        "children room built in furniture interior daylight",
         "bathroom vanity cabinet modern interior",
-        "living room tv wall unit built in furniture"
+        "tv wall unit living room built in furniture"
       ],
       "fallback_queries": [
         "kids bedroom storage furniture interior",
-        "bathroom cabinet wood vanity interior",
-        "tv unit media wall living room interior"
+        "bathroom wood cabinet interior design",
+        "media wall tv unit living room interior"
       ],
-      "fallback_asset_intent": "three matched stills (children's room, bathroom vanity, TV wall) in one consistent visual language",
+      "motion": "drift-left",
+      "in_out_intent": "0.0–6.0 s · three ~2 s matched shots in identical camera language",
+      "framing_note": "same grade and framing logic across the three shots so the sequence reads as one film",
       "overlay_text": {
-        "title": "Детская · Ванная · ТВ-зоны",
+        "title": null,
         "subtitle": null,
-        "label": "11 · Для каждой комнаты"
+        "label": null
       },
+      "audio": "narration + low-profile music bed; footage audio muted",
       "source_grounding": [
-        "owner-brief:business_context:childrens_furniture",
-        "owner-brief:business_context:bathroom_cabinetry",
-        "owner-brief:business_context:tv_units",
-        "owner-brief:editorial:block_D_range"
+        "SALAMAT_PROMO_SCRIPT.md#scene-6"
       ],
-      "approval_notes": "No safety-certification claims for children's furniture."
+      "approval_notes": "same grade and framing logic across the three shots so the sequence reads as one film"
     },
     {
       "id": "range-commercial",
       "order": 14,
+      "script_scene": 6,
+      "script_scene_title": "What we make",
+      "script_timecode": "1:08–1:27",
+      "script_narration": "Salamat Mebel делает кухни, шкафы и системы хранения, мебель для детских, ванных и гостиных, а также решения для магазинов, офисов и других коммерческих пространств.",
+      "narration": "а также решения для магазинов, офисов и других коммерческих пространств.",
+      "start_seconds": 80.0,
+      "target_duration_seconds": 7.0,
       "block": "D",
-      "start_seconds": 94,
-      "target_duration_seconds": 7,
-      "narration": "Отдельное направление — ресепшн, офисы, медицинские и коммерческие помещения.",
-      "editorial_purpose": "Signal B2B capability to the secondary audience without claiming compliance.",
-      "visual_intent": "Reception desk with integrated storage; then a calm office/medical front with clean lines.",
+      "editorial_purpose": "Commercial furniture: reception, retail or office millwork at work in a finished space.",
+      "visual_intent": "Commercial furniture: reception, retail or office millwork at work in a finished space.",
       "visual_source_preference": "REAL_FOOTAGE",
+      "media_authority_rank": 1,
+      "media_authority": "REAL LICENSED VIDEO — Storyblocks first",
+      "generative_allowance": "none",
       "footage_queries": [
-        "reception desk office interior modern wood",
-        "office furniture clinic reception counter interior"
+        "reception desk millwork modern office interior",
+        "retail store fit out wooden counter interior"
       ],
       "fallback_queries": [
-        "hotel reception desk wood interior",
-        "office built in cabinets interior design"
+        "modern office interior built in cabinetry",
+        "shop counter furniture commercial interior"
       ],
-      "fallback_asset_intent": "commercial furniture still: reception counter with integrated millwork, no people, no readable branding",
+      "motion": "drift-left",
+      "in_out_intent": "0.0–7.0 s · slow drift across the commercial interior; last shot of the range sequence",
+      "framing_note": "no readable company names or signage",
       "overlay_text": {
-        "title": "Коммерческая мебель",
-        "subtitle": null,
-        "label": "12 · Ресепшн · Офис · Медицина"
-      },
-      "source_grounding": [
-        "owner-brief:business_context:commercial_furniture",
-        "owner-brief:target_audience:small_business",
-        "owner-brief:editorial:block_D_range"
-      ],
-      "approval_notes": "No medical compliance, hygiene or certification claims; 'отдельное направление' only."
-    },
-    {
-      "id": "install",
-      "order": 15,
-      "block": "E",
-      "start_seconds": 101,
-      "target_duration_seconds": 7,
-      "narration": "Доставка и монтаж на объекте — завершающий этап проекта.",
-      "editorial_purpose": "Close the workflow loop that block B opened.",
-      "visual_intent": "Installer leveling a cabinet run, protecting the floor; tool and level detail; then the finished line.",
-      "visual_source_preference": "REAL_FOOTAGE",
-      "footage_queries": [
-        "furniture installer mounting cabinet level interior",
-        "kitchen installation worker fitting cabinet doors"
-      ],
-      "fallback_queries": [
-        "handyman level cabinet installation kitchen",
-        "fitting kitchen units worker tool"
-      ],
-      "fallback_asset_intent": "installation still: hands with a level on a cabinet run, floor protection visible",
-      "overlay_text": {
-        "title": "Доставка и монтаж",
-        "subtitle": null,
-        "label": "13 · Установка"
-      },
-      "source_grounding": [
-        "owner-brief:business_context:project_to_installation_workflow",
-        "owner-brief:factory_footage:installers",
-        "owner-brief:editorial:block_E_quality_installation"
-      ],
-      "approval_notes": "No delivery-time promise, no 'clean-up included' claim (not verified)."
-    },
-    {
-      "id": "result",
-      "order": 16,
-      "block": "E",
-      "start_seconds": 108,
-      "target_duration_seconds": 7,
-      "narration": "Результат: мебель, которая встроена в ваше пространство.",
-      "editorial_purpose": "Give the viewer the finished after-state before the brand close.",
-      "visual_intent": "Wide, quiet shot of the finished interior; slow drift, no cuts — let the room hold.",
-      "visual_source_preference": "REAL_FOOTAGE",
-      "footage_queries": [
-        "finished modern kitchen interior wide slow motion",
-        "bright apartment interior built in furniture wide"
-      ],
-      "fallback_queries": [
-        "modern kitchen living interior wide sunlight",
-        "minimal interior wardrobe wide shot daylight"
-      ],
-      "fallback_asset_intent": "wide finished-interior still in warm daylight, no people",
-      "overlay_text": {
-        "title": "Мебель в вашем интерьере",
+        "title": null,
         "subtitle": null,
         "label": null
       },
+      "audio": "narration + low-profile music bed; footage audio muted",
       "source_grounding": [
-        "owner-brief:editorial:block_E_quality_installation",
-        "owner-brief:business_context:premium_positioning"
+        "SALAMAT_PROMO_SCRIPT.md#scene-6"
       ],
-      "approval_notes": "No customer name or project reference — nothing that implies a real named client."
+      "approval_notes": "no readable company names or signage"
+    },
+    {
+      "id": "install-fitting",
+      "order": 15,
+      "script_scene": 7,
+      "script_scene_title": "Installation",
+      "script_timecode": "1:27–1:42",
+      "script_narration": "Но хороший проект заканчивается не в цеху. Он заканчивается тогда, когда мебель установлена, всё отрегулировано и пространство начинает работать так, как было задумано.",
+      "narration": "Но хороший проект заканчивается не в цеху.",
+      "start_seconds": 87.0,
+      "target_duration_seconds": 8.0,
+      "block": "E",
+      "editorial_purpose": "Installers fitting cabinetry on site: levelling, aligning facades, protecting the floor.",
+      "visual_intent": "Installers fitting cabinetry on site: levelling, aligning facades, protecting the floor.",
+      "visual_source_preference": "REAL_FOOTAGE",
+      "media_authority_rank": 1,
+      "media_authority": "REAL LICENSED VIDEO — Storyblocks first",
+      "generative_allowance": "none",
+      "footage_queries": [
+        "furniture installers fitting kitchen cabinets interior level",
+        "workers installing cabinet units home alignment"
+      ],
+      "fallback_queries": [
+        "kitchen installation worker mounting cabinet doors",
+        "fitting countertop installers kitchen"
+      ],
+      "motion": "drift-right",
+      "in_out_intent": "0.0–8.0 s · follow the fitting work; overlay enters at 0.8 s",
+      "framing_note": "hands, tools, tools-on-furniture; avoid identifiable faces",
+      "overlay_text": {
+        "title": "От проекта до установки",
+        "subtitle": null,
+        "label": null
+      },
+      "audio": "narration + low-profile music bed; footage audio muted",
+      "source_grounding": [
+        "SALAMAT_PROMO_SCRIPT.md#scene-7"
+      ],
+      "approval_notes": "hands, tools, tools-on-furniture; avoid identifiable faces"
+    },
+    {
+      "id": "install-adjust",
+      "order": 16,
+      "script_scene": 7,
+      "script_scene_title": "Installation",
+      "script_timecode": "1:27–1:42",
+      "script_narration": "Но хороший проект заканчивается не в цеху. Он заканчивается тогда, когда мебель установлена, всё отрегулировано и пространство начинает работать так, как было задумано.",
+      "narration": "Он заканчивается тогда, когда мебель установлена, всё отрегулировано и пространство начинает работать так, как было задумано.",
+      "start_seconds": 95.0,
+      "target_duration_seconds": 7.0,
+      "block": "E",
+      "editorial_purpose": "Adjustment and handover: hinges and hardware tuned, doors aligned, the space finally working as designed.",
+      "visual_intent": "Adjustment and handover: hinges and hardware tuned, doors aligned, the space finally working as designed.",
+      "visual_source_preference": "REAL_FOOTAGE",
+      "media_authority_rank": 1,
+      "media_authority": "REAL LICENSED VIDEO — Storyblocks first",
+      "generative_allowance": "none",
+      "footage_queries": [
+        "adjusting cabinet hinge door alignment closeup",
+        "installer checking kitchen cabinet doors alignment"
+      ],
+      "fallback_queries": [
+        "screwdriver adjusting furniture hinge detail",
+        "final check kitchen installation cabinets"
+      ],
+      "motion": "drift-right",
+      "in_out_intent": "0.0–7.0 s · push in on the adjustment, end on the aligned facade",
+      "framing_note": "detail level; the last beat before the result section",
+      "overlay_text": {
+        "title": null,
+        "subtitle": null,
+        "label": null
+      },
+      "audio": "narration + low-profile music bed; footage audio muted",
+      "source_grounding": [
+        "SALAMAT_PROMO_SCRIPT.md#scene-7"
+      ],
+      "approval_notes": "detail level; the last beat before the result section"
+    },
+    {
+      "id": "result-space",
+      "order": 17,
+      "script_scene": 8,
+      "script_scene_title": "Result",
+      "script_timecode": "1:42–1:53",
+      "script_narration": "В результате получается не просто набор шкафов. Получается пространство, сделанное именно для вас.",
+      "narration": "В результате получается не просто набор шкафов. Получается пространство, сделанное именно для вас.",
+      "start_seconds": 102.0,
+      "target_duration_seconds": 11.0,
+      "block": "E",
+      "editorial_purpose": "Strong finished-interior shots: light, details, cabinetry opening, real interaction with the furniture. Quiet, confident, unhurried.",
+      "visual_intent": "Strong finished-interior shots: light, details, cabinetry opening, real interaction with the furniture. Quiet, confident, unhurried.",
+      "visual_source_preference": "REAL_FOOTAGE",
+      "media_authority_rank": 1,
+      "media_authority": "REAL LICENSED VIDEO — Storyblocks first",
+      "generative_allowance": "none",
+      "footage_queries": [
+        "finished interior kitchen built in furniture wide daylight",
+        "opening cabinet doors modern kitchen slow motion interior"
+      ],
+      "fallback_queries": [
+        "bright modern interior cabinetry wide shot",
+        "person opening kitchen cabinet interior warm light"
+      ],
+      "motion": "push-out",
+      "in_out_intent": "0.0–11.0 s · the film's longest hold: light, then detail, then the cabinet opening; no overlay copy",
+      "framing_note": "no overlay text in this beat — let the interior carry it",
+      "overlay_text": {
+        "title": null,
+        "subtitle": null,
+        "label": null
+      },
+      "audio": "narration + low-profile music bed; footage audio muted",
+      "source_grounding": [
+        "SALAMAT_PROMO_SCRIPT.md#scene-8"
+      ],
+      "approval_notes": "no overlay text in this beat — let the interior carry it"
     },
     {
       "id": "brand-close",
-      "order": 17,
+      "order": 18,
+      "script_scene": 9,
+      "script_scene_title": "Brand close",
+      "script_timecode": "1:53–2:00",
+      "script_narration": "Salamat Mebel. Мебель, созданная под ваше пространство.",
+      "narration": "Salamat Mebel. Мебель, созданная под ваше пространство.",
+      "start_seconds": 113.0,
+      "target_duration_seconds": 7.0,
       "block": "F",
-      "start_seconds": 115,
-      "target_duration_seconds": 6,
-      "narration": "Salamat Mebel — мебель, созданная под ваше пространство.",
-      "editorial_purpose": "Hold the brand long enough to be remembered and read the CTA on a phone.",
-      "visual_intent": "Dark textured background with the wordmark; a thin brass rule draws under it; final frame stays clean for two seconds.",
+      "editorial_purpose": "Clean branded final frame: wordmark over a dark material surface with a thin brass rule; neutral positioning line underneath. No contact data.",
+      "visual_intent": "Clean branded final frame: wordmark over a dark material surface with a thin brass rule; neutral positioning line underneath. No contact data.",
       "visual_source_preference": "GENERATIVE",
+      "media_authority_rank": 5,
+      "media_authority": "generative — allowlisted branded graphic",
+      "generative_allowance": "branded_motion_graphic",
       "footage_queries": [],
-      "fallback_queries": [
-        "dark wood texture background cinematic"
-      ],
-      "fallback_asset_intent": "branded motion card: wordmark on dark material texture, designed in Remotion (no generated imagery required)",
+      "fallback_queries": [],
+      "motion": "hold",
+      "in_out_intent": "0.0–7.0 s · wordmark and rule animate in, tagline holds for the final 2 s",
+      "framing_note": "generative allowed here by the script (motion graphics / logo reveal); no phone, address, site or social handles — no verified contact data",
       "overlay_text": {
         "title": "SALAMAT MEBEL",
-        "subtitle": "мебель, созданная под ваше пространство",
+        "subtitle": "Мебель, созданная под ваше пространство",
         "label": null
       },
+      "audio": "narration + low-profile music bed; footage audio muted",
       "source_grounding": [
-        "owner-brief:editorial:block_F_brand_close",
-        "owner-brief:claims_policy:neutral_cta"
+        "SALAMAT_PROMO_SCRIPT.md#scene-9"
       ],
-      "approval_notes": "Neutral CTA only; no phone, address, site or social handles."
+      "approval_notes": "generative allowed here by the script (motion graphics / logo reveal); no phone, address, site or social handles — no verified contact data"
     }
   ]
 }
