@@ -1,12 +1,12 @@
 {
   "version": 4,
-  "generatedAt": "2026-10-08T04:40:02+00:00",
+  "generatedAt": "2026-10-08T04:57:32+00:00",
   "fps": 30,
   "width": 1920,
   "height": 1080,
-  "totalSeconds": 120.0,
-  "totalFrames": 3600,
-  "audioMix": null,
+  "totalSeconds": 122.233,
+  "totalFrames": 3667,
+  "audioMix": "audio/narration-ru-salamat-mebel.mp3",
   "musicGainDb": -21.0,
   "scenes": [
     {
@@ -25,8 +25,8 @@
       "label": null,
       "motion": "push-in",
       "ownerDirected": false,
-      "audio": null,
-      "durationSource": "script timing 5.0s; voice not generated yet",
+      "audio": "audio/scene1.mp3",
+      "durationSource": "script timing 5.0s (voice + breath fits)",
       "asset": {
         "file": null,
         "query": "premium modern kitchen interior slow dolly warm evening light",
@@ -40,7 +40,7 @@
       "scriptScene": 1,
       "scriptTimecode": "0:00–0:08",
       "startFrame": 150,
-      "durationFrames": 90,
+      "durationFrames": 107,
       "narrationPart": "когда каждая вещь находится на своём месте.",
       "captionLines": [
         "когда каждая вещь находится на своём месте."
@@ -50,8 +50,8 @@
       "label": null,
       "motion": "push-in",
       "ownerDirected": false,
-      "audio": null,
-      "durationSource": "script timing 3.0s; voice not generated yet",
+      "audio": "audio/scene1.mp3",
+      "durationSource": "voice 2.75s + 0.8s breath",
       "asset": {
         "file": null,
         "query": "cabinet front material texture macro brass handle detail",
@@ -64,7 +64,7 @@
       "order": 3,
       "scriptScene": 2,
       "scriptTimecode": "0:08–0:22",
-      "startFrame": 240,
+      "startFrame": 257,
       "durationFrames": 210,
       "narrationPart": "Поэтому мы не просто изготавливаем мебель.",
       "captionLines": [
@@ -75,8 +75,8 @@
       "label": null,
       "motion": "drift-left",
       "ownerDirected": false,
-      "audio": null,
-      "durationSource": "script timing 7.0s; voice not generated yet",
+      "audio": "audio/scene2.mp3",
+      "durationSource": "script timing 7.0s (voice + breath fits)",
       "asset": {
         "file": null,
         "query": "carpenter measuring wall laser distance meter interior",
@@ -89,7 +89,7 @@
       "order": 4,
       "scriptScene": 2,
       "scriptTimecode": "0:08–0:22",
-      "startFrame": 450,
+      "startFrame": 467,
       "durationFrames": 210,
       "narrationPart": "Мы начинаем с пространства, задачи и привычек человека, который будет ею пользоваться.",
       "captionLines": [
@@ -101,8 +101,8 @@
       "label": null,
       "motion": "drift-left",
       "ownerDirected": false,
-      "audio": null,
-      "durationSource": "script timing 7.0s; voice not generated yet",
+      "audio": "audio/scene2.mp3",
+      "durationSource": "script timing 7.0s (voice + breath fits)",
       "asset": {
         "file": null,
         "query": "designer reviewing plans with client interior table",
@@ -115,7 +115,7 @@
       "order": 5,
       "scriptScene": 3,
       "scriptTimecode": "0:22–0:36",
-      "startFrame": 660,
+      "startFrame": 677,
       "durationFrames": 210,
       "narrationPart": "Кухня, шкаф, гардеробная или мебель для бизнеса начинается с проекта.",
       "captionLines": [
@@ -127,8 +127,8 @@
       "label": null,
       "motion": "drift-right",
       "ownerDirected": false,
-      "audio": null,
-      "durationSource": "script timing 7.0s; voice not generated yet",
+      "audio": "audio/scene3.mp3",
+      "durationSource": "script timing 7.0s (voice + breath fits)",
       "asset": {
         "file": null,
         "query": "interior designer drawing furniture plan hands workshop",
@@ -141,7 +141,7 @@
       "order": 6,
       "scriptScene": 3,
       "scriptTimecode": "0:22–0:36",
-      "startFrame": 870,
+      "startFrame": 887,
       "durationFrames": 210,
       "narrationPart": "Размеры, материалы, цвет, наполнение — всё собирается в одно решение.",
       "captionLines": [
@@ -153,8 +153,8 @@
       "label": null,
       "motion": "drift-right",
       "ownerDirected": false,
-      "audio": null,
-      "durationSource": "script timing 7.0s; voice not generated yet",
+      "audio": "audio/scene3.mp3",
+      "durationSource": "script timing 7.0s (voice + breath fits)",
       "asset": {
         "file": null,
         "query": "material samples boards laminate veneer selection hands table",
@@ -167,7 +167,7 @@
       "order": 7,
       "scriptScene": 4,
       "scriptTimecode": "0:36–0:55",
-      "startFrame": 1080,
+      "startFrame": 1097,
       "durationFrames": 180,
       "narrationPart": "Затем проект переходит в производство.",
       "captionLines": [
@@ -178,8 +178,8 @@
       "label": null,
       "motion": "push-in",
       "ownerDirected": false,
-      "audio": null,
-      "durationSource": "script timing 6.0s; voice not generated yet",
+      "audio": "audio/scene4.mp3",
+      "durationSource": "script timing 6.0s (voice + breath fits)",
       "asset": {
         "file": null,
         "query": "panel saw cutting laminated board furniture factory",
@@ -192,7 +192,7 @@
       "order": 8,
       "scriptScene": 4,
       "scriptTimecode": "0:36–0:55",
-      "startFrame": 1260,
+      "startFrame": 1277,
       "durationFrames": 180,
       "narrationPart": "Детали раскраиваются, обрабатываются",
       "captionLines": [
@@ -203,8 +203,8 @@
       "label": null,
       "motion": "push-in",
       "ownerDirected": false,
-      "audio": null,
-      "durationSource": "script timing 6.0s; voice not generated yet",
+      "audio": "audio/scene4.mp3",
+      "durationSource": "script timing 6.0s (voice + breath fits)",
       "asset": {
         "file": null,
         "query": "edge banding machine processing panel furniture factory closeup",
@@ -217,7 +217,7 @@
       "order": 9,
       "scriptScene": 4,
       "scriptTimecode": "0:36–0:55",
-      "startFrame": 1440,
+      "startFrame": 1457,
       "durationFrames": 210,
       "narrationPart": "и собираются с точностью, от которой зависит конечный результат.",
       "captionLines": [
@@ -229,8 +229,8 @@
       "label": null,
       "motion": "push-in",
       "ownerDirected": false,
-      "audio": null,
-      "durationSource": "script timing 7.0s; voice not generated yet",
+      "audio": "audio/scene4.mp3",
+      "durationSource": "script timing 7.0s (voice + breath fits)",
       "asset": {
         "file": null,
         "query": "cabinet assembly workshop clamps furniture carcase",
@@ -243,7 +243,7 @@
       "order": 10,
       "scriptScene": 5,
       "scriptTimecode": "0:55–1:08",
-      "startFrame": 1650,
+      "startFrame": 1667,
       "durationFrames": 210,
       "narrationPart": "Хорошая мебель ощущается сразу — в фактуре поверхности,",
       "captionLines": [
@@ -255,8 +255,8 @@
       "label": null,
       "motion": "push-in",
       "ownerDirected": true,
-      "audio": null,
-      "durationSource": "script timing 7.0s; voice not generated yet",
+      "audio": "audio/scene5.mp3",
+      "durationSource": "script timing 7.0s (voice + breath fits)",
       "asset": {
         "file": null,
         "query": "hand sliding across kitchen countertop surface texture slow glide",
@@ -269,7 +269,7 @@
       "order": 11,
       "scriptScene": 5,
       "scriptTimecode": "0:55–1:08",
-      "startFrame": 1860,
+      "startFrame": 1877,
       "durationFrames": 180,
       "narrationPart": "в точности деталей и в том, как ею пользуешься каждый день.",
       "captionLines": [
@@ -281,8 +281,8 @@
       "label": null,
       "motion": "push-in",
       "ownerDirected": false,
-      "audio": null,
-      "durationSource": "script timing 6.0s; voice not generated yet",
+      "audio": "audio/scene5.mp3",
+      "durationSource": "script timing 6.0s (voice + breath fits)",
       "asset": {
         "file": null,
         "query": "soft close drawer runner hinge mechanism closeup slow motion",
@@ -295,7 +295,7 @@
       "order": 12,
       "scriptScene": 6,
       "scriptTimecode": "1:08–1:27",
-      "startFrame": 2040,
+      "startFrame": 2057,
       "durationFrames": 180,
       "narrationPart": "Salamat Mebel делает кухни, шкафы и системы хранения,",
       "captionLines": [
@@ -307,8 +307,8 @@
       "label": null,
       "motion": "drift-left",
       "ownerDirected": false,
-      "audio": null,
-      "durationSource": "script timing 6.0s; voice not generated yet",
+      "audio": "audio/scene6.mp3",
+      "durationSource": "script timing 6.0s (voice + breath fits)",
       "asset": {
         "file": null,
         "query": "finished modern kitchen interior slow pan cabinets",
@@ -321,7 +321,7 @@
       "order": 13,
       "scriptScene": 6,
       "scriptTimecode": "1:08–1:27",
-      "startFrame": 2220,
+      "startFrame": 2237,
       "durationFrames": 180,
       "narrationPart": "мебель для детских, ванных и гостиных,",
       "captionLines": [
@@ -332,8 +332,8 @@
       "label": null,
       "motion": "drift-left",
       "ownerDirected": false,
-      "audio": null,
-      "durationSource": "script timing 6.0s; voice not generated yet",
+      "audio": "audio/scene6.mp3",
+      "durationSource": "script timing 6.0s (voice + breath fits)",
       "asset": {
         "file": null,
         "query": "children room built in furniture interior daylight",
@@ -346,7 +346,7 @@
       "order": 14,
       "scriptScene": 6,
       "scriptTimecode": "1:08–1:27",
-      "startFrame": 2400,
+      "startFrame": 2417,
       "durationFrames": 210,
       "narrationPart": "а также решения для магазинов, офисов и других коммерческих пространств.",
       "captionLines": [
@@ -358,8 +358,8 @@
       "label": null,
       "motion": "drift-left",
       "ownerDirected": false,
-      "audio": null,
-      "durationSource": "script timing 7.0s; voice not generated yet",
+      "audio": "audio/scene6.mp3",
+      "durationSource": "script timing 7.0s (voice + breath fits)",
       "asset": {
         "file": null,
         "query": "reception desk millwork modern office interior",
@@ -372,7 +372,7 @@
       "order": 15,
       "scriptScene": 7,
       "scriptTimecode": "1:27–1:42",
-      "startFrame": 2610,
+      "startFrame": 2627,
       "durationFrames": 240,
       "narrationPart": "Но хороший проект заканчивается не в цеху.",
       "captionLines": [
@@ -383,8 +383,8 @@
       "label": null,
       "motion": "drift-right",
       "ownerDirected": false,
-      "audio": null,
-      "durationSource": "script timing 8.0s; voice not generated yet",
+      "audio": "audio/scene7.mp3",
+      "durationSource": "script timing 8.0s (voice + breath fits)",
       "asset": {
         "file": null,
         "query": "furniture installers fitting kitchen cabinets interior level",
@@ -397,8 +397,8 @@
       "order": 16,
       "scriptScene": 7,
       "scriptTimecode": "1:27–1:42",
-      "startFrame": 2850,
-      "durationFrames": 210,
+      "startFrame": 2867,
+      "durationFrames": 260,
       "narrationPart": "Он заканчивается тогда, когда мебель установлена, всё отрегулировано и пространство начинает работать так, как было задумано.",
       "captionLines": [
         "Он заканчивается тогда, когда мебель установлена, всё отрегулировано",
@@ -409,8 +409,8 @@
       "label": null,
       "motion": "drift-right",
       "ownerDirected": false,
-      "audio": null,
-      "durationSource": "script timing 7.0s; voice not generated yet",
+      "audio": "audio/scene7.mp3",
+      "durationSource": "voice 7.86s + 0.8s breath",
       "asset": {
         "file": null,
         "query": "adjusting cabinet hinge door alignment closeup",
@@ -423,7 +423,7 @@
       "order": 17,
       "scriptScene": 8,
       "scriptTimecode": "1:42–1:53",
-      "startFrame": 3060,
+      "startFrame": 3127,
       "durationFrames": 330,
       "narrationPart": "В результате получается не просто набор шкафов. Получается пространство, сделанное именно для вас.",
       "captionLines": [
@@ -435,8 +435,8 @@
       "label": null,
       "motion": "push-out",
       "ownerDirected": false,
-      "audio": null,
-      "durationSource": "script timing 11.0s; voice not generated yet",
+      "audio": "audio/scene8.mp3",
+      "durationSource": "script timing 11.0s (voice + breath fits)",
       "asset": {
         "file": null,
         "query": "finished interior kitchen built in furniture wide daylight",
@@ -449,7 +449,7 @@
       "order": 18,
       "scriptScene": 9,
       "scriptTimecode": "1:53–2:00",
-      "startFrame": 3390,
+      "startFrame": 3457,
       "durationFrames": 210,
       "narrationPart": "Salamat Mebel. Мебель, созданная под ваше пространство.",
       "captionLines": [
@@ -461,8 +461,8 @@
       "label": null,
       "motion": "hold",
       "ownerDirected": false,
-      "audio": null,
-      "durationSource": "script timing 7.0s; voice not generated yet",
+      "audio": "audio/scene9.mp3",
+      "durationSource": "script timing 7.0s (voice + breath fits)",
       "asset": null
     }
   ]

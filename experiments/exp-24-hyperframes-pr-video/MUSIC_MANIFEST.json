@@ -1,0 +1,30 @@
+{
+  "contract": "MUSIC_MANIFEST",
+  "version": 1,
+  "fixture": "Salamat Mebel 2-minute promo",
+  "created": "2026-10-08",
+  "provider": {
+    "name": "none-resolved",
+    "kind": "licensed_music_provider",
+    "status": "BLOCKED_PROVIDER",
+    "blocker": "no licensed music provider or credentials are available in this execution environment, and the media-source authority requires real licensed audio rather than a substituted bed",
+    "preferred_sources": ["Storyblocks music library (same subscription as footage)", "other explicitly approved licensed library"]
+  },
+  "track": {
+    "track_id": null,
+    "title": null,
+    "url": null,
+    "licence_note": "not resolved — no track has been licensed",
+    "duration_seconds": null
+  },
+  "mix": {
+    "gain_db": -21,
+    "gain_db_rationale": "reserved ducking level: a low-profile premium corporate bed that keeps narration clearly dominant",
+    "narration_gain_db": 0,
+    "ducking": "static low gain for Phase 2; side-chain ducking is not implemented and is not claimed"
+  },
+  "path": null,
+  "status": "NOT_PROVIDED",
+  "decision": "No music bed was synthesised locally and none was substituted: § No generative fallback for stock failure and the anti-fabrication rule apply to audio as well as video. The preview therefore runs with narration only, and the final film requires a licensed track before CP-12.",
+  "required_action": "license one approved low-profile corporate/architectural track, then re-run tools/build_timeline.py — the composition reads musicGainDb from this manifest and needs no code change"
+}

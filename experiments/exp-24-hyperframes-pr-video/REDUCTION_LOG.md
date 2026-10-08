@@ -82,3 +82,25 @@ the CP-06…CP-12 pipeline actually executes.
 Verified after reduction: `build_storyboard.py` → 18 beats / 120.0 s; `resolve_media.py` → 17 requests,
 0 resolved; `build_timeline.py` → 3,600 frames; `remotion still` renders a frame (search slate +
 two-line caption) with Chromium already present in the sandbox.
+
+---
+
+## Independent audit addendum (owner-requested verification)
+
+The owner asked for factual checks rather than Arena's self-report. Re-measured on
+`HEAD = b8edec7fb5f3886656e6b22cb095852285ae9374`:
+
+| Check | Command | Result |
+| --- | --- | --- |
+| Added lines in code (`.py`/`.ts`/`.tsx`) | `git diff --numstat main HEAD -- experiments/exp-24-hyperframes-pr-video \| grep -E '\.(py\|tsx\|ts)$'` | **1,175** across 8 files (report also counts `package.json`'s 20 → 1,195) |
+| Added lines in every file incl. generated JSON/docs | same, unfiltered | 8,604 (mostly the two manifests, `timeline.json`, owner task/script files, `package-lock.json`) |
+| Line counts on disk | `wc -l` per file | matched the report exactly |
+| Generated binaries tracked | `git ls-files \| grep -E '\.(png\|jpg\|mp4\|mp3)$'` | **2 were still tracked** (`out/smoke-frame.png`, `out/smoke-frame-small.jpg`) — the earlier `git rm --cached` was staged in the same command as `git add -A`, so `git add -A` re-added them |
+| `.gitignore` change committed | `git status --porcelain` | **no** — the `promo-remotion/out/` + `node_modules/` rules were sitting uncommitted |
+| Reproducibility of the JSON contracts | re-ran all three builders, compared SHA-256 | storyboard **byte-identical**; manifest and timeline **differ only in their `created`/`generatedAt` timestamps** (not byte-identical) |
+| Storyblocks provider | `tools/resolve_media.py status` | `BLOCKED_PROVIDER`, 17 requests unresolved, 0 resolved |
+
+Both defects found by the audit are fixed in the commit that carries this file: the binaries are
+untracked again (`out/` is ignored), and `.gitignore` is committed. The reproducibility claim is
+corrected here: the timeline and manifest carry timestamps, so "byte-identical re-run" applies to
+the storyboard only.

@@ -13,3 +13,8 @@ dist/
 .artifacts/
 .mpe-runtime/mailboxes/
 .devcontainer/OPENCODE_MOBILE_CONNECTION.txt
+
+# EXP-24 promo: render output and caches stay out of the repo
+promo-remotion/out/
+promo-remotion/node_modules/
+promo-remotion/public/audio/

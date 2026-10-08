@@ -1,0 +1,268 @@
+{
+  "contract": "VOICE_MANIFEST",
+  "version": 1,
+  "fixture": "Salamat Mebel 2-minute promo",
+  "created": "2026-10-08",
+  "reference_provider": {
+    "name": "elevenlabs",
+    "status": "BLOCKED_PROVIDER",
+    "blocker": "no ElevenLabs credentials in this execution environment",
+    "note": "Preferred reference provider per the task; sits behind the same VoiceProvider contract and can replace the provider below without touching the storyboard."
+  },
+  "provider": {
+    "name": "arena-speech",
+    "kind": "voice_provider_adapter",
+    "service": "Arena Agent Mode speech synthesis",
+    "voice_id": "voice-00",
+    "voice_selection": {
+      "process": "two Russian masculine candidates auditioned through the same provider (Arena voice audition)",
+      "owner_decision": "Voice Sample 2 selected by the owner on 2026-10-08",
+      "candidate_1": "rejected",
+      "candidate_2": "SELECTED — voice-00",
+      "language": "ru",
+      "register": "mature, calm, confident narration; no announcer exaggeration"
+    },
+    "model": "arena-speech (unversioned, session-scoped voice)",
+    "settings": {
+      "language": "ru",
+      "speed": "provider default",
+      "pitch": "provider default",
+      "emotion_controls": "none available through this adapter"
+    },
+    "language": "ru",
+    "generated_at": "2026-10-08T04:56Z",
+    "reproducibility": {
+      "level": "PARTIAL",
+      "why": "the adapter's voice is registered per Arena session; the audio itself is hashed and stored, but byte-identical regeneration requires the same session voice",
+      "hashes_sha256_prefix": {
+        "scene1.mp3": "bb1c226ba91a9ad84f1c4b13",
+        "scene2.mp3": "64837c134be23c90f4c61be0",
+        "scene3.mp3": "b877ebceae56539b760a6eef",
+        "scene4.mp3": "96f4ca4f72d3deb2aa9fcbf3",
+        "scene5.mp3": "053a1a7a8156efb5556481e8",
+        "scene6.mp3": "94955cd80bd7ec12a7d09bf3",
+        "scene7.mp3": "61a2b3d81ad6685d9e882a9c",
+        "scene8.mp3": "b56603cfd64cb62a23be2ec3",
+        "scene9.mp3": "1066e00385fac48c1300170b",
+        "narration-ru-salamat-mebel.mp3": "98ce2c638fdbb5666c6c6495"
+      }
+    }
+  },
+  "narration_source": {
+    "file": "SALAMAT_PROMO_SCRIPT.md",
+    "rule": "narration text is the owner-approved script verbatim; no wording was rewritten for the voice",
+    "text_total_seconds_storyboard": 120.0
+  },
+  "clips": [
+    {
+      "scene_id": "open-interior",
+      "script_scene": 1,
+      "path": "audio/scene1.mp3",
+      "duration_seconds": 2.626,
+      "text_seconds": 8.0,
+      "fits": true,
+      "scene_clip_seconds": 5.381,
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+    },
+    {
+      "scene_id": "open-detail",
+      "script_scene": 1,
+      "path": "audio/scene1.mp3",
+      "duration_seconds": 2.755,
+      "text_seconds": 8.0,
+      "fits": true,
+      "shared_with": "open-interior",
+      "scene_clip_seconds": 5.381,
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+    },
+    {
+      "scene_id": "task-measure",
+      "script_scene": 2,
+      "path": "audio/scene2.mp3",
+      "duration_seconds": 2.58,
+      "text_seconds": 14.0,
+      "fits": true,
+      "scene_clip_seconds": 7.863,
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+    },
+    {
+      "scene_id": "task-habits",
+      "script_scene": 2,
+      "path": "audio/scene2.mp3",
+      "duration_seconds": 5.283,
+      "text_seconds": 14.0,
+      "fits": true,
+      "shared_with": "task-measure",
+      "scene_clip_seconds": 7.863,
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+    },
+    {
+      "scene_id": "project-drawings",
+      "script_scene": 3,
+      "path": "audio/scene3.mp3",
+      "duration_seconds": 5.054,
+      "text_seconds": 14.0,
+      "fits": true,
+      "scene_clip_seconds": 10.109,
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+    },
+    {
+      "scene_id": "project-selection",
+      "script_scene": 3,
+      "path": "audio/scene3.mp3",
+      "duration_seconds": 5.054,
+      "text_seconds": 14.0,
+      "fits": true,
+      "shared_with": "project-drawings",
+      "scene_clip_seconds": 10.109,
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+    },
+    {
+      "scene_id": "prod-cutting",
+      "script_scene": 4,
+      "path": "audio/scene4.mp3",
+      "duration_seconds": 2.324,
+      "text_seconds": 19.0,
+      "fits": true,
+      "scene_clip_seconds": 8.438,
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+    },
+    {
+      "scene_id": "prod-processing",
+      "script_scene": 4,
+      "path": "audio/scene4.mp3",
+      "duration_seconds": 2.201,
+      "text_seconds": 19.0,
+      "fits": true,
+      "shared_with": "prod-cutting",
+      "scene_clip_seconds": 8.438,
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+    },
+    {
+      "scene_id": "prod-assembly",
+      "script_scene": 4,
+      "path": "audio/scene4.mp3",
+      "duration_seconds": 3.913,
+      "text_seconds": 19.0,
+      "fits": true,
+      "shared_with": "prod-cutting",
+      "scene_clip_seconds": 8.438,
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+    },
+    {
+      "scene_id": "tactile-hero",
+      "script_scene": 5,
+      "path": "audio/scene5.mp3",
+      "duration_seconds": 3.378,
+      "text_seconds": 13.0,
+      "fits": true,
+      "scene_clip_seconds": 7.001,
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+    },
+    {
+      "scene_id": "materials-hardware",
+      "script_scene": 5,
+      "path": "audio/scene5.mp3",
+      "duration_seconds": 3.623,
+      "text_seconds": 13.0,
+      "fits": true,
+      "shared_with": "tactile-hero",
+      "scene_clip_seconds": 7.001,
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+    },
+    {
+      "scene_id": "range-kitchen-storage",
+      "script_scene": 6,
+      "path": "audio/scene6.mp3",
+      "duration_seconds": 3.449,
+      "text_seconds": 19.0,
+      "fits": true,
+      "scene_clip_seconds": 10.606,
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+    },
+    {
+      "scene_id": "range-home-rooms",
+      "script_scene": 6,
+      "path": "audio/scene6.mp3",
+      "duration_seconds": 2.473,
+      "text_seconds": 19.0,
+      "fits": true,
+      "shared_with": "range-kitchen-storage",
+      "scene_clip_seconds": 10.606,
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+    },
+    {
+      "scene_id": "range-commercial",
+      "script_scene": 6,
+      "path": "audio/scene6.mp3",
+      "duration_seconds": 4.685,
+      "text_seconds": 19.0,
+      "fits": true,
+      "shared_with": "range-kitchen-storage",
+      "scene_clip_seconds": 10.606,
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+    },
+    {
+      "scene_id": "install-fitting",
+      "script_scene": 7,
+      "path": "audio/scene7.mp3",
+      "duration_seconds": 2.641,
+      "text_seconds": 15.0,
+      "fits": true,
+      "scene_clip_seconds": 10.501,
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+    },
+    {
+      "scene_id": "install-adjust",
+      "script_scene": 7,
+      "path": "audio/scene7.mp3",
+      "duration_seconds": 7.86,
+      "text_seconds": 15.0,
+      "fits": true,
+      "shared_with": "install-fitting",
+      "scene_clip_seconds": 10.501,
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+    },
+    {
+      "scene_id": "result-space",
+      "script_scene": 8,
+      "path": "audio/scene8.mp3",
+      "duration_seconds": 6.034,
+      "text_seconds": 11.0,
+      "fits": true,
+      "scene_clip_seconds": 6.034,
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+    },
+    {
+      "scene_id": "brand-close",
+      "script_scene": 9,
+      "path": "audio/scene9.mp3",
+      "duration_seconds": 3.709,
+      "text_seconds": 7.0,
+      "fits": true,
+      "scene_clip_seconds": 3.709,
+      "duration_source": "apportioned_share: measured scene clip seconds x beat character share (approximation; exact sub-scene boundaries come from CP-10)"
+    }
+  ],
+  "narration_total_seconds": 69.642,
+  "narration_provided_granularity": "one clip per script scene (9), concatenated in script order into one mix; per-beat seconds are apportioned by character share of the measured scene clip — a documented approximation, not a per-beat measurement",
+  "mix_path": "audio/narration-ru-salamat-mebel.mp3",
+  "mix_settings": {
+    "narration_gain_db": 0,
+    "music_gain_db": null,
+    "notes": "no music bed was produced (see MUSIC_MANIFEST.json); loudness normalisation is deferred to CP-10, which is not yet authorised"
+  },
+  "known_limitations": [
+    "The provider exposes no speed/pitch controls, so pacing is provider-default; the owner's 'older/slower' style request cannot be executed through this adapter and would need re-recording or a different provider.",
+    "Listening review by the owner is still required; CP-09 preview uses this narration as a technical draft, not as approved final voice-over.",
+    "Captions in the preview follow beat timing, not the measured sub-scene silence boundaries; exact subtitle-in/out refinement belongs to CP-10."
+  ],
+  "provenance_commands": [
+    "npx remotion ffprobe -v error -show_entries format=duration -of csv=p=0 public/audio/sceneN.mp3",
+    "ffmpeg -f concat -safe 0 -i public/audio/concat.txt -c copy public/audio/narration-ru-salamat-mebel.mp3",
+    "npx remotion ffprobe -v error -show_entries format=duration -of csv=p=0 public/audio/narration-ru-salamat-mebel.mp3"
+  ],
+  "cost": {
+    "credits_observed": "not exposed by the adapter; no paid provider was used"
+  }
+}
