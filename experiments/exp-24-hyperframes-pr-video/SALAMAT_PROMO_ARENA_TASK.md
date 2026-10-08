@@ -158,6 +158,16 @@ If any prior step violated this contract:
 Do not hide or silently normalize the deviation.
 
 
+## Mandatory startup for this fixture
+
+Before CP-06, Arena MUST read in this order:
+
+1. `SALAMAT_PROMO_ARENA_TASK.md`
+2. `SALAMAT_PROMO_SCRIPT.md`
+3. `SALAMAT_PROMO_OWNER_NOTES.md`
+
+`SALAMAT_PROMO_SCRIPT.md` is the narrative source-of-truth for the promo. Do not invent a replacement script or materially change scene meaning without explicit owner approval. CP-06 must convert that script into the editorial storyboard, not create a new concept from scratch.
+
 ## Objective
 
 Create the first production-like Phase 2 fixture for EXP-24:
