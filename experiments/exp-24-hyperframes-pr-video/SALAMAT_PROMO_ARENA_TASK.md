@@ -168,6 +168,42 @@ Before CP-06, Arena MUST read in this order:
 
 `SALAMAT_PROMO_SCRIPT.md` is the narrative source-of-truth for the promo. Do not invent a replacement script or materially change scene meaning without explicit owner approval. CP-06 must convert that script into the editorial storyboard, not create a new concept from scratch.
 
+
+
+## HARD CHANGE-SIZE BUDGET
+
+This experiment must stay small.
+
+Before committing any implementation, measure the branch/worktree diff excluding generated binaries, downloaded media, package-manager lockfile churn and external vendor artifacts.
+
+### Budget
+- Preferred handwritten implementation: **<= 1,200 added lines**
+- Soft warning: **> 1,500 added handwritten lines**
+- Hard stop: **> 2,500 added handwritten lines**
+
+If the hard stop is reached, STOP implementation and produce a reduction plan before writing more code.
+
+Do not create a custom video editor, asset manager, orchestration framework, design system, generic media DSL, provider SDK wrapper framework, or reusable platform inside this fixture.
+
+Prefer:
+- existing Remotion primitives;
+- small data manifests;
+- thin provider adapters;
+- direct composition code;
+- scripts only where needed for the fixture.
+
+### Existing oversized worktree rule
+
+If the current uncommitted worktree already exceeds the hard-stop budget:
+1. do not add more implementation;
+2. inventory files by added lines;
+3. classify each as KEEP / GENERATED / VENDOR / REMOVE / SPLIT-NOT-NEEDED;
+4. preserve only the smallest code needed to complete CP-06…CP-12;
+5. report the reduced handwritten LOC before continuing.
+
+Generated/downloaded media and caches must not be committed as source code merely to preserve a run.
+
+
 ## Objective
 
 Create the first production-like Phase 2 fixture for EXP-24:
