@@ -83,3 +83,27 @@ No asset #4 will be created without explicit owner authorization.
 
 Earliest incomplete mandatory checkpoint = **CP-07 (media manifest)**, then CP-08. No later checkpoint
 was executed; no preview/render artifact was produced before the manifest existed.
+
+---
+
+## REV-001 — Voice selection (CP-08)
+
+**Type:** owner decision
+**Request:** "вариант A — Arena Speech Provider через существующий тонкий адаптер", two Russian male
+candidates, mature/calm/confident, no announcer pathos; final voice-over not to be asserted before the choice.
+**Interpreted change set:** register one `VoiceProvider` adapter (no new voice service), audition two
+candidates, keep the storyboard untouched (narration is the approved script verbatim).
+**Changed:** `VOICE_MANIFEST.json` (provider metadata, selected voice, measured durations, hashes);
+9 narration clips + one mix under `promo-remotion/public/audio/` (git-ignored, hashed).
+**Preserved:** `EDITORIAL_STORYBOARD.json`, `MEDIA_MANIFEST.json`, every scene and query.
+**Result:** owner selected **audition Sample 2 → `voice-00`**. Narration total 69.6 s, fits inside every
+scene's script timing; the film becomes 122.23 s. Draft status — the owner has not approved a final voice-over.
+
+## REV-002 — No music substitute
+
+**Type:** scope compliance
+**Request:** storyboard/voice/preview only; nothing may be fabricated for missing licensed media.
+**Interpreted change set:** record the music bed as a provider blocker instead of synthesising one.
+**Changed:** `MUSIC_MANIFEST.json`.
+**Preserved:** nothing removed — the mix simply has no bed, and `musicGainDb` stays reserved at −21 dB.
+**Result:** preview contains narration only (silent after 1:10); the final film requires a licensed track.

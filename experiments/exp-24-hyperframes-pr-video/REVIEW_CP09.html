@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EXP-24 · Salamat Mebel — техническое превью (CP-09)</title>
+<style>
+  :root { --ink:#0F0E0C; --paper:#F4EFE6; --brass:#C8A15A; --line:#2A2723; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--ink); color:var(--paper);
+         font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif; }
+  .wrap { max-width:1100px; margin:0 auto; padding:22px 16px 70px; }
+  h1 { font-size:24px; margin:6px 0 4px; letter-spacing:-0.4px; }
+  h2 { font-size:17px; margin:26px 0 8px; }
+  .muted { color:#9d9484; font-size:13px; }
+  .warn { border:1px solid #6b4a1f; background:#241a10; border-radius:12px; padding:12px 14px; margin:14px 0; }
+  .warn b { color:var(--brass); }
+  video { width:100%; border-radius:12px; border:1px solid var(--line); background:#000; display:block; }
+  .grid { display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); margin-top:10px; }
+  figure { margin:0; border:1px solid var(--line); border-radius:12px; overflow:hidden; background:#15130f; }
+  figure img { width:100%; display:block; }
+  figcaption { padding:8px 10px; font-size:12px; color:#bdb4a5; }
+  .row { display:flex; gap:14px; flex-wrap:wrap; align-items:flex-start; margin-top:10px; }
+  .card { border:1px solid var(--line); border-radius:12px; padding:12px 14px; background:#15130f; flex:1 1 320px; }
+  audio { width:100%; margin-top:6px; }
+  code { background:#1b1814; padding:1px 5px; border-radius:5px; font-size:12.5px; }
+  ul { padding-left:18px; } li { margin:3px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="muted">EXP-24 Phase 2 · Salamat Mebel promo · CP-09 техническое превью · 2026-10-08</div>
+  <h1>Техническое превью 1 — 122,2 с</h1>
+  <div class="muted">1920×1080 · 30 fps · H.264 + AAC · 9,28 МБ · SHA-256 <code>50f4bece0d4a0928…</code> ·
+    сборка коммита <code>6edcf9f</code></div>
+
+  <div class="warn">
+    <b>Это НЕ финальный ролик.</b> Storyblocks остаётся <code>BLOCKED_PROVIDER</code>: 17 клипов не
+    лицензированы, поэтому весь визуальный ряд — нейтральные слейты с поисковым запросом (не сгенерированные
+    изображения и не видео). Голос — технический черновой: звучит только до 1:10, дальше тишина (музыкальная
+    подложка не лицензирована). Финальная приёмка CP-10…CP-12 не выполнялась и не заявлена.
+  </div>
+
+  <video src="promo-remotion/out/preview-salamat-mebel-v1.mp4" controls preload="metadata" playsinline></video>
+  <div class="muted" style="margin-top:6px">Если плеер выше не открылся, файл лежит рядом:
+    <code>promo-remotion/out/preview-salamat-mebel-v1.mp4</code></div>
+
+  <h2>Кадры для проверки читаемости на телефоне (масштаб 360 px)</h2>
+  <div class="grid">
+    <figure>
+      <img src="promo-remotion/out/frame-30-caption-360px.png" alt="кадр 30 с в масштабе 360 px">
+      <figcaption>30,0 с · субтитры, 2 строки · в масштабе телефона</figcaption>
+    </figure>
+    <figure>
+      <img src="promo-remotion/out/frame-57-tactile-360px.png" alt="кадр 57 с в масштабе 360 px">
+      <figcaption>57,3 с · обязательный тактильный кадр столешницы — слейт вместо клипа</figcaption>
+    </figure>
+    <figure>
+      <img src="promo-remotion/out/frame-121-endcard-360px.png" alt="кадр 121 с в масштабе 360 px">
+      <figcaption>121,0 с · брендовый финальный кадр (разрешённая генеративная графика 2/2)</figcaption>
+    </figure>
+  </div>
+
+  <h2>Образцы голоса</h2>
+  <div class="row">
+    <div class="card">
+      <b>Выбранный голос (Sample 2 → voice-00)</b> — «зрелый, спокойный, уверенный» по вашему выбору.
+      <audio controls preload="none" src="promo-remotion/public/audio/scene3.mp3"></audio>
+      <div class="muted">сцена 3, 10,1 с · MP3 44,1 кГц моно</div>
+    </div>
+    <div class="card">
+      <b>Ещё один фрагмент того же голоса</b> — проверка интонации на короткой финальной строке.
+      <audio controls preload="none" src="promo-remotion/public/audio/scene9.mp3"></audio>
+      <div class="muted">сцена 9, 3,7 с · финальный призыв</div>
+    </div>
+  </div>
+
+  <h2>Что подтверждено, а что нет</h2>
+  <ul>
+    <li><b>Подтверждено:</b> сценарий не переписан (речь сверена дословно), тайминги выводятся из сценария,
+      оверлеи берутся только из утверждённого «On-screen text», генеративных изображений — 0,
+      брендовой генеративной графики — 2 из 3 разрешённых, субтитры ≤ 2 строк, звук присутствует.</li>
+    <li><b>Не подтверждено:</b> реальный видеоряд (17 клипов не лицензированы), музыка, финальная озвучка,
+      мобильная приёмка CP-10, ревизии CP-11, финальный рендер CP-12.</li>
+    <li><b>Публикация:</b> нигде не выполнялась и не планируется без отдельного разрешения.</li>
+  </ul>
+</div>
+</body>
+</html>
