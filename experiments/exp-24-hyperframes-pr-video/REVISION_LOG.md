@@ -107,3 +107,81 @@ scene's script timing; the film becomes 122.23 s. Draft status — the owner has
 **Changed:** `MUSIC_MANIFEST.json`.
 **Preserved:** nothing removed — the mix simply has no bed, and `musicGainDb` stays reserved at −21 dB.
 **Result:** preview contains narration only (silent after 1:10); the final film requires a licensed track.
+
+---
+
+## REV-003 — Brand-name pronunciation fix (issue #55, CP-08 targeted)
+
+**Type:** owner-reported defect repair (HIGH priority, EXTEND_EXISTING)
+**Request:** the selected voice `voice-00` pronounced the brand name with a foreign accent. The name must
+sound like ordinary Russian **«Саламат Мебель»**, in context, in the two affected scenes.
+**Root cause:** storyboard and script carry the brand as Latin `Salamat Mebel`
+(`SALAMAT_PROMO_SCRIPT.md` scenes 6 and 9), and that Latin string was passed straight to TTS, so the
+provider read it with English phonetics.
+
+**Interpreted change set (strict minimal diff):**
+
+| Kept unchanged | Changed |
+| --- | --- |
+| `SALAMAT_PROMO_SCRIPT.md` (narrative source of truth — **not** rewritten to Cyrillic) | TTS input only: `Salamat Mebel` → `Саламат Мебель` |
+| visual brand name `SALAMAT MEBEL` and every storyboard overlay | two narration clips: `scene6-brand-fixed.mp3`, `scene9-brand-fixed.mp3` |
+| `voice-00` (Sample 2) — no substitute voice | — |
+| clips 1–5 and 7–8 (byte-identical, hashes below) | — |
+| Remotion composition, timeline, mix, preview — **not rebuilt, awaiting owner approval** | — |
+
+### Files and hashes
+
+| Clip | Duration | SHA-256 | Status |
+| --- | --- | --- | --- |
+| `scene6.mp3` (old) | 10.606 s | `94955cd80bd7ec12a7d09bf3f5076ea6eba775bd66447734ed2137b422e1bd2b` | **preserved on disk, not replaced** |
+| `scene6-brand-fixed.mp3` (new) | 10.501 s | `70e20d0e645f23e9760bfebf67c48cb08c819b2875246c249c66fbe427e1c743` | awaiting owner audio review |
+| `scene9.mp3` (old) | 3.709 s | `1066e00385fac48c1300170bb6231b563aa616693bb09941a45cb0267c0da477` | **preserved on disk, not replaced** |
+| `scene9-brand-fixed.mp3` (new) | 3.788 s | `9a622b991b2a0a3a64e8172625652a324fff783b924aecaea4d38bb7b6136e80` | awaiting owner audio review |
+
+Unaffected clips re-verified byte-identical (`scene1` `bb1c226b…`, `scene2` `64837c13…`, `scene3`
+`b877ebce…`, `scene4` `96f4ca4f…`, `scene5` `053a1a7a…`, `scene7` `61a2b3d8…`, `scene8` `b56603cf…`).
+
+### Pronunciation timestamps (clip-relative, measured by energy-envelope phrase segmentation, 120 ms gaps)
+
+| Clip | Brand-name utterance | Phrase map |
+| --- | --- | --- |
+| `scene6-brand-fixed.mp3` | **0.06–1.35 s** "Саламат Мебель" (then a pause before «делает кухни…») | 0.06–1.35 · 1.51–1.61 · 1.73–5.27 · 5.39–6.05 · 6.24–7.85 · 8.02–8.42 · 8.56–10.20 |
+| `scene9-brand-fixed.mp3` | **0.05–1.02 s** "Саламат Мебель" | 0.05–1.02 · 1.22–3.44 |
+| `scene6.mp3` (old) | 0.06–3.42 s — the name ran on without a phrase break | 0.06–3.42 · 3.58–5.38 · 5.50–5.73 · 6.23–7.82 · 8.00–10.22 |
+| `scene9.mp3` (old) | 0.04–0.99 s | 0.04–0.99 · 1.20–3.41 |
+
+Acoustic comparison of the first 1.7 s (evidence that the name was re-synthesised, not merely re-encoded):
+scene 6 envelope correlation 0.711, first energy peak moved 1.54 s → 0.75 s; scene 9 correlation 0.823.
+
+### Technical verification
+
+| Check | scene 6 (new) | scene 9 (new) |
+| --- | --- | --- |
+| File exists / decodes | yes, MP3 44.1 kHz mono | yes, MP3 44.1 kHz mono |
+| Lead-in silence | 0.061 s | 0.056 s |
+| Lead-out silence | 0.278 s | 0.310 s |
+| Peak / RMS | 0.811 / 0.1162 | 0.748 / 0.1098 |
+| No clipped word at start/end | PASS (non-zero lead-in and lead-out) | PASS |
+| Level comparable to the original | 0.1162 vs 0.1138 | 0.1098 vs 0.1114 |
+| Full text spoken | duration within 0.1 s of the original clip that carried the same sentence → consistent | 3.79 s vs 3.71 s |
+
+**Not verified by the agent:** audible pronunciation quality. The agent cannot listen to the audio, so
+`PRONUNCIATION CHECK = NEEDS OWNER REVIEW`; the acoustic evidence above only proves the name was
+re-synthesised as a distinct, bounded utterance.
+
+### Blocker found and fixed while doing this (unrelated to the audio itself)
+
+The tracked branch commit `f10f092` contained **23 generated files** (10 audio clips + 13 render
+artifacts) because the `.gitignore` patterns `promo-remotion/…` are anchored to the repository root and
+never matched the experiment subdirectory. Fixed in `602b8a5`: patterns re-anchored as
+`**/promo-remotion/{out,node_modules,public/audio}/`, the 23 files untracked (still on disk), verified
+0 media files tracked inside EXP-24. This also restores compliance with "no binary audio in Git".
+
+### Deferred until the owner approves the pronunciation
+
+1. rebuild the narration mix (`narration-ru-salamat-mebel.mp3`) with the two fixed clips;
+2. update `VOICE_MANIFEST.json` durations/hashes for scenes 6 and 9;
+3. re-run `tools/build_timeline.py` (scene 6 shortens by 0.105 s, scene 9 lengthens by 0.079 s);
+4. regenerate the technical preview.
+
+Not executed: CP-10…CP-12, full video render, any publishing.

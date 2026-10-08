@@ -72,3 +72,29 @@ PUBLISHING: not executed anywhere; no upload, no public link
 Await the owner's review of the two voice samples and this preview, then either
 (a) supply Storyblocks access so CP-07 can resolve and CP-10…CP-12 can proceed, or
 (b) record CP-10…CP-12 as blocked and keep the fixture at its current PARTIAL state.
+
+---
+
+## REV-003 addendum — brand-name pronunciation fix (issue #55), awaiting owner audio review
+
+Targeted CP-08 correction: the voice pronounced the Latin string `Salamat Mebel` with English phonetics.
+TTS input for the two affected scenes now uses Cyrillic **«Саламат Мебель»**; the script, the storyboard,
+the visual wordmark `SALAMAT MEBEL` and the selected voice are unchanged.
+
+| Item | Value |
+| --- | --- |
+| Scene 6 | `scene6-brand-fixed.mp3` · 10.501 s · SHA-256 `70e20d0e645f23e9760bfebf67c48cb08c819b2875246c249c66fbe427e1c743` |
+| Scene 9 | `scene9-brand-fixed.mp3` · 3.788 s · SHA-256 `9a622b991b2a0a3a64e8172625652a324fff783b924aecaea4d38bb7b6136e80` |
+| Originals | `scene6.mp3` (10.606 s, `94955cd8…`) and `scene9.mp3` (3.709 s, `1066e003…`) preserved, not replaced |
+| Other clips | unchanged, byte-identical |
+| Brand-name timestamps | scene 6: 0.06–1.35 s · scene 9: 0.05–1.02 s (clip-relative, envelope measurement) |
+| Technical checks | PASS — decodes, no clipped syllables, full text, level matches the originals |
+| Pronunciation verdict | **NEEDS OWNER REVIEW** — the agent cannot listen to audio |
+| Mix / manifest / timeline / preview | **NOT rebuilt** — deferred until the owner approves |
+| CP-10 … CP-12 | not started · no render, no publishing |
+
+Also fixed here: the tracked branch carried 23 generated files (10 audio + 13 renders) because the
+`.gitignore` patterns were anchored to the repo root and never matched the experiment subdirectory.
+Patterns re-anchored and the files untracked in `602b8a5`; 0 media files remain tracked inside EXP-24.
+
+STOP GATE: awaiting owner audio review of the two files.
