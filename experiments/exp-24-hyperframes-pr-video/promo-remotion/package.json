@@ -1,0 +1,20 @@
+{
+  "name": "exp24-salamat-mebel-promo",
+  "private": true,
+  "version": "0.1.0",
+  "description": "EXP-24 Phase 2 fixture — Salamat Mebel 2-minute promo. Remotion assembly adapter consuming the frozen EDITORIAL_STORYBOARD.json / MEDIA_MANIFEST.json / VOICE_MANIFEST.json contracts.",
+  "scripts": {
+    "studio": "remotion studio src/index.ts --port 3000",
+    "preview": "remotion render src/index.ts SalamatPromo out/preview.mp4",
+    "still": "remotion still src/index.ts SalamatPromo",
+    "render": "remotion render src/index.ts SalamatPromo out/salamat-mebel-promo.mp4"
+  },
+  "dependencies": {
+    "@fontsource/manrope": "^5.2.5",
+    "@remotion/cli": "^4.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "remotion": "^4.0.0"
+  },
+  "devDependencies": {}
+}

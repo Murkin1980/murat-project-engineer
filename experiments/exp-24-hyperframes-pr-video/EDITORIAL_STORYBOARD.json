@@ -1,0 +1,601 @@
+{
+  "contract": "EDITORIAL_STORYBOARD",
+  "version": 1,
+  "experiment": "EXP-24 Phase 2",
+  "fixture": "Salamat Mebel 2-minute promo",
+  "created": "2026-10-08",
+  "mode": "REAL_FOOTAGE",
+  "language": "ru",
+  "format": {
+    "width": 1920,
+    "height": 1080,
+    "aspect": "16:9",
+    "fps": 30,
+    "target_duration_seconds": 121,
+    "accepted_duration_range_seconds": [110, 125],
+    "hard_cap_seconds": 130
+  },
+  "delivery_mix_target": {
+    "REAL_FOOTAGE_percent": [75, 80],
+    "GENERATIVE_percent": [20, 25],
+    "rule": "Do not generate people, factory shots, installations or finished furniture while suitable real licensed footage is available."
+  },
+  "source": {
+    "task": "experiments/exp-24-hyperframes-pr-video/SALAMAT_PROMO_ARENA_TASK.md",
+    "brief": "experiments/exp-24-hyperframes-pr-video/PROMO_BRIEF.md",
+    "owner_supplied": true,
+    "external_assets_read": false
+  },
+  "claims_policy": {
+    "forbidden": [
+      "certifications",
+      "production volumes or capacity",
+      "warranty terms",
+      "delivery times",
+      "addresses, phone numbers, e-mail",
+      "awards",
+      "client counts",
+      "years on the market",
+      "price levels and superlatives",
+      "named partners, suppliers or compliance claims"
+    ],
+    "cta": "Salamat Mebel — мебель, созданная под ваше пространство."
+  },
+  "blocks": [
+    {
+      "id": "A",
+      "name": "Hook",
+      "target": "0–11 s",
+      "purpose": "immediate premium visual impact; Salamat Mebel name/logo; one concise positioning phrase"
+    },
+    {
+      "id": "B",
+      "name": "What we do",
+      "target": "11–36 s",
+      "purpose": "custom furniture; from idea and measurements to finished installation; interiors tailored to the actual room and customer task"
+    },
+    {
+      "id": "C",
+      "name": "Production and craftsmanship",
+      "target": "36–71 s",
+      "purpose": "material selection, cutting/CNC, edge processing, finishing, hardware/details, assembly — real footage wherever possible"
+    },
+    {
+      "id": "D",
+      "name": "Product range",
+      "target": "71–101 s",
+      "purpose": "kitchens; wardrobes/storage; children's / bathroom / TV units; commercial furniture — strong representative shots, no catalogue overload"
+    },
+    {
+      "id": "E",
+      "name": "Quality + installation",
+      "target": "101–115 s",
+      "purpose": "detail quality, installation, fit/finish, result in the interior"
+    },
+    {
+      "id": "F",
+      "name": "Brand close / CTA",
+      "target": "115–121 s",
+      "purpose": "logo; concise call to action; no invented contact data"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "hook-reveal",
+      "order": 1,
+      "block": "A",
+      "start_seconds": 0,
+      "target_duration_seconds": 6,
+      "narration": "Salamat Mebel. Мебель, которую создают под ваше пространство.",
+      "editorial_purpose": "Open on a premium interior detail so the first impression is the product, not the brand.",
+      "visual_intent": "Slow deliberate push-in on a modern kitchen in warm evening light; a single brass/dark handle detail in focus; wordmark fades in over the last two seconds.",
+      "visual_source_preference": "REAL_FOOTAGE",
+      "footage_queries": [
+        "modern kitchen interior slow dolly evening warm light",
+        "premium kitchen detail cabinet handle macro"
+      ],
+      "fallback_queries": [
+        "luxury kitchen dark wood countertop closeup",
+        "minimalist kitchen island soft light"
+      ],
+      "fallback_asset_intent": "one cinematic still of a premium modern kitchen with a single hardware detail, no people, no readable text",
+      "overlay_text": {
+        "title": "SALAMAT MEBEL",
+        "subtitle": null,
+        "label": null
+      },
+      "source_grounding": [
+        "owner-brief:business_context:custom_case_furniture",
+        "owner-brief:business_context:premium_positioning",
+        "owner-brief:editorial:block_A_hook"
+      ],
+      "approval_notes": "Wordmark must be simple text; no invented slogan and no contact data at the hook."
+    },
+    {
+      "id": "hook-claim",
+      "order": 2,
+      "block": "A",
+      "start_seconds": 6,
+      "target_duration_seconds": 5,
+      "narration": "Корпусная мебель на заказ в Алматы и Алматинской области.",
+      "editorial_purpose": "State what the company does and where, in one readable sentence.",
+      "visual_intent": "Wide interior shot opening up behind the title; the room tells the geography is not the point — the result is.",
+      "visual_source_preference": "REAL_FOOTAGE",
+      "footage_queries": [
+        "modern apartment interior wide shot open plan kitchen",
+        "scandinavian living room kitchen wide interior"
+      ],
+      "fallback_queries": [
+        "bright modern apartment interior wide angle",
+        "kitchen dining area wide interior daylight"
+      ],
+      "fallback_asset_intent": "wide bright apartment interior with built-in cabinetry, no people, no readable text",
+      "overlay_text": {
+        "title": "Корпусная мебель на заказ",
+        "subtitle": "от замера до установки",
+        "label": null
+      },
+      "source_grounding": [
+        "owner-brief:business_context:almaty_region_focus",
+        "owner-brief:business_context:project_to_installation_workflow",
+        "owner-brief:editorial:block_A_hook"
+      ],
+      "approval_notes": "Geography limited to Almaty / Almaty region as supplied; no address, no phone."
+    },
+    {
+      "id": "what-process",
+      "order": 3,
+      "block": "B",
+      "start_seconds": 11,
+      "target_duration_seconds": 8,
+      "narration": "Один подрядчик на весь путь: замер, проект, производство и установка.",
+      "editorial_purpose": "Explain the end-to-end workflow before showing the factory.",
+      "visual_intent": "Designer at a wall with a laser measure, then hands over drawings on a table; cut on the drawing, not the face.",
+      "visual_source_preference": "REAL_FOOTAGE",
+      "footage_queries": [
+        "carpenter measuring wall laser meter interior",
+        "interior designer drawing blueprint hands table"
+      ],
+      "fallback_queries": [
+        "measuring tape wall cabinet installation planning",
+        "architect hands sketch kitchen plan"
+      ],
+      "fallback_asset_intent": "process still: measurement and planning at a wall with drawings, hands only, anonymous",
+      "overlay_text": {
+        "title": "Замер · проект · производство · установка",
+        "subtitle": null,
+        "label": "01 · Процесс"
+      },
+      "source_grounding": [
+        "owner-brief:business_context:project_to_installation_workflow",
+        "owner-brief:editorial:block_B_what_we_do"
+      ],
+      "approval_notes": "Process statement only; no timing or delivery promise."
+    },
+    {
+      "id": "what-measure",
+      "order": 4,
+      "block": "B",
+      "start_seconds": 19,
+      "target_duration_seconds": 9,
+      "narration": "Начинаем с задачи и планировки: где будет удобно готовить, хранить и отдыхать.",
+      "editorial_purpose": "Show that the project starts from the room and the customer's habits, not from a catalogue.",
+      "visual_intent": "Consultation at the kitchen table: plans, samples, a phone with a floor plan; over-the-shoulder framing.",
+      "visual_source_preference": "REAL_FOOTAGE",
+      "footage_queries": [
+        "client consultation interior design samples table",
+        "couple reviewing kitchen plan blueprints table"
+      ],
+      "fallback_queries": [
+        "hands pointing at kitchen floor plan on table",
+        "material samples swatches on table consultation"
+      ],
+      "fallback_asset_intent": "consultation still: floor plan and material samples on a table, hands only, no faces",
+      "overlay_text": {
+        "title": "Проект под вашу планировку",
+        "subtitle": null,
+        "label": "02 · Задачи и планировка"
+      },
+      "source_grounding": [
+        "owner-brief:editorial:block_B_what_we_do",
+        "owner-brief:target_audience:homeowner"
+      ],
+      "approval_notes": "No claim of free design service, no timing."
+    },
+    {
+      "id": "what-materials",
+      "order": 5,
+      "block": "B",
+      "start_seconds": 28,
+      "target_duration_seconds": 8,
+      "narration": "Материалы и фурнитуру выбираем вместе — под задачу и стиль интерьера.",
+      "editorial_purpose": "Hand control of the look and feel to the customer before the factory block.",
+      "visual_intent": "Fan of decor samples and hardware pieces on a worktop; hands moving slowly across the samples.",
+      "visual_source_preference": "REAL_FOOTAGE",
+      "footage_queries": [
+        "material samples laminate wood swatches table hands",
+        "cabinet hardware samples hinges handles display"
+      ],
+      "fallback_queries": [
+        "wood veneer samples closeup workshop",
+        "color swatches interior design flat lay"
+      ],
+      "fallback_asset_intent": "flat-lay still of surface samples and cabinet hardware in warm light",
+      "overlay_text": {
+        "title": "Материалы и фурнитура",
+        "subtitle": null,
+        "label": "03 · Выбор"
+      },
+      "source_grounding": [
+        "owner-brief:business_context:quality_materials_and_hardware",
+        "owner-brief:editorial:block_B_what_we_do"
+      ],
+      "approval_notes": "No brand names of suppliers, no certification claims."
+    },
+    {
+      "id": "craft-material",
+      "order": 6,
+      "block": "C",
+      "start_seconds": 36,
+      "target_duration_seconds": 7,
+      "narration": "Основа проекта — качественные материалы и надёжная фурнитура.",
+      "editorial_purpose": "Enter the production block by naming the raw material standard.",
+      "visual_intent": "Stack of laminated panels and a sheet being lifted onto a cutting table; slow lateral move.",
+      "visual_source_preference": "REAL_FOOTAGE",
+      "footage_queries": [
+        "furniture factory panel sheets stacking workshop",
+        "melamine board stack production line slow pan"
+      ],
+      "fallback_queries": [
+        "mdf panel stack workshop closeup",
+        "wooden boards production storage rack"
+      ],
+      "fallback_asset_intent": "workshop still of panel sheets stacked and lifted, industrial warm light",
+      "overlay_text": {
+        "title": "Производство",
+        "subtitle": null,
+        "label": "04 · Материалы"
+      },
+      "source_grounding": [
+        "owner-brief:business_context:quality_materials_and_hardware",
+        "owner-brief:editorial:block_C_production"
+      ],
+      "approval_notes": "Generic material statement only; no supplier or grade specification."
+    },
+    {
+      "id": "craft-cnc",
+      "order": 7,
+      "block": "C",
+      "start_seconds": 43,
+      "target_duration_seconds": 7,
+      "narration": "Раскрой и ЧПУ: детали делают на станках, по проекту.",
+      "editorial_purpose": "Prove machine-based precision without inventing numbers.",
+      "visual_intent": "CNC router cutting a panel with dust extraction; close on the cutter path and the panel groove.",
+      "visual_source_preference": "REAL_FOOTAGE",
+      "footage_queries": [
+        "cnc router cutting wood panel furniture factory closeup",
+        "nesting cnc machine drilling cabinet parts"
+      ],
+      "fallback_queries": [
+        "cnc machine wood dust extraction production",
+        "panel saw cutting board factory"
+      ],
+      "fallback_asset_intent": "machining still: CNC head cutting a panel, dust and warm light, no branding",
+      "overlay_text": {
+        "title": "Раскрой и ЧПУ",
+        "subtitle": null,
+        "label": "05 · Точность по проекту"
+      },
+      "source_grounding": [
+        "owner-brief:factory_footage:cnc_cutting",
+        "owner-brief:editorial:block_C_production"
+      ],
+      "approval_notes": "Do not state tolerance numbers (e.g. 'до миллиметра') — not verified."
+    },
+    {
+      "id": "craft-edge",
+      "order": 8,
+      "block": "C",
+      "start_seconds": 50,
+      "target_duration_seconds": 7,
+      "narration": "Кромку обрабатывают на производстве — торцы ровные, стыки аккуратные.",
+      "editorial_purpose": "Show the finishing step that a customer can actually see at home.",
+      "visual_intent": "Edge banding machine feeding a panel; macro of the finished edge and the joinery line.",
+      "visual_source_preference": "REAL_FOOTAGE",
+      "footage_queries": [
+        "edge banding machine furniture factory panel closeup",
+        "edgebander gluing pvc edge panel macro"
+      ],
+      "fallback_queries": [
+        "furniture panel edge finish closeup workshop",
+        "sanding cabinet edge production"
+      ],
+      "fallback_asset_intent": "macro still of a finished panel edge and tight joinery, workshop light",
+      "overlay_text": {
+        "title": "Кромка и обработка",
+        "subtitle": null,
+        "label": "06 · Финиш деталей"
+      },
+      "source_grounding": [
+        "owner-brief:factory_footage:edgebanding",
+        "owner-brief:editorial:block_C_production"
+      ],
+      "approval_notes": "Quality described visually; no durability guarantee."
+    },
+    {
+      "id": "craft-hardware",
+      "order": 9,
+      "block": "C",
+      "start_seconds": 57,
+      "target_duration_seconds": 7,
+      "narration": "Фурнитура, доводчики, направляющие: двери и ящики работают мягко.",
+      "editorial_purpose": "Move from structure to the parts the customer touches every day.",
+      "visual_intent": "Macro of hinges, soft-close damper and drawer runners; a drawer closing slowly into place.",
+      "visual_source_preference": "REAL_FOOTAGE",
+      "footage_queries": [
+        "cabinet hinge soft close mechanism macro slow motion",
+        "drawer runner slides close up furniture hardware"
+      ],
+      "fallback_queries": [
+        "kitchen drawer closing smoothly closeup",
+        "furniture fittings macro workshop"
+      ],
+      "fallback_asset_intent": "hardware macro still: hinges and runners on a panel with cinematic side light",
+      "overlay_text": {
+        "title": "Фурнитура и доводчики",
+        "subtitle": null,
+        "label": "07 · Детали"
+      },
+      "source_grounding": [
+        "owner-brief:business_context:quality_materials_and_hardware",
+        "owner-brief:factory_footage:hardware_details",
+        "owner-brief:editorial:block_C_production"
+      ],
+      "approval_notes": "No hardware brand names; 'работают мягко' describes the visible mechanism, not a warranty."
+    },
+    {
+      "id": "craft-assembly",
+      "order": 10,
+      "block": "C",
+      "start_seconds": 64,
+      "target_duration_seconds": 7,
+      "narration": "Корпуса собирают и проверяют в цеху, до выезда на объект.",
+      "editorial_purpose": "Close block C: assembly and check happen before the customer's home.",
+      "visual_intent": "Two workers clamping and aligning a cabinet carcase; measured camera move along the assembly bench.",
+      "visual_source_preference": "REAL_FOOTAGE",
+      "footage_queries": [
+        "cabinet assembly workshop workers clamps furniture",
+        "furniture factory assembly line cabinet carcase"
+      ],
+      "fallback_queries": [
+        "carpenter assembling cabinet frame workshop",
+        "workshop bench furniture parts assembly hands"
+      ],
+      "fallback_asset_intent": "assembly still: cabinet carcase clamped on a bench, gloved hands, no faces",
+      "overlay_text": {
+        "title": "Сборка и контроль",
+        "subtitle": null,
+        "label": "08 · Цех"
+      },
+      "source_grounding": [
+        "owner-brief:factory_footage:assembly",
+        "owner-brief:business_context:project_to_installation_workflow",
+        "owner-brief:editorial:block_C_production"
+      ],
+      "approval_notes": "No claim about quality-control certificates or staff numbers."
+    },
+    {
+      "id": "range-kitchen",
+      "order": 11,
+      "block": "D",
+      "start_seconds": 71,
+      "target_duration_seconds": 8,
+      "narration": "Кухни: от компактных до просторных, с островом и барной зоной.",
+      "editorial_purpose": "Open the range block with the strongest single category.",
+      "visual_intent": "Slow arc across a finished kitchen: fronts, worktop, island; then a detail of the joinery line.",
+      "visual_source_preference": "REAL_FOOTAGE",
+      "footage_queries": [
+        "modern kitchen island interior slow pan premium",
+        "designer kitchen with bar counter interior"
+      ],
+      "fallback_queries": [
+        "kitchen cabinets handleless design interior",
+        "kitchen worktop stone island daylight"
+      ],
+      "fallback_asset_intent": "premium finished kitchen still with island, no people, no readable text",
+      "overlay_text": {
+        "title": "Кухни",
+        "subtitle": null,
+        "label": "09 · Кухни"
+      },
+      "source_grounding": [
+        "owner-brief:business_context:kitchens",
+        "owner-brief:editorial:block_D_range"
+      ],
+      "approval_notes": "Category naming only; no configuration or price claims."
+    },
+    {
+      "id": "range-storage",
+      "order": 12,
+      "block": "D",
+      "start_seconds": 79,
+      "target_duration_seconds": 8,
+      "narration": "Шкафы, встроенное хранение и прихожие — под размеры помещения.",
+      "editorial_purpose": "Show built-in storage as a fit-to-room capability.",
+      "visual_intent": "Sliding wardrobe doors opening to a lit interior; then hallway storage with vertical lines.",
+      "visual_source_preference": "REAL_FOOTAGE",
+      "footage_queries": [
+        "built in wardrobe sliding doors interior opening",
+        "hallway storage cabinets modern interior"
+      ],
+      "fallback_queries": [
+        "walk in closet built in shelves interior",
+        "entryway built in closet interior design"
+      ],
+      "fallback_asset_intent": "built-in storage still: full-height wardrobe with interior lighting, no people",
+      "overlay_text": {
+        "title": "Шкафы и хранение",
+        "subtitle": null,
+        "label": "10 · Встроенные решения"
+      },
+      "source_grounding": [
+        "owner-brief:business_context:wardrobes_builtin_storage",
+        "owner-brief:business_context:hallways",
+        "owner-brief:editorial:block_D_range"
+      ],
+      "approval_notes": "No modular/fitted terminology that implies a different product line."
+    },
+    {
+      "id": "range-family",
+      "order": 13,
+      "block": "D",
+      "start_seconds": 87,
+      "target_duration_seconds": 7,
+      "narration": "Детская, ванная, ТВ-зоны и мебель для небольших комнат.",
+      "editorial_purpose": "Cover the secondary room categories in one calm beat.",
+      "visual_intent": "Three short matched shots: children's room cabinetry, bathroom vanity unit, living-room TV wall.",
+      "visual_source_preference": "REAL_FOOTAGE",
+      "footage_queries": [
+        "children room built in wardrobe furniture interior",
+        "bathroom vanity cabinet modern interior",
+        "living room tv wall unit built in furniture"
+      ],
+      "fallback_queries": [
+        "kids bedroom storage furniture interior",
+        "bathroom cabinet wood vanity interior",
+        "tv unit media wall living room interior"
+      ],
+      "fallback_asset_intent": "three matched stills (children's room, bathroom vanity, TV wall) in one consistent visual language",
+      "overlay_text": {
+        "title": "Детская · Ванная · ТВ-зоны",
+        "subtitle": null,
+        "label": "11 · Для каждой комнаты"
+      },
+      "source_grounding": [
+        "owner-brief:business_context:childrens_furniture",
+        "owner-brief:business_context:bathroom_cabinetry",
+        "owner-brief:business_context:tv_units",
+        "owner-brief:editorial:block_D_range"
+      ],
+      "approval_notes": "No safety-certification claims for children's furniture."
+    },
+    {
+      "id": "range-commercial",
+      "order": 14,
+      "block": "D",
+      "start_seconds": 94,
+      "target_duration_seconds": 7,
+      "narration": "Отдельное направление — ресепшн, офисы, медицинские и коммерческие помещения.",
+      "editorial_purpose": "Signal B2B capability to the secondary audience without claiming compliance.",
+      "visual_intent": "Reception desk with integrated storage; then a calm office/medical front with clean lines.",
+      "visual_source_preference": "REAL_FOOTAGE",
+      "footage_queries": [
+        "reception desk office interior modern wood",
+        "office furniture clinic reception counter interior"
+      ],
+      "fallback_queries": [
+        "hotel reception desk wood interior",
+        "office built in cabinets interior design"
+      ],
+      "fallback_asset_intent": "commercial furniture still: reception counter with integrated millwork, no people, no readable branding",
+      "overlay_text": {
+        "title": "Коммерческая мебель",
+        "subtitle": null,
+        "label": "12 · Ресепшн · Офис · Медицина"
+      },
+      "source_grounding": [
+        "owner-brief:business_context:commercial_furniture",
+        "owner-brief:target_audience:small_business",
+        "owner-brief:editorial:block_D_range"
+      ],
+      "approval_notes": "No medical compliance, hygiene or certification claims; 'отдельное направление' only."
+    },
+    {
+      "id": "install",
+      "order": 15,
+      "block": "E",
+      "start_seconds": 101,
+      "target_duration_seconds": 7,
+      "narration": "Доставка и монтаж на объекте — завершающий этап проекта.",
+      "editorial_purpose": "Close the workflow loop that block B opened.",
+      "visual_intent": "Installer leveling a cabinet run, protecting the floor; tool and level detail; then the finished line.",
+      "visual_source_preference": "REAL_FOOTAGE",
+      "footage_queries": [
+        "furniture installer mounting cabinet level interior",
+        "kitchen installation worker fitting cabinet doors"
+      ],
+      "fallback_queries": [
+        "handyman level cabinet installation kitchen",
+        "fitting kitchen units worker tool"
+      ],
+      "fallback_asset_intent": "installation still: hands with a level on a cabinet run, floor protection visible",
+      "overlay_text": {
+        "title": "Доставка и монтаж",
+        "subtitle": null,
+        "label": "13 · Установка"
+      },
+      "source_grounding": [
+        "owner-brief:business_context:project_to_installation_workflow",
+        "owner-brief:factory_footage:installers",
+        "owner-brief:editorial:block_E_quality_installation"
+      ],
+      "approval_notes": "No delivery-time promise, no 'clean-up included' claim (not verified)."
+    },
+    {
+      "id": "result",
+      "order": 16,
+      "block": "E",
+      "start_seconds": 108,
+      "target_duration_seconds": 7,
+      "narration": "Результат: мебель, которая встроена в ваше пространство.",
+      "editorial_purpose": "Give the viewer the finished after-state before the brand close.",
+      "visual_intent": "Wide, quiet shot of the finished interior; slow drift, no cuts — let the room hold.",
+      "visual_source_preference": "REAL_FOOTAGE",
+      "footage_queries": [
+        "finished modern kitchen interior wide slow motion",
+        "bright apartment interior built in furniture wide"
+      ],
+      "fallback_queries": [
+        "modern kitchen living interior wide sunlight",
+        "minimal interior wardrobe wide shot daylight"
+      ],
+      "fallback_asset_intent": "wide finished-interior still in warm daylight, no people",
+      "overlay_text": {
+        "title": "Мебель в вашем интерьере",
+        "subtitle": null,
+        "label": null
+      },
+      "source_grounding": [
+        "owner-brief:editorial:block_E_quality_installation",
+        "owner-brief:business_context:premium_positioning"
+      ],
+      "approval_notes": "No customer name or project reference — nothing that implies a real named client."
+    },
+    {
+      "id": "brand-close",
+      "order": 17,
+      "block": "F",
+      "start_seconds": 115,
+      "target_duration_seconds": 6,
+      "narration": "Salamat Mebel — мебель, созданная под ваше пространство.",
+      "editorial_purpose": "Hold the brand long enough to be remembered and read the CTA on a phone.",
+      "visual_intent": "Dark textured background with the wordmark; a thin brass rule draws under it; final frame stays clean for two seconds.",
+      "visual_source_preference": "GENERATIVE",
+      "footage_queries": [],
+      "fallback_queries": [
+        "dark wood texture background cinematic"
+      ],
+      "fallback_asset_intent": "branded motion card: wordmark on dark material texture, designed in Remotion (no generated imagery required)",
+      "overlay_text": {
+        "title": "SALAMAT MEBEL",
+        "subtitle": "мебель, созданная под ваше пространство",
+        "label": null
+      },
+      "source_grounding": [
+        "owner-brief:editorial:block_F_brand_close",
+        "owner-brief:claims_policy:neutral_cta"
+      ],
+      "approval_notes": "Neutral CTA only; no phone, address, site or social handles."
+    }
+  ]
+}
