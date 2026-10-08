@@ -65,3 +65,33 @@ No video binary was created. The CLI's temporary scaffold was removed; its insta
 **PARTIAL / ADOPT_WITH_CHANGES.** Keep HyperFrames as an optional experiment candidate only; this result does not authorize production integration. The bounded next step is one validation in a suitable local/CI executor with Node 22+, Chrome/Chromium, and FFmpeg: resolve the recorded lint error, render once, and then assess repeatability and phone usefulness in a separately authorized checkpoint. Do not spend more time repairing the Arena executor for EXP-24.
 
 **Terminal boundary reached. Stop here.**
+
+
+---
+
+# EXP-24 Phase 2 authorization — Agentic text → film
+
+Authorization date: 2026-10-08  
+Owner decision: **MERGE**  
+Status: **REOPENED FOR OWNER-AUTHORIZED PHASE 2**
+
+The Phase 1 terminal result above remains historical and unchanged: **PARTIAL / ADOPT_WITH_CHANGES**.
+
+New production reference:
+- https://alexeykrol.com/blog/2026/10/07/video1/
+
+The reference demonstrates a useful end-to-end operating model: source text → semantic scene breakdown → storyboard/montage plan → stock-footage search/acquisition → ElevenLabs narration → programmatic Remotion assembly → titles/graphics/subtitles/music → mobile-focused revision → final render, with the human primarily reviewing meaning and quality rather than manually operating an editing timeline.
+
+## Adopted Phase 2 changes
+
+- HyperFrames is demoted from experiment center to **optional renderer/component**.
+- Remotion is the **preferred baseline compositor** for the next bounded proof.
+- Storyblocks is a **reference stock provider**, not mandatory infrastructure.
+- ElevenLabs is a **reference voice provider** behind a provider-neutral adapter.
+- A stable editorial storyboard becomes the central reviewable artifact before media acquisition/render.
+- Mobile readability at an effective 360 px player width becomes an explicit acceptance gate.
+- Natural-language revision becomes a first-class checkpoint.
+- REAL_FOOTAGE and GENERATIVE modes share one storyboard/voice/subtitle/assembly/QA/revision architecture; only the visual-source adapter differs.
+- Publishing remains approval-gated and outside automatic experiment authority.
+
+Next execution starts at **CP-06** and must preserve this Phase 1 record.
