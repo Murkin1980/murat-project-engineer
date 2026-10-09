@@ -1,0 +1,31 @@
+{
+  "checkpoint": "CP-02",
+  "task": "routing among a fixed list of existing agents/services",
+  "fixed_destinations": ["architect", "coder", "researcher", "reviewer"],
+  "destination_source": "experts/*.md bounded Expert contracts (architect.md, coder.md, researcher.md, reviewer.md); no new agents invented",
+  "rubric": "coder = implement/fix/refactor code. researcher = survey/compare/assess evidence. reviewer = review/audit existing work. architect = design/decide structure or approach.",
+  "question": {
+    "owner": {
+      "type": "choice",
+      "instructions": "Which existing expert owns this task?",
+      "criteria": {
+        "architect": "designs structure, decides approach",
+        "coder": "implements, fixes, refactors code",
+        "researcher": "surveys, compares, assesses evidence",
+        "reviewer": "reviews, audits existing work"
+      }
+    }
+  },
+  "items": [
+    {"id": "cp02-01", "state": "Implement retry logic in the harness uploader.", "expected": "coder"},
+    {"id": "cp02-02", "state": "Survey local inference engines for CPU-only classification.", "expected": "researcher"},
+    {"id": "cp02-03", "state": "Review the bootstrap verifier for fail-closed gaps.", "expected": "reviewer"},
+    {"id": "cp02-04", "state": "Design the provider adapter seam for the orchestrator.", "expected": "architect"},
+    {"id": "cp02-05", "state": "Fix the flaky dashboard navigation test.", "expected": "coder"},
+    {"id": "cp02-06", "state": "Compare Jev versus OpenAI function-calling for routing.", "expected": "researcher"},
+    {"id": "cp02-07", "state": "Audit FINDINGS.md against the committed evidence.", "expected": "reviewer"},
+    {"id": "cp02-08", "state": "Choose polling or webhook for status updates.", "expected": "architect"},
+    {"id": "cp02-09", "state": "Refactor the fixture loader to stream large files.", "expected": "coder"},
+    {"id": "cp02-10", "state": "Assess whether quantized weights change routing decisions.", "expected": "researcher"}
+  ]
+}

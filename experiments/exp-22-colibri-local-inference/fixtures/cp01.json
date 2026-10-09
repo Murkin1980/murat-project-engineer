@@ -1,0 +1,30 @@
+{
+  "checkpoint": "CP-01",
+  "task": "READY/WARNING/BLOCKED constrained classification",
+  "rubric": "BLOCKED = work cannot proceed without external input, approval, or fix. WARNING = work proceeds but with risk, degradation, or a pending gate. READY = all inputs present, checks pass, work can proceed.",
+  "question": {
+    "status": {
+      "type": "choice",
+      "instructions": "What is the delivery status?",
+      "criteria": {
+        "READY": "checks pass, work can proceed",
+        "WARNING": "work proceeds with risk or a pending gate",
+        "BLOCKED": "work cannot proceed, external input needed"
+      }
+    }
+  },
+  "items": [
+    {"id": "cp01-01", "state": "All acceptance tests pass, rollback documented, no open blockers.", "expected": "READY"},
+    {"id": "cp01-02", "state": "Waiting on production credentials from the client; cannot deploy.", "expected": "BLOCKED"},
+    {"id": "cp01-03", "state": "Unit tests pass; integration suite flakes one run in five.", "expected": "WARNING"},
+    {"id": "cp01-04", "state": "Router API key missing; all cloud calls fail.", "expected": "BLOCKED"},
+    {"id": "cp01-05", "state": "Draft findings written; independent reviewer sign-off pending.", "expected": "WARNING"},
+    {"id": "cp01-06", "state": "Dependencies installed, fixtures frozen, harness green.", "expected": "READY"},
+    {"id": "cp01-07", "state": "Model weights unreachable from sandbox; quality run deferred.", "expected": "BLOCKED"},
+    {"id": "cp01-08", "state": "Disk 85 percent full; cleanup scheduled before next download.", "expected": "WARNING"},
+    {"id": "cp01-09", "state": "Merge blocked: owner approval required and CI is red.", "expected": "BLOCKED"},
+    {"id": "cp01-10", "state": "Baseline unittest run: 142 passed, 0 failed.", "expected": "READY"},
+    {"id": "cp01-11", "state": "Latency p99 9.8s against a 10s budget; no headroom left.", "expected": "WARNING"},
+    {"id": "cp01-12", "state": "Security review rejected the plan; redesign required before any code.", "expected": "BLOCKED"}
+  ]
+}

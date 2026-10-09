@@ -1,0 +1,17 @@
+{
+ "checks": {
+  "authority_disclaimer": true,
+  "deep_change_gate_present": true,
+  "lesson_scopes_valid": true,
+  "matches_rebuild": true,
+  "source_digests_match": true,
+  "stop_rules_present": false
+ },
+ "consistent_with_canonical_sources": false,
+ "disposition": "Refuse the packet: a safety invariant is violated (authority disclaimer, stop/deep-change rules, or lesson scope). Re-derive from canonical sources.",
+ "field_diffs": [],
+ "reasons": [
+  "missing_stop_rules"
+ ],
+ "status": "REJECTED"
+}
