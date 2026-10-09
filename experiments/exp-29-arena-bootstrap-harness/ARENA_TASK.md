@@ -273,3 +273,92 @@ If fixing H-1/H-2/H-3 requires changing canonical source priority, safety author
 PASS only if the same EXP-22/CP-01 case that previously returned `REJECTED` now returns **FRESH**, H-1/H-2/H-3 have regression coverage, EXP-27 remains valid, all six CP-04 negative controls still fail closed, and no production/governance boundary changes.
 
 Open one bounded PR and do not merge.
+
+## CP-07 — Canonical current-state gap (owner authorized 2026-10-09)
+
+Trigger: CP-06 made the EXP-22/CP-01 bootstrap technically `FRESH`, but the packet still carried stale task state because the canonical EXP-22 registry entry remained `PLANNED` with a pre-run next action while `FINDINGS.md` recorded CP-01…CP-03 as already executed.
+
+Primary decision: **EXTEND_EXISTING**.
+
+This checkpoint must close the gap using the **existing canonical experiment state mechanisms first**. Do not add a new bootstrap source role, memory store, generic findings index, or automatic state inference unless the existing registry/results path is proven insufficient.
+
+### Goal
+
+A fresh Arena session receiving a verified EXP-22 bootstrap must correctly understand that:
+
+- EXP-22 has already executed CP-01…CP-03;
+- the result is `PARTIAL` / recommendation `HOLD`;
+- structural compatibility was proven, but decision quality was not measured against released weights;
+- the next authorized action is the bounded released-weight quality run on a weights-available suitable machine;
+- CP-01 must **not** be repeated.
+
+### Required order
+
+1. Reproduce the state-gap on current `main` before editing:
+   - build + verify EXP-22 bootstrap;
+   - show that it is `FRESH` yet reports stale `PLANNED` / "execute CP-01" state;
+   - confirm `FINDINGS.md` records CP-01…CP-03 as already run.
+2. Audit the existing canonical state path:
+   - `experiments/EXPERIMENT_REGISTRY.json`;
+   - target experiment `README.md` / `RESULTS.md` convention;
+   - EXP-29 builder's existing target-results source role;
+   - dashboard/Reladraw regeneration ritual for registry changes.
+3. Prefer the smallest canonical repair:
+   - update the existing EXP-22 registry entry to the truthful terminal/current state;
+   - add `experiments/exp-22-colibri-local-inference/RESULTS.md` only if needed to express the already-established experiment result in the repository's normal result format;
+   - derive its content from the committed EXP-22 evidence/FINDINGS; do not reinterpret the experiment.
+4. Rebuild EXP-22 / CP-01 bootstrap from current canonical sources and require `FRESH`.
+5. Prove a fresh-session consumer can answer the current-state questions correctly **without reading FINDINGS.md**:
+   - status/result;
+   - completed checkpoints;
+   - recommendation;
+   - current limitation/blocker;
+   - next authorized action;
+   - whether CP-01 should run again (expected: **NO**).
+6. Measure remaining rediscovery. The packet may point to canonical evidence for detail, but it must not require rediscovery merely to determine what has already been completed or what action comes next.
+7. Re-run EXP-29 regression/negative-control tests and verify EXP-27 remains `FRESH`.
+8. If the registry/results path cannot represent the current state without changing bootstrap source semantics, STOP and report the exact gap before adding any new source role.
+
+### Canonical EXP-22 state to preserve
+
+Use only already-committed EXP-22 evidence. Do not change its conclusion:
+
+- `RESULT: PARTIAL`
+- `RECOMMENDATION: HOLD`
+- `DEEP_CHANGE: NO`
+- structural decision-path proof: 66/66 HTTP 200, 0 malformed constrained outputs, 22/22 deterministic, 7–13 ms tiny-model latency at ~48 MB RSS;
+- released-weight decision quality: **NOT measured** because the released checkpoint was unavailable in the original sandbox;
+- next action: run the frozen fixtures against the released Laya checkpoint on a weights-available suitable machine; no production integration is authorized.
+
+### Scope
+
+Allowed:
+
+- EXP-22 `RESULTS.md` / README status metadata if required for truthful canonical state;
+- EXP-22 entry in `experiments/EXPERIMENT_REGISTRY.json`;
+- required registry-driven Reladraw/dashboard artifacts;
+- EXP-29 tests/evidence/results needed to prove CP-07;
+- regenerated derived bootstrap packets.
+
+Do not:
+
+- rerun Colibri quality claims without released weights;
+- change EXP-22 fixtures/conclusions;
+- add a new source-of-truth or findings database;
+- make FINDINGS.md automatically authoritative;
+- change production code, governance, Router, contracts or gates;
+- implement production Colibri integration.
+
+### CP-07 PASS
+
+PASS only if:
+
+1. the pre-change `FRESH-but-stale-state` condition is reproduced;
+2. the canonical EXP-22 state is corrected through existing registry/results mechanisms;
+3. rebuilt EXP-22 bootstrap is `FRESH` and reports the truthful current result + next action;
+4. a fresh isolated consumer does not propose repeating CP-01;
+5. no new bootstrap source role or second source of truth was required;
+6. EXP-29 negative controls and EXP-27 regression remain green;
+7. registry/dashboard ritual and project validation pass.
+
+Open one bounded PR and do not merge.
