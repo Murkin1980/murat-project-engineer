@@ -1,0 +1,36 @@
+{
+ "checks": {
+  "canonical_sources_unchanged": true,
+  "cp02_pass": true,
+  "cp03_pass": true,
+  "cp04_pass": true
+ },
+ "experiment": "EXP-29",
+ "fixture": {
+  "checkpoint": "CP-05",
+  "experiment_id": "EXP-27"
+ },
+ "measurements": {
+  "arm_a": {
+   "bytes_read": 84978,
+   "failed_ops": 0,
+   "files_read": 5,
+   "listdir_ops": 2,
+   "read_ops": 5,
+   "tool_ops": 7
+  },
+  "arm_b": {
+   "bytes_read": 12782,
+   "failed_ops": 0,
+   "files_read": 1,
+   "listdir_ops": 0,
+   "read_ops": 1,
+   "tool_ops": 1
+  },
+  "bytes_reduction_ratio": 0.8496,
+  "genealogy_cost_reduction_ratio": 0.8232,
+  "packet_json_bytes": 12808,
+  "packet_md_bytes": 10231
+ },
+ "result": "PASS"
+}

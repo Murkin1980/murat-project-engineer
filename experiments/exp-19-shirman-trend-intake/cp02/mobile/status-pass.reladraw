@@ -6,7 +6,7 @@ style st_ready    fill: #dbeafe  border: #2563eb
 style st_planned  fill: #f3f4f6  border: #6b7280
 style st_hold     fill: #fef3c7  border: #d97706
 
-node col "PASS (11)"  contents: (widths: match)
+node col "PASS (12)"  contents: (widths: match)
 node col.exp_002 "EXP-002 · MPE / Machine Protocol / → Keep the closed result; a second independent executor run is the stre…" (wrap: 26)  style: st_pass
 node col.exp_07 "EXP-07 · MPE / Strix \/ FreeBuff evaluation / → Keep Strix on hold; reuse only selected Codebuff patterns." (wrap: 26)  style: st_pass
 node col.exp_08 "EXP-08 · MPE / BrowserAct public-web acquisition / → Reuse the documented browser-acquisition role where a bounded project…" (wrap: 26)  style: st_pass
@@ -18,3 +18,4 @@ node col.exp_20 "EXP-20 · MPE / Dify/OpenHands component extraction / → Close
 node col.exp_25 "EXP-25 · MPE / Atomic CRM component extraction / → Closed at the bounded component extraction. CP-01…CP-04 all pass on t…" (wrap: 26)  style: st_pass
 node col.exp_27 "EXP-27 · MPE / Paperclip orchestration patterns / → Closed at bounded pattern extraction. No production integration, Rout…" (wrap: 26)  style: st_pass
 node col.exp_28 "EXP-28 · MPE / Agent workflow skills retrospective (/r… / → Closed as a manual, evidence-gated pattern. No automatic post-run tri…" (wrap: 26)  style: st_pass
+node col.exp_29 "EXP-29 · MPE / Arena Bootstrap Harness / → Closed at CP-05 with PASS \/ REUSE_COMPONENT. Reuse the derived-packet…" (wrap: 26)  style: st_pass

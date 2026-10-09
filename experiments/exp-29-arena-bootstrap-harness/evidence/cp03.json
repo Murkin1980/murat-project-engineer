@@ -1,0 +1,227 @@
+{
+ "answers": {
+  "q_checkpoints": [
+   "CP-01",
+   "CP-02",
+   "CP-03",
+   "CP-04",
+   "CP-05"
+  ],
+  "q_disposition": "REUSE_COMPONENT",
+  "q_experiment_path": "experiments/exp-27-paperclip-orchestration-patterns",
+  "q_known_trap": "The lease proof is **single-host, file-backed**. MPE has no shared-filesystem guarantee across executors, so this",
+  "q_next_action": "Closed at bounded pattern extraction. No production integration, Router change, governance change, or follow-on checkpoint is authorized by this result; a future owner decision is required before any pattern is implemented in an existing component.",
+  "q_next_authorized_action": "None inside this experiment — **STOP after CP-05** per `ARENA_TASK.md`. Any implementation of the BORROW/ADAPT",
+  "q_parent_goal": "Extract and test high-value orchestration patterns from Paperclip—goal context, atomic task lease, persistent resumable evidence, budget/runaway guards, and approval gates—inside existing MPE/murat-ai-orchestrator components without adopting a parallel control plane.",
+  "q_project": "Murat Project Engineer",
+  "q_result_status": "PASS",
+  "q_reusable_component": "Goal ancestry / context — **ADOPT_IN_MPE** (derived packet + source digests; Git stays canonical)",
+  "q_stop_rules": [
+   "new repo;",
+   "persistent Paperclip service;",
+   "new DB/queue/daemon;",
+   "Router authority change;",
+   "governance replacement;",
+   "Git/source-of-truth change;",
+   "autonomous merge/deploy;",
+   "recurring paid infrastructure;",
+   "production integration."
+  ]
+ },
+ "arm_a": {
+  "arm": "A_rediscovery",
+  "cost": {
+   "at_all_answers": {
+    "bytes_read": 84978,
+    "failed_ops": 0,
+    "files_read": 5,
+    "listdir_ops": 2,
+    "read_ops": 5,
+    "tool_ops": 7
+   },
+   "at_genealogy_complete": {
+    "bytes_read": 72295,
+    "failed_ops": 0,
+    "files_read": 4,
+    "listdir_ops": 2,
+    "read_ops": 4,
+    "tool_ops": 6
+   }
+  },
+  "packet_used": false,
+  "read_from_chat": false,
+  "totals": {
+   "bytes_read": 84978,
+   "failed_ops": 0,
+   "files_read": 5,
+   "listdir_ops": 2,
+   "read_ops": 5,
+   "tool_ops": 7
+  }
+ },
+ "arm_a_trace": [
+  {
+   "bytes": 12081,
+   "ok": true,
+   "op": "read",
+   "path": "/home/user/murat-project-engineer/STATUS.md"
+  },
+  {
+   "bytes": 0,
+   "ok": true,
+   "op": "listdir",
+   "path": "/home/user/murat-project-engineer/experiments"
+  },
+  {
+   "bytes": 0,
+   "ok": true,
+   "op": "listdir",
+   "path": "/home/user/murat-project-engineer/experiments/exp-27-paperclip-orchestration-patterns"
+  },
+  {
+   "bytes": 7621,
+   "ok": true,
+   "op": "read",
+   "path": "/home/user/murat-project-engineer/experiments/exp-27-paperclip-orchestration-patterns/README.md"
+  },
+  {
+   "bytes": 50613,
+   "ok": true,
+   "op": "read",
+   "path": "/home/user/murat-project-engineer/experiments/EXPERIMENT_REGISTRY.json"
+  },
+  {
+   "bytes": 1980,
+   "ok": true,
+   "op": "read",
+   "path": "/home/user/murat-project-engineer/experiments/exp-27-paperclip-orchestration-patterns/ARENA_TASK.md"
+  },
+  {
+   "bytes": 12683,
+   "ok": true,
+   "op": "read",
+   "path": "/home/user/murat-project-engineer/experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md"
+  }
+ ],
+ "arm_b": {
+  "arm": "B_bootstrap",
+  "cost": {
+   "at_all_answers": {
+    "bytes_read": 12782,
+    "failed_ops": 0,
+    "files_read": 1,
+    "listdir_ops": 0,
+    "read_ops": 1,
+    "tool_ops": 1
+   },
+   "at_genealogy_complete": {
+    "bytes_read": 12782,
+    "failed_ops": 0,
+    "files_read": 1,
+    "listdir_ops": 0,
+    "read_ops": 1,
+    "tool_ops": 1
+   }
+  },
+  "packet_used": true,
+  "read_from_chat": false,
+  "refused": false,
+  "totals": {
+   "bytes_read": 12782,
+   "failed_ops": 0,
+   "files_read": 1,
+   "listdir_ops": 0,
+   "read_ops": 1,
+   "tool_ops": 1
+  }
+ },
+ "arm_b_trace": [
+  {
+   "bytes": 12782,
+   "ok": true,
+   "op": "read",
+   "path": "/tmp/exp29-proof-work/cp03/packet.json"
+  }
+ ],
+ "checks": {
+  "arm_a_had_rediscovery_overhead": true,
+  "arm_a_used_no_packet_and_no_chat": true,
+  "arm_b_less_context_before_first_useful_action": true,
+  "arm_b_reads_less_context": true,
+  "arm_b_used_no_chat": true,
+  "arms_agree_on_every_answer": true,
+  "both_arms_answer_all_questions": true,
+  "fixture_facts_reproduced": true,
+  "no_failed_reads_in_either_arm": true,
+  "packet_fresh_before_arms": true,
+  "stop_conditions_reproduced": true
+ },
+ "comparison": {
+  "arm_a_cost": {
+   "at_all_answers": {
+    "bytes_read": 84978,
+    "failed_ops": 0,
+    "files_read": 5,
+    "listdir_ops": 2,
+    "read_ops": 5,
+    "tool_ops": 7
+   },
+   "at_genealogy_complete": {
+    "bytes_read": 72295,
+    "failed_ops": 0,
+    "files_read": 4,
+    "listdir_ops": 2,
+    "read_ops": 4,
+    "tool_ops": 6
+   }
+  },
+  "arm_a_totals": {
+   "bytes_read": 84978,
+   "failed_ops": 0,
+   "files_read": 5,
+   "listdir_ops": 2,
+   "read_ops": 5,
+   "tool_ops": 7
+  },
+  "arm_b_cost": {
+   "at_all_answers": {
+    "bytes_read": 12782,
+    "failed_ops": 0,
+    "files_read": 1,
+    "listdir_ops": 0,
+    "read_ops": 1,
+    "tool_ops": 1
+   },
+   "at_genealogy_complete": {
+    "bytes_read": 12782,
+    "failed_ops": 0,
+    "files_read": 1,
+    "listdir_ops": 0,
+    "read_ops": 1,
+    "tool_ops": 1
+   }
+  },
+  "arm_b_totals": {
+   "bytes_read": 12782,
+   "failed_ops": 0,
+   "files_read": 1,
+   "listdir_ops": 0,
+   "read_ops": 1,
+   "tool_ops": 1
+  },
+  "bytes_reduction_ratio": 0.8496,
+  "fixture": {
+   "checkpoint": "CP-05",
+   "experiment_id": "EXP-27"
+  },
+  "genealogy_cost_reduction_ratio": 0.8232,
+  "packet_bytes": 12782,
+  "verify_before_arms": "FRESH"
+ },
+ "fixture": {
+  "checkpoint": "CP-05",
+  "experiment_id": "EXP-27"
+ },
+ "fixture_rationale": "EXP-27 is a real, already completed context-heavy MPE task (registry entry + ARENA_TASK + README + RESULTS must be rediscovered by a fresh session).",
+ "result": "PASS"
+}

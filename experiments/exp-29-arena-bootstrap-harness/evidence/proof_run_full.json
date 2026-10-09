@@ -1,0 +1,561 @@
+{
+ "cp02": {
+  "artifacts": {
+   "generated_against": {
+    "git_base": "bb6f1f85fde993c0b698f7036df2699961ed1478",
+    "git_branch": "arena/19fa71aa-murat-project-engineer",
+    "git_head": "6c6a592a442f0d3c779af8ae5c6e8185b9158bbb"
+   },
+   "json_bytes": 12808,
+   "md_bytes": 10231,
+   "packet_task": "EXP-27/CP-05",
+   "paths": [
+    "experiments/exp-29-arena-bootstrap-harness/ARENA_CONTEXT.json",
+    "experiments/exp-29-arena-bootstrap-harness/ARENA_CONTEXT.md"
+   ],
+   "verify_status": "FRESH"
+  },
+  "checks": {
+   "all_layers_present": true,
+   "artifacts_fresh": true,
+   "authority_declared": true,
+   "deterministic_output": true,
+   "provenance_complete": true,
+   "safety_structure_present": true
+  },
+  "determinism": {
+   "json_byte_identical": true,
+   "json_bytes": 12782,
+   "md_byte_identical": true,
+   "md_bytes": 10205,
+   "pinned_git_refs": {
+    "git_base": "1111111111111111111111111111111111111111",
+    "git_branch": "arena/proof",
+    "git_head": "0000000000000000000000000000000000000000"
+   }
+  },
+  "provenance": {
+   "all_digests_match": true,
+   "all_exist": true,
+   "roles": [
+    "accepted_lessons",
+    "agents_rules",
+    "experiment_results",
+    "governance",
+    "project_status",
+    "registry",
+    "task_instructions",
+    "task_readme"
+   ],
+   "source_refs": [
+    {
+     "digest_matches": true,
+     "exists": true,
+     "path": "experiments/EXPERIMENT_REGISTRY.json",
+     "role": "registry"
+    },
+    {
+     "digest_matches": true,
+     "exists": true,
+     "path": "experiments/exp-27-paperclip-orchestration-patterns/ARENA_TASK.md",
+     "role": "task_instructions"
+    },
+    {
+     "digest_matches": true,
+     "exists": true,
+     "path": "experiments/exp-27-paperclip-orchestration-patterns/README.md",
+     "role": "task_readme"
+    },
+    {
+     "digest_matches": true,
+     "exists": true,
+     "path": "experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md",
+     "role": "experiment_results"
+    },
+    {
+     "digest_matches": true,
+     "exists": true,
+     "path": "STATUS.md",
+     "role": "project_status"
+    },
+    {
+     "digest_matches": true,
+     "exists": true,
+     "path": "AGENTS.md",
+     "role": "agents_rules"
+    },
+    {
+     "digest_matches": true,
+     "exists": true,
+     "path": "docs/governance/SCOPE-CHANGE-CONTROL.md",
+     "role": "governance"
+    },
+    {
+     "digest_matches": true,
+     "exists": true,
+     "path": "experiments/exp-28-agent-workflow-skills-retro/RESULTS.md",
+     "role": "accepted_lessons"
+    }
+   ]
+  },
+  "result": "PASS",
+  "structure": {
+   "authority": "DERIVED_VIEW_NON_AUTHORITATIVE",
+   "authority_note_present": true,
+   "components": 6,
+   "deep_change_gate_bullets": 11,
+   "handoff_contract_fields": [
+    "STATE",
+    "EVIDENCE",
+    "CHANGES",
+    "RESULT",
+    "BLOCKER",
+    "NEXT ACTION",
+    "HANDOFF"
+   ],
+   "layers_present": true,
+   "lessons": [
+    {
+     "id": "R1",
+     "scope": "PROJECT"
+    },
+    {
+     "id": "R2",
+     "scope": "TASK"
+    },
+    {
+     "id": "R3",
+     "scope": "NO_CHANGE"
+    }
+   ],
+   "source_of_truth_priority_items": 6,
+   "stop_rules": 9,
+   "traps": 6,
+   "verification_block_present": true
+  }
+ },
+ "cp03": {
+  "answers": {
+   "q_checkpoints": [
+    "CP-01",
+    "CP-02",
+    "CP-03",
+    "CP-04",
+    "CP-05"
+   ],
+   "q_disposition": "REUSE_COMPONENT",
+   "q_experiment_path": "experiments/exp-27-paperclip-orchestration-patterns",
+   "q_known_trap": "The lease proof is **single-host, file-backed**. MPE has no shared-filesystem guarantee across executors, so this",
+   "q_next_action": "Closed at bounded pattern extraction. No production integration, Router change, governance change, or follow-on checkpoint is authorized by this result; a future owner decision is required before any pattern is implemented in an existing component.",
+   "q_next_authorized_action": "None inside this experiment — **STOP after CP-05** per `ARENA_TASK.md`. Any implementation of the BORROW/ADAPT",
+   "q_parent_goal": "Extract and test high-value orchestration patterns from Paperclip—goal context, atomic task lease, persistent resumable evidence, budget/runaway guards, and approval gates—inside existing MPE/murat-ai-orchestrator components without adopting a parallel control plane.",
+   "q_project": "Murat Project Engineer",
+   "q_result_status": "PASS",
+   "q_reusable_component": "Goal ancestry / context — **ADOPT_IN_MPE** (derived packet + source digests; Git stays canonical)",
+   "q_stop_rules": [
+    "new repo;",
+    "persistent Paperclip service;",
+    "new DB/queue/daemon;",
+    "Router authority change;",
+    "governance replacement;",
+    "Git/source-of-truth change;",
+    "autonomous merge/deploy;",
+    "recurring paid infrastructure;",
+    "production integration."
+   ]
+  },
+  "arm_a": {
+   "arm": "A_rediscovery",
+   "cost": {
+    "at_all_answers": {
+     "bytes_read": 84978,
+     "failed_ops": 0,
+     "files_read": 5,
+     "listdir_ops": 2,
+     "read_ops": 5,
+     "tool_ops": 7
+    },
+    "at_genealogy_complete": {
+     "bytes_read": 72295,
+     "failed_ops": 0,
+     "files_read": 4,
+     "listdir_ops": 2,
+     "read_ops": 4,
+     "tool_ops": 6
+    }
+   },
+   "packet_used": false,
+   "read_from_chat": false,
+   "totals": {
+    "bytes_read": 84978,
+    "failed_ops": 0,
+    "files_read": 5,
+    "listdir_ops": 2,
+    "read_ops": 5,
+    "tool_ops": 7
+   }
+  },
+  "arm_a_trace": [
+   {
+    "bytes": 12081,
+    "ok": true,
+    "op": "read",
+    "path": "/home/user/murat-project-engineer/STATUS.md"
+   },
+   {
+    "bytes": 0,
+    "ok": true,
+    "op": "listdir",
+    "path": "/home/user/murat-project-engineer/experiments"
+   },
+   {
+    "bytes": 0,
+    "ok": true,
+    "op": "listdir",
+    "path": "/home/user/murat-project-engineer/experiments/exp-27-paperclip-orchestration-patterns"
+   },
+   {
+    "bytes": 7621,
+    "ok": true,
+    "op": "read",
+    "path": "/home/user/murat-project-engineer/experiments/exp-27-paperclip-orchestration-patterns/README.md"
+   },
+   {
+    "bytes": 50613,
+    "ok": true,
+    "op": "read",
+    "path": "/home/user/murat-project-engineer/experiments/EXPERIMENT_REGISTRY.json"
+   },
+   {
+    "bytes": 1980,
+    "ok": true,
+    "op": "read",
+    "path": "/home/user/murat-project-engineer/experiments/exp-27-paperclip-orchestration-patterns/ARENA_TASK.md"
+   },
+   {
+    "bytes": 12683,
+    "ok": true,
+    "op": "read",
+    "path": "/home/user/murat-project-engineer/experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md"
+   }
+  ],
+  "arm_b": {
+   "arm": "B_bootstrap",
+   "cost": {
+    "at_all_answers": {
+     "bytes_read": 12782,
+     "failed_ops": 0,
+     "files_read": 1,
+     "listdir_ops": 0,
+     "read_ops": 1,
+     "tool_ops": 1
+    },
+    "at_genealogy_complete": {
+     "bytes_read": 12782,
+     "failed_ops": 0,
+     "files_read": 1,
+     "listdir_ops": 0,
+     "read_ops": 1,
+     "tool_ops": 1
+    }
+   },
+   "packet_used": true,
+   "read_from_chat": false,
+   "refused": false,
+   "totals": {
+    "bytes_read": 12782,
+    "failed_ops": 0,
+    "files_read": 1,
+    "listdir_ops": 0,
+    "read_ops": 1,
+    "tool_ops": 1
+   }
+  },
+  "arm_b_trace": [
+   {
+    "bytes": 12782,
+    "ok": true,
+    "op": "read",
+    "path": "/tmp/exp29-proof-work/cp03/packet.json"
+   }
+  ],
+  "checks": {
+   "arm_a_had_rediscovery_overhead": true,
+   "arm_a_used_no_packet_and_no_chat": true,
+   "arm_b_less_context_before_first_useful_action": true,
+   "arm_b_reads_less_context": true,
+   "arm_b_used_no_chat": true,
+   "arms_agree_on_every_answer": true,
+   "both_arms_answer_all_questions": true,
+   "fixture_facts_reproduced": true,
+   "no_failed_reads_in_either_arm": true,
+   "packet_fresh_before_arms": true,
+   "stop_conditions_reproduced": true
+  },
+  "comparison": {
+   "arm_a_cost": {
+    "at_all_answers": {
+     "bytes_read": 84978,
+     "failed_ops": 0,
+     "files_read": 5,
+     "listdir_ops": 2,
+     "read_ops": 5,
+     "tool_ops": 7
+    },
+    "at_genealogy_complete": {
+     "bytes_read": 72295,
+     "failed_ops": 0,
+     "files_read": 4,
+     "listdir_ops": 2,
+     "read_ops": 4,
+     "tool_ops": 6
+    }
+   },
+   "arm_a_totals": {
+    "bytes_read": 84978,
+    "failed_ops": 0,
+    "files_read": 5,
+    "listdir_ops": 2,
+    "read_ops": 5,
+    "tool_ops": 7
+   },
+   "arm_b_cost": {
+    "at_all_answers": {
+     "bytes_read": 12782,
+     "failed_ops": 0,
+     "files_read": 1,
+     "listdir_ops": 0,
+     "read_ops": 1,
+     "tool_ops": 1
+    },
+    "at_genealogy_complete": {
+     "bytes_read": 12782,
+     "failed_ops": 0,
+     "files_read": 1,
+     "listdir_ops": 0,
+     "read_ops": 1,
+     "tool_ops": 1
+    }
+   },
+   "arm_b_totals": {
+    "bytes_read": 12782,
+    "failed_ops": 0,
+    "files_read": 1,
+    "listdir_ops": 0,
+    "read_ops": 1,
+    "tool_ops": 1
+   },
+   "bytes_reduction_ratio": 0.8496,
+   "fixture": {
+    "checkpoint": "CP-05",
+    "experiment_id": "EXP-27"
+   },
+   "genealogy_cost_reduction_ratio": 0.8232,
+   "packet_bytes": 12782,
+   "verify_before_arms": "FRESH"
+  },
+  "fixture": {
+   "checkpoint": "CP-05",
+   "experiment_id": "EXP-27"
+  },
+  "fixture_rationale": "EXP-27 is a real, already completed context-heavy MPE task (registry entry + ARENA_TASK + README + RESULTS must be rediscovered by a fresh session).",
+  "result": "PASS"
+ },
+ "cp04": {
+  "checks": {
+   "all_six_controls_fail_closed": true,
+   "no_control_returns_fresh": true,
+   "rejected_controls_refuse": true,
+   "stale_controls_degrade_to_non_authoritative": true
+  },
+  "controls": [
+   {
+    "disposition": "Degrade to a non-authoritative hint: do not act on stale fields. Re-derive the packet from canonical sources or discard it; canonical files always win.",
+    "expected": "STALE",
+    "field_diffs": [
+     {
+      "canonical": "e0603787c154c672f5a63645b8116444377021d91cafe6e693ea36ea5d99ad60",
+      "field": "source_refs[4].sha256",
+      "packet": "968d47ad10910c5875f83f6c74933369aa0b70486e51cbd2bcb7b65ccb2d96e5"
+     }
+    ],
+    "id": "NC-01",
+    "name": "canonical source changed after packet generation",
+    "observed_status": "STALE",
+    "pass": true,
+    "reasons": [
+     "source_digest_mismatch:STATUS.md",
+     "content_differs_from_rebuild:source_refs[4].sha256"
+    ],
+    "setup": "mirrored canonical sources; STATUS.md modified after the packet was built"
+   },
+   {
+    "disposition": "Degrade to a non-authoritative hint: do not act on stale fields. Re-derive the packet from canonical sources or discard it; canonical files always win.",
+    "expected": "STALE",
+    "field_diffs": [
+     {
+      "canonical": "55d92619e1a594e160c68a60b94dc06454baa52499bf70f3c636f7217c7425fe",
+      "field": "source_refs[0].sha256",
+      "packet": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+     }
+    ],
+    "id": "NC-02",
+    "name": "source digest mismatch inside the packet",
+    "observed_status": "STALE",
+    "pass": true,
+    "reasons": [
+     "source_digest_mismatch:experiments/EXPERIMENT_REGISTRY.json",
+     "content_differs_from_rebuild:source_refs[0].sha256"
+    ],
+    "setup": "one source_refs sha256 replaced with a wrong digest"
+   },
+   {
+    "disposition": "Refuse the packet: a safety invariant is violated (authority disclaimer, stop/deep-change rules, or lesson scope). Re-derive from canonical sources.",
+    "expected": "REJECTED",
+    "field_diffs": [
+     {
+      "canonical": "<list of 9>",
+      "field": "rules.stop_rules",
+      "packet": "<list of 0>"
+     }
+    ],
+    "id": "NC-03",
+    "name": "missing critical stop/deep-change rule",
+    "observed_status": "REJECTED",
+    "pass": true,
+    "reasons": [
+     "missing_stop_rules",
+     "content_differs_from_rebuild:rules.stop_rules"
+    ],
+    "setup": "packet stop_rules emptied; verifier must reject and the fresh-session worker must refuse",
+    "worker_refusal_reasons": [
+     "missing_stop_rules"
+    ],
+    "worker_refused": true
+   },
+   {
+    "disposition": "Degrade to a non-authoritative hint: do not act on stale fields. Re-derive the packet from canonical sources or discard it; canonical files always win.",
+    "expected": "STALE",
+    "field_diff_names_next_action": true,
+    "field_diffs": [
+     {
+      "canonical": "Closed at bounded pattern extraction. No production integration, Router change, governance change, or follow-on checkpo…",
+      "field": "now.nearest_action",
+      "packet": "Closed at bounded pattern extraction. No production integration, Router change, governance change, or follow-on checkpo…"
+     },
+     {
+      "canonical": "Closed at bounded pattern extraction. No production integration, Router change, governance change, or follow-on checkpo…",
+      "field": "resume.next_action",
+      "packet": "Closed at bounded pattern extraction. No production integration, Router change, governance change, or follow-on checkpo…"
+     },
+     {
+      "canonical": "aab5c4711a6146c432e1cc7f220c19b88dd571c9401c529e5557e334a1099838",
+      "field": "source_refs[0].sha256",
+      "packet": "55d92619e1a594e160c68a60b94dc06454baa52499bf70f3c636f7217c7425fe"
+     }
+    ],
+    "id": "NC-04",
+    "name": "stale NEXT ACTION in the packet",
+    "observed_status": "STALE",
+    "pass": true,
+    "reasons": [
+     "source_digest_mismatch:experiments/EXPERIMENT_REGISTRY.json",
+     "content_differs_from_rebuild:now.nearest_action",
+     "content_differs_from_rebuild:resume.next_action",
+     "content_differs_from_rebuild:source_refs[0].sha256"
+    ],
+    "setup": "mirrored registry; EXP-27 next_action changed after the packet was built"
+   },
+   {
+    "degraded_to_non_authoritative": true,
+    "disposition": "Degrade to a non-authoritative hint: do not act on stale fields. Re-derive the packet from canonical sources or discard it; canonical files always win.",
+    "expected": "STALE",
+    "field_diffs": [
+     {
+      "canonical": "changes fundamental architecture;",
+      "field": "rules.deep_change_gate.bullets[0]",
+      "packet": "no approval is ever needed for architecture changes (packet override)"
+     }
+    ],
+    "id": "NC-05",
+    "name": "packet attempts to override canonical Git source",
+    "observed_status": "STALE",
+    "override_detected_in_field_diff": true,
+    "pass": true,
+    "reasons": [
+     "content_differs_from_rebuild:rules.deep_change_gate.bullets[0]"
+    ],
+    "setup": "a deep-change gate bullet rewritten to contradict governance; packet must lose authority"
+   },
+   {
+    "disposition": "Refuse the packet: a safety invariant is violated (authority disclaimer, stop/deep-change rules, or lesson scope). Re-derive from canonical sources.",
+    "expected": "REJECTED",
+    "field_diffs": [
+     {
+      "canonical": "TASK",
+      "field": "known_lessons[1].scope",
+      "packet": "GLOBAL"
+     }
+    ],
+    "id": "NC-06",
+    "name": "task-local lesson incorrectly promoted as GLOBAL",
+    "observed_status": "REJECTED",
+    "pass": true,
+    "reasons": [
+     "lesson_promoted_to_global_without_canonical_marker:R2",
+     "content_differs_from_rebuild:known_lessons[1].scope"
+    ],
+    "setup": "R2 (TASK scope, EXP-24 Phase 2 only) relabelled GLOBAL in the packet",
+    "worker_refusal_reasons": [
+     "lesson_promoted_to_global:R2"
+    ],
+    "worker_refused": true
+   }
+  ],
+  "result": "PASS"
+ },
+ "immutability": {
+  "canonical_sources_unchanged": true,
+  "changed_canonical_sources": [],
+  "derived_artifacts_written": [
+   "experiments/exp-29-arena-bootstrap-harness/ARENA_CONTEXT.json",
+   "experiments/exp-29-arena-bootstrap-harness/ARENA_CONTEXT.md"
+  ]
+ },
+ "summary": {
+  "checks": {
+   "canonical_sources_unchanged": true,
+   "cp02_pass": true,
+   "cp03_pass": true,
+   "cp04_pass": true
+  },
+  "experiment": "EXP-29",
+  "fixture": {
+   "checkpoint": "CP-05",
+   "experiment_id": "EXP-27"
+  },
+  "measurements": {
+   "arm_a": {
+    "bytes_read": 84978,
+    "failed_ops": 0,
+    "files_read": 5,
+    "listdir_ops": 2,
+    "read_ops": 5,
+    "tool_ops": 7
+   },
+   "arm_b": {
+    "bytes_read": 12782,
+    "failed_ops": 0,
+    "files_read": 1,
+    "listdir_ops": 0,
+    "read_ops": 1,
+    "tool_ops": 1
+   },
+   "bytes_reduction_ratio": 0.8496,
+   "genealogy_cost_reduction_ratio": 0.8232,
+   "packet_json_bytes": 12808,
+   "packet_md_bytes": 10231
+  },
+  "result": "PASS"
+ }
+}

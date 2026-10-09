@@ -1,0 +1,8 @@
+{
+ "canonical_sources_unchanged": true,
+ "changed_canonical_sources": [],
+ "derived_artifacts_written": [
+  "experiments/exp-29-arena-bootstrap-harness/ARENA_CONTEXT.json",
+  "experiments/exp-29-arena-bootstrap-harness/ARENA_CONTEXT.md"
+ ]
+}

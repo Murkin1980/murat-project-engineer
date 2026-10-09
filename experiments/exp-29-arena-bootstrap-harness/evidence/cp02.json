@@ -1,0 +1,135 @@
+{
+ "artifacts": {
+  "generated_against": {
+   "git_base": "bb6f1f85fde993c0b698f7036df2699961ed1478",
+   "git_branch": "arena/19fa71aa-murat-project-engineer",
+   "git_head": "6c6a592a442f0d3c779af8ae5c6e8185b9158bbb"
+  },
+  "json_bytes": 12808,
+  "md_bytes": 10231,
+  "packet_task": "EXP-27/CP-05",
+  "paths": [
+   "experiments/exp-29-arena-bootstrap-harness/ARENA_CONTEXT.json",
+   "experiments/exp-29-arena-bootstrap-harness/ARENA_CONTEXT.md"
+  ],
+  "verify_status": "FRESH"
+ },
+ "checks": {
+  "all_layers_present": true,
+  "artifacts_fresh": true,
+  "authority_declared": true,
+  "deterministic_output": true,
+  "provenance_complete": true,
+  "safety_structure_present": true
+ },
+ "determinism": {
+  "json_byte_identical": true,
+  "json_bytes": 12782,
+  "md_byte_identical": true,
+  "md_bytes": 10205,
+  "pinned_git_refs": {
+   "git_base": "1111111111111111111111111111111111111111",
+   "git_branch": "arena/proof",
+   "git_head": "0000000000000000000000000000000000000000"
+  }
+ },
+ "provenance": {
+  "all_digests_match": true,
+  "all_exist": true,
+  "roles": [
+   "accepted_lessons",
+   "agents_rules",
+   "experiment_results",
+   "governance",
+   "project_status",
+   "registry",
+   "task_instructions",
+   "task_readme"
+  ],
+  "source_refs": [
+   {
+    "digest_matches": true,
+    "exists": true,
+    "path": "experiments/EXPERIMENT_REGISTRY.json",
+    "role": "registry"
+   },
+   {
+    "digest_matches": true,
+    "exists": true,
+    "path": "experiments/exp-27-paperclip-orchestration-patterns/ARENA_TASK.md",
+    "role": "task_instructions"
+   },
+   {
+    "digest_matches": true,
+    "exists": true,
+    "path": "experiments/exp-27-paperclip-orchestration-patterns/README.md",
+    "role": "task_readme"
+   },
+   {
+    "digest_matches": true,
+    "exists": true,
+    "path": "experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md",
+    "role": "experiment_results"
+   },
+   {
+    "digest_matches": true,
+    "exists": true,
+    "path": "STATUS.md",
+    "role": "project_status"
+   },
+   {
+    "digest_matches": true,
+    "exists": true,
+    "path": "AGENTS.md",
+    "role": "agents_rules"
+   },
+   {
+    "digest_matches": true,
+    "exists": true,
+    "path": "docs/governance/SCOPE-CHANGE-CONTROL.md",
+    "role": "governance"
+   },
+   {
+    "digest_matches": true,
+    "exists": true,
+    "path": "experiments/exp-28-agent-workflow-skills-retro/RESULTS.md",
+    "role": "accepted_lessons"
+   }
+  ]
+ },
+ "result": "PASS",
+ "structure": {
+  "authority": "DERIVED_VIEW_NON_AUTHORITATIVE",
+  "authority_note_present": true,
+  "components": 6,
+  "deep_change_gate_bullets": 11,
+  "handoff_contract_fields": [
+   "STATE",
+   "EVIDENCE",
+   "CHANGES",
+   "RESULT",
+   "BLOCKER",
+   "NEXT ACTION",
+   "HANDOFF"
+  ],
+  "layers_present": true,
+  "lessons": [
+   {
+    "id": "R1",
+    "scope": "PROJECT"
+   },
+   {
+    "id": "R2",
+    "scope": "TASK"
+   },
+   {
+    "id": "R3",
+    "scope": "NO_CHANGE"
+   }
+  ],
+  "source_of_truth_priority_items": 6,
+  "stop_rules": 9,
+  "traps": 6,
+  "verification_block_present": true
+ }
+}

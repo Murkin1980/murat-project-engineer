@@ -605,20 +605,32 @@
       "experiment_id": "EXP-29",
       "name": "Arena Bootstrap Harness",
       "owning_project": "Murat Project Engineer",
-      "status": "PLANNED",
+      "status": "PASS",
       "why": "Test whether a deterministic Git-derived startup packet can let a fresh Arena session resume context-heavy MPE work with less rediscovery while preserving Git as the only source of truth and avoiding a separate memory platform.",
       "date_added": "2026-10-09",
-      "next_action": "QUEUE ONLY. EXP-20 is complete. Execute CP-01…CP-05 from ARENA_TASK.md only after the owner explicitly starts EXP-29; do not implement or run the harness before that start decision.",
-      "result_summary": "Planned. Primary disposition REUSE_COMPONENT. Reuses EXP-27 context-packet/resume evidence and EXP-28 evidence-gated lesson promotion. No memory service, vector store, daemon, persistent agent runtime, Router authority change, automatic learning, or second source of truth is authorized.",
+      "next_action": "Closed at CP-05 with PASS / REUSE_COMPONENT. Reuse the derived-packet pattern for context-heavy Arena tasks through the documented builder command (experiments/exp-29-arena-bootstrap-harness/harness/bootstrap_builder.py build/verify). Broader adoption — automatic packet generation, lesson promotion beyond the recorded PROJECT/TASK/NO_CHANGE scopes, or any runtime integration — requires a separate owner decision. Do not merge the PR as part of this experiment.",
+      "result_summary": "PASS / REUSE_COMPONENT: a deterministic, LLM-free bootstrap builder derives ARENA_CONTEXT.json/.md from canonical Git sources (registry, task files, STATUS, AGENTS, governance, EXP-27/EXP-28 results) with sha256 provenance for every source and every item source-linked. Fresh-session A/B on the frozen fixture EXP-27 (real completed context-heavy task, isolated python3 -I workers): Arm A normal rediscovery 5 files / 83 KB / 7 tool ops vs Arm B packet 1 file / 12.8 KB / 1 tool op (~85% fewer context bytes, identical answers, genealogy and stop conditions reproduced in both arms). Six stale/unsafe negative controls fail closed: source changed, digest mismatch, stale NEXT ACTION and canonical-override attempts degrade to STALE non-authoritative hints; missing stop rule and GLOBAL lesson promotion are REJECTED (and refused by the fresh-session worker). Canonical sources digest-identical before/after; only the two derived artifacts are written. No memory service, vector store, daemon, scheduler, persistent agent runtime, Router change, automatic learning, or second source of truth.",
       "repo": "Murkin1980/murat-project-engineer",
       "experiment_path": "experiments/exp-29-arena-bootstrap-harness",
       "evidence_links": [
         "experiments/exp-29-arena-bootstrap-harness/README.md",
         "experiments/exp-29-arena-bootstrap-harness/ARENA_TASK.md",
+        "experiments/exp-29-arena-bootstrap-harness/CAPABILITY_MAP.md",
+        "experiments/exp-29-arena-bootstrap-harness/RESULTS.md",
+        "experiments/exp-29-arena-bootstrap-harness/ARENA_CONTEXT.json",
+        "experiments/exp-29-arena-bootstrap-harness/ARENA_CONTEXT.md",
+        "experiments/exp-29-arena-bootstrap-harness/harness/bootstrap_builder.py",
+        "experiments/exp-29-arena-bootstrap-harness/harness/fresh_session.py",
+        "experiments/exp-29-arena-bootstrap-harness/harness/exp29_proof.py",
+        "experiments/exp-29-arena-bootstrap-harness/evidence/proof_run.json",
+        "experiments/exp-29-arena-bootstrap-harness/evidence/cp03.json",
+        "experiments/exp-29-arena-bootstrap-harness/evidence/cp04.json",
         "experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md",
         "experiments/exp-28-agent-workflow-skills-retro/RESULTS.md"
       ],
-      "pr_or_issue_links": [],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/65"
+      ],
       "updated_at": "2026-10-09"
     }
   ]

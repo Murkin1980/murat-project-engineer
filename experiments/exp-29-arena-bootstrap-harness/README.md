@@ -34,8 +34,22 @@ This experiment must not create:
 
 Generated bootstrap artifacts are derived views only and must carry source references/digests.
 
-## Planned execution
+## Executed checkpoints
 
-See `ARENA_TASK.md`.
+See `ARENA_TASK.md` and `RESULTS.md`.
 
-Execution is intentionally queued **after the currently active EXP-20 Dify/OpenHands component-extraction experiment**. No EXP-29 implementation is authorized before the owner starts it.
+- **CP-01** — existing capability map (`CAPABILITY_MAP.md`): every need covered by
+  KEEP_EXISTING / REUSE / EXTEND; duplicates (memory store, lesson index,
+  automatic promotion) rejected; no `DEEP_CHANGE_REQUIRED`.
+- **CP-02** — deterministic bootstrap builder (`harness/bootstrap_builder.py`):
+  derives `ARENA_CONTEXT.json` / `ARENA_CONTEXT.md` from canonical Git sources
+  with sha256 provenance and a fail-closed `verify` (FRESH / STALE / REJECTED).
+- **CP-03** — fresh-session A/B comparison on the frozen fixture EXP-27:
+  Arm A 5 files / 84,900 B / 7 tool ops vs Arm B 1 file / 12,782 B / 1 tool op
+  (84.94% fewer context bytes; identical answers).
+- **CP-04** — six stale/unsafe negative controls, all fail-closed
+  (4 STALE, 2 REJECTED); canonical sources digest-identical before/after.
+- **CP-05** — PASS / REUSE_COMPONENT; PR opened, not merged.
+
+EXP-20 (Dify/OpenHands component extraction) was complete before this
+experiment started, satisfying the queue condition.
