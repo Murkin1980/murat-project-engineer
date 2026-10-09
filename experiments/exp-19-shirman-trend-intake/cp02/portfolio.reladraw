@@ -8,7 +8,7 @@ style st_hold     fill: #fef3c7  border: #d97706
 style col         contents: (widths: match)
 
 node p_murat_project_engineer "Murat Project Engineer"
-node p_murat_project_engineer.pass "PASS (10)"  style: col
+node p_murat_project_engineer.pass "PASS (11)"  style: col
 node p_murat_project_engineer.pass.exp_002 "EXP-002 / Machine Protocol / → Keep the closed result; a second independent ex…" (wrap: 34)  style: st_pass
 node p_murat_project_engineer.pass.exp_07 "EXP-07 / Strix \/ FreeBuff evaluation / → Keep Strix on hold; reuse only selected Codebuf…" (wrap: 34)  style: st_pass
 node p_murat_project_engineer.pass.exp_08 "EXP-08 / BrowserAct public-web acquisi… / → Reuse the documented browser-acquisition role w…" (wrap: 34)  style: st_pass
@@ -16,14 +16,14 @@ node p_murat_project_engineer.pass.exp_12 "EXP-12 / CLEARS triage backtest / →
 node p_murat_project_engineer.pass.exp_15 "EXP-15 / MPE Project Memory Layer / → Keep EXP-15 as validated experiment evidence. W…" (wrap: 34)  style: st_pass
 node p_murat_project_engineer.pass.exp_18 "EXP-18 / Pirate Face model resilience / → Keep Pirate Face as an optional last-resort pat…" (wrap: 34)  style: st_pass
 node p_murat_project_engineer.pass.exp_19 "EXP-19 / Shir-man trend intake and age… / → Adopt Shir-man compact schema as a file-based i…" (wrap: 34)  style: st_pass
+node p_murat_project_engineer.pass.exp_20 "EXP-20 / Dify/OpenHands component extr… / → Closed at the bounded component extraction; STO…" (wrap: 34)  style: st_pass
 node p_murat_project_engineer.pass.exp_25 "EXP-25 / Atomic CRM component extracti… / → Closed at the bounded component extraction. CP-…" (wrap: 34)  style: st_pass
 node p_murat_project_engineer.pass.exp_27 "EXP-27 / Paperclip orchestration patte… / → Closed at bounded pattern extraction. No produc…" (wrap: 34)  style: st_pass
 node p_murat_project_engineer.pass.exp_28 "EXP-28 / Agent workflow skills retrosp… / → Closed as a manual, evidence-gated pattern. No…" (wrap: 34)  style: st_pass
 node p_murat_project_engineer.ready_to_test "READY_TO_TEST (1)"  style: col  right of p_murat_project_engineer.pass  level with p_murat_project_engineer.pass
 node p_murat_project_engineer.ready_to_test.exp_13 "EXP-13 / Low-cost evaluation harness / → Run the frozen 18-entry Pilot Batch 1 only when…" (wrap: 34)  style: st_ready
-node p_murat_project_engineer.planned "PLANNED (5)"  style: col  right of p_murat_project_engineer.ready_to_test  level with p_murat_project_engineer.ready_to_test
+node p_murat_project_engineer.planned "PLANNED (4)"  style: col  right of p_murat_project_engineer.ready_to_test  level with p_murat_project_engineer.ready_to_test
 node p_murat_project_engineer.planned.exp_s2c_01 "EXP-S2C-01 / Screenshot-to-Code Visual Wor… / → Freeze one existing-project fixture and baselin…" (wrap: 34)  style: st_planned
-node p_murat_project_engineer.planned.exp_20 "EXP-20 / Dify/OpenHands component extr… / → Run a comparative architecture audit against ex…" (wrap: 34)  style: st_planned
 node p_murat_project_engineer.planned.exp_22 "EXP-22 / Colibri local inference \/ Bri… / → Arena: execute CP-01 READY/WARNING/BLOCKED clas…" (wrap: 34)  style: st_planned
 node p_murat_project_engineer.planned.exp_23 "EXP-23 / Papermorph document → interac… / → After EXP-22 Colibri completes, Arena runs one…" (wrap: 34)  style: st_planned
 node p_murat_project_engineer.planned.exp_24 "EXP-24 / Agentic text → film pipeline… / → Run owner-authorized Phase 2 CP-06…CP-12. Start…" (wrap: 34)  style: st_planned
@@ -56,6 +56,7 @@ node p_mebelflow_ai.planned.exp_21 "EXP-21 / EasyKitchen \/ SketchUp produc… /
 
 // dependencies INFERRED from free text (no depends_on field in registry)
 edge p_murat_project_engineer.hold.exp_stage3_synthetic -> p_murat_project_engineer.pass.exp_12  "waits on"  line: (pattern: dashed)
+edge p_murat_project_engineer.pass.exp_20 -> p_murat_project_engineer.pass.exp_27  "waits on"  line: (pattern: dashed)
 edge p_murat_project_engineer.planned.exp_23 -> p_murat_project_engineer.planned.exp_22  "waits on"  line: (pattern: dashed)
 edge p_murat_project_engineer.partial.exp_26 -> p_murat_project_engineer.pass.exp_15  "waits on"  line: (pattern: dashed)
 edge p_murat_project_engineer.pass.exp_27 -> p_murat_project_engineer.pass.exp_25  "waits on"  line: (pattern: dashed)

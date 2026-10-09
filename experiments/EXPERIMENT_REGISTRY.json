@@ -391,18 +391,32 @@
       "experiment_id": "EXP-20",
       "name": "Dify/OpenHands component extraction",
       "owning_project": "Murat Project Engineer",
-      "status": "PLANNED",
+      "status": "PASS",
       "why": "Identify reusable AI workflow and coding-agent capabilities from Dify and OpenHands without adopting either platform wholesale or creating a parallel system.",
       "date_added": "2026-10-02",
-      "next_action": "Run a comparative architecture audit against existing MPE, Business Discovery, MebelFlow AI, AI gateway, transcription gateway, and agent/orchestration components; select the smallest bounded proof.",
-      "result_summary": "Planned. Primary disposition REUSE_COMPONENT. No production integration, full-platform adoption, or new repository is authorized.",
+      "next_action": "Closed at the bounded component extraction; STOP after CP-03. No production integration, no Dify/OpenHands dependency or deployment, and no follow-on checkpoint is authorized by this result. If the owner continues, the smallest next step is a separately authorized checkpoint that adds the P1 recovery/idempotency functions beside scripts/runtime_coordination.read_events/append_event (~60 lines) or the P2 failure annotation on the scripts/execution_runner.run_task outcome (~120 lines), each with its own deep-change assessment.",
+      "result_summary": "PASS / REUSE_COMPONENT at pattern level only; neither platform was adopted, installed, deployed, or executed. Upstream audited read-only and pinned: langgenius/dify@b2ce9ac1 (Dify Open Source License = modified Apache 2.0 with multi-tenant and logo conditions), OpenHands/OpenHands@937d0d6a (MIT, v1.26.0) plus the required secondary pin OpenHands/software-agent-sdk@33044182 (MIT) because the pinned OpenHands repo is now the TypeScript Agent Canvas control center, not the Python agent; Dify's graph engine is the external graphon==0.7.0 dependency (no PyPI license classifier). CP-01 mapped 31 components across all ten required categories: 9 KEEP_EXISTING, 3 BORROW, 3 ADAPT, 15 REJECT, six of them REJECT/DEEP_CHANGE_REQUIRED (sandbox+Docker runtime, workflow DB, Celery queue, plugin daemon, generic DAG engine, Router-level provider abstraction). The prioritized candidates were not forced: the OpenHands sandbox/executor boundary needs a persistent runtime, and the Dify workflow representation is a generic DAG engine, so both stopped; the Dify typed tool/provider abstraction was rejected for MPE as an abstraction with no consumer. CP-02 filtered every duplicate of MPE governance, Router, MiniBase, the approval/evidence model, murat-ai-orchestrator and the Paperclip-derived EXP-27 patterns (StuckDetector, locks, condenser). CP-03 proved exactly two components against MPE's own production code as the control arm. P1 (OpenHands EventLog subset): a torn tail makes runtime_coordination.read_events raise 'invalid JSONL line 5' and loses 100% of the run's evidence (0/5 events), while the borrowed recovery returns 4/5 durable events plus one explicit damage record and the unchanged production summarize_events still works (loss 20%); a fresh isolated process resumed from the damaged log alone with 0 rediscovery steps; duplicate event_id replay writes 0 bytes and a conflicting replay is refused, where the production writer silently stored 4 records for 3 ids; overhead ratio 1.124 on a 25-append median, +1 empty sidecar, 0 new dependencies. P2 (OpenHands error_classification + Dify typed tool errors): 14 real MPE failure cases through the real run_task path collapse to 1 undifferentiated execution_status=ERROR today, and classify into 8 kinds and 4 decisions anchored to the declared failure_state of the 20 gates parsed from gates/registry.yaml, with 8 bounded retries inside each gate's own retry_policy, 0 downgrades, 2 fail-closed escalations, 4/14 exact agreement with the registry, authority fields identical in 14/14 cases, 0 executor calls for a DEEP-CHANGE task at L4 with a stop condition, and 0 copies of raw exception text into evidence where the production arm copies 1; median classify 4.2 us, deterministic across 3 passes and order-independent. No new repository, service, database, queue, daemon, sandbox, workflow engine, Router change, governance change, or source-of-truth change; 11 production digests unchanged; the registry change triggered only the documented Reladraw dashboard regeneration. Limitations: donors read not run, the crash is simulated by truncation, the length marker is not an integrity proof, P2 retry budgets interpret the registry's prose retry_policy through an explicit rule table, Murat-AI-Orchestrator and business-discovery returned 403 so no claim is made about them, no VRU claimed, and 7 pre-existing unittest failures remain unchanged (369 tests before, 398 after, same 7).",
       "repo": "Murkin1980/murat-project-engineer",
       "experiment_path": "experiments/exp-20-dify-openhands-component-extraction",
       "evidence_links": [
-        "experiments/exp-20-dify-openhands-component-extraction/README.md"
+        "experiments/exp-20-dify-openhands-component-extraction/README.md",
+        "experiments/exp-20-dify-openhands-component-extraction/ARENA_TASK.md",
+        "experiments/exp-20-dify-openhands-component-extraction/UPSTREAM_AUDIT.md",
+        "experiments/exp-20-dify-openhands-component-extraction/COMPONENT_MAP.md",
+        "experiments/exp-20-dify-openhands-component-extraction/DUPLICATE_FILTER.md",
+        "experiments/exp-20-dify-openhands-component-extraction/RESULTS.md",
+        "experiments/exp-20-dify-openhands-component-extraction/harness/exp20_proof.py",
+        "experiments/exp-20-dify-openhands-component-extraction/evidence/proof_run.json",
+        "experiments/exp-20-dify-openhands-component-extraction/evidence/cp03_p1_durable_event_evidence.json",
+        "experiments/exp-20-dify-openhands-component-extraction/evidence/cp03_p2_failure_classification.json",
+        "experiments/exp-20-dify-openhands-component-extraction/evidence/cp03_p1_damaged_log.jsonl",
+        "experiments/exp-20-dify-openhands-component-extraction/evidence/proof_run.log",
+        "https://github.com/langgenius/dify",
+        "https://github.com/OpenHands/OpenHands",
+        "https://github.com/OpenHands/software-agent-sdk"
       ],
       "pr_or_issue_links": [],
-      "updated_at": "2026-10-02"
+      "updated_at": "2026-10-09"
     },
     {
       "experiment_id": "EXP-21",

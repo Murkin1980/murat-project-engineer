@@ -1,0 +1,149 @@
+{
+  "a_real_fixture": {
+    "damage": [],
+    "fixture": "experiments/exp-27-paperclip-orchestration-patterns/evidence/run-EXP27-CP04.events.jsonl",
+    "integrity": "MARKER_UNVERIFIED",
+    "marker_count": null,
+    "note": "a legacy MPE log carries no length marker, so the verdict is MARKER_UNVERIFIED, never a silent COMPLETE",
+    "production_event_count": 6,
+    "recovered_event_count": 6,
+    "summary_identical": true
+  },
+  "b_torn_tail": {
+    "baseline_arm": {
+      "error": "invalid JSONL line 5",
+      "evidence_lost_percent": 100.0,
+      "function": "scripts.runtime_coordination.read_events",
+      "recovered_event_count": 0,
+      "summarizable": false
+    },
+    "before_crash_integrity": "COMPLETE",
+    "borrowed_arm": {
+      "damage": [
+        {
+          "bytes": 214,
+          "kind": "torn_tail",
+          "line": 5,
+          "reason": "unparsable JSON (JSONDecodeError)",
+          "terminated": false
+        }
+      ],
+      "evidence_lost_percent": 20.0,
+      "function": "harness/durable_event_evidence.recover + production summarize_events",
+      "integrity": "DAMAGED",
+      "recovered_event_count": 4,
+      "summarizable": true,
+      "summary": {
+        "deterministic_gate_results": [
+          {
+            "gate_id": null,
+            "result": "PASS"
+          }
+        ],
+        "event_count": 4,
+        "experts_invoked": [
+          "exp-20-proof-executor"
+        ],
+        "handoff_count": 0,
+        "handoff_refs": [],
+        "outcome": null
+      }
+    },
+    "crash_simulation": {
+      "kept_bytes": 1196,
+      "method": "truncate the final durable line mid-write",
+      "original_bytes": 1230,
+      "removed_bytes": 34
+    },
+    "events_before_crash": 5
+  },
+  "c_fresh_process_resume": {
+    "cwd": "<tmp>/isolated (only the damaged log and its marker were present)",
+    "damaged_count": 1,
+    "lifecycle": [
+      "READY",
+      "BLOCKED"
+    ],
+    "matches_in_process_packet": true,
+    "next_action": "continue from the last durable event; re-emit the damaged tail explicitly",
+    "read_from_chat": false,
+    "recovered_event_count": 4,
+    "rediscovery_steps": 0,
+    "resumable": true,
+    "returncode": 0,
+    "run_id": "EXP-20-PROOF",
+    "task_id": "EXP-20/CP-03",
+    "worker": "experiments/exp-20-dify-openhands-component-extraction/harness/resume_worker.py",
+    "worker_seconds": 0.0357
+  },
+  "checks": {
+    "baseline_duplicate_is_silent": true,
+    "baseline_loses_all_evidence_on_a_torn_tail": true,
+    "borrowed_recovers_every_durable_event": true,
+    "conflicting_replay_is_refused": true,
+    "damage_is_reported_not_dropped": true,
+    "fresh_process_resumes_without_chat": true,
+    "identical_replay_writes_nothing": true,
+    "marker_never_silently_trusted": true,
+    "production_summary_contract_reused_unchanged": true,
+    "recovery_matches_production_on_a_healthy_real_log": true
+  },
+  "d_idempotency": {
+    "baseline_arm": {
+      "duplicate_id_accepted_silently": true,
+      "duplicate_records": 1,
+      "event_count": 4,
+      "function": "scripts.runtime_coordination.append_event",
+      "unique_event_ids": 3
+    },
+    "borrowed_arm": {
+      "conflict_error": "event_id already durable with a different payload: evt-exp20-p1-3",
+      "event_count": 3,
+      "identical_replay_bytes_written": 0,
+      "identical_replay_status": "DUPLICATE_REPLAYED",
+      "log_digest_unchanged_after_conflict": true,
+      "log_digest_unchanged_after_identical_replay": true
+    }
+  },
+  "donor": "OpenHands software-agent-sdk openhands/sdk/conversation/event_store.py (MIT)",
+  "e_marker": {
+    "cheap_check_advanced": {
+      "known_count": 2,
+      "marker_count": 4,
+      "parse_ops": 0,
+      "verdict": "ADVANCED"
+    },
+    "cheap_check_unchanged": {
+      "known_count": 4,
+      "marker_count": 4,
+      "parse_ops": 0,
+      "verdict": "UNCHANGED"
+    },
+    "marker_absent_verdict": "MARKER_ABSENT",
+    "never_silently_trusted": true,
+    "parse_ops_full_recovery": 4,
+    "stale_marker_count": 99,
+    "stale_marker_integrity": "MARKER_UNVERIFIED"
+  },
+  "f_overhead": {
+    "appends_measured": 25,
+    "extra_files_per_log": 1,
+    "extra_payload_bytes_per_log": 0,
+    "extra_syscalls_per_append": 2,
+    "median_append_seconds_durable": 0.00105717,
+    "median_append_seconds_production": 0.00094039,
+    "new_dependencies": [],
+    "overhead_ratio": 1.124
+  },
+  "g_rollback": {
+    "database_or_queue_required": false,
+    "new_dependency": false,
+    "persistent_runtime_required": false,
+    "production_files_modified": [],
+    "rollback": "delete experiments/exp-20-dify-openhands-component-extraction/harness and evidence; nothing else references them"
+  },
+  "host_contract": "scripts/runtime_coordination.py JSONL event log (unchanged)",
+  "proof": "P1",
+  "result": "PASS",
+  "title": "crash-tolerant, idempotent, resumable event evidence"
+}

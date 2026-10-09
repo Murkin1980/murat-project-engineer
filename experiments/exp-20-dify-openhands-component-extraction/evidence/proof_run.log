@@ -1,0 +1,16 @@
+EXP-20 CP-03 proof run: target=all root=/home/user/murat-project-engineer
+production digests captured for 11 files
+P1.a real fixture: production 6 events, recovered 6, summary identical=True, integrity=MARKER_UNVERIFIED
+P1.b torn tail: baseline recovered 0/5 (invalid JSONL line 5); borrowed recovered 4/5, damage kinds=['torn_tail']
+P1.c fresh process: run_id=EXP-20-PROOF recovered=4 resumable=True matches_in_process=True
+P1.d idempotency: borrowed replay=DUPLICATE_REPLAYED conflict=raised; baseline wrote 4 records for 3 unique ids
+P1.e marker: cheap check parse_ops=0 vs full recovery 4 parses; stale marker integrity=MARKER_UNVERIFIED
+P1.f overhead: median append production=0.00094039s durable=0.00105717s ratio=1.124 extra_bytes=0
+P1.a real fixture: production 6 events, recovered 6, summary identical=True, integrity=MARKER_UNVERIFIED
+P1.b torn tail: baseline recovered 0/5 (invalid JSONL line 5); borrowed recovered 4/5, damage kinds=['torn_tail']
+P1.c fresh process: run_id=EXP-20-PROOF recovered=4 resumable=True matches_in_process=True
+P1.d idempotency: borrowed replay=DUPLICATE_REPLAYED conflict=raised; baseline wrote 4 records for 3 unique ids
+P1.e marker: cheap check parse_ops=0 vs full recovery 4 parses; stale marker integrity=MARKER_UNVERIFIED
+P1.f overhead: median append production=0.00087168s durable=0.0011518s ratio=1.321 extra_bytes=0
+{"determinism": {"p1_second_pass_identical": true, "p2_second_pass_identical": true}, "production_files_changed": [], "proofs": {"p1": "PASS", "p2": "PASS"}, "result": "PASS"}
+EXP-20 CP-03 result: PASS

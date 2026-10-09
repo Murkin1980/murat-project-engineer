@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="355" height="1609" viewBox="0 0 355 1609" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
+<svg xmlns="http://www.w3.org/2000/svg" width="355" height="1761" viewBox="0 0 355 1761" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
   <defs>
   </defs>
-  <rect x="0" y="0" width="355" height="1609" fill="#ffffff"/>
-  <path d="M48 40 H307 a8 8 0 0 1 8 8 V1561 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
-  <text x="54" y="68.4" fill="#1f2328" text-anchor="start">PASS (10)</text>
+  <rect x="0" y="0" width="355" height="1761" fill="#ffffff"/>
+  <path d="M48 40 H307 a8 8 0 0 1 8 8 V1713 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <text x="54" y="68.4" fill="#1f2328" text-anchor="start">PASS (11)</text>
   <path d="M62 83 H293 a8 8 0 0 1 8 8 V198 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V91 a8 8 0 0 1 8 -8 Z" fill="#dcfce7" stroke="#16a34a"/>
   <text x="177.5" y="111.4" fill="#1f2328" text-anchor="middle">EXP-002 · MPE</text>
   <text x="177.5" y="130.4" fill="#1f2328" text-anchor="middle">Machine Protocol</text>
@@ -51,25 +51,32 @@
   <text x="177.5" y="1042.4" fill="#1f2328" text-anchor="middle">schema as a file-based</text>
   <text x="177.5" y="1061.4" fill="#1f2328" text-anchor="middle">intake format for perio…</text>
   <path d="M62 1090 H293 a8 8 0 0 1 8 8 V1224 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V1098 a8 8 0 0 1 8 -8 Z" fill="#dcfce7" stroke="#16a34a"/>
-  <text x="177.5" y="1118.4" fill="#1f2328" text-anchor="middle">EXP-25 · MPE</text>
-  <text x="177.5" y="1137.4" fill="#1f2328" text-anchor="middle">Atomic CRM component</text>
+  <text x="177.5" y="1118.4" fill="#1f2328" text-anchor="middle">EXP-20 · MPE</text>
+  <text x="177.5" y="1137.4" fill="#1f2328" text-anchor="middle">Dify/OpenHands component</text>
   <text x="177.5" y="1156.4" fill="#1f2328" text-anchor="middle">extraction</text>
   <text x="177.5" y="1175.4" fill="#1f2328" text-anchor="middle">→ Closed at the bounded</text>
-  <text x="177.5" y="1194.4" fill="#1f2328" text-anchor="middle">component extraction.</text>
-  <text x="177.5" y="1213.4" fill="#1f2328" text-anchor="middle">CP-01…CP-04 all pass on t…</text>
-  <path d="M62 1242 H293 a8 8 0 0 1 8 8 V1395 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V1250 a8 8 0 0 1 8 -8 Z" fill="#dcfce7" stroke="#16a34a"/>
-  <text x="177.5" y="1270.4" fill="#1f2328" text-anchor="middle">EXP-27 · MPE</text>
-  <text x="177.5" y="1289.4" fill="#1f2328" text-anchor="middle">Paperclip orchestration</text>
-  <text x="177.5" y="1308.4" fill="#1f2328" text-anchor="middle">patterns</text>
-  <text x="177.5" y="1327.4" fill="#1f2328" text-anchor="middle">→ Closed at bounded</text>
-  <text x="177.5" y="1346.4" fill="#1f2328" text-anchor="middle">pattern extraction. No</text>
-  <text x="177.5" y="1365.4" fill="#1f2328" text-anchor="middle">production integration,</text>
-  <text x="177.5" y="1384.4" fill="#1f2328" text-anchor="middle">Rout…</text>
-  <path d="M62 1413 H293 a8 8 0 0 1 8 8 V1547 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V1421 a8 8 0 0 1 8 -8 Z" fill="#dcfce7" stroke="#16a34a"/>
-  <text x="177.5" y="1441.4" fill="#1f2328" text-anchor="middle">EXP-28 · MPE</text>
-  <text x="177.5" y="1460.4" fill="#1f2328" text-anchor="middle">Agent workflow skills</text>
-  <text x="177.5" y="1479.4" fill="#1f2328" text-anchor="middle">retrospective (/r…</text>
-  <text x="177.5" y="1498.4" fill="#1f2328" text-anchor="middle">→ Closed as a manual,</text>
-  <text x="177.5" y="1517.4" fill="#1f2328" text-anchor="middle">evidence-gated pattern. No</text>
-  <text x="177.5" y="1536.4" fill="#1f2328" text-anchor="middle">automatic post-run tri…</text>
+  <text x="177.5" y="1194.4" fill="#1f2328" text-anchor="middle">component extraction; STOP</text>
+  <text x="177.5" y="1213.4" fill="#1f2328" text-anchor="middle">after CP-03. No prod…</text>
+  <path d="M62 1242 H293 a8 8 0 0 1 8 8 V1376 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V1250 a8 8 0 0 1 8 -8 Z" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="177.5" y="1270.4" fill="#1f2328" text-anchor="middle">EXP-25 · MPE</text>
+  <text x="177.5" y="1289.4" fill="#1f2328" text-anchor="middle">Atomic CRM component</text>
+  <text x="177.5" y="1308.4" fill="#1f2328" text-anchor="middle">extraction</text>
+  <text x="177.5" y="1327.4" fill="#1f2328" text-anchor="middle">→ Closed at the bounded</text>
+  <text x="177.5" y="1346.4" fill="#1f2328" text-anchor="middle">component extraction.</text>
+  <text x="177.5" y="1365.4" fill="#1f2328" text-anchor="middle">CP-01…CP-04 all pass on t…</text>
+  <path d="M62 1394 H293 a8 8 0 0 1 8 8 V1547 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V1402 a8 8 0 0 1 8 -8 Z" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="177.5" y="1422.4" fill="#1f2328" text-anchor="middle">EXP-27 · MPE</text>
+  <text x="177.5" y="1441.4" fill="#1f2328" text-anchor="middle">Paperclip orchestration</text>
+  <text x="177.5" y="1460.4" fill="#1f2328" text-anchor="middle">patterns</text>
+  <text x="177.5" y="1479.4" fill="#1f2328" text-anchor="middle">→ Closed at bounded</text>
+  <text x="177.5" y="1498.4" fill="#1f2328" text-anchor="middle">pattern extraction. No</text>
+  <text x="177.5" y="1517.4" fill="#1f2328" text-anchor="middle">production integration,</text>
+  <text x="177.5" y="1536.4" fill="#1f2328" text-anchor="middle">Rout…</text>
+  <path d="M62 1565 H293 a8 8 0 0 1 8 8 V1699 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V1573 a8 8 0 0 1 8 -8 Z" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="177.5" y="1593.4" fill="#1f2328" text-anchor="middle">EXP-28 · MPE</text>
+  <text x="177.5" y="1612.4" fill="#1f2328" text-anchor="middle">Agent workflow skills</text>
+  <text x="177.5" y="1631.4" fill="#1f2328" text-anchor="middle">retrospective (/r…</text>
+  <text x="177.5" y="1650.4" fill="#1f2328" text-anchor="middle">→ Closed as a manual,</text>
+  <text x="177.5" y="1669.4" fill="#1f2328" text-anchor="middle">evidence-gated pattern. No</text>
+  <text x="177.5" y="1688.4" fill="#1f2328" text-anchor="middle">automatic post-run tri…</text>
 </svg>

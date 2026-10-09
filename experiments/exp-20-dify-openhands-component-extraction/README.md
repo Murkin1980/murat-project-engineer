@@ -1,6 +1,29 @@
 # EXP-20 — Dify/OpenHands Component Extraction
 
-Status: PLANNED
+Status: COMPLETED — **PASS** (executed 2026-10-09, `REUSE_COMPONENT`, pattern level only)
+
+## Execution record
+
+- Authoritative checkpoint instruction: [`ARENA_TASK.md`](ARENA_TASK.md)
+- Phase 0 + CP-01 upstream audit and pins: [`UPSTREAM_AUDIT.md`](UPSTREAM_AUDIT.md)
+- CP-01 component map (`component → existing Murat equivalent → gap → disposition`):
+  [`COMPONENT_MAP.md`](COMPONENT_MAP.md)
+- CP-02 duplicate filter: [`DUPLICATE_FILTER.md`](DUPLICATE_FILTER.md)
+- CP-03 bounded proofs and measurements: `harness/`, `evidence/`
+- Result, checks, limitations, next action: [`RESULTS.md`](RESULTS.md)
+
+Two components reached proof and both passed: crash-tolerant/idempotent event evidence
+(OpenHands `EventLog` subset, `BORROW`) and deterministic failure classification onto the
+existing gate vocabulary (OpenHands `error_classification` + Dify typed tool errors,
+`BORROW`). The prioritized candidates were **not** forced: the OpenHands sandbox/executor
+boundary and the Dify workflow representation are `REJECT — DEEP_CHANGE_REQUIRED`, and the
+Dify typed tool/provider abstraction is `REJECT` for MPE (no consumer). No production file
+was changed and neither platform was installed, deployed, or executed.
+
+Vocabulary note: this planning document originally listed `KEEP / BORROW / ADAPT / IGNORE`.
+The executed checkpoints use the four dispositions required by `ARENA_TASK.md` —
+`KEEP_EXISTING / BORROW / ADAPT / REJECT` — which supersede that earlier list. The planning
+text below is preserved unchanged as the pre-execution record.
 
 ## Decision
 
