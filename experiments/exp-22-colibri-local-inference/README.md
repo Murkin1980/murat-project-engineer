@@ -1,10 +1,11 @@
 # EXP-22 — Colibri local inference / Brio routing
 
-Status: PLANNED  
-Decision: EXPERIMENT  
-Owner: Murat Project Engineer  
-Executor: Arena  
-Source: https://justvugg.github.io/colibri/  
+Status: COMPLETED — PARTIAL
+Recommendation: HOLD
+Decision: EXPERIMENT
+Owner: Murat Project Engineer
+Executor: Arena
+Source: https://justvugg.github.io/colibri/
 Upstream: https://github.com/JustVugg/colibri
 
 ## Why

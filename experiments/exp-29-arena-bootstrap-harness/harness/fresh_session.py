@@ -14,6 +14,11 @@ the point of the fresh-session comparison:
   the generated ``ARENA_CONTEXT.json`` packet and answers from the packet alone
   (exactly one file read). It fail-closed refuses packets that lack the authority
   disclaimer, stop rules, deep-change gate, or that claim a GLOBAL lesson scope.
+- ``state`` (CP-07 canonical current-state consumer): the worker receives only a
+  generated packet and answers the six current-state questions (result/status,
+  executed checkpoints, recommendation, blocker, next authorized action, whether
+  an already-executed checkpoint should run again) from the packet alone. Same
+  fail-closed refusal rules as ``answer``.
 
 Both arms emit the same answer schema so the proof can compare them. The worker
 uses its own independent parsers (stdlib only); it does not import the builder.
@@ -22,6 +27,7 @@ It performs no writes anywhere.
 Usage (normally driven by ``exp29_proof.py``):
     python3 -I fresh_session.py rediscover --root R --experiment EXP-27 --checkpoint CP-05 --out O
     python3 -I fresh_session.py answer --packet P --out O
+    python3 -I fresh_session.py state --packet P --out O
 """
 from __future__ import annotations
 
@@ -50,6 +56,23 @@ QUESTIONS = (
     "q_next_authorized_action",
 )
 GENEALOGY_BLOCK = frozenset(QUESTIONS[:6])
+
+# CP-07 current-state questions (``state`` consumer). Each answer is derived from
+# one packet field; the state_source map records which one.
+STATE_QUESTIONS = (
+    "q_state_result_status",
+    "q_state_completed_checkpoints",
+    "q_state_recommendation",
+    "q_state_blocker",
+    "q_state_next_authorized_action",
+    "q_state_should_cp01_run_again",
+)
+
+RESULT_KEY_RE = re.compile(r"\bRESULT:\s*([A-Z]+)")
+RECOMMENDATION_KEY_RE = re.compile(r"\bRECOMMENDATION:\s*([A-Z]+)")
+RECOMMENDATION_WORD_RE = re.compile(r"\bRecommendation\s+([A-Z]+)")
+EXECUTED_KEY_RE = re.compile(r"Executed checkpoints:\s*([^.]+)")
+CHECKPOINT_ID_RE = re.compile(r"CP-\d+")
 
 CHECKPOINT_RE = re.compile(r"^#{2,3}\s+(CP-\d+)\b", flags=re.M)
 
@@ -247,6 +270,60 @@ def _answers_from_packet(packet):
     }
 
 
+def _answers_state(packet):
+    """CP-07 state consumer: six current-state answers from the packet alone.
+
+    Sources are the packet's existing state channels: the registry-backed resume
+    block (status / result_summary / next_action), the target-results-backed
+    ``next_authorized_action`` and ``known_traps``. No additional file is read and
+    no field outside the packet is consulted.
+    """
+    resume = packet["resume"]
+    summary = str(resume.get("result_summary", ""))
+    next_action = str(resume.get("next_action", ""))
+
+    result_match = RESULT_KEY_RE.search(summary) or RESULT_KEY_RE.search(next_action)
+    result_status = result_match.group(1) if result_match else str(resume.get("status", ""))
+
+    recommendation_match = (
+        RECOMMENDATION_KEY_RE.search(summary) or RECOMMENDATION_KEY_RE.search(next_action)
+        or RECOMMENDATION_WORD_RE.search(summary) or RECOMMENDATION_WORD_RE.search(next_action)
+    )
+    recommendation = recommendation_match.group(1) if recommendation_match else ""
+
+    executed_match = EXECUTED_KEY_RE.search(summary) or EXECUTED_KEY_RE.search(next_action)
+    executed = CHECKPOINT_ID_RE.findall(executed_match.group(1)) if executed_match else []
+
+    traps = packet.get("known_traps", [])
+    blocker = traps[0]["trap"] if traps else ""
+    next_authorized = str(resume.get("next_authorized_action", ""))
+
+    if "CP-01" in executed:
+        should_cp01_run_again = "NO"
+    elif executed or "CP-01" in summary or "CP-01" in next_action:
+        should_cp01_run_again = "YES"
+    else:
+        should_cp01_run_again = "UNKNOWN"
+
+    answers = {
+        "q_state_result_status": result_status,
+        "q_state_completed_checkpoints": executed,
+        "q_state_recommendation": recommendation,
+        "q_state_blocker": blocker,
+        "q_state_next_authorized_action": next_authorized,
+        "q_state_should_cp01_run_again": should_cp01_run_again,
+    }
+    state_sources = {
+        "q_state_result_status": "resume.result_summary (registry RESULT: key; fallback resume.status)",
+        "q_state_completed_checkpoints": "resume.result_summary (registry Executed checkpoints: key)",
+        "q_state_recommendation": "resume.result_summary (registry RECOMMENDATION: key)",
+        "q_state_blocker": "known_traps[0] (target RESULTS.md ## Known limitations / blockers)",
+        "q_state_next_authorized_action": "resume.next_authorized_action (target RESULTS.md ## Next authorized action)",
+        "q_state_should_cp01_run_again": "derived: CP-01 listed as executed => NO",
+    }
+    return answers, state_sources
+
+
 def _write_json(path, data):
     target = Path(path)
     target.parent.mkdir(parents=True, exist_ok=True)
@@ -265,6 +342,9 @@ def main(argv=None):
     answer = sub.add_parser("answer", help="Arm B: answer from the bootstrap packet")
     answer.add_argument("--packet", required=True)
     answer.add_argument("--out", required=True)
+    state = sub.add_parser("state", help="CP-07: current-state answers from the packet alone")
+    state.add_argument("--packet", required=True)
+    state.add_argument("--out", required=True)
     args = parser.parse_args(argv)
 
     if args.command == "rediscover":
@@ -288,15 +368,29 @@ def main(argv=None):
         packet_text = tracer.read(packet_path)
         packet = json.loads(packet_text)
         problems = _packet_selfcheck(packet)
+        arm = "B_bootstrap" if args.command == "answer" else "state_consumer"
         if problems:
             result = {
-                "arm": "B_bootstrap",
+                "arm": arm,
                 "packet": str(packet_path),
                 "packet_used": True,
                 "read_from_chat": False,
                 "refused": True,
                 "refusal_reasons": problems,
                 "answers": {},
+                "trace": tracer.entries,
+                "totals": tracer.totals(),
+            }
+        elif args.command == "state":
+            answers, state_sources = _answers_state(packet)
+            result = {
+                "arm": "state_consumer",
+                "packet": str(packet_path),
+                "packet_used": True,
+                "read_from_chat": False,
+                "refused": False,
+                "answers": answers,
+                "state_sources": state_sources,
                 "trace": tracer.entries,
                 "totals": tracer.totals(),
             }

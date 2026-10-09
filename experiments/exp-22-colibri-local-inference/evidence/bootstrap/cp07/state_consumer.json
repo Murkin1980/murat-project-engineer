@@ -1,0 +1,43 @@
+{
+ "answers": {
+  "q_state_blocker": "Decision quality (accuracy, calibration, ambiguity handling) is **NOT measured** on released weights: the 842 MB Laya checkpoint was HuggingFace-only and unreachable from the original sandbox. It stays the blocker for any adoption decision.",
+  "q_state_completed_checkpoints": [
+   "CP-01",
+   "CP-02",
+   "CP-03"
+  ],
+  "q_state_next_authorized_action": "Run the frozen CP-01/CP-02 fixtures against the released 842 MB Laya checkpoint on a weights-available ≥8 GB machine and record accuracy/determinism/latency before any adapter work; no production integration is authorized.",
+  "q_state_recommendation": "HOLD",
+  "q_state_result_status": "PARTIAL",
+  "q_state_should_cp01_run_again": "NO"
+ },
+ "arm": "state_consumer",
+ "packet": "/home/user/murat-project-engineer/experiments/exp-22-colibri-local-inference/evidence/bootstrap/cp07/ARENA_CONTEXT.json",
+ "packet_used": true,
+ "read_from_chat": false,
+ "refused": false,
+ "state_sources": {
+  "q_state_blocker": "known_traps[0] (target RESULTS.md ## Known limitations / blockers)",
+  "q_state_completed_checkpoints": "resume.result_summary (registry Executed checkpoints: key)",
+  "q_state_next_authorized_action": "resume.next_authorized_action (target RESULTS.md ## Next authorized action)",
+  "q_state_recommendation": "resume.result_summary (registry RECOMMENDATION: key)",
+  "q_state_result_status": "resume.result_summary (registry RESULT: key; fallback resume.status)",
+  "q_state_should_cp01_run_again": "derived: CP-01 listed as executed => NO"
+ },
+ "totals": {
+  "bytes_read": 12710,
+  "failed_ops": 0,
+  "files_read": 1,
+  "listdir_ops": 0,
+  "read_ops": 1,
+  "tool_ops": 1
+ },
+ "trace": [
+  {
+   "bytes": 12710,
+   "ok": true,
+   "op": "read",
+   "path": "/home/user/murat-project-engineer/experiments/exp-22-colibri-local-inference/evidence/bootstrap/cp07/ARENA_CONTEXT.json"
+  }
+ ]
+}

@@ -6,5 +6,6 @@ style st_ready    fill: #dbeafe  border: #2563eb
 style st_planned  fill: #f3f4f6  border: #6b7280
 style st_hold     fill: #fef3c7  border: #d97706
 
-node col "PARTIAL (1)"  contents: (widths: match)
+node col "PARTIAL (2)"  contents: (widths: match)
+node col.exp_22 "EXP-22 · MPE / Colibri local inference \/ Brio routing / → Do not repeat CP-01…CP-03 (already executed). Recommendation HOLD: ru…" (wrap: 26)  style: st_planned
 node col.exp_26 "EXP-26 · MPE / TencentDB Agent Memory component extrac… / → Closed at bounded component extraction. No production integration or…" (wrap: 26)  style: st_planned

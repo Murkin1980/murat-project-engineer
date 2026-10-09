@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="355" height="1267" viewBox="0 0 355 1267" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
+<svg xmlns="http://www.w3.org/2000/svg" width="355" height="1096" viewBox="0 0 355 1096" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
   <defs>
   </defs>
-  <rect x="0" y="0" width="355" height="1267" fill="#ffffff"/>
-  <path d="M48 40 H307 a8 8 0 0 1 8 8 V1219 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
-  <text x="54" y="68.4" fill="#1f2328" text-anchor="start">PLANNED (7)</text>
+  <rect x="0" y="0" width="355" height="1096" fill="#ffffff"/>
+  <path d="M48 40 H307 a8 8 0 0 1 8 8 V1048 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <text x="54" y="68.4" fill="#1f2328" text-anchor="start">PLANNED (6)</text>
   <path d="M62 83 H293 a8 8 0 0 1 8 8 V236 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V91 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
   <text x="177.5" y="111.4" fill="#1f2328" text-anchor="middle">EXP-ALEXANDRIA ·</text>
   <text x="177.5" y="130.4" fill="#1f2328" text-anchor="middle">Orchestrator</text>
@@ -35,26 +35,18 @@
   <text x="177.5" y="681.4" fill="#1f2328" text-anchor="middle">technical reconnaissance</text>
   <text x="177.5" y="700.4" fill="#1f2328" text-anchor="middle">of SketchUp Ruby +</text>
   <text x="177.5" y="719.4" fill="#1f2328" text-anchor="middle">EasyKitch…</text>
-  <path d="M62 748 H293 a8 8 0 0 1 8 8 V901 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V756 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="177.5" y="776.4" fill="#1f2328" text-anchor="middle">EXP-22 · MPE</text>
-  <text x="177.5" y="795.4" fill="#1f2328" text-anchor="middle">Colibri local inference /</text>
-  <text x="177.5" y="814.4" fill="#1f2328" text-anchor="middle">Brio routing</text>
-  <text x="177.5" y="833.4" fill="#1f2328" text-anchor="middle">→ Arena: execute CP-01</text>
-  <text x="177.5" y="852.4" fill="#1f2328" text-anchor="middle">READY/WARNING/BLOCKED</text>
-  <text x="177.5" y="871.4" fill="#1f2328" text-anchor="middle">classification, CP-02</text>
-  <text x="177.5" y="890.4" fill="#1f2328" text-anchor="middle">fixe…</text>
-  <path d="M62 919 H293 a8 8 0 0 1 8 8 V1053 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V927 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="177.5" y="947.4" fill="#1f2328" text-anchor="middle">EXP-23 · MPE</text>
-  <text x="177.5" y="966.4" fill="#1f2328" text-anchor="middle">Papermorph document →</text>
-  <text x="177.5" y="985.4" fill="#1f2328" text-anchor="middle">interactive artif…</text>
-  <text x="177.5" y="1004.4" fill="#1f2328" text-anchor="middle">→ After EXP-22 Colibri</text>
-  <text x="177.5" y="1023.4" fill="#1f2328" text-anchor="middle">completes, Arena runs one</text>
-  <text x="177.5" y="1042.4" fill="#1f2328" text-anchor="middle">technical/business doc…</text>
-  <path d="M62 1071 H293 a8 8 0 0 1 8 8 V1205 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V1079 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="177.5" y="1099.4" fill="#1f2328" text-anchor="middle">EXP-24 · MPE</text>
-  <text x="177.5" y="1118.4" fill="#1f2328" text-anchor="middle">Agentic text → film</text>
-  <text x="177.5" y="1137.4" fill="#1f2328" text-anchor="middle">pipeline (HyperFram…</text>
-  <text x="177.5" y="1156.4" fill="#1f2328" text-anchor="middle">→ Run owner-authorized</text>
-  <text x="177.5" y="1175.4" fill="#1f2328" text-anchor="middle">Phase 2 CP-06…CP-12. Start</text>
-  <text x="177.5" y="1194.4" fill="#1f2328" text-anchor="middle">with one bounded sour…</text>
+  <path d="M62 748 H293 a8 8 0 0 1 8 8 V882 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V756 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="177.5" y="776.4" fill="#1f2328" text-anchor="middle">EXP-23 · MPE</text>
+  <text x="177.5" y="795.4" fill="#1f2328" text-anchor="middle">Papermorph document →</text>
+  <text x="177.5" y="814.4" fill="#1f2328" text-anchor="middle">interactive artif…</text>
+  <text x="177.5" y="833.4" fill="#1f2328" text-anchor="middle">→ After EXP-22 Colibri</text>
+  <text x="177.5" y="852.4" fill="#1f2328" text-anchor="middle">completes, Arena runs one</text>
+  <text x="177.5" y="871.4" fill="#1f2328" text-anchor="middle">technical/business doc…</text>
+  <path d="M62 900 H293 a8 8 0 0 1 8 8 V1034 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V908 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="177.5" y="928.4" fill="#1f2328" text-anchor="middle">EXP-24 · MPE</text>
+  <text x="177.5" y="947.4" fill="#1f2328" text-anchor="middle">Agentic text → film</text>
+  <text x="177.5" y="966.4" fill="#1f2328" text-anchor="middle">pipeline (HyperFram…</text>
+  <text x="177.5" y="985.4" fill="#1f2328" text-anchor="middle">→ Run owner-authorized</text>
+  <text x="177.5" y="1004.4" fill="#1f2328" text-anchor="middle">Phase 2 CP-06…CP-12. Start</text>
+  <text x="177.5" y="1023.4" fill="#1f2328" text-anchor="middle">with one bounded sour…</text>
 </svg>

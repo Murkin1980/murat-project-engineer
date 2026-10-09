@@ -18,7 +18,11 @@ Checkpoints:
   canonical-source immutability;
 - CP-06 — first real-use repair: EXP-22 / CP-01 must rebuild and verify FRESH from
   current Git with the H-1/H-2/H-3 defects repaired (regression coverage lives in
-  ``tests/test_exp29_bootstrap.py``).
+  ``tests/test_exp29_bootstrap.py``);
+- CP-07 — canonical current-state gap: after the registry + RESULTS repair the
+  EXP-22 / CP-01 packet must be FRESH *and* report the truthful current state
+  (PARTIAL / HOLD, CP-01..CP-03 executed, released-weight next action), which an
+  isolated state consumer answers from the packet alone.
 
 Usage:
     python3 experiments/exp-29-arena-bootstrap-harness/harness/exp29_proof.py all
@@ -481,7 +485,8 @@ REAL_USE_REMAINING_READS = (
     (f"{REAL_USE_DIR}/ARENA_TASK.md",
      "mission, required order and evaluation (packet carries only the boundary rules)"),
     (f"{REAL_USE_DIR}/FINDINGS.md",
-     "recorded EXP-22 state (no RESULTS.md, so the packet resume block cannot carry it)"),
+     "full historical evidence of the completed runs — detail only since CP-07: the "
+     "current state (executed checkpoints, result, next action) is carried by the packet"),
 )
 
 
@@ -563,6 +568,151 @@ def cp06(workdir):
     return results
 
 
+# --- CP-07: canonical current-state gap (registry + RESULTS repair) ------------
+
+# Pre-change reproduction, recorded on main a5a16bb before any CP-07 edit (see
+# REAL_USE_STATE evidence PRE_CHANGE_STATE.md): the same EXP-22/CP-01 packet that
+# verifies FRESH still reported PLANNED / "execute CP-01" while FINDINGS.md
+# recorded CP-01..CP-03 as executed.
+STATE_BEFORE = {
+    "source": f"{REAL_USE_DIR}/evidence/bootstrap/cp07/PRE_CHANGE_STATE.md",
+    "verify_status": "FRESH",
+    "registry_status": "PLANNED",
+    "nearest_action_prefix": "Arena: execute CP-01",
+    "result_summary_prefix": "Planned.",
+    "next_authorized_action": "",
+    "known_traps": 0,
+    "findings_record": "CP-01..CP-03 executed; RESULT: PARTIAL; RECOMMENDATION: HOLD",
+}
+
+# The truthful canonical state (from the committed EXP-22 evidence; not
+# reinterpreted here) that the rebuilt packet must report.
+STATE_EXPECTED = {
+    "q_state_result_status": "PARTIAL",
+    "q_state_completed_checkpoints": ["CP-01", "CP-02", "CP-03"],
+    "q_state_recommendation": "HOLD",
+    "q_state_blocker_contains": "NOT measured",
+    "q_state_next_authorized_action_contains": "released 842 MB Laya checkpoint",
+    "q_state_should_cp01_run_again": "NO",
+}
+
+STATE_KEYS = (
+    "q_state_result_status", "q_state_completed_checkpoints", "q_state_recommendation",
+    "q_state_blocker", "q_state_next_authorized_action", "q_state_should_cp01_run_again",
+)
+
+
+def cp07(workdir):
+    _log("CP-07: canonical current-state gap (EXP-22 / CP-01 bootstrap)")
+    packet = builder.build_packet(ROOT, REAL_USE["experiment_id"], REAL_USE["checkpoint"])
+    packet_path = _write_json(workdir / "cp07/exp22_cp01_packet.json", packet)
+    markdown_path = workdir / "cp07/exp22_cp01_packet.md"
+    markdown_path.write_text(builder.render_markdown(packet), encoding="utf-8")
+    verification = builder.verify_packet(packet, root=ROOT)
+
+    resume = packet["resume"]
+    state_worker = _run_worker(
+        ["state", "--packet", str(packet_path), "--out", str(workdir / "cp07/state_consumer.json")],
+        cwd=workdir / "cp07/state_cwd",
+    )
+    answers = state_worker["answers"]
+
+    # The stale condition must be gone: no PLANNED / "execute CP-01" state in a
+    # FRESH packet, and every state answer comes from the packet alone.
+    stale_phrases_present = any(
+        phrase in json.dumps(resume, ensure_ascii=False) + json.dumps(packet["now"], ensure_ascii=False)
+        for phrase in ("\"PLANNED\"", "Planned.", "execute CP-01 READY")
+    )
+    checks = {
+        "bootstrap_fresh": verification["status"] == "FRESH",
+        "registry_status_truthful": packet["now"]["registry_status"] == "PARTIAL"
+        and resume["status"] == "PARTIAL",
+        "no_stale_planned_state": not stale_phrases_present,
+        "result_and_recommendation_recorded": (
+            "RESULT: PARTIAL" in resume["result_summary"]
+            and "RECOMMENDATION: HOLD" in resume["result_summary"]
+            and "Executed checkpoints: CP-01, CP-02, CP-03" in resume["result_summary"]
+        ),
+        "next_action_is_released_weight_run": (
+            "Do not repeat CP-01" in resume["next_action"]
+            and "released 842 MB Laya checkpoint" in resume["next_action"]
+            and "released 842 MB Laya checkpoint" in resume["next_authorized_action"]
+        ),
+        "blocker_present": bool(packet["known_traps"])
+        and "NOT measured" in packet["known_traps"][0]["trap"],
+        "consumer_answers_correct": (
+            answers.get("q_state_result_status") == STATE_EXPECTED["q_state_result_status"]
+            and answers.get("q_state_completed_checkpoints")
+            == STATE_EXPECTED["q_state_completed_checkpoints"]
+            and answers.get("q_state_recommendation") == STATE_EXPECTED["q_state_recommendation"]
+            and STATE_EXPECTED["q_state_blocker_contains"] in str(answers.get("q_state_blocker", ""))
+            and STATE_EXPECTED["q_state_next_authorized_action_contains"]
+            in str(answers.get("q_state_next_authorized_action", ""))
+            and answers.get("q_state_should_cp01_run_again") == "NO"
+        ),
+        "consumer_used_packet_only": (
+            state_worker["packet_used"] and not state_worker["read_from_chat"]
+            and state_worker["totals"]["files_read"] == 1
+            and state_worker["totals"]["tool_ops"] == 1
+            and not any("FINDINGS" in entry["path"] for entry in state_worker["trace"])
+        ),
+    }
+
+    def _size(rel):
+        return (ROOT / rel).stat().st_size
+
+    # Remaining rediscovery after a FRESH packet: state determination is packet-only
+    # (0 extra reads); task-spec detail for executing the next action still needs the
+    # experiment README/ARENA_TASK (+ fixtures); FINDINGS.md is optional historical
+    # detail and is no longer required to know what is done or what comes next.
+    detail_reads = (
+        (f"{REAL_USE_DIR}/README.md", "next-action acceptance text (checkpoint scope is not a packet layer)"),
+        (f"{REAL_USE_DIR}/ARENA_TASK.md", "mission, required order and evaluation"),
+    )
+    optional_detail = (
+        (f"{REAL_USE_DIR}/FINDINGS.md", "historical detail of the completed runs (optional)"),
+        (f"{REAL_USE_DIR}/evidence/cp01-results.json", "raw CP-01 measurements (optional)"),
+        (f"{REAL_USE_DIR}/evidence/cp02-results.json", "raw CP-02 measurements (optional)"),
+    )
+    results = {
+        "checks": checks,
+        "result": "PASS" if all(checks.values()) else "FAIL",
+        "verification": {"status": verification["status"], "reasons": verification["reasons"]},
+        "before_recorded": STATE_BEFORE,
+        "expected_state": STATE_EXPECTED,
+        "after_measured": {
+            "packet_json_bytes": packet_path.stat().st_size,
+            "packet_md_bytes": markdown_path.stat().st_size,
+            "registry_status": packet["now"]["registry_status"],
+            "nearest_action": resume["next_action"],
+            "result_summary": resume["result_summary"],
+            "next_authorized_action": resume["next_authorized_action"],
+            "known_traps": [t["trap"] for t in packet["known_traps"]],
+            "state_consumer": {
+                "answers": answers,
+                "state_sources": state_worker.get("state_sources", {}),
+                "totals": state_worker["totals"],
+                "read_paths": [e["path"] for e in state_worker["trace"]],
+            },
+            "remaining_rediscovery": {
+                "basis": "retrieval-cost proxy: bytes of canonical files read; not wall-clock",
+                "state_determination_extra_reads": 0,
+                "state_determination_note": (
+                    "the six current-state questions are answered from the packet alone "
+                    "(1 file read); FINDINGS.md is not consulted"
+                ),
+                "detail_reads_for_next_action": [
+                    {"path": rel, "bytes": _size(rel), "why": why} for rel, why in detail_reads
+                ],
+                "optional_detail_reads": [
+                    {"path": rel, "bytes": _size(rel), "why": why} for rel, why in optional_detail
+                ],
+            },
+        },
+    }
+    return results
+
+
 # --- full run -------------------------------------------------------------------
 
 def run_all(workdir):
@@ -576,6 +726,7 @@ def run_all(workdir):
     cp03_results = cp03(workdir)
     cp04_results = cp04(workdir)
     cp06_results = cp06(workdir)
+    cp07_results = cp07(workdir)
 
     after = _canonical_digests()
     immutability = {
@@ -591,6 +742,7 @@ def run_all(workdir):
         "cp03_pass": cp03_results["result"] == "PASS",
         "cp04_pass": cp04_results["result"] == "PASS",
         "cp06_pass": cp06_results["result"] == "PASS",
+        "cp07_pass": cp07_results["result"] == "PASS",
         "canonical_sources_unchanged": immutability["canonical_sources_unchanged"],
     }
     summary = {
@@ -613,13 +765,14 @@ def run_all(workdir):
         "cp03": cp03_results,
         "cp04": cp04_results,
         "cp06": cp06_results,
+        "cp07": cp07_results,
         "immutability": immutability,
     }
 
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description="EXP-29 Arena Bootstrap Harness proof")
-    parser.add_argument("checkpoint", choices=("all", "cp02", "cp03", "cp04", "cp06"))
+    parser.add_argument("checkpoint", choices=("all", "cp02", "cp03", "cp04", "cp06", "cp07"))
     parser.add_argument("--workdir", default=str(EXPERIMENT_DIR / "evidence" / "work"))
     args = parser.parse_args(argv)
 
@@ -635,6 +788,8 @@ def main(argv=None):
             results = {"cp03": cp03(workdir)}
         elif args.checkpoint == "cp06":
             results = {"cp06": cp06(workdir)}
+        elif args.checkpoint == "cp07":
+            results = {"cp07": cp07(workdir)}
         else:
             results = {"cp04": cp04(workdir)}
         results["immutability"] = {

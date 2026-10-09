@@ -48,147 +48,91 @@
   {
    "source": {
     "anchor": "known-limitations",
-    "path": "experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md"
+    "path": "experiments/exp-22-colibri-local-inference/RESULTS.md"
    },
-   "trap": "The lease proof is **single-host, file-backed**. MPE has no shared-filesystem guarantee across executors, so this"
+   "trap": "Decision quality (accuracy, calibration, ambiguity handling) is **NOT measured** on released weights: the 842 MB Laya checkpoint was HuggingFace-only and unreachable from the original sandbox. It stays the blocker for any adoption decision."
   },
   {
    "source": {
     "anchor": "known-limitations",
-    "path": "experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md"
+    "path": "experiments/exp-22-colibri-local-inference/RESULTS.md"
    },
-   "trap": "The wall-time boundary is demonstrated with an **injected deterministic clock** (the real measured duration of"
+   "trap": "Tiny-Laya numbers (7–13 ms, ~48 MB RSS, random CI-fixture weights) are structural only — not released-model quality or latency (upstream released path: 219 ms/question, laptop CPU)."
   },
   {
    "source": {
     "anchor": "known-limitations",
-    "path": "experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md"
+    "path": "experiments/exp-22-colibri-local-inference/RESULTS.md"
    },
-   "trap": "Token/cost boundaries were exercised only through the existing `hard_limit`/`budget_health` contract; no live"
+   "trap": "Laya is English-only (collapses on non-Latin scripts while staying confident); routing probability thresholds stay uncalibrated in this run."
   },
   {
    "source": {
     "anchor": "known-limitations",
-    "path": "experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md"
+    "path": "experiments/exp-22-colibri-local-inference/RESULTS.md"
    },
-   "trap": "CP-02's \"rediscovery cost\" is a file-read/byte proxy measured in the harness, not a human user measurement;"
-  },
-  {
-   "source": {
-    "anchor": "known-limitations",
-    "path": "experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md"
-   },
-   "trap": "The donor was audited by reading, not by running Paperclip; anything about its runtime behaviour is the donor's"
-  },
-  {
-   "source": {
-    "anchor": "known-limitations",
-    "path": "experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md"
-   },
-   "trap": "7 pre-existing unittest failures remain (unchanged by this experiment), plus the pre-existing stale"
+   "trap": "This repository currently has no provider seam for the adapter to plug into (future-architecture socket only); no production integration is authorized."
   }
  ],
  "now": {
-  "checkpoint": "CP-05",
+  "checkpoint": "CP-01",
   "checkpoints": [
    "CP-01",
    "CP-02",
-   "CP-03",
-   "CP-04",
-   "CP-05"
+   "CP-03"
   ],
-  "disposition": "REUSE_COMPONENT",
+  "disposition": "EXPERIMENT",
   "disposition_sources": [
    {
-    "path": "experiments/exp-27-paperclip-orchestration-patterns/ARENA_TASK.md",
-    "value": "REUSE_COMPONENT"
-   },
-   {
-    "path": "experiments/exp-27-paperclip-orchestration-patterns/README.md",
-    "value": "REUSE_COMPONENT"
+    "path": "experiments/exp-22-colibri-local-inference/README.md",
+    "value": "EXPERIMENT"
    }
   ],
-  "experiment_id": "EXP-27",
-  "experiment_name": "Paperclip orchestration patterns",
-  "experiment_path": "experiments/exp-27-paperclip-orchestration-patterns",
-  "nearest_action": "Closed at bounded pattern extraction. No production integration, Router change, governance change, or follow-on checkpoint is authorized by this result; a future owner decision is required before any pattern is implemented in an existing component.",
-  "parent_goal": "Extract and test high-value orchestration patterns from Paperclip—goal context, atomic task lease, persistent resumable evidence, budget/runaway guards, and approval gates—inside existing MPE/murat-ai-orchestrator components without adopting a parallel control plane.",
+  "experiment_id": "EXP-22",
+  "experiment_name": "Colibri local inference / Brio routing",
+  "experiment_path": "experiments/exp-22-colibri-local-inference",
+  "nearest_action": "Do not repeat CP-01…CP-03 (already executed). Recommendation HOLD: run the frozen CP-01/CP-02 fixtures against the released 842 MB Laya checkpoint on a weights-available ≥8 GB machine and record accuracy/determinism/latency before any adapter work; no production integration is authorized.",
+  "parent_goal": "Test whether Colibri can provide measurable value as an optional local inference component for constrained MPE classification and routing without creating a parallel orchestration system.",
   "project": "Murat Project Engineer",
-  "registry_status": "PASS",
-  "registry_updated_at": "2026-10-06",
+  "registry_status": "PARTIAL",
+  "registry_updated_at": "2026-10-09",
   "source": {
    "path": "experiments/EXPERIMENT_REGISTRY.json"
   },
-  "task": "EXP-27/CP-05"
+  "task": "EXP-22/CP-01"
  },
  "packet_version": "exp-29-arena-context-v1",
  "resume": {
   "evidence": {
    "note": "full result record in the canonical experiment RESULTS.md",
-   "path": "experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md"
+   "path": "experiments/exp-22-colibri-local-inference/RESULTS.md"
   },
-  "next_action": "Closed at bounded pattern extraction. No production integration, Router change, governance change, or follow-on checkpoint is authorized by this result; a future owner decision is required before any pattern is implemented in an existing component.",
-  "next_authorized_action": "None inside this experiment — **STOP after CP-05** per `ARENA_TASK.md`. Any implementation of the BORROW/ADAPT",
-  "result_summary": "PASS / ADOPT_WITH_CHANGES at pattern level only. Donor audited at paperclipai/paperclip@d9f60004 (MIT; release tag v2026.1005.0 = 467125fa) and used as reference only. CP-02: a compact ancestry packet derived from the registry + ARENA_TASK let an isolated fresh process state project, parent goal, c…",
+  "next_action": "Do not repeat CP-01…CP-03 (already executed). Recommendation HOLD: run the frozen CP-01/CP-02 fixtures against the released 842 MB Laya checkpoint on a weights-available ≥8 GB machine and record accuracy/determinism/latency before any adapter work; no production integration is authorized.",
+  "next_authorized_action": "Run the frozen CP-01/CP-02 fixtures against the released 842 MB Laya checkpoint on a weights-available ≥8 GB machine and record accuracy/determinism/latency before any adapter work; no production integration is authorized.",
+  "result_summary": "RESULT: PARTIAL; RECOMMENDATION: HOLD; DEEP_CHANGE: NO. Executed checkpoints: CP-01, CP-02, CP-03. 66/66 HTTP 200, 0 malformed, 22/22 deterministic, 7-13 ms at ~48 MB RSS (tiny fixture). Decision quality NOT measured on released weights. No production integration.",
   "source": {
    "path": "experiments/EXPERIMENT_REGISTRY.json"
   },
-  "status": "PASS"
+  "status": "PARTIAL"
  },
  "reusable_components": [
   {
-   "disposition": "**ADOPT_IN_MPE** (derived packet + source digests; Git stays canonical)",
-   "pattern": "Goal ancestry / context",
+   "disposition": "**HOLD** — candidate optional provider; adopt only after the released-weight quality run",
+   "pattern": "Local constrained decision endpoint (Colibri System One / Brio `choice`) behind a Jev-shaped call",
    "source": {
     "anchor": "per-pattern-disposition",
-    "path": "experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md"
+    "path": "experiments/exp-22-colibri-local-inference/RESULTS.md"
    },
-   "verdict": "BORROW"
+   "verdict": "PROVEN structurally (quality OPEN)"
   },
   {
-   "disposition": "**ADOPT_IN_ORCHESTRATOR** (single-host lease as an extension of `scripts/runtime_coordination.py`, in a future authorized checkpoint)",
-   "pattern": "Atomic task lease",
+   "disposition": "**KEEP_EXISTING** — do not extend the decision adapter to chat completions",
+   "pattern": "OpenAI/Anthropic chat-shaped adapter for decision models",
    "source": {
     "anchor": "per-pattern-disposition",
-    "path": "experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md"
+    "path": "experiments/exp-22-colibri-local-inference/RESULTS.md"
    },
-   "verdict": "ADAPT"
-  },
-  {
-   "disposition": "**REUSE_PATTERN_ONLY** (add digest/idempotency key + completeness assertion to existing handoffs; no new store)",
-   "pattern": "Persistent resumable evidence",
-   "source": {
-    "anchor": "per-pattern-disposition",
-    "path": "experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md"
-   },
-   "verdict": "KEEP + BORROW"
-  },
-  {
-   "disposition": "**ADOPT_IN_MPE** (enforced bounded-stop mapped onto the existing compute-budget status vocabulary)",
-   "pattern": "Budget / runaway guard",
-   "source": {
-    "anchor": "per-pattern-disposition",
-    "path": "experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md"
-   },
-   "verdict": "ADAPT"
-  },
-  {
-   "disposition": "**REJECT** donor mechanism; keep the existing MPE gate unchanged",
-   "pattern": "Approval / governance gate",
-   "source": {
-    "anchor": "per-pattern-disposition",
-    "path": "experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md"
-   },
-   "verdict": "REJECT"
-  },
-  {
-   "disposition": "**DO_NOT_ADOPT** (parallel control plane, second source of truth)",
-   "pattern": "Paperclip as a system/service/DB",
-   "source": {
-    "anchor": "per-pattern-disposition",
-    "path": "experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md"
-   },
-   "verdict": "REJECT"
+   "verdict": "REJECT (fail-closed 400 by design)"
   }
  ],
  "rules": {
@@ -230,21 +174,37 @@
    "deep_change_gate": "docs/governance/SCOPE-CHANGE-CONTROL.md",
    "handoff_contract": "AGENTS.md",
    "source_of_truth_priority": "docs/governance/SCOPE-CHANGE-CONTROL.md",
-   "stop_rules": "experiments/exp-27-paperclip-orchestration-patterns/README.md#stop-conditions"
+   "stop_rules": "experiments/exp-22-colibri-local-inference/ARENA_TASK.md#boundaries + experiments/exp-22-colibri-local-inference/README.md#failure-stop-criteria + experiments/exp-22-colibri-local-inference/README.md#guardrails"
   },
   "stop_rules": [
-   "new repo;",
-   "persistent Paperclip service;",
-   "new DB/queue/daemon;",
-   "Router authority change;",
-   "governance replacement;",
-   "Git/source-of-truth change;",
-   "autonomous merge/deploy;",
-   "recurring paid infrastructure;",
-   "production integration."
+   "new repository;",
+   "production deployment;",
+   "production configuration changes;",
+   "default-provider changes;",
+   "secrets;",
+   "new control plane/router;",
+   "refactor of unrelated MPE code;",
+   "merging any production integration as part of this experiment.",
+   "setup cost exceeds the value of the narrow task;",
+   "latency makes the workflow impractical;",
+   "quality materially trails the reference path;",
+   "hardware/storage requirements are unreasonable for intended deployment;",
+   "compatibility requires invasive changes;",
+   "Arena discovers a deep-change requirement;",
+   "the experiment starts duplicating `murat-ai-orchestrator`.",
+   "No new repository.",
+   "No production deployment.",
+   "No production traffic.",
+   "No secrets committed.",
+   "No autonomous background service.",
+   "No replacement of existing orchestrator/router.",
+   "No model download larger than needed for the smallest useful proof without documenting the reason first.",
+   "Prefer a small supported MoE model for the first run.",
+   "Pin model/version and record exact hashes/revisions where practical.",
+   "Keep all evidence under this experiment directory."
   ],
-  "stop_rules_intro": "Stop and report before:",
-  "stop_rules_source": "experiments/exp-27-paperclip-orchestration-patterns/README.md#stop-conditions"
+  "stop_rules_intro": "Not allowed: / STOP or FAIL if:",
+  "stop_rules_source": "experiments/exp-22-colibri-local-inference/ARENA_TASK.md#boundaries + experiments/exp-22-colibri-local-inference/README.md#failure-stop-criteria + experiments/exp-22-colibri-local-inference/README.md#guardrails"
  },
  "source_refs": [
   {
@@ -253,19 +213,19 @@
    "sha256": "d2e68fda1f1289ba76ff1ac41eb63d508dd2ab66e8ce685f9abd72f511d10f11"
   },
   {
-   "path": "experiments/exp-27-paperclip-orchestration-patterns/ARENA_TASK.md",
+   "path": "experiments/exp-22-colibri-local-inference/ARENA_TASK.md",
    "role": "task_instructions",
-   "sha256": "ed3bed1a1de39eecbc2167efd25e41aece0f7876c6b02b26a61ed88fc803c1e3"
+   "sha256": "3504512bd7d0ab09e9448388149401a8aee84ec0b76310164e340c6b7a9a8bd4"
   },
   {
-   "path": "experiments/exp-27-paperclip-orchestration-patterns/README.md",
+   "path": "experiments/exp-22-colibri-local-inference/README.md",
    "role": "task_readme",
-   "sha256": "dba4d48d997e155e91ec220e2fb13e2525e6100f3ffb110a01086b3689216ef4"
+   "sha256": "a102a28dac4fcd40cef4033cf73c79eb22d5de344d6cc877cf303c8587fd8925"
   },
   {
-   "path": "experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md",
+   "path": "experiments/exp-22-colibri-local-inference/RESULTS.md",
    "role": "experiment_results",
-   "sha256": "8fde29e81e2c05c42a48acb6d1a483077d81e61399573fb1f0653cff2ef9ae5c"
+   "sha256": "bca8fd164d0b442881ae329a248679392331248256036d5938b78ecf32500363"
   },
   {
    "path": "STATUS.md",
