@@ -229,3 +229,47 @@ Return:
 - rollback.
 
 Open the PR but do not merge.
+
+## CP-06 — First real-use repair checkpoint (owner authorized 2026-10-09)
+
+Trigger: EXP-22 first real-use bootstrap run returned `REJECTED` twice with matching source digests and `matches_rebuild=true`. Evidence: `experiments/exp-22-colibri-local-inference/evidence/bootstrap/FIRST_REAL_USE.md`.
+
+This checkpoint is limited to the three confirmed harness defects from that run:
+
+- **H-1** — stop-rule parser misses real boundary sections such as `## Boundaries` and `## Failure / stop criteria`, causing false `REJECTED`.
+- **H-2** — markdown renderer hardcodes EXP-27 labels instead of describing the actual packet source/semantics.
+- **H-3** — checkpoint-chain/disposition parsing ignores README-declared fields, producing incomplete genealogy for EXP-22.
+
+### Required repair
+
+1. Reproduce all three defects against the committed EXP-22 evidence before editing.
+2. Make the smallest additive/targeted changes inside the existing EXP-29 harness only. Do not add a second parser, memory layer, registry, or new source of truth.
+3. Preserve fail-closed behavior: broader parsing must not turn missing or ambiguous safety boundaries into silent `FRESH`.
+4. Add regression tests for H-1/H-2/H-3 using EXP-22-shaped fixtures plus the existing EXP-27 fixture.
+5. Rebuild a packet for **EXP-22 / CP-01** from current canonical Git and require verifier result **FRESH**.
+6. Confirm the repaired packet contains:
+   - non-empty checkpoint chain covering CP-01…CP-03;
+   - disposition `EXPERIMENT` from canonical source;
+   - applicable EXP-22 stop/boundary rules;
+   - correct non-hardcoded markdown labels;
+   - source refs/digests that verify against current Git.
+7. Re-run the original EXP-29 negative controls and prove all six still fail closed as designed.
+8. Record before/after real-use measurements and whether any extra rediscovery remains necessary for EXP-22 startup.
+
+### Scope
+
+Allowed changes:
+- `experiments/exp-29-arena-bootstrap-harness/harness/**`;
+- EXP-29 tests/evidence/results needed for CP-06;
+- generated EXP-29/EXP-22 bootstrap evidence needed to prove the repair;
+- registry/result metadata if required by the established experiment ritual.
+
+Do not change EXP-22 Colibri conclusions, production code, governance, Router, contracts, gates, or unrelated experiments.
+
+If fixing H-1/H-2/H-3 requires changing canonical source priority, safety authority, or adding persistent memory/orchestration, STOP with `DEEP_CHANGE_REQUIRED`.
+
+### CP-06 PASS
+
+PASS only if the same EXP-22/CP-01 case that previously returned `REJECTED` now returns **FRESH**, H-1/H-2/H-3 have regression coverage, EXP-27 remains valid, all six CP-04 negative controls still fail closed, and no production/governance boundary changes.
+
+Open one bounded PR and do not merge.
