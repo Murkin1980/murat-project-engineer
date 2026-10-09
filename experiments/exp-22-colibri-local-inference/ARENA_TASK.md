@@ -2,6 +2,27 @@
 
 You are executing a bounded MPE experiment. Read `README.md` first.
 
+## Bootstrap preflight — mandatory first real-use run
+
+Before the normal EXP-22 audit or any upstream exploration, use the validated EXP-29 Arena bootstrap harness.
+
+1. Generate a fresh packet for EXP-22 / CP-01 with:
+   `experiments/exp-29-arena-bootstrap-harness/harness/bootstrap_builder.py`.
+2. Verify the generated packet with the EXP-29 verifier.
+3. Continue only when verification returns **FRESH**.
+4. Treat `ARENA_CONTEXT.json` / `ARENA_CONTEXT.md` as derived, non-authoritative views. Canonical Git sources always win.
+5. If verification returns `STALE` or `REJECTED`, regenerate once from current Git. If it still fails, STOP and report the source conflict instead of bypassing the bootstrap safety check.
+6. Record this as the **first real-use bootstrap run** in EXP-22 evidence:
+   - packet bytes;
+   - source-ref count;
+   - files/tool operations used before first useful EXP-22 action;
+   - any rediscovery that the packet did not prevent;
+   - any stale/incorrect lesson or rule found;
+   - whether genealogy, current checkpoint and all applicable stop/deep-change boundaries were correct.
+7. Do not modify the EXP-29 harness while executing EXP-22. Any harness defect becomes a separate finding, not hidden scope expansion.
+
+This bootstrap preflight is part of execution discipline, not a new EXP-22 success criterion. Colibri must still pass or fail on its own evidence.
+
 ## Mission
 
 Determine whether Colibri provides measurable value as an **optional local inference component** for existing MPE systems, especially constrained classification/routing.
