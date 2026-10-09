@@ -628,7 +628,9 @@
         "experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md",
         "experiments/exp-28-agent-workflow-skills-retro/RESULTS.md"
       ],
-      "pr_or_issue_links": [],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/65"
+      ],
       "updated_at": "2026-10-09"
     }
   ]

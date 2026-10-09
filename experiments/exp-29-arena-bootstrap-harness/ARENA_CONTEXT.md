@@ -14,7 +14,7 @@ Verify freshness before use: `python3 experiments/exp-29-arena-bootstrap-harness
 - Disposition: REUSE_COMPONENT
 - Registry status: PASS (updated 2026-10-06)
 - Nearest action: Closed at bounded pattern extraction. No production integration, Router change, governance change, or follow-on checkpoint is authorized by this result; a future owner decision is required before any pattern is implemented in an existing component.
-- Generated against (informational): branch `arena/19fa71aa-murat-project-engineer`, head `bb6f1f85fde993c0b698f7036df2699961ed1478`, base `bb6f1f85fde993c0b698f7036df2699961ed1478`
+- Generated against (informational): branch `arena/19fa71aa-murat-project-engineer`, head `6c6a592a442f0d3c779af8ae5c6e8185b9158bbb`, base `bb6f1f85fde993c0b698f7036df2699961ed1478`
 
 ## RULES (mandatory)
 
@@ -99,7 +99,7 @@ Graceful handoff minimum (AGENTS.md): STATE, EVIDENCE, CHANGES, RESULT, BLOCKER,
 
 | Path | SHA-256 | Role |
 |---|---|---|
-| `experiments/EXPERIMENT_REGISTRY.json` | `768b16874a9e63898935a3de1cb591788c11017aa56296661b80ae1f8a8d7c8b` | registry |
+| `experiments/EXPERIMENT_REGISTRY.json` | `55d92619e1a594e160c68a60b94dc06454baa52499bf70f3c636f7217c7425fe` | registry |
 | `experiments/exp-27-paperclip-orchestration-patterns/ARENA_TASK.md` | `ed3bed1a1de39eecbc2167efd25e41aece0f7876c6b02b26a61ed88fc803c1e3` | task_instructions |
 | `experiments/exp-27-paperclip-orchestration-patterns/README.md` | `dba4d48d997e155e91ec220e2fb13e2525e6100f3ffb110a01086b3689216ef4` | task_readme |
 | `experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md` | `8fde29e81e2c05c42a48acb6d1a483077d81e61399573fb1f0653cff2ef9ae5c` | experiment_results |

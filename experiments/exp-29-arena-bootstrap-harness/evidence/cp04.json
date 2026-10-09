@@ -31,7 +31,7 @@
    "expected": "STALE",
    "field_diffs": [
     {
-     "canonical": "768b16874a9e63898935a3de1cb591788c11017aa56296661b80ae1f8a8d7c8b",
+     "canonical": "55d92619e1a594e160c68a60b94dc06454baa52499bf70f3c636f7217c7425fe",
      "field": "source_refs[0].sha256",
      "packet": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
     }
@@ -86,9 +86,9 @@
      "packet": "Closed at bounded pattern extraction. No production integration, Router change, governance change, or follow-on checkpo…"
     },
     {
-     "canonical": "20cc407273347f952d047fd0d138d2c869a50054dc0a725d2755d6c1878042b7",
+     "canonical": "aab5c4711a6146c432e1cc7f220c19b88dd571c9401c529e5557e334a1099838",
      "field": "source_refs[0].sha256",
-     "packet": "768b16874a9e63898935a3de1cb591788c11017aa56296661b80ae1f8a8d7c8b"
+     "packet": "55d92619e1a594e160c68a60b94dc06454baa52499bf70f3c636f7217c7425fe"
     }
    ],
    "id": "NC-04",

@@ -6,6 +6,8 @@
 - Primary disposition (per `ARENA_TASK.md`): **REUSE_COMPONENT**
 - Run date: 2026-10-09 (UTC)
 - Branch: `arena/19fa71aa-murat-project-engineer` (base `bb6f1f85fde993c0b698f7036df2699961ed1478`)
+- Commit: `6c6a592` (+ one follow-up commit recording the PR link and regenerating the packet digest)
+- PR: https://github.com/Murkin1980/murat-project-engineer/pull/65 — **opened, not merged**
 - Start condition: owner explicitly started EXP-29 after EXP-20 was completed
   (registry: EXP-20 `PASS`, updated 2026-10-09)
 - No new repository, memory service, vector store, daemon, scheduler,
