@@ -441,19 +441,28 @@
       "experiment_id": "EXP-22",
       "name": "Colibri local inference / Brio routing",
       "owning_project": "Murat Project Engineer",
-      "status": "PLANNED",
+      "status": "PARTIAL",
       "why": "Test whether Colibri can provide measurable value as an optional local inference component for constrained MPE classification and routing without creating a parallel orchestration system.",
       "date_added": "2026-10-06",
-      "next_action": "Arena: execute CP-01 READY/WARNING/BLOCKED classification, CP-02 fixed-agent routing, and CP-03 isolated provider compatibility only if earlier checkpoints show useful signal.",
-      "result_summary": "Planned. Primary disposition EXPERIMENT. No new repository, production deployment, provider switch, control plane, or deep-change is authorized.",
+      "next_action": "Do not repeat CP-01…CP-03 (already executed). Recommendation HOLD: run the frozen CP-01/CP-02 fixtures against the released 842 MB Laya checkpoint on a weights-available ≥8 GB machine and record accuracy/determinism/latency before any adapter work; no production integration is authorized.",
+      "result_summary": "RESULT: PARTIAL; RECOMMENDATION: HOLD; DEEP_CHANGE: NO. Executed checkpoints: CP-01, CP-02, CP-03. 66/66 HTTP 200, 0 malformed, 22/22 deterministic, 7-13 ms at ~48 MB RSS (tiny fixture). Decision quality NOT measured on released weights. No production integration.",
       "repo": "Murkin1980/murat-project-engineer",
       "experiment_path": "experiments/exp-22-colibri-local-inference",
       "evidence_links": [
         "experiments/exp-22-colibri-local-inference/README.md",
-        "experiments/exp-22-colibri-local-inference/ARENA_TASK.md"
+        "experiments/exp-22-colibri-local-inference/ARENA_TASK.md",
+        "experiments/exp-22-colibri-local-inference/RESULTS.md",
+        "experiments/exp-22-colibri-local-inference/FINDINGS.md",
+        "experiments/exp-22-colibri-local-inference/evidence/cp01-results.json",
+        "experiments/exp-22-colibri-local-inference/evidence/cp02-results.json",
+        "experiments/exp-22-colibri-local-inference/evidence/cp03-results.json",
+        "experiments/exp-22-colibri-local-inference/evidence/environment.md",
+        "experiments/exp-22-colibri-local-inference/evidence/bootstrap/FIRST_REAL_USE.md"
       ],
-      "pr_or_issue_links": [],
-      "updated_at": "2026-10-06"
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/73"
+      ],
+      "updated_at": "2026-10-09"
     },
     {
       "experiment_id": "EXP-23",

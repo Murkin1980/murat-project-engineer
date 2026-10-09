@@ -2,9 +2,9 @@
  "cp02": {
   "artifacts": {
    "generated_against": {
-    "git_base": "4b3dd3594f986a8d018d1c65d11a299fb13aa6c3",
-    "git_branch": "arena/cdf0ab3a-murat-project-engineer",
-    "git_head": "4b3dd3594f986a8d018d1c65d11a299fb13aa6c3"
+    "git_base": "a5a16bbf2cf339a3ff2eac398486ba9ad7c9e41f",
+    "git_branch": "arena/0ed937e3-murat-project-engineer",
+    "git_head": "19a0aca5f3b2238b2cfa8f94944317500f66c1cf"
    },
    "json_bytes": 13113,
    "md_bytes": 10382,
@@ -168,7 +168,7 @@
    "arm": "A_rediscovery",
    "cost": {
     "at_all_answers": {
-     "bytes_read": 84978,
+     "bytes_read": 85837,
      "failed_ops": 0,
      "files_read": 5,
      "listdir_ops": 2,
@@ -176,7 +176,7 @@
      "tool_ops": 7
     },
     "at_genealogy_complete": {
-     "bytes_read": 72295,
+     "bytes_read": 73154,
      "failed_ops": 0,
      "files_read": 4,
      "listdir_ops": 2,
@@ -187,7 +187,7 @@
    "packet_used": false,
    "read_from_chat": false,
    "totals": {
-    "bytes_read": 84978,
+    "bytes_read": 85837,
     "failed_ops": 0,
     "files_read": 5,
     "listdir_ops": 2,
@@ -221,7 +221,7 @@
     "path": "/home/user/murat-project-engineer/experiments/exp-27-paperclip-orchestration-patterns/README.md"
    },
    {
-    "bytes": 50613,
+    "bytes": 51472,
     "ok": true,
     "op": "read",
     "path": "/home/user/murat-project-engineer/experiments/EXPERIMENT_REGISTRY.json"
@@ -276,7 +276,7 @@
     "bytes": 13087,
     "ok": true,
     "op": "read",
-    "path": "/tmp/exp29-work/cp03/packet.json"
+    "path": "/home/user/murat-project-engineer/experiments/exp-29-arena-bootstrap-harness/evidence/work/cp03/packet.json"
    }
   ],
   "checks": {
@@ -295,7 +295,7 @@
   "comparison": {
    "arm_a_cost": {
     "at_all_answers": {
-     "bytes_read": 84978,
+     "bytes_read": 85837,
      "failed_ops": 0,
      "files_read": 5,
      "listdir_ops": 2,
@@ -303,7 +303,7 @@
      "tool_ops": 7
     },
     "at_genealogy_complete": {
-     "bytes_read": 72295,
+     "bytes_read": 73154,
      "failed_ops": 0,
      "files_read": 4,
      "listdir_ops": 2,
@@ -312,7 +312,7 @@
     }
    },
    "arm_a_totals": {
-    "bytes_read": 84978,
+    "bytes_read": 85837,
     "failed_ops": 0,
     "files_read": 5,
     "listdir_ops": 2,
@@ -345,12 +345,12 @@
     "read_ops": 1,
     "tool_ops": 1
    },
-   "bytes_reduction_ratio": 0.846,
+   "bytes_reduction_ratio": 0.8475,
    "fixture": {
     "checkpoint": "CP-05",
     "experiment_id": "EXP-27"
    },
-   "genealogy_cost_reduction_ratio": 0.819,
+   "genealogy_cost_reduction_ratio": 0.8211,
    "packet_bytes": 13087,
    "verify_before_arms": "FRESH"
   },
@@ -394,7 +394,7 @@
     "expected": "STALE",
     "field_diffs": [
      {
-      "canonical": "55d92619e1a594e160c68a60b94dc06454baa52499bf70f3c636f7217c7425fe",
+      "canonical": "1e499866659953ca09b32dc95c4a11b508767831c6178540542fc861a5992f97",
       "field": "source_refs[0].sha256",
       "packet": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
      }
@@ -449,9 +449,9 @@
       "packet": "Closed at bounded pattern extraction. No production integration, Router change, governance change, or follow-on checkpo…"
      },
      {
-      "canonical": "aab5c4711a6146c432e1cc7f220c19b88dd571c9401c529e5557e334a1099838",
+      "canonical": "905637b84142df893340ad7d544d7e4860fa27b78f28136efbd95ee1196e636e",
       "field": "source_refs[0].sha256",
-      "packet": "55d92619e1a594e160c68a60b94dc06454baa52499bf70f3c636f7217c7425fe"
+      "packet": "1e499866659953ca09b32dc95c4a11b508767831c6178540542fc861a5992f97"
      }
     ],
     "id": "NC-04",
@@ -519,11 +519,11 @@
    "basis": "retrieval-cost proxy: bytes of canonical files a fresh executor reads; not a wall-clock or human-time measurement",
    "extra_rediscovery_remains": true,
    "packet_plus_remaining_reads": {
-    "bytes": 28339,
+    "bytes": 31272,
     "files": 4,
     "remaining_reads": [
      {
-      "bytes": 4566,
+      "bytes": 4591,
       "path": "experiments/exp-22-colibri-local-inference/README.md",
       "why": "CP-01 acceptance text (checkpoint scope is not a packet layer)"
      },
@@ -535,12 +535,12 @@
      {
       "bytes": 10068,
       "path": "experiments/exp-22-colibri-local-inference/FINDINGS.md",
-      "why": "recorded EXP-22 state (no RESULTS.md, so the packet resume block cannot carry it)"
+      "why": "full historical evidence of the completed runs — detail only since CP-07: the current state (executed checkpoints, result, next action) is carried by the packet"
      }
     ]
    },
    "rediscovery_without_packet": {
-    "bytes": 71163,
+    "bytes": 72047,
     "files": 4,
     "reads": [
      "STATUS.md",
@@ -585,22 +585,142 @@
      "value": "EXPERIMENT"
     }
    ],
-   "json_bytes": 9802,
+   "json_bytes": 12710,
    "markdown_headings": [
     "## NOW",
     "## RULES (mandatory)",
     "## KNOWN LESSONS (evidence-gated, from experiments/exp-28-agent-workflow-skills-retro/RESULTS.md)",
-    "## REUSABLE COMPONENTS (no experiment RESULTS.md present)",
-    "## KNOWN TRAPS (verified limitations, no experiment RESULTS.md present)",
+    "## REUSABLE COMPONENTS (from experiments/exp-22-colibri-local-inference/RESULTS.md)",
+    "## KNOWN TRAPS (verified limitations, from experiments/exp-22-colibri-local-inference/RESULTS.md)",
     "## RESUME",
     "## PROVENANCE (canonical sources + digests)",
     "## FRESHNESS"
    ],
-   "md_bytes": 8302,
+   "md_bytes": 10579,
    "stop_rules": 25,
    "stop_rules_intro": "Not allowed: / STOP or FAIL if:",
    "stop_rules_source": "experiments/exp-22-colibri-local-inference/ARENA_TASK.md#boundaries + experiments/exp-22-colibri-local-inference/README.md#failure-stop-criteria + experiments/exp-22-colibri-local-inference/README.md#guardrails",
    "task": "EXP-22/CP-01"
+  },
+  "result": "PASS",
+  "verification": {
+   "reasons": [],
+   "status": "FRESH"
+  }
+ },
+ "cp07": {
+  "after_measured": {
+   "known_traps": [
+    "Decision quality (accuracy, calibration, ambiguity handling) is **NOT measured** on released weights: the 842 MB Laya checkpoint was HuggingFace-only and unreachable from the original sandbox. It stays the blocker for any adoption decision.",
+    "Tiny-Laya numbers (7–13 ms, ~48 MB RSS, random CI-fixture weights) are structural only — not released-model quality or latency (upstream released path: 219 ms/question, laptop CPU).",
+    "Laya is English-only (collapses on non-Latin scripts while staying confident); routing probability thresholds stay uncalibrated in this run.",
+    "This repository currently has no provider seam for the adapter to plug into (future-architecture socket only); no production integration is authorized."
+   ],
+   "nearest_action": "Do not repeat CP-01…CP-03 (already executed). Recommendation HOLD: run the frozen CP-01/CP-02 fixtures against the released 842 MB Laya checkpoint on a weights-available ≥8 GB machine and record accuracy/determinism/latency before any adapter work; no production integration is authorized.",
+   "next_authorized_action": "Run the frozen CP-01/CP-02 fixtures against the released 842 MB Laya checkpoint on a weights-available ≥8 GB machine and record accuracy/determinism/latency before any adapter work; no production integration is authorized.",
+   "packet_json_bytes": 12710,
+   "packet_md_bytes": 10579,
+   "registry_status": "PARTIAL",
+   "remaining_rediscovery": {
+    "basis": "retrieval-cost proxy: bytes of canonical files read; not wall-clock",
+    "detail_reads_for_next_action": [
+     {
+      "bytes": 4591,
+      "path": "experiments/exp-22-colibri-local-inference/README.md",
+      "why": "next-action acceptance text (checkpoint scope is not a packet layer)"
+     },
+     {
+      "bytes": 3903,
+      "path": "experiments/exp-22-colibri-local-inference/ARENA_TASK.md",
+      "why": "mission, required order and evaluation"
+     }
+    ],
+    "optional_detail_reads": [
+     {
+      "bytes": 10068,
+      "path": "experiments/exp-22-colibri-local-inference/FINDINGS.md",
+      "why": "historical detail of the completed runs (optional)"
+     },
+     {
+      "bytes": 17119,
+      "path": "experiments/exp-22-colibri-local-inference/evidence/cp01-results.json",
+      "why": "raw CP-01 measurements (optional)"
+     },
+     {
+      "bytes": 15421,
+      "path": "experiments/exp-22-colibri-local-inference/evidence/cp02-results.json",
+      "why": "raw CP-02 measurements (optional)"
+     }
+    ],
+    "state_determination_extra_reads": 0,
+    "state_determination_note": "the six current-state questions are answered from the packet alone (1 file read); FINDINGS.md is not consulted"
+   },
+   "result_summary": "RESULT: PARTIAL; RECOMMENDATION: HOLD; DEEP_CHANGE: NO. Executed checkpoints: CP-01, CP-02, CP-03. 66/66 HTTP 200, 0 malformed, 22/22 deterministic, 7-13 ms at ~48 MB RSS (tiny fixture). Decision quality NOT measured on released weights. No production integration.",
+   "state_consumer": {
+    "answers": {
+     "q_state_blocker": "Decision quality (accuracy, calibration, ambiguity handling) is **NOT measured** on released weights: the 842 MB Laya checkpoint was HuggingFace-only and unreachable from the original sandbox. It stays the blocker for any adoption decision.",
+     "q_state_completed_checkpoints": [
+      "CP-01",
+      "CP-02",
+      "CP-03"
+     ],
+     "q_state_next_authorized_action": "Run the frozen CP-01/CP-02 fixtures against the released 842 MB Laya checkpoint on a weights-available ≥8 GB machine and record accuracy/determinism/latency before any adapter work; no production integration is authorized.",
+     "q_state_recommendation": "HOLD",
+     "q_state_result_status": "PARTIAL",
+     "q_state_should_cp01_run_again": "NO"
+    },
+    "read_paths": [
+     "/home/user/murat-project-engineer/experiments/exp-29-arena-bootstrap-harness/evidence/work/cp07/exp22_cp01_packet.json"
+    ],
+    "state_sources": {
+     "q_state_blocker": "known_traps[0] (target RESULTS.md ## Known limitations / blockers)",
+     "q_state_completed_checkpoints": "resume.result_summary (registry Executed checkpoints: key)",
+     "q_state_next_authorized_action": "resume.next_authorized_action (target RESULTS.md ## Next authorized action)",
+     "q_state_recommendation": "resume.result_summary (registry RECOMMENDATION: key)",
+     "q_state_result_status": "resume.result_summary (registry RESULT: key; fallback resume.status)",
+     "q_state_should_cp01_run_again": "derived: CP-01 listed as executed => NO"
+    },
+    "totals": {
+     "bytes_read": 12710,
+     "failed_ops": 0,
+     "files_read": 1,
+     "listdir_ops": 0,
+     "read_ops": 1,
+     "tool_ops": 1
+    }
+   }
+  },
+  "before_recorded": {
+   "findings_record": "CP-01..CP-03 executed; RESULT: PARTIAL; RECOMMENDATION: HOLD",
+   "known_traps": 0,
+   "nearest_action_prefix": "Arena: execute CP-01",
+   "next_authorized_action": "",
+   "registry_status": "PLANNED",
+   "result_summary_prefix": "Planned.",
+   "source": "experiments/exp-22-colibri-local-inference/evidence/bootstrap/cp07/PRE_CHANGE_STATE.md",
+   "verify_status": "FRESH"
+  },
+  "checks": {
+   "blocker_present": true,
+   "bootstrap_fresh": true,
+   "consumer_answers_correct": true,
+   "consumer_used_packet_only": true,
+   "next_action_is_released_weight_run": true,
+   "no_stale_planned_state": true,
+   "registry_status_truthful": true,
+   "result_and_recommendation_recorded": true
+  },
+  "expected_state": {
+   "q_state_blocker_contains": "NOT measured",
+   "q_state_completed_checkpoints": [
+    "CP-01",
+    "CP-02",
+    "CP-03"
+   ],
+   "q_state_next_authorized_action_contains": "released 842 MB Laya checkpoint",
+   "q_state_recommendation": "HOLD",
+   "q_state_result_status": "PARTIAL",
+   "q_state_should_cp01_run_again": "NO"
   },
   "result": "PASS",
   "verification": {
@@ -622,7 +742,8 @@
    "cp02_pass": true,
    "cp03_pass": true,
    "cp04_pass": true,
-   "cp06_pass": true
+   "cp06_pass": true,
+   "cp07_pass": true
   },
   "experiment": "EXP-29",
   "fixture": {
@@ -631,7 +752,7 @@
   },
   "measurements": {
    "arm_a": {
-    "bytes_read": 84978,
+    "bytes_read": 85837,
     "failed_ops": 0,
     "files_read": 5,
     "listdir_ops": 2,
@@ -646,8 +767,8 @@
     "read_ops": 1,
     "tool_ops": 1
    },
-   "bytes_reduction_ratio": 0.846,
-   "genealogy_cost_reduction_ratio": 0.819,
+   "bytes_reduction_ratio": 0.8475,
+   "genealogy_cost_reduction_ratio": 0.8211,
    "packet_json_bytes": 13113,
    "packet_md_bytes": 10382
   },

@@ -1,0 +1,16 @@
+{
+ "checks": {
+  "authority_disclaimer": true,
+  "deep_change_gate_present": true,
+  "disposition_unambiguous": true,
+  "lesson_scopes_valid": true,
+  "matches_rebuild": true,
+  "source_digests_match": true,
+  "stop_rules_present": true
+ },
+ "consistent_with_canonical_sources": true,
+ "disposition": "Consistent with current canonical sources. Usable as a non-authoritative launch brief; canonical Git sources remain authoritative on any conflict.",
+ "field_diffs": [],
+ "reasons": [],
+ "status": "FRESH"
+}

@@ -3,11 +3,11 @@
   "basis": "retrieval-cost proxy: bytes of canonical files a fresh executor reads; not a wall-clock or human-time measurement",
   "extra_rediscovery_remains": true,
   "packet_plus_remaining_reads": {
-   "bytes": 28339,
+   "bytes": 31272,
    "files": 4,
    "remaining_reads": [
     {
-     "bytes": 4566,
+     "bytes": 4591,
      "path": "experiments/exp-22-colibri-local-inference/README.md",
      "why": "CP-01 acceptance text (checkpoint scope is not a packet layer)"
     },
@@ -19,12 +19,12 @@
     {
      "bytes": 10068,
      "path": "experiments/exp-22-colibri-local-inference/FINDINGS.md",
-     "why": "recorded EXP-22 state (no RESULTS.md, so the packet resume block cannot carry it)"
+     "why": "full historical evidence of the completed runs — detail only since CP-07: the current state (executed checkpoints, result, next action) is carried by the packet"
     }
    ]
   },
   "rediscovery_without_packet": {
-   "bytes": 71163,
+   "bytes": 72047,
    "files": 4,
    "reads": [
     "STATUS.md",
@@ -69,18 +69,18 @@
     "value": "EXPERIMENT"
    }
   ],
-  "json_bytes": 9802,
+  "json_bytes": 12710,
   "markdown_headings": [
    "## NOW",
    "## RULES (mandatory)",
    "## KNOWN LESSONS (evidence-gated, from experiments/exp-28-agent-workflow-skills-retro/RESULTS.md)",
-   "## REUSABLE COMPONENTS (no experiment RESULTS.md present)",
-   "## KNOWN TRAPS (verified limitations, no experiment RESULTS.md present)",
+   "## REUSABLE COMPONENTS (from experiments/exp-22-colibri-local-inference/RESULTS.md)",
+   "## KNOWN TRAPS (verified limitations, from experiments/exp-22-colibri-local-inference/RESULTS.md)",
    "## RESUME",
    "## PROVENANCE (canonical sources + digests)",
    "## FRESHNESS"
   ],
-  "md_bytes": 8302,
+  "md_bytes": 10579,
   "stop_rules": 25,
   "stop_rules_intro": "Not allowed: / STOP or FAIL if:",
   "stop_rules_source": "experiments/exp-22-colibri-local-inference/ARENA_TASK.md#boundaries + experiments/exp-22-colibri-local-inference/README.md#failure-stop-criteria + experiments/exp-22-colibri-local-inference/README.md#guardrails",

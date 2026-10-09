@@ -11,7 +11,11 @@ These tests execute the experiment-local harness in
 * CP-04 — stale/unsafe packet negative controls (fail-closed verification);
 * CP-06 — first real-use repair: H-1 stop-rule boundary sections, H-2 source-true
   markdown labels, H-3 README-declared checkpoint chain / disposition, using
-  EXP-22-shaped fixtures plus the EXP-27 fixture, and a live EXP-22/CP-01 FRESH check.
+  EXP-22-shaped fixtures plus the EXP-27 fixture, and a live EXP-22/CP-01 FRESH check;
+* CP-07 — canonical current-state gap: the EXP-22 registry entry + RESULTS.md carry
+  the truthful PARTIAL / HOLD state, the rebuilt EXP-22/CP-01 packet is FRESH *and*
+  current, and an isolated state consumer answers the six state questions from the
+  packet alone (never from FINDINGS.md).
 
 They test contract behaviour (determinism, provenance, staleness detection,
 fail-closed refusal, no second source of truth, unchanged canonical sources),
@@ -591,6 +595,128 @@ class Exp29RealUseRepairTests(unittest.TestCase):
             markdown,
         )
         self.assertEqual(builder.verify_packet(packet, ROOT)["status"], "FRESH")
+
+
+# --- CP-07: canonical current-state gap (registry + RESULTS repair) -------------
+
+STATE_ANSWERS = {
+    "q_state_result_status": "PARTIAL",
+    "q_state_completed_checkpoints": ["CP-01", "CP-02", "CP-03"],
+    "q_state_recommendation": "HOLD",
+    "q_state_should_cp01_run_again": "NO",
+}
+
+PRE_CHANGE_PACKET = (
+    ROOT / "experiments" / "exp-22-colibri-local-inference" / "evidence" / "bootstrap"
+    / "cp07" / "pre_change_packet.json"
+)
+
+
+class Exp29CanonicalStateTests(unittest.TestCase):
+    """CP-07: the FRESH-but-stale-state gap is closed through the registry + RESULTS path."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls._tmp = tempfile.TemporaryDirectory(prefix="exp29-cp07-")
+        cls.workdir = Path(cls._tmp.name)
+        cls.packet = builder.build_packet(ROOT, "EXP-22", "CP-01", **PINNED_GIT)
+
+    @classmethod
+    def tearDownClass(cls):
+        cls._tmp.cleanup()
+
+    def _state_worker(self, packet, name):
+        packet_path = self.workdir / f"{name}.json"
+        packet_path.write_text(
+            json.dumps(packet, ensure_ascii=False, sort_keys=True, indent=1) + "\n",
+            encoding="utf-8",
+        )
+        return _run_worker(
+            ["state", "--packet", str(packet_path), "--out", str(self.workdir / f"{name}_state.json")],
+            cwd=self.workdir / f"{name}_cwd",
+        )
+
+    def test_registry_entry_records_the_current_state(self):
+        registry = json.loads(
+            (ROOT / "experiments" / "EXPERIMENT_REGISTRY.json").read_text(encoding="utf-8")
+        )
+        entry = next(e for e in registry["experiments"] if e["experiment_id"] == "EXP-22")
+        self.assertEqual(entry["status"], "PARTIAL")
+        self.assertIn("RESULT: PARTIAL", entry["result_summary"])
+        self.assertIn("RECOMMENDATION: HOLD", entry["result_summary"])
+        self.assertIn("Executed checkpoints: CP-01, CP-02, CP-03", entry["result_summary"])
+        self.assertIn("NOT measured", entry["result_summary"])
+        self.assertIn("Do not repeat CP-01", entry["next_action"])
+        self.assertIn("released 842 MB Laya checkpoint", entry["next_action"])
+        self.assertEqual(entry["updated_at"], "2026-10-09")
+
+    def test_exp22_results_md_follows_the_result_convention(self):
+        results_path = ROOT / "experiments" / "exp-22-colibri-local-inference" / "RESULTS.md"
+        self.assertTrue(results_path.is_file())
+        text = results_path.read_text(encoding="utf-8")
+        self.assertIn("RESULT: **PARTIAL**", text)
+        self.assertIn("RECOMMENDATION: **HOLD**", text)
+        self.assertIn("## Next authorized action", text)
+        self.assertIn("## Known limitations / blockers", text)
+        self.assertIn("## Per-pattern disposition", text)
+        packet = self.packet
+        self.assertTrue(packet["known_traps"])
+        self.assertTrue(packet["reusable_components"])
+        self.assertIn("released 842 MB Laya checkpoint", packet["resume"]["next_authorized_action"])
+
+    def test_exp22_cp01_bootstrap_is_fresh_and_reports_current_state(self):
+        result = builder.verify_packet(self.packet, ROOT)
+        self.assertEqual(result["status"], "FRESH", result["reasons"] or result["field_diffs"])
+        now, resume = self.packet["now"], self.packet["resume"]
+        self.assertEqual(now["registry_status"], "PARTIAL")
+        self.assertEqual(resume["status"], "PARTIAL")
+        self.assertIn("RESULT: PARTIAL", resume["result_summary"])
+        self.assertIn("Do not repeat CP-01", resume["next_action"])
+        serialized = json.dumps({"now": now, "resume": resume}, ensure_ascii=False)
+        self.assertNotIn('"PLANNED"', serialized)
+        self.assertNotIn("Planned.", serialized)
+        self.assertNotIn("execute CP-01 READY", serialized)
+
+    def test_state_consumer_answers_from_packet_without_findings(self):
+        worker = self._state_worker(self.packet, "state_live")
+        self.assertFalse(worker["refused"])
+        answers = worker["answers"]
+        for key, value in STATE_ANSWERS.items():
+            self.assertEqual(answers[key], value, key)
+        self.assertIn("NOT measured", answers["q_state_blocker"])
+        self.assertIn("released 842 MB Laya checkpoint", answers["q_state_next_authorized_action"])
+        self.assertEqual(worker["totals"]["files_read"], 1)
+        self.assertEqual(worker["totals"]["tool_ops"], 1)
+        self.assertFalse(any("FINDINGS" in entry["path"] for entry in worker["trace"]))
+        self.assertFalse(worker["read_from_chat"])
+
+    def test_state_consumer_refuses_unsafe_packets(self):
+        tampered = json.loads(json.dumps(self.packet))
+        tampered["rules"]["stop_rules"] = []
+        worker = self._state_worker(tampered, "state_unsafe")
+        self.assertTrue(worker["refused"], "state consumer must keep fail-closed refusal")
+        self.assertIn("missing_stop_rules", worker["refusal_reasons"])
+        self.assertEqual(worker["answers"], {})
+
+    def test_prechange_packet_reproduces_the_stale_state_gap(self):
+        self.assertTrue(PRE_CHANGE_PACKET.is_file(), "committed reproduction evidence")
+        pre = json.loads(PRE_CHANGE_PACKET.read_text(encoding="utf-8"))
+        self.assertEqual(pre["now"]["registry_status"], "PLANNED")
+        self.assertIn("execute CP-01", pre["now"]["nearest_action"])
+        worker = self._state_worker(pre, "state_prechange")
+        self.assertFalse(worker["refused"], "the stale packet was technically FRESH, not refused")
+        self.assertEqual(worker["answers"]["q_state_result_status"], "PLANNED")
+        self.assertEqual(worker["answers"]["q_state_completed_checkpoints"], [])
+        self.assertEqual(
+            worker["answers"]["q_state_should_cp01_run_again"], "YES",
+            "the stale packet would have re-run CP-01 — the exact CP-07 trigger",
+        )
+
+    def test_exp27_regression_state_and_fixture_untouched(self):
+        packet = builder.build_packet(ROOT, FIXTURE_EXPERIMENT, FIXTURE_CHECKPOINT, **PINNED_GIT)
+        self.assertEqual(builder.verify_packet(packet, ROOT)["status"], "FRESH")
+        self.assertEqual(packet["now"]["registry_status"], "PASS")
+        self.assertEqual(packet["now"]["checkpoints"], FIXTURE_FACTS["q_checkpoints"])
 
 
 if __name__ == "__main__":

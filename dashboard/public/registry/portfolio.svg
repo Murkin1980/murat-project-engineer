@@ -1,18 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="2747" height="2589" viewBox="-43 0 2747 2589" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
   <defs>
-    <marker id="r36d54075-arrow-7c83a0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <marker id="r03bbcd00-arrow-7c83a0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M 0 0 L 10 5 L 0 10 z" fill="#7c83a0"/>
     </marker>
-    <marker id="r36d54075-arrow-7c83a0-back" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <marker id="r03bbcd00-arrow-7c83a0-back" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M 0 0 L 10 5 L 0 10 z" fill="#7c83a0"/>
     </marker>
-    <mask id="r36d54075-cut-1" maskUnits="userSpaceOnUse" x="-43" y="0" width="2747" height="2589">
+    <mask id="r03bbcd00-cut-1" maskUnits="userSpaceOnUse" x="-43" y="0" width="2747" height="2589">
       <rect x="-43" y="0" width="2747" height="2589" fill="white"/>
-      <circle cx="1197.8" cy="565.1" r="6.2" fill="black"/>
+      <circle cx="801" cy="634" r="6.2" fill="black"/>
     </mask>
-    <mask id="r36d54075-cut-2" maskUnits="userSpaceOnUse" x="-43" y="0" width="2747" height="2589">
+    <mask id="r03bbcd00-cut-2" maskUnits="userSpaceOnUse" x="-43" y="0" width="2747" height="2589">
       <rect x="-43" y="0" width="2747" height="2589" fill="white"/>
-      <circle cx="411.65" cy="1377.58" r="6.2" fill="black"/>
+      <circle cx="835.57" cy="1114.76" r="6.2" fill="black"/>
+    </mask>
+    <mask id="r03bbcd00-cut-3" maskUnits="userSpaceOnUse" x="-43" y="0" width="2747" height="2589">
+      <rect x="-43" y="0" width="2747" height="2589" fill="white"/>
+      <circle cx="412.96" cy="1354.27" r="6.2" fill="black"/>
     </mask>
   </defs>
   <rect x="-43" y="0" width="2747" height="2589" fill="#ffffff"/>
@@ -87,28 +91,23 @@
   <text x="610.5" y="907.5" fill="#1f2328" text-anchor="middle">Low-cost evaluation harness</text>
   <text x="610.5" y="926.5" fill="#1f2328" text-anchor="middle">→ Run the frozen 18-entry Pilot</text>
   <text x="610.5" y="945.5" fill="#1f2328" text-anchor="middle">Batch 1 only when…</text>
-  <path d="M833 610.4 H1151 a8 8 0 0 1 8 8 V1176.8 a8 8 0 0 1 -8 8 H833 a8 8 0 0 1 -8 -8 V618.4 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
-  <text x="839" y="638.8" fill="#1f2328" text-anchor="start">PLANNED (4)</text>
-  <path d="M847 653.4 H1137 a8 8 0 0 1 8 8 V749.4 a8 8 0 0 1 -8 8 H847 a8 8 0 0 1 -8 -8 V661.4 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="992" y="681.8" fill="#1f2328" text-anchor="middle">EXP-S2C-01</text>
-  <text x="992" y="700.8" fill="#1f2328" text-anchor="middle">Screenshot-to-Code Visual Wor…</text>
-  <text x="992" y="719.8" fill="#1f2328" text-anchor="middle">→ Freeze one existing-project</text>
-  <text x="992" y="738.8" fill="#1f2328" text-anchor="middle">fixture and baselin…</text>
-  <path d="M847 767.4 H1137 a8 8 0 0 1 8 8 V863.4 a8 8 0 0 1 -8 8 H847 a8 8 0 0 1 -8 -8 V775.4 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="992" y="795.8" fill="#1f2328" text-anchor="middle">EXP-22</text>
-  <text x="992" y="814.8" fill="#1f2328" text-anchor="middle">Colibri local inference / Bri…</text>
-  <text x="992" y="833.8" fill="#1f2328" text-anchor="middle">→ Arena: execute CP-01</text>
-  <text x="992" y="852.8" fill="#1f2328" text-anchor="middle">READY/WARNING/BLOCKED clas…</text>
-  <path d="M847 952.8 H1137 a8 8 0 0 1 8 8 V1048.8 a8 8 0 0 1 -8 8 H847 a8 8 0 0 1 -8 -8 V960.8 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="992" y="981.2" fill="#1f2328" text-anchor="middle">EXP-23</text>
-  <text x="992" y="1000.2" fill="#1f2328" text-anchor="middle">Papermorph document → interac…</text>
-  <text x="992" y="1019.2" fill="#1f2328" text-anchor="middle">→ After EXP-22 Colibri completes,</text>
-  <text x="992" y="1038.2" fill="#1f2328" text-anchor="middle">Arena runs one…</text>
-  <path d="M847 1066.8 H1137 a8 8 0 0 1 8 8 V1162.8 a8 8 0 0 1 -8 8 H847 a8 8 0 0 1 -8 -8 V1074.8 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="992" y="1095.2" fill="#1f2328" text-anchor="middle">EXP-24</text>
-  <text x="992" y="1114.2" fill="#1f2328" text-anchor="middle">Agentic text → film pipeline…</text>
-  <text x="992" y="1133.2" fill="#1f2328" text-anchor="middle">→ Run owner-authorized Phase 2</text>
-  <text x="992" y="1152.2" fill="#1f2328" text-anchor="middle">CP-06…CP-12. Start…</text>
+  <path d="M833 703.1 H1151 a8 8 0 0 1 8 8 V1084.1 a8 8 0 0 1 -8 8 H833 a8 8 0 0 1 -8 -8 V711.1 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <text x="839" y="731.5" fill="#1f2328" text-anchor="start">PLANNED (3)</text>
+  <path d="M847 746.1 H1137 a8 8 0 0 1 8 8 V842.1 a8 8 0 0 1 -8 8 H847 a8 8 0 0 1 -8 -8 V754.1 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="992" y="774.5" fill="#1f2328" text-anchor="middle">EXP-S2C-01</text>
+  <text x="992" y="793.5" fill="#1f2328" text-anchor="middle">Screenshot-to-Code Visual Wor…</text>
+  <text x="992" y="812.5" fill="#1f2328" text-anchor="middle">→ Freeze one existing-project</text>
+  <text x="992" y="831.5" fill="#1f2328" text-anchor="middle">fixture and baselin…</text>
+  <path d="M847 860.1 H1137 a8 8 0 0 1 8 8 V956.1 a8 8 0 0 1 -8 8 H847 a8 8 0 0 1 -8 -8 V868.1 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="992" y="888.5" fill="#1f2328" text-anchor="middle">EXP-23</text>
+  <text x="992" y="907.5" fill="#1f2328" text-anchor="middle">Papermorph document → interac…</text>
+  <text x="992" y="926.5" fill="#1f2328" text-anchor="middle">→ After EXP-22 Colibri completes,</text>
+  <text x="992" y="945.5" fill="#1f2328" text-anchor="middle">Arena runs one…</text>
+  <path d="M847 974.1 H1137 a8 8 0 0 1 8 8 V1070.1 a8 8 0 0 1 -8 8 H847 a8 8 0 0 1 -8 -8 V982.1 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="992" y="1002.5" fill="#1f2328" text-anchor="middle">EXP-24</text>
+  <text x="992" y="1021.5" fill="#1f2328" text-anchor="middle">Agentic text → film pipeline…</text>
+  <text x="992" y="1040.5" fill="#1f2328" text-anchor="middle">→ Run owner-authorized Phase 2</text>
+  <text x="992" y="1059.5" fill="#1f2328" text-anchor="middle">CP-06…CP-12. Start…</text>
   <path d="M1223 589.1 H1532 a8 8 0 0 1 8 8 V1198.1 a8 8 0 0 1 -8 8 H1223 a8 8 0 0 1 -8 -8 V597.1 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
   <text x="1229" y="617.5" fill="#1f2328" text-anchor="start">HOLD (5)</text>
   <path d="M1237 632.1 H1518 a8 8 0 0 1 8 8 V728.1 a8 8 0 0 1 -8 8 H1237 a8 8 0 0 1 -8 -8 V640.1 a8 8 0 0 1 8 -8 Z" fill="#fef3c7" stroke="#d97706"/>
@@ -136,13 +135,18 @@
   <text x="1377.5" y="1135.5" fill="#1f2328" text-anchor="middle">PrivetMaket backend recon</text>
   <text x="1377.5" y="1154.5" fill="#1f2328" text-anchor="middle">→ If needed, capture a redacted</text>
   <text x="1377.5" y="1173.5" fill="#1f2328" text-anchor="middle">anonymous browser…</text>
-  <path d="M1604 817.1 H1896 a8 8 0 0 1 8 8 V970.1 a8 8 0 0 1 -8 8 H1604 a8 8 0 0 1 -8 -8 V825.1 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
-  <text x="1610" y="845.5" fill="#1f2328" text-anchor="start">PARTIAL (1)</text>
-  <path d="M1618 860.1 H1882 a8 8 0 0 1 8 8 V956.1 a8 8 0 0 1 -8 8 H1618 a8 8 0 0 1 -8 -8 V868.1 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="1750" y="888.5" fill="#1f2328" text-anchor="middle">EXP-26</text>
-  <text x="1750" y="907.5" fill="#1f2328" text-anchor="middle">TencentDB Agent Memory compon…</text>
-  <text x="1750" y="926.5" fill="#1f2328" text-anchor="middle">→ Closed at bounded component</text>
-  <text x="1750" y="945.5" fill="#1f2328" text-anchor="middle">extraction. No prod…</text>
+  <path d="M1604 760.1 H1896 a8 8 0 0 1 8 8 V1027.1 a8 8 0 0 1 -8 8 H1604 a8 8 0 0 1 -8 -8 V768.1 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <text x="1610" y="788.5" fill="#1f2328" text-anchor="start">PARTIAL (2)</text>
+  <path d="M1618 803.1 H1882 a8 8 0 0 1 8 8 V899.1 a8 8 0 0 1 -8 8 H1618 a8 8 0 0 1 -8 -8 V811.1 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="1750" y="831.5" fill="#1f2328" text-anchor="middle">EXP-22</text>
+  <text x="1750" y="850.5" fill="#1f2328" text-anchor="middle">Colibri local inference / Bri…</text>
+  <text x="1750" y="869.5" fill="#1f2328" text-anchor="middle">→ Do not repeat CP-01…CP-03</text>
+  <text x="1750" y="888.5" fill="#1f2328" text-anchor="middle">(already executed). R…</text>
+  <path d="M1618 917.1 H1882 a8 8 0 0 1 8 8 V1013.1 a8 8 0 0 1 -8 8 H1618 a8 8 0 0 1 -8 -8 V925.1 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="1750" y="945.5" fill="#1f2328" text-anchor="middle">EXP-26</text>
+  <text x="1750" y="964.5" fill="#1f2328" text-anchor="middle">TencentDB Agent Memory compon…</text>
+  <text x="1750" y="983.5" fill="#1f2328" text-anchor="middle">→ Closed at bounded component</text>
+  <text x="1750" y="1002.5" fill="#1f2328" text-anchor="middle">extraction. No prod…</text>
   <path d="M1968 817.1 H2269 a8 8 0 0 1 8 8 V970.1 a8 8 0 0 1 -8 8 H1968 a8 8 0 0 1 -8 -8 V825.1 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
   <text x="1974" y="845.5" fill="#1f2328" text-anchor="start">FAIL (1)</text>
   <path d="M1982 860.1 H2255 a8 8 0 0 1 8 8 V956.1 a8 8 0 0 1 -8 8 H1982 a8 8 0 0 1 -8 -8 V868.1 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
@@ -194,34 +198,34 @@
   <text x="1352" y="2463.6" fill="#1f2328" text-anchor="middle">EasyKitchen / SketchUp produc…</text>
   <text x="1352" y="2482.6" fill="#1f2328" text-anchor="middle">→ Perform focused technical</text>
   <text x="1352" y="2501.6" fill="#1f2328" text-anchor="middle">reconnaissance of Ske…</text>
-  <path d="M 1229 1026.1 L 1229 1026.1 C 1211.77 1026.1, 1197.8 972.38, 1197.8 906.1 L 1197.8 558.47 C 1197.8 537.22, 1180.58 520, 1159.33 520 L 382 520" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r36d54075-arrow-7c83a0)"/>
-  <rect x="750.9" y="510.5" width="78" height="19" fill="#ffffff"/>
-  <text x="789.9" y="524.9" fill="#1f2328" text-anchor="middle">waits on</text>
-  <path d="M 68 976 L 68 976 C 50.77 976, 36.8 1029.72, 36.8 1096 L 36.8 1155.4 C 36.8 1221.68, 45.75 1275.4, 56.8 1275.4 L 68 1275.4" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r36d54075-arrow-7c83a0)"/>
+  <path d="M 1229 1026.1 L 1229 1026.1 C 1186.59 1026.1, 1186.59 1116.1, 1144.18 1116.1 L 846.26 1116.1 C 821.26 1116.1, 801 1095.84, 801 1070.84 L 801 622 C 801 565.67, 755.33 520, 699 520 L 382 520" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r03bbcd00-arrow-7c83a0)"/>
+  <rect x="552.5" y="510.5" width="78" height="19" fill="#ffffff"/>
+  <text x="591.5" y="524.9" fill="#1f2328" text-anchor="middle">waits on</text>
+  <path d="M 68 976 L 68 976 C 50.77 976, 36.8 1029.72, 36.8 1096 L 36.8 1155.4 C 36.8 1221.68, 45.75 1275.4, 56.8 1275.4 L 68 1275.4" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r03bbcd00-arrow-7c83a0)"/>
   <rect x="-2.2" y="1116.2" width="78" height="19" fill="#ffffff"/>
   <text x="36.8" y="1130.6" fill="#1f2328" text-anchor="middle">waits on</text>
-  <line x1="992" y1="952.8" x2="992" y2="871.4" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r36d54075-arrow-7c83a0)"/>
-  <rect x="953" y="902.6" width="78" height="19" fill="#ffffff"/>
-  <text x="992" y="917" fill="#1f2328" text-anchor="middle">waits on</text>
-  <path d="M 1610 912.1 L 1610 912.1 C 1574.74 912.1, 1574.74 565.1, 1539.48 565.1 L 533.2 565.1 C 466.92 565.1, 413.2 580.52, 413.2 599.55 L 413.2 599.55 C 413.2 618.58, 404.25 634, 393.2 634 L 382 634" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r36d54075-arrow-7c83a0)" mask="url(#r36d54075-cut-1)"/>
-  <rect x="957" y="555.6" width="78" height="19" fill="#ffffff"/>
-  <text x="996" y="570" fill="#1f2328" text-anchor="middle">waits on</text>
-  <line x1="225" y1="1223.4" x2="225" y2="1142" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r36d54075-arrow-7c83a0)"/>
+  <path d="M 1145 912.1 L 1145 912.1 C 1180.58 912.1, 1180.58 565.1, 1216.17 565.1 L 1505.11 565.1 C 1545.81 565.1, 1578.8 598.09, 1578.8 638.8 L 1578.8 835.1 C 1578.8 846.15, 1587.75 855.1, 1598.8 855.1 L 1610 855.1" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r03bbcd00-arrow-7c83a0)"/>
+  <rect x="1345.9" y="555.6" width="78" height="19" fill="#ffffff"/>
+  <text x="1384.9" y="570" fill="#1f2328" text-anchor="middle">waits on</text>
+  <path d="M 1610 969.1 L 1610 969.1 C 1592.77 969.1, 1578.8 947.16, 1578.8 920.1 L 1578.8 920.1 C 1578.8 893.04, 1582.38 871.1, 1586.8 871.1 L 1586.8 871.1 C 1591.22 871.1, 1594.8 866.41, 1594.8 860.62 L 1594.8 651.1 C 1594.8 594.77, 1549.13 549.1, 1492.8 549.1 L 1267 549.1 C 1159 549.1, 1159 634, 1051 634 L 382 634" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r03bbcd00-arrow-7c83a0)" mask="url(#r03bbcd00-cut-1)"/>
+  <rect x="737.5" y="624.5" width="78" height="19" fill="#ffffff"/>
+  <text x="776.5" y="638.9" fill="#1f2328" text-anchor="middle">waits on</text>
+  <line x1="225" y1="1223.4" x2="225" y2="1142" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r03bbcd00-arrow-7c83a0)"/>
   <rect x="186" y="1173.2" width="78" height="19" fill="#ffffff"/>
   <text x="225" y="1187.6" fill="#1f2328" text-anchor="middle">waits on</text>
-  <line x1="341.62" y1="1408.8" x2="875.38" y2="1170.8" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r36d54075-arrow-7c83a0)"/>
-  <rect x="569.5" y="1280.3" width="78" height="19" fill="#ffffff"/>
-  <text x="608.5" y="1294.7" fill="#1f2328" text-anchor="middle">waits on</text>
-  <path d="M 382 1460.8 L 382 1460.8 C 399.23 1460.8, 413.2 1407.08, 413.2 1340.8 L 413.2 1210 C 413.2 1143.72, 404.25 1090, 393.2 1090 L 382 1090" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r36d54075-arrow-7c83a0)" mask="url(#r36d54075-cut-2)"/>
+  <line x1="316.75" y1="1408.8" x2="900.25" y2="1078.1" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r03bbcd00-arrow-7c83a0)" mask="url(#r03bbcd00-cut-2)"/>
+  <rect x="569.5" y="1233.95" width="78" height="19" fill="#ffffff"/>
+  <text x="608.5" y="1248.35" fill="#1f2328" text-anchor="middle">waits on</text>
+  <path d="M 382 1460.8 L 382 1460.8 C 399.23 1460.8, 413.2 1407.08, 413.2 1340.8 L 413.2 1210 C 413.2 1143.72, 404.25 1090, 393.2 1090 L 382 1090" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r03bbcd00-arrow-7c83a0)" mask="url(#r03bbcd00-cut-3)"/>
   <rect x="374.2" y="1265.9" width="78" height="19" fill="#ffffff"/>
   <text x="413.2" y="1280.3" fill="#1f2328" text-anchor="middle">waits on</text>
-  <line x1="225" y1="1408.8" x2="225" y2="1327.4" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r36d54075-arrow-7c83a0)"/>
+  <line x1="225" y1="1408.8" x2="225" y2="1327.4" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r03bbcd00-arrow-7c83a0)"/>
   <rect x="186" y="1358.6" width="78" height="19" fill="#ffffff"/>
   <text x="225" y="1373" fill="#1f2328" text-anchor="middle">waits on</text>
-  <path d="M 68 1646.2 L 68 1646.2 C 50.77 1646.2, 36.8 1592.48, 36.8 1526.2 L 36.8 1411.4 C 36.8 1345.12, 45.75 1291.4, 56.8 1291.4 L 68 1291.4" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r36d54075-arrow-7c83a0)"/>
+  <path d="M 68 1646.2 L 68 1646.2 C 50.77 1646.2, 36.8 1592.48, 36.8 1526.2 L 36.8 1411.4 C 36.8 1345.12, 45.75 1291.4, 56.8 1291.4 L 68 1291.4" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r03bbcd00-arrow-7c83a0)"/>
   <rect x="-2.2" y="1459.3" width="78" height="19" fill="#ffffff"/>
   <text x="36.8" y="1473.7" fill="#1f2328" text-anchor="middle">waits on</text>
-  <line x1="225" y1="1594.2" x2="225" y2="1512.8" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r36d54075-arrow-7c83a0)"/>
+  <line x1="225" y1="1594.2" x2="225" y2="1512.8" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r03bbcd00-arrow-7c83a0)"/>
   <rect x="186" y="1544" width="78" height="19" fill="#ffffff"/>
   <text x="225" y="1558.4" fill="#1f2328" text-anchor="middle">waits on</text>
 </svg>

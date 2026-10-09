@@ -32,7 +32,7 @@
   "arm": "A_rediscovery",
   "cost": {
    "at_all_answers": {
-    "bytes_read": 84978,
+    "bytes_read": 85837,
     "failed_ops": 0,
     "files_read": 5,
     "listdir_ops": 2,
@@ -40,7 +40,7 @@
     "tool_ops": 7
    },
    "at_genealogy_complete": {
-    "bytes_read": 72295,
+    "bytes_read": 73154,
     "failed_ops": 0,
     "files_read": 4,
     "listdir_ops": 2,
@@ -51,7 +51,7 @@
   "packet_used": false,
   "read_from_chat": false,
   "totals": {
-   "bytes_read": 84978,
+   "bytes_read": 85837,
    "failed_ops": 0,
    "files_read": 5,
    "listdir_ops": 2,
@@ -85,7 +85,7 @@
    "path": "/home/user/murat-project-engineer/experiments/exp-27-paperclip-orchestration-patterns/README.md"
   },
   {
-   "bytes": 50613,
+   "bytes": 51472,
    "ok": true,
    "op": "read",
    "path": "/home/user/murat-project-engineer/experiments/EXPERIMENT_REGISTRY.json"
@@ -140,7 +140,7 @@
    "bytes": 13087,
    "ok": true,
    "op": "read",
-   "path": "/tmp/exp29-work/cp03/packet.json"
+   "path": "/home/user/murat-project-engineer/experiments/exp-29-arena-bootstrap-harness/evidence/work/cp03/packet.json"
   }
  ],
  "checks": {
@@ -159,7 +159,7 @@
  "comparison": {
   "arm_a_cost": {
    "at_all_answers": {
-    "bytes_read": 84978,
+    "bytes_read": 85837,
     "failed_ops": 0,
     "files_read": 5,
     "listdir_ops": 2,
@@ -167,7 +167,7 @@
     "tool_ops": 7
    },
    "at_genealogy_complete": {
-    "bytes_read": 72295,
+    "bytes_read": 73154,
     "failed_ops": 0,
     "files_read": 4,
     "listdir_ops": 2,
@@ -176,7 +176,7 @@
    }
   },
   "arm_a_totals": {
-   "bytes_read": 84978,
+   "bytes_read": 85837,
    "failed_ops": 0,
    "files_read": 5,
    "listdir_ops": 2,
@@ -209,12 +209,12 @@
    "read_ops": 1,
    "tool_ops": 1
   },
-  "bytes_reduction_ratio": 0.846,
+  "bytes_reduction_ratio": 0.8475,
   "fixture": {
    "checkpoint": "CP-05",
    "experiment_id": "EXP-27"
   },
-  "genealogy_cost_reduction_ratio": 0.819,
+  "genealogy_cost_reduction_ratio": 0.8211,
   "packet_bytes": 13087,
   "verify_before_arms": "FRESH"
  },
