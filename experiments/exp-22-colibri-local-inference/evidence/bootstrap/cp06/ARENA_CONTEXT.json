@@ -1,0 +1,208 @@
+{
+ "authority": "DERIVED_VIEW_NON_AUTHORITATIVE",
+ "authority_note": "Derived, non-authoritative launch brief assembled from canonical Git sources. Git remains the only source of truth: on any conflict the canonical files win; verify freshness before use and re-derive or discard this packet on any mismatch.",
+ "generated_against": {
+  "git_base": "4b3dd3594f986a8d018d1c65d11a299fb13aa6c3",
+  "git_branch": "arena/cdf0ab3a-murat-project-engineer",
+  "git_head": "4b3dd3594f986a8d018d1c65d11a299fb13aa6c3"
+ },
+ "known_lessons": [
+  {
+   "id": "R1",
+   "minimal_change": "For a task that actually spans several context files, place a short **derived** ancestry brief in the existing task/handoff: project, goal, checkpoint/task, stop conditions, and source paths + digest…",
+   "scope": "PROJECT",
+   "scope_basis": "EXP-28 RESULTS.md R1 targets context-heavy MPE handoffs (one project line); EXP-28 records 'Two synthetic/fixed cases are too small to show generality', so R1 is not GLOBAL.",
+   "source": {
+    "anchor": "R1",
+    "path": "experiments/exp-28-agent-workflow-skills-retro/RESULTS.md"
+   },
+   "title": "Use the existing context-packet pattern for context-heavy handoffs (**recommended; immediately usable**)",
+   "verification": "On the next comparable, separately authorized run, give a fresh isolated executor only the packet; require all eight genealogy answers to match the canonical files, verify each digest, count packet b…"
+  },
+  {
+   "id": "R2",
+   "minimal_change": "Add a short conditional guard to `experiments/exp-24-hyperframes-pr-video/ARENA_TASK.md`: if HyperFrames is selected, reuse the existing local composition rather than rerunning broad `init` unless si…",
+   "scope": "TASK",
+   "scope_basis": "EXP-28 RESULTS.md R2 heading records 'applied task-locally' — EXP-24 Phase 2 only.",
+   "source": {
+    "anchor": "R2",
+    "path": "experiments/exp-28-agent-workflow-skills-retro/RESULTS.md"
+   },
+   "title": "Bound HyperFrames bootstrap side effects in the existing EXP-24 Phase 2 task (**applied task-locally**)",
+   "verification": "In the next authorized EXP-24 Phase 2 run, if HyperFrames is selected, record the exact preflight command and renderer version; verify no global agent-skill/config mutation and no second bootstrap af…"
+  },
+  {
+   "id": "R3",
+   "minimal_change": "`NO_CHANGE`—do not add an after-every-run hook, global rule, new standards file, or automatic memory promotion.",
+   "scope": "NO_CHANGE",
+   "scope_basis": "EXP-28 RESULTS.md R3 heading records 'rejected' — observed, not promoted into the bootstrap.",
+   "source": {
+    "anchor": "R3",
+    "path": "experiments/exp-28-agent-workflow-skills-retro/RESULTS.md"
+   },
+   "title": "Add an automatic retrospective hook and promote every finding to global instructions (**rejected**)",
+   "verification": "In any future promotion proposal, require recurrence or high, evidenced cost across independent runs, show it maps to an existing instruction/check location, and demonstrate that the change prevents…"
+  }
+ ],
+ "known_traps": [],
+ "now": {
+  "checkpoint": "CP-01",
+  "checkpoints": [
+   "CP-01",
+   "CP-02",
+   "CP-03"
+  ],
+  "disposition": "EXPERIMENT",
+  "disposition_sources": [
+   {
+    "path": "experiments/exp-22-colibri-local-inference/README.md",
+    "value": "EXPERIMENT"
+   }
+  ],
+  "experiment_id": "EXP-22",
+  "experiment_name": "Colibri local inference / Brio routing",
+  "experiment_path": "experiments/exp-22-colibri-local-inference",
+  "nearest_action": "Arena: execute CP-01 READY/WARNING/BLOCKED classification, CP-02 fixed-agent routing, and CP-03 isolated provider compatibility only if earlier checkpoints show useful signal.",
+  "parent_goal": "Test whether Colibri can provide measurable value as an optional local inference component for constrained MPE classification and routing without creating a parallel orchestration system.",
+  "project": "Murat Project Engineer",
+  "registry_status": "PLANNED",
+  "registry_updated_at": "2026-10-06",
+  "source": {
+   "path": "experiments/EXPERIMENT_REGISTRY.json"
+  },
+  "task": "EXP-22/CP-01"
+ },
+ "packet_version": "exp-29-arena-context-v1",
+ "resume": {
+  "evidence": {
+   "note": "full result record in the canonical experiment RESULTS.md",
+   "path": ""
+  },
+  "next_action": "Arena: execute CP-01 READY/WARNING/BLOCKED classification, CP-02 fixed-agent routing, and CP-03 isolated provider compatibility only if earlier checkpoints show useful signal.",
+  "next_authorized_action": "",
+  "result_summary": "Planned. Primary disposition EXPERIMENT. No new repository, production deployment, provider switch, control plane, or deep-change is authorized.",
+  "source": {
+   "path": "experiments/EXPERIMENT_REGISTRY.json"
+  },
+  "status": "PLANNED"
+ },
+ "reusable_components": [],
+ "rules": {
+  "deep_change_gate": {
+   "bullets": [
+    "changes fundamental architecture;",
+    "breaks an approved invariant;",
+    "changes a public contract;",
+    "requires data migration;",
+    "changes the source of truth;",
+    "introduces a new infrastructure platform;",
+    "creates a new repository;",
+    "materially changes security boundaries;",
+    "creates unapproved recurring cost;",
+    "is difficult to reverse;",
+    "exceeds the approved checkpoint boundary."
+   ],
+   "intro": "Do not execute a substantial change without explicit approval when it:",
+   "pointer": "docs/governance/SCOPE-CHANGE-CONTROL.md"
+  },
+  "handoff_contract_fields": [
+   "STATE",
+   "EVIDENCE",
+   "CHANGES",
+   "RESULT",
+   "BLOCKER",
+   "NEXT ACTION",
+   "HANDOFF"
+  ],
+  "source_of_truth_priority": [
+   "1. Explicit current owner instruction.",
+   "2. Current approved checkpoint/spec.",
+   "3. Repository-local mandatory governance and project instructions.",
+   "4. Existing architecture/product/domain contracts.",
+   "5. Existing code and tests.",
+   "6. Historical conventions and prior decisions."
+  ],
+  "sources": {
+   "deep_change_gate": "docs/governance/SCOPE-CHANGE-CONTROL.md",
+   "handoff_contract": "AGENTS.md",
+   "source_of_truth_priority": "docs/governance/SCOPE-CHANGE-CONTROL.md",
+   "stop_rules": "experiments/exp-22-colibri-local-inference/ARENA_TASK.md#boundaries + experiments/exp-22-colibri-local-inference/README.md#failure-stop-criteria + experiments/exp-22-colibri-local-inference/README.md#guardrails"
+  },
+  "stop_rules": [
+   "new repository;",
+   "production deployment;",
+   "production configuration changes;",
+   "default-provider changes;",
+   "secrets;",
+   "new control plane/router;",
+   "refactor of unrelated MPE code;",
+   "merging any production integration as part of this experiment.",
+   "setup cost exceeds the value of the narrow task;",
+   "latency makes the workflow impractical;",
+   "quality materially trails the reference path;",
+   "hardware/storage requirements are unreasonable for intended deployment;",
+   "compatibility requires invasive changes;",
+   "Arena discovers a deep-change requirement;",
+   "the experiment starts duplicating `murat-ai-orchestrator`.",
+   "No new repository.",
+   "No production deployment.",
+   "No production traffic.",
+   "No secrets committed.",
+   "No autonomous background service.",
+   "No replacement of existing orchestrator/router.",
+   "No model download larger than needed for the smallest useful proof without documenting the reason first.",
+   "Prefer a small supported MoE model for the first run.",
+   "Pin model/version and record exact hashes/revisions where practical.",
+   "Keep all evidence under this experiment directory."
+  ],
+  "stop_rules_intro": "Not allowed: / STOP or FAIL if:",
+  "stop_rules_source": "experiments/exp-22-colibri-local-inference/ARENA_TASK.md#boundaries + experiments/exp-22-colibri-local-inference/README.md#failure-stop-criteria + experiments/exp-22-colibri-local-inference/README.md#guardrails"
+ },
+ "source_refs": [
+  {
+   "path": "experiments/EXPERIMENT_REGISTRY.json",
+   "role": "registry",
+   "sha256": "55d92619e1a594e160c68a60b94dc06454baa52499bf70f3c636f7217c7425fe"
+  },
+  {
+   "path": "experiments/exp-22-colibri-local-inference/ARENA_TASK.md",
+   "role": "task_instructions",
+   "sha256": "3504512bd7d0ab09e9448388149401a8aee84ec0b76310164e340c6b7a9a8bd4"
+  },
+  {
+   "path": "experiments/exp-22-colibri-local-inference/README.md",
+   "role": "task_readme",
+   "sha256": "1acba5dbc0326de051a9594d1266fdb87b2c5db3bcfd44c792e572f6b797fc50"
+  },
+  {
+   "path": "STATUS.md",
+   "role": "project_status",
+   "sha256": "968d47ad10910c5875f83f6c74933369aa0b70486e51cbd2bcb7b65ccb2d96e5"
+  },
+  {
+   "path": "AGENTS.md",
+   "role": "agents_rules",
+   "sha256": "d440af35dffc0c58b238a84965ede010aa94d78e07a6ea06e701bcf41e25771d"
+  },
+  {
+   "path": "docs/governance/SCOPE-CHANGE-CONTROL.md",
+   "role": "governance",
+   "sha256": "c4b747249f37d94dab9e5597b6e03692d2064846a4b7903a5b68036f996a0f9e"
+  },
+  {
+   "path": "experiments/exp-28-agent-workflow-skills-retro/RESULTS.md",
+   "role": "accepted_lessons",
+   "sha256": "35a98ee8609a4b0b6dbf712b423d677b91aae70d52f0fd7ccd2a82c8966562a8"
+  }
+ ],
+ "verification": {
+  "command": "python3 experiments/exp-29-arena-bootstrap-harness/harness/bootstrap_builder.py verify --packet <ARENA_CONTEXT.json> --root <repo-root>",
+  "freshness_rule": "FRESH only when every source_refs sha256 matches the current file AND the packet equals a deterministic rebuild from current sources; otherwise the packet is STALE or REJECTED and must be treated as a non-authoritative hint.",
+  "safety_invariants": [
+   "authority disclaimer present (DERIVED_VIEW_NON_AUTHORITATIVE)",
+   "at least one task stop/deep-change rule present",
+   "deep-change gate bullets present",
+   "lesson scopes limited to GLOBAL/PROJECT/TASK/NO_CHANGE; GLOBAL requires a PROMOTED_TO_GLOBAL marker in the canonical lesson source (no current source has one)"
+  ]
+ }
+}

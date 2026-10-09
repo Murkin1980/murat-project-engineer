@@ -1,0 +1,94 @@
+{
+ "after_measured": {
+  "basis": "retrieval-cost proxy: bytes of canonical files a fresh executor reads; not a wall-clock or human-time measurement",
+  "extra_rediscovery_remains": true,
+  "packet_plus_remaining_reads": {
+   "bytes": 28339,
+   "files": 4,
+   "remaining_reads": [
+    {
+     "bytes": 4566,
+     "path": "experiments/exp-22-colibri-local-inference/README.md",
+     "why": "CP-01 acceptance text (checkpoint scope is not a packet layer)"
+    },
+    {
+     "bytes": 3903,
+     "path": "experiments/exp-22-colibri-local-inference/ARENA_TASK.md",
+     "why": "mission, required order and evaluation (packet carries only the boundary rules)"
+    },
+    {
+     "bytes": 10068,
+     "path": "experiments/exp-22-colibri-local-inference/FINDINGS.md",
+     "why": "recorded EXP-22 state (no RESULTS.md, so the packet resume block cannot carry it)"
+    }
+   ]
+  },
+  "rediscovery_without_packet": {
+   "bytes": 71163,
+   "files": 4,
+   "reads": [
+    "STATUS.md",
+    "experiments/exp-22-colibri-local-inference/README.md",
+    "experiments/EXPERIMENT_REGISTRY.json",
+    "experiments/exp-22-colibri-local-inference/ARENA_TASK.md"
+   ]
+  }
+ },
+ "before_recorded": {
+  "bytes_before_first_useful_action": 134732,
+  "checkpoints": [],
+  "disposition": "",
+  "files_before_first_useful_action": 9,
+  "reasons": [
+   "missing_stop_rules"
+  ],
+  "source": "experiments/exp-22-colibri-local-inference/evidence/bootstrap/FIRST_REAL_USE.md",
+  "stop_rules": 0,
+  "verdict": "REJECTED"
+ },
+ "checks": {
+  "allowed_list_not_treated_as_stop_rule": true,
+  "bootstrap_fresh": true,
+  "boundary_sections_applied": true,
+  "checkpoint_chain_cp01_to_cp03": true,
+  "disposition_from_canonical_source": true,
+  "labels_describe_actual_sources": true,
+  "six_layers_present": true,
+  "source_refs_verify_against_git": true
+ },
+ "packet": {
+  "checkpoints": [
+   "CP-01",
+   "CP-02",
+   "CP-03"
+  ],
+  "disposition": "EXPERIMENT",
+  "disposition_sources": [
+   {
+    "path": "experiments/exp-22-colibri-local-inference/README.md",
+    "value": "EXPERIMENT"
+   }
+  ],
+  "json_bytes": 9802,
+  "markdown_headings": [
+   "## NOW",
+   "## RULES (mandatory)",
+   "## KNOWN LESSONS (evidence-gated, from experiments/exp-28-agent-workflow-skills-retro/RESULTS.md)",
+   "## REUSABLE COMPONENTS (no experiment RESULTS.md present)",
+   "## KNOWN TRAPS (verified limitations, no experiment RESULTS.md present)",
+   "## RESUME",
+   "## PROVENANCE (canonical sources + digests)",
+   "## FRESHNESS"
+  ],
+  "md_bytes": 8302,
+  "stop_rules": 25,
+  "stop_rules_intro": "Not allowed: / STOP or FAIL if:",
+  "stop_rules_source": "experiments/exp-22-colibri-local-inference/ARENA_TASK.md#boundaries + experiments/exp-22-colibri-local-inference/README.md#failure-stop-criteria + experiments/exp-22-colibri-local-inference/README.md#guardrails",
+  "task": "EXP-22/CP-01"
+ },
+ "result": "PASS",
+ "verification": {
+  "reasons": [],
+  "status": "FRESH"
+ }
+}

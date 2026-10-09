@@ -2,9 +2,9 @@
  "authority": "DERIVED_VIEW_NON_AUTHORITATIVE",
  "authority_note": "Derived, non-authoritative launch brief assembled from canonical Git sources. Git remains the only source of truth: on any conflict the canonical files win; verify freshness before use and re-derive or discard this packet on any mismatch.",
  "generated_against": {
-  "git_base": "bb6f1f85fde993c0b698f7036df2699961ed1478",
-  "git_branch": "arena/19fa71aa-murat-project-engineer",
-  "git_head": "6c6a592a442f0d3c779af8ae5c6e8185b9158bbb"
+  "git_base": "4b3dd3594f986a8d018d1c65d11a299fb13aa6c3",
+  "git_branch": "arena/cdf0ab3a-murat-project-engineer",
+  "git_head": "4b3dd3594f986a8d018d1c65d11a299fb13aa6c3"
  },
  "known_lessons": [
   {
@@ -98,6 +98,16 @@
    "CP-05"
   ],
   "disposition": "REUSE_COMPONENT",
+  "disposition_sources": [
+   {
+    "path": "experiments/exp-27-paperclip-orchestration-patterns/ARENA_TASK.md",
+    "value": "REUSE_COMPONENT"
+   },
+   {
+    "path": "experiments/exp-27-paperclip-orchestration-patterns/README.md",
+    "value": "REUSE_COMPONENT"
+   }
+  ],
   "experiment_id": "EXP-27",
   "experiment_name": "Paperclip orchestration patterns",
   "experiment_path": "experiments/exp-27-paperclip-orchestration-patterns",
@@ -220,7 +230,7 @@
    "deep_change_gate": "docs/governance/SCOPE-CHANGE-CONTROL.md",
    "handoff_contract": "AGENTS.md",
    "source_of_truth_priority": "docs/governance/SCOPE-CHANGE-CONTROL.md",
-   "stop_rules": "experiments/exp-27-paperclip-orchestration-patterns/README.md"
+   "stop_rules": "experiments/exp-27-paperclip-orchestration-patterns/README.md#stop-conditions"
   },
   "stop_rules": [
    "new repo;",
@@ -234,7 +244,7 @@
    "production integration."
   ],
   "stop_rules_intro": "Stop and report before:",
-  "stop_rules_source": "experiments/exp-27-paperclip-orchestration-patterns/README.md"
+  "stop_rules_source": "experiments/exp-27-paperclip-orchestration-patterns/README.md#stop-conditions"
  },
  "source_refs": [
   {
@@ -265,7 +275,7 @@
   {
    "path": "AGENTS.md",
    "role": "agents_rules",
-   "sha256": "1ac7688bdf097539ea5d7306b152c0216abb6b0ffbc01fafdecb83ce8b9cc2cd"
+   "sha256": "d440af35dffc0c58b238a84965ede010aa94d78e07a6ea06e701bcf41e25771d"
   },
   {
    "path": "docs/governance/SCOPE-CHANGE-CONTROL.md",

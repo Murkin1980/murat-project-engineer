@@ -53,6 +53,23 @@ GLOBAL_PROMOTION_MARKER = "PROMOTED_TO_GLOBAL"
 CHECKPOINT_RE = re.compile(r"^#{2,3}\s+(CP-\d+)\b", flags=re.M)
 LESSON_HEADING_RE = re.compile(r"^###\s+(R\d+)\s+—\s+(.+)$")
 
+# Recognised boundary sections that carry task-local stop / deep-change rules. The
+# titles are the headings canonical experiment files actually use (EXP-27 "Stop
+# conditions"; EXP-22 "Boundaries", "Failure / stop criteria", "Guardrails").
+# "Completion boundary" is deliberately excluded: it states the finish line, not a
+# stop rule.
+STOP_SECTION_TITLES = (
+    "Stop conditions",
+    "Scope stop rules",
+    "Stop rules",
+    "Deep-change stop conditions",
+    "Failure / stop criteria",
+    "Boundaries",
+    "Guardrails",
+)
+ALLOWED_LEAD_RE = re.compile(r"^(allowed|permitted):?$", flags=re.IGNORECASE)
+NOT_ALLOWED_LEAD_RE = re.compile(r"^not allowed:?$", flags=re.IGNORECASE)
+
 # Lesson scope is this experiment's recorded, evidence-gated promotion decision
 # (EXP-28 promotion rule: explicit evidence + known scope + minimal formulation +
 # verification path + no governance conflict). It is NOT automatic learning: the
@@ -154,8 +171,9 @@ def _parse_checkpoints(task_text: str) -> list[str]:
     return out
 
 
-def _parse_disposition(task_text: str) -> str:
-    for line in task_text.splitlines():
+def _parse_disposition(text: str) -> str:
+    """Value of the first ``Decision:`` line in one canonical file ("" if none)."""
+    for line in text.splitlines():
         if line.startswith("Decision:"):
             if "**" in line:
                 return line.split("**")[1].strip()
@@ -163,19 +181,83 @@ def _parse_disposition(task_text: str) -> str:
     return ""
 
 
-def _parse_stop_rules(task_text: str, readme_text: str) -> tuple[list[str], str, str]:
-    """Task-local stop/deep-change boundary bullets, with the source file used."""
-    for text, name in ((task_text, "ARENA_TASK.md"), (readme_text, "README.md")):
-        section = _section(text, r"^##\s+(Stop conditions|Scope stop rules)\s*$")
-        bullets = _bullets(section)
-        if bullets:
-            return bullets, _intro(section), name
+def _titled_sections(text: str, titles: tuple[str, ...]) -> list[tuple[str, list[str]]]:
+    """Every ``## <title>`` section whose exact title is listed, in document order."""
+    wanted = {title.lower() for title in titles}
+    sections: list[tuple[str, list[str]]] = []
+    current: tuple[str, list[str]] | None = None
+    for line in text.splitlines():
+        if line.startswith("## "):
+            if current is not None:
+                sections.append(current)
+            title = line[3:].strip()
+            current = (title, []) if title.lower() in wanted else None
+        elif current is not None:
+            current[1].append(line)
+    if current is not None:
+        sections.append(current)
+    return sections
+
+
+def _boundary_rules(section: list[str]) -> tuple[str, list[str]]:
+    """(intro, rules) of one boundary section.
+
+    An ``Allowed:`` list states permissions, not stop rules, so it never contributes.
+    When a ``Not allowed:`` lead-in is present, only the bullets under it are rules.
+    """
+    for index, line in enumerate(section):
+        if NOT_ALLOWED_LEAD_RE.match(line.strip()):
+            rules: list[str] = []
+            for follow in section[index + 1:]:
+                stripped = follow.strip()
+                if stripped.startswith("- "):
+                    rules.append(stripped[2:].strip())
+                elif stripped:
+                    break
+            return "Not allowed:", rules
+    if any(ALLOWED_LEAD_RE.match(line.strip()) for line in section):
+        return "", []
+    return _intro(section), _bullets(section)
+
+
+def _slug(title: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-")
+
+
+def _parse_stop_rules(
+    task_text: str, readme_text: str
+) -> tuple[list[str], str, list[tuple[str, str]]]:
+    """Task-local stop/deep-change rules from every recognised boundary section.
+
+    Union, not first-match: a boundary declared in several sections or in both files
+    is never silently dropped. A section without parseable bullets contributes
+    nothing, so a missing boundary still leaves the list empty (fail closed).
+    Returns ``(rules, intro, [(file name, section anchor), ...])``.
+    """
+    rules: list[str] = []
+    intros: list[str] = []
+    sources: list[tuple[str, str]] = []
+    for text, file_name in ((task_text, "ARENA_TASK.md"), (readme_text, "README.md")):
+        for title, lines in _titled_sections(text, STOP_SECTION_TITLES):
+            intro, bullets = _boundary_rules(lines)
+            if not bullets:
+                continue
+            for rule in bullets:
+                if rule not in rules:
+                    rules.append(rule)
+            if intro and intro not in intros:
+                intros.append(intro)
+            sources.append((file_name, _slug(title)))
+    if rules:
+        return rules, " / ".join(intros), sources
     fallback = [
         line.strip()
         for line in task_text.splitlines()
         if re.match(r"^STOP\b", line.strip())
     ]
-    return fallback, "", "ARENA_TASK.md"
+    if fallback:
+        return fallback, "", [("ARENA_TASK.md", "stop-lines")]
+    return [], "", []
 
 
 def _parse_lessons(results_text: str) -> list[dict]:
@@ -270,10 +352,19 @@ def build_packet(
     governance_text = governance_path.read_text(encoding="utf-8")
     lessons_text = lessons_path.read_text(encoding="utf-8")
 
-    stop_rules, stop_intro, stop_source = _parse_stop_rules(task_text, readme_text)
-    checkpoints = _parse_checkpoints(task_text)
+    stop_rules, stop_intro, stop_sources = _parse_stop_rules(task_text, readme_text)
+    stop_rules_source = " + ".join(
+        f"{entry['experiment_path']}/{name}#{anchor}" for name, anchor in stop_sources
+    ) or "none (no recognised boundary section)"
+    # The checkpoint chain and disposition may be declared in either canonical file.
+    checkpoints = _parse_checkpoints(task_text + "\n" + readme_text)
     if checkpoint is None and checkpoints:
         checkpoint = checkpoints[-1]
+    disposition_sources = []
+    for path, text in ((task_path, task_text), (readme_path, readme_text)):
+        value = _parse_disposition(text)
+        if value:
+            disposition_sources.append({"path": str(path.relative_to(root)), "value": value})
 
     sources = [
         (registry_path, "registry"),
@@ -339,7 +430,8 @@ def build_packet(
             "experiment_name": entry.get("name", ""),
             "experiment_path": entry["experiment_path"],
             "checkpoints": checkpoints,
-            "disposition": _parse_disposition(task_text),
+            "disposition": disposition_sources[0]["value"] if disposition_sources else "",
+            "disposition_sources": disposition_sources,
             "task": f"{experiment_id}/{checkpoint}" if checkpoint else experiment_id,
             "checkpoint": checkpoint or "",
             "registry_status": entry.get("status", ""),
@@ -350,7 +442,7 @@ def build_packet(
         "rules": {
             "stop_rules_intro": stop_intro,
             "stop_rules": stop_rules,
-            "stop_rules_source": f"{entry['experiment_path']}/{stop_source}",
+            "stop_rules_source": stop_rules_source,
             "deep_change_gate": {
                 **_parse_deep_change_gate(governance_text),
                 "pointer": "docs/governance/SCOPE-CHANGE-CONTROL.md",
@@ -358,7 +450,7 @@ def build_packet(
             "source_of_truth_priority": _parse_source_priority(governance_text),
             "handoff_contract_fields": _parse_handoff_fields(agents_text),
             "sources": {
-                "stop_rules": f"{entry['experiment_path']}/{stop_source}",
+                "stop_rules": stop_rules_source,
                 "deep_change_gate": "docs/governance/SCOPE-CHANGE-CONTROL.md",
                 "source_of_truth_priority": "docs/governance/SCOPE-CHANGE-CONTROL.md",
                 "handoff_contract": "AGENTS.md",
@@ -413,6 +505,14 @@ def _git_base(root: Path) -> str:
 
 def render_markdown(packet: dict) -> str:
     now, rules = packet["now"], packet["rules"]
+    # Section labels describe the sources this packet was actually derived from
+    # (by role), never a fixture's hardcoded experiment.
+    by_role = {ref["role"]: ref["path"] for ref in packet["source_refs"]}
+    results_source = by_role.get("experiment_results")
+    lessons_source = by_role.get("accepted_lessons", "accepted lessons source")
+    results_label = (
+        f"from {results_source}" if results_source else "no experiment RESULTS.md present"
+    )
     lines = [
         f"# ARENA_CONTEXT — derived launch brief ({packet['packet_version']})",
         "",
@@ -459,7 +559,7 @@ def render_markdown(packet: dict) -> str:
         "",
         "Graceful handoff minimum (AGENTS.md): " + ", ".join(rules["handoff_contract_fields"]),
         "",
-        "## KNOWN LESSONS (evidence-gated, from EXP-28 RESULTS.md)",
+        f"## KNOWN LESSONS (evidence-gated, from {lessons_source})",
         "",
     ]
     for lesson in packet["known_lessons"]:
@@ -471,7 +571,7 @@ def render_markdown(packet: dict) -> str:
         ]
     lines += [
         "",
-        "## REUSABLE COMPONENTS (from EXP-27 RESULTS.md)",
+        f"## REUSABLE COMPONENTS ({results_label})",
         "",
     ]
     for component in packet["reusable_components"]:
@@ -479,9 +579,13 @@ def render_markdown(packet: dict) -> str:
             f"- {component['pattern']} — {component['verdict']} → {component['disposition']} "
             f"(`{component['source']['path']}`)"
         )
-    lines += ["", "## KNOWN TRAPS (verified limitations, EXP-27 RESULTS.md)", ""]
+    if not packet["reusable_components"]:
+        lines.append("- (none parsed)")
+    lines += ["", f"## KNOWN TRAPS (verified limitations, {results_label})", ""]
     for trap in packet["known_traps"]:
         lines.append(f"- {trap['trap']} (`{trap['source']['path']}`)")
+    if not packet["known_traps"]:
+        lines.append("- (none parsed)")
     resume = packet["resume"]
     lines += [
         "",
@@ -490,7 +594,7 @@ def render_markdown(packet: dict) -> str:
         f"- Status: {resume['status']}",
         f"- Result summary: {resume['result_summary']}",
         f"- Next action: {resume['next_action']}",
-        f"- Next authorized action: {resume['next_authorized_action']}",
+        f"- Next authorized action: {resume['next_authorized_action'] or '(none recorded)'}",
         f"- Evidence: `{resume['evidence']['path']}` ({resume['evidence']['note']})",
         "",
         "## PROVENANCE (canonical sources + digests)",
@@ -545,6 +649,9 @@ def _safety_violations(packet: dict, root: Path) -> list[str]:
     rules = packet.get("rules", {})
     if not rules.get("stop_rules"):
         violations.append("missing_stop_rules")
+    declared = {item.get("value") for item in packet.get("now", {}).get("disposition_sources", [])}
+    if len(declared) > 1:
+        violations.append("ambiguous_disposition")
     if not (rules.get("deep_change_gate") or {}).get("bullets"):
         violations.append("missing_deep_change_gate")
     for lesson in packet.get("known_lessons", []):
@@ -620,7 +727,8 @@ def verify_packet(packet: dict, root) -> dict:
     else:
         disposition = (
             "Refuse the packet: a safety invariant is violated (authority disclaimer, "
-            "stop/deep-change rules, or lesson scope). Re-derive from canonical sources."
+            "stop/deep-change rules, lesson scope, or a disposition that canonical files "
+            "declare inconsistently). Re-derive from canonical sources."
         )
 
     return {
@@ -634,6 +742,7 @@ def verify_packet(packet: dict, root) -> dict:
             "stop_rules_present": "missing_stop_rules" not in safety,
             "deep_change_gate_present": "missing_deep_change_gate" not in safety,
             "lesson_scopes_valid": not any(v.startswith(("invalid_lesson_scope", "lesson_promoted")) for v in safety),
+            "disposition_unambiguous": "ambiguous_disposition" not in safety,
             "source_digests_match": not digests,
             "matches_rebuild": not diffs,
         },

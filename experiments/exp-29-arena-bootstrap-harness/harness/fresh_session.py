@@ -214,6 +214,9 @@ def _packet_selfcheck(packet):
         problems.append("missing_stop_rules")
     if not (packet.get("rules", {}).get("deep_change_gate", {}).get("bullets")):
         problems.append("missing_deep_change_gate")
+    declared = {item.get("value") for item in packet.get("now", {}).get("disposition_sources", [])}
+    if len(declared) > 1:
+        problems.append("ambiguous_disposition")
     for lesson in packet.get("known_lessons", []):
         if lesson.get("scope") not in LESSON_SCOPES:
             problems.append(f"invalid_lesson_scope:{lesson.get('id')}")
