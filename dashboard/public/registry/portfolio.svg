@@ -1,25 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="2747" height="2403" viewBox="-43 0 2747 2403" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
+<svg xmlns="http://www.w3.org/2000/svg" width="2747" height="2589" viewBox="-43 0 2747 2589" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
   <defs>
-    <marker id="rf4aa1bdc-arrow-7c83a0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <marker id="r36d54075-arrow-7c83a0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M 0 0 L 10 5 L 0 10 z" fill="#7c83a0"/>
     </marker>
-    <marker id="rf4aa1bdc-arrow-7c83a0-back" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <marker id="r36d54075-arrow-7c83a0-back" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M 0 0 L 10 5 L 0 10 z" fill="#7c83a0"/>
     </marker>
-    <mask id="rf4aa1bdc-cut-1" maskUnits="userSpaceOnUse" x="-43" y="0" width="2747" height="2403">
-      <rect x="-43" y="0" width="2747" height="2403" fill="white"/>
-      <circle cx="452.2" cy="493.7" r="6.2" fill="black"/>
+    <mask id="r36d54075-cut-1" maskUnits="userSpaceOnUse" x="-43" y="0" width="2747" height="2589">
+      <rect x="-43" y="0" width="2747" height="2589" fill="white"/>
+      <circle cx="1197.8" cy="565.1" r="6.2" fill="black"/>
     </mask>
-    <mask id="rf4aa1bdc-cut-2" maskUnits="userSpaceOnUse" x="-43" y="0" width="2747" height="2403">
-      <rect x="-43" y="0" width="2747" height="2403" fill="white"/>
-      <circle cx="412.96" cy="1354.27" r="6.2" fill="black"/>
+    <mask id="r36d54075-cut-2" maskUnits="userSpaceOnUse" x="-43" y="0" width="2747" height="2589">
+      <rect x="-43" y="0" width="2747" height="2589" fill="white"/>
+      <circle cx="411.65" cy="1377.58" r="6.2" fill="black"/>
     </mask>
   </defs>
-  <rect x="-43" y="0" width="2747" height="2403" fill="#ffffff"/>
-  <path d="M48 40 H2656 a8 8 0 0 1 8 8 V1532.8 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <rect x="-43" y="0" width="2747" height="2589" fill="#ffffff"/>
+  <path d="M48 40 H2656 a8 8 0 0 1 8 8 V1718.2 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
   <text x="54" y="68.4" fill="#1f2328" text-anchor="start">Murat Project Engineer</text>
-  <path d="M62 83 H388 a8 8 0 0 1 8 8 V1518.8 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V91 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
-  <text x="68" y="111.4" fill="#1f2328" text-anchor="start">PASS (11)</text>
+  <path d="M62 83 H388 a8 8 0 0 1 8 8 V1704.2 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V91 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <text x="68" y="111.4" fill="#1f2328" text-anchor="start">PASS (12)</text>
   <path d="M76 126 H374 a8 8 0 0 1 8 8 V222 a8 8 0 0 1 -8 8 H76 a8 8 0 0 1 -8 -8 V134 a8 8 0 0 1 8 -8 Z" fill="#dcfce7" stroke="#16a34a"/>
   <text x="225" y="154.4" fill="#1f2328" text-anchor="middle">EXP-002</text>
   <text x="225" y="173.4" fill="#1f2328" text-anchor="middle">Machine Protocol</text>
@@ -75,142 +75,153 @@
   <text x="225" y="1456.2" fill="#1f2328" text-anchor="middle">Agent workflow skills retrosp…</text>
   <text x="225" y="1475.2" fill="#1f2328" text-anchor="middle">→ Closed as a manual,</text>
   <text x="225" y="1494.2" fill="#1f2328" text-anchor="middle">evidence-gated pattern. No…</text>
-  <path d="M460 724.4 H761 a8 8 0 0 1 8 8 V877.4 a8 8 0 0 1 -8 8 H460 a8 8 0 0 1 -8 -8 V732.4 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
-  <text x="466" y="752.8" fill="#1f2328" text-anchor="start">READY_TO_TEST (1)</text>
-  <path d="M474 767.4 H747 a8 8 0 0 1 8 8 V863.4 a8 8 0 0 1 -8 8 H474 a8 8 0 0 1 -8 -8 V775.4 a8 8 0 0 1 8 -8 Z" fill="#dbeafe" stroke="#2563eb"/>
-  <text x="610.5" y="795.8" fill="#1f2328" text-anchor="middle">EXP-13</text>
-  <text x="610.5" y="814.8" fill="#1f2328" text-anchor="middle">Low-cost evaluation harness</text>
-  <text x="610.5" y="833.8" fill="#1f2328" text-anchor="middle">→ Run the frozen 18-entry Pilot</text>
-  <text x="610.5" y="852.8" fill="#1f2328" text-anchor="middle">Batch 1 only when…</text>
-  <path d="M833 517.7 H1151 a8 8 0 0 1 8 8 V1084.1 a8 8 0 0 1 -8 8 H833 a8 8 0 0 1 -8 -8 V525.7 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
-  <text x="839" y="546.1" fill="#1f2328" text-anchor="start">PLANNED (4)</text>
-  <path d="M847 560.7 H1137 a8 8 0 0 1 8 8 V656.7 a8 8 0 0 1 -8 8 H847 a8 8 0 0 1 -8 -8 V568.7 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="992" y="589.1" fill="#1f2328" text-anchor="middle">EXP-S2C-01</text>
-  <text x="992" y="608.1" fill="#1f2328" text-anchor="middle">Screenshot-to-Code Visual Wor…</text>
-  <text x="992" y="627.1" fill="#1f2328" text-anchor="middle">→ Freeze one existing-project</text>
-  <text x="992" y="646.1" fill="#1f2328" text-anchor="middle">fixture and baselin…</text>
-  <path d="M847 674.7 H1137 a8 8 0 0 1 8 8 V770.7 a8 8 0 0 1 -8 8 H847 a8 8 0 0 1 -8 -8 V682.7 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="992" y="703.1" fill="#1f2328" text-anchor="middle">EXP-22</text>
-  <text x="992" y="722.1" fill="#1f2328" text-anchor="middle">Colibri local inference / Bri…</text>
-  <text x="992" y="741.1" fill="#1f2328" text-anchor="middle">→ Arena: execute CP-01</text>
-  <text x="992" y="760.1" fill="#1f2328" text-anchor="middle">READY/WARNING/BLOCKED clas…</text>
-  <path d="M847 860.1 H1137 a8 8 0 0 1 8 8 V956.1 a8 8 0 0 1 -8 8 H847 a8 8 0 0 1 -8 -8 V868.1 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="992" y="888.5" fill="#1f2328" text-anchor="middle">EXP-23</text>
-  <text x="992" y="907.5" fill="#1f2328" text-anchor="middle">Papermorph document → interac…</text>
-  <text x="992" y="926.5" fill="#1f2328" text-anchor="middle">→ After EXP-22 Colibri completes,</text>
-  <text x="992" y="945.5" fill="#1f2328" text-anchor="middle">Arena runs one…</text>
-  <path d="M847 974.1 H1137 a8 8 0 0 1 8 8 V1070.1 a8 8 0 0 1 -8 8 H847 a8 8 0 0 1 -8 -8 V982.1 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="992" y="1002.5" fill="#1f2328" text-anchor="middle">EXP-24</text>
-  <text x="992" y="1021.5" fill="#1f2328" text-anchor="middle">Agentic text → film pipeline…</text>
-  <text x="992" y="1040.5" fill="#1f2328" text-anchor="middle">→ Run owner-authorized Phase 2</text>
-  <text x="992" y="1059.5" fill="#1f2328" text-anchor="middle">CP-06…CP-12. Start…</text>
-  <path d="M1223 496.4 H1532 a8 8 0 0 1 8 8 V1105.4 a8 8 0 0 1 -8 8 H1223 a8 8 0 0 1 -8 -8 V504.4 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
-  <text x="1229" y="524.8" fill="#1f2328" text-anchor="start">HOLD (5)</text>
-  <path d="M1237 539.4 H1518 a8 8 0 0 1 8 8 V635.4 a8 8 0 0 1 -8 8 H1237 a8 8 0 0 1 -8 -8 V547.4 a8 8 0 0 1 8 -8 Z" fill="#fef3c7" stroke="#d97706"/>
-  <text x="1377.5" y="567.8" fill="#1f2328" text-anchor="middle">EXP-09</text>
-  <text x="1377.5" y="586.8" fill="#1f2328" text-anchor="middle">Personalized Assessment Engin…</text>
-  <text x="1377.5" y="605.8" fill="#1f2328" text-anchor="middle">→ No further EXP-09</text>
-  <text x="1377.5" y="624.8" fill="#1f2328" text-anchor="middle">implementation/reconstruction…</text>
-  <path d="M1237 653.4 H1518 a8 8 0 0 1 8 8 V749.4 a8 8 0 0 1 -8 8 H1237 a8 8 0 0 1 -8 -8 V661.4 a8 8 0 0 1 8 -8 Z" fill="#fef3c7" stroke="#d97706"/>
-  <text x="1377.5" y="681.8" fill="#1f2328" text-anchor="middle">EXP-10</text>
-  <text x="1377.5" y="700.8" fill="#1f2328" text-anchor="middle">Munder Difflin controlled pil…</text>
-  <text x="1377.5" y="719.8" fill="#1f2328" text-anchor="middle">→ Do not retry until the Windows</text>
-  <text x="1377.5" y="738.8" fill="#1f2328" text-anchor="middle">Codex-adapter fa…</text>
-  <path d="M1237 767.4 H1518 a8 8 0 0 1 8 8 V863.4 a8 8 0 0 1 -8 8 H1237 a8 8 0 0 1 -8 -8 V775.4 a8 8 0 0 1 8 -8 Z" fill="#fef3c7" stroke="#d97706"/>
-  <text x="1377.5" y="795.8" fill="#1f2328" text-anchor="middle">EXP-COMPUTE-BUDGET</text>
-  <text x="1377.5" y="814.8" fill="#1f2328" text-anchor="middle">Compute Budget Gate</text>
-  <text x="1377.5" y="833.8" fill="#1f2328" text-anchor="middle">→ Collect 5–10 observed usage</text>
-  <text x="1377.5" y="852.8" fill="#1f2328" text-anchor="middle">records and rerun t…</text>
-  <path d="M1237 881.4 H1518 a8 8 0 0 1 8 8 V977.4 a8 8 0 0 1 -8 8 H1237 a8 8 0 0 1 -8 -8 V889.4 a8 8 0 0 1 8 -8 Z" fill="#fef3c7" stroke="#d97706"/>
-  <text x="1377.5" y="909.8" fill="#1f2328" text-anchor="middle">EXP-STAGE3-SYNTHETIC</text>
-  <text x="1377.5" y="928.8" fill="#1f2328" text-anchor="middle">Synthetic Stakeholder Evaluat…</text>
-  <text x="1377.5" y="947.8" fill="#1f2328" text-anchor="middle">→ Complete EXP-12 prospective</text>
-  <text x="1377.5" y="966.8" fill="#1f2328" text-anchor="middle">validation and the…</text>
-  <path d="M1237 995.4 H1518 a8 8 0 0 1 8 8 V1091.4 a8 8 0 0 1 -8 8 H1237 a8 8 0 0 1 -8 -8 V1003.4 a8 8 0 0 1 8 -8 Z" fill="#fef3c7" stroke="#d97706"/>
-  <text x="1377.5" y="1023.8" fill="#1f2328" text-anchor="middle">EXP-17</text>
-  <text x="1377.5" y="1042.8" fill="#1f2328" text-anchor="middle">PrivetMaket backend recon</text>
-  <text x="1377.5" y="1061.8" fill="#1f2328" text-anchor="middle">→ If needed, capture a redacted</text>
-  <text x="1377.5" y="1080.8" fill="#1f2328" text-anchor="middle">anonymous browser…</text>
-  <path d="M1604 724.4 H1896 a8 8 0 0 1 8 8 V877.4 a8 8 0 0 1 -8 8 H1604 a8 8 0 0 1 -8 -8 V732.4 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
-  <text x="1610" y="752.8" fill="#1f2328" text-anchor="start">PARTIAL (1)</text>
-  <path d="M1618 767.4 H1882 a8 8 0 0 1 8 8 V863.4 a8 8 0 0 1 -8 8 H1618 a8 8 0 0 1 -8 -8 V775.4 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="1750" y="795.8" fill="#1f2328" text-anchor="middle">EXP-26</text>
-  <text x="1750" y="814.8" fill="#1f2328" text-anchor="middle">TencentDB Agent Memory compon…</text>
-  <text x="1750" y="833.8" fill="#1f2328" text-anchor="middle">→ Closed at bounded component</text>
-  <text x="1750" y="852.8" fill="#1f2328" text-anchor="middle">extraction. No prod…</text>
-  <path d="M1968 724.4 H2269 a8 8 0 0 1 8 8 V877.4 a8 8 0 0 1 -8 8 H1968 a8 8 0 0 1 -8 -8 V732.4 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
-  <text x="1974" y="752.8" fill="#1f2328" text-anchor="start">FAIL (1)</text>
-  <path d="M1982 767.4 H2255 a8 8 0 0 1 8 8 V863.4 a8 8 0 0 1 -8 8 H1982 a8 8 0 0 1 -8 -8 V775.4 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="2118.5" y="795.8" fill="#1f2328" text-anchor="middle">EXP-14</text>
-  <text x="2118.5" y="814.8" fill="#1f2328" text-anchor="middle">Laya / System One Decision La…</text>
-  <text x="2118.5" y="833.8" fill="#1f2328" text-anchor="middle">→ Closed. Do not integrate Laya</text>
-  <text x="2118.5" y="852.8" fill="#1f2328" text-anchor="middle">and do not grant…</text>
-  <path d="M2341 610.4 H2642 a8 8 0 0 1 8 8 V991.4 a8 8 0 0 1 -8 8 H2341 a8 8 0 0 1 -8 -8 V618.4 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
-  <text x="2347" y="638.8" fill="#1f2328" text-anchor="start">RETIRED (3)</text>
-  <path d="M2355 653.4 H2628 a8 8 0 0 1 8 8 V749.4 a8 8 0 0 1 -8 8 H2355 a8 8 0 0 1 -8 -8 V661.4 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="2491.5" y="681.8" fill="#1f2328" text-anchor="middle">EXP-QOOPIA-MEMORY</text>
-  <text x="2491.5" y="700.8" fill="#1f2328" text-anchor="middle">Qoopia cross-session memory</text>
-  <text x="2491.5" y="719.8" fill="#1f2328" text-anchor="middle">→ Do not run. Revisit only if a</text>
-  <text x="2491.5" y="738.8" fill="#1f2328" text-anchor="middle">concrete external…</text>
-  <path d="M2355 767.4 H2628 a8 8 0 0 1 8 8 V863.4 a8 8 0 0 1 -8 8 H2355 a8 8 0 0 1 -8 -8 V775.4 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="2491.5" y="795.8" fill="#1f2328" text-anchor="middle">EXP-UX-UI-SKILLS</text>
-  <text x="2491.5" y="814.8" fill="#1f2328" text-anchor="middle">UX/UI Agent Skills</text>
-  <text x="2491.5" y="833.8" fill="#1f2328" text-anchor="middle">→ Historical fixture remains</text>
-  <text x="2491.5" y="852.8" fill="#1f2328" text-anchor="middle">retired. Reuse the e…</text>
-  <path d="M2355 881.4 H2628 a8 8 0 0 1 8 8 V977.4 a8 8 0 0 1 -8 8 H2355 a8 8 0 0 1 -8 -8 V889.4 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="2491.5" y="909.8" fill="#1f2328" text-anchor="middle">EXP-16</text>
-  <text x="2491.5" y="928.8" fill="#1f2328" text-anchor="middle">Minimalist Entrepreneur Skill…</text>
-  <text x="2491.5" y="947.8" fill="#1f2328" text-anchor="middle">→ Do not run as a standalone</text>
-  <text x="2491.5" y="966.8" fill="#1f2328" text-anchor="middle">experiment. Revisit…</text>
-  <path d="M1183.5 1596.8 H1520.5 a8 8 0 0 1 8 8 V1806.8 a8 8 0 0 1 -8 8 H1183.5 a8 8 0 0 1 -8 -8 V1604.8 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
-  <text x="1189.5" y="1625.2" fill="#1f2328" text-anchor="start">Murat AI Orchestrator</text>
-  <path d="M1197.5 1639.8 H1506.5 a8 8 0 0 1 8 8 V1792.8 a8 8 0 0 1 -8 8 H1197.5 a8 8 0 0 1 -8 -8 V1647.8 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
-  <text x="1203.5" y="1668.2" fill="#1f2328" text-anchor="start">PLANNED (1)</text>
-  <path d="M1211.5 1682.8 H1492.5 a8 8 0 0 1 8 8 V1778.8 a8 8 0 0 1 -8 8 H1211.5 a8 8 0 0 1 -8 -8 V1690.8 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="1352" y="1711.2" fill="#1f2328" text-anchor="middle">EXP-ALEXANDRIA</text>
-  <text x="1352" y="1730.2" fill="#1f2328" text-anchor="middle">Firecrawl Alexandria source d…</text>
-  <text x="1352" y="1749.2" fill="#1f2328" text-anchor="middle">→ Execute the isolated five-task</text>
-  <text x="1352" y="1768.2" fill="#1f2328" text-anchor="middle">comparison and r…</text>
-  <path d="M1187.5 1870.8 H1516.5 a8 8 0 0 1 8 8 V2080.8 a8 8 0 0 1 -8 8 H1187.5 a8 8 0 0 1 -8 -8 V1878.8 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
-  <text x="1193.5" y="1899.2" fill="#1f2328" text-anchor="start">Murat House</text>
-  <path d="M1201.5 1913.8 H1502.5 a8 8 0 0 1 8 8 V2066.8 a8 8 0 0 1 -8 8 H1201.5 a8 8 0 0 1 -8 -8 V1921.8 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
-  <text x="1207.5" y="1942.2" fill="#1f2328" text-anchor="start">PLANNED (1)</text>
-  <path d="M1215.5 1956.8 H1488.5 a8 8 0 0 1 8 8 V2052.8 a8 8 0 0 1 -8 8 H1215.5 a8 8 0 0 1 -8 -8 V1964.8 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="1352" y="1985.2" fill="#1f2328" text-anchor="middle">EXP-RANKCONTROL</text>
-  <text x="1352" y="2004.2" fill="#1f2328" text-anchor="middle">RankControl AI visibility</text>
-  <text x="1352" y="2023.2" fill="#1f2328" text-anchor="middle">→ After owner registration, run</text>
-  <text x="1352" y="2042.2" fill="#1f2328" text-anchor="middle">and record the fi…</text>
-  <path d="M1204.5 2144.8 H1499.5 a8 8 0 0 1 8 8 V2354.8 a8 8 0 0 1 -8 8 H1204.5 a8 8 0 0 1 -8 -8 V2152.8 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
-  <text x="1210.5" y="2173.2" fill="#1f2328" text-anchor="start">MebelFlow AI</text>
-  <path d="M1218.5 2187.8 H1485.5 a8 8 0 0 1 8 8 V2340.8 a8 8 0 0 1 -8 8 H1218.5 a8 8 0 0 1 -8 -8 V2195.8 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
-  <text x="1224.5" y="2216.2" fill="#1f2328" text-anchor="start">PLANNED (1)</text>
-  <path d="M1232.5 2230.8 H1471.5 a8 8 0 0 1 8 8 V2326.8 a8 8 0 0 1 -8 8 H1232.5 a8 8 0 0 1 -8 -8 V2238.8 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="1352" y="2259.2" fill="#1f2328" text-anchor="middle">EXP-21</text>
-  <text x="1352" y="2278.2" fill="#1f2328" text-anchor="middle">EasyKitchen / SketchUp produc…</text>
-  <text x="1352" y="2297.2" fill="#1f2328" text-anchor="middle">→ Perform focused technical</text>
-  <text x="1352" y="2316.2" fill="#1f2328" text-anchor="middle">reconnaissance of Ske…</text>
-  <path d="M 1229 933.4 L 1229 933.4 C 1193.74 933.4, 1193.74 493.7, 1158.48 493.7 L 445.9 493.7 C 427.84 493.7, 413.2 499.59, 413.2 506.85 L 413.2 506.85 C 413.2 514.11, 404.25 520, 393.2 520 L 382 520" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#rf4aa1bdc-arrow-7c83a0)"/>
-  <rect x="766.5" y="484.2" width="78" height="19" fill="#ffffff"/>
-  <text x="805.5" y="498.6" fill="#1f2328" text-anchor="middle">waits on</text>
-  <path d="M 68 976 L 68 976 C 50.77 976, 36.8 1029.72, 36.8 1096 L 36.8 1155.4 C 36.8 1221.68, 45.75 1275.4, 56.8 1275.4 L 68 1275.4" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#rf4aa1bdc-arrow-7c83a0)"/>
+  <path d="M76 1594.2 H374 a8 8 0 0 1 8 8 V1690.2 a8 8 0 0 1 -8 8 H76 a8 8 0 0 1 -8 -8 V1602.2 a8 8 0 0 1 8 -8 Z" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="225" y="1622.6" fill="#1f2328" text-anchor="middle">EXP-29</text>
+  <text x="225" y="1641.6" fill="#1f2328" text-anchor="middle">Arena Bootstrap Harness</text>
+  <text x="225" y="1660.6" fill="#1f2328" text-anchor="middle">→ Closed at CP-05 with PASS /</text>
+  <text x="225" y="1679.6" fill="#1f2328" text-anchor="middle">REUSE_COMPONENT. Re…</text>
+  <path d="M460 817.1 H761 a8 8 0 0 1 8 8 V970.1 a8 8 0 0 1 -8 8 H460 a8 8 0 0 1 -8 -8 V825.1 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <text x="466" y="845.5" fill="#1f2328" text-anchor="start">READY_TO_TEST (1)</text>
+  <path d="M474 860.1 H747 a8 8 0 0 1 8 8 V956.1 a8 8 0 0 1 -8 8 H474 a8 8 0 0 1 -8 -8 V868.1 a8 8 0 0 1 8 -8 Z" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="610.5" y="888.5" fill="#1f2328" text-anchor="middle">EXP-13</text>
+  <text x="610.5" y="907.5" fill="#1f2328" text-anchor="middle">Low-cost evaluation harness</text>
+  <text x="610.5" y="926.5" fill="#1f2328" text-anchor="middle">→ Run the frozen 18-entry Pilot</text>
+  <text x="610.5" y="945.5" fill="#1f2328" text-anchor="middle">Batch 1 only when…</text>
+  <path d="M833 610.4 H1151 a8 8 0 0 1 8 8 V1176.8 a8 8 0 0 1 -8 8 H833 a8 8 0 0 1 -8 -8 V618.4 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <text x="839" y="638.8" fill="#1f2328" text-anchor="start">PLANNED (4)</text>
+  <path d="M847 653.4 H1137 a8 8 0 0 1 8 8 V749.4 a8 8 0 0 1 -8 8 H847 a8 8 0 0 1 -8 -8 V661.4 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="992" y="681.8" fill="#1f2328" text-anchor="middle">EXP-S2C-01</text>
+  <text x="992" y="700.8" fill="#1f2328" text-anchor="middle">Screenshot-to-Code Visual Wor…</text>
+  <text x="992" y="719.8" fill="#1f2328" text-anchor="middle">→ Freeze one existing-project</text>
+  <text x="992" y="738.8" fill="#1f2328" text-anchor="middle">fixture and baselin…</text>
+  <path d="M847 767.4 H1137 a8 8 0 0 1 8 8 V863.4 a8 8 0 0 1 -8 8 H847 a8 8 0 0 1 -8 -8 V775.4 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="992" y="795.8" fill="#1f2328" text-anchor="middle">EXP-22</text>
+  <text x="992" y="814.8" fill="#1f2328" text-anchor="middle">Colibri local inference / Bri…</text>
+  <text x="992" y="833.8" fill="#1f2328" text-anchor="middle">→ Arena: execute CP-01</text>
+  <text x="992" y="852.8" fill="#1f2328" text-anchor="middle">READY/WARNING/BLOCKED clas…</text>
+  <path d="M847 952.8 H1137 a8 8 0 0 1 8 8 V1048.8 a8 8 0 0 1 -8 8 H847 a8 8 0 0 1 -8 -8 V960.8 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="992" y="981.2" fill="#1f2328" text-anchor="middle">EXP-23</text>
+  <text x="992" y="1000.2" fill="#1f2328" text-anchor="middle">Papermorph document → interac…</text>
+  <text x="992" y="1019.2" fill="#1f2328" text-anchor="middle">→ After EXP-22 Colibri completes,</text>
+  <text x="992" y="1038.2" fill="#1f2328" text-anchor="middle">Arena runs one…</text>
+  <path d="M847 1066.8 H1137 a8 8 0 0 1 8 8 V1162.8 a8 8 0 0 1 -8 8 H847 a8 8 0 0 1 -8 -8 V1074.8 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="992" y="1095.2" fill="#1f2328" text-anchor="middle">EXP-24</text>
+  <text x="992" y="1114.2" fill="#1f2328" text-anchor="middle">Agentic text → film pipeline…</text>
+  <text x="992" y="1133.2" fill="#1f2328" text-anchor="middle">→ Run owner-authorized Phase 2</text>
+  <text x="992" y="1152.2" fill="#1f2328" text-anchor="middle">CP-06…CP-12. Start…</text>
+  <path d="M1223 589.1 H1532 a8 8 0 0 1 8 8 V1198.1 a8 8 0 0 1 -8 8 H1223 a8 8 0 0 1 -8 -8 V597.1 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <text x="1229" y="617.5" fill="#1f2328" text-anchor="start">HOLD (5)</text>
+  <path d="M1237 632.1 H1518 a8 8 0 0 1 8 8 V728.1 a8 8 0 0 1 -8 8 H1237 a8 8 0 0 1 -8 -8 V640.1 a8 8 0 0 1 8 -8 Z" fill="#fef3c7" stroke="#d97706"/>
+  <text x="1377.5" y="660.5" fill="#1f2328" text-anchor="middle">EXP-09</text>
+  <text x="1377.5" y="679.5" fill="#1f2328" text-anchor="middle">Personalized Assessment Engin…</text>
+  <text x="1377.5" y="698.5" fill="#1f2328" text-anchor="middle">→ No further EXP-09</text>
+  <text x="1377.5" y="717.5" fill="#1f2328" text-anchor="middle">implementation/reconstruction…</text>
+  <path d="M1237 746.1 H1518 a8 8 0 0 1 8 8 V842.1 a8 8 0 0 1 -8 8 H1237 a8 8 0 0 1 -8 -8 V754.1 a8 8 0 0 1 8 -8 Z" fill="#fef3c7" stroke="#d97706"/>
+  <text x="1377.5" y="774.5" fill="#1f2328" text-anchor="middle">EXP-10</text>
+  <text x="1377.5" y="793.5" fill="#1f2328" text-anchor="middle">Munder Difflin controlled pil…</text>
+  <text x="1377.5" y="812.5" fill="#1f2328" text-anchor="middle">→ Do not retry until the Windows</text>
+  <text x="1377.5" y="831.5" fill="#1f2328" text-anchor="middle">Codex-adapter fa…</text>
+  <path d="M1237 860.1 H1518 a8 8 0 0 1 8 8 V956.1 a8 8 0 0 1 -8 8 H1237 a8 8 0 0 1 -8 -8 V868.1 a8 8 0 0 1 8 -8 Z" fill="#fef3c7" stroke="#d97706"/>
+  <text x="1377.5" y="888.5" fill="#1f2328" text-anchor="middle">EXP-COMPUTE-BUDGET</text>
+  <text x="1377.5" y="907.5" fill="#1f2328" text-anchor="middle">Compute Budget Gate</text>
+  <text x="1377.5" y="926.5" fill="#1f2328" text-anchor="middle">→ Collect 5–10 observed usage</text>
+  <text x="1377.5" y="945.5" fill="#1f2328" text-anchor="middle">records and rerun t…</text>
+  <path d="M1237 974.1 H1518 a8 8 0 0 1 8 8 V1070.1 a8 8 0 0 1 -8 8 H1237 a8 8 0 0 1 -8 -8 V982.1 a8 8 0 0 1 8 -8 Z" fill="#fef3c7" stroke="#d97706"/>
+  <text x="1377.5" y="1002.5" fill="#1f2328" text-anchor="middle">EXP-STAGE3-SYNTHETIC</text>
+  <text x="1377.5" y="1021.5" fill="#1f2328" text-anchor="middle">Synthetic Stakeholder Evaluat…</text>
+  <text x="1377.5" y="1040.5" fill="#1f2328" text-anchor="middle">→ Complete EXP-12 prospective</text>
+  <text x="1377.5" y="1059.5" fill="#1f2328" text-anchor="middle">validation and the…</text>
+  <path d="M1237 1088.1 H1518 a8 8 0 0 1 8 8 V1184.1 a8 8 0 0 1 -8 8 H1237 a8 8 0 0 1 -8 -8 V1096.1 a8 8 0 0 1 8 -8 Z" fill="#fef3c7" stroke="#d97706"/>
+  <text x="1377.5" y="1116.5" fill="#1f2328" text-anchor="middle">EXP-17</text>
+  <text x="1377.5" y="1135.5" fill="#1f2328" text-anchor="middle">PrivetMaket backend recon</text>
+  <text x="1377.5" y="1154.5" fill="#1f2328" text-anchor="middle">→ If needed, capture a redacted</text>
+  <text x="1377.5" y="1173.5" fill="#1f2328" text-anchor="middle">anonymous browser…</text>
+  <path d="M1604 817.1 H1896 a8 8 0 0 1 8 8 V970.1 a8 8 0 0 1 -8 8 H1604 a8 8 0 0 1 -8 -8 V825.1 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <text x="1610" y="845.5" fill="#1f2328" text-anchor="start">PARTIAL (1)</text>
+  <path d="M1618 860.1 H1882 a8 8 0 0 1 8 8 V956.1 a8 8 0 0 1 -8 8 H1618 a8 8 0 0 1 -8 -8 V868.1 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="1750" y="888.5" fill="#1f2328" text-anchor="middle">EXP-26</text>
+  <text x="1750" y="907.5" fill="#1f2328" text-anchor="middle">TencentDB Agent Memory compon…</text>
+  <text x="1750" y="926.5" fill="#1f2328" text-anchor="middle">→ Closed at bounded component</text>
+  <text x="1750" y="945.5" fill="#1f2328" text-anchor="middle">extraction. No prod…</text>
+  <path d="M1968 817.1 H2269 a8 8 0 0 1 8 8 V970.1 a8 8 0 0 1 -8 8 H1968 a8 8 0 0 1 -8 -8 V825.1 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <text x="1974" y="845.5" fill="#1f2328" text-anchor="start">FAIL (1)</text>
+  <path d="M1982 860.1 H2255 a8 8 0 0 1 8 8 V956.1 a8 8 0 0 1 -8 8 H1982 a8 8 0 0 1 -8 -8 V868.1 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="2118.5" y="888.5" fill="#1f2328" text-anchor="middle">EXP-14</text>
+  <text x="2118.5" y="907.5" fill="#1f2328" text-anchor="middle">Laya / System One Decision La…</text>
+  <text x="2118.5" y="926.5" fill="#1f2328" text-anchor="middle">→ Closed. Do not integrate Laya</text>
+  <text x="2118.5" y="945.5" fill="#1f2328" text-anchor="middle">and do not grant…</text>
+  <path d="M2341 703.1 H2642 a8 8 0 0 1 8 8 V1084.1 a8 8 0 0 1 -8 8 H2341 a8 8 0 0 1 -8 -8 V711.1 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <text x="2347" y="731.5" fill="#1f2328" text-anchor="start">RETIRED (3)</text>
+  <path d="M2355 746.1 H2628 a8 8 0 0 1 8 8 V842.1 a8 8 0 0 1 -8 8 H2355 a8 8 0 0 1 -8 -8 V754.1 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="2491.5" y="774.5" fill="#1f2328" text-anchor="middle">EXP-QOOPIA-MEMORY</text>
+  <text x="2491.5" y="793.5" fill="#1f2328" text-anchor="middle">Qoopia cross-session memory</text>
+  <text x="2491.5" y="812.5" fill="#1f2328" text-anchor="middle">→ Do not run. Revisit only if a</text>
+  <text x="2491.5" y="831.5" fill="#1f2328" text-anchor="middle">concrete external…</text>
+  <path d="M2355 860.1 H2628 a8 8 0 0 1 8 8 V956.1 a8 8 0 0 1 -8 8 H2355 a8 8 0 0 1 -8 -8 V868.1 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="2491.5" y="888.5" fill="#1f2328" text-anchor="middle">EXP-UX-UI-SKILLS</text>
+  <text x="2491.5" y="907.5" fill="#1f2328" text-anchor="middle">UX/UI Agent Skills</text>
+  <text x="2491.5" y="926.5" fill="#1f2328" text-anchor="middle">→ Historical fixture remains</text>
+  <text x="2491.5" y="945.5" fill="#1f2328" text-anchor="middle">retired. Reuse the e…</text>
+  <path d="M2355 974.1 H2628 a8 8 0 0 1 8 8 V1070.1 a8 8 0 0 1 -8 8 H2355 a8 8 0 0 1 -8 -8 V982.1 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="2491.5" y="1002.5" fill="#1f2328" text-anchor="middle">EXP-16</text>
+  <text x="2491.5" y="1021.5" fill="#1f2328" text-anchor="middle">Minimalist Entrepreneur Skill…</text>
+  <text x="2491.5" y="1040.5" fill="#1f2328" text-anchor="middle">→ Do not run as a standalone</text>
+  <text x="2491.5" y="1059.5" fill="#1f2328" text-anchor="middle">experiment. Revisit…</text>
+  <path d="M1183.5 1782.2 H1520.5 a8 8 0 0 1 8 8 V1992.2 a8 8 0 0 1 -8 8 H1183.5 a8 8 0 0 1 -8 -8 V1790.2 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <text x="1189.5" y="1810.6" fill="#1f2328" text-anchor="start">Murat AI Orchestrator</text>
+  <path d="M1197.5 1825.2 H1506.5 a8 8 0 0 1 8 8 V1978.2 a8 8 0 0 1 -8 8 H1197.5 a8 8 0 0 1 -8 -8 V1833.2 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <text x="1203.5" y="1853.6" fill="#1f2328" text-anchor="start">PLANNED (1)</text>
+  <path d="M1211.5 1868.2 H1492.5 a8 8 0 0 1 8 8 V1964.2 a8 8 0 0 1 -8 8 H1211.5 a8 8 0 0 1 -8 -8 V1876.2 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="1352" y="1896.6" fill="#1f2328" text-anchor="middle">EXP-ALEXANDRIA</text>
+  <text x="1352" y="1915.6" fill="#1f2328" text-anchor="middle">Firecrawl Alexandria source d…</text>
+  <text x="1352" y="1934.6" fill="#1f2328" text-anchor="middle">→ Execute the isolated five-task</text>
+  <text x="1352" y="1953.6" fill="#1f2328" text-anchor="middle">comparison and r…</text>
+  <path d="M1187.5 2056.2 H1516.5 a8 8 0 0 1 8 8 V2266.2 a8 8 0 0 1 -8 8 H1187.5 a8 8 0 0 1 -8 -8 V2064.2 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <text x="1193.5" y="2084.6" fill="#1f2328" text-anchor="start">Murat House</text>
+  <path d="M1201.5 2099.2 H1502.5 a8 8 0 0 1 8 8 V2252.2 a8 8 0 0 1 -8 8 H1201.5 a8 8 0 0 1 -8 -8 V2107.2 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <text x="1207.5" y="2127.6" fill="#1f2328" text-anchor="start">PLANNED (1)</text>
+  <path d="M1215.5 2142.2 H1488.5 a8 8 0 0 1 8 8 V2238.2 a8 8 0 0 1 -8 8 H1215.5 a8 8 0 0 1 -8 -8 V2150.2 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="1352" y="2170.6" fill="#1f2328" text-anchor="middle">EXP-RANKCONTROL</text>
+  <text x="1352" y="2189.6" fill="#1f2328" text-anchor="middle">RankControl AI visibility</text>
+  <text x="1352" y="2208.6" fill="#1f2328" text-anchor="middle">→ After owner registration, run</text>
+  <text x="1352" y="2227.6" fill="#1f2328" text-anchor="middle">and record the fi…</text>
+  <path d="M1204.5 2330.2 H1499.5 a8 8 0 0 1 8 8 V2540.2 a8 8 0 0 1 -8 8 H1204.5 a8 8 0 0 1 -8 -8 V2338.2 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <text x="1210.5" y="2358.6" fill="#1f2328" text-anchor="start">MebelFlow AI</text>
+  <path d="M1218.5 2373.2 H1485.5 a8 8 0 0 1 8 8 V2526.2 a8 8 0 0 1 -8 8 H1218.5 a8 8 0 0 1 -8 -8 V2381.2 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <text x="1224.5" y="2401.6" fill="#1f2328" text-anchor="start">PLANNED (1)</text>
+  <path d="M1232.5 2416.2 H1471.5 a8 8 0 0 1 8 8 V2512.2 a8 8 0 0 1 -8 8 H1232.5 a8 8 0 0 1 -8 -8 V2424.2 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="1352" y="2444.6" fill="#1f2328" text-anchor="middle">EXP-21</text>
+  <text x="1352" y="2463.6" fill="#1f2328" text-anchor="middle">EasyKitchen / SketchUp produc…</text>
+  <text x="1352" y="2482.6" fill="#1f2328" text-anchor="middle">→ Perform focused technical</text>
+  <text x="1352" y="2501.6" fill="#1f2328" text-anchor="middle">reconnaissance of Ske…</text>
+  <path d="M 1229 1026.1 L 1229 1026.1 C 1211.77 1026.1, 1197.8 972.38, 1197.8 906.1 L 1197.8 558.47 C 1197.8 537.22, 1180.58 520, 1159.33 520 L 382 520" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r36d54075-arrow-7c83a0)"/>
+  <rect x="750.9" y="510.5" width="78" height="19" fill="#ffffff"/>
+  <text x="789.9" y="524.9" fill="#1f2328" text-anchor="middle">waits on</text>
+  <path d="M 68 976 L 68 976 C 50.77 976, 36.8 1029.72, 36.8 1096 L 36.8 1155.4 C 36.8 1221.68, 45.75 1275.4, 56.8 1275.4 L 68 1275.4" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r36d54075-arrow-7c83a0)"/>
   <rect x="-2.2" y="1116.2" width="78" height="19" fill="#ffffff"/>
   <text x="36.8" y="1130.6" fill="#1f2328" text-anchor="middle">waits on</text>
-  <line x1="992" y1="860.1" x2="992" y2="778.7" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#rf4aa1bdc-arrow-7c83a0)"/>
-  <rect x="953" y="809.9" width="78" height="19" fill="#ffffff"/>
-  <text x="992" y="824.3" fill="#1f2328" text-anchor="middle">waits on</text>
-  <path d="M 1610 819.4 L 1610 819.4 C 1574.74 819.4, 1574.74 472.4, 1539.48 472.4 L 472.2 472.4 C 461.15 472.4, 452.2 481.35, 452.2 492.4 L 452.2 553.2 C 452.2 597.83, 425.79 634, 393.2 634 L 382 634" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#rf4aa1bdc-arrow-7c83a0)" mask="url(#rf4aa1bdc-cut-1)"/>
-  <rect x="976.5" y="462.9" width="78" height="19" fill="#ffffff"/>
-  <text x="1015.5" y="477.3" fill="#1f2328" text-anchor="middle">waits on</text>
-  <line x1="225" y1="1223.4" x2="225" y2="1142" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#rf4aa1bdc-arrow-7c83a0)"/>
+  <line x1="992" y1="952.8" x2="992" y2="871.4" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r36d54075-arrow-7c83a0)"/>
+  <rect x="953" y="902.6" width="78" height="19" fill="#ffffff"/>
+  <text x="992" y="917" fill="#1f2328" text-anchor="middle">waits on</text>
+  <path d="M 1610 912.1 L 1610 912.1 C 1574.74 912.1, 1574.74 565.1, 1539.48 565.1 L 533.2 565.1 C 466.92 565.1, 413.2 580.52, 413.2 599.55 L 413.2 599.55 C 413.2 618.58, 404.25 634, 393.2 634 L 382 634" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r36d54075-arrow-7c83a0)" mask="url(#r36d54075-cut-1)"/>
+  <rect x="957" y="555.6" width="78" height="19" fill="#ffffff"/>
+  <text x="996" y="570" fill="#1f2328" text-anchor="middle">waits on</text>
+  <line x1="225" y1="1223.4" x2="225" y2="1142" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r36d54075-arrow-7c83a0)"/>
   <rect x="186" y="1173.2" width="78" height="19" fill="#ffffff"/>
   <text x="225" y="1187.6" fill="#1f2328" text-anchor="middle">waits on</text>
-  <line x1="316.75" y1="1408.8" x2="900.25" y2="1078.1" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#rf4aa1bdc-arrow-7c83a0)"/>
-  <rect x="569.5" y="1233.95" width="78" height="19" fill="#ffffff"/>
-  <text x="608.5" y="1248.35" fill="#1f2328" text-anchor="middle">waits on</text>
-  <path d="M 382 1460.8 L 382 1460.8 C 399.23 1460.8, 413.2 1407.08, 413.2 1340.8 L 413.2 1210 C 413.2 1143.72, 404.25 1090, 393.2 1090 L 382 1090" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#rf4aa1bdc-arrow-7c83a0)" mask="url(#rf4aa1bdc-cut-2)"/>
+  <line x1="341.62" y1="1408.8" x2="875.38" y2="1170.8" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r36d54075-arrow-7c83a0)"/>
+  <rect x="569.5" y="1280.3" width="78" height="19" fill="#ffffff"/>
+  <text x="608.5" y="1294.7" fill="#1f2328" text-anchor="middle">waits on</text>
+  <path d="M 382 1460.8 L 382 1460.8 C 399.23 1460.8, 413.2 1407.08, 413.2 1340.8 L 413.2 1210 C 413.2 1143.72, 404.25 1090, 393.2 1090 L 382 1090" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r36d54075-arrow-7c83a0)" mask="url(#r36d54075-cut-2)"/>
   <rect x="374.2" y="1265.9" width="78" height="19" fill="#ffffff"/>
   <text x="413.2" y="1280.3" fill="#1f2328" text-anchor="middle">waits on</text>
-  <line x1="225" y1="1408.8" x2="225" y2="1327.4" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#rf4aa1bdc-arrow-7c83a0)"/>
+  <line x1="225" y1="1408.8" x2="225" y2="1327.4" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r36d54075-arrow-7c83a0)"/>
   <rect x="186" y="1358.6" width="78" height="19" fill="#ffffff"/>
   <text x="225" y="1373" fill="#1f2328" text-anchor="middle">waits on</text>
+  <path d="M 68 1646.2 L 68 1646.2 C 50.77 1646.2, 36.8 1592.48, 36.8 1526.2 L 36.8 1411.4 C 36.8 1345.12, 45.75 1291.4, 56.8 1291.4 L 68 1291.4" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r36d54075-arrow-7c83a0)"/>
+  <rect x="-2.2" y="1459.3" width="78" height="19" fill="#ffffff"/>
+  <text x="36.8" y="1473.7" fill="#1f2328" text-anchor="middle">waits on</text>
+  <line x1="225" y1="1594.2" x2="225" y2="1512.8" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r36d54075-arrow-7c83a0)"/>
+  <rect x="186" y="1544" width="78" height="19" fill="#ffffff"/>
+  <text x="225" y="1558.4" fill="#1f2328" text-anchor="middle">waits on</text>
 </svg>

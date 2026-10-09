@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="355" height="1761" viewBox="0 0 355 1761" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
+<svg xmlns="http://www.w3.org/2000/svg" width="355" height="1894" viewBox="0 0 355 1894" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
   <defs>
   </defs>
-  <rect x="0" y="0" width="355" height="1761" fill="#ffffff"/>
-  <path d="M48 40 H307 a8 8 0 0 1 8 8 V1713 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
-  <text x="54" y="68.4" fill="#1f2328" text-anchor="start">PASS (11)</text>
+  <rect x="0" y="0" width="355" height="1894" fill="#ffffff"/>
+  <path d="M48 40 H307 a8 8 0 0 1 8 8 V1846 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <text x="54" y="68.4" fill="#1f2328" text-anchor="start">PASS (12)</text>
   <path d="M62 83 H293 a8 8 0 0 1 8 8 V198 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V91 a8 8 0 0 1 8 -8 Z" fill="#dcfce7" stroke="#16a34a"/>
   <text x="177.5" y="111.4" fill="#1f2328" text-anchor="middle">EXP-002 · MPE</text>
   <text x="177.5" y="130.4" fill="#1f2328" text-anchor="middle">Machine Protocol</text>
@@ -79,4 +79,10 @@
   <text x="177.5" y="1650.4" fill="#1f2328" text-anchor="middle">→ Closed as a manual,</text>
   <text x="177.5" y="1669.4" fill="#1f2328" text-anchor="middle">evidence-gated pattern. No</text>
   <text x="177.5" y="1688.4" fill="#1f2328" text-anchor="middle">automatic post-run tri…</text>
+  <path d="M62 1717 H293 a8 8 0 0 1 8 8 V1832 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V1725 a8 8 0 0 1 8 -8 Z" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="177.5" y="1745.4" fill="#1f2328" text-anchor="middle">EXP-29 · MPE</text>
+  <text x="177.5" y="1764.4" fill="#1f2328" text-anchor="middle">Arena Bootstrap Harness</text>
+  <text x="177.5" y="1783.4" fill="#1f2328" text-anchor="middle">→ Closed at CP-05 with</text>
+  <text x="177.5" y="1802.4" fill="#1f2328" text-anchor="middle">PASS / REUSE_COMPONENT.</text>
+  <text x="177.5" y="1821.4" fill="#1f2328" text-anchor="middle">Reuse the derived-packet…</text>
 </svg>
