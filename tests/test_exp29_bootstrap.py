@@ -8,7 +8,10 @@ These tests execute the experiment-local harness in
 * CP-03 — fresh-session A/B comparison (normal rediscovery vs bootstrap
   packet) on the frozen fixture EXP-27, each arm in an isolated
   ``python3 -I`` worker process;
-* CP-04 — stale/unsafe packet negative controls (fail-closed verification).
+* CP-04 — stale/unsafe packet negative controls (fail-closed verification);
+* CP-06 — first real-use repair: H-1 stop-rule boundary sections, H-2 source-true
+  markdown labels, H-3 README-declared checkpoint chain / disposition, using
+  EXP-22-shaped fixtures plus the EXP-27 fixture, and a live EXP-22/CP-01 FRESH check.
 
 They test contract behaviour (determinism, provenance, staleness detection,
 fail-closed refusal, no second source of truth, unchanged canonical sources),
@@ -17,6 +20,7 @@ running them.
 """
 
 import json
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -319,6 +323,274 @@ class Exp29BootstrapTests(unittest.TestCase):
         for arm in (self.arm_a, self.arm_b):
             op_types = {entry["op"] for entry in arm["trace"]}
             self.assertLessEqual(op_types, {"read", "listdir"}, "workers perform no writes")
+
+# --- CP-06: first real-use repair (H-1 / H-2 / H-3) ---------------------------
+
+SHARED_SOURCES = (
+    "STATUS.md",
+    "AGENTS.md",
+    "docs/governance/SCOPE-CHANGE-CONTROL.md",
+    "experiments/exp-28-agent-workflow-skills-retro/RESULTS.md",
+)
+
+EXP22_PATH = "experiments/exp-22-colibri-local-inference"
+
+# EXP-22-shaped fixture: the same heading and declaration structure as the canonical
+# EXP-22 files that failed the first real-use run (Boundaries with Allowed / Not
+# allowed lists, README-declared Decision and CP-01..03, Failure / stop criteria,
+# Guardrails, and no RESULTS.md yet).
+EXP22_TASK = """# Arena task — EXP-22 Colibri (fixture)
+
+## Before changing code
+
+Report the reuse decision first.
+
+If a deep-change is required, STOP and report it. Do not implement it.
+
+## Boundaries
+
+Allowed:
+- files under `experiments/exp-22-colibri-local-inference/`;
+- read-only inspection of existing project code;
+
+Not allowed:
+- new repository;
+- production deployment;
+
+## Deliverable
+
+Write the result.
+"""
+
+EXP22_README = """# EXP-22 — Colibri local inference / Brio routing (fixture)
+
+Status: PLANNED
+Decision: EXPERIMENT
+
+## Experiment scope
+
+### CP-01 — Brio status classifier
+
+Classify the status.
+
+### CP-02 — Agent routing decision
+
+Decide the routing.
+
+### CP-03 — Existing-provider compatibility
+
+Check compatibility.
+
+## Failure / stop criteria
+
+STOP or FAIL if:
+- setup cost exceeds the value of the narrow task;
+- Arena discovers a deep-change requirement;
+
+## Guardrails
+
+- No production traffic.
+- No secrets committed.
+"""
+
+
+def _real_use_root(workdir, name, *, task=EXP22_TASK, readme=EXP22_README, results=None):
+    """Temp repo root: real shared canonical sources plus an EXP-22-shaped experiment."""
+    root = Path(workdir) / name
+    for rel in SHARED_SOURCES:
+        target = root / rel
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(ROOT / rel, target)
+    registry = root / "experiments" / "EXPERIMENT_REGISTRY.json"
+    registry.parent.mkdir(parents=True, exist_ok=True)
+    registry.write_text(json.dumps({"experiments": [{
+        "experiment_id": "EXP-22",
+        "name": "Colibri local inference / Brio routing",
+        "owning_project": "Murat Project Engineer",
+        "status": "PLANNED",
+        "why": "Evaluate Colibri as a bounded local inference provider.",
+        "next_action": "Run CP-01.",
+        "experiment_path": EXP22_PATH,
+        "updated_at": "2026-10-09",
+    }]}, indent=2) + "\n", encoding="utf-8")
+    experiment = root / EXP22_PATH
+    experiment.mkdir(parents=True, exist_ok=True)
+    (experiment / "ARENA_TASK.md").write_text(task, encoding="utf-8")
+    (experiment / "README.md").write_text(readme, encoding="utf-8")
+    if results is not None:
+        (experiment / "RESULTS.md").write_text(results, encoding="utf-8")
+    return root
+
+
+class Exp29RealUseRepairTests(unittest.TestCase):
+    """CP-06 regression tests for the three defects found by the first real-use run."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls._tmp = tempfile.TemporaryDirectory(prefix="exp29-cp06-")
+        cls.workdir = Path(cls._tmp.name)
+
+    @classmethod
+    def tearDownClass(cls):
+        cls._tmp.cleanup()
+
+    def _packet(self, root, checkpoint="CP-01"):
+        return builder.build_packet(root, "EXP-22", checkpoint, **PINNED_GIT)
+
+    # H-1 — stop-rule parser must read real boundary sections, fail closed otherwise
+
+    def test_h1_boundary_sections_yield_stop_rules_and_verify_fresh(self):
+        root = _real_use_root(self.workdir, "h1_boundaries")
+        packet = self._packet(root)
+        rules = packet["rules"]["stop_rules"]
+        self.assertIn("new repository;", rules, "ARENA_TASK ## Boundaries (Not allowed) is a stop rule")
+        self.assertIn("setup cost exceeds the value of the narrow task;", rules,
+                      "README ## Failure / stop criteria is a stop rule")
+        self.assertIn("No production traffic.", rules, "README ## Guardrails is a boundary rule")
+        self.assertFalse(
+            any(rule.startswith("files under") for rule in rules),
+            "Allowed items are permissions, not stop rules",
+        )
+        for anchor in ("ARENA_TASK.md#boundaries", "README.md#failure-stop-criteria",
+                       "README.md#guardrails"):
+            self.assertIn(anchor, packet["rules"]["stop_rules_source"])
+        result = builder.verify_packet(packet, root)
+        self.assertEqual(result["status"], "FRESH", result["reasons"])
+
+    def test_h1_prose_only_boundaries_stay_fail_closed(self):
+        task = (
+            "# Arena task — EXP-22 (fixture)\n\n"
+            "## Boundaries\n\n"
+            "No new repository and no production deployment are allowed.\n"
+        )
+        readme = (
+            "# EXP-22 (fixture)\n\nDecision: EXPERIMENT  \n\n"
+            "### CP-01 — Brio status classifier\n\n"
+            "## Failure / stop criteria\n\n"
+            "Stop the run if the setup cost is too high.\n"
+        )
+        root = _real_use_root(self.workdir, "h1_prose", task=task, readme=readme)
+        packet = self._packet(root)
+        self.assertEqual(packet["rules"]["stop_rules"], [])
+        result = builder.verify_packet(packet, root)
+        self.assertEqual(result["status"], "REJECTED")
+        self.assertIn("missing_stop_rules", result["reasons"])
+
+    def test_h1_allowed_list_alone_is_not_a_stop_rule(self):
+        task = (
+            "# Arena task (fixture)\n\n"
+            "## Boundaries\n\n"
+            "Allowed:\n"
+            "- files under `experiments/exp-22-colibri-local-inference/`;\n"
+            "- read-only inspection;\n"
+        )
+        readme = "# EXP-22 (fixture)\n\nDecision: EXPERIMENT  \n\n### CP-01 — x\n"
+        root = _real_use_root(self.workdir, "h1_allowed_only", task=task, readme=readme)
+        packet = self._packet(root)
+        self.assertEqual(packet["rules"]["stop_rules"], [])
+        self.assertEqual(builder.verify_packet(packet, root)["status"], "REJECTED")
+
+    # H-2 — markdown labels describe the packet's actual sources
+
+    def test_h2_labels_describe_the_actual_sources_when_no_results_exist(self):
+        root = _real_use_root(self.workdir, "h2_no_results")
+        markdown = builder.render_markdown(self._packet(root))
+        headings = [line for line in markdown.splitlines() if line.startswith("## ")]
+        self.assertIn("## REUSABLE COMPONENTS (no experiment RESULTS.md present)", headings)
+        self.assertIn(
+            "## KNOWN TRAPS (verified limitations, no experiment RESULTS.md present)", headings,
+        )
+        self.assertFalse(any("EXP-27" in heading for heading in headings), headings)
+        self.assertIn(
+            "## KNOWN LESSONS (evidence-gated, from "
+            "experiments/exp-28-agent-workflow-skills-retro/RESULTS.md)",
+            headings,
+        )
+
+    def test_h2_labels_name_the_experiment_results_when_present(self):
+        results = (
+            "# EXP-22 — Results (fixture)\n\n"
+            "## Per-pattern disposition\n\n"
+            "| # | Pattern | Verdict | Disposition |\n"
+            "|---|---|---|---|\n"
+            "| 1 | Brio status classifier | BORROW | REUSE_COMPONENT |\n\n"
+            "## Known limitations / blockers\n\n"
+            "- Provider latency is unmeasured.\n"
+        )
+        root = _real_use_root(self.workdir, "h2_with_results", results=results)
+        packet = self._packet(root)
+        markdown = builder.render_markdown(packet)
+        self.assertIn(f"## REUSABLE COMPONENTS (from {EXP22_PATH}/RESULTS.md)", markdown)
+        self.assertIn(
+            f"## KNOWN TRAPS (verified limitations, from {EXP22_PATH}/RESULTS.md)", markdown,
+        )
+        self.assertEqual(packet["reusable_components"][0]["pattern"], "Brio status classifier")
+        self.assertEqual(packet["known_traps"][0]["trap"], "Provider latency is unmeasured.")
+
+    # H-3 — checkpoint chain and disposition read the README-declared fields
+
+    def test_h3_checkpoint_chain_and_disposition_come_from_the_readme(self):
+        root = _real_use_root(self.workdir, "h3_genealogy")
+        packet = self._packet(root)
+        self.assertEqual(packet["now"]["checkpoints"], ["CP-01", "CP-02", "CP-03"])
+        self.assertEqual(packet["now"]["disposition"], "EXPERIMENT")
+        self.assertEqual(
+            packet["now"]["disposition_sources"],
+            [{"path": f"{EXP22_PATH}/README.md", "value": "EXPERIMENT"}],
+        )
+        self.assertEqual(builder.verify_packet(packet, root)["status"], "FRESH")
+
+    def test_h3_conflicting_disposition_is_rejected_not_silently_resolved(self):
+        task = EXP22_TASK.replace(
+            "## Before changing code",
+            "Decision: **REUSE_COMPONENT**\n\n## Before changing code",
+            1,
+        )
+        root = _real_use_root(self.workdir, "h3_conflict", task=task)
+        packet = self._packet(root)
+        result = builder.verify_packet(packet, root)
+        self.assertEqual(result["status"], "REJECTED")
+        self.assertIn("ambiguous_disposition", result["reasons"])
+        self.assertFalse(result["checks"]["disposition_unambiguous"])
+        packet_path = self.workdir / "h3_conflict_packet.json"
+        packet_path.write_text(json.dumps(packet, sort_keys=True, indent=1) + "\n", encoding="utf-8")
+        worker = _run_worker(
+            ["answer", "--packet", str(packet_path), "--out", str(self.workdir / "h3_worker.json")],
+            cwd=self.workdir / "h3_cwd",
+        )
+        self.assertTrue(worker["refused"], "fresh-session worker must refuse a conflicting disposition")
+        self.assertIn("ambiguous_disposition", worker["refusal_reasons"])
+
+    # Real-use and fixture preservation
+
+    def test_exp22_cp01_bootstrap_is_fresh_from_live_git_sources(self):
+        packet = builder.build_packet(ROOT, "EXP-22", "CP-01", **PINNED_GIT)
+        result = builder.verify_packet(packet, ROOT)
+        self.assertEqual(result["status"], "FRESH", result["reasons"] or result["field_diffs"])
+        self.assertEqual(packet["now"]["checkpoints"], ["CP-01", "CP-02", "CP-03"])
+        self.assertEqual(packet["now"]["disposition"], "EXPERIMENT")
+        self.assertTrue(packet["rules"]["stop_rules"])
+        markdown = builder.render_markdown(packet)
+        self.assertFalse(
+            any("EXP-27" in line for line in markdown.splitlines() if line.startswith("## ")),
+        )
+
+    def test_exp27_fixture_rules_genealogy_and_labels_are_preserved(self):
+        packet = builder.build_packet(ROOT, FIXTURE_EXPERIMENT, FIXTURE_CHECKPOINT, **PINNED_GIT)
+        self.assertEqual(len(packet["rules"]["stop_rules"]), 9)
+        self.assertEqual(
+            packet["rules"]["stop_rules_source"],
+            "experiments/exp-27-paperclip-orchestration-patterns/README.md#stop-conditions",
+        )
+        self.assertEqual(packet["now"]["checkpoints"], FIXTURE_FACTS["q_checkpoints"])
+        self.assertEqual(packet["now"]["disposition"], FIXTURE_FACTS["q_disposition"])
+        markdown = builder.render_markdown(packet)
+        self.assertIn(
+            "## REUSABLE COMPONENTS "
+            "(from experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md)",
+            markdown,
+        )
+        self.assertEqual(builder.verify_packet(packet, ROOT)["status"], "FRESH")
 
 
 if __name__ == "__main__":

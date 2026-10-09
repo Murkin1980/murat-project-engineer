@@ -47,7 +47,7 @@
    "setup": "one source_refs sha256 replaced with a wrong digest"
   },
   {
-   "disposition": "Refuse the packet: a safety invariant is violated (authority disclaimer, stop/deep-change rules, or lesson scope). Re-derive from canonical sources.",
+   "disposition": "Refuse the packet: a safety invariant is violated (authority disclaimer, stop/deep-change rules, lesson scope, or a disposition that canonical files declare inconsistently). Re-derive from canonical sources.",
    "expected": "REJECTED",
    "field_diffs": [
     {
@@ -125,7 +125,7 @@
    "setup": "a deep-change gate bullet rewritten to contradict governance; packet must lose authority"
   },
   {
-   "disposition": "Refuse the packet: a safety invariant is violated (authority disclaimer, stop/deep-change rules, or lesson scope). Re-derive from canonical sources.",
+   "disposition": "Refuse the packet: a safety invariant is violated (authority disclaimer, stop/deep-change rules, lesson scope, or a disposition that canonical files declare inconsistently). Re-derive from canonical sources.",
    "expected": "REJECTED",
    "field_diffs": [
     {

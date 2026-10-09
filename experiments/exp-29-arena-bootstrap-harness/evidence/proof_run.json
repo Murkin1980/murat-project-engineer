@@ -3,7 +3,8 @@
   "canonical_sources_unchanged": true,
   "cp02_pass": true,
   "cp03_pass": true,
-  "cp04_pass": true
+  "cp04_pass": true,
+  "cp06_pass": true
  },
  "experiment": "EXP-29",
  "fixture": {
@@ -20,17 +21,17 @@
    "tool_ops": 7
   },
   "arm_b": {
-   "bytes_read": 12782,
+   "bytes_read": 13087,
    "failed_ops": 0,
    "files_read": 1,
    "listdir_ops": 0,
    "read_ops": 1,
    "tool_ops": 1
   },
-  "bytes_reduction_ratio": 0.8496,
-  "genealogy_cost_reduction_ratio": 0.8232,
-  "packet_json_bytes": 12808,
-  "packet_md_bytes": 10231
+  "bytes_reduction_ratio": 0.846,
+  "genealogy_cost_reduction_ratio": 0.819,
+  "packet_json_bytes": 13113,
+  "packet_md_bytes": 10382
  },
  "result": "PASS"
 }

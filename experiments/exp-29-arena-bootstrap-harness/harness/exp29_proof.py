@@ -15,7 +15,10 @@ Checkpoints:
   completed context-heavy MPE task): Arm A (normal rediscovery) vs Arm B
   (bootstrap packet), each in an isolated ``python3 -I`` worker process;
 - CP-04 — stale/unsafe packet negative controls (fail-closed verification) plus
-  canonical-source immutability.
+  canonical-source immutability;
+- CP-06 — first real-use repair: EXP-22 / CP-01 must rebuild and verify FRESH from
+  current Git with the H-1/H-2/H-3 defects repaired (regression coverage lives in
+  ``tests/test_exp29_bootstrap.py``).
 
 Usage:
     python3 experiments/exp-29-arena-bootstrap-harness/harness/exp29_proof.py all
@@ -440,6 +443,126 @@ def cp04(workdir):
     }
 
 
+# --- CP-06: first real-use repair (H-1 / H-2 / H-3) ----------------------------
+
+REAL_USE = {"experiment_id": "EXP-22", "checkpoint": "CP-01"}
+REAL_USE_DIR = "experiments/exp-22-colibri-local-inference"
+
+# The same case as recorded in EXP-22 FIRST_REAL_USE.md before the repair: REJECTED
+# with stop rules, checkpoint chain and disposition all empty. "Files" and "bytes"
+# are the recorded files read before the first useful EXP-22 action, which included
+# diagnostic reads of harness code; they are cited, not re-measured.
+REAL_USE_BEFORE = {
+    "source": f"{REAL_USE_DIR}/evidence/bootstrap/FIRST_REAL_USE.md",
+    "verdict": "REJECTED",
+    "reasons": ["missing_stop_rules"],
+    "stop_rules": 0,
+    "checkpoints": [],
+    "disposition": "",
+    "files_before_first_useful_action": 9,
+    "bytes_before_first_useful_action": 134732,
+}
+
+# Minimum a fresh executor reads for EXP-22 without any packet (mirrors the CP-03
+# Arm A genealogy reads: STATUS, experiment README, registry, ARENA_TASK; EXP-22 has
+# no RESULTS.md yet).
+REAL_USE_REDISCOVERY_READS = (
+    "STATUS.md",
+    f"{REAL_USE_DIR}/README.md",
+    "experiments/EXPERIMENT_REGISTRY.json",
+    f"{REAL_USE_DIR}/ARENA_TASK.md",
+)
+
+# Canonical files a fresh EXP-22 executor still needs after a FRESH packet, because
+# the packet does not carry these facts.
+REAL_USE_REMAINING_READS = (
+    (f"{REAL_USE_DIR}/README.md",
+     "CP-01 acceptance text (checkpoint scope is not a packet layer)"),
+    (f"{REAL_USE_DIR}/ARENA_TASK.md",
+     "mission, required order and evaluation (packet carries only the boundary rules)"),
+    (f"{REAL_USE_DIR}/FINDINGS.md",
+     "recorded EXP-22 state (no RESULTS.md, so the packet resume block cannot carry it)"),
+)
+
+
+def cp06(workdir):
+    _log("CP-06: first real-use repair (EXP-22 / CP-01 bootstrap)")
+    packet = builder.build_packet(ROOT, REAL_USE["experiment_id"], REAL_USE["checkpoint"])
+    packet_path = _write_json(workdir / "cp06/exp22_cp01_packet.json", packet)
+    markdown = builder.render_markdown(packet)
+    markdown_path = workdir / "cp06/exp22_cp01_packet.md"
+    markdown_path.write_text(markdown, encoding="utf-8")
+    verification = builder.verify_packet(packet, ROOT)
+
+    now, rules = packet["now"], packet["rules"]
+    headings = [line for line in markdown.splitlines() if line.startswith("## ")]
+    component_heading = next(h for h in headings if h.startswith("## REUSABLE COMPONENTS"))
+    results_present = (ROOT / REAL_USE_DIR / "RESULTS.md").exists()
+    expected_label = (
+        f"from {REAL_USE_DIR}/RESULTS.md" if results_present else "no experiment RESULTS.md present"
+    )
+    checks = {
+        "bootstrap_fresh": verification["status"] == "FRESH",
+        "checkpoint_chain_cp01_to_cp03": now["checkpoints"] == ["CP-01", "CP-02", "CP-03"],
+        "disposition_from_canonical_source": now["disposition"] == "EXPERIMENT",
+        "boundary_sections_applied": all(
+            anchor in rules["stop_rules_source"]
+            for anchor in ("ARENA_TASK.md#boundaries", "README.md#failure-stop-criteria",
+                           "README.md#guardrails")
+        ),
+        "allowed_list_not_treated_as_stop_rule": not any(
+            rule.startswith("files under") for rule in rules["stop_rules"]
+        ),
+        "labels_describe_actual_sources": (
+            expected_label in component_heading and not any("EXP-27" in h for h in headings)
+        ),
+        "source_refs_verify_against_git": verification["checks"]["source_digests_match"],
+        "six_layers_present": all(layer in packet for layer in (
+            "now", "rules", "known_lessons", "reusable_components", "known_traps", "resume")),
+    }
+
+    def _size(rel):
+        return (ROOT / rel).stat().st_size
+
+    rediscovery_bytes = sum(_size(rel) for rel in REAL_USE_REDISCOVERY_READS)
+    remaining = [{"path": rel, "bytes": _size(rel), "why": why} for rel, why in REAL_USE_REMAINING_READS]
+    after_bytes = packet_path.stat().st_size + sum(item["bytes"] for item in remaining)
+    results = {
+        "checks": checks,
+        "result": "PASS" if all(checks.values()) else "FAIL",
+        "verification": {"status": verification["status"], "reasons": verification["reasons"]},
+        "packet": {
+            "task": now["task"],
+            "checkpoints": now["checkpoints"],
+            "disposition": now["disposition"],
+            "disposition_sources": now["disposition_sources"],
+            "stop_rules": len(rules["stop_rules"]),
+            "stop_rules_source": rules["stop_rules_source"],
+            "stop_rules_intro": rules["stop_rules_intro"],
+            "json_bytes": packet_path.stat().st_size,
+            "md_bytes": markdown_path.stat().st_size,
+            "markdown_headings": headings,
+        },
+        "before_recorded": REAL_USE_BEFORE,
+        "after_measured": {
+            "basis": "retrieval-cost proxy: bytes of canonical files a fresh executor reads; "
+                     "not a wall-clock or human-time measurement",
+            "rediscovery_without_packet": {
+                "files": len(REAL_USE_REDISCOVERY_READS),
+                "bytes": rediscovery_bytes,
+                "reads": list(REAL_USE_REDISCOVERY_READS),
+            },
+            "packet_plus_remaining_reads": {
+                "files": 1 + len(remaining),
+                "bytes": after_bytes,
+                "remaining_reads": remaining,
+            },
+            "extra_rediscovery_remains": bool(remaining),
+        },
+    }
+    return results
+
+
 # --- full run -------------------------------------------------------------------
 
 def run_all(workdir):
@@ -452,6 +575,7 @@ def run_all(workdir):
     cp02_results = cp02(workdir)
     cp03_results = cp03(workdir)
     cp04_results = cp04(workdir)
+    cp06_results = cp06(workdir)
 
     after = _canonical_digests()
     immutability = {
@@ -466,6 +590,7 @@ def run_all(workdir):
         "cp02_pass": cp02_results["result"] == "PASS",
         "cp03_pass": cp03_results["result"] == "PASS",
         "cp04_pass": cp04_results["result"] == "PASS",
+        "cp06_pass": cp06_results["result"] == "PASS",
         "canonical_sources_unchanged": immutability["canonical_sources_unchanged"],
     }
     summary = {
@@ -487,13 +612,14 @@ def run_all(workdir):
         "cp02": cp02_results,
         "cp03": cp03_results,
         "cp04": cp04_results,
+        "cp06": cp06_results,
         "immutability": immutability,
     }
 
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description="EXP-29 Arena Bootstrap Harness proof")
-    parser.add_argument("checkpoint", choices=("all", "cp02", "cp03", "cp04"))
+    parser.add_argument("checkpoint", choices=("all", "cp02", "cp03", "cp04", "cp06"))
     parser.add_argument("--workdir", default=str(EXPERIMENT_DIR / "evidence" / "work"))
     args = parser.parse_args(argv)
 
@@ -507,6 +633,8 @@ def main(argv=None):
             results = {"cp02": cp02(workdir)}
         elif args.checkpoint == "cp03":
             results = {"cp03": cp03(workdir)}
+        elif args.checkpoint == "cp06":
+            results = {"cp06": cp06(workdir)}
         else:
             results = {"cp04": cp04(workdir)}
         results["immutability"] = {

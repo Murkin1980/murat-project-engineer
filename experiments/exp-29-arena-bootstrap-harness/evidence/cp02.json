@@ -1,12 +1,12 @@
 {
  "artifacts": {
   "generated_against": {
-   "git_base": "bb6f1f85fde993c0b698f7036df2699961ed1478",
-   "git_branch": "arena/19fa71aa-murat-project-engineer",
-   "git_head": "6c6a592a442f0d3c779af8ae5c6e8185b9158bbb"
+   "git_base": "4b3dd3594f986a8d018d1c65d11a299fb13aa6c3",
+   "git_branch": "arena/cdf0ab3a-murat-project-engineer",
+   "git_head": "4b3dd3594f986a8d018d1c65d11a299fb13aa6c3"
   },
-  "json_bytes": 12808,
-  "md_bytes": 10231,
+  "json_bytes": 13113,
+  "md_bytes": 10382,
   "packet_task": "EXP-27/CP-05",
   "paths": [
    "experiments/exp-29-arena-bootstrap-harness/ARENA_CONTEXT.json",
@@ -24,9 +24,9 @@
  },
  "determinism": {
   "json_byte_identical": true,
-  "json_bytes": 12782,
+  "json_bytes": 13087,
   "md_byte_identical": true,
-  "md_bytes": 10205,
+  "md_bytes": 10356,
   "pinned_git_refs": {
    "git_base": "1111111111111111111111111111111111111111",
    "git_branch": "arena/proof",

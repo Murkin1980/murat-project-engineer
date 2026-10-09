@@ -107,7 +107,7 @@
   "arm": "B_bootstrap",
   "cost": {
    "at_all_answers": {
-    "bytes_read": 12782,
+    "bytes_read": 13087,
     "failed_ops": 0,
     "files_read": 1,
     "listdir_ops": 0,
@@ -115,7 +115,7 @@
     "tool_ops": 1
    },
    "at_genealogy_complete": {
-    "bytes_read": 12782,
+    "bytes_read": 13087,
     "failed_ops": 0,
     "files_read": 1,
     "listdir_ops": 0,
@@ -127,7 +127,7 @@
   "read_from_chat": false,
   "refused": false,
   "totals": {
-   "bytes_read": 12782,
+   "bytes_read": 13087,
    "failed_ops": 0,
    "files_read": 1,
    "listdir_ops": 0,
@@ -137,10 +137,10 @@
  },
  "arm_b_trace": [
   {
-   "bytes": 12782,
+   "bytes": 13087,
    "ok": true,
    "op": "read",
-   "path": "/tmp/exp29-proof-work/cp03/packet.json"
+   "path": "/tmp/exp29-work/cp03/packet.json"
   }
  ],
  "checks": {
@@ -185,7 +185,7 @@
   },
   "arm_b_cost": {
    "at_all_answers": {
-    "bytes_read": 12782,
+    "bytes_read": 13087,
     "failed_ops": 0,
     "files_read": 1,
     "listdir_ops": 0,
@@ -193,7 +193,7 @@
     "tool_ops": 1
    },
    "at_genealogy_complete": {
-    "bytes_read": 12782,
+    "bytes_read": 13087,
     "failed_ops": 0,
     "files_read": 1,
     "listdir_ops": 0,
@@ -202,20 +202,20 @@
    }
   },
   "arm_b_totals": {
-   "bytes_read": 12782,
+   "bytes_read": 13087,
    "failed_ops": 0,
    "files_read": 1,
    "listdir_ops": 0,
    "read_ops": 1,
    "tool_ops": 1
   },
-  "bytes_reduction_ratio": 0.8496,
+  "bytes_reduction_ratio": 0.846,
   "fixture": {
    "checkpoint": "CP-05",
    "experiment_id": "EXP-27"
   },
-  "genealogy_cost_reduction_ratio": 0.8232,
-  "packet_bytes": 12782,
+  "genealogy_cost_reduction_ratio": 0.819,
+  "packet_bytes": 13087,
   "verify_before_arms": "FRESH"
  },
  "fixture": {
