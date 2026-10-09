@@ -1,0 +1,52 @@
+{
+  "checkpoint": "CP-03",
+  "checks": {
+    "p1": {
+      "baseline_duplicate_is_silent": true,
+      "baseline_loses_all_evidence_on_a_torn_tail": true,
+      "borrowed_recovers_every_durable_event": true,
+      "conflicting_replay_is_refused": true,
+      "damage_is_reported_not_dropped": true,
+      "fresh_process_resumes_without_chat": true,
+      "identical_replay_writes_nothing": true,
+      "marker_never_silently_trusted": true,
+      "production_summary_contract_reused_unchanged": true,
+      "recovery_matches_production_on_a_healthy_real_log": true
+    },
+    "p2": {
+      "at_least_one_case_agrees_with_the_declared_state": true,
+      "authority_unchanged_in_every_case": true,
+      "baseline_does_copy_raw_exception_text": true,
+      "baseline_is_undifferentiated": true,
+      "classification_differentiates": true,
+      "composition_is_most_restrictive": true,
+      "deep_change_execution_still_blocked": true,
+      "deterministic_across_passes": true,
+      "fail_closed_kinds_never_retry": true,
+      "no_case_downgrades_a_declared_gate_state": true,
+      "no_exception_detail_leaks_into_classification_evidence": true,
+      "order_independent": true,
+      "registry_parsed_without_a_yaml_dependency": true
+    }
+  },
+  "database_or_queue_created": false,
+  "determinism": {
+    "p1_second_pass_identical": true,
+    "p2_second_pass_identical": true
+  },
+  "experiment": "EXP-20",
+  "new_dependencies": [],
+  "persistent_runtime_created": false,
+  "production_files_changed": [],
+  "production_untouched": true,
+  "proofs": {
+    "p1": "PASS",
+    "p2": "PASS"
+  },
+  "result": "PASS",
+  "run_date": "2026-10-09",
+  "sandbox_or_executor_service_created": false,
+  "target": "all",
+  "total_seconds": 0.24,
+  "workflow_engine_created": false
+}

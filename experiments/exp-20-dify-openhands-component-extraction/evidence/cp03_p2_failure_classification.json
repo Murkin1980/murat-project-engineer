@@ -1,0 +1,628 @@
+{
+  "cases": [
+    {
+      "authority_unchanged_by_annotation": true,
+      "case_id": "F-01-contract-violation",
+      "classification": {
+        "evidence_safe": true,
+        "executor_action": "retry",
+        "kind": "agent_action",
+        "retryable": true
+      },
+      "classification_carries_raw_exception_text": false,
+      "decision": {
+        "attempt": 0,
+        "decision": "RETRY",
+        "declared_failure_state": "REWORK",
+        "executor_action": "retry",
+        "gate_id": "unit_tests",
+        "kind": "agent_action",
+        "reason": "agent_action failure at gate unit_tests: RETRY (retry 1 of 1)",
+        "retry_budget": 1,
+        "retryable": true
+      },
+      "downgraded_below_declared_state": false,
+      "escalated_above_declared_state": false,
+      "exception_class": "ContractError",
+      "gate_id": "unit_tests",
+      "production_acceptance_state": "READY_TO_EXECUTE",
+      "production_allowed_action": "EXECUTE",
+      "production_carries_raw_exception_text": false,
+      "production_execution_result_redacted": {
+        "error": "ContractError: triage input fields do not match the contract"
+      },
+      "production_execution_status": "ERROR",
+      "production_executor_calls": 1,
+      "production_executor_invoked": true,
+      "production_reason_redacted": "executor error: triage input fields do not match the contract"
+    },
+    {
+      "authority_unchanged_by_annotation": true,
+      "case_id": "F-02-mailbox-schema",
+      "classification": {
+        "evidence_safe": true,
+        "executor_action": "retry",
+        "kind": "agent_action",
+        "retryable": true
+      },
+      "classification_carries_raw_exception_text": false,
+      "decision": {
+        "attempt": 0,
+        "decision": "RETRY",
+        "declared_failure_state": "REWORK",
+        "executor_action": "retry",
+        "gate_id": "mailbox_schema_valid",
+        "kind": "agent_action",
+        "reason": "agent_action failure at gate mailbox_schema_valid: RETRY (retry 1 of 1)",
+        "retry_budget": 1,
+        "retryable": true
+      },
+      "downgraded_below_declared_state": false,
+      "escalated_above_declared_state": false,
+      "exception_class": "ContractError",
+      "gate_id": "mailbox_schema_valid",
+      "production_acceptance_state": "READY_TO_EXECUTE",
+      "production_allowed_action": "EXECUTE",
+      "production_carries_raw_exception_text": false,
+      "production_execution_result_redacted": {
+        "error": "ContractError: invalid mailbox version or status"
+      },
+      "production_execution_status": "ERROR",
+      "production_executor_calls": 1,
+      "production_executor_invoked": true,
+      "production_reason_redacted": "executor error: invalid mailbox version or status"
+    },
+    {
+      "authority_unchanged_by_annotation": true,
+      "case_id": "F-03-event-log-line",
+      "classification": {
+        "evidence_safe": true,
+        "executor_action": "retry",
+        "kind": "agent_action",
+        "retryable": true
+      },
+      "classification_carries_raw_exception_text": false,
+      "decision": {
+        "attempt": 0,
+        "decision": "RETRY",
+        "declared_failure_state": "REWORK",
+        "executor_action": "retry",
+        "gate_id": "event_log_valid",
+        "kind": "agent_action",
+        "reason": "agent_action failure at gate event_log_valid: RETRY (retry 1 of 1)",
+        "retry_budget": 1,
+        "retryable": true
+      },
+      "downgraded_below_declared_state": false,
+      "escalated_above_declared_state": false,
+      "exception_class": "ContractError",
+      "gate_id": "event_log_valid",
+      "production_acceptance_state": "READY_TO_EXECUTE",
+      "production_allowed_action": "EXECUTE",
+      "production_carries_raw_exception_text": false,
+      "production_execution_result_redacted": {
+        "error": "ContractError: invalid JSONL line 5"
+      },
+      "production_execution_status": "ERROR",
+      "production_executor_calls": 1,
+      "production_executor_invoked": true,
+      "production_reason_redacted": "executor error: invalid JSONL line 5"
+    },
+    {
+      "authority_unchanged_by_annotation": true,
+      "case_id": "F-04-terminal-state",
+      "classification": {
+        "evidence_safe": true,
+        "executor_action": "retry",
+        "kind": "agent_action",
+        "retryable": true
+      },
+      "classification_carries_raw_exception_text": false,
+      "decision": {
+        "attempt": 0,
+        "decision": "RETRY",
+        "declared_failure_state": "REWORK",
+        "executor_action": "retry",
+        "gate_id": "terminal_state_valid",
+        "kind": "agent_action",
+        "reason": "agent_action failure at gate terminal_state_valid: RETRY (retry 1 of 1)",
+        "retry_budget": 1,
+        "retryable": true
+      },
+      "downgraded_below_declared_state": false,
+      "escalated_above_declared_state": false,
+      "exception_class": "ContractError",
+      "gate_id": "terminal_state_valid",
+      "production_acceptance_state": "READY_TO_EXECUTE",
+      "production_allowed_action": "EXECUTE",
+      "production_carries_raw_exception_text": false,
+      "production_execution_result_redacted": {
+        "error": "ContractError: invalid transition: DONE -> WORKING"
+      },
+      "production_execution_status": "ERROR",
+      "production_executor_calls": 1,
+      "production_executor_invoked": true,
+      "production_reason_redacted": "executor error: invalid transition: DONE -> WORKING"
+    },
+    {
+      "authority_unchanged_by_annotation": true,
+      "case_id": "F-05-duplicate-event-id",
+      "classification": {
+        "evidence_safe": true,
+        "executor_action": "none",
+        "kind": "agent_action",
+        "retryable": false
+      },
+      "classification_carries_raw_exception_text": false,
+      "decision": {
+        "attempt": 0,
+        "decision": "REWORK",
+        "declared_failure_state": "REWORK",
+        "executor_action": "none",
+        "gate_id": "event_log_valid",
+        "kind": "agent_action",
+        "reason": "agent_action failure at gate event_log_valid: REWORK",
+        "retry_budget": 1,
+        "retryable": false
+      },
+      "downgraded_below_declared_state": false,
+      "escalated_above_declared_state": false,
+      "exception_class": "DuplicateEventConflict",
+      "gate_id": "event_log_valid",
+      "production_acceptance_state": "READY_TO_EXECUTE",
+      "production_allowed_action": "EXECUTE",
+      "production_carries_raw_exception_text": false,
+      "production_execution_result_redacted": {
+        "error": "DuplicateEventConflict: event_id already durable with a different payload: evt-exp20-p1-1"
+      },
+      "production_execution_status": "ERROR",
+      "production_executor_calls": 1,
+      "production_executor_invoked": true,
+      "production_reason_redacted": "executor error: event_id already durable with a different payload: evt-exp20-p1-1"
+    },
+    {
+      "authority_unchanged_by_annotation": true,
+      "case_id": "F-06-missing-artifact",
+      "classification": {
+        "evidence_safe": true,
+        "executor_action": "settings",
+        "kind": "config",
+        "retryable": true
+      },
+      "classification_carries_raw_exception_text": false,
+      "decision": {
+        "attempt": 0,
+        "decision": "BLOCKED",
+        "declared_failure_state": "BLOCKED",
+        "executor_action": "settings",
+        "gate_id": "artifact_exists",
+        "kind": "config",
+        "reason": "config failure at gate artifact_exists: BLOCKED",
+        "retry_budget": 1,
+        "retryable": true
+      },
+      "downgraded_below_declared_state": false,
+      "escalated_above_declared_state": false,
+      "exception_class": "FileNotFoundError",
+      "gate_id": "artifact_exists",
+      "production_acceptance_state": "READY_TO_EXECUTE",
+      "production_allowed_action": "EXECUTE",
+      "production_carries_raw_exception_text": false,
+      "production_execution_result_redacted": {
+        "error": "FileNotFoundError: evidence artifact missing: experiments/exp-20/RESULTS.md"
+      },
+      "production_execution_status": "ERROR",
+      "production_executor_calls": 1,
+      "production_executor_invoked": true,
+      "production_reason_redacted": "executor error: evidence artifact missing: experiments/exp-20/RESULTS.md"
+    },
+    {
+      "authority_unchanged_by_annotation": true,
+      "case_id": "F-07-missing-build-entrypoint",
+      "classification": {
+        "evidence_safe": true,
+        "executor_action": "settings",
+        "kind": "config",
+        "retryable": true
+      },
+      "classification_carries_raw_exception_text": false,
+      "decision": {
+        "attempt": 0,
+        "decision": "RETRY",
+        "declared_failure_state": "REWORK",
+        "executor_action": "settings",
+        "gate_id": "build",
+        "kind": "config",
+        "reason": "config failure at gate build: RETRY (retry 1 of 1)",
+        "retry_budget": 1,
+        "retryable": true
+      },
+      "downgraded_below_declared_state": false,
+      "escalated_above_declared_state": false,
+      "exception_class": "FileNotFoundError",
+      "gate_id": "build",
+      "production_acceptance_state": "READY_TO_EXECUTE",
+      "production_allowed_action": "EXECUTE",
+      "production_carries_raw_exception_text": false,
+      "production_execution_result_redacted": {
+        "error": "FileNotFoundError: no build entrypoint in the target repository"
+      },
+      "production_execution_status": "ERROR",
+      "production_executor_calls": 1,
+      "production_executor_invoked": true,
+      "production_reason_redacted": "executor error: no build entrypoint in the target repository"
+    },
+    {
+      "authority_unchanged_by_annotation": true,
+      "case_id": "F-08-gateway-timeout",
+      "classification": {
+        "evidence_safe": true,
+        "executor_action": "retry",
+        "kind": "transient",
+        "retryable": true
+      },
+      "classification_carries_raw_exception_text": false,
+      "decision": {
+        "attempt": 0,
+        "decision": "RETRY",
+        "declared_failure_state": "REWORK",
+        "executor_action": "retry",
+        "gate_id": "integration_tests",
+        "kind": "transient",
+        "reason": "transient failure at gate integration_tests: RETRY (retry 1 of 1)",
+        "retry_budget": 1,
+        "retryable": true
+      },
+      "downgraded_below_declared_state": false,
+      "escalated_above_declared_state": false,
+      "exception_class": "TimeoutError",
+      "gate_id": "integration_tests",
+      "production_acceptance_state": "READY_TO_EXECUTE",
+      "production_allowed_action": "EXECUTE",
+      "production_carries_raw_exception_text": false,
+      "production_execution_result_redacted": {
+        "error": "TimeoutError: gateway did not respond within 30s"
+      },
+      "production_execution_status": "ERROR",
+      "production_executor_calls": 1,
+      "production_executor_invoked": true,
+      "production_reason_redacted": "executor error: gateway did not respond within 30s"
+    },
+    {
+      "authority_unchanged_by_annotation": true,
+      "case_id": "F-09-gateway-rate-limit",
+      "classification": {
+        "evidence_safe": true,
+        "executor_action": "retry",
+        "kind": "rate_limit",
+        "retryable": true
+      },
+      "classification_carries_raw_exception_text": false,
+      "decision": {
+        "attempt": 0,
+        "decision": "RETRY",
+        "declared_failure_state": "REWORK",
+        "executor_action": "retry",
+        "gate_id": "integration_tests",
+        "kind": "rate_limit",
+        "reason": "rate_limit failure at gate integration_tests: RETRY (retry 1 of 1)",
+        "retry_budget": 1,
+        "retryable": true
+      },
+      "downgraded_below_declared_state": false,
+      "escalated_above_declared_state": false,
+      "exception_class": "HTTPStatusError",
+      "gate_id": "integration_tests",
+      "production_acceptance_state": "READY_TO_EXECUTE",
+      "production_allowed_action": "EXECUTE",
+      "production_carries_raw_exception_text": false,
+      "production_execution_result_redacted": {
+        "error": "HTTPStatusError: error code: 429 - rate limit exceeded for the metered window"
+      },
+      "production_execution_status": "ERROR",
+      "production_executor_calls": 1,
+      "production_executor_invoked": true,
+      "production_reason_redacted": "executor error: error code: 429 - rate limit exceeded for the metered window"
+    },
+    {
+      "authority_unchanged_by_annotation": true,
+      "case_id": "F-10-gateway-credentials",
+      "classification": {
+        "evidence_safe": true,
+        "executor_action": "settings",
+        "kind": "auth",
+        "retryable": false
+      },
+      "classification_carries_raw_exception_text": false,
+      "decision": {
+        "attempt": 0,
+        "decision": "HUMAN_REQUIRED",
+        "declared_failure_state": "REWORK",
+        "executor_action": "settings",
+        "gate_id": "build",
+        "kind": "auth",
+        "reason": "auth failure at gate build: HUMAN_REQUIRED",
+        "retry_budget": 1,
+        "retryable": false
+      },
+      "downgraded_below_declared_state": false,
+      "escalated_above_declared_state": true,
+      "exception_class": "HTTPStatusError",
+      "gate_id": "build",
+      "production_acceptance_state": "READY_TO_EXECUTE",
+      "production_allowed_action": "EXECUTE",
+      "production_carries_raw_exception_text": true,
+      "production_execution_result_redacted": {
+        "error": "HTTPStatusError: error code: 401 - invalid api key <REDACTED-PLANTED-TOKEN>"
+      },
+      "production_execution_status": "ERROR",
+      "production_executor_calls": 1,
+      "production_executor_invoked": true,
+      "production_reason_redacted": "executor error: error code: 401 - invalid api key <REDACTED-PLANTED-TOKEN>"
+    },
+    {
+      "authority_unchanged_by_annotation": true,
+      "case_id": "F-11-gateway-opaque",
+      "classification": {
+        "evidence_safe": true,
+        "executor_action": "retry",
+        "kind": "transient",
+        "retryable": true
+      },
+      "classification_carries_raw_exception_text": false,
+      "decision": {
+        "attempt": 0,
+        "decision": "RETRY",
+        "declared_failure_state": "REWORK",
+        "executor_action": "retry",
+        "gate_id": "integration_tests",
+        "kind": "transient",
+        "reason": "transient failure at gate integration_tests: RETRY (retry 1 of 1)",
+        "retry_budget": 1,
+        "retryable": true
+      },
+      "downgraded_below_declared_state": false,
+      "escalated_above_declared_state": false,
+      "exception_class": "HTTPStatusError",
+      "gate_id": "integration_tests",
+      "production_acceptance_state": "READY_TO_EXECUTE",
+      "production_allowed_action": "EXECUTE",
+      "production_carries_raw_exception_text": false,
+      "production_execution_result_redacted": {
+        "error": "HTTPStatusError: upstream returned an unexpected payload"
+      },
+      "production_execution_status": "ERROR",
+      "production_executor_calls": 1,
+      "production_executor_invoked": true,
+      "production_reason_redacted": "executor error: upstream returned an unexpected payload"
+    },
+    {
+      "authority_unchanged_by_annotation": true,
+      "case_id": "F-12-budget-hard-limit",
+      "classification": {
+        "evidence_safe": true,
+        "executor_action": "settings",
+        "kind": "quota",
+        "retryable": false
+      },
+      "classification_carries_raw_exception_text": false,
+      "decision": {
+        "attempt": 0,
+        "decision": "HUMAN_REQUIRED",
+        "declared_failure_state": "HUMAN_REQUIRED",
+        "executor_action": "settings",
+        "gate_id": "compute_budget_health",
+        "kind": "quota",
+        "reason": "quota failure at gate compute_budget_health: HUMAN_REQUIRED",
+        "retry_budget": 0,
+        "retryable": false
+      },
+      "downgraded_below_declared_state": false,
+      "escalated_above_declared_state": false,
+      "exception_class": "ComputeBudgetExceeded",
+      "gate_id": "compute_budget_health",
+      "production_acceptance_state": "READY_TO_EXECUTE",
+      "production_allowed_action": "EXECUTE",
+      "production_carries_raw_exception_text": false,
+      "production_execution_result_redacted": {
+        "error": "ComputeBudgetExceeded: projected total exceeds the declared hard_limit"
+      },
+      "production_execution_status": "ERROR",
+      "production_executor_calls": 1,
+      "production_executor_invoked": true,
+      "production_reason_redacted": "executor error: projected total exceeds the declared hard_limit"
+    },
+    {
+      "authority_unchanged_by_annotation": true,
+      "case_id": "F-13-deep-change-stop",
+      "classification": {
+        "evidence_safe": true,
+        "executor_action": "none",
+        "kind": "unknown",
+        "retryable": false
+      },
+      "classification_carries_raw_exception_text": false,
+      "decision": {
+        "attempt": 0,
+        "decision": "HUMAN_REQUIRED",
+        "declared_failure_state": "HUMAN_REQUIRED",
+        "executor_action": "none",
+        "gate_id": "deep_change_check",
+        "kind": "unknown",
+        "reason": "unknown failure at gate deep_change_check: HUMAN_REQUIRED",
+        "retry_budget": 0,
+        "retryable": false
+      },
+      "downgraded_below_declared_state": false,
+      "escalated_above_declared_state": false,
+      "exception_class": "RuntimeError",
+      "gate_id": "deep_change_check",
+      "production_acceptance_state": "READY_TO_EXECUTE",
+      "production_allowed_action": "EXECUTE",
+      "production_carries_raw_exception_text": false,
+      "production_execution_result_redacted": {
+        "error": "RuntimeError: architecture redesign detected in the candidate diff"
+      },
+      "production_execution_status": "ERROR",
+      "production_executor_calls": 1,
+      "production_executor_invoked": true,
+      "production_reason_redacted": "executor error: architecture redesign detected in the candidate diff"
+    },
+    {
+      "authority_unchanged_by_annotation": true,
+      "case_id": "F-14-internal-defect",
+      "classification": {
+        "evidence_safe": true,
+        "executor_action": "none",
+        "kind": "internal",
+        "retryable": false
+      },
+      "classification_carries_raw_exception_text": false,
+      "decision": {
+        "attempt": 0,
+        "decision": "HUMAN_REQUIRED",
+        "declared_failure_state": "REWORK",
+        "executor_action": "none",
+        "gate_id": "acceptance_tests",
+        "kind": "internal",
+        "reason": "internal failure at gate acceptance_tests: HUMAN_REQUIRED",
+        "retry_budget": 1,
+        "retryable": false
+      },
+      "downgraded_below_declared_state": false,
+      "escalated_above_declared_state": true,
+      "exception_class": "KeyError",
+      "gate_id": "acceptance_tests",
+      "production_acceptance_state": "READY_TO_EXECUTE",
+      "production_allowed_action": "EXECUTE",
+      "production_carries_raw_exception_text": false,
+      "production_execution_result_redacted": {
+        "error": "KeyError: 'acceptance_criteria'"
+      },
+      "production_execution_status": "ERROR",
+      "production_executor_calls": 1,
+      "production_executor_invoked": true,
+      "production_reason_redacted": "executor error: 'acceptance_criteria'"
+    }
+  ],
+  "checks": {
+    "at_least_one_case_agrees_with_the_declared_state": true,
+    "authority_unchanged_in_every_case": true,
+    "baseline_does_copy_raw_exception_text": true,
+    "baseline_is_undifferentiated": true,
+    "classification_differentiates": true,
+    "composition_is_most_restrictive": true,
+    "deep_change_execution_still_blocked": true,
+    "deterministic_across_passes": true,
+    "fail_closed_kinds_never_retry": true,
+    "no_case_downgrades_a_declared_gate_state": true,
+    "no_exception_detail_leaks_into_classification_evidence": true,
+    "order_independent": true,
+    "registry_parsed_without_a_yaml_dependency": true
+  },
+  "deep_change_authority": {
+    "acceptance_state": "BLOCKED",
+    "allowed_action": "OBSERVE",
+    "blocking_reasons": [
+      "architecture_redesign",
+      "deep_change_approval_required",
+      "human_approval_required",
+      "new_orchestration_authority",
+      "persistent_runtime_state",
+      "stop_condition"
+    ],
+    "classified_decision": "HUMAN_REQUIRED",
+    "classified_kind": "unknown",
+    "classifier_granted_execution": false,
+    "executor_calls": 0,
+    "executor_invoked": false,
+    "retry_budget": 0,
+    "task_id": "EXP-20/CP-03-DEEP"
+  },
+  "donors": [
+    "OpenHands software-agent-sdk openhands/sdk/event/error_classification.py (MIT)",
+    "Dify api/core/tools/errors.py + tool_engine.py + nodes/agent_v2/output_failure_orchestrator.py (pattern only; no source copied)"
+  ],
+  "gate_ids": [
+    "acceptance_tests",
+    "artifact_exists",
+    "artifact_hash",
+    "build",
+    "clean_diff_scope",
+    "compute_budget_burn_rate",
+    "compute_budget_health",
+    "compute_budget_preflight",
+    "deep_change_check",
+    "event_log_valid",
+    "handoff_traceable",
+    "integration_tests",
+    "lint",
+    "mailbox_schema_valid",
+    "rollback_available",
+    "secrets_scan",
+    "terminal_state_valid",
+    "typecheck",
+    "unit_tests",
+    "worktree_collision_check"
+  ],
+  "gates_parsed_from_registry": 20,
+  "host_contract": "gates/registry.yaml failure_state/retry_policy + scripts/execution_runner.run_task (unchanged)",
+  "measurements": {
+    "authority_unchanged_in_every_case": true,
+    "cases_downgraded_below_declared_state": 0,
+    "cases_escalated_above_declared_state": 2,
+    "cases_matching_the_registry_declared_state": 4,
+    "cases_where_classification_copies_raw_exception_text": 0,
+    "cases_where_production_copies_raw_exception_text": 1,
+    "composition": {
+      "authority_source": "gates/registry.yaml failure_state + scripts/dispatch_autonomy most-restrictive rule",
+      "classified_failures": 3,
+      "decision": "HUMAN_REQUIRED",
+      "gates": [
+        "build",
+        "compute_budget_health",
+        "integration_tests"
+      ],
+      "kinds": [
+        "auth",
+        "quota",
+        "rate_limit"
+      ],
+      "retryable_failures": 1
+    },
+    "determinism_order_independent": true,
+    "determinism_three_passes_identical": true,
+    "distinct_classified_kinds": [
+      "agent_action",
+      "auth",
+      "config",
+      "internal",
+      "quota",
+      "rate_limit",
+      "transient",
+      "unknown"
+    ],
+    "distinct_decision_count": 4,
+    "distinct_decisions": [
+      "BLOCKED",
+      "HUMAN_REQUIRED",
+      "RETRY",
+      "REWORK"
+    ],
+    "distinct_kind_count": 8,
+    "distinct_production_execution_statuses": [
+      "ERROR"
+    ],
+    "distinct_production_status_count": 1,
+    "executor_invocations_per_case": [
+      1
+    ],
+    "failure_cases": 14,
+    "median_classify_seconds": 4.194e-06,
+    "planted_token_in_classification_evidence": 0,
+    "retry_offered_within_gate_policy": 8
+  },
+  "proof": "P2",
+  "result": "PASS",
+  "title": "deterministic failure classification onto the existing MPE gate vocabulary"
+}

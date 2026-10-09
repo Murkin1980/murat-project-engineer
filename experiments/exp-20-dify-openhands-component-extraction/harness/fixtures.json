@@ -1,0 +1,154 @@
+{
+  "dataset": "exp-20-proof",
+  "generated_for": "EXP-20 CP-03 bounded proofs",
+  "notes": [
+    "Every task fixture uses the real MPE triage input contract (contracts/TRIAGE_INPUT.schema.json) and the shapes already used by tests/test_execution_runner.py.",
+    "Every failure case names a real gate_id from gates/registry.yaml; no gate is invented and none is edited.",
+    "The event-log fixture is a real committed MPE artifact from EXP-27 CP-04, used read-only.",
+    "The planted token is a synthetic string used only to prove that failure classification never copies exception detail text into evidence."
+  ],
+  "event_log_fixture": "experiments/exp-27-paperclip-orchestration-patterns/evidence/run-EXP27-CP04.events.jsonl",
+  "planted_token": "PLANTED-PROOF-TOKEN-not-a-real-credential-9f3c",
+  "task_fast": {
+    "task_id": "EXP-20/CP-03",
+    "summary": "bounded component-extraction proof inside experiments/exp-20",
+    "affected_repositories": ["murat-project-engineer"],
+    "acceptance_criteria_present": true,
+    "rollback_known": true,
+    "ratings": {"complexity": 1, "risk": 0, "architectural_impact": 0, "data_sensitivity": 0, "unknowns": 0},
+    "signals": []
+  },
+  "task_deep_change": {
+    "task_id": "EXP-20/CP-03-DEEP",
+    "summary": "adopt an upstream agent runtime as a new execution authority",
+    "affected_repositories": ["murat-project-engineer", "murat-ai-orchestrator"],
+    "acceptance_criteria_present": true,
+    "rollback_known": false,
+    "ratings": {"complexity": 3, "risk": 3, "architectural_impact": 4, "data_sensitivity": 2, "unknowns": 3},
+    "signals": ["architecture_redesign", "new_orchestration_authority", "persistent_runtime_state"]
+  },
+  "new_event": {
+    "schema_version": "1.0",
+    "event_id": "evt-exp20-p1-1",
+    "run_id": "EXP-20-PROOF",
+    "timestamp": "2026-10-09T00:00:01Z",
+    "type": "claim",
+    "actor": "exp-20-proof-executor",
+    "task_id": "EXP-20/CP-03",
+    "status": "WORKING",
+    "ref": null,
+    "target": null
+  },
+  "terminal_event": {
+    "schema_version": "1.0",
+    "event_id": "evt-exp20-p1-2",
+    "run_id": "EXP-20-PROOF",
+    "timestamp": "2026-10-09T00:00:02Z",
+    "type": "terminal",
+    "actor": "exp-20-proof-executor",
+    "task_id": "EXP-20/CP-03",
+    "status": "DONE",
+    "ref": null,
+    "target": null
+  },
+  "failure_cases": [
+    {
+      "case_id": "F-01-contract-violation",
+      "gate_id": "unit_tests",
+      "exception": "triage_contract_error",
+      "message": "triage input fields do not match the contract",
+      "why_real": "scripts/triage_engine.validate_task raises this for any task outside the frozen triage contract"
+    },
+    {
+      "case_id": "F-02-mailbox-schema",
+      "gate_id": "mailbox_schema_valid",
+      "exception": "runtime_contract_error",
+      "message": "invalid mailbox version or status",
+      "why_real": "scripts/runtime_coordination.validate_envelope raises this for a non-conforming handoff envelope"
+    },
+    {
+      "case_id": "F-03-event-log-line",
+      "gate_id": "event_log_valid",
+      "exception": "runtime_contract_error",
+      "message": "invalid JSONL line 5",
+      "why_real": "scripts/runtime_coordination.read_events raises exactly this on a damaged event log"
+    },
+    {
+      "case_id": "F-04-terminal-state",
+      "gate_id": "terminal_state_valid",
+      "exception": "runtime_contract_error",
+      "message": "invalid transition: DONE -> WORKING",
+      "why_real": "scripts/runtime_coordination.validate_transition raises this when a terminal role is reused"
+    },
+    {
+      "case_id": "F-05-duplicate-event-id",
+      "gate_id": "event_log_valid",
+      "exception": "duplicate_event_conflict",
+      "message": "event_id already durable with a different payload: evt-exp20-p1-1",
+      "why_real": "the P1 idempotency rule from this experiment; a replay must not create a second evidence record"
+    },
+    {
+      "case_id": "F-06-missing-artifact",
+      "gate_id": "artifact_exists",
+      "exception": "file_not_found",
+      "message": "evidence artifact missing: experiments/exp-20/RESULTS.md",
+      "why_real": "a promised deliverable absent at finalize time"
+    },
+    {
+      "case_id": "F-07-missing-build-entrypoint",
+      "gate_id": "build",
+      "exception": "file_not_found",
+      "message": "no build entrypoint in the target repository",
+      "why_real": "a build gate that cannot find the declared command"
+    },
+    {
+      "case_id": "F-08-gateway-timeout",
+      "gate_id": "integration_tests",
+      "exception": "timeout",
+      "message": "gateway did not respond within 30s",
+      "why_real": "an AI/transcription gateway call that exceeds its bounded wait"
+    },
+    {
+      "case_id": "F-09-gateway-rate-limit",
+      "gate_id": "integration_tests",
+      "exception": "http_status_error",
+      "message": "error code: 429 - rate limit exceeded for the metered window",
+      "why_real": "the metered Router window used by scripts/usage_from_router_log.py can return 429"
+    },
+    {
+      "case_id": "F-10-gateway-credentials",
+      "gate_id": "build",
+      "exception": "http_status_error",
+      "message": "error code: 401 - invalid api key PLANTED-PROOF-TOKEN-not-a-real-credential-9f3c",
+      "why_real": "a gateway credential failure; also proves the planted token never reaches evidence"
+    },
+    {
+      "case_id": "F-11-gateway-opaque",
+      "gate_id": "integration_tests",
+      "exception": "http_status_error",
+      "message": "upstream returned an unexpected payload",
+      "why_real": "an opaque wrapper error whose class name alone is not specific enough"
+    },
+    {
+      "case_id": "F-12-budget-hard-limit",
+      "gate_id": "compute_budget_health",
+      "exception": "compute_budget_exceeded",
+      "message": "projected total exceeds the declared hard_limit",
+      "why_real": "contracts/COMPUTE_BUDGET hard_limit reached; the registry already declares HUMAN_REQUIRED"
+    },
+    {
+      "case_id": "F-13-deep-change-stop",
+      "gate_id": "deep_change_check",
+      "exception": "runtime_error",
+      "message": "architecture redesign detected in the candidate diff",
+      "why_real": "the deep-change gate; detection cannot be overridden and no retry may bypass it"
+    },
+    {
+      "case_id": "F-14-internal-defect",
+      "gate_id": "acceptance_tests",
+      "exception": "key_error",
+      "message": "acceptance_criteria",
+      "why_real": "an internal defect in the harness itself; must not be retried blindly"
+    }
+  ]
+}
