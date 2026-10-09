@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-10-08",
+  "updated_at": "2026-10-09",
   "experiments": [
     {
       "experiment_id": "EXP-ALEXANDRIA",
@@ -561,6 +561,27 @@
         "https://github.com/Murkin1980/murat-project-engineer/pull/54"
       ],
       "updated_at": "2026-10-06"
+    },
+    {
+      "experiment_id": "EXP-28",
+      "name": "Agent workflow skills retrospective (/retro)",
+      "owning_project": "Murat Project Engineer",
+      "status": "PASS",
+      "why": "Test whether an evidence-gated post-run retrospective can find real causes of unnecessary work and produce verifiable MPE improvements without a duplicate governance layer or automatic integration.",
+      "date_added": "2026-10-09",
+      "next_action": "Closed as a manual, evidence-gated pattern. No automatic post-run trigger. Apply the derived context packet only to context-heavy tasks; broader promotion requires independent repeated evidence and a separate owner decision.",
+      "result_summary": "PASS / ADOPT_WITH_CHANGES: reconstructed EXP-24 Phase 1, EXP-25, and EXP-27; assessed five friction classes; one EXP-24 Phase 2 instruction was narrowed based on a recorded CLI side effect. EXP-27 CP-02 machine evidence shows 2,164.5 B packet vs 46,542.5 B no-packet scan (95.35% fewer bytes; retrieval proxy, not elapsed-time savings). No runtime, governance layer, or automatic integration added.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/exp-28-agent-workflow-skills-retro",
+      "evidence_links": [
+        "experiments/exp-28-agent-workflow-skills-retro/README.md",
+        "experiments/exp-28-agent-workflow-skills-retro/ARENA_TASK.md",
+        "experiments/exp-28-agent-workflow-skills-retro/RESULTS.md",
+        "experiments/exp-24-hyperframes-pr-video/ARENA_TASK.md",
+        "https://github.com/mattpocock/skills/tree/b0618bc436ad893b3c5e84e55fba86586d34a404"
+      ],
+      "pr_or_issue_links": [],
+      "updated_at": "2026-10-09"
     }
   ]
 }
