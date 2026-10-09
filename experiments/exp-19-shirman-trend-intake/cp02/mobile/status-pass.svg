@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="355" height="1457" viewBox="0 0 355 1457" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
+<svg xmlns="http://www.w3.org/2000/svg" width="355" height="1609" viewBox="0 0 355 1609" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
   <defs>
   </defs>
-  <rect x="0" y="0" width="355" height="1457" fill="#ffffff"/>
-  <path d="M48 40 H307 a8 8 0 0 1 8 8 V1409 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
-  <text x="54" y="68.4" fill="#1f2328" text-anchor="start">PASS (9)</text>
+  <rect x="0" y="0" width="355" height="1609" fill="#ffffff"/>
+  <path d="M48 40 H307 a8 8 0 0 1 8 8 V1561 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <text x="54" y="68.4" fill="#1f2328" text-anchor="start">PASS (10)</text>
   <path d="M62 83 H293 a8 8 0 0 1 8 8 V198 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V91 a8 8 0 0 1 8 -8 Z" fill="#dcfce7" stroke="#16a34a"/>
   <text x="177.5" y="111.4" fill="#1f2328" text-anchor="middle">EXP-002 · MPE</text>
   <text x="177.5" y="130.4" fill="#1f2328" text-anchor="middle">Machine Protocol</text>
@@ -65,4 +65,11 @@
   <text x="177.5" y="1346.4" fill="#1f2328" text-anchor="middle">pattern extraction. No</text>
   <text x="177.5" y="1365.4" fill="#1f2328" text-anchor="middle">production integration,</text>
   <text x="177.5" y="1384.4" fill="#1f2328" text-anchor="middle">Rout…</text>
+  <path d="M62 1413 H293 a8 8 0 0 1 8 8 V1547 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V1421 a8 8 0 0 1 8 -8 Z" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="177.5" y="1441.4" fill="#1f2328" text-anchor="middle">EXP-28 · MPE</text>
+  <text x="177.5" y="1460.4" fill="#1f2328" text-anchor="middle">Agent workflow skills</text>
+  <text x="177.5" y="1479.4" fill="#1f2328" text-anchor="middle">retrospective (/r…</text>
+  <text x="177.5" y="1498.4" fill="#1f2328" text-anchor="middle">→ Closed as a manual,</text>
+  <text x="177.5" y="1517.4" fill="#1f2328" text-anchor="middle">evidence-gated pattern. No</text>
+  <text x="177.5" y="1536.4" fill="#1f2328" text-anchor="middle">automatic post-run tri…</text>
 </svg>

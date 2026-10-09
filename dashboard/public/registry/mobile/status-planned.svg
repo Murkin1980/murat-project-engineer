@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="355" height="1400" viewBox="0 0 355 1400" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
+<svg xmlns="http://www.w3.org/2000/svg" width="355" height="1419" viewBox="0 0 355 1419" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
   <defs>
   </defs>
-  <rect x="0" y="0" width="355" height="1400" fill="#ffffff"/>
-  <path d="M48 40 H307 a8 8 0 0 1 8 8 V1352 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <rect x="0" y="0" width="355" height="1419" fill="#ffffff"/>
+  <path d="M48 40 H307 a8 8 0 0 1 8 8 V1371 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
   <text x="54" y="68.4" fill="#1f2328" text-anchor="start">PLANNED (8)</text>
   <path d="M62 83 H293 a8 8 0 0 1 8 8 V236 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V91 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
   <text x="177.5" y="111.4" fill="#1f2328" text-anchor="middle">EXP-ALEXANDRIA ·</text>
@@ -57,10 +57,11 @@
   <text x="177.5" y="1156.4" fill="#1f2328" text-anchor="middle">→ After EXP-22 Colibri</text>
   <text x="177.5" y="1175.4" fill="#1f2328" text-anchor="middle">completes, Arena runs one</text>
   <text x="177.5" y="1194.4" fill="#1f2328" text-anchor="middle">technical/business doc…</text>
-  <path d="M62 1223 H293 a8 8 0 0 1 8 8 V1338 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V1231 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <path d="M62 1223 H293 a8 8 0 0 1 8 8 V1357 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V1231 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
   <text x="177.5" y="1251.4" fill="#1f2328" text-anchor="middle">EXP-24 · MPE</text>
-  <text x="177.5" y="1270.4" fill="#1f2328" text-anchor="middle">HyperFrames PR → Video</text>
-  <text x="177.5" y="1289.4" fill="#1f2328" text-anchor="middle">→ Cancel the hung Arena</text>
-  <text x="177.5" y="1308.4" fill="#1f2328" text-anchor="middle">run and start one fresh</text>
-  <text x="177.5" y="1327.4" fill="#1f2328" text-anchor="middle">run from current main u…</text>
+  <text x="177.5" y="1270.4" fill="#1f2328" text-anchor="middle">Agentic text → film</text>
+  <text x="177.5" y="1289.4" fill="#1f2328" text-anchor="middle">pipeline (HyperFram…</text>
+  <text x="177.5" y="1308.4" fill="#1f2328" text-anchor="middle">→ Run owner-authorized</text>
+  <text x="177.5" y="1327.4" fill="#1f2328" text-anchor="middle">Phase 2 CP-06…CP-12. Start</text>
+  <text x="177.5" y="1346.4" fill="#1f2328" text-anchor="middle">with one bounded sour…</text>
 </svg>

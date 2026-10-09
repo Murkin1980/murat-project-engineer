@@ -164,6 +164,10 @@ HyperFrames is optional and must not block Phase 2.
 - Do not change AI-serial canon.
 - Stop at any deep-change boundary.
 
+### Conditional HyperFrames bootstrap guard — EXP-28 finding
+
+If HyperFrames is selected, reuse the existing local composition. Do not rerun its broad `init` flow unless its side effects have first been inspected and isolated: the Phase 1 invocation unexpectedly installed ten agent skills outside the repository. Before preview/render, check only the selected renderer's documented prerequisites; if the browser or codec path is blocked by the executor, record the blocker and stop rather than repairing the general sandbox. Remotion remains the preferred Phase 2 baseline; this HyperFrames-specific guard does not apply to Remotion.
+
 ## CP-06
 Freeze one source and generate `EDITORIAL_STORYBOARD.json`.
 
