@@ -415,7 +415,9 @@
         "https://github.com/OpenHands/OpenHands",
         "https://github.com/OpenHands/software-agent-sdk"
       ],
-      "pr_or_issue_links": [],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/63"
+      ],
       "updated_at": "2026-10-09"
     },
     {

@@ -253,9 +253,10 @@ change, and no Dify/OpenHands dependency is authorized by this result.
 ## Delivery
 
 - Changed files: see the table below and `git show --stat` on the commit.
-- Commit SHA: `PENDING_AT_WRITE_TIME` — recorded in the registry entry and in the PR.
-- PR: opened from `arena/6f37b26a-murat-project-engineer`, **not merged** (no merge authority
-  was granted for this run).
+- Commit SHA: `6b118cb830a703aa6ca323ffe03ed466811d93b0` (experiment, harness, evidence, tests,
+  registry and regenerated views); the SHA/PR record itself is the follow-up commit on the same branch.
+- PR: <https://github.com/Murkin1980/murat-project-engineer/pull/63> — opened from
+  `arena/6f37b26a-murat-project-engineer`, **not merged** (no merge authority was granted for this run).
 
 | Path | Change |
 |---|---|
