@@ -14,7 +14,7 @@ Verify freshness before use: `python3 experiments/exp-29-arena-bootstrap-harness
 - Disposition: EXPERIMENT
 - Registry status: PARTIAL (updated 2026-10-09)
 - Nearest action: Do not repeat CP-01…CP-03 (already executed). Recommendation HOLD: run the frozen CP-01/CP-02 fixtures against the released 842 MB Laya checkpoint on a weights-available ≥8 GB machine and record accuracy/determinism/latency before any adapter work; no production integration is authorized.
-- Generated against (informational): branch `arena/0ed937e3-murat-project-engineer`, head `a5a16bbf2cf339a3ff2eac398486ba9ad7c9e41f`, base `a5a16bbf2cf339a3ff2eac398486ba9ad7c9e41f`
+- Generated against (informational): branch `arena/0ed937e3-murat-project-engineer`, head `19a0aca5f3b2238b2cfa8f94944317500f66c1cf`, base `a5a16bbf2cf339a3ff2eac398486ba9ad7c9e41f`
 
 ## RULES (mandatory)
 
@@ -109,7 +109,7 @@ Graceful handoff minimum (AGENTS.md): STATE, EVIDENCE, CHANGES, RESULT, BLOCKER,
 
 | Path | SHA-256 | Role |
 |---|---|---|
-| `experiments/EXPERIMENT_REGISTRY.json` | `d2e68fda1f1289ba76ff1ac41eb63d508dd2ab66e8ce685f9abd72f511d10f11` | registry |
+| `experiments/EXPERIMENT_REGISTRY.json` | `1e499866659953ca09b32dc95c4a11b508767831c6178540542fc861a5992f97` | registry |
 | `experiments/exp-22-colibri-local-inference/ARENA_TASK.md` | `3504512bd7d0ab09e9448388149401a8aee84ec0b76310164e340c6b7a9a8bd4` | task_instructions |
 | `experiments/exp-22-colibri-local-inference/README.md` | `a102a28dac4fcd40cef4033cf73c79eb22d5de344d6cc877cf303c8587fd8925` | task_readme |
 | `experiments/exp-22-colibri-local-inference/RESULTS.md` | `bca8fd164d0b442881ae329a248679392331248256036d5938b78ecf32500363` | experiment_results |

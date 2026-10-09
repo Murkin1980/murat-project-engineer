@@ -459,7 +459,9 @@
         "experiments/exp-22-colibri-local-inference/evidence/environment.md",
         "experiments/exp-22-colibri-local-inference/evidence/bootstrap/FIRST_REAL_USE.md"
       ],
-      "pr_or_issue_links": [],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/73"
+      ],
       "updated_at": "2026-10-09"
     },
     {

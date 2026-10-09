@@ -14,7 +14,7 @@
  },
  "measurements": {
   "arm_a": {
-   "bytes_read": 85759,
+   "bytes_read": 85837,
    "failed_ops": 0,
    "files_read": 5,
    "listdir_ops": 2,
@@ -29,8 +29,8 @@
    "read_ops": 1,
    "tool_ops": 1
   },
-  "bytes_reduction_ratio": 0.8474,
-  "genealogy_cost_reduction_ratio": 0.8209,
+  "bytes_reduction_ratio": 0.8475,
+  "genealogy_cost_reduction_ratio": 0.8211,
   "packet_json_bytes": 13113,
   "packet_md_bytes": 10382
  },

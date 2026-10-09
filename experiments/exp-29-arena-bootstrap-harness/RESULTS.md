@@ -349,6 +349,9 @@ owner-side RESULTS.md for EXP-22. Neither is implemented here.
 
 ## CP-07 — Canonical current-state gap (registry + RESULTS repair): PASS
 
+PR: https://github.com/Murkin1980/murat-project-engineer/pull/73 — **opened,
+not merged** (one bounded PR per ARENA_TASK CP-07).
+
 Trigger (ARENA_TASK CP-07): CP-06 made the EXP-22/CP-01 bootstrap technically
 `FRESH`, but the packet still reported stale task state — `PLANNED` with a
 pre-run "execute CP-01" nearest action — while `FINDINGS.md` recorded

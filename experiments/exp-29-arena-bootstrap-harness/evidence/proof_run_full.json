@@ -4,7 +4,7 @@
    "generated_against": {
     "git_base": "a5a16bbf2cf339a3ff2eac398486ba9ad7c9e41f",
     "git_branch": "arena/0ed937e3-murat-project-engineer",
-    "git_head": "a5a16bbf2cf339a3ff2eac398486ba9ad7c9e41f"
+    "git_head": "19a0aca5f3b2238b2cfa8f94944317500f66c1cf"
    },
    "json_bytes": 13113,
    "md_bytes": 10382,
@@ -168,7 +168,7 @@
    "arm": "A_rediscovery",
    "cost": {
     "at_all_answers": {
-     "bytes_read": 85759,
+     "bytes_read": 85837,
      "failed_ops": 0,
      "files_read": 5,
      "listdir_ops": 2,
@@ -176,7 +176,7 @@
      "tool_ops": 7
     },
     "at_genealogy_complete": {
-     "bytes_read": 73076,
+     "bytes_read": 73154,
      "failed_ops": 0,
      "files_read": 4,
      "listdir_ops": 2,
@@ -187,7 +187,7 @@
    "packet_used": false,
    "read_from_chat": false,
    "totals": {
-    "bytes_read": 85759,
+    "bytes_read": 85837,
     "failed_ops": 0,
     "files_read": 5,
     "listdir_ops": 2,
@@ -221,7 +221,7 @@
     "path": "/home/user/murat-project-engineer/experiments/exp-27-paperclip-orchestration-patterns/README.md"
    },
    {
-    "bytes": 51394,
+    "bytes": 51472,
     "ok": true,
     "op": "read",
     "path": "/home/user/murat-project-engineer/experiments/EXPERIMENT_REGISTRY.json"
@@ -295,7 +295,7 @@
   "comparison": {
    "arm_a_cost": {
     "at_all_answers": {
-     "bytes_read": 85759,
+     "bytes_read": 85837,
      "failed_ops": 0,
      "files_read": 5,
      "listdir_ops": 2,
@@ -303,7 +303,7 @@
      "tool_ops": 7
     },
     "at_genealogy_complete": {
-     "bytes_read": 73076,
+     "bytes_read": 73154,
      "failed_ops": 0,
      "files_read": 4,
      "listdir_ops": 2,
@@ -312,7 +312,7 @@
     }
    },
    "arm_a_totals": {
-    "bytes_read": 85759,
+    "bytes_read": 85837,
     "failed_ops": 0,
     "files_read": 5,
     "listdir_ops": 2,
@@ -345,12 +345,12 @@
     "read_ops": 1,
     "tool_ops": 1
    },
-   "bytes_reduction_ratio": 0.8474,
+   "bytes_reduction_ratio": 0.8475,
    "fixture": {
     "checkpoint": "CP-05",
     "experiment_id": "EXP-27"
    },
-   "genealogy_cost_reduction_ratio": 0.8209,
+   "genealogy_cost_reduction_ratio": 0.8211,
    "packet_bytes": 13087,
    "verify_before_arms": "FRESH"
   },
@@ -394,7 +394,7 @@
     "expected": "STALE",
     "field_diffs": [
      {
-      "canonical": "d2e68fda1f1289ba76ff1ac41eb63d508dd2ab66e8ce685f9abd72f511d10f11",
+      "canonical": "1e499866659953ca09b32dc95c4a11b508767831c6178540542fc861a5992f97",
       "field": "source_refs[0].sha256",
       "packet": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
      }
@@ -449,9 +449,9 @@
       "packet": "Closed at bounded pattern extraction. No production integration, Router change, governance change, or follow-on checkpo…"
      },
      {
-      "canonical": "19895638476bc09e2aab7d822a149bd4e8262cdecb809ba5685ca83b8d0ae9ab",
+      "canonical": "905637b84142df893340ad7d544d7e4860fa27b78f28136efbd95ee1196e636e",
       "field": "source_refs[0].sha256",
-      "packet": "d2e68fda1f1289ba76ff1ac41eb63d508dd2ab66e8ce685f9abd72f511d10f11"
+      "packet": "1e499866659953ca09b32dc95c4a11b508767831c6178540542fc861a5992f97"
      }
     ],
     "id": "NC-04",
@@ -540,7 +540,7 @@
     ]
    },
    "rediscovery_without_packet": {
-    "bytes": 71969,
+    "bytes": 72047,
     "files": 4,
     "reads": [
      "STATUS.md",
@@ -752,7 +752,7 @@
   },
   "measurements": {
    "arm_a": {
-    "bytes_read": 85759,
+    "bytes_read": 85837,
     "failed_ops": 0,
     "files_read": 5,
     "listdir_ops": 2,
@@ -767,8 +767,8 @@
     "read_ops": 1,
     "tool_ops": 1
    },
-   "bytes_reduction_ratio": 0.8474,
-   "genealogy_cost_reduction_ratio": 0.8209,
+   "bytes_reduction_ratio": 0.8475,
+   "genealogy_cost_reduction_ratio": 0.8211,
    "packet_json_bytes": 13113,
    "packet_md_bytes": 10382
   },
