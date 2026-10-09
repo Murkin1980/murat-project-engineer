@@ -1,0 +1,875 @@
+{
+ "checkpoint": "CP-01",
+ "question_id": "status",
+ "options": [
+  "READY",
+  "WARNING",
+  "BLOCKED"
+ ],
+ "repeats": 3,
+ "items": [
+  {
+   "id": "cp01-01",
+   "expected": "READY",
+   "reference": "READY",
+   "runs": [
+    {
+     "http_status": 200,
+     "latency_ms": 10.5,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.339904,
+      "WARNING": 0.293649,
+      "BLOCKED": 0.366447
+     },
+     "confidence": 0.049671,
+     "usage": {
+      "input_tokens": 108,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 11.4,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.339904,
+      "WARNING": 0.293649,
+      "BLOCKED": 0.366447
+     },
+     "confidence": 0.049671,
+     "usage": {
+      "input_tokens": 108,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 9.1,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.339904,
+      "WARNING": 0.293649,
+      "BLOCKED": 0.366447
+     },
+     "confidence": 0.049671,
+     "usage": {
+      "input_tokens": 108,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    }
+   ],
+   "deterministic": true,
+   "matches_expected": false
+  },
+  {
+   "id": "cp01-02",
+   "expected": "BLOCKED",
+   "reference": "BLOCKED",
+   "runs": [
+    {
+     "http_status": 200,
+     "latency_ms": 10.0,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.339536,
+      "WARNING": 0.301425,
+      "BLOCKED": 0.35904
+     },
+     "confidence": 0.038559,
+     "usage": {
+      "input_tokens": 100,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 9.8,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.339536,
+      "WARNING": 0.301425,
+      "BLOCKED": 0.35904
+     },
+     "confidence": 0.038559,
+     "usage": {
+      "input_tokens": 100,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 9.8,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.339536,
+      "WARNING": 0.301425,
+      "BLOCKED": 0.35904
+     },
+     "confidence": 0.038559,
+     "usage": {
+      "input_tokens": 100,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    }
+   ],
+   "deterministic": true,
+   "matches_expected": true
+  },
+  {
+   "id": "cp01-03",
+   "expected": "WARNING",
+   "reference": "WARNING",
+   "runs": [
+    {
+     "http_status": 200,
+     "latency_ms": 11.3,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.311277,
+      "WARNING": 0.305291,
+      "BLOCKED": 0.383432
+     },
+     "confidence": 0.075149,
+     "usage": {
+      "input_tokens": 104,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 11.2,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.311277,
+      "WARNING": 0.305291,
+      "BLOCKED": 0.383432
+     },
+     "confidence": 0.075149,
+     "usage": {
+      "input_tokens": 104,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 11.2,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.311277,
+      "WARNING": 0.305291,
+      "BLOCKED": 0.383432
+     },
+     "confidence": 0.075149,
+     "usage": {
+      "input_tokens": 104,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    }
+   ],
+   "deterministic": true,
+   "matches_expected": false
+  },
+  {
+   "id": "cp01-04",
+   "expected": "BLOCKED",
+   "reference": "BLOCKED",
+   "runs": [
+    {
+     "http_status": 200,
+     "latency_ms": 10.7,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.346489,
+      "WARNING": 0.289921,
+      "BLOCKED": 0.363589
+     },
+     "confidence": 0.045384,
+     "usage": {
+      "input_tokens": 99,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 10.8,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.346489,
+      "WARNING": 0.289921,
+      "BLOCKED": 0.363589
+     },
+     "confidence": 0.045384,
+     "usage": {
+      "input_tokens": 99,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 10.6,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.346489,
+      "WARNING": 0.289921,
+      "BLOCKED": 0.363589
+     },
+     "confidence": 0.045384,
+     "usage": {
+      "input_tokens": 99,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    }
+   ],
+   "deterministic": true,
+   "matches_expected": true
+  },
+  {
+   "id": "cp01-05",
+   "expected": "WARNING",
+   "reference": "WARNING",
+   "runs": [
+    {
+     "http_status": 200,
+     "latency_ms": 8.8,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.317125,
+      "WARNING": 0.305479,
+      "BLOCKED": 0.377396
+     },
+     "confidence": 0.066094,
+     "usage": {
+      "input_tokens": 109,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 8.5,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.317125,
+      "WARNING": 0.305479,
+      "BLOCKED": 0.377396
+     },
+     "confidence": 0.066094,
+     "usage": {
+      "input_tokens": 109,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 8.4,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.317125,
+      "WARNING": 0.305479,
+      "BLOCKED": 0.377396
+     },
+     "confidence": 0.066094,
+     "usage": {
+      "input_tokens": 109,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    }
+   ],
+   "deterministic": true,
+   "matches_expected": false
+  },
+  {
+   "id": "cp01-06",
+   "expected": "READY",
+   "reference": "READY",
+   "runs": [
+    {
+     "http_status": 200,
+     "latency_ms": 11.2,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.313753,
+      "WARNING": 0.310522,
+      "BLOCKED": 0.375725
+     },
+     "confidence": 0.063588,
+     "usage": {
+      "input_tokens": 105,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 11.1,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.313753,
+      "WARNING": 0.310522,
+      "BLOCKED": 0.375725
+     },
+     "confidence": 0.063588,
+     "usage": {
+      "input_tokens": 105,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 11.2,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.313753,
+      "WARNING": 0.310522,
+      "BLOCKED": 0.375725
+     },
+     "confidence": 0.063588,
+     "usage": {
+      "input_tokens": 105,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    }
+   ],
+   "deterministic": true,
+   "matches_expected": false
+  },
+  {
+   "id": "cp01-07",
+   "expected": "BLOCKED",
+   "reference": "BLOCKED",
+   "runs": [
+    {
+     "http_status": 200,
+     "latency_ms": 11.8,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.313964,
+      "WARNING": 0.316278,
+      "BLOCKED": 0.369758
+     },
+     "confidence": 0.054637,
+     "usage": {
+      "input_tokens": 111,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 12.3,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.313964,
+      "WARNING": 0.316278,
+      "BLOCKED": 0.369758
+     },
+     "confidence": 0.054637,
+     "usage": {
+      "input_tokens": 111,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 11.7,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.313964,
+      "WARNING": 0.316278,
+      "BLOCKED": 0.369758
+     },
+     "confidence": 0.054637,
+     "usage": {
+      "input_tokens": 111,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    }
+   ],
+   "deterministic": true,
+   "matches_expected": true
+  },
+  {
+   "id": "cp01-08",
+   "expected": "WARNING",
+   "reference": "WARNING",
+   "runs": [
+    {
+     "http_status": 200,
+     "latency_ms": 11.8,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.319681,
+      "WARNING": 0.32198,
+      "BLOCKED": 0.35834
+     },
+     "confidence": 0.037509,
+     "usage": {
+      "input_tokens": 110,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 11.7,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.319681,
+      "WARNING": 0.32198,
+      "BLOCKED": 0.35834
+     },
+     "confidence": 0.037509,
+     "usage": {
+      "input_tokens": 110,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 11.6,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.319681,
+      "WARNING": 0.32198,
+      "BLOCKED": 0.35834
+     },
+     "confidence": 0.037509,
+     "usage": {
+      "input_tokens": 110,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    }
+   ],
+   "deterministic": true,
+   "matches_expected": false
+  },
+  {
+   "id": "cp01-09",
+   "expected": "BLOCKED",
+   "reference": "BLOCKED",
+   "runs": [
+    {
+     "http_status": 200,
+     "latency_ms": 10.7,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.334701,
+      "WARNING": 0.292551,
+      "BLOCKED": 0.372749
+     },
+     "confidence": 0.059123,
+     "usage": {
+      "input_tokens": 99,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 10.6,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.334701,
+      "WARNING": 0.292551,
+      "BLOCKED": 0.372749
+     },
+     "confidence": 0.059123,
+     "usage": {
+      "input_tokens": 99,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 10.8,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.334701,
+      "WARNING": 0.292551,
+      "BLOCKED": 0.372749
+     },
+     "confidence": 0.059123,
+     "usage": {
+      "input_tokens": 99,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    }
+   ],
+   "deterministic": true,
+   "matches_expected": true
+  },
+  {
+   "id": "cp01-10",
+   "expected": "READY",
+   "reference": "READY",
+   "runs": [
+    {
+     "http_status": 200,
+     "latency_ms": 9.5,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.341819,
+      "WARNING": 0.284954,
+      "BLOCKED": 0.373227
+     },
+     "confidence": 0.059841,
+     "usage": {
+      "input_tokens": 100,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 9.5,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.341819,
+      "WARNING": 0.284954,
+      "BLOCKED": 0.373227
+     },
+     "confidence": 0.059841,
+     "usage": {
+      "input_tokens": 100,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 9.5,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.341819,
+      "WARNING": 0.284954,
+      "BLOCKED": 0.373227
+     },
+     "confidence": 0.059841,
+     "usage": {
+      "input_tokens": 100,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    }
+   ],
+   "deterministic": true,
+   "matches_expected": false
+  },
+  {
+   "id": "cp01-11",
+   "expected": "WARNING",
+   "reference": "WARNING",
+   "runs": [
+    {
+     "http_status": 200,
+     "latency_ms": 8.4,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.315886,
+      "WARNING": 0.30015,
+      "BLOCKED": 0.383964
+     },
+     "confidence": 0.075946,
+     "usage": {
+      "input_tokens": 109,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 8.4,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.315886,
+      "WARNING": 0.30015,
+      "BLOCKED": 0.383964
+     },
+     "confidence": 0.075946,
+     "usage": {
+      "input_tokens": 109,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 8.3,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.315886,
+      "WARNING": 0.30015,
+      "BLOCKED": 0.383964
+     },
+     "confidence": 0.075946,
+     "usage": {
+      "input_tokens": 109,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    }
+   ],
+   "deterministic": true,
+   "matches_expected": false
+  },
+  {
+   "id": "cp01-12",
+   "expected": "BLOCKED",
+   "reference": "BLOCKED",
+   "runs": [
+    {
+     "http_status": 200,
+     "latency_ms": 11.6,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.318387,
+      "WARNING": 0.300778,
+      "BLOCKED": 0.380835
+     },
+     "confidence": 0.071252,
+     "usage": {
+      "input_tokens": 110,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 11.6,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.318387,
+      "WARNING": 0.300778,
+      "BLOCKED": 0.380835
+     },
+     "confidence": 0.071252,
+     "usage": {
+      "input_tokens": 110,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 11.5,
+     "choice": "BLOCKED",
+     "probabilities": {
+      "READY": 0.318387,
+      "WARNING": 0.300778,
+      "BLOCKED": 0.380835
+     },
+     "confidence": 0.071252,
+     "usage": {
+      "input_tokens": 110,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    }
+   ],
+   "deterministic": true,
+   "matches_expected": true
+  }
+ ],
+ "footprint_before": {
+  "pids": [
+   1726,
+   1727,
+   1729,
+   1737
+  ],
+  "rss_kb_total": 48732,
+  "hwm_kb_max": 35192
+ },
+ "footprint_after": {
+  "pids": [
+   1726,
+   1727,
+   1729,
+   1737
+  ],
+  "rss_kb_total": 49392,
+  "hwm_kb_max": 35860
+ },
+ "summary": {
+  "n_items": 12,
+  "n_requests": 36,
+  "http_200": 36,
+  "malformed_outputs": 0,
+  "deterministic_items": 12,
+  "matches_expected": 5,
+  "latency_ms": {
+   "min": 8.3,
+   "max": 12.3,
+   "mean": 10.5,
+   "sorted": [
+    8.3,
+    8.4,
+    8.4,
+    8.4,
+    8.5,
+    8.8,
+    9.1,
+    9.5,
+    9.5,
+    9.5,
+    9.8,
+    9.8,
+    10.0,
+    10.5,
+    10.6,
+    10.6,
+    10.7,
+    10.7,
+    10.8,
+    10.8,
+    11.1,
+    11.2,
+    11.2,
+    11.2,
+    11.2,
+    11.3,
+    11.4,
+    11.5,
+    11.6,
+    11.6,
+    11.6,
+    11.7,
+    11.7,
+    11.8,
+    11.8,
+    12.3
+   ]
+  }
+ }
+}

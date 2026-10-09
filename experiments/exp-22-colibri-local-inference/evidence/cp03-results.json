@@ -1,0 +1,67 @@
+{
+ "probes": [
+  {
+   "name": "openai_list_models",
+   "method": "GET",
+   "path": "/v1/models",
+   "http_status": 200,
+   "latency_ms": 3.3,
+   "top_level_shape": [
+    "data",
+    "models",
+    "object"
+   ],
+   "body_truncated": "{\"object\":\"list\",\"data\":[{\"id\":\"laya\",\"object\":\"model\",\"created\":1791522766,\"owned_by\":\"colibri\",\"input_modalities\":[\"text\"],\"capabilities\":[\"systemone\",\"decision\"]}],\"models\":[{\"name\":\"laya\",\"description\":\"laya_modernbert, served by colibri; POST /v1/systemone answers typed questions.\",\"release_date\":\"2026-10-09\"}]}"
+  },
+  {
+   "name": "openai_chat_completions",
+   "method": "POST",
+   "path": "/v1/chat/completions",
+   "http_status": 400,
+   "latency_ms": 1.0,
+   "top_level_shape": [
+    "error"
+   ],
+   "body_truncated": "{\"error\":{\"message\":\"`laya` is a decision model: it answers typed questions with calibrated probabilities and does not generate text. POST /v1/systemone instead.\",\"type\":\"invalid_request_error\",\"param\":\"model\",\"code\":\"unsupported_endpoint\"}}"
+  },
+  {
+   "name": "anthropic_messages",
+   "method": "POST",
+   "path": "/v1/messages",
+   "http_status": 400,
+   "latency_ms": 0.9,
+   "top_level_shape": [
+    "error",
+    "type"
+   ],
+   "body_truncated": "{\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"`laya` is a decision model: it answers typed questions with calibrated probabilities and does not generate text. POST /v1/systemone instead.\"}}"
+  },
+  {
+   "name": "systemone_decision",
+   "method": "POST",
+   "path": "/v1/systemone",
+   "http_status": 200,
+   "latency_ms": 15.1,
+   "top_level_shape": [
+    "answers",
+    "id",
+    "model",
+    "provider",
+    "usage"
+   ],
+   "body_truncated": "{\"id\":\"req_d869a994d27843178d29e542b0308756\",\"model\":\"laya\",\"provider\":\"colibri\",\"answers\":{\"status\":{\"type\":\"choice\",\"choice\":\"WARNING\",\"probabilities\":{\"READY\":0.321516,\"WARNING\":0.35182,\"BLOCKED\":0.326664},\"confidence\":0.02773}},\"usage\":{\"input_tokens\":95,\"output_tokens\":0,\"cost\":0}}"
+  },
+  {
+   "name": "systemone_malformed_type",
+   "method": "POST",
+   "path": "/v1/systemone",
+   "http_status": 422,
+   "latency_ms": 1.4,
+   "top_level_shape": [
+    "detail",
+    "error"
+   ],
+   "body_truncated": "{\"error\":{\"message\":\"`questions.q.type` must be \\\"noul\\\", \\\"choice\\\" or \\\"score\\\".\",\"type\":\"invalid_request_error\",\"param\":\"questions.q.type\",\"code\":null},\"detail\":[{\"loc\":[\"body\",\"questions\",\"q\",\"type\"],\"msg\":\"`questions.q.type` must be \\\"noul\\\", \\\"choice\\\" or \\\"score\\\".\",\"type\":\"value_error\"}]}"
+  }
+ ]
+}

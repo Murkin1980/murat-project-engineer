@@ -1,0 +1,768 @@
+{
+ "checkpoint": "CP-02",
+ "question_id": "owner",
+ "options": [
+  "architect",
+  "coder",
+  "researcher",
+  "reviewer"
+ ],
+ "repeats": 3,
+ "items": [
+  {
+   "id": "cp02-01",
+   "expected": "coder",
+   "reference": "coder",
+   "runs": [
+    {
+     "http_status": 200,
+     "latency_ms": 11.7,
+     "choice": "reviewer",
+     "probabilities": {
+      "architect": 0.232122,
+      "coder": 0.249059,
+      "researcher": 0.19497,
+      "reviewer": 0.323849
+     },
+     "confidence": 0.098465,
+     "usage": {
+      "input_tokens": 95,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 9.6,
+     "choice": "reviewer",
+     "probabilities": {
+      "architect": 0.232122,
+      "coder": 0.249059,
+      "researcher": 0.19497,
+      "reviewer": 0.323849
+     },
+     "confidence": 0.098465,
+     "usage": {
+      "input_tokens": 95,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 9.5,
+     "choice": "reviewer",
+     "probabilities": {
+      "architect": 0.232122,
+      "coder": 0.249059,
+      "researcher": 0.19497,
+      "reviewer": 0.323849
+     },
+     "confidence": 0.098465,
+     "usage": {
+      "input_tokens": 95,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    }
+   ],
+   "deterministic": true,
+   "matches_expected": false
+  },
+  {
+   "id": "cp02-02",
+   "expected": "researcher",
+   "reference": "researcher",
+   "runs": [
+    {
+     "http_status": 200,
+     "latency_ms": 11.4,
+     "choice": "reviewer",
+     "probabilities": {
+      "architect": 0.237188,
+      "coder": 0.227044,
+      "researcher": 0.200222,
+      "reviewer": 0.335546
+     },
+     "confidence": 0.114061,
+     "usage": {
+      "input_tokens": 104,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 13.1,
+     "choice": "reviewer",
+     "probabilities": {
+      "architect": 0.237188,
+      "coder": 0.227044,
+      "researcher": 0.200222,
+      "reviewer": 0.335546
+     },
+     "confidence": 0.114061,
+     "usage": {
+      "input_tokens": 104,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 11.7,
+     "choice": "reviewer",
+     "probabilities": {
+      "architect": 0.237188,
+      "coder": 0.227044,
+      "researcher": 0.200222,
+      "reviewer": 0.335546
+     },
+     "confidence": 0.114061,
+     "usage": {
+      "input_tokens": 104,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    }
+   ],
+   "deterministic": true,
+   "matches_expected": false
+  },
+  {
+   "id": "cp02-03",
+   "expected": "reviewer",
+   "reference": "reviewer",
+   "runs": [
+    {
+     "http_status": 200,
+     "latency_ms": 10.5,
+     "choice": "reviewer",
+     "probabilities": {
+      "architect": 0.224179,
+      "coder": 0.224936,
+      "researcher": 0.206935,
+      "reviewer": 0.343951
+     },
+     "confidence": 0.125268,
+     "usage": {
+      "input_tokens": 101,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 10.5,
+     "choice": "reviewer",
+     "probabilities": {
+      "architect": 0.224179,
+      "coder": 0.224936,
+      "researcher": 0.206935,
+      "reviewer": 0.343951
+     },
+     "confidence": 0.125268,
+     "usage": {
+      "input_tokens": 101,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 11.1,
+     "choice": "reviewer",
+     "probabilities": {
+      "architect": 0.224179,
+      "coder": 0.224936,
+      "researcher": 0.206935,
+      "reviewer": 0.343951
+     },
+     "confidence": 0.125268,
+     "usage": {
+      "input_tokens": 101,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    }
+   ],
+   "deterministic": true,
+   "matches_expected": true
+  },
+  {
+   "id": "cp02-04",
+   "expected": "architect",
+   "reference": "architect",
+   "runs": [
+    {
+     "http_status": 200,
+     "latency_ms": 10.9,
+     "choice": "reviewer",
+     "probabilities": {
+      "architect": 0.234815,
+      "coder": 0.244042,
+      "researcher": 0.196334,
+      "reviewer": 0.324809
+     },
+     "confidence": 0.099745,
+     "usage": {
+      "input_tokens": 99,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 10.9,
+     "choice": "reviewer",
+     "probabilities": {
+      "architect": 0.234815,
+      "coder": 0.244042,
+      "researcher": 0.196334,
+      "reviewer": 0.324809
+     },
+     "confidence": 0.099745,
+     "usage": {
+      "input_tokens": 99,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 11.0,
+     "choice": "reviewer",
+     "probabilities": {
+      "architect": 0.234815,
+      "coder": 0.244042,
+      "researcher": 0.196334,
+      "reviewer": 0.324809
+     },
+     "confidence": 0.099745,
+     "usage": {
+      "input_tokens": 99,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    }
+   ],
+   "deterministic": true,
+   "matches_expected": false
+  },
+  {
+   "id": "cp02-05",
+   "expected": "coder",
+   "reference": "coder",
+   "runs": [
+    {
+     "http_status": 200,
+     "latency_ms": 9.3,
+     "choice": "reviewer",
+     "probabilities": {
+      "architect": 0.219979,
+      "coder": 0.229653,
+      "researcher": 0.199541,
+      "reviewer": 0.350827
+     },
+     "confidence": 0.134435,
+     "usage": {
+      "input_tokens": 94,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 9.3,
+     "choice": "reviewer",
+     "probabilities": {
+      "architect": 0.219979,
+      "coder": 0.229653,
+      "researcher": 0.199541,
+      "reviewer": 0.350827
+     },
+     "confidence": 0.134435,
+     "usage": {
+      "input_tokens": 94,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 9.4,
+     "choice": "reviewer",
+     "probabilities": {
+      "architect": 0.219979,
+      "coder": 0.229653,
+      "researcher": 0.199541,
+      "reviewer": 0.350827
+     },
+     "confidence": 0.134435,
+     "usage": {
+      "input_tokens": 94,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    }
+   ],
+   "deterministic": true,
+   "matches_expected": false
+  },
+  {
+   "id": "cp02-06",
+   "expected": "researcher",
+   "reference": "researcher",
+   "runs": [
+    {
+     "http_status": 200,
+     "latency_ms": 8.2,
+     "choice": "reviewer",
+     "probabilities": {
+      "architect": 0.233322,
+      "coder": 0.241358,
+      "researcher": 0.181887,
+      "reviewer": 0.343432
+     },
+     "confidence": 0.124576,
+     "usage": {
+      "input_tokens": 103,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 8.2,
+     "choice": "reviewer",
+     "probabilities": {
+      "architect": 0.233322,
+      "coder": 0.241358,
+      "researcher": 0.181887,
+      "reviewer": 0.343432
+     },
+     "confidence": 0.124576,
+     "usage": {
+      "input_tokens": 103,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 8.1,
+     "choice": "reviewer",
+     "probabilities": {
+      "architect": 0.233322,
+      "coder": 0.241358,
+      "researcher": 0.181887,
+      "reviewer": 0.343432
+     },
+     "confidence": 0.124576,
+     "usage": {
+      "input_tokens": 103,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    }
+   ],
+   "deterministic": true,
+   "matches_expected": false
+  },
+  {
+   "id": "cp02-07",
+   "expected": "reviewer",
+   "reference": "reviewer",
+   "runs": [
+    {
+     "http_status": 200,
+     "latency_ms": 10.0,
+     "choice": "reviewer",
+     "probabilities": {
+      "architect": 0.224997,
+      "coder": 0.242183,
+      "researcher": 0.197341,
+      "reviewer": 0.335479
+     },
+     "confidence": 0.113972,
+     "usage": {
+      "input_tokens": 103,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 8.0,
+     "choice": "reviewer",
+     "probabilities": {
+      "architect": 0.224997,
+      "coder": 0.242183,
+      "researcher": 0.197341,
+      "reviewer": 0.335479
+     },
+     "confidence": 0.113972,
+     "usage": {
+      "input_tokens": 103,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 8.2,
+     "choice": "reviewer",
+     "probabilities": {
+      "architect": 0.224997,
+      "coder": 0.242183,
+      "researcher": 0.197341,
+      "reviewer": 0.335479
+     },
+     "confidence": 0.113972,
+     "usage": {
+      "input_tokens": 103,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    }
+   ],
+   "deterministic": true,
+   "matches_expected": true
+  },
+  {
+   "id": "cp02-08",
+   "expected": "architect",
+   "reference": "architect",
+   "runs": [
+    {
+     "http_status": 200,
+     "latency_ms": 7.4,
+     "choice": "reviewer",
+     "probabilities": {
+      "architect": 0.218958,
+      "coder": 0.240558,
+      "researcher": 0.202529,
+      "reviewer": 0.337955
+     },
+     "confidence": 0.117274,
+     "usage": {
+      "input_tokens": 96,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 7.2,
+     "choice": "reviewer",
+     "probabilities": {
+      "architect": 0.218958,
+      "coder": 0.240558,
+      "researcher": 0.202529,
+      "reviewer": 0.337955
+     },
+     "confidence": 0.117274,
+     "usage": {
+      "input_tokens": 96,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 7.1,
+     "choice": "reviewer",
+     "probabilities": {
+      "architect": 0.218958,
+      "coder": 0.240558,
+      "researcher": 0.202529,
+      "reviewer": 0.337955
+     },
+     "confidence": 0.117274,
+     "usage": {
+      "input_tokens": 96,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    }
+   ],
+   "deterministic": true,
+   "matches_expected": false
+  },
+  {
+   "id": "cp02-09",
+   "expected": "coder",
+   "reference": "coder",
+   "runs": [
+    {
+     "http_status": 200,
+     "latency_ms": 7.3,
+     "choice": "reviewer",
+     "probabilities": {
+      "architect": 0.234846,
+      "coder": 0.236875,
+      "researcher": 0.204116,
+      "reviewer": 0.324163
+     },
+     "confidence": 0.098884,
+     "usage": {
+      "input_tokens": 97,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 7.7,
+     "choice": "reviewer",
+     "probabilities": {
+      "architect": 0.234846,
+      "coder": 0.236875,
+      "researcher": 0.204116,
+      "reviewer": 0.324163
+     },
+     "confidence": 0.098884,
+     "usage": {
+      "input_tokens": 97,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 7.3,
+     "choice": "reviewer",
+     "probabilities": {
+      "architect": 0.234846,
+      "coder": 0.236875,
+      "researcher": 0.204116,
+      "reviewer": 0.324163
+     },
+     "confidence": 0.098884,
+     "usage": {
+      "input_tokens": 97,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    }
+   ],
+   "deterministic": true,
+   "matches_expected": false
+  },
+  {
+   "id": "cp02-10",
+   "expected": "researcher",
+   "reference": "researcher",
+   "runs": [
+    {
+     "http_status": 200,
+     "latency_ms": 9.9,
+     "choice": "reviewer",
+     "probabilities": {
+      "architect": 0.226561,
+      "coder": 0.237541,
+      "researcher": 0.207664,
+      "reviewer": 0.328235
+     },
+     "confidence": 0.104313,
+     "usage": {
+      "input_tokens": 106,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 10.0,
+     "choice": "reviewer",
+     "probabilities": {
+      "architect": 0.226561,
+      "coder": 0.237541,
+      "researcher": 0.207664,
+      "reviewer": 0.328235
+     },
+     "confidence": 0.104313,
+     "usage": {
+      "input_tokens": 106,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    },
+    {
+     "http_status": 200,
+     "latency_ms": 10.1,
+     "choice": "reviewer",
+     "probabilities": {
+      "architect": 0.226561,
+      "coder": 0.237541,
+      "researcher": 0.207664,
+      "reviewer": 0.328235
+     },
+     "confidence": 0.104313,
+     "usage": {
+      "input_tokens": 106,
+      "output_tokens": 0,
+      "cost": 0
+     },
+     "model": "laya",
+     "provider": "colibri",
+     "schema_problems": []
+    }
+   ],
+   "deterministic": true,
+   "matches_expected": false
+  }
+ ],
+ "footprint_before": {
+  "pids": [
+   1726,
+   1727,
+   1729,
+   1737
+  ],
+  "rss_kb_total": 49392,
+  "hwm_kb_max": 35860
+ },
+ "footprint_after": {
+  "pids": [
+   1726,
+   1727,
+   1729,
+   1737
+  ],
+  "rss_kb_total": 49400,
+  "hwm_kb_max": 35868
+ },
+ "summary": {
+  "n_items": 10,
+  "n_requests": 30,
+  "http_200": 30,
+  "malformed_outputs": 0,
+  "deterministic_items": 10,
+  "matches_expected": 2,
+  "latency_ms": {
+   "min": 7.1,
+   "max": 13.1,
+   "mean": 9.5,
+   "sorted": [
+    7.1,
+    7.2,
+    7.3,
+    7.3,
+    7.4,
+    7.7,
+    8.0,
+    8.1,
+    8.2,
+    8.2,
+    8.2,
+    9.3,
+    9.3,
+    9.4,
+    9.5,
+    9.6,
+    9.9,
+    10.0,
+    10.0,
+    10.1,
+    10.5,
+    10.5,
+    10.9,
+    10.9,
+    11.0,
+    11.1,
+    11.4,
+    11.7,
+    11.7,
+    13.1
+   ]
+  }
+ }
+}
