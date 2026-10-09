@@ -580,7 +580,9 @@
         "experiments/exp-24-hyperframes-pr-video/ARENA_TASK.md",
         "https://github.com/mattpocock/skills/tree/b0618bc436ad893b3c5e84e55fba86586d34a404"
       ],
-      "pr_or_issue_links": [],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/61"
+      ],
       "updated_at": "2026-10-09"
     }
   ]
