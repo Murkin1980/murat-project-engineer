@@ -108,3 +108,24 @@ When the owner asks for instructions for Arena, Codex, Claude Code, or another c
 7. This rule applies even when the full instruction was just written during the same conversation.
 
 The repository version is authoritative; the chat block is only a compact launch pointer.
+
+### Arena bootstrap rule
+
+For **Arena** tasks that are context-heavy, resume prior work, depend on multiple repository sources, or rely on accumulated experiment lessons, prepare the handoff with the validated EXP-29 bootstrap pattern before giving Arena the chat instruction.
+
+Use:
+
+- `experiments/exp-29-arena-bootstrap-harness/harness/bootstrap_builder.py`
+- generated `ARENA_CONTEXT.json` / `ARENA_CONTEXT.md` as **derived, non-authoritative views only**
+- canonical Git files as the source of truth
+
+Required behavior:
+
+1. Generate the bootstrap from the current canonical repository state for the target experiment/checkpoint.
+2. Verify the packet is `FRESH` before referencing or handing it to Arena.
+3. Include the bootstrap path in the short Arena handoff when the task is context-heavy or resumptive.
+4. If verification returns `STALE` or `REJECTED`, regenerate or stop and resolve the source conflict; never let the packet override canonical Git.
+5. Keep lessons scoped as `GLOBAL`, `PROJECT`, `TASK`, or `NO_CHANGE`; do not promote a one-off task lesson globally without evidence.
+6. Do **not** require a bootstrap for a small self-contained task where it would add more context than it saves.
+
+Until a separately approved shared helper replaces it, the EXP-29 harness is the reference implementation for Arena bootstrap generation and verification.
