@@ -584,6 +584,26 @@
         "https://github.com/Murkin1980/murat-project-engineer/pull/61"
       ],
       "updated_at": "2026-10-09"
+    },
+    {
+      "experiment_id": "EXP-29",
+      "name": "Arena Bootstrap Harness",
+      "owning_project": "Murat Project Engineer",
+      "status": "PLANNED",
+      "why": "Test whether a deterministic Git-derived startup packet can let a fresh Arena session resume context-heavy MPE work with less rediscovery while preserving Git as the only source of truth and avoiding a separate memory platform.",
+      "date_added": "2026-10-09",
+      "next_action": "QUEUE ONLY. After the currently active EXP-20 Dify/OpenHands component-extraction experiment is completed and the owner explicitly starts EXP-29, execute CP-01…CP-05 from ARENA_TASK.md. Do not implement or run the harness before that start decision.",
+      "result_summary": "Planned. Primary disposition REUSE_COMPONENT. Reuses EXP-27 context-packet/resume evidence and EXP-28 evidence-gated lesson promotion. No memory service, vector store, daemon, persistent agent runtime, Router authority change, automatic learning, or second source of truth is authorized.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/exp-29-arena-bootstrap-harness",
+      "evidence_links": [
+        "experiments/exp-29-arena-bootstrap-harness/README.md",
+        "experiments/exp-29-arena-bootstrap-harness/ARENA_TASK.md",
+        "experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md",
+        "experiments/exp-28-agent-workflow-skills-retro/RESULTS.md"
+      ],
+      "pr_or_issue_links": [],
+      "updated_at": "2026-10-09"
     }
   ]
 }
