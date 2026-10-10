@@ -461,23 +461,19 @@
       "experiment_id": "EXP-23",
       "name": "Papermorph document → interactive artifact",
       "owning_project": "Murat Project Engineer",
-      "status": "PARTIAL",
+      "status": "PLANNED",
       "why": "Test whether Papermorph's document/script → structured storyboard → narration → procedural animation/interaction pipeline yields reusable value for existing Murat projects without creating a parallel product or repository.",
       "date_added": "2026-10-06",
-      "next_action": "Reconcile with PR #76 (CP-01 READY + CP-03 map live there, not rerun here); no CP-02 rerun needed. Register the REUSE_COMPONENT decision in the owning projects' bounded runs if accepted (MIT notice retained; no engine vendoring into MPE).",
-      "result_summary": "PARTIAL (2026-10-10, CP-02 correction). CP-02 READY (storyboard/previs): fixture Murkin1980/AI-serial-v2 TEASER_SCENE_SHEETS.md E01-S005 «Молодой продюсер открывает конверт» (APPROVED FOR VISUAL DEVELOPMENT); 20/20 action steps mapped, 0 omitted / 0 added, dialogue verbatim, Arman's reply out of scene, continuity checked, no TTS, no canon changes; 6/6 previs stills delivered. Supersedes the incorrect CP-02 BLOCKED in PR #76 (private source not visible to Arena integration, 403). CP-01/CP-03 not rerun here (per PR #76). Recommendation: REUSE_COMPONENT (unchanged).",
+      "next_action": "After EXP-22 Colibri completes, Arena runs one technical/business document fixture, one bounded AI-serial script fixture, then maps reusable components to existing projects.",
+      "result_summary": "Planned. Primary disposition EXPERIMENT. No new repository, production integration, autonomous service, automatic publishing, or AI-serial canon change is authorized.",
       "repo": "Murkin1980/murat-project-engineer",
       "experiment_path": "experiments/exp-23-papermorph-interactive-artifact",
       "evidence_links": [
         "experiments/exp-23-papermorph-interactive-artifact/README.md",
-        "experiments/exp-23-papermorph-interactive-artifact/ARENA_TASK.md",
-        "experiments/exp-23-papermorph-interactive-artifact/FINDINGS.md",
-        "experiments/exp-23-papermorph-interactive-artifact/evidence/cp02-ai-serial-results.md",
-        "experiments/exp-23-papermorph-interactive-artifact/evidence/cp02-beat-map.md",
-        "experiments/exp-23-papermorph-interactive-artifact/evidence/cp02-previs/README.md"
+        "experiments/exp-23-papermorph-interactive-artifact/ARENA_TASK.md"
       ],
       "pr_or_issue_links": [],
-      "updated_at": "2026-10-10"
+      "updated_at": "2026-10-06"
     },
     {
       "experiment_id": "EXP-24",
