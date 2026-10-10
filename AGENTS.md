@@ -117,6 +117,14 @@ For tasks that transform an authoritative source into visual, media, interactive
 
 Prefer reuse of its stable source→beats/work-units→marks/cues/timings→asset-slots→QA→minimal-diff revision contract before designing a new parallel pipeline. Do not apply it to unrelated work where the structure adds no value.
 
+### Reusable UI reconstruction pattern rule
+
+For screenshot-to-code, UI parity, or reference-screen reconstruction tasks, read and evaluate:
+
+- `docs/REUSABLE_UI_RECONSTRUCTION_PATTERN.md`
+
+Default budget: 1 initial render + up to 3 targeted correction cycles, with early stop on diminishing returns. Prefer localized minimal-diff fixes, protect stabilized regions, validate mobile when applicable, and do not use 5 cycles by default.
+
 ### Arena bootstrap rule
 
 For **Arena** tasks that are context-heavy, resume prior work, depend on multiple repository sources, or rely on accumulated experiment lessons, prepare the handoff with the validated EXP-29 bootstrap pattern before giving Arena the chat instruction.
