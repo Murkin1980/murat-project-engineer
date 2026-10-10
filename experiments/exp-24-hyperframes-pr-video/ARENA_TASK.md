@@ -282,3 +282,16 @@ CP-13 passes only if one bounded Phase 2 fixture proves:
 
 Record the adopted schema/contract and proof in EXP-24 evidence/RESULTS.
 Do not production-deploy or publish from this checkpoint.
+
+
+### CP-13 canonical-source fallback fixture
+
+If the Arena sandbox cannot read the private `Murkin1980/AI-serial-v2` repository, use the owner-authorized sanitized fixture:
+
+`experiments/exp-24-hyperframes-pr-video/fixtures/E01-S005_SANITIZED.md`
+
+The fixture is derived from private canonical blob `fd049ca5faafc31203cde607fbdb17bd6b17789b` and intentionally omits full private canon text because MPE is public.
+
+Using this fixture does **not** make MPE a canon source. AI-serial-v2 remains authoritative.
+
+Do not stop with `SOURCE_ACCESS_BLOCKED` if this exact sanitized fixture exists and its provenance matches the expected source blob SHA. Resume CP-13 from Step 1 using the fixture.
