@@ -2,9 +2,9 @@
  "authority": "DERIVED_VIEW_NON_AUTHORITATIVE",
  "authority_note": "Derived, non-authoritative launch brief assembled from canonical Git sources. Git remains the only source of truth: on any conflict the canonical files win; verify freshness before use and re-derive or discard this packet on any mismatch.",
  "generated_against": {
-  "git_base": "a5a16bbf2cf339a3ff2eac398486ba9ad7c9e41f",
-  "git_branch": "arena/4c9d8b8c-murat-project-engineer",
-  "git_head": "a5a16bbf2cf339a3ff2eac398486ba9ad7c9e41f"
+  "git_base": "acc89fc0ac0b45eef23ef9053f7b1521cf00ddf6",
+  "git_branch": "arena/673eac20-murat-project-engineer",
+  "git_head": "acc89fc0ac0b45eef23ef9053f7b1521cf00ddf6"
  },
  "known_lessons": [
   {
@@ -250,7 +250,7 @@
   {
    "path": "experiments/EXPERIMENT_REGISTRY.json",
    "role": "registry",
-   "sha256": "ef3ca4dd38a172146f4ae0f1574be5fbf2cd4ca682ee730c146e1ed54d2bd6c7"
+   "sha256": "a8b9e9a86746f92d338728b5fda17260fa33a7f630e6d611a812c7db131b8813"
   },
   {
    "path": "experiments/exp-27-paperclip-orchestration-patterns/ARENA_TASK.md",
@@ -275,7 +275,7 @@
   {
    "path": "AGENTS.md",
    "role": "agents_rules",
-   "sha256": "d440af35dffc0c58b238a84965ede010aa94d78e07a6ea06e701bcf41e25771d"
+   "sha256": "1058d30369c36609918f08374bcac2ff01ded85d5ea2baa94fdce75c280d8bc5"
   },
   {
    "path": "docs/governance/SCOPE-CHANGE-CONTROL.md",

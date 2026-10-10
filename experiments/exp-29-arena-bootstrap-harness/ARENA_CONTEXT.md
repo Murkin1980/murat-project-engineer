@@ -14,7 +14,7 @@ Verify freshness before use: `python3 experiments/exp-29-arena-bootstrap-harness
 - Disposition: REUSE_COMPONENT
 - Registry status: PASS (updated 2026-10-06)
 - Nearest action: Closed at bounded pattern extraction. No production integration, Router change, governance change, or follow-on checkpoint is authorized by this result; a future owner decision is required before any pattern is implemented in an existing component.
-- Generated against (informational): branch `arena/4c9d8b8c-murat-project-engineer`, head `a5a16bbf2cf339a3ff2eac398486ba9ad7c9e41f`, base `a5a16bbf2cf339a3ff2eac398486ba9ad7c9e41f`
+- Generated against (informational): branch `arena/673eac20-murat-project-engineer`, head `acc89fc0ac0b45eef23ef9053f7b1521cf00ddf6`, base `acc89fc0ac0b45eef23ef9053f7b1521cf00ddf6`
 
 ## RULES (mandatory)
 
@@ -99,12 +99,12 @@ Graceful handoff minimum (AGENTS.md): STATE, EVIDENCE, CHANGES, RESULT, BLOCKER,
 
 | Path | SHA-256 | Role |
 |---|---|---|
-| `experiments/EXPERIMENT_REGISTRY.json` | `ef3ca4dd38a172146f4ae0f1574be5fbf2cd4ca682ee730c146e1ed54d2bd6c7` | registry |
+| `experiments/EXPERIMENT_REGISTRY.json` | `a8b9e9a86746f92d338728b5fda17260fa33a7f630e6d611a812c7db131b8813` | registry |
 | `experiments/exp-27-paperclip-orchestration-patterns/ARENA_TASK.md` | `ed3bed1a1de39eecbc2167efd25e41aece0f7876c6b02b26a61ed88fc803c1e3` | task_instructions |
 | `experiments/exp-27-paperclip-orchestration-patterns/README.md` | `dba4d48d997e155e91ec220e2fb13e2525e6100f3ffb110a01086b3689216ef4` | task_readme |
 | `experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md` | `8fde29e81e2c05c42a48acb6d1a483077d81e61399573fb1f0653cff2ef9ae5c` | experiment_results |
 | `STATUS.md` | `968d47ad10910c5875f83f6c74933369aa0b70486e51cbd2bcb7b65ccb2d96e5` | project_status |
-| `AGENTS.md` | `d440af35dffc0c58b238a84965ede010aa94d78e07a6ea06e701bcf41e25771d` | agents_rules |
+| `AGENTS.md` | `1058d30369c36609918f08374bcac2ff01ded85d5ea2baa94fdce75c280d8bc5` | agents_rules |
 | `docs/governance/SCOPE-CHANGE-CONTROL.md` | `c4b747249f37d94dab9e5597b6e03692d2064846a4b7903a5b68036f996a0f9e` | governance |
 | `experiments/exp-28-agent-workflow-skills-retro/RESULTS.md` | `35a98ee8609a4b0b6dbf712b423d677b91aae70d52f0fd7ccd2a82c8966562a8` | accepted_lessons |
 
