@@ -1,0 +1,25 @@
+{
+ "checks": {
+  "authority_disclaimer": true,
+  "deep_change_gate_present": true,
+  "disposition_unambiguous": true,
+  "lesson_scopes_valid": true,
+  "matches_rebuild": false,
+  "source_digests_match": false,
+  "stop_rules_present": true
+ },
+ "consistent_with_canonical_sources": false,
+ "disposition": "Degrade to a non-authoritative hint: do not act on stale fields. Re-derive the packet from canonical sources or discard it; canonical files always win.",
+ "field_diffs": [
+  {
+   "canonical": "ef3ca4dd38a172146f4ae0f1574be5fbf2cd4ca682ee730c146e1ed54d2bd6c7",
+   "field": "source_refs[0].sha256",
+   "packet": "55d92619e1a594e160c68a60b94dc06454baa52499bf70f3c636f7217c7425fe"
+  }
+ ],
+ "reasons": [
+  "source_digest_mismatch:experiments/EXPERIMENT_REGISTRY.json",
+  "content_differs_from_rebuild:source_refs[0].sha256"
+ ],
+ "status": "STALE"
+}

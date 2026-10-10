@@ -341,6 +341,242 @@ Extra rediscovery is therefore still necessary: 3 files / 18,537 B on top of the
 packet. Carrying FINDINGS-level state would need a new source role or an
 owner-side RESULTS.md for EXP-22. Neither is implemented here.
 
+> **Closed by CP-07.** The owner-side `RESULTS.md` + registry update path was
+> taken: the state rediscovery (3 files / 18,537 B) is now 0 files / 0 B for the
+> current-state questions, and the fresh-session consumer no longer proposes
+> repeating CP-01. See the CP-07 section.
+
+## CP-07 — Canonical current-state gap: PASS
+
+Trigger: CP-06 made the EXP-22/CP-01 bootstrap technically `FRESH`, but the
+packet still carried stale task state: the canonical EXP-22 registry entry
+remained `PLANNED` with a pre-run "execute CP-01" next action while
+`FINDINGS.md` (2026-10-09) recorded CP-01…CP-03 as already executed with
+`RESULT: PARTIAL` / `RECOMMENDATION: HOLD`. A fresh executor reading only a
+verified packet would have repeated CP-01. Primary decision:
+**EXTEND_EXISTING** — the gap is closed through the existing canonical
+experiment-state mechanisms (registry entry + the experiment's `RESULTS.md`,
+the builder's existing `experiment_results` source role). No new bootstrap
+source role, no findings index, no automatic state inference, no harness
+change.
+
+### Reproduction (before editing, on `main` a5a16bb)
+
+Built + verified the EXP-22/CP-01 packet from current Git:
+
+| Fact | Value |
+|---|---|
+| Verdict | `FRESH` (all 7 checks true, no reasons) |
+| `now.registry_status` | `PLANNED` (updated 2026-10-06) |
+| `now.nearest_action` | "Arena: execute CP-01 READY/WARNING/BLOCKED classification, …" |
+| `resume.status` / `resume.result_summary` | `PLANNED` / "Planned. Primary disposition EXPERIMENT. …" |
+| `resume.next_authorized_action` | `""` (no RESULTS.md) |
+| `resume.evidence.path` | `""` |
+| Source refs | **7** — the `experiment_results` role is absent |
+
+`FINDINGS.md` (digest `769b76f7…`) records CP-01…CP-03 as run (per-CP verdicts:
+"structural PASS … quality OPEN" ×2, CP-03 compatibility "ran"), ending in the
+canonical `RESULT: PARTIAL / RECOMMENDATION: HOLD / DEEP_CHANGE: NO` block.
+Evidence: `evidence/cp07/before_state/` (pre-repair packet, `verify.json` =
+`FRESH`, `before_state.json` with the verbatim canonical citations, and
+`consumer_answers.json` — the isolated consumer's answers on this packet).
+
+The same session's pre-repair bootstrap packet for this task (EXP-29/CP-07,
+`evidence/cp07/session_bootstrap/`) was `FRESH` at session start and became
+`STALE` (`source_digest_mismatch:experiments/EXPERIMENT_REGISTRY.json`) after
+the registry repair (`verify_after_registry_repair.json`) — the freshness
+mechanism flags the canonical state change instead of silently carrying it.
+
+### Audit of the existing canonical state path
+
+- `experiments/EXPERIMENT_REGISTRY.json` — the canonical experiment state
+  mechanism; the EXP-22 entry was the pre-run planning state, never updated
+  after the 2026-10-09 run.
+- `RESULTS.md` convention — the builder's existing `experiment_results` source
+  role reads the target experiment's `RESULTS.md` (resume result summary and
+  evidence pointer come from the registry; per-pattern dispositions, known
+  limitations and the next authorized action from `RESULTS.md`). EXP-22 had no
+  `RESULTS.md`, so the role was absent and no run state could be carried.
+- `FINDINGS.md` — a run record, not a registry/results-format state carrier;
+  making it automatically authoritative would be a new source role (forbidden
+  by CP-07 scope). It is only *cited* (registry `evidence_links`, RESULTS.md
+  evidence section).
+- Dashboard/Reladraw ritual — `scripts/registry_to_reladraw.py` + pinned
+  `reladraw@0.13.0` renders + `dashboard/public/registry/**` copies; required
+  after any registry change (freshness-checked by the test suite).
+- Registry schema note: the status enum
+  (`contracts/EXPERIMENT_REGISTRY.schema.json`) is
+  `IDEA/PLANNED/READY_TO_TEST/RUNNING/PASS/FAIL/HOLD/ADOPTED` — it has no
+  `PARTIAL`/`RETIRED`. That is a pre-existing, separately-owned contract gap
+  (already failing for EXP-26 and the RETIRED entries; recorded in CP-05/CP-06).
+  CP-07 does not change contracts, so the EXP-22 entry uses the recorded
+  recommendation **HOLD** (schema-valid) and carries the full result —
+  `PARTIAL / HOLD`, numbers, limitation, next action — in `result_summary` and
+  the new `RESULTS.md`. No new unittest failure is introduced.
+
+### Canonical repair (smallest existing-path change)
+
+1. **Registry EXP-22 entry** (`experiments/EXPERIMENT_REGISTRY.json`,
+   top-level `updated_at` → 2026-10-10):
+   - `status`: `PLANNED` → **`HOLD`** (the recorded recommendation);
+   - `next_action`: the pre-run "execute CP-01…" text → the bounded
+     released-weight quality run (frozen CP-01/CP-02 fixtures against the
+     released 842 MB Laya checkpoint on a weights-available ≥8 GB machine,
+     record accuracy/determinism/latency before any adapter work) with
+     "CP-01..CP-03 must not be repeated; no production integration is
+     authorized";
+   - `result_summary`: "Planned. …" → "PARTIAL / HOLD (2026-10-09). CP-01..CP-03
+     executed: structural decision path proven (66/66 HTTP 200, 0 malformed
+     constrained outputs, 22/22 deterministic, 7-13 ms at ~48 MB RSS);
+     released-weight decision quality NOT measured (checkpoint unavailable in
+     sandbox). Next: bounded released-weight quality run; CP-01..CP-03 must not
+     be repeated; no production integration authorized." (the 300-char packet
+     display keeps `PARTIAL / HOLD`, `CP-01..CP-03 executed` and `NOT measured`;
+     the "must not be repeated" clause rides in the untruncated `next_action`);
+   - `evidence_links`: + `FINDINGS.md`, + `RESULTS.md`;
+   - `updated_at`: 2026-10-10.
+2. **New `experiments/exp-22-colibri-local-inference/RESULTS.md`** — expresses
+   the already-established result in the repository's normal result format,
+   derived solely from committed evidence (`FINDINGS.md` §3–§7 + the
+   `evidence/cp0*-results.json`); it adds no new claims. It carries the
+   builder-consumed sections — `## Per-pattern disposition` (per-checkpoint
+   verdicts: HOLD / HOLD / REUSE_PATTERN_ONLY / DO_NOT_ADOPT),
+   `## Known limitations / blockers` (released-weight quality not measured,
+   tiny-fixture numbers, English-only, no provider seam) and
+   `## Next authorized action` (the released-weight run) — plus the verbatim
+   canonical result block.
+3. **EXP-22 `README.md` status metadata line** — `Status: PLANNED` →
+   `Status: PARTIAL — CP-01..CP-03 executed 2026-10-09; recommendation HOLD
+   (see RESULTS.md)` (single-line metadata; `Decision: EXPERIMENT` and all
+   boundary/scope sections untouched).
+4. **Reladraw ritual** — regenerated `cp02/portfolio.reladraw` + 7 per-status
+   mobile views + all SVG renders + `dashboard/public/registry/**` copies with
+   `scripts/registry_to_reladraw.py` + pinned `reladraw@0.13.0`. On the diagram
+   EXP-22 moves PLANNED (4→3) → HOLD (5→6) with the new next step; the
+   inferred EXP-23→EXP-22 edge now points at the HOLD node.
+
+No harness file was modified; no parser, source role, safety invariant, or
+contract changed.
+
+### Rebuilt bootstrap (step 4 of CP-07)
+
+`bootstrap_builder.py build --experiment EXP-22 --checkpoint CP-01` from
+current Git → `verify` = **FRESH** (all 7 checks true), 8 source refs — the
+`experiment_results` role is back, pointing at the new RESULTS.md. Evidence:
+`experiments/exp-22-colibri-local-inference/evidence/bootstrap/cp07/`
+(`ARENA_CONTEXT.json` 13,422 B / `ARENA_CONTEXT.md` 11,041 B, `verify.json`).
+The packet now reports:
+
+| Packet field | Value |
+|---|---|
+| `now.registry_status` | `HOLD` (updated 2026-10-10) |
+| `now.nearest_action` / `resume.next_action` | bounded released-weight quality run; "CP-01..CP-03 must not be repeated; no production integration is authorized" |
+| `resume.status` | `HOLD` |
+| `resume.result_summary` | "PARTIAL / HOLD (2026-10-09). CP-01..CP-03 executed: structural decision path proven …; released-weight decision quality NOT measured (…)" |
+| `resume.next_authorized_action` | "Run the frozen CP-01/CP-02 fixtures against the released 842 MB Laya checkpoint on a weights-available suitable machine (>= 8 GB RAM) and record accuracy/determinism/latency before any adapter work." |
+| `resume.evidence.path` | `experiments/exp-22-colibri-local-inference/RESULTS.md` |
+| `reusable_components` | 4 rows (CP-01 HOLD, CP-02 HOLD, CP-03 REUSE_PATTERN_ONLY, parallel-orchestration DO_NOT_ADOPT) |
+| `known_traps` | 4 limitations, first = released-weight quality not measured |
+| CP-06 invariants | checkpoints CP-01→CP-03, disposition `EXPERIMENT`, 25 stop rules with the same three boundary anchors — all preserved |
+
+### Fresh-session consumer proof (step 5 of CP-07)
+
+An isolated `python3 -I` consumer (source embedded in
+`tests/test_exp29_bootstrap.py`, `Exp29CanonicalStateTests`) reads **exactly
+one file — the packet** — with no repository, chat or FINDINGS.md access, and
+answers the six current-state questions from packet fields only. Truth values
+are hardcoded in the tests from the canonical committed EXP-22 evidence,
+independent of the builder's parsers.
+
+| Question | Pre-repair FRESH packet (would mislead) | Repaired FRESH packet |
+|---|---|---|
+| status/result | `Planned.` | **PARTIAL** |
+| recommendation | — (none recorded) | **HOLD** |
+| completed checkpoints | `[]` | **CP-01, CP-02, CP-03** |
+| current limitation/blocker | — (none carried) | **released-weight decision quality NOT measured (checkpoint unavailable in sandbox)** |
+| next authorized action | "Arena: execute CP-01 …" | **released 842 MB Laya checkpoint quality run** |
+| run CP-01 again? | **YES** | **NO** |
+
+Committed evidence: `evidence/cp07/consumer_answers.json` (after) and
+`evidence/cp07/before_state/consumer_answers.json` (before); a test pins the
+committed after-run against a fresh isolated re-run.
+
+### Remaining rediscovery (step 6 of CP-07)
+
+Retrieval-cost proxy, same basis as CP-03/CP-06 (not wall-clock):
+
+| Measure | Before CP-07 (CP-06 record) | After CP-07 |
+|---|---|---|
+| Extra reads to determine what is done / result / next action | 3 files / 18,537 B (README 4,566 + ARENA_TASK 3,903 + FINDINGS 10,068) | **0 files / 0 B** — the packet alone answers all six current-state questions (consumer: 1 packet read) |
+| Full-startup reads beyond the packet | 3 files / 18,537 B | 2 files / 8,543 B (README 4,640 + ARENA_TASK 3,903 — checkpoint scope/mission, not state); the full result record is one hop away at `resume.evidence.path` (RESULTS.md, 6,371 B) |
+
+Determining what has already been completed and what action comes next no
+longer requires any rediscovery; the packet may still point to canonical
+evidence for detail, and does.
+
+### Regression / negative controls / EXP-27 (step 7 of CP-07)
+
+- Six CP-04 negative controls re-run via `exp29_proof.py all`: **all six still
+  fail closed** (NC-01/02/04/05 STALE, NC-03/06 REJECTED), `summary.result =
+  PASS`; EXP-27 fixture packet regenerated and verified **FRESH** (its diff is
+  limited to `generated_against` git refs + the registry source digest, the
+  same shape as the CP-06 regeneration).
+- `exp29_proof.py all` also re-ran CP-02 (determinism/provenance, 8 refs),
+  CP-03 (Arm A 5 files vs Arm B 1 file, identical answers) and CP-06
+  (EXP-22/CP-01 FRESH, 25 stop rules, CP-01→CP-03, disposition EXPERIMENT).
+- `python3 -m unittest tests.test_exp29_bootstrap -v`: **34 tests, OK**
+  (26 pre-CP-07 + 8 new `Exp29CanonicalStateTests`).
+
+### CP-07 PASS criteria
+
+| # | Criterion | Evidence |
+|---|---|---|
+| 1 | pre-change `FRESH-but-stale-state` reproduced | `evidence/cp07/before_state/` — FRESH verify + PLANNED/"execute CP-01" fields + FINDINGS citations |
+| 2 | canonical EXP-22 state corrected through existing registry/results mechanisms | registry entry (HOLD + truthful next_action/result_summary/evidence_links) + new EXP-22 `RESULTS.md` + README status metadata line; no new source role, no FINDINGS.md authority, no harness change |
+| 3 | rebuilt EXP-22 bootstrap FRESH and truthful | `evidence/bootstrap/cp07/verify.json` = FRESH; state table above |
+| 4 | fresh isolated consumer does not propose repeating CP-01 | consumer answers `NO` on the repaired packet and `YES` on the pre-repair one; `files_read` = 1 (the packet) |
+| 5 | no new bootstrap source role or second source of truth | packet roles are exactly the existing 8; FINDINGS.md not in `source_refs`; test `test_no_new_bootstrap_source_role_or_findings_authority` |
+| 6 | negative controls and EXP-27 regression green | `exp29_proof.py all` PASS (6/6 fail closed), EXP-27 packet FRESH, EXP-29 suite 34/34 |
+| 7 | registry/dashboard ritual and project validation pass | Reladraw ritual re-run; `npm run check` 43/43; validator PASSED; full unittest identical pre-existing failure set (no new failures); `git diff --check` clean |
+
+### Files changed (CP-07)
+
+| Path | Change |
+|---|---|
+| `experiments/EXPERIMENT_REGISTRY.json` | EXP-22 entry: `PLANNED` → `HOLD`, truthful `next_action`/`result_summary`, +FINDINGS/RESULTS evidence links, `updated_at` 2026-10-10 (top-level too) |
+| `experiments/exp-22-colibri-local-inference/RESULTS.md` | new — established result in normal result format (derived from committed evidence; verbatim canonical result block) |
+| `experiments/exp-22-colibri-local-inference/README.md` | status metadata line only (PLANNED → truthful current state) |
+| `experiments/exp-19-shirman-trend-intake/cp02/portfolio.reladraw`, `portfolio.svg`, `mobile/*` | regenerated with the documented Reladraw ritual (registry change) |
+| `dashboard/public/registry/portfolio.svg`, `dashboard/public/registry/mobile/status-hold.svg`, `status-planned.svg` | regenerated render copies (same ritual) |
+| `experiments/exp-22-colibri-local-inference/evidence/bootstrap/cp07/**` | new — rebuilt EXP-22/CP-01 packet + FRESH verify (point-in-time) |
+| `experiments/exp-29-arena-bootstrap-harness/ARENA_CONTEXT.json` / `.md` | regenerated derived EXP-27/CP-05 packet (registry digest + git refs only) |
+| `experiments/exp-29-arena-bootstrap-harness/evidence/cp02.json`, `cp03.json`, `cp04.json`, `proof_run.json`, `proof_run_full.json` | regenerated by `exp29_proof.py all` |
+| `experiments/exp-29-arena-bootstrap-harness/evidence/cp07/**` | new — session bootstrap packet, before-state reproduction, consumer evidence |
+| `experiments/exp-29-arena-bootstrap-harness/RESULTS.md` | this CP-07 section |
+| `tests/test_exp29_bootstrap.py` | + class `Exp29CanonicalStateTests` (8 tests incl. the isolated consumer) |
+
+No file under `scripts/`, `contracts/`, `gates/`, `docs/`, `skills/`,
+`experts/`, `playbooks/`, `teams/`, `AGENTS.md`, `STATUS.md` or
+`wrangler.jsonc` was modified. The EXP-29 harness (`harness/**`) is
+byte-identical to its CP-06 state. EXP-22 `FINDINGS.md`, fixtures and
+Colibri conclusions are unchanged.
+
+### Checks run (CP-07 gate)
+
+| Gate | Command | Result |
+|---|---|---|
+| EXP-22/CP-01 bootstrap = FRESH | `bootstrap_builder.py build --experiment EXP-22 --checkpoint CP-01` + `verify --json` | exit 0, FRESH, all 7 checks true, 8 source refs (`evidence/bootstrap/cp07/verify.json`) |
+| Fresh consumer answers, no repeat | isolated `python3 -I` consumer via `tests.test_exp29_bootstrap.Exp29CanonicalStateTests` | 6/6 current-state answers correct from 1 packet read; `q_repeat_first_checkpoint = NO` (was YES pre-repair) |
+| EXP-29 proof harness | `python3 …/harness/exp29_proof.py all` | exit 0, `summary.result = PASS` (CP-02/03/04/06 PASS, 6/6 controls) |
+| EXP-29 proof tests | `python3 -m unittest tests.test_exp29_bootstrap -v` | 34 tests — OK |
+| Full unit suite, before | `PYTHONHASHSEED=0 python3 -m unittest discover -s tests` | 424 tests — 7 failures, 1 skipped (pre-existing set) |
+| Full unit suite, after | same | 432 tests — 7 failures, 1 skipped; failure set byte-identical to before (no new failure) |
+| Package validator | `python3 scripts/validate_package.py .` | VALIDATION PASSED |
+| Whitespace | `git diff --check` | clean |
+| Scope | `git status --porcelain` | only the CP-07 allowed paths (table above) |
+| Secrets | token/key/password pattern scan over changed files | 0 hits |
+| Dashboard | `npm run build` + `npm run check` | exit 0; ALL CHECKS PASSED 43/43 (views 7/7, parity 5/5, mobile-390 6/6, content 8/8) |
+
 ## Measurements (required list)
 
 > Byte and packet-size rows below are the CP-05 record. They are superseded by the CP-06 values (Arm A 84,978 B / 7 ops; Arm B 13,087 B / 1 op; 84.60%; committed JSON 13,113 B). See the CP-06 section.
@@ -443,9 +679,22 @@ reladraw outputs unchanged.
   predates CP-05; the registry and this file say PASS. CP-06 does not own that
   line, so it was left as is.
 - **Registry not updated for CP-06.** The EXP-29 registry entry still describes
-  the CP-05 close. Updating it needs the Reladraw regeneration of
-  `dashboard/public/registry/**` and `exp-19 cp02`, which the CP-06 gate did not
-  require.
+  the CP-05 close. Updating it is a separate owner decision (CP-07 used the
+  Reladraw ritual for the EXP-22 entry but did not change the EXP-29 entry).
+- **CP-07 — registry status enum has no `PARTIAL`.** The EXP-22 entry records
+  the experiment as `HOLD` (its recorded recommendation, schema-valid) with the
+  full `PARTIAL / HOLD` result in `result_summary` and `RESULTS.md`. Widening
+  the enum (`PARTIAL`, `RETIRED`) is a contracts change, explicitly outside
+  CP-07 scope, and would also clear the four pre-existing schema sub-test
+  failures — a separate owner decision.
+- **CP-07 — the registry carries run state as free text.** `result_summary` /
+  `next_action` are prose; the consumer proof pins their current phrasing. A
+  future rewording that drops "executed" / "must not be repeated" would make a
+  rebuilt packet STALE against the pinned consumer truth (fail closed, by
+  design).
+- **CP-07 — point-in-time EXP-22 packet.** `evidence/bootstrap/cp07/` (like
+  cp06) becomes STALE when EXP-22 sources change, by design; the live test
+  builds from current sources.
 - The A/B comparison is a **retrieval-cost proxy** (bytes/files/tool ops counted
   in isolated deterministic workers). No wall-clock, token, or human-time
   savings are claimed; a real Arena session also spends turns on planning.
@@ -484,7 +733,24 @@ and the EXP-27 packet returns to `STALE`, its state on `main` before CP-06. Dele
 the point-in-time EXP-22 packet. Nothing outside EXP-29 and that folder depends on
 these files.
 
+**CP-07 rollback:** revert the CP-07 commit. The registry EXP-22 entry returns to
+`PLANNED` (pre-run state), delete `experiments/exp-22-colibri-local-inference/RESULTS.md`
+and `evidence/bootstrap/cp07/`, restore the README status line, and re-run the
+documented Reladraw ritual. The bootstrap gap returns to its CP-06 state
+(FRESH but stale state; the CP-06 evidence under `evidence/bootstrap/cp06/` is
+unaffected). No harness, production, governance, contract, or gate file was
+touched, so nothing else depends on the reverted files.
+
 ## Next authorized action
+
+CP-07 (canonical current-state gap) is complete as a bounded checkpoint: the
+FRESH-but-stale-state gap is closed through the existing registry/RESULTS.md
+path (EXP-22 entry + new `RESULTS.md` + Reladraw ritual), the rebuilt
+EXP-22/CP-01 bootstrap is FRESH and truthful, and a fresh isolated consumer no
+longer proposes repeating CP-01. Its PR is opened and must not be merged as
+part of this checkpoint. Any further follow-up (for example updating the
+EXP-29 registry entry itself, or extending the registry status enum) is a
+separate owner decision.
 
 CP-06 (first real-use repair) is complete as a bounded checkpoint. Its PR is
 opened and must not be merged as part of this checkpoint. Any follow-up is a

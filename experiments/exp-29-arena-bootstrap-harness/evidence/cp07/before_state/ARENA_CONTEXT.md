@@ -7,28 +7,44 @@ Verify freshness before use: `python3 experiments/exp-29-arena-bootstrap-harness
 ## NOW
 
 - Project: Murat Project Engineer
-- Goal: Extract and test high-value orchestration patterns from Paperclip—goal context, atomic task lease, persistent resumable evidence, budget/runaway guards, and approval gates—inside existing MPE/murat-ai-orchestrator components without adopting a parallel control plane.
-- Task: EXP-27/CP-05 (checkpoint CP-05)
-- Experiment: EXP-27 — Paperclip orchestration patterns (`experiments/exp-27-paperclip-orchestration-patterns`)
-- Checkpoint chain: CP-01 → CP-02 → CP-03 → CP-04 → CP-05
-- Disposition: REUSE_COMPONENT
-- Registry status: PASS (updated 2026-10-06)
-- Nearest action: Closed at bounded pattern extraction. No production integration, Router change, governance change, or follow-on checkpoint is authorized by this result; a future owner decision is required before any pattern is implemented in an existing component.
+- Goal: Test whether Colibri can provide measurable value as an optional local inference component for constrained MPE classification and routing without creating a parallel orchestration system.
+- Task: EXP-22/CP-01 (checkpoint CP-01)
+- Experiment: EXP-22 — Colibri local inference / Brio routing (`experiments/exp-22-colibri-local-inference`)
+- Checkpoint chain: CP-01 → CP-02 → CP-03
+- Disposition: EXPERIMENT
+- Registry status: PLANNED (updated 2026-10-06)
+- Nearest action: Arena: execute CP-01 READY/WARNING/BLOCKED classification, CP-02 fixed-agent routing, and CP-03 isolated provider compatibility only if earlier checkpoints show useful signal.
 - Generated against (informational): branch `arena/4c9d8b8c-murat-project-engineer`, head `a5a16bbf2cf339a3ff2eac398486ba9ad7c9e41f`, base `a5a16bbf2cf339a3ff2eac398486ba9ad7c9e41f`
 
 ## RULES (mandatory)
 
-Stop rules (experiments/exp-27-paperclip-orchestration-patterns/README.md#stop-conditions):
-  > Stop and report before:
-- new repo;
-- persistent Paperclip service;
-- new DB/queue/daemon;
-- Router authority change;
-- governance replacement;
-- Git/source-of-truth change;
-- autonomous merge/deploy;
-- recurring paid infrastructure;
-- production integration.
+Stop rules (experiments/exp-22-colibri-local-inference/ARENA_TASK.md#boundaries + experiments/exp-22-colibri-local-inference/README.md#failure-stop-criteria + experiments/exp-22-colibri-local-inference/README.md#guardrails):
+  > Not allowed: / STOP or FAIL if:
+- new repository;
+- production deployment;
+- production configuration changes;
+- default-provider changes;
+- secrets;
+- new control plane/router;
+- refactor of unrelated MPE code;
+- merging any production integration as part of this experiment.
+- setup cost exceeds the value of the narrow task;
+- latency makes the workflow impractical;
+- quality materially trails the reference path;
+- hardware/storage requirements are unreasonable for intended deployment;
+- compatibility requires invasive changes;
+- Arena discovers a deep-change requirement;
+- the experiment starts duplicating `murat-ai-orchestrator`.
+- No new repository.
+- No production deployment.
+- No production traffic.
+- No secrets committed.
+- No autonomous background service.
+- No replacement of existing orchestrator/router.
+- No model download larger than needed for the smallest useful proof without documenting the reason first.
+- Prefer a small supported MoE model for the first run.
+- Pin model/version and record exact hashes/revisions where practical.
+- Keep all evidence under this experiment directory.
 
 Deep-change gate (docs/governance/SCOPE-CHANGE-CONTROL.md §6):
   > Do not execute a substantial change without explicit approval when it:
@@ -69,40 +85,29 @@ Graceful handoff minimum (AGENTS.md): STATE, EVIDENCE, CHANGES, RESULT, BLOCKER,
   - verify: In any future promotion proposal, require recurrence or high, evidenced cost across independent runs, show it maps to an existing instruction/check location, and demonstrate that the change prevents…
   - source: `experiments/exp-28-agent-workflow-skills-retro/RESULTS.md#R3` — EXP-28 RESULTS.md R3 heading records 'rejected' — observed, not promoted into the bootstrap.
 
-## REUSABLE COMPONENTS (from experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md)
+## REUSABLE COMPONENTS (no experiment RESULTS.md present)
 
-- Goal ancestry / context — BORROW → **ADOPT_IN_MPE** (derived packet + source digests; Git stays canonical) (`experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md`)
-- Atomic task lease — ADAPT → **ADOPT_IN_ORCHESTRATOR** (single-host lease as an extension of `scripts/runtime_coordination.py`, in a future authorized checkpoint) (`experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md`)
-- Persistent resumable evidence — KEEP + BORROW → **REUSE_PATTERN_ONLY** (add digest/idempotency key + completeness assertion to existing handoffs; no new store) (`experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md`)
-- Budget / runaway guard — ADAPT → **ADOPT_IN_MPE** (enforced bounded-stop mapped onto the existing compute-budget status vocabulary) (`experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md`)
-- Approval / governance gate — REJECT → **REJECT** donor mechanism; keep the existing MPE gate unchanged (`experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md`)
-- Paperclip as a system/service/DB — REJECT → **DO_NOT_ADOPT** (parallel control plane, second source of truth) (`experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md`)
+- (none parsed)
 
-## KNOWN TRAPS (verified limitations, from experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md)
+## KNOWN TRAPS (verified limitations, no experiment RESULTS.md present)
 
-- The lease proof is **single-host, file-backed**. MPE has no shared-filesystem guarantee across executors, so this (`experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md`)
-- The wall-time boundary is demonstrated with an **injected deterministic clock** (the real measured duration of (`experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md`)
-- Token/cost boundaries were exercised only through the existing `hard_limit`/`budget_health` contract; no live (`experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md`)
-- CP-02's "rediscovery cost" is a file-read/byte proxy measured in the harness, not a human user measurement; (`experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md`)
-- The donor was audited by reading, not by running Paperclip; anything about its runtime behaviour is the donor's (`experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md`)
-- 7 pre-existing unittest failures remain (unchanged by this experiment), plus the pre-existing stale (`experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md`)
+- (none parsed)
 
 ## RESUME
 
-- Status: PASS
-- Result summary: PASS / ADOPT_WITH_CHANGES at pattern level only. Donor audited at paperclipai/paperclip@d9f60004 (MIT; release tag v2026.1005.0 = 467125fa) and used as reference only. CP-02: a compact ancestry packet derived from the registry + ARENA_TASK let an isolated fresh process state project, parent goal, c…
-- Next action: Closed at bounded pattern extraction. No production integration, Router change, governance change, or follow-on checkpoint is authorized by this result; a future owner decision is required before any pattern is implemented in an existing component.
-- Next authorized action: None inside this experiment — **STOP after CP-05** per `ARENA_TASK.md`. Any implementation of the BORROW/ADAPT
-- Evidence: `experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md` (full result record in the canonical experiment RESULTS.md)
+- Status: PLANNED
+- Result summary: Planned. Primary disposition EXPERIMENT. No new repository, production deployment, provider switch, control plane, or deep-change is authorized.
+- Next action: Arena: execute CP-01 READY/WARNING/BLOCKED classification, CP-02 fixed-agent routing, and CP-03 isolated provider compatibility only if earlier checkpoints show useful signal.
+- Next authorized action: (none recorded)
+- Evidence: `` (full result record in the canonical experiment RESULTS.md)
 
 ## PROVENANCE (canonical sources + digests)
 
 | Path | SHA-256 | Role |
 |---|---|---|
-| `experiments/EXPERIMENT_REGISTRY.json` | `ef3ca4dd38a172146f4ae0f1574be5fbf2cd4ca682ee730c146e1ed54d2bd6c7` | registry |
-| `experiments/exp-27-paperclip-orchestration-patterns/ARENA_TASK.md` | `ed3bed1a1de39eecbc2167efd25e41aece0f7876c6b02b26a61ed88fc803c1e3` | task_instructions |
-| `experiments/exp-27-paperclip-orchestration-patterns/README.md` | `dba4d48d997e155e91ec220e2fb13e2525e6100f3ffb110a01086b3689216ef4` | task_readme |
-| `experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md` | `8fde29e81e2c05c42a48acb6d1a483077d81e61399573fb1f0653cff2ef9ae5c` | experiment_results |
+| `experiments/EXPERIMENT_REGISTRY.json` | `55d92619e1a594e160c68a60b94dc06454baa52499bf70f3c636f7217c7425fe` | registry |
+| `experiments/exp-22-colibri-local-inference/ARENA_TASK.md` | `3504512bd7d0ab09e9448388149401a8aee84ec0b76310164e340c6b7a9a8bd4` | task_instructions |
+| `experiments/exp-22-colibri-local-inference/README.md` | `1acba5dbc0326de051a9594d1266fdb87b2c5db3bcfd44c792e572f6b797fc50` | task_readme |
 | `STATUS.md` | `968d47ad10910c5875f83f6c74933369aa0b70486e51cbd2bcb7b65ccb2d96e5` | project_status |
 | `AGENTS.md` | `d440af35dffc0c58b238a84965ede010aa94d78e07a6ea06e701bcf41e25771d` | agents_rules |
 | `docs/governance/SCOPE-CHANGE-CONTROL.md` | `c4b747249f37d94dab9e5597b6e03692d2064846a4b7903a5b68036f996a0f9e` | governance |

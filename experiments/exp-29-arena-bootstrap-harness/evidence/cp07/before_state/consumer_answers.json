@@ -1,0 +1,16 @@
+{
+ "answers": {
+  "q_completed_checkpoints": [],
+  "q_current_limitation": "",
+  "q_next_authorized_action": "Arena: execute CP-01 READY/WARNING/BLOCKED classification, CP-02 fixed-agent routing, and CP-03 isolated provider compatibility only if earlier checkpoints show useful signal.",
+  "q_recommendation": "",
+  "q_repeat_first_checkpoint": "YES",
+  "q_result_status": "Planned."
+ },
+ "consumer": "cp07-fresh-session-consumer",
+ "files_read": [
+  "experiments/exp-29-arena-bootstrap-harness/evidence/cp07/before_state/ARENA_CONTEXT.json"
+ ],
+ "packet": "experiments/exp-29-arena-bootstrap-harness/evidence/cp07/before_state/ARENA_CONTEXT.json",
+ "read_findings_md": false
+}

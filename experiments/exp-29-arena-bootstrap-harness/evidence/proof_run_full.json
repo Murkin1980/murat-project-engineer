@@ -2,9 +2,9 @@
  "cp02": {
   "artifacts": {
    "generated_against": {
-    "git_base": "4b3dd3594f986a8d018d1c65d11a299fb13aa6c3",
-    "git_branch": "arena/cdf0ab3a-murat-project-engineer",
-    "git_head": "4b3dd3594f986a8d018d1c65d11a299fb13aa6c3"
+    "git_base": "a5a16bbf2cf339a3ff2eac398486ba9ad7c9e41f",
+    "git_branch": "arena/4c9d8b8c-murat-project-engineer",
+    "git_head": "a5a16bbf2cf339a3ff2eac398486ba9ad7c9e41f"
    },
    "json_bytes": 13113,
    "md_bytes": 10382,
@@ -168,7 +168,7 @@
    "arm": "A_rediscovery",
    "cost": {
     "at_all_answers": {
-     "bytes_read": 84978,
+     "bytes_read": 85479,
      "failed_ops": 0,
      "files_read": 5,
      "listdir_ops": 2,
@@ -176,7 +176,7 @@
      "tool_ops": 7
     },
     "at_genealogy_complete": {
-     "bytes_read": 72295,
+     "bytes_read": 72796,
      "failed_ops": 0,
      "files_read": 4,
      "listdir_ops": 2,
@@ -187,7 +187,7 @@
    "packet_used": false,
    "read_from_chat": false,
    "totals": {
-    "bytes_read": 84978,
+    "bytes_read": 85479,
     "failed_ops": 0,
     "files_read": 5,
     "listdir_ops": 2,
@@ -221,7 +221,7 @@
     "path": "/home/user/murat-project-engineer/experiments/exp-27-paperclip-orchestration-patterns/README.md"
    },
    {
-    "bytes": 50613,
+    "bytes": 51114,
     "ok": true,
     "op": "read",
     "path": "/home/user/murat-project-engineer/experiments/EXPERIMENT_REGISTRY.json"
@@ -276,7 +276,7 @@
     "bytes": 13087,
     "ok": true,
     "op": "read",
-    "path": "/tmp/exp29-work/cp03/packet.json"
+    "path": "/home/user/murat-project-engineer/experiments/exp-29-arena-bootstrap-harness/evidence/work/cp03/packet.json"
    }
   ],
   "checks": {
@@ -295,7 +295,7 @@
   "comparison": {
    "arm_a_cost": {
     "at_all_answers": {
-     "bytes_read": 84978,
+     "bytes_read": 85479,
      "failed_ops": 0,
      "files_read": 5,
      "listdir_ops": 2,
@@ -303,7 +303,7 @@
      "tool_ops": 7
     },
     "at_genealogy_complete": {
-     "bytes_read": 72295,
+     "bytes_read": 72796,
      "failed_ops": 0,
      "files_read": 4,
      "listdir_ops": 2,
@@ -312,7 +312,7 @@
     }
    },
    "arm_a_totals": {
-    "bytes_read": 84978,
+    "bytes_read": 85479,
     "failed_ops": 0,
     "files_read": 5,
     "listdir_ops": 2,
@@ -345,12 +345,12 @@
     "read_ops": 1,
     "tool_ops": 1
    },
-   "bytes_reduction_ratio": 0.846,
+   "bytes_reduction_ratio": 0.8469,
    "fixture": {
     "checkpoint": "CP-05",
     "experiment_id": "EXP-27"
    },
-   "genealogy_cost_reduction_ratio": 0.819,
+   "genealogy_cost_reduction_ratio": 0.8202,
    "packet_bytes": 13087,
    "verify_before_arms": "FRESH"
   },
@@ -394,7 +394,7 @@
     "expected": "STALE",
     "field_diffs": [
      {
-      "canonical": "55d92619e1a594e160c68a60b94dc06454baa52499bf70f3c636f7217c7425fe",
+      "canonical": "ef3ca4dd38a172146f4ae0f1574be5fbf2cd4ca682ee730c146e1ed54d2bd6c7",
       "field": "source_refs[0].sha256",
       "packet": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
      }
@@ -449,9 +449,9 @@
       "packet": "Closed at bounded pattern extraction. No production integration, Router change, governance change, or follow-on checkpo…"
      },
      {
-      "canonical": "aab5c4711a6146c432e1cc7f220c19b88dd571c9401c529e5557e334a1099838",
+      "canonical": "740cdb240429f19fdb23baf6995c28496c96929602e74c0a26c6382454d13c13",
       "field": "source_refs[0].sha256",
-      "packet": "55d92619e1a594e160c68a60b94dc06454baa52499bf70f3c636f7217c7425fe"
+      "packet": "ef3ca4dd38a172146f4ae0f1574be5fbf2cd4ca682ee730c146e1ed54d2bd6c7"
      }
     ],
     "id": "NC-04",
@@ -519,11 +519,11 @@
    "basis": "retrieval-cost proxy: bytes of canonical files a fresh executor reads; not a wall-clock or human-time measurement",
    "extra_rediscovery_remains": true,
    "packet_plus_remaining_reads": {
-    "bytes": 28339,
+    "bytes": 32033,
     "files": 4,
     "remaining_reads": [
      {
-      "bytes": 4566,
+      "bytes": 4640,
       "path": "experiments/exp-22-colibri-local-inference/README.md",
       "why": "CP-01 acceptance text (checkpoint scope is not a packet layer)"
      },
@@ -540,7 +540,7 @@
     ]
    },
    "rediscovery_without_packet": {
-    "bytes": 71163,
+    "bytes": 71738,
     "files": 4,
     "reads": [
      "STATUS.md",
@@ -585,18 +585,18 @@
      "value": "EXPERIMENT"
     }
    ],
-   "json_bytes": 9802,
+   "json_bytes": 13422,
    "markdown_headings": [
     "## NOW",
     "## RULES (mandatory)",
     "## KNOWN LESSONS (evidence-gated, from experiments/exp-28-agent-workflow-skills-retro/RESULTS.md)",
-    "## REUSABLE COMPONENTS (no experiment RESULTS.md present)",
-    "## KNOWN TRAPS (verified limitations, no experiment RESULTS.md present)",
+    "## REUSABLE COMPONENTS (from experiments/exp-22-colibri-local-inference/RESULTS.md)",
+    "## KNOWN TRAPS (verified limitations, from experiments/exp-22-colibri-local-inference/RESULTS.md)",
     "## RESUME",
     "## PROVENANCE (canonical sources + digests)",
     "## FRESHNESS"
    ],
-   "md_bytes": 8302,
+   "md_bytes": 11041,
    "stop_rules": 25,
    "stop_rules_intro": "Not allowed: / STOP or FAIL if:",
    "stop_rules_source": "experiments/exp-22-colibri-local-inference/ARENA_TASK.md#boundaries + experiments/exp-22-colibri-local-inference/README.md#failure-stop-criteria + experiments/exp-22-colibri-local-inference/README.md#guardrails",
@@ -631,7 +631,7 @@
   },
   "measurements": {
    "arm_a": {
-    "bytes_read": 84978,
+    "bytes_read": 85479,
     "failed_ops": 0,
     "files_read": 5,
     "listdir_ops": 2,
@@ -646,8 +646,8 @@
     "read_ops": 1,
     "tool_ops": 1
    },
-   "bytes_reduction_ratio": 0.846,
-   "genealogy_cost_reduction_ratio": 0.819,
+   "bytes_reduction_ratio": 0.8469,
+   "genealogy_cost_reduction_ratio": 0.8202,
    "packet_json_bytes": 13113,
    "packet_md_bytes": 10382
   },

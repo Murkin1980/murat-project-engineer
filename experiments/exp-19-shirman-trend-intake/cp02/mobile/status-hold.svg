@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="380" height="849" viewBox="0 0 380 849" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
+<svg xmlns="http://www.w3.org/2000/svg" width="380" height="1001" viewBox="0 0 380 1001" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
   <defs>
   </defs>
-  <rect x="0" y="0" width="380" height="849" fill="#ffffff"/>
-  <path d="M48 40 H332 a8 8 0 0 1 8 8 V801 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
-  <text x="54" y="68.4" fill="#1f2328" text-anchor="start">HOLD (5)</text>
+  <rect x="0" y="0" width="380" height="1001" fill="#ffffff"/>
+  <path d="M48 40 H332 a8 8 0 0 1 8 8 V953 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <text x="54" y="68.4" fill="#1f2328" text-anchor="start">HOLD (6)</text>
   <path d="M62 83 H318 a8 8 0 0 1 8 8 V217 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V91 a8 8 0 0 1 8 -8 Z" fill="#fef3c7" stroke="#d97706"/>
   <text x="190" y="111.4" fill="#1f2328" text-anchor="middle">EXP-09 · MPE</text>
   <text x="190" y="130.4" fill="#1f2328" text-anchor="middle">Personalized Assessment</text>
@@ -37,4 +37,11 @@
   <text x="190" y="738.4" fill="#1f2328" text-anchor="middle">→ If needed, capture a</text>
   <text x="190" y="757.4" fill="#1f2328" text-anchor="middle">redacted anonymous browser</text>
   <text x="190" y="776.4" fill="#1f2328" text-anchor="middle">Network manifest only…</text>
+  <path d="M62 805 H318 a8 8 0 0 1 8 8 V939 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V813 a8 8 0 0 1 8 -8 Z" fill="#fef3c7" stroke="#d97706"/>
+  <text x="190" y="833.4" fill="#1f2328" text-anchor="middle">EXP-22 · MPE</text>
+  <text x="190" y="852.4" fill="#1f2328" text-anchor="middle">Colibri local inference /</text>
+  <text x="190" y="871.4" fill="#1f2328" text-anchor="middle">Brio routing</text>
+  <text x="190" y="890.4" fill="#1f2328" text-anchor="middle">→ Bounded released-weight</text>
+  <text x="190" y="909.4" fill="#1f2328" text-anchor="middle">quality run: execute the</text>
+  <text x="190" y="928.4" fill="#1f2328" text-anchor="middle">frozen CP-01/CP-02 f…</text>
 </svg>

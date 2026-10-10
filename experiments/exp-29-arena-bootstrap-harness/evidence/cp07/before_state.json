@@ -1,0 +1,55 @@
+{
+ "canonical_evidence_that_state_is_stale": {
+  "checkpoint_sections_recorded_as_run": [
+   "3. CP-01 — Brio status classifier (READY/WARNING/BLOCKED)",
+   "4. CP-02 — Agent routing decision (fixed list)",
+   "5. CP-03 — Existing-provider compatibility (ran: CP-01/02 showed the structural signal)"
+  ],
+  "date_line": "Date: 2026-10-09. Executor: Arena.",
+  "file": "experiments/exp-22-colibri-local-inference/FINDINGS.md",
+  "per_cp_verdicts": [
+   "Verdict: structural PASS (schema-safe, deterministic, fast); quality OPEN.",
+   "Verdict: structural PASS; routing-quality OPEN (same blocker as CP-01)."
+  ],
+  "result_block_verbatim": "RESULT: PARTIAL\nRECOMMENDATION: HOLD\nBEST_USE_CASE: Local constrained classification/routing (READY/WARNING/BLOCKED, expert queue routing) via Colibri's System One decision endpoint as an optional provider behind a Jev-shaped call.\nMEASURED_VALUE: 66/66 local decision requests HTTP 200 with 0 malformed constrained outputs; 22/22 items exactly deterministic across repeats; 7-13 ms tiny-model latency at ~48 MB server RSS; CP-03 probes 200/400/400/200/422 as documented; decision quality NOT measured (released weights unreachable from sandbox).\nNEXT_STEP: Run the frozen CP-01/CP-02 fixtures against the released 842 MB Laya checkpoint on a weights-available ≥8 GB machine and record accuracy/determinism/latency before any adapter work.\nDEEP_CHANGE: NO\n```",
+  "sha256": "769b76f706ea2d8ed496ce592797dce53ccfb5863a23d61e1e1fb12fc851c299"
+ },
+ "checkpoint": "CP-07",
+ "gap": "The packet verifies FRESH (all source digests match current Git and the packet equals a deterministic rebuild), yet it reports stale task state: registry status PLANNED with 'Arena: execute CP-01 ...' as the nearest action, while the canonical EXP-22 evidence (FINDINGS.md, 2026-10-09) records CP-01..CP-03 as already executed with RESULT: PARTIAL / RECOMMENDATION: HOLD. A fresh executor reading only the packet would repeat CP-01. FINDINGS.md is not one of the packet's source roles, and EXP-22 has no RESULTS.md that could carry the state in the repository's normal result format.",
+ "git_head": "a5a16bbf2cf339a3ff2eac398486ba9ad7c9e41f",
+ "packet": {
+  "experiment_results_source_present": false,
+  "json_bytes": 9802,
+  "md_bytes": 8302,
+  "path": "experiments/exp-29-arena-bootstrap-harness/evidence/cp07/before_state/ARENA_CONTEXT.json",
+  "source_ref_roles": [
+   "registry",
+   "task_instructions",
+   "task_readme",
+   "project_status",
+   "agents_rules",
+   "governance",
+   "accepted_lessons"
+  ],
+  "state_fields_as_seen_by_fresh_session": {
+   "now.nearest_action": "Arena: execute CP-01 READY/WARNING/BLOCKED classification, CP-02 fixed-agent routing, and CP-03 isolated provider compatibility only if earlier checkpoints show useful signal.",
+   "now.registry_status": "PLANNED",
+   "now.registry_updated_at": "2026-10-06",
+   "resume.evidence.path": "",
+   "resume.next_action": "Arena: execute CP-01 READY/WARNING/BLOCKED classification, CP-02 fixed-agent routing, and CP-03 isolated provider compatibility only if earlier checkpoints show useful signal.",
+   "resume.next_authorized_action": "",
+   "resume.result_summary": "Planned. Primary disposition EXPERIMENT. No new repository, production deployment, provider switch, control plane, or deep-change is authorized.",
+   "resume.status": "PLANNED"
+  },
+  "verify_reasons": [],
+  "verify_status": "FRESH"
+ },
+ "registry_entry_pre_edit": {
+  "next_action": "Arena: execute CP-01 READY/WARNING/BLOCKED classification, CP-02 fixed-agent routing, and CP-03 isolated provider compatibility only if earlier checkpoints show useful signal.",
+  "result_summary": "Planned. Primary disposition EXPERIMENT. No new repository, production deployment, provider switch, control plane, or deep-change is authorized.",
+  "source": "experiments/EXPERIMENT_REGISTRY.json (digest 55d92619e1a594e1...)",
+  "status": "PLANNED",
+  "updated_at": "2026-10-06"
+ },
+ "step": "1 — reproduce the FRESH-but-stale-state gap on current main (pre-edit)"
+}
