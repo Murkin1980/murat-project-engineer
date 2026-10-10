@@ -217,18 +217,22 @@
       "experiment_id": "EXP-S2C-01",
       "name": "Screenshot-to-Code Visual Workflow",
       "owning_project": "Murat Project Engineer",
-      "status": "PLANNED",
+      "status": "PASS",
       "why": "Measure whether a bounded visual feedback loop reduces UI reconstruction effort.",
       "date_added": "2026-08-28",
-      "next_action": "Run the owner-authorized single-agent Arena comparison in docs/experiments/EXP-S2C-01_ARENA_TASK.md: freeze one Salamat Projects Dashboard screen, execute isolated baseline vs render→compare→targeted-edit candidate arms, then record bounded evidence and stop before production changes.",
-      "result_summary": "Planned; no production integration or new runtime is authorized.",
+      "next_action": "Experiment closed as PASS / REUSE_COMPONENT. Apply docs/REUSABLE_UI_RECONSTRUCTION_PATTERN.md as the default UI reconstruction feedback loop: 1 initial render + up to 3 targeted correction cycles with early stop on diminishing returns. Do not use 5 cycles by default and do not reopen EXP-S2C-01 unless new evidence contradicts the rule.",
+      "result_summary": "PASS / REUSE_COMPONENT (2026-10-10). On the same frozen Salamat Projects Dashboard fixture, the original 5-cycle candidate improved desktop fidelity 4.11→4.81 and mobile 4.20→4.70 but doubled time (~5→10 min). A closure checkpoint then proved an efficient budget: clean Candidate C used ~6 min and only 2 targeted cycles, reached desktop 4.75/mobile 4.70, retained 91.4% of desktop and 100% of mobile fidelity gain, and stopped before cycle 3. Adopt 1 initial render + up to 3 targeted cycles with early stop when desktop/mobile >=4.6 or latest average gain <0.10. No screenshot-as-layout cheating, no target-repo changes, no persistent runtime/service.",
       "repo": "Murkin1980/murat-project-engineer",
       "experiment_path": "docs/experiments/EXP-S2C-01_SCREENSHOT_TO_CODE_VISUAL_WORKFLOW.md",
       "evidence_links": [
         "https://github.com/Murkin1980/murat-project-engineer/blob/main/docs/experiments/EXP-S2C-01_SCREENSHOT_TO_CODE_VISUAL_WORKFLOW.md",
-        "docs/experiments/EXP-S2C-01_ARENA_TASK.md"
+        "docs/experiments/EXP-S2C-01_ARENA_TASK.md",
+        "experiments/exp-s2c-01/RESULTS.md",
+        "docs/REUSABLE_UI_RECONSTRUCTION_PATTERN.md"
       ],
-      "pr_or_issue_links": [],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/84"
+      ],
       "updated_at": "2026-10-10"
     },
     {

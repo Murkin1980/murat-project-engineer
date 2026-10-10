@@ -194,3 +194,25 @@ authoritative source
 ```
 
 This is a reusable contract, not a mandatory renderer or platform. Do not force it onto unrelated work. When applicable, prefer `REUSE_COMPONENT` / `EXTEND_EXISTING` over inventing a parallel media/interactive pipeline.
+
+
+## Reusable UI reconstruction feedback pattern
+
+For screenshot-to-code, visual parity, and reference-screen reconstruction work, first evaluate reuse of:
+
+- `docs/REUSABLE_UI_RECONSTRUCTION_PATTERN.md`
+
+Validated by EXP-S2C-01, the MPE default is:
+
+```text
+frozen reference
+→ initial implementation
+→ render
+→ compare
+→ largest mismatch
+→ targeted minimal-diff correction
+→ rerender
+→ early stop
+```
+
+Default correction budget: **1 initial render + up to 3 targeted cycles**. Stop early when desktop and mobile fidelity are both >=4.6, or the latest average fidelity gain is <0.10. Do not use 5 cycles by default. This is a reusable workflow rule, not authorization for a new screenshot-to-code platform.
