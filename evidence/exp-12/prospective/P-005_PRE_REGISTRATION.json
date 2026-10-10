@@ -1,0 +1,47 @@
+{
+  "case_id": "EXP12-P-005",
+  "registered_at": "2026-10-10T18:05:00+05:00",
+  "target_repository": "Murkin1980/Murat-house",
+  "baseline_commit": "f8b2262a9d19200c725137c1723fe7d2e7b13047",
+  "target_pr": 27,
+  "target_pr_head": "81bcfd5d9c60dc7153c334eb9efcf602631cb682",
+  "task": "Review and refine the existing Murat House PR #27 (MPE Laboratory editorial series) into an editorially consistent private/draft package: normalize series structure, cross-references, style consistency, and evidence links where already available, while keeping all content non-public and making no production/runtime/deployment changes.",
+  "acceptance_criteria": [
+    "PR #27 remains editorial-only and all new/changed article-series content remains draft/private or otherwise non-public under Murat House publication rules.",
+    "The 20-article series structure, house-style guidance, sample intro, and Bootstrap ('50 первых поцелуев') story are internally consistent and cross-reference canonical MPE experiment evidence without copying or redefining experiment authority.",
+    "No route, schema, dependency, runtime, Cloudflare deployment, publication state, or production configuration is changed.",
+    "Repository tests/content validation/build checks required by Murat House pass, or pre-existing failures are clearly separated from the task diff.",
+    "A bounded review/evidence note records what was changed and any unresolved editorial questions; no publication occurs."
+  ],
+  "non_scope": [
+    "No publishing or changing visibility to public.",
+    "No new repository, CMS, database, runtime service, route, schema, dependency, or deployment.",
+    "No rewriting canonical MPE experiment results inside Murat House.",
+    "No unrelated Murat House content changes."
+  ],
+  "triage_input": {
+    "task_id": "EXP12-P-005",
+    "summary": "Refine the existing private MPE Laboratory editorial series in Murat House without publication or runtime changes",
+    "affected_repositories": [
+      "Murat-house"
+    ],
+    "acceptance_criteria_present": true,
+    "rollback_known": true,
+    "ratings": {
+      "complexity": 1,
+      "risk": 1,
+      "architectural_impact": 0,
+      "data_sensitivity": 0,
+      "unknowns": 1
+    },
+    "signals": []
+  },
+  "pre_registered_human_label": {
+    "risk_tier": "FAST",
+    "human_approval_required": false,
+    "rationale": "The task is a reversible editorial-only refinement of an already-open private/draft PR in one repository, with explicit non-publication boundaries, no runtime/data mutation, no dependency or architecture change, and straightforward rollback through Git."
+  },
+  "engine_output": null,
+  "observed_final_classification": null,
+  "state": "REGISTERED"
+}
