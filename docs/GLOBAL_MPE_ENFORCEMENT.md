@@ -171,3 +171,26 @@ Global enforcement is considered installed when:
 6. Human-facing projects reference or implement `docs/HUMAN_VALUE_DELIVERY_PRINCIPLES.md` where applicable.
 7. Value-bearing automation/prioritization work references or implements `docs/VALUE_UNIT_ECONOMICS.md` where applicable.
 8. Interrupted substantial workflows preserve a resumable handoff rather than an unusable partial state.
+
+
+## Reusable derived-artifact production pattern
+
+For media, visual, interactive, training, presentation, document-to-artifact, and similar source→derived-artifact work, first evaluate reuse of:
+
+- `docs/REUSABLE_DERIVED_ARTIFACT_PATTERN.md`
+
+Validated by EXP-23 and EXP-24 CP-13, the default pattern is:
+
+```text
+authoritative source
+→ stable beats/work units
+→ optional marks
+→ cues/timings
+→ per-unit asset slots
+→ derived assembly
+→ consumption-surface QA
+→ natural-language revision
+→ minimal-diff verification
+```
+
+This is a reusable contract, not a mandatory renderer or platform. Do not force it onto unrelated work. When applicable, prefer `REUSE_COMPONENT` / `EXTEND_EXISTING` over inventing a parallel media/interactive pipeline.
