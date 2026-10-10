@@ -1,0 +1,6 @@
+frames 720 vs 765
+B01: identical 135/135 frames
+B02: identical 90/90 frames
+B03_head: identical 101/161 frames
+B03_tail_lookahead: identical 0/34 frames
+B04_shifted_by_A: identical 0/45 frames

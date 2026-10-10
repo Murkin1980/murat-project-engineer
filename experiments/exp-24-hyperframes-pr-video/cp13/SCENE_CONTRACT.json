@@ -1,0 +1,74 @@
+{
+  "contract_id": "EXP-24-CP13-SCENE-CONTRACT",
+  "contract_version": 1,
+  "status": "FROZEN_STEP_1",
+  "frozen_on": "2026-10-10",
+  "scene": {
+    "scene_id": "E01-S005",
+    "title": "Молодой продюсер открывает конверт",
+    "canonical_repo": "Murkin1980/AI-serial-v2",
+    "canonical_path": "episodes/01_SEVEN_MINUTES/TEASER_SCENE_SHEETS.md",
+    "canonical_blob_sha": "fd049ca5faafc31203cde607fbdb17bd6b17789b",
+    "canonical_status": "APPROVED FOR VISUAL DEVELOPMENT",
+    "fixture_path": "fixtures/E01-S005_SANITIZED.md",
+    "fixture_role": "owner-authorized sanitized derivative; not a canon source; AI-serial-v2 remains authoritative"
+  },
+  "source_actions": [
+    { "action_id": "A01", "normalized_action": "Producer notices an envelope on his desk." },
+    { "action_id": "A02", "normalized_action": "He picks it up automatically." },
+    { "action_id": "A03", "normalized_action": "He notices that it carries a future/open-later restriction." },
+    { "action_id": "A04", "normalized_action": "He checks the current time." },
+    { "action_id": "A05", "normalized_action": "He briefly assumes it may already be intended for preparation work." },
+    { "action_id": "A06", "normalized_action": "He opens the envelope." },
+    { "action_id": "A07", "normalized_action": "He removes the document." },
+    { "action_id": "A08", "normalized_action": "He reads the document heading." },
+    { "action_id": "A09", "normalized_action": "He scans through the document." },
+    { "action_id": "A10", "normalized_action": "He reaches the key statement indicating the president will not continue into the next election cycle." },
+    { "action_id": "A11", "normalized_action": "He freezes." },
+    { "action_id": "A12", "normalized_action": "He rereads the key statement." },
+    { "action_id": "A13", "normalized_action": "He looks around the room." },
+    { "action_id": "A14", "normalized_action": "He checks the clock again." },
+    { "action_id": "A15", "normalized_action": "He picks up the phone." },
+    { "action_id": "A16", "normalized_action": "He finds the contact he needs." },
+    { "action_id": "A17", "normalized_action": "He calls Arman." },
+    { "action_id": "A18", "normalized_action": "He quietly gives a confidentiality warning." },
+    { "action_id": "A19", "normalized_action": "He pauses." },
+    { "action_id": "A20", "normalized_action": "He conveys that the president is leaving." }
+  ],
+  "dialogue_functions": [
+    { "dialogue_id": "D01", "function": "confidentiality warning", "carried_by_action": "A18" },
+    { "dialogue_id": "D02", "function": "concise statement that the president is leaving", "carried_by_action": "A20" }
+  ],
+  "beats": [
+    { "beat_id": "B01", "order": 1, "label": "notice / pickup", "action_ids": ["A01", "A02", "A03", "A04", "A05"] },
+    { "beat_id": "B02", "order": 2, "label": "opening", "action_ids": ["A06", "A07"] },
+    { "beat_id": "B03", "order": 3, "label": "reading / realization", "action_ids": ["A08", "A09", "A10", "A11", "A12"] },
+    { "beat_id": "B04", "order": 4, "label": "check surroundings / time", "action_ids": ["A13", "A14"] },
+    { "beat_id": "B05", "order": 5, "label": "phone / contact", "action_ids": ["A15", "A16", "A17"] },
+    { "beat_id": "B06", "order": 6, "label": "disclosure / reaction hold", "action_ids": ["A18", "A19", "A20"] }
+  ],
+  "coverage_ledger": {
+    "rule": "every source action maps to exactly one beat; no omitted and no added actions",
+    "expected_source_actions": 20,
+    "mapped_source_actions": 20,
+    "omitted_actions": [],
+    "added_actions": [],
+    "map": {
+      "A01": "B01", "A02": "B01", "A03": "B01", "A04": "B01", "A05": "B01",
+      "A06": "B02", "A07": "B02",
+      "A08": "B03", "A09": "B03", "A10": "B03", "A11": "B03", "A12": "B03",
+      "A13": "B04", "A14": "B04",
+      "A15": "B05", "A16": "B05", "A17": "B05",
+      "A18": "B06", "A19": "B06", "A20": "B06"
+    }
+  },
+  "invariants": [
+    "scene_id and beat_id values are stable identifiers; they are never displayed on screen",
+    "beats are an ordered partition of source_actions (no reordering, no split across beats)",
+    "dialogue is limited to D01 and D02 function statements; no additional dialogue is invented",
+    "Arman's reply is outside this scene and is not depicted",
+    "the full private canonical text is not reproduced; no canon text is reconstructed",
+    "generated visuals, captions, marks, cues and timings are derived presentation artifacts, not canon",
+    "timing is not part of this contract; it lives in the derived storyboard only"
+  ]
+}

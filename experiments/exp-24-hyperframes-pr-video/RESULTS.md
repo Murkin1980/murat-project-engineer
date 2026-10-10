@@ -101,6 +101,8 @@ Next execution starts at **CP-06** and must preserve this Phase 1 record.
 
 # CP-13 result — Adopt EXP-23 scene timing/sync contract (single-agent proof)
 
+> **Superseded by the resumed run below.** The NOT_EVALUATED / SOURCE_ACCESS_BLOCKED record in this section is kept as history. The owner-authorized sanitized fixture unblocked the run.
+
 Run date: 2026-10-10 (UTC) · Executor: Arena Agent Mode, single agent · Branch: `arena/75c6ba59-murat-project-engineer` · Base: `main` @ `19dd6a096433edfe5742d667cfc70e8fda8d3434`
 
 ```text
@@ -166,3 +168,82 @@ No storyboard, media manifest, media files, composition, render or video binary 
 - **BLOCKER:** Arena GitHub connection lacks read access to private `Murkin1980/AI-serial-v2`.
 - **NEXT ACTION:** Owner grants read access (or supplies an approved read-only copy of `TEASER_SCENE_SHEETS.md`); then re-run EXP-24 CP-13 from Step 1 using the same bootstrap command (`--experiment EXP-24 --checkpoint CP-13`) after `verify` returns FRESH.
 - **HANDOFF:** this PR, for review. Do not merge automatically.
+
+
+---
+
+# CP-13 resumed — single-agent scene proof (owner-authorized sanitized fixture)
+
+Run date: 2026-10-10 (UTC) · Executor: Arena Agent Mode, single agent · Branch: `arena/75c6ba59-murat-project-engineer` (merged `origin/main` @ `e476115`) · PR #80 updated, not merged.
+
+```text
+RESULT: PASS (bounded CP-13 proof; visual quality not an acceptance target)
+SINGLE_AGENT: YES
+ADOPTION: CP-13 contract ADOPTED for bounded EXP-24 use (scene -> beats -> marks -> cues -> timings -> per-beat asset); no production integration
+FIXTURE: E01-S005 via fixtures/E01-S005_SANITIZED.md (canonical blob fd049ca5faafc31203cde607fbdb17bd6b17789b; Murkin1980/AI-serial-v2 episodes/01_SEVEN_MINUTES/TEASER_SCENE_SHEETS.md). Derived fixture, not a canon source.
+SOURCE COVERAGE: 20/20 A01-A20 mapped; omitted 0; added 0 (cp13/SCENE_CONTRACT.json; check_cp13.py PASS). Coverage was checked against the sanitized ledger only; the private source itself was not re-read.
+VISUAL BEATS: 6 (B01-B06 = owner-suggested grouping; each beat = one asset slot)
+MEDIA GENERATIONS USED: 8 of ~10 this turn (6 test visuals; B04 revision: v2 generated and REJECTED as a near-duplicate, v3 generated and used). No audio/TTS generated.
+REMOTION PREVIEW: Remotion 4.0.534; preview-v1 rendered (24.0 s, 1280x720, 30 fps, H.264); revised preview rendered (24.5 s). Renders kept outside Git with sha256 (cp13/revisions/render_sha256.txt).
+MOBILE QA: PASS at 360 px effective width (scaled MP4 frames, evidence/cp13/mobile360-v1 and mobile360-v2-revised); captions 15.75 px effective, <=2 lines, no clipping, no service/beat labels, no legible text in assets. Known: B01 caption partly covers the envelope (see defects).
+REVISION A: PASS. "Make B03 30% longer, no asset/other-beat change": B03 duration 5.0 -> 6.5 s (+30%) and its caption-out cue 4.7 -> 6.2 s. 2 fields changed, both in B03; manifest unchanged. Frame check: B01, B02 identical; B03 head 101/161 by frame index (the rest is H.264 lookahead ahead of the change point at frame 366; stills 330/360 are hash-identical and 380 differs as expected); B04-B06 identical after the 45-frame shift (300/300).
+REVISION B: PASS. "Replace B04 visual, keep narration/timing and other approved assets": B04 asset v1 -> v3 (v2 rejected). Storyboard 0 field changes; manifest 1 entry changed (B04) plus disclosed removal of a bookkeeping counter. Frame check: B01, B02, B03, B05, B06 identical; only B04 frames changed (1/90 identical).
+REVISION C: PASS. "Make final beat shorter and remove its on-screen text, previous beats unchanged": B06 duration 4.5 -> 3.5 s, caption null, caption cues removed. 3 fields changed, all in B06; manifest unchanged. Frame check: B01-B05 identical; B06 changed (frame 625 hash-identical to the pre-change state, so the residual 9-frame B05 mismatch is encoder noise).
+MINIMAL_DIFF: PASS for all 3 revisions (field-level via tools/semantic_diff.py; frame-level via tools/frame_compare.py; diff logs in cp13/revisions/). Nothing was rebuilt wholesale.
+CANON CHANGES: NONE (AI-serial-v2 untouched; fixture derived and labelled as non-canon)
+DEEP_CHANGE: NO (no new repo/service/DB/queue; no publish)
+RECOMMENDATION: Accept the CP-13 contract pattern for bounded EXP-24 use. Do not treat the generated visuals as quality evidence.
+NEXT ACTION: Owner review of PR #80. Separate bounded checkpoint for (a) caption placement that avoids key props at 360 px, (b) B04 asset/caption alignment, (c) Remotion company-license check if used beyond individual/small-entity scope.
+```
+
+## Step results
+
+| Step | Artifact | Status |
+|---|---|---|
+| 0 Startup | `evidence/cp13/ARENA_CONTEXT.*` (EXP-29 bootstrap, FRESH) | done (earlier) |
+| 1 Scene contract | `cp13/SCENE_CONTRACT.json` (20 actions, 6 beats, coverage ledger, dialogue functions D01/D02, invariants; no timing) | FROZEN |
+| 2 Storyboard | `cp13/EDITORIAL_STORYBOARD.json` (purpose, grounding, visual intent, caption, duration, marks, cues, asset slot) | done; revised A/C |
+| 3 Test visuals | `remotion/public/assets/beats/` (6 JPEG derived from raw PNG; raw kept outside repo with sha256) | 6 final + 2 B04 attempts |
+| 4 Media manifest | `cp13/MEDIA_MANIFEST.json` (one entry per beat, provenance, sha256, attempt, approval) | done; revised B |
+| 5 Remotion preview | `remotion/src/` (Root, Scene, data), `remotion/package.json` | preview v1, revised preview |
+| 6 Mobile QA | `evidence/cp13/mobile360-v1/`, `mobile360-v2-revised/` | PASS with defects listed |
+| 7 Revisions A/B/C | `cp13/revisions/` (snapshots, semantic diffs, frame comparisons) | all PASS |
+
+## Mobile QA detail (360 px)
+
+- Caption font 56 px at 1280 px width, which is 15.75 px effective at 360 px. Readable in every sampled frame.
+- Longest captions wrap to 2 lines; no overflow or clipping.
+- Frames contain no beat IDs, scene numbers, or service labels.
+- Generated images contain no legible text. Some monitors show blurred marks that are not readable at 360 px.
+- Automated text-fit check: NOT done (estimated only). Verification is visual on sampled frames, not a DOM measurement.
+
+## Defects and limitations (recorded, not fixed in this run)
+
+1. **B01 caption covers part of the envelope** at 360 px. The key prop is still understandable, but this is a layout defect. Fix would be a separate caption-placement checkpoint.
+2. **B04 caption vs. asset mismatch.** Caption says "He looks around. Checks the time." The v3 replacement emphasises the clock; the look-around is weakly shown. Accepted as a test limitation.
+3. **Continuity is imperfect.** Each still was generated separately; B04 v3 has a different framing and palette. This is a downstream visual-generation concern, as the contract states.
+4. **Encoder lookahead.** Frame-index comparisons show ~34–40 frame differences just before any change point. Stills at those points were hash-identical, so the differences are H.264 rate-control artifacts, not content changes. The method is explained in `frames_*` files.
+5. **Remotion licence.** Free for individuals and organisations of up to three employees; a company licence is required beyond that (remotion.dev/license). Owner to confirm before any use beyond this experiment.
+6. **Chromium source.** No system browser exists in the sandbox. Chromium 153 came from the `@sparticuz/chromium` npm package (libraries unpacked into `/tmp`, not committed). Render is reproducible only where the same binary is available.
+7. **Source verification.** Coverage was checked against the owner-provided sanitized ledger. The private canonical text was not re-read.
+
+## Changed files (this run)
+
+- `RESULTS.md` (this section; earlier CP-13 record marked superseded)
+- `cp13/`: `SCENE_CONTRACT.json`, `EDITORIAL_STORYBOARD.json`, `MEDIA_MANIFEST.json`, `README.md`, `revisions/` (v1 snapshot, rev-A/B/C snapshots, semantic diffs, frame comparisons, render hashes)
+- `remotion/`: `package.json`, `package-lock.json`, `remotion.config.ts`, `tsconfig.json`, `.gitignore`, `src/{index,Root,Scene,data}.ts(x)`, `public/assets/beats/*.jpg` (B01–B06 v1, B04 v3)
+- `tools/`: `check_cp13.py`, `semantic_diff.py`, `frame_compare.py`
+- `evidence/cp13/`: `mobile360-v1/`, `mobile360-v2-revised/`, earlier `ARENA_CONTEXT.*`, `SOURCE_ACCESS.md`
+
+Not committed (kept outside Git, hashes recorded): raw PNG originals (`/home/user/exp24-artifacts/raw/`), MP4 renders (`/home/user/exp24-artifacts/renders/`), `remotion/node_modules/`, `remotion/out/`.
+
+## Graceful handoff
+
+- **STATE:** CP-13 resumed and completed as bounded proof. All steps executed by Arena.
+- **EVIDENCE:** `cp13/`, `cp13/revisions/`, `evidence/cp13/mobile360-*`.
+- **CHANGES:** as listed above; no canon, no publish, no merge.
+- **RESULT:** PASS (bounded).
+- **BLOCKER:** none for this run. Open items are the defects above.
+- **NEXT ACTION:** owner review of PR #80; separate checkpoint for caption placement and B04 alignment; licence check if Remotion goes beyond the free tier.
+- **HANDOFF:** PR #80, for review. Do not merge automatically.
+

@@ -1,0 +1,132 @@
+{
+  "storyboard_id": "EXP-24-CP13-E01-S005",
+  "schema_version": 1,
+  "status": "DRAFT_FOR_STEP_3_APPROVED_FOR_TEST",
+  "scene_id": "E01-S005",
+  "contract_ref": { "file": "cp13/SCENE_CONTRACT.json", "contract_version": 1 },
+  "output_class": "storyboard / previs and mobile readability test; not canon, not final film",
+  "presentation": { "fps": 30, "width": 1280, "height": 720, "transition": { "type": "crossfade", "duration_s": 0.4 } },
+  "beats": [
+    {
+      "beat_id": "B01",
+      "order": 1,
+      "purpose": "Establish the routine office moment and the envelope that should not be there yet.",
+      "source_grounding": ["A01", "A02", "A03", "A04", "A05"],
+      "visual_intent": "Young producer at a neutral office desk; a sealed envelope; he reaches for it; a visible clock on the wall.",
+      "caption": "An envelope on the desk, marked to open later.",
+      "duration_s": 4.5,
+      "marks": [
+        { "mark_id": "B01-M01", "action_ids": ["A01"], "at_s": 0.0 },
+        { "mark_id": "B01-M02", "action_ids": ["A02"], "at_s": 1.0 },
+        { "mark_id": "B01-M03", "action_ids": ["A03"], "at_s": 1.8 },
+        { "mark_id": "B01-M04", "action_ids": ["A04"], "at_s": 2.8 },
+        { "mark_id": "B01-M05", "action_ids": ["A05"], "at_s": 3.6 }
+      ],
+      "cues": [
+        { "cue_id": "B01-C01", "kind": "caption_in", "at_s": 0.3 },
+        { "cue_id": "B01-C02", "kind": "caption_out", "at_s": 4.2 }
+      ],
+      "asset_slot": "slot:B01"
+    },
+    {
+      "beat_id": "B02",
+      "order": 2,
+      "purpose": "Show the envelope being opened.",
+      "source_grounding": ["A06", "A07"],
+      "visual_intent": "Close-medium view of hands opening the sealed envelope on the desk; the envelope is now open.",
+      "caption": "He opens the envelope.",
+      "duration_s": 3.0,
+      "marks": [
+        { "mark_id": "B02-M01", "action_ids": ["A06"], "at_s": 0.0 },
+        { "mark_id": "B02-M02", "action_ids": ["A07"], "at_s": 1.6 }
+      ],
+      "cues": [
+        { "cue_id": "B02-C01", "kind": "caption_in", "at_s": 0.3 },
+        { "cue_id": "B02-C02", "kind": "caption_out", "at_s": 2.7 }
+      ],
+      "asset_slot": "slot:B02"
+    },
+    {
+      "beat_id": "B03",
+      "order": 3,
+      "purpose": "Reading and realization: the subject reads, freezes, and rereads the key statement.",
+      "source_grounding": ["A08", "A09", "A10", "A11", "A12"],
+      "visual_intent": "Producer holding a document at the desk, reading; posture stiffens and becomes still after the key line; shallow focus on the subject.",
+      "caption": "He reads the document and stops at one line.",
+      "duration_s": 5.0,
+      "marks": [
+        { "mark_id": "B03-M01", "action_ids": ["A08"], "at_s": 0.0 },
+        { "mark_id": "B03-M02", "action_ids": ["A09"], "at_s": 1.0 },
+        { "mark_id": "B03-M03", "action_ids": ["A10"], "at_s": 2.2 },
+        { "mark_id": "B03-M04", "action_ids": ["A11"], "at_s": 3.2 },
+        { "mark_id": "B03-M05", "action_ids": ["A12"], "at_s": 3.8 }
+      ],
+      "cues": [
+        { "cue_id": "B03-C01", "kind": "caption_in", "at_s": 0.3 },
+        { "cue_id": "B03-C02", "kind": "caption_out", "at_s": 4.7 }
+      ],
+      "asset_slot": "slot:B03"
+    },
+    {
+      "beat_id": "B04",
+      "order": 4,
+      "purpose": "Check surroundings and the time after the reading.",
+      "source_grounding": ["A13", "A14"],
+      "visual_intent": "Producer glances around the office, then looks up at the clock on the wall.",
+      "caption": "He looks around. Checks the time.",
+      "duration_s": 3.0,
+      "marks": [
+        { "mark_id": "B04-M01", "action_ids": ["A13"], "at_s": 0.0 },
+        { "mark_id": "B04-M02", "action_ids": ["A14"], "at_s": 1.8 }
+      ],
+      "cues": [
+        { "cue_id": "B04-C01", "kind": "caption_in", "at_s": 0.3 },
+        { "cue_id": "B04-C02", "kind": "caption_out", "at_s": 2.7 }
+      ],
+      "asset_slot": "slot:B04"
+    },
+    {
+      "beat_id": "B05",
+      "order": 5,
+      "purpose": "Move from reading to contact: the phone appears only when the call begins.",
+      "source_grounding": ["A15", "A16", "A17"],
+      "visual_intent": "Producer picks up a desk phone and scrolls to a contact; the phone is first visible in this beat.",
+      "caption": "Finds the contact. Calls Arman.",
+      "duration_s": 4.0,
+      "marks": [
+        { "mark_id": "B05-M01", "action_ids": ["A15"], "at_s": 0.0 },
+        { "mark_id": "B05-M02", "action_ids": ["A16"], "at_s": 1.4 },
+        { "mark_id": "B05-M03", "action_ids": ["A17"], "at_s": 2.6 }
+      ],
+      "cues": [
+        { "cue_id": "B05-C01", "kind": "caption_in", "at_s": 0.3 },
+        { "cue_id": "B05-C02", "kind": "caption_out", "at_s": 3.7 }
+      ],
+      "asset_slot": "slot:B05"
+    },
+    {
+      "beat_id": "B06",
+      "order": 6,
+      "purpose": "Disclosure and reaction hold: a quiet warning and the concise statement; Arman's reply is outside this scene.",
+      "source_grounding": ["A18", "A19", "A20"],
+      "visual_intent": "Producer on the phone, speaking quietly with a restrained, serious expression; a brief pause; scene ends before any reply.",
+      "caption": "A quiet warning. The president is leaving.",
+      "duration_s": 4.5,
+      "marks": [
+        { "mark_id": "B06-M01", "action_ids": ["A18"], "at_s": 0.0 },
+        { "mark_id": "B06-M02", "action_ids": ["A19"], "at_s": 2.2 },
+        { "mark_id": "B06-M03", "action_ids": ["A20"], "at_s": 3.0 }
+      ],
+      "cues": [
+        { "cue_id": "B06-C01", "kind": "caption_in", "at_s": 0.3 },
+        { "cue_id": "B06-C02", "kind": "caption_out", "at_s": 4.2 }
+      ],
+      "asset_slot": "slot:B06"
+    }
+  ],
+  "notes": [
+    "captions are short derived on-screen paraphrases of the ledger actions; they are not quoted dialogue",
+    "durations are presentation estimates; the composition derives each beat start from the cumulative sum of preceding durations",
+    "no TTS / narration audio in this bounded run"
+  ]
+}
