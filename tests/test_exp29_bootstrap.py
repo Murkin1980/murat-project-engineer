@@ -11,7 +11,11 @@ These tests execute the experiment-local harness in
 * CP-04 — stale/unsafe packet negative controls (fail-closed verification);
 * CP-06 — first real-use repair: H-1 stop-rule boundary sections, H-2 source-true
   markdown labels, H-3 README-declared checkpoint chain / disposition, using
-  EXP-22-shaped fixtures plus the EXP-27 fixture, and a live EXP-22/CP-01 FRESH check.
+  EXP-22-shaped fixtures plus the EXP-27 fixture, and a live EXP-22/CP-01 FRESH check;
+* CP-07 — canonical current-state gap: the registry/RESULTS.md path must carry the
+  truthful EXP-22 state (PARTIAL / HOLD, CP-01..CP-03 already executed, bounded
+  released-weight next action) so that a fresh isolated consumer answering from the
+  packet alone never proposes repeating CP-01.
 
 They test contract behaviour (determinism, provenance, staleness detection,
 fail-closed refusal, no second source of truth, unchanged canonical sources),
@@ -591,6 +595,291 @@ class Exp29RealUseRepairTests(unittest.TestCase):
             markdown,
         )
         self.assertEqual(builder.verify_packet(packet, ROOT)["status"], "FRESH")
+
+
+# --- CP-07: canonical current-state gap ---------------------------------------
+
+CP07_DIR = "experiments/exp-29-arena-bootstrap-harness/evidence/cp07"
+BEFORE_PACKET = ROOT / CP07_DIR / "before_state" / "ARENA_CONTEXT.json"
+COMMITTED_CONSUMER_ANSWERS = ROOT / CP07_DIR / "consumer_answers.json"
+
+# The CP-07 current-state questions a fresh Arena session must be able to answer
+# from the verified EXP-22 bootstrap packet alone — without reading FINDINGS.md.
+# Truth values are hardcoded from the canonical committed EXP-22 evidence
+# (FINDINGS.md 2026-10-09), independent of the builder's parsers.
+CP07_TRUTH = {
+    "q_result_status": "PARTIAL",
+    "q_recommendation": "HOLD",
+    "q_completed_checkpoints": ["CP-01", "CP-02", "CP-03"],
+    "q_current_limitation_prefix": "Released-weight decision quality is NOT measured",
+    "q_next_authorized_action_prefix": (
+        "Run the frozen CP-01/CP-02 fixtures against the released 842 MB Laya checkpoint"
+    ),
+    "q_repeat_first_checkpoint": "NO",
+}
+
+EXPECTED_SOURCE_ROLES = {
+    "registry", "task_instructions", "task_readme", "experiment_results",
+    "project_status", "agents_rules", "governance", "accepted_lessons",
+}
+
+# Isolated fresh-session consumer: reads exactly one file (the packet) and answers
+# the CP-07 current-state questions from packet fields only. No repository access,
+# no chat access, never reads FINDINGS.md or any canonical source. Driven as
+# ``python3 -I`` exactly like the CP-03 Arm B worker.
+CP07_CONSUMER_SOURCE = '''\
+import json
+import re
+import sys
+from pathlib import Path
+
+
+def main():
+    args = sys.argv[1:]
+    packet_path = Path(args[args.index("--packet") + 1])
+    out_path = Path(args[args.index("--out") + 1])
+
+    files_read = []
+    packet_text = packet_path.read_text(encoding="utf-8")
+    files_read.append(str(packet_path))
+    packet = json.loads(packet_text)
+
+    now, resume = packet["now"], packet["resume"]
+    summary = resume["result_summary"]
+    checkpoints = now["checkpoints"]
+    next_action = resume["next_action"]
+
+    answers = {}
+
+    # 1. status/result — the registry result summary opens with "RESULT / RECOMMENDATION".
+    answers["q_result_status"] = summary.split()[0] if summary else ""
+
+    # 2. recommendation — second word of the "RESULT / RECOMMENDATION" prefix.
+    m = re.match(r"^\\S+\\s*/\\s*(\\S+)", summary)
+    answers["q_recommendation"] = m.group(1) if m else ""
+
+    # 3. completed checkpoints — the summary records an executed range over the
+    #    checkpoint chain declared in the packet.
+    completed = []
+    rng = re.search(r"(CP-\\d+)\\.\\.(CP-\\d+)", summary)
+    if rng:
+        lo, hi = rng.groups()
+        completed = [cp for cp in checkpoints if lo <= cp <= hi]
+    answers["q_completed_checkpoints"] = completed
+
+    # 4. current limitation/blocker — first verified limitation from the
+    #    experiment RESULTS.md (packet layer known_traps).
+    traps = packet.get("known_traps", [])
+    answers["q_current_limitation"] = traps[0]["trap"] if traps else ""
+
+    # 5. next authorized action — RESULTS.md section, registry action as fallback.
+    answers["q_next_authorized_action"] = resume.get("next_authorized_action") or next_action
+
+    # 6. should the first checkpoint (CP-01) run again?
+    first_cp = checkpoints[0] if checkpoints else "CP-01"
+    executed = first_cp in completed
+    explicit_no = "must not be repeated" in (summary + " " + next_action).lower()
+    if executed and explicit_no:
+        answers["q_repeat_first_checkpoint"] = "NO"
+    elif not executed and ("execute " + first_cp) in next_action:
+        answers["q_repeat_first_checkpoint"] = "YES"
+    else:
+        answers["q_repeat_first_checkpoint"] = "UNKNOWN"
+
+    result = {
+        "consumer": "cp07-fresh-session-consumer",
+        "packet": str(packet_path),
+        "files_read": files_read,
+        "read_findings_md": False,
+        "answers": answers,
+    }
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(
+        json.dumps(result, ensure_ascii=False, sort_keys=True, indent=1) + "\\n",
+        encoding="utf-8",
+    )
+    print(json.dumps({"files_read": len(files_read), "refused": False}, sort_keys=True))
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+'''
+
+
+def _run_cp07_consumer(packet_path, workdir, name):
+    consumer = workdir / "cp07_consumer.py"
+    consumer.write_text(CP07_CONSUMER_SOURCE, encoding="utf-8")
+    out = workdir / name
+    cwd = workdir / (name + "_cwd")
+    cwd.mkdir(parents=True, exist_ok=True)
+    completed = subprocess.run(
+        [sys.executable, "-I", str(consumer), "--packet", str(packet_path), "--out", str(out)],
+        cwd=str(cwd), capture_output=True, text=True, timeout=120,
+    )
+    if completed.returncode != 0:
+        raise RuntimeError(f"consumer failed: {completed.stderr.strip() or completed.stdout.strip()}")
+    return json.loads(out.read_text(encoding="utf-8"))
+
+
+def _cp07_entry():
+    registry = json.loads((ROOT / "experiments" / "EXPERIMENT_REGISTRY.json").read_text(encoding="utf-8"))
+    return next(e for e in registry["experiments"] if e["experiment_id"] == "EXP-22")
+
+
+class Exp29CanonicalStateTests(unittest.TestCase):
+    """CP-07: the canonical registry/results path must carry the truthful EXP-22 state."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls._tmp = tempfile.TemporaryDirectory(prefix="exp29-cp07-")
+        cls.workdir = Path(cls._tmp.name)
+        cls.packet = builder.build_packet(ROOT, "EXP-22", "CP-01", **PINNED_GIT)
+        cls.packet_path = cls.workdir / "packet.json"
+        cls.packet_path.write_text(
+            json.dumps(cls.packet, ensure_ascii=False, sort_keys=True, indent=1) + "\n",
+            encoding="utf-8",
+        )
+        cls.verification = builder.verify_packet(cls.packet, ROOT)
+
+    @classmethod
+    def tearDownClass(cls):
+        cls._tmp.cleanup()
+
+    # 1 — canonical state corrected through the existing mechanisms
+
+    def test_registry_exp22_entry_carries_truthful_current_state(self):
+        entry = _cp07_entry()
+        # The recorded recommendation is schema-valid; the full result rides in
+        # result_summary (the registry status enum has no PARTIAL — a pre-existing,
+        # separately-owned contract gap, unchanged by CP-07).
+        self.assertEqual(entry["status"], "HOLD")
+        self.assertEqual(entry["updated_at"], "2026-10-10")
+        self.assertEqual(entry["date_added"], "2026-10-06")
+        self.assertTrue(entry["result_summary"].startswith("PARTIAL / HOLD"))
+        for fact in ("CP-01..CP-03 executed", "NOT measured", "66/66"):
+            self.assertIn(fact, entry["result_summary"], fact)
+        for fact in ("released 842 MB Laya checkpoint", "must not be repeated",
+                     "no production integration"):
+            self.assertIn(fact, entry["next_action"], fact)
+        self.assertFalse(entry["next_action"].startswith("Arena: execute CP-01"))
+        for link in ("FINDINGS.md", "RESULTS.md"):
+            self.assertTrue(
+                any(l.endswith(link) for l in entry["evidence_links"]),
+                f"evidence_links must cite {link}",
+            )
+
+    def test_exp22_results_md_expresses_established_result_without_new_claims(self):
+        results_path = ROOT / EXP22_PATH / "RESULTS.md"
+        self.assertTrue(results_path.is_file())
+        results = results_path.read_text(encoding="utf-8")
+        findings = (ROOT / EXP22_PATH / "FINDINGS.md").read_text(encoding="utf-8")
+        # The canonical result block is carried verbatim (no reinterpretation).
+        block = findings[findings.index("RESULT: PARTIAL"):findings.index("DEEP_CHANGE: NO") + len("DEEP_CHANGE: NO")]
+        self.assertIn(block, results)
+        # Normal result format sections the bootstrap builder consumes.
+        for section in ("## Executive result", "## Per-pattern disposition",
+                        "## Against the success criteria (README)",
+                        "## Known limitations / blockers", "## Next authorized action"):
+            self.assertIn(section, results, section)
+        # Established numbers are preserved, not re-derived.
+        for number in ("66/66", "0 malformed", "22/22", "48 MB"):
+            self.assertIn(number, results)
+
+    # 2 — rebuilt bootstrap is FRESH and reports the truthful state
+
+    def test_rebuilt_exp22_bootstrap_is_fresh_and_truthful(self):
+        self.assertEqual(self.verification["status"], "FRESH", self.verification["reasons"])
+        now, resume = self.packet["now"], self.packet["resume"]
+        self.assertEqual(now["checkpoints"], ["CP-01", "CP-02", "CP-03"])
+        self.assertEqual(now["disposition"], "EXPERIMENT")
+        self.assertTrue(now["nearest_action"])
+        self.assertIn("must not be repeated", now["nearest_action"])
+        self.assertNotIn("Arena: execute CP-01", now["nearest_action"])
+        self.assertEqual(now["registry_status"], "HOLD")
+        self.assertEqual(resume["status"], "HOLD")
+        self.assertTrue(resume["result_summary"].startswith("PARTIAL / HOLD"))
+        self.assertIn("CP-01..CP-03 executed", resume["result_summary"])
+        self.assertIn("NOT measured", resume["result_summary"])
+        self.assertIn("released 842 MB Laya checkpoint", resume["next_authorized_action"])
+        self.assertEqual(resume["evidence"]["path"], f"{EXP22_PATH}/RESULTS.md")
+        # CP-06 invariants preserved by the state repair.
+        self.assertTrue(self.packet["rules"]["stop_rules"])
+        self.assertIn(
+            "experiments/exp-22-colibri-local-inference/ARENA_TASK.md#boundaries",
+            self.packet["rules"]["stop_rules_source"],
+        )
+
+    def test_no_new_bootstrap_source_role_or_findings_authority(self):
+        roles = {ref["role"] for ref in self.packet["source_refs"]}
+        self.assertEqual(roles, EXPECTED_SOURCE_ROLES)
+        paths = [ref["path"] for ref in self.packet["source_refs"]]
+        self.assertFalse(
+            any("FINDINGS" in path for path in paths),
+            "FINDINGS.md must not be promoted to a bootstrap source role",
+        )
+
+    # 3 — fresh isolated consumer, packet only (no FINDINGS.md)
+
+    def test_fresh_consumer_answers_current_state_from_packet_only(self):
+        consumer = _run_cp07_consumer(self.packet_path, self.workdir, "after_consumer.json")
+        self.assertEqual(consumer["files_read"], [str(self.packet_path)])
+        self.assertFalse(consumer["read_findings_md"])
+        answers = consumer["answers"]
+        self.assertEqual(answers["q_result_status"], CP07_TRUTH["q_result_status"])
+        self.assertEqual(answers["q_recommendation"], CP07_TRUTH["q_recommendation"])
+        self.assertEqual(
+            answers["q_completed_checkpoints"], CP07_TRUTH["q_completed_checkpoints"])
+        self.assertTrue(
+            answers["q_current_limitation"].startswith(CP07_TRUTH["q_current_limitation_prefix"]),
+            answers["q_current_limitation"],
+        )
+        self.assertTrue(
+            answers["q_next_authorized_action"].startswith(
+                CP07_TRUTH["q_next_authorized_action_prefix"]),
+            answers["q_next_authorized_action"],
+        )
+        self.assertNotIn("execute CP-01", answers["q_next_authorized_action"])
+
+    def test_fresh_consumer_does_not_propose_repeating_cp01(self):
+        after = _run_cp07_consumer(self.packet_path, self.workdir, "after_repeat.json")
+        self.assertEqual(after["answers"]["q_repeat_first_checkpoint"], "NO")
+        # The pre-repair FRESH packet (committed evidence) would have led a fresh
+        # session to repeat CP-01: the same consumer answers YES on it.
+        before = _run_cp07_consumer(BEFORE_PACKET, self.workdir, "before_repeat.json")
+        self.assertEqual(before["answers"]["q_repeat_first_checkpoint"], "YES")
+        self.assertEqual(before["answers"]["q_result_status"], "Planned.")
+        self.assertEqual(before["answers"]["q_completed_checkpoints"], [])
+
+    def test_committed_consumer_evidence_matches_fresh_run(self):
+        committed = json.loads(COMMITTED_CONSUMER_ANSWERS.read_text(encoding="utf-8"))
+        # The committed evidence is the same isolated consumer run on the committed
+        # cp07 packet: exactly one file read, the packet itself.
+        self.assertEqual(
+            committed["files_read"],
+            [f"{EXP22_PATH}/evidence/bootstrap/cp07/ARENA_CONTEXT.json"],
+        )
+        self.assertEqual(committed["answers"]["q_result_status"], CP07_TRUTH["q_result_status"])
+        self.assertEqual(committed["answers"]["q_recommendation"], CP07_TRUTH["q_recommendation"])
+        self.assertEqual(
+            committed["answers"]["q_completed_checkpoints"], CP07_TRUTH["q_completed_checkpoints"])
+        self.assertEqual(committed["answers"]["q_repeat_first_checkpoint"], "NO")
+        # A fresh run of the same consumer on the same packet reproduces the answers.
+        fresh = _run_cp07_consumer(self.packet_path, self.workdir, "evidence_replay.json")
+        self.assertEqual(fresh["answers"], committed["answers"])
+
+    # 4 — the pre-repair packet can no longer pass as current state
+
+    def test_before_state_packet_is_stale_after_canonical_repair(self):
+        before = json.loads(BEFORE_PACKET.read_text(encoding="utf-8"))
+        result = builder.verify_packet(before, ROOT)
+        self.assertEqual(result["status"], "STALE")
+        self.assertTrue(
+            any(d["field"] in ("now.nearest_action", "now.registry_status",
+                               "resume.result_summary", "resume.next_action")
+                for d in result["field_diffs"]),
+            f"stale registry-driven fields must be named: {result['field_diffs']}",
+        )
 
 
 if __name__ == "__main__":

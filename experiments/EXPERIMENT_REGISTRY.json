@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-10-09",
+  "updated_at": "2026-10-10",
   "experiments": [
     {
       "experiment_id": "EXP-ALEXANDRIA",
@@ -441,19 +441,21 @@
       "experiment_id": "EXP-22",
       "name": "Colibri local inference / Brio routing",
       "owning_project": "Murat Project Engineer",
-      "status": "PLANNED",
+      "status": "HOLD",
       "why": "Test whether Colibri can provide measurable value as an optional local inference component for constrained MPE classification and routing without creating a parallel orchestration system.",
       "date_added": "2026-10-06",
-      "next_action": "Arena: execute CP-01 READY/WARNING/BLOCKED classification, CP-02 fixed-agent routing, and CP-03 isolated provider compatibility only if earlier checkpoints show useful signal.",
-      "result_summary": "Planned. Primary disposition EXPERIMENT. No new repository, production deployment, provider switch, control plane, or deep-change is authorized.",
+      "next_action": "Bounded released-weight quality run: execute the frozen CP-01/CP-02 fixtures against the released 842 MB Laya checkpoint on a weights-available suitable machine (>= 8 GB RAM) and record accuracy/determinism/latency before any adapter work. CP-01..CP-03 must not be repeated; no production integration is authorized.",
+      "result_summary": "PARTIAL / HOLD (2026-10-09). CP-01..CP-03 executed: structural decision path proven (66/66 HTTP 200, 0 malformed constrained outputs, 22/22 deterministic, 7-13 ms at ~48 MB RSS); released-weight decision quality NOT measured (checkpoint unavailable in sandbox). Next: bounded released-weight quality run; CP-01..CP-03 must not be repeated; no production integration authorized.",
       "repo": "Murkin1980/murat-project-engineer",
       "experiment_path": "experiments/exp-22-colibri-local-inference",
       "evidence_links": [
         "experiments/exp-22-colibri-local-inference/README.md",
-        "experiments/exp-22-colibri-local-inference/ARENA_TASK.md"
+        "experiments/exp-22-colibri-local-inference/ARENA_TASK.md",
+        "experiments/exp-22-colibri-local-inference/FINDINGS.md",
+        "experiments/exp-22-colibri-local-inference/RESULTS.md"
       ],
       "pr_or_issue_links": [],
-      "updated_at": "2026-10-06"
+      "updated_at": "2026-10-10"
     },
     {
       "experiment_id": "EXP-23",

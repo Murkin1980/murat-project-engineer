@@ -1,0 +1,20 @@
+{
+ "answers": {
+  "q_completed_checkpoints": [
+   "CP-01",
+   "CP-02",
+   "CP-03"
+  ],
+  "q_current_limitation": "Released-weight decision quality is NOT measured: the 842 MB Laya checkpoint is HuggingFace-only and was unreachable from the original sandbox; accuracy, calibration and ambiguity handling remain OPEN until the frozen fixtures run against the released checkpoint.",
+  "q_next_authorized_action": "Run the frozen CP-01/CP-02 fixtures against the released 842 MB Laya checkpoint on a weights-available suitable machine (>= 8 GB RAM) and record accuracy/determinism/latency before any adapter work.",
+  "q_recommendation": "HOLD",
+  "q_repeat_first_checkpoint": "NO",
+  "q_result_status": "PARTIAL"
+ },
+ "consumer": "cp07-fresh-session-consumer",
+ "files_read": [
+  "experiments/exp-22-colibri-local-inference/evidence/bootstrap/cp07/ARENA_CONTEXT.json"
+ ],
+ "packet": "experiments/exp-22-colibri-local-inference/evidence/bootstrap/cp07/ARENA_CONTEXT.json",
+ "read_findings_md": false
+}

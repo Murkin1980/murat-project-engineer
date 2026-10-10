@@ -1,6 +1,7 @@
 # EXP-22 — Colibri local inference / Brio routing
 
-Status: PLANNED  
+Status: PARTIAL — CP-01..CP-03 executed 2026-10-09; recommendation HOLD (see RESULTS.md)
+
 Decision: EXPERIMENT  
 Owner: Murat Project Engineer  
 Executor: Arena  
