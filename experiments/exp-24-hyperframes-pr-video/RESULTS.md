@@ -95,3 +95,74 @@ The reference demonstrates a useful end-to-end operating model: source text → 
 - Publishing remains approval-gated and outside automatic experiment authority.
 
 Next execution starts at **CP-06** and must preserve this Phase 1 record.
+
+
+---
+
+# CP-13 result — Adopt EXP-23 scene timing/sync contract (single-agent proof)
+
+Run date: 2026-10-10 (UTC) · Executor: Arena Agent Mode, single agent · Branch: `arena/75c6ba59-murat-project-engineer` · Base: `main` @ `19dd6a096433edfe5742d667cfc70e8fda8d3434`
+
+```text
+RESULT: NOT_EVALUATED — SOURCE_ACCESS_BLOCKED
+SINGLE_AGENT: YES
+FIXTURE: E01-S005 «Молодой продюсер открывает конверт» (Murkin1980/AI-serial-v2 / TEASER_SCENE_SHEETS.md) — NOT READABLE from this session
+SOURCE COVERAGE: NOT MEASURED (0 source actions read; 0 mapped; no coverage claim made)
+VISUAL BEATS: 0 (no storyboard produced)
+MEDIA GENERATIONS USED: 0
+REMOTION PREVIEW: NOT BUILT
+MOBILE QA: NOT RUN
+REVISION A: NOT RUN
+REVISION B: NOT RUN
+REVISION C: NOT RUN
+MINIMAL_DIFF: NOT TESTED
+CANON CHANGES: NONE
+DEEP_CHANGE: NO
+RECOMMENDATION: Keep CP-13 open; do not count the adoption as proven. Re-run after the owner grants read access.
+NEXT ACTION: Owner grants this Arena GitHub connection read access to Murkin1980/AI-serial-v2 (or approves a read-only copy of TEASER_SCENE_SHEETS.md), then resume at Step 1 (scene contract freeze).
+```
+
+## Startup and bootstrap
+
+- EXP-29 bootstrap built from current `main` checkout with `bootstrap_builder.py build --experiment EXP-24 --checkpoint CP-13`; `verify` returned **FRESH** (`evidence/cp13/ARENA_CONTEXT.json`, `.md`; derived, non-authoritative).
+- Governance (`AGENTS.md`), EXP-24 `README.md`, `ARENA_TASK.md` (CP-13 section), `RESULTS.md` and EXP-23 `FINDINGS.md` were read. EXP-23 was not rerun.
+
+## Source access — the stop condition
+
+The fixture is private. The canonical source was checked read-only with `gh` (repo view, API contents/branches), `git clone`, `git ls-remote` and the visible repository list. Every access returned HTTP 403 "Resource not accessible by integration" / "Write access to repository not granted", and `AI-serial-v2` is absent from the visible repository list. No GitHub connector is available to load a different scope. Full log: `evidence/cp13/SOURCE_ACCESS.md`.
+
+Per the task, the run stopped with **`SOURCE_ACCESS_BLOCKED`**. No scene text was reconstructed from memory, no beats were invented, and `AI-serial-v2` was not modified.
+
+## Why the verdict is NOT_EVALUATED, not PARTIAL or FAIL
+
+- PARTIAL requires the contract and revision logic to be working and only one runtime/render/media-cap item to be blocked. None of the contract, storyboard, media, preview or revision steps has run, so that condition does not hold.
+- FAIL requires the workflow itself to need excessive manual work or to lose control of changes. No such evidence exists; the single-agent chain was never reached.
+
+The blocker is a source-access permission on the canonical input. It is not evidence about the pipeline's quality, controllability or minimal-diff behaviour.
+
+## Reference evidence not reused as CP-13 proof
+
+EXP-23 CP-02 (20/20 action steps mapped, 0 omitted / 0 added, 6/6 previs stills, E01-S005 APPROVED FOR VISUAL DEVELOPMENT) remains EXP-23 historical evidence. It was produced in an earlier session against the source. It is not re-verified here and is not counted as CP-13 source coverage.
+
+## Adopted schema / contract
+
+None adopted in this run. The contract (scene → ordered beats → marks → cues/timings → per-beat asset, with timing treated as presentation metadata) was specified in the CP-13 task but not yet proven on a fixture, so no schema is claimed as adopted.
+
+## Changed files
+
+- `experiments/exp-24-hyperframes-pr-video/RESULTS.md` (this CP-13 section appended; Phase 1 and Phase 2 records unchanged)
+- `experiments/exp-24-hyperframes-pr-video/evidence/cp13/ARENA_CONTEXT.json` (derived bootstrap packet, FRESH)
+- `experiments/exp-24-hyperframes-pr-video/evidence/cp13/ARENA_CONTEXT.md` (derived bootstrap view)
+- `experiments/exp-24-hyperframes-pr-video/evidence/cp13/SOURCE_ACCESS.md` (access-check log)
+
+No storyboard, media manifest, media files, composition, render or video binary was created. No registry status was changed.
+
+## Graceful handoff
+
+- **STATE:** CP-13 paused before Step 1. Nothing downstream started.
+- **EVIDENCE:** `evidence/cp13/SOURCE_ACCESS.md`, `evidence/cp13/ARENA_CONTEXT.*`.
+- **CHANGES:** documentation/evidence only (listed above). No canon, no media, no render.
+- **RESULT:** NOT_EVALUATED — SOURCE_ACCESS_BLOCKED.
+- **BLOCKER:** Arena GitHub connection lacks read access to private `Murkin1980/AI-serial-v2`.
+- **NEXT ACTION:** Owner grants read access (or supplies an approved read-only copy of `TEASER_SCENE_SHEETS.md`); then re-run EXP-24 CP-13 from Step 1 using the same bootstrap command (`--experiment EXP-24 --checkpoint CP-13`) after `verify` returns FRESH.
+- **HANDOFF:** this PR, for review. Do not merge automatically.
