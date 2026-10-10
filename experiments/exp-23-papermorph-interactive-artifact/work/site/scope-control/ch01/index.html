@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smallest Sufficient Change — MPE Scope &amp; Change Control</title>
+<link rel="stylesheet" href="../lib/engine.css">
+<link rel="expect" href="#bar" blocking="render"><!-- hold the first frame until the player exists, so the page transition can run -->
+</head>
+<body>
+<script src="../lib/engine.js"></script>
+<script src="audio/en/timings.js"></script>
+<script>
+'use strict';
+const CHAPTER = { number: 1, title: 'Smallest sufficient change', minutes: 8, language: 'en' };
+
+const PANEL = '#22322d', EDGE = '#3a5047';
+
+/* ---------- chapter drawing helpers ---------- */
+// centred rounded chip plate (drawn around (0,0))
+const plate = (p, w, h, { fill = PANEL, stroke = EDGE, sw = 2 } = {}) =>
+  mk('rect', { x: -w / 2, y: -h / 2, width: w, height: h, rx: 16, fill, stroke, 'stroke-width': sw }, p);
+
+// source-of-truth ladder geometry (ch01 'ladder' and the 'conflict' tokens)
+const LAD = { x: 430, w: 740, h: 58, top: 150, gap: 94 };
+const rungY = i => LAD.top + i * LAD.gap;
+const LADDER = [
+  'Explicit current owner instruction',
+  'Current approved checkpoint / spec',
+  'Repository-local mandatory governance',
+  'Architecture, product & domain contracts',
+  'Existing code and tests',
+  'Historical conventions & prior decisions',
+];
+// tokens the quick check asks the learner to tap (rung numbers make the judgment verifiable)
+const TOKS = [
+  { t: ['Existing code', 'and tests'], n: 5, cx: 400 },
+  { t: ['Current approved', 'checkpoint / spec'], n: 2, cx: 800 },
+  { t: ['Historical', 'conventions'], n: 6, cx: 1200 },
+];
+const TOK_W = 356, TOK_H = 116, TOK_Y = 580;
+
+/* ---------- beats: m(mark, offset) gives the time a narration word starts; D is clip length ---------- */
+const BEATS = [
+  ['intro', 'Smallest sufficient change', (m, D) => {
+    const g = G(scene, { o: 0, y: 24 });
+    T(g, 'Unit 1, Chapter 1', { x: 800, y: 320, size: 28, fill: COL.dim, anchor: 'middle' });
+    T(g, 'Smallest Sufficient Change', { x: 800, y: 425, size: 84, weight: 600, anchor: 'middle' });
+    tw(g, { o: 1, y: 0 }, .2, 1.1, out);
+    const r = T(scene, 'How to do a task with the smallest change that is still correct.',
+      { x: 800, y: 560, size: 34, fill: COL.dim, anchor: 'middle', o: 0 });
+    show(r, m('sub'), .7);
+    tw(g, { o: 0, y: -24 }, D - .9, .8);
+    hide(r, D - .9, .8);
+  }],
+  ['principle', 'The primary principle', (m, D) => {
+    const p = panel(0);
+    const kick = T(p, '§1  Primary principle', { x: 800, y: 110, size: 26, fill: COL.dim, anchor: 'middle', o: 0, weight: 600 });
+    show(kick, m('rule'), .5);
+    const sent = T(p, 'the smallest sufficient correct change',
+      { x: 800, y: 235, size: 50, fill: COL.task, anchor: 'middle', o: 0, weight: 600 });
+    show(sent, m('one'), .8);
+    // the change as a box of six kinds of new work; it condenses to the minimum necessary
+    const box = G(p, { x: 800, y: 470, o: 0, s: 1 });
+    S.pbox = box;
+    mk('rect', { x: -470, y: -140, width: 940, height: 280, rx: 18, fill: 'none', stroke: COL.faint, 'stroke-width': 2, 'stroke-dasharray': '10 8' }, box);
+    T(box, 'new work in the change', { x: 0, y: -166, size: 24, fill: COL.dim, anchor: 'middle' });
+    const items = ['code', 'dependencies', 'infrastructure', 'configuration', 'abstractions', 'unrelated edits'];
+    S.pchips = items.map((it, i) => {
+      const c = G(box, { x: -300 + (i % 3) * 300, y: -50 + Math.floor(i / 3) * 118, o: 0 });
+      plate(c, 252, 66);
+      T(c, it, { x: 0, y: 9, size: 26, fill: COL.chalk, anchor: 'middle' });
+      show(c, .3 + i * .16, .5);
+      return c;
+    });
+    show(box, .2, .6);
+    const why = T(p, 'every extra part must later be reviewed, broken, and maintained',
+      { x: 800, y: 745, size: 27, fill: COL.dim, anchor: 'middle', o: 0 });
+    show(why, m('why'), .8);
+    tw(box, { s: .5 }, m('min'), 1.6, io);
+    const simp = G(p, { x: 800, y: 822, o: 0, s: .5 });
+    plate(simp, 340, 76, { stroke: COL.task });
+    T(simp, 'Simplicity first', { x: 0, y: 10, size: 32, fill: COL.task, weight: 600, anchor: 'middle' });
+    show(simp, m('simplicity'), .3);
+    tw(simp, { s: 1 }, m('simplicity'), .5, back);
+  }],
+  ['q1', 'Quick check', () => { panel(0); }, { ask: done => quiz(BAND, [{
+    id: 'c-sufficient',
+    prompt: ['Perform the task with the smallest ______ correct change.'],
+    build: choice([['sufficient'], ['permanent'], ['urgent'], ['maximal']], 0,
+      'The principle names the smallest change that is still sufficient.',
+      [null, 'Permanent is about how long it lasts, not how small it is.',
+       'Urgent is about timing, not about size.',
+       'Maximal is the opposite of the principle.']),
+  }], done) }],
+  ['ladder', 'The source-of-truth ladder', (m) => {
+    const p = panel(0);
+    const kick = T(p, '§2  Source of truth — the priority order', { x: 800, y: 96, size: 26, fill: COL.dim, anchor: 'middle', o: 0, weight: 600 });
+    show(kick, m('ladder'), .5);
+    S.rungs = LADDER.map((label, i) => {
+      const g = G(p, { x: LAD.x, y: rungY(i), o: 0, s: 0 });
+      const top = i === 0;
+      mk('rect', { width: LAD.w, height: LAD.h, rx: 12, fill: top ? COL.task : PANEL, stroke: top ? COL.task : EDGE, 'stroke-width': top ? 0 : 2 }, g);
+      mk('circle', { cx: 42, cy: 29, r: 20, fill: top ? COL.board : PANEL, stroke: top ? COL.board : EDGE, 'stroke-width': 2 }, g);
+      T(g, String(i + 1), { x: 42, y: 38, size: 24, fill: top ? COL.task : COL.dim, weight: 700, anchor: 'middle' });
+      T(g, label, { x: 84, y: 38, size: 27, fill: top ? COL.board : COL.chalk, weight: top ? 600 : 500 });
+      pop(g, m('r' + (i + 1)));
+      return g;
+    });
+    const note = T(p, 'higher up wins a conflict', { x: LAD.x + LAD.w / 2, y: 768, size: 28, fill: COL.task, anchor: 'middle', o: 0 });
+    show(note, m('r6', .8), .7);
+  }],
+  ['conflict', 'Conflicts are surfaced', (m, D) => {
+    const p = panel(0);
+    const a = G(p, { x: 800, y: 220, o: 0 });
+    S.cA = a;
+    plate(a, 700, 96);
+    T(a, 'silently pick the convenient interpretation', { x: 0, y: 10, size: 33, fill: COL.chalk, anchor: 'middle' });
+    show(a, m('silent'), .4);
+    const x1 = path(a, 'M-350 -48L350 48', { stroke: COL.bad, 'stroke-width': 10, 'stroke-linecap': 'round', o: 0, d: 0 });
+    const x2 = path(a, 'M350 -48L-350 48', { stroke: COL.bad, 'stroke-width': 10, 'stroke-linecap': 'round', o: 0, d: 0 });
+    show(x1, m('silent', 1.0), .2); draw(x1, m('silent', 1.15), .35);
+    show(x2, m('silent', 1.25), .2); draw(x2, m('silent', 1.4), .35);
+    const b = G(p, { x: 800, y: 380, o: 0 });
+    S.cB = b;
+    plate(b, 940, 96, { stroke: COL.good });
+    T(b, 'surface the conflict — follow the higher-priority source', { x: 0, y: 10, size: 32, fill: COL.chalk, anchor: 'middle' });
+    show(b, m('surface'), .4);
+    const except = T(p, 'unless a deep-change decision is required', { x: 800, y: 490, size: 26, fill: COL.dim, anchor: 'middle', o: 0 });
+    show(except, m('surface', 1.2), .7);
+    // the three sources the quick check asks the learner to rank
+    S.toks = TOKS.map((t, i) => {
+      const g = G(p, { x: t.cx, y: TOK_Y, o: 0 });
+      plate(g, TOK_W, TOK_H);
+      t.t.forEach((line, j) => T(g, line, { x: 0, y: -14 + j * 30, size: 25, fill: COL.chalk, anchor: 'middle', weight: 600 }));
+      T(g, 'rung ' + t.n, { x: 0, y: 42, size: 22, fill: COL.dim, anchor: 'middle' });
+      show(g, D - 1.5 + i * .18, .5);
+      return g;
+    });
+  }],
+  ['q2', 'Quick check', () => {}, { ask: done => quiz(BAND, [{
+    id: 'c-order',
+    prompt: ['Tap the source that outranks the other two.'],
+    build: pickEls(S.toks.map((el, i) => ({
+      el, box: [TOKS[i].cx - TOK_W / 2, TOK_Y - TOK_H / 2, TOK_W, TOK_H], label: TOKS[i].t.join(' '),
+    })), 1,
+      'Rung 2: the current approved checkpoint outranks rung 5 and rung 6.',
+      i => i === 0 ? 'Existing code and tests sit at rung 5 — below the checkpoint at rung 2.'
+                   : 'Historical conventions sit at rung 6, the bottom of the ladder.'),
+  }], done) }],
+  ['boundary', 'The checkpoint is the boundary', (m) => {
+    const p = panel(0);
+    const kick = T(p, '§3  Checkpoint is the task boundary', { x: 800, y: 100, size: 26, fill: COL.dim, anchor: 'middle', o: 0, weight: 600 });
+    show(kick, .2, .5);
+    const rules = [
+      'implement only that checkpoint',
+      'do not invent the next checkpoint',
+      'do not prebuild later work',
+      'do not turn opportunities into current scope',
+      'stop when the checkpoint is complete',
+      'if the spec says STOP, stop',
+    ];
+    S.rchips = rules.map((r, i) => {
+      const g = G(p, { x: 800, y: 190 + i * 92, o: 0, s: 0 });
+      const stop = i === 5;
+      plate(g, 760, 70, { stroke: stop ? COL.task : EDGE });
+      mk('circle', { cx: -345, cy: 0, r: 20, fill: stop ? COL.task : PANEL, stroke: stop ? COL.task : EDGE, 'stroke-width': 2 }, g);
+      T(g, String(i + 1), { x: -345, y: 9, size: 23, fill: stop ? COL.board : COL.dim, weight: 700, anchor: 'middle' });
+      T(g, r, { x: 15, y: 10, size: 29, fill: stop ? COL.task : COL.chalk, anchor: 'middle', weight: stop ? 600 : 500 });
+      pop(g, m('rules', .4 + i * 1.5));
+      return g;
+    });
+    pulse(S.rchips[5], m('stop'), 1.9);
+    const gate = G(p, { x: 800, y: 782, o: 0 });
+    S.gate = gate;
+    plate(gate, 980, 78, { stroke: COL.good });
+    T(gate, 'new checkpoint ⇒ owner instruction or committed owner-approved spec', { x: 0, y: 10, size: 26, fill: COL.chalk, anchor: 'middle' });
+    show(gate, m('new'), .8);
+  }],
+  ['q3', 'Quick check', () => { panel(0); }, { ask: done => quiz(BAND, [{
+    id: 'c-opportunity',
+    prompt: ['The approved checkpoint is complete, and you found a great opportunity. What do you do?'],
+    build: choice([
+      ['Stop — it becomes a new checkpoint only after the owner authorizes it'],
+      ['Fold it into the current scope'],
+      ['Prebuild it now, review later'],
+      ['Rename the checkpoint to include it'],
+    ], 0, 'A new checkpoint begins only after an owner instruction or committed owner-approved spec authorizes it.',
+    [null, 'That is exactly the rule against: do not turn a discovered opportunity into current scope.',
+     'Prebuilding later work is the second rule in the list.',
+     'Renaming the checkpoint is inventing the next one — also forbidden.']),
+  }], done) }],
+  ['wrap', 'Summary', (m) => {
+    const p = panel(0);
+    const items = [
+      ['Smallest sufficient correct change — simplicity first.', 'w1'],
+      ['Six sources in a strict order; the owner instruction is on top.', 'w2'],
+      ['In a real conflict, surface it and follow the higher priority.', 'w3'],
+      ['The checkpoint is the boundary — and stop means stop.', 'w4'],
+    ];
+    items.forEach(([str, mark], i) => {
+      const g = G(p, { x: -16, y: 240 + i * 122, o: 0 });
+      mk('circle', { cx: 216, cy: -10, r: 26, fill: COL.task }, g);
+      T(g, String(i + 1), { x: 216, y: 1, size: 30, fill: COL.board, weight: 700, anchor: 'middle' });
+      T(g, str, { x: 276, size: 33, weight: 600, fill: COL.chalk });
+      tw(g, { o: 1, x: 0 }, m(mark), .6);
+    });
+  }],
+  ['final1', 'Chapter practice', () => { panel(0); }, { ask: done => quiz(SCREEN, [
+    { id: 'p-ladder1', prompt: ['Which source outranks the other?'],
+      build: choice([['Existing code and tests'], ['Current approved checkpoint / spec']], 1,
+        'On the ladder the checkpoint is rung 2; existing code and tests are rung 5 — higher up wins.',
+        [null, 'Existing code and tests are rung 5, below the checkpoint at rung 2.']) },
+    { id: 'p-ladder2', prompt: ['Repository-local governance says one thing; the current owner instruction says another. No security or invariant conflict. Which governs?'],
+      build: choice([['Repository-local governance'], ['The owner instruction']], 1,
+        'The explicit current owner instruction is rung 1 — above repository-local governance at rung 3.',
+        ['Governance is rung 3; the owner instruction is rung 1 and takes priority.']) },
+  ], done, 'Chapter practice') }],
+  ['finish', 'Finished', () => { panel(0); }, { ask: finishCard }],
+].map(([id, title, run, extra]) => ({ id, title, run, ...extra }));
+
+boot();
+</script>
+</body>
+</html>
