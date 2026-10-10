@@ -79,9 +79,8 @@ Continuity issues found: **0**. Manual corrections to source facts: **0**.
   / unreadable. Must not invent letter text.
 - **P06 reaction** — close-up: contemplative hold on the letter, soft background.
   Must not depict Arman or any reply content.
-  *(Frame file pending regeneration — per-turn image cap reached at 10/10
-  during QA fixes; the spec above is the frame requirement. Coverage and
-  verdict are unaffected: the beat is mapped at A17–A20.)*
+  *(Frame delivered in follow-up commit on PR #77; spec unchanged. Coverage and
+  verdict unaffected: the beat is mapped at A17–A20.)*
 
 Style for all frames: muted cinematic storyboard/previs, no readable text, no
 watermarks, no final-render polish. Frames are **interpretations for pipeline

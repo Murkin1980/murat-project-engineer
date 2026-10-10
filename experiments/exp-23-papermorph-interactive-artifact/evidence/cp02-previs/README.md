@@ -24,7 +24,7 @@ artifact** (staging, shot list, prop continuity). They are:
 | P03 | `p03-pickup.png` | close detail, hands + envelope, no readable text |
 | P04 | `p04-opening.png` | medium close-up, opening action |
 | P05 | `p05-reading.png` | over-shoulder, letter out, face away / unreadable |
-| P06 | `p06-reaction.png` — **pending** (image cap; spec in `../cp02-beat-map.md` §5) | close-up reaction hold, Arman’s reply not shown (out of scene) |
+| P06 | `p06-reaction.png` | close-up reaction hold, Arman’s reply not shown (out of scene) |
 
 Beat specs and must/must-not constraints: `../cp02-beat-map.md` §5.
 Coverage: 20/20 action steps mapped, 0 omitted / 0 added.

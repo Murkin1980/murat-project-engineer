@@ -42,11 +42,10 @@ bounded specification (no pipeline code run against canon, no TTS):
 1. Source = the 20 action steps of E01-S005 (authoritative order preserved).
 2. Structure = 6 previs beats (P01–P06) covering the envelope-opening arc.
 3. Storyboard = `evidence/cp02-beat-map.md` (20/20 mapping, 0 omitted / 0 added).
-4. Previs = 5 stills in `evidence/cp02-previs/` (P01–P05; P06 reaction frame
-   pending — the per-turn image-generation cap (10/10) was reached during QA
-   regeneration, so P06 ships as spec-only in `cp02-beat-map.md` §5 and follows
-   in a follow-up commit) — interpretive storyboard frames for pipeline
-   evaluation, **not canon frames, not final video**.
+4. Previs = 6 stills in `evidence/cp02-previs/` (P01–P06; P06 delivered in a
+   follow-up commit on PR #77 after the per-turn image-cap reset) —
+   interpretive storyboard frames for pipeline evaluation, **not canon frames,
+   not final video**.
 5. No narration synthesis, no TTS, no audio of any kind.
 
 ## 4. Coverage (previously verified, reproduced)

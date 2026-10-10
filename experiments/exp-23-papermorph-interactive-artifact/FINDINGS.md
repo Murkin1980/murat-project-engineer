@@ -14,7 +14,7 @@ Branch: `arena/be7b80bc-murat-project-engineer` · Base: `main`
 
 | CP | Verdict | Evidence |
 |---|---|---|
-| CP-02 AI-serial script fixture | **READY** (storyboard/previs) | `evidence/cp02-ai-serial-results.md`, `evidence/cp02-beat-map.md`, `evidence/cp02-previs/` (5 stills; P06 frame pending on image-cap reset) |
+| CP-02 AI-serial script fixture | **READY** (storyboard/previs) | `evidence/cp02-ai-serial-results.md`, `evidence/cp02-beat-map.md`, `evidence/cp02-previs/` (6 stills) |
 | CP-01 | **not rerun** (PR #76 READY stands) | — |
 | CP-03 | **not rerun** (PR #76 map stands; correction strengthens it, no change required) | — |
 
