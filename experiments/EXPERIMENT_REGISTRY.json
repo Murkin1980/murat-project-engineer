@@ -220,15 +220,16 @@
       "status": "PLANNED",
       "why": "Measure whether a bounded visual feedback loop reduces UI reconstruction effort.",
       "date_added": "2026-08-28",
-      "next_action": "Freeze one existing-project fixture and baseline/candidate instructions before execution.",
+      "next_action": "Run the owner-authorized single-agent Arena comparison in docs/experiments/EXP-S2C-01_ARENA_TASK.md: freeze one Salamat Projects Dashboard screen, execute isolated baseline vs render→compare→targeted-edit candidate arms, then record bounded evidence and stop before production changes.",
       "result_summary": "Planned; no production integration or new runtime is authorized.",
       "repo": "Murkin1980/murat-project-engineer",
       "experiment_path": "docs/experiments/EXP-S2C-01_SCREENSHOT_TO_CODE_VISUAL_WORKFLOW.md",
       "evidence_links": [
-        "https://github.com/Murkin1980/murat-project-engineer/blob/main/docs/experiments/EXP-S2C-01_SCREENSHOT_TO_CODE_VISUAL_WORKFLOW.md"
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/docs/experiments/EXP-S2C-01_SCREENSHOT_TO_CODE_VISUAL_WORKFLOW.md",
+        "docs/experiments/EXP-S2C-01_ARENA_TASK.md"
       ],
       "pr_or_issue_links": [],
-      "updated_at": "2026-08-28"
+      "updated_at": "2026-10-10"
     },
     {
       "experiment_id": "EXP-COMPUTE-BUDGET",
