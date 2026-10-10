@@ -319,3 +319,176 @@ Open one bounded PR against `murat-project-engineer/main`.
 Do not merge automatically.
 
 The experiment ends after the evidence and final recommendation are recorded.
+
+
+---
+
+# Closure checkpoint — efficient visual correction budget
+
+Owner authorization: 2026-10-10  
+Disposition: **EXTEND_EXISTING**  
+Purpose: resolve the remaining PASS-gate ambiguity in EXP-S2C-01 without changing the fixture or opening a new experiment.
+
+## Why this checkpoint exists
+
+The first run demonstrated materially better fidelity with the render→compare→targeted-edit loop, but the candidate used about 10 minutes versus about 5 minutes for baseline.
+
+That is useful evidence, but it does not cleanly satisfy the original PASS condition requiring either:
+- >=30% lower reconstruction/rework effort with no material fidelity loss; or
+- roughly equal effort with materially better fidelity.
+
+Therefore the first run remains valid evidence, but its PASS classification must not be treated as final until this bounded efficiency checkpoint is executed.
+
+## Fixture lock
+
+Use the exact same frozen fixture already preserved under:
+
+`experiments/exp-s2c-01/reference/`
+
+Do not recapture or replace the reference screenshots.
+
+Do not inspect target source before the candidate is frozen.
+
+Do not modify `Murkin1980/salamat-projects-dashboard`.
+
+## Candidate C — efficient correction budget
+
+Start from a clean implementation directory.
+
+Do not copy the prior candidate source.
+
+Use the same frozen candidate instruction and same output scope.
+
+Run:
+- 1 initial implementation/render;
+- maximum **3 targeted visual correction cycles**.
+
+After each render:
+1. identify the single largest remaining mismatch;
+2. make the smallest practical localized change;
+3. rerender;
+4. record elapsed time and visual score.
+
+Do not spend a cycle on cosmetic differences that do not materially affect layout, readability, hierarchy, or responsive fidelity.
+
+## Stop-on-diminishing-returns rule
+
+Stop before cycle 3 if either is true:
+- desktop score >= 4.6 and mobile score >= 4.6;
+- the latest cycle improves the average score by < 0.10.
+
+Record the stop reason.
+
+This stop rule is part of the experiment result.
+
+## Measurement
+
+Record for initial render and each correction cycle:
+- cumulative elapsed time;
+- desktop score;
+- mobile score;
+- average score;
+- largest remaining mismatch;
+- exact localized change;
+- score gain from the previous state.
+
+Also record:
+- total source LOC;
+- number of correction cycles actually used;
+- total elapsed candidate time;
+- remaining mismatch count.
+
+## Final comparison
+
+Compare:
+- original baseline Arm A;
+- original 5-cycle Arm B;
+- new bounded Candidate C.
+
+The key question is:
+
+> What is the smallest visual-correction budget that captures most of the fidelity gain?
+
+Calculate:
+- Candidate C desktop/mobile delta vs baseline;
+- Candidate C time delta vs baseline;
+- Candidate C fidelity retained vs original 5-cycle candidate.
+
+## PASS
+
+EXP-S2C-01 may be finalized as PASS only if Candidate C satisfies all of:
+
+1. candidate elapsed time is no more than **1.5× baseline time**, or the observable difference is <= 3 minutes;
+2. desktop fidelity >= **4.6 / 5**;
+3. mobile fidelity >= **4.6 / 5**;
+4. candidate retains at least **70% of the desktop and mobile fidelity gain** achieved by the original 5-cycle candidate versus baseline;
+5. no screenshot-as-layout cheating;
+6. target repository unchanged;
+7. no persistent new runtime/service.
+
+If these thresholds are not met:
+- use **REWORK** if the pattern remains useful but the efficient budget is not yet proven;
+- use **HOLD** if the extra effort is disproportionate to the fidelity gain.
+
+## Reuse decision
+
+Return exactly one:
+- **REUSE_COMPONENT**
+- **HOLD**
+- **REJECT**
+
+If PASS / REUSE_COMPONENT:
+promote the practical rule for future UI reconstruction work:
+
+> default to 1 initial render + up to 3 targeted correction cycles, with early stop on diminishing returns.
+
+Do not make 5 correction cycles the default.
+
+## Required evidence
+
+Add under:
+
+`experiments/exp-s2c-01/efficient-budget/`
+
+at minimum:
+- `README.md`
+- candidate source;
+- initial desktop/mobile renders;
+- each correction-cycle desktop/mobile render;
+- `CYCLE_METRICS.json`
+- `RESULTS.md`
+
+Update the top-level experiment `RESULTS.md` with the reconciled final verdict.
+
+## Terminal report
+
+```text
+RESULT: PASS / REWORK / HOLD
+SINGLE_AGENT: YES
+FIXTURE: SAME_FROZEN_FIXTURE
+BASELINE TIME:
+ORIGINAL 5-CYCLE TIME:
+CANDIDATE C TIME:
+CANDIDATE C CYCLES:
+BASELINE DESKTOP:
+CANDIDATE C DESKTOP:
+BASELINE MOBILE:
+CANDIDATE C MOBILE:
+DESKTOP GAIN RETAINED:
+MOBILE GAIN RETAINED:
+DIMINISHING_RETURNS_STOP:
+SCREENSHOT_AS_LAYOUT: NO
+TARGET REPO CHANGES: NONE
+DEEP_CHANGE: NO
+RECOMMENDATION: REUSE_COMPONENT / HOLD / REJECT
+DEFAULT CORRECTION BUDGET:
+NEXT ACTION:
+```
+
+## Merge boundary
+
+Update PR #84 if practical, otherwise open one small follow-up PR.
+
+Do not merge automatically.
+
+Stop after the reconciled final verdict and evidence are recorded.
