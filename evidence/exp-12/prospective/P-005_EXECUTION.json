@@ -1,0 +1,26 @@
+{
+  "case_id": "EXP12-P-005",
+  "registration_ref": "evidence/exp-12/prospective/P-005_PRE_REGISTRATION.json",
+  "registration_sha256": "8e10bef76fa0c84210d2d8c4b1d8ae86ec850857ba75c165a05752273f80051d",
+  "engine_ref": "scripts/triage_engine.py",
+  "engine_sha256": "25732b512de7396f8026b4d23991a99362f1b44e3ae9b77ba819481a23199886",
+  "engine_output": {
+    "task_id": "EXP12-P-005",
+    "execution_confidence": 85,
+    "complexity": 1,
+    "risk": 1,
+    "blast_radius": 0,
+    "affected_repositories": [
+      "Murat-house"
+    ],
+    "architectural_impact": 0,
+    "data_sensitivity": 0,
+    "unknowns": 1,
+    "deep_change_probability": 5,
+    "human_approval_required": false,
+    "human_approval_reasons": [],
+    "recommended_risk_tier": "FAST",
+    "engine_version": "0.1.0"
+  },
+  "state": "EXECUTED"
+}
