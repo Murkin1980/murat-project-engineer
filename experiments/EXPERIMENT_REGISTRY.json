@@ -155,14 +155,15 @@
       "status": "READY_TO_TEST",
       "why": "Test deterministic pre-execution route checks before spending budget.",
       "date_added": "2026-08-21",
-      "next_action": "Run docs/experiments/EXP-13_ARENA_SECRET_PREFLIGHT.md to determine whether Arena supports secure owner/admin secret injection for OpenCode Go. Do not make live provider calls or start Pilot Batch 1.",
+      "next_action": "Run docs/experiments/EXP-13_CLOUDFLARE_RELAY_PREFLIGHT.md. First prove real Wrangler/Cloudflare access using existing Cloudflare deployment patterns; then deploy a health-only temporary relay. Stop at OWNER_SECRET_REQUIRED before installing the OpenCode Go credential. Pilot Batch 1 remains forbidden.",
       "result_summary": "Harness and usage adapters exist; no Pilot Batch 1 runs have executed.",
       "repo": "Murkin1980/murat-project-engineer",
       "experiment_path": "docs/experiments/EXP-13_LOW_COST_EVALUATION_HARNESS.md",
       "evidence_links": [
         "https://github.com/Murkin1980/murat-project-engineer/blob/main/evidence/exp-13/PILOT_BATCH1_PRE_REGISTRATION.json",
         "docs/experiments/EXP-13_OPENCODE_GO_PREFLIGHT.md",
-        "docs/experiments/EXP-13_ARENA_SECRET_PREFLIGHT.md"
+        "docs/experiments/EXP-13_ARENA_SECRET_PREFLIGHT.md",
+        "docs/experiments/EXP-13_CLOUDFLARE_RELAY_PREFLIGHT.md"
       ],
       "pr_or_issue_links": [],
       "updated_at": "2026-10-10"
