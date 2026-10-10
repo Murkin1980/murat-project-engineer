@@ -1,0 +1,85 @@
+{
+  "checkpoint": "efficient-visual-correction-budget",
+  "experiment_id": "EXP-S2C-01",
+  "timestamp": "2026-10-10T11:15:00Z",
+  "single_agent": true,
+  "fixture": "Murkin1980/salamat-projects-dashboard /",
+  "budget_limits": {
+    "max_cycles": 3,
+    "max_time_multiple_vs_baseline": 1.5,
+    "max_time_delta_minutes": 3.0,
+    "min_desktop_score": 4.6,
+    "min_mobile_score": 4.6,
+    "min_fidelity_gain_retention": 0.70
+  },
+  "cycles": [
+    {
+      "cycle_id": 0,
+      "label": "initial_render",
+      "cumulative_elapsed_minutes": 3.0,
+      "desktop_score": 4.45,
+      "mobile_score": 4.45,
+      "average_score": 4.45,
+      "score_gain_from_previous": 0.0,
+      "largest_mismatch": "Initial render complete; Arena badge applied uppercase transform '? ARENA · UNKNOWN'; dashed border too light; mobile sync widget lacked inline responsiveness.",
+      "exact_localized_change": "Initial implementation in index.html (739 LOC)."
+    },
+    {
+      "cycle_id": 1,
+      "label": "badge_transform_and_dashed_border",
+      "cumulative_elapsed_minutes": 4.5,
+      "desktop_score": 4.60,
+      "mobile_score": 4.55,
+      "average_score": 4.575,
+      "score_gain_from_previous": 0.125,
+      "largest_mismatch": "Arena badge in project cards inherited text-transform: uppercase, rendering '? ARENA · UNKNOWN' instead of reference '? Arena · UNKNOWN'.",
+      "exact_localized_change": "In index.html: added text-transform: none, letter-spacing: normal, and adjusted border color to #94a3b8 on .pill-badge.badge-dashed."
+    },
+    {
+      "cycle_id": 2,
+      "label": "mobile_sync_widget_inline_layout",
+      "cumulative_elapsed_minutes": 6.0,
+      "desktop_score": 4.75,
+      "mobile_score": 4.70,
+      "average_score": 4.725,
+      "score_gain_from_previous": 0.150,
+      "largest_mismatch": "In mobile viewport, sync widget displayed stacked multi-line syllables ('Обн / овл / ено...') rather than horizontal 'Обновлено 08:46' row from reference.",
+      "exact_localized_change": "In index.html: split sync widget into desktop syllables and mobile timestamp classes, styled mobile media query to display inline horizontal 'Обновлено 08:46' and right-aligned refresh button."
+    }
+  ],
+  "stop_condition": {
+    "stopped_before_max_cycles": true,
+    "cycles_executed": 2,
+    "reason": "EARLY_STOP_ACHIEVED: desktop_score (4.75) >= 4.6 AND mobile_score (4.70) >= 4.6 simultaneously satisfied after Cycle 2."
+  },
+  "comparison": {
+    "baseline_arm_a": {
+      "time_minutes": 5.0,
+      "desktop_score": 4.11,
+      "mobile_score": 4.20
+    },
+    "original_candidate_b_5_cycle": {
+      "time_minutes": 10.0,
+      "desktop_score": 4.81,
+      "mobile_score": 4.70,
+      "desktop_gain_vs_baseline": 0.70,
+      "mobile_gain_vs_baseline": 0.50
+    },
+    "candidate_c_bounded": {
+      "time_minutes": 6.0,
+      "desktop_score": 4.75,
+      "mobile_score": 4.70,
+      "desktop_gain_vs_baseline": 0.64,
+      "mobile_gain_vs_baseline": 0.50,
+      "time_multiple_vs_baseline": 1.2,
+      "time_delta_minutes_vs_baseline": 1.0,
+      "desktop_gain_retained_ratio": 0.914,
+      "mobile_gain_retained_ratio": 1.000
+    }
+  },
+  "verdict": {
+    "result": "PASS",
+    "recommendation": "REUSE_COMPONENT",
+    "default_correction_budget": "1 initial render + up to 3 targeted correction cycles, with early stop on diminishing returns (desktop >= 4.6 and mobile >= 4.6, or latest cycle delta < 0.10)."
+  }
+}

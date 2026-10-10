@@ -1,0 +1,71 @@
+{
+  "experiment_id": "EXP-S2C-01",
+  "name": "Screenshot-to-Code Visual Workflow",
+  "timestamp": "2026-10-10T08:50:00Z",
+  "single_agent": true,
+  "fixture": {
+    "source_project": "Murkin1980/salamat-projects-dashboard",
+    "route": "/",
+    "viewports": {
+      "desktop": "1280x800",
+      "mobile": "390x844"
+    },
+    "reference_hashes": {
+      "desktop_sha256": "534979a87ca7445a1c4c1c10debf133b1971a2a9ed9e568eee913cbc2e86fb7f",
+      "mobile_sha256": "380ffe157b6889860ed9b369df3423c79fabf58db4ca9335815fba06898db810"
+    }
+  },
+  "arm_a_baseline": {
+    "cycles": 1,
+    "render_fix_cycles": 0,
+    "elapsed_minutes": 5,
+    "source_loc": 682,
+    "scores": {
+      "overall_layout": 4.5,
+      "spacing": 4.0,
+      "typography_hierarchy": 4.1,
+      "component_proportions": 3.8,
+      "borders_radius_shadows": 4.0,
+      "icon_asset_placement": 4.2,
+      "desktop_fidelity": 4.1,
+      "mobile_fidelity": 4.2
+    },
+    "average_score": 4.11,
+    "remaining_mismatches_count": 5
+  },
+  "arm_b_candidate": {
+    "cycles": 5,
+    "initial_render_cycles": 1,
+    "elapsed_minutes": 10,
+    "source_loc": 673,
+    "scores": {
+      "overall_layout": 4.9,
+      "spacing": 4.8,
+      "typography_hierarchy": 4.9,
+      "component_proportions": 4.8,
+      "borders_radius_shadows": 4.8,
+      "icon_asset_placement": 4.8,
+      "desktop_fidelity": 4.8,
+      "mobile_fidelity": 4.7
+    },
+    "average_score": 4.81,
+    "remaining_mismatches_count": 2
+  },
+  "deltas": {
+    "desktop_score_delta": 0.7,
+    "mobile_score_delta": 0.5,
+    "effort_delta_minutes": 5,
+    "fidelity_gain": "materially_better",
+    "loc_difference": -9
+  },
+  "anti_cheating": {
+    "screenshot_as_layout": false,
+    "source_inspected_before_freeze": false,
+    "target_repo_changes": "NONE"
+  },
+  "verdict": {
+    "result": "PASS",
+    "condition_met": "B (roughly equal effort but materially better fidelity)",
+    "recommendation": "REUSE_COMPONENT"
+  }
+}

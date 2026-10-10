@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salamat Projects Dashboard - Triage (Candidate C)</title>
+  <style>
+    :root {
+      --app-bg: #f4f6f9;
+      --card-bg: #ffffff;
+      --border-color: #e2e8f0;
+      --text-dark: #0f172a;
+      --text-body: #475569;
+      --text-muted: #64748b;
+      --brand-blue: #1d4ed8;
+      --brand-blue-soft: #edf2fa;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--app-bg);
+      color: var(--text-dark);
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Left Sidebar */
+    .sidebar {
+      width: 220px;
+      background: var(--card-bg);
+      border-right: 1px solid var(--border-color);
+      padding: 24px 14px 20px 14px;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      height: 100vh;
+      position: sticky;
+      top: 0;
+    }
+    .brand-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 26px;
+    }
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      background: #0f172a;
+      color: #ffffff;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: -0.5px;
+    }
+    .brand-meta h2 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1.2;
+    }
+    .brand-meta p {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .nav-group {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      flex-grow: 1;
+    }
+    .nav-item a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: background-color 0.15s, color 0.15s;
+    }
+    .nav-item.active a {
+      background: var(--brand-blue-soft);
+      color: var(--brand-blue);
+      font-weight: 600;
+    }
+    .nav-svg {
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .sidebar-footer {
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 12px;
+      background: var(--card-bg);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: auto;
+    }
+    .sidebar-footer span {
+      font-size: 11px;
+      color: var(--text-body);
+      line-height: 1.35;
+    }
+
+    /* Main Area */
+    .main-viewport {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Mobile Header Tab */
+    .mobile-header-bar {
+      display: none;
+      padding: 12px 16px;
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .mobile-active-tab {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--brand-blue-soft);
+      color: var(--brand-blue);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 9px 16px;
+      border-radius: 8px;
+      width: 100%;
+    }
+
+    .page-content {
+      padding: 28px 28px;
+      flex-grow: 1;
+    }
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
+    }
+    .heading-block {
+      max-width: 580px;
+    }
+    .eyebrow-text {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .main-title {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--text-dark);
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      line-height: 1.15;
+    }
+    .intro-text {
+      font-size: 13.5px;
+      color: var(--text-body);
+      line-height: 1.45;
+    }
+    .utility-controls {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .sync-widget {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 8px 16px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 14px;
+      min-height: 74px;
+    }
+    .sync-timestamp-col {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.15;
+      display: flex;
+      flex-direction: column;
+      width: 24px;
+      font-weight: 500;
+    }
+    .desktop-syllables {
+      display: flex;
+      flex-direction: column;
+    }
+    .mobile-timestamp {
+      display: none;
+    }
+    .sync-action-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--brand-blue);
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .search-input-wrap {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 270px;
+      height: 48px;
+    }
+    .search-input-wrap input {
+      border: none;
+      outline: none;
+      font-size: 13px;
+      color: var(--text-dark);
+      width: 100%;
+      background: transparent;
+    }
+    .search-input-wrap input::placeholder {
+      color: #94a3b8;
+    }
+
+    /* Metric Grid */
+    .metric-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .summary-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px 22px;
+      min-height: 136px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .summary-card-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-body);
+    }
+    .summary-card-value {
+      font-size: 42px;
+      font-weight: 800;
+      line-height: 1;
+      margin: 10px 0 6px 0;
+    }
+    .val-neutral { color: var(--text-dark); }
+    .val-danger { color: #dc2626; }
+    .val-success { color: #16a34a; }
+    .val-indigo { color: #4338ca; }
+    .summary-card-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Filters */
+    .filters-scroll {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 24px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .filter-tag {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 9999px;
+      padding: 6px 14px;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--text-body);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .filter-tag.active {
+      background: #1e293b;
+      border-color: #1e293b;
+      color: #ffffff;
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .folder-box {
+      width: 34px;
+      height: 34px;
+      background: #f1f5f9;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-body);
+    }
+    .pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 12px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+    .pill-badge.status-blocked {
+      background: #fee2e2;
+      color: #b91c1c;
+    }
+    .pill-badge.status-ready {
+      background: #dcfce7;
+      color: #15803d;
+    }
+    .pill-badge.badge-dashed {
+      padding: 5px 12px;
+      border-radius: 9999px;
+      font-size: 11px;
+      color: #64748b;
+      background: #f8fafc;
+      border: 1px dashed #94a3b8;
+      font-weight: 500;
+      white-space: nowrap;
+      text-transform: none;
+      letter-spacing: normal;
+    }
+    .stale-pill {
+      display: inline-flex;
+      padding: 3px 10px;
+      background: #fee2e2;
+      color: #991b1b;
+      border-radius: 9999px;
+      font-size: 10px;
+      font-weight: 700;
+      width: fit-content;
+      margin-bottom: 12px;
+      letter-spacing: 0.02em;
+    }
+    .activity-text {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .project-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+      letter-spacing: -0.4px;
+      line-height: 1.2;
+    }
+    .project-summary {
+      font-size: 13px;
+      color: var(--text-body);
+      line-height: 1.5;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+    .project-meta-section {
+      border-top: 1px solid #f1f5f9;
+      padding-top: 14px;
+      margin-top: auto;
+    }
+    .meta-cap {
+      font-size: 10px;
+      font-weight: 700;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 5px;
+    }
+    .meta-val {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 14px;
+      white-space: nowrap;
+    }
+    .meta-val.stage {
+      font-weight: 400;
+      color: var(--text-body);
+      margin-bottom: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+      .sidebar {
+        display: none;
+      }
+      .mobile-header-bar {
+        display: block;
+      }
+      .page-content {
+        padding: 16px;
+      }
+      .top-bar {
+        flex-direction: column;
+        gap: 16px;
+      }
+      .utility-controls {
+        flex-direction: column;
+        width: 100%;
+      }
+      .desktop-syllables {
+        display: none;
+      }
+      .mobile-timestamp {
+        display: block;
+        font-size: 13px;
+        color: var(--text-muted);
+      }
+      .sync-widget {
+        width: 100%;
+        min-height: auto;
+        padding: 12px 16px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .search-input-wrap {
+        width: 100%;
+      }
+      .metric-summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="brand-header">
+      <div class="brand-icon">SM</div>
+      <div class="brand-meta">
+        <h2>Projects</h2>
+        <p>salamat-mebel.kz</p>
+      </div>
+    </div>
+    <ul class="nav-group">
+      <li class="nav-item active">
+        <a href="#triage">
+          <span class="nav-svg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          </span>
+          Triage
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#portfolio">
+          <span class="nav-svg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>
+          </span>
+          Portfolio
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#experiments">
+          <span class="nav-svg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.62 18.5A2 2 0 0 0 6.34 22h11.32a2 2 0 0 0 1.72-3.5L14 9.31V2"/></svg>
+          </span>
+          Experiments
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#attention">
+          <span class="nav-svg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </span>
+          Attention
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#nodes">
+          <span class="nav-svg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M8.5 8.5l7 7"/></svg>
+          </span>
+          Nodes
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#roadmap">
+          <span class="nav-svg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="2"/></svg>
+          </span>
+          Roadmap
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#reports">
+          <span class="nav-svg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+          </span>
+          Reports
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#discovery">
+          <span class="nav-svg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+          </span>
+          Discovery
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#settings">
+          <span class="nav-svg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+          </span>
+          Settings
+        </a>
+      </li>
+    </ul>
+    <div class="sidebar-footer">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/></svg>
+      <span>Portfolio Monitoring UI · read-only</span>
+    </div>
+  </aside>
+
+  <!-- Main Viewport -->
+  <div class="main-viewport">
+    <div class="mobile-header-bar">
+      <div class="mobile-active-tab">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Triage
+      </div>
+    </div>
+
+    <main class="page-content">
+      <div class="top-bar">
+        <div class="heading-block">
+          <div class="eyebrow-text">Operational Portfolio</div>
+          <h1 class="main-title">Triage</h1>
+          <p class="intro-text">
+            Живой пульт проектов. Состояния обновляются из проверенного runtime snapshot без ручного редактирования карточек.
+          </p>
+        </div>
+        <div class="utility-controls">
+          <div class="sync-widget">
+            <div class="sync-timestamp-col">
+              <div class="desktop-syllables">
+                <span>Обн</span>
+                <span>овл</span>
+                <span>ено</span>
+                <span>08:</span>
+                <span>46</span>
+              </div>
+              <div class="mobile-timestamp">Обновлено 08:46</div>
+            </div>
+            <div class="sync-action-btn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M3 21v-5h5"/></svg>
+              <span>Обновить</span>
+            </div>
+          </div>
+          <div class="search-input-wrap">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="text" placeholder="Найти проект...">
+          </div>
+        </div>
+      </div>
+
+      <!-- Metric Grid -->
+      <div class="metric-summary-grid">
+        <div class="summary-card">
+          <div class="summary-card-label">Активные</div>
+          <div class="summary-card-value val-neutral">7</div>
+          <div class="summary-card-sub">в рабочем портфеле</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-card-label">Требуют внимания</div>
+          <div class="summary-card-value val-danger">15</div>
+          <div class="summary-card-sub">с объяснимой причиной</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-card-label">Готовы к следующему этапу</div>
+          <div class="summary-card-value val-success">2</div>
+          <div class="summary-card-sub">READY</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-card-label">На валидации</div>
+          <div class="summary-card-value val-indigo">2</div>
+          <div class="summary-card-sub">VALIDATION</div>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="filters-scroll">
+        <div class="filter-tag active">ALL 15</div>
+        <div class="filter-tag">ACTION NOW 0</div>
+        <div class="filter-tag">BLOCKED 1</div>
+        <div class="filter-tag">READY 2</div>
+        <div class="filter-tag">IN PROGRESS 2</div>
+        <div class="filter-tag">VALIDATION 2</div>
+        <div class="filter-tag">HOLD 1</div>
+        <div class="filter-tag">DONE 1</div>
+      </div>
+
+      <!-- Project Cards -->
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card">
+          <div class="project-card-header">
+            <div class="folder-box">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>
+            </div>
+            <span class="pill-badge status-blocked">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              BLOCKED
+            </span>
+            <span class="pill-badge badge-dashed">? Arena · UNKNOWN</span>
+          </div>
+          <div class="stale-pill">УСТАРЕЛА</div>
+          <div class="activity-text">Активность: 17 сент. 2026 г., 00:00</div>
+          <h2 class="project-title">Murat Ads Control</h2>
+          <p class="project-summary">Google Ads control and optimization layer for furniture brands.</p>
+          <div class="project-meta-section">
+            <div class="meta-cap">Репозиторий</div>
+            <div class="meta-val">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 0 1 2 2v7"/><line x1="6" y1="9" x2="6" y2="21"/></svg>
+              Murkin1980/murat-ads-control
+            </div>
+            <div class="meta-cap">Текущий этап</div>
+            <div class="meta-val stage">CP-004 — Bek Mebel real diagnostic /</div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card">
+          <div class="project-card-header">
+            <div class="folder-box">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>
+            </div>
+            <span class="pill-badge status-ready">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              READY
+            </span>
+            <span class="pill-badge badge-dashed">? Arena · UNKNOWN</span>
+          </div>
+          <div class="stale-pill">УСТАРЕЛА</div>
+          <div class="activity-text">Активность: 18 сент. 2026 г., 00:00</div>
+          <h2 class="project-title">Murat AI Orchestrator</h2>
+          <p class="project-summary">Bounded orchestration layer for Murat AI with governed routing, fallback and durable execution checkpoints.</p>
+          <div class="project-meta-section">
+            <div class="meta-cap">Репозиторий</div>
+            <div class="meta-val">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 0 1 2 2v7"/><line x1="6" y1="9" x2="6" y2="21"/></svg>
+              Murkin1980/murat-ai-orchestrator
+            </div>
+            <div class="meta-cap">Текущий этап</div>
+            <div class="meta-val stage">CP-06 — Bounded Fallback & Quality Escalation v1</div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card">
+          <div class="project-card-header">
+            <div class="folder-box">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>
+            </div>
+            <span class="pill-badge status-ready">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              READY
+            </span>
+            <span class="pill-badge badge-dashed">? Arena · UNKNOWN</span>
+          </div>
+          <div class="stale-pill">УСТАРЕЛА</div>
+          <div class="activity-text">Активность: 18 сент. 2026 г., 00:00</div>
+          <h2 class="project-title">Murat House</h2>
+          <p class="project-summary">Public project journal about how Murat's projects, decisions, lessons and skills are built.</p>
+          <div class="project-meta-section">
+            <div class="meta-cap">Репозиторий</div>
+            <div class="meta-val">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 0 1 2 2v7"/><line x1="6" y1="9" x2="6" y2="21"/></svg>
+              Murkin1980/Murat-house
+            </div>
+            <div class="meta-cap">Текущий этап</div>
+            <div class="meta-val stage">CP-05 — House Navigation</div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
