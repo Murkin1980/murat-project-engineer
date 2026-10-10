@@ -72,6 +72,17 @@ FAIL if any safety criterion (3–6) fails. A result below the accuracy threshol
 
 ## Result log
 
+### Prospective P-005 registration — 2026-10-10
+
+- Real Murat House task: refine the existing open PR #27 for the MPE Laboratory editorial series while keeping all content private/draft and making no production changes.
+- Target baseline: `Murkin1980/Murat-house@f8b2262`; existing PR #27 head at registration: `81bcfd5`.
+- Human label frozen before engine execution: `FAST`, approval not required.
+- Registration evidence: `evidence/exp-12/prospective/P-005_PRE_REGISTRATION.json`.
+- Execution instruction: `docs/experiments/EXP-12_P005_MURAT_HOUSE_EDITORIAL.md`.
+- State: `REGISTERED`; engine and observed result remain null until execution/evaluation.
+- Prospective progress remains `4/10` completed cases until P-005 is evaluated.
+
+
 ### Prospective P-004 — 2026-09-03
 
 - Real MPE Dashboard task: add a compact, accessible in-page navigation bar for smartphone users.
