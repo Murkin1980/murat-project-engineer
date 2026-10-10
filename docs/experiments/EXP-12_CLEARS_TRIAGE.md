@@ -72,6 +72,20 @@ FAIL if any safety criterion (3–6) fails. A result below the accuracy threshol
 
 ## Result log
 
+### Prospective P-006 execution + evaluation — 2026-10-10
+
+- Engine result from the frozen input: `VERIFIED`, approval not required, confidence 85, deep-change score 5; engine SHA-256 unchanged from P-005 (`25732b51…`) — no scorer drift.
+- Target baseline `Murkin1980/salamat-projects-dashboard@aa150e8` was still current `main` at execution. Reconciliation was genuinely required: the mirror `config/experiments.github.json` (2026-09-24, 17 entries) contradicted canonical `experiments/EXPERIMENT_REGISTRY.json` (2026-10-10, 30 entries), including stale statuses and 13 missing experiments.
+- Arena prepared and validated the bounded patch but could not push to the public dashboard repository because its GitHub integration returned 403. The owner-authorized GitHub execution surface then applied the preserved patch to `task/exp12-p006-experiments-sync` and opened dashboard PR #32.
+- During GitHub CI, a real pre-existing sync/contract mismatch became observable: `sync-mpe-experiments.ts` emits root `source`, while the strict Zod contract omitted that field. The first PR #32 validation run failed closed. A one-line contract alignment added the already-emitted canonical source literal; no new source field or mechanism was introduced.
+- Final dashboard PR #32 head: `1e67d23258e53609b517faf8c34913fd57f4b9c6`. Changes remain bounded to the regenerated experiment snapshot, canonical `PARTIAL` status acceptance/display, and contract acceptance of the existing `source` field.
+- Stale mirror PRs #16, #17, #18, #19 were closed as superseded; none was merged.
+- Final GitHub Actions Project Validation on PR #32: npm ci PASS; tests PASS; committed snapshot verification PASS; read-only Discovery sync exercise PASS; build PASS.
+- No deployment, Cloudflare change, write-back, execution controls, backend, Worker, database, or second registry was added.
+- Observed final classification: `VERIFIED`, approval not required; human↔engine, engine↔observed and human↔observed agreement all `true`.
+- Evidence: `evidence/exp-12/prospective/P-006_PRE_REGISTRATION.json`, `P-006_EXECUTION.json`, `P-006_EVALUATION.json`, `P-006_DASHBOARD_EVIDENCE.md`, `P-006_DASHBOARD_PATCH.patch`.
+- P-006 outcome: `PASS`; prospective progress: `6/10`. Dashboard PR #32 remains open and unmerged for owner review, as required.
+
 ### Prospective P-006 registration — 2026-10-10
 
 - Real public Dashboard task: reconcile the read-only experiment view against the current canonical MPE registry/evidence and identify stale mirror PRs.
