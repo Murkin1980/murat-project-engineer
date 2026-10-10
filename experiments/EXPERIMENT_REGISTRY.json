@@ -491,21 +491,25 @@
       "experiment_id": "EXP-24",
       "name": "Agentic text → film pipeline (HyperFrames/Remotion)",
       "owning_project": "Murat Project Engineer",
-      "status": "PLANNED",
+      "status": "PASS",
       "why": "Extend the completed HyperFrames PR→video proof into a provider-neutral agentic production pipeline: source→editorial storyboard→stock/generated media→voice→programmatic composition→mobile QA→natural-language revision→final render, without creating a parallel video platform.",
       "date_added": "2026-10-06",
-      "next_action": "Run owner-authorized Phase 2 CP-06…CP-12. Start with one bounded source, freeze EDITORIAL_STORYBOARD.json and MEDIA_MANIFEST.json, use Remotion as the preferred baseline compositor, treat HyperFrames as optional, validate mobile readability at 360 px, then prove natural-language revision before final render.",
-      "result_summary": "Phase 1 remains PARTIAL / ADOPT_WITH_CHANGES due Arena Chrome/FFmpeg blockers. On 2026-10-08 the owner authorized MERGE into a broader Phase 2 based on a real agentic film-production reference. HyperFrames is no longer the critical path; Remotion is preferred for the next proof, provider-specific stock/TTS sit behind adapters, and mobile QA plus natural-language revisions are mandatory acceptance checkpoints.",
+      "next_action": "Experiment closed as PASS / REUSE_COMPONENT. Apply docs/REUSABLE_DERIVED_ARTIFACT_PATTERN.md as the default reuse candidate for applicable media/visual/interactive pipelines. For AI-serial production, continue with bounded scene-level production using the proven source→beats→marks/cues/timings→asset-slots→minimal-diff revision contract; address caption placement, visual continuity and production-quality media in owning-project checkpoints rather than reopening EXP-24.",
+      "result_summary": "PASS / REUSE_COMPONENT (2026-10-10). Phase 1 HyperFrames remained PARTIAL historically, but Phase 2/CP-13 proved the critical single-agent production contract independently of HyperFrames: Arena consumed an owner-authorized sanitized E01-S005 fixture, mapped 20/20 actions with 0 omitted/0 added into 6 stable beats, generated 6 test visuals, built storyboard/media manifest, rendered Remotion preview, passed bounded 360px QA, and executed three natural-language minimal-diff revisions (timing-only, single-asset replacement, final-beat timing/text). No AI-serial canon changes and no persistent service/DB/queue/new repo. Reuse the contract pattern; do not adopt Papermorph or HyperFrames as mandatory engines.",
       "repo": "Murkin1980/murat-project-engineer",
       "experiment_path": "experiments/exp-24-hyperframes-pr-video",
       "evidence_links": [
         "experiments/exp-24-hyperframes-pr-video/README.md",
         "experiments/exp-24-hyperframes-pr-video/ARENA_TASK.md",
         "experiments/exp-24-hyperframes-pr-video/RESULTS.md",
-        "https://alexeykrol.com/blog/2026/10/07/video1/"
+        "https://alexeykrol.com/blog/2026/10/07/video1/",
+        "docs/REUSABLE_DERIVED_ARTIFACT_PATTERN.md"
       ],
-      "pr_or_issue_links": [],
-      "updated_at": "2026-10-08"
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/80",
+        "https://github.com/Murkin1980/murat-project-engineer/pull/81"
+      ],
+      "updated_at": "2026-10-10"
     },
     {
       "experiment_id": "EXP-25",
