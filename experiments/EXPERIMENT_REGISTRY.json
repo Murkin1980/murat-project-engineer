@@ -138,7 +138,7 @@
       "status": "PASS",
       "why": "Validate deterministic triage and executability classifications.",
       "date_added": "2026-08-21",
-      "next_action": "Execute the pre-registered prospective case P-005 using docs/experiments/EXP-12_P005_MURAT_HOUSE_EDITORIAL.md. Human label FAST/no-approval is frozen; run the deterministic engine before execution, refine Murat House PR #27 without publication, then record execution/evaluation evidence. Do not relabel after seeing engine output.",
+      "next_action": "Execute pre-registered P-006 using docs/experiments/EXP-12_P006_DASHBOARD_EXPERIMENT_SYNC.md. Human label VERIFIED/no-approval is frozen. Reconcile the public read-only dashboard experiment view against current canonical MPE evidence, validate, do not deploy, then record execution/evaluation evidence.",
       "result_summary": "Retrospective mechanics passed; four prospective cases are complete, but the evidence remains insufficient for operational reliance.",
       "repo": "Murkin1980/murat-project-engineer",
       "experiment_path": "docs/experiments/EXP-12_CLEARS_TRIAGE.md",
