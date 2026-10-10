@@ -20,4 +20,7 @@ Resolve these references from the active project. Do not copy their content into
 - Lessons candidates: propose in `LESSONS_CANDIDATE.md`; do not auto-promote.
 - Core rules: immutable in this stage; use deep-change-gate.
 
+For the full Git-native representation of Ideas, Decisions, Experiments, Knowledge, and Skills, see `docs/architecture/LIGHTWEIGHT_KNOWLEDGE_MODEL.md`.
+
 If sources conflict, stop and report the conflict.
+

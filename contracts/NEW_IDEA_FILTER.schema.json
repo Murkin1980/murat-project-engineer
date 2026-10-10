@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://murat-ai-stack.local/schemas/new-idea-filter-v1.json",
+  "title": "Murat Project Engineer New Idea Filter Evaluation Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "idea_id",
+    "title",
+    "submitted_date",
+    "proposer",
+    "target_domain",
+    "checks",
+    "decision"
+  ],
+  "properties": {
+    "schema_version": {"type": "string", "const": "1.0.0"},
+    "idea_id": {"type": "string", "pattern": "^IDEA-[A-Z0-9-]+$"},
+    "title": {"type": "string", "minLength": 1},
+    "submitted_date": {"type": "string", "format": "date"},
+    "proposer": {"type": "string", "minLength": 1},
+    "target_domain": {"type": "string", "minLength": 1},
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "existing_active_project",
+        "extension_possibility",
+        "reusable_component",
+        "duplicate_capability",
+        "measurable_business_value",
+        "smallest_useful_experiment",
+        "portfolio_priority",
+        "deep_change_impact",
+        "anti_roadmap_constraints"
+      ],
+      "properties": {
+        "existing_active_project": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "matched_project", "details"],
+          "properties": {
+            "status": {"type": "string", "enum": ["OVERLAPPING", "DISTINCT", "NONE"]},
+            "matched_project": {"type": ["string", "null"]},
+            "details": {"type": "string"}
+          }
+        },
+        "extension_possibility": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["viable", "target_project", "architectural_fit"],
+          "properties": {
+            "viable": {"type": "boolean"},
+            "target_project": {"type": ["string", "null"]},
+            "architectural_fit": {"type": "string"}
+          }
+        },
+        "reusable_component": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["identified", "reusable_refs"],
+          "properties": {
+            "identified": {"type": "boolean"},
+            "reusable_refs": {"type": "array", "items": {"type": "string"}}
+          }
+        },
+        "duplicate_capability": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["detected", "duplicate_systems"],
+          "properties": {
+            "detected": {"type": "boolean"},
+            "duplicate_systems": {"type": "array", "items": {"type": "string"}}
+          }
+        },
+        "measurable_business_value": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["metric", "expected_outcome", "horizon"],
+          "properties": {
+            "metric": {"type": "string", "minLength": 1},
+            "expected_outcome": {"type": "string", "minLength": 1},
+            "horizon": {"type": "string", "minLength": 1}
+          }
+        },
+        "smallest_useful_experiment": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["hypothesis", "method", "sample_size", "max_duration"],
+          "properties": {
+            "hypothesis": {"type": "string", "minLength": 1},
+            "method": {"type": "string", "minLength": 1},
+            "sample_size": {"type": "string"},
+            "max_duration": {"type": "string"}
+          }
+        },
+        "portfolio_priority": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["competes_with_p0", "priority_verdict"],
+          "properties": {
+            "competes_with_p0": {"type": "boolean"},
+            "priority_verdict": {"type": "string", "enum": ["PROCEED", "DEFER", "REJECT"]}
+          }
+        },
+        "deep_change_impact": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["triggers_deep_change", "affected_boundaries"],
+          "properties": {
+            "triggers_deep_change": {"type": "boolean"},
+            "affected_boundaries": {"type": "array", "items": {"type": "string"}}
+          }
+        },
+        "anti_roadmap_constraints": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["violates_anti_roadmap", "violated_clauses"],
+          "properties": {
+            "violates_anti_roadmap": {"type": "boolean"},
+            "violated_clauses": {"type": "array", "items": {"type": "string"}}
+          }
+        }
+      }
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "terminal_disposition",
+        "fail_closed_triggered",
+        "rationale",
+        "next_action"
+      ],
+      "properties": {
+        "terminal_disposition": {
+          "type": "string",
+          "enum": [
+            "EXTEND_EXISTING",
+            "REUSE_COMPONENT",
+            "MERGE",
+            "EXPERIMENT",
+            "HOLD",
+            "NEW_REPOSITORY",
+            "REJECT"
+          ]
+        },
+        "fail_closed_triggered": {"type": "boolean"},
+        "rationale": {"type": "string", "minLength": 1},
+        "next_action": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

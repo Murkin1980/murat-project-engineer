@@ -57,4 +57,11 @@
 
 `approximate_usage_cost` stays compatible; it is treated as an *estimated* (never observed) spend when a number.
 
+## Evidence-First Review Gate Rule
+
+**Agent claims are not evidence.**
+
+Every gate result in `deterministic_gate_results` and every claim evaluated by `judge_verdict` must be backed by verifiable execution evidence (`evidence_ref`: e.g. `test_runner`, `git_diff`, `terminal_command`, `secrets_scan`). Unverified assertions remain `UNKNOWN/UNVERIFIED` and cannot yield `PASS`.
+
 This report is the measurement source for the first 20 runs. Do not include private chain-of-thought or secret values.
+

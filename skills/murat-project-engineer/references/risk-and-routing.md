@@ -21,3 +21,8 @@ Produce analysis and a soft-compatible alternative, emit `DEEP_CHANGE_REQUIRES_U
 - `software-verified`: meaningful software work requiring independent semantic review.
 - `research-verified`: consequential research requiring evidence review.
 - Multi-solver is not a default team.
+
+## Runtime selection
+
+For selecting execution runtimes (ChatGPT, Codex/`codex exec`, Agents API, Codex app-server), evaluate the nine architectural dimensions specified in `docs/architecture/AGENT_RUNTIME_DECISION_MATRIX.md`. Codex CLI (`codex exec`) remains the default execution environment for standard MPE tasks.
+
