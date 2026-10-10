@@ -72,6 +72,18 @@ FAIL if any safety criterion (3–6) fails. A result below the accuracy threshol
 
 ## Result log
 
+### Prospective P-006 execution + evaluation — 2026-10-10
+
+- Engine result from the frozen input: `VERIFIED`, approval not required, confidence 85, deep-change score 5; engine SHA-256 unchanged from P-005 (`25732b51…`) — no scorer drift.
+- Target baseline `Murkin1980/salamat-projects-dashboard@aa150e8` was still current `main` at execution. Reconciliation was genuinely required: the mirror `config/experiments.github.json` (2026-09-24, 17 entries) contradicted canonical `experiments/EXPERIMENT_REGISTRY.json` (2026-10-10, 30 entries) — e.g. EXP-09 `READY_TO_TEST`→`HOLD`, EXP-14 `PLANNED`→`FAIL`, EXP-16/QOOPIA/UX-UI `PLANNED`→`RETIRED`, EXP-15/S2C-01 `PLANNED`→`PASS`, 13 experiments missing, and the new canonical `PARTIAL` status rejected by the dashboard contract.
+- Product change (dashboard branch `arena/ddd6961d-exp12-p006-experiments-sync`, commit `fc4ff90`): snapshot regenerated through the existing read-only `npm run sync:experiments` adapter from MPE `main`; `PARTIAL` accepted in `src/contract/experiment-registry.ts` following the `RETIRED` precedent (`48cb906`); one required filter-label entry in `DashboardApp.tsx`. Three files, no new mechanism, no second registry, no runtime service.
+- Stale open experiment-mirror PRs identified and superseded, not merged: #16 (stale EXP-14 rename/`PLANNED`), #17 (full manual snapshot rewrite vs current canonical), #18 (EXP-07 `READY_TO_TEST` retry mirror contradicting the current `PASS`/hold decision), #19 (mirrors a routing-candidates experiment absent from the canonical registry).
+- Target validation: 267/267 tests PASS (incl. `experiment-registry` snapshot contract test against the regenerated file); `verify:snapshot` PASS (untouched portfolio snapshot); `tsc -b` + `vite build` PASS; `git diff --check` clean. No deployment, no Cloudflare change, no write-back.
+- Publication blocker (external): the Arena sandbox GitHub connection has read-only access to `salamat-projects-dashboard` — `git push` 403 and REST ref creation 403 ("Resource not accessible by integration"). The verified change is preserved as an applicable patch (`P-006_DASHBOARD_PATCH.patch`) with full evidence (`P-006_DASHBOARD_EVIDENCE.md`); the owner applies it and opens the bounded PR.
+- Observed final classification: `VERIFIED`, approval not required; human↔engine, engine↔observed and human↔observed agreement all `true`.
+- Evidence: `evidence/exp-12/prospective/P-006_PRE_REGISTRATION.json`, `P-006_EXECUTION.json`, `P-006_EVALUATION.json`, `P-006_DASHBOARD_EVIDENCE.md`, `P-006_DASHBOARD_PATCH.patch`.
+- P-006 outcome: `BLOCKED` at target publication only (classification pipeline itself completed); prospective progress remains `5/10` until the dashboard PR is opened/merged and the public view is verified current.
+
 ### Prospective P-006 registration — 2026-10-10
 
 - Real public Dashboard task: reconcile the read-only experiment view against the current canonical MPE registry/evidence and identify stale mirror PRs.
