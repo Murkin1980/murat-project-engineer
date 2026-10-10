@@ -1,0 +1,60 @@
+{
+  "experiment": "EXP-13",
+  "preflight": "opencode-go-connectivity",
+  "routes_version": "exp-13-routes-v1",
+  "date": "2026-10-10",
+  "result": "CREDENTIALS_MISSING",
+  "route_a": {
+    "slug": "opencode-go/deepseek-v4-flash",
+    "callable": false,
+    "live_call_made": false,
+    "token_usage_available": false,
+    "adapter_valid": false,
+    "adapter_status": "NOT_RUN",
+    "observed_cost": "UNOBSERVED"
+  },
+  "route_b": {
+    "slug": "opencode-go/kimi-k2.7-code",
+    "callable": false,
+    "live_call_made": false,
+    "token_usage_available": false,
+    "adapter_valid": false,
+    "adapter_status": "NOT_RUN",
+    "observed_cost": "UNOBSERVED"
+  },
+  "token_usage_available": {
+    "route_a": false,
+    "route_b": false
+  },
+  "adapter_valid": {
+    "route_a": false,
+    "route_b": false
+  },
+  "cost": {
+    "observed": false,
+    "value": "UNOBSERVED"
+  },
+  "credentials_config_check": {
+    "opencode_go_provider_credential": "ABSENT",
+    "opencode_cli_on_path": "ABSENT",
+    "codex_router_config_dir": "ABSENT",
+    "codex_router_usage_events_file": "ABSENT",
+    "opencode_mobile_server_state": "ABSENT",
+    "env_var_names_checked": ["GH_TOKEN", "GITHUB_TOKEN"],
+    "env_var_names_note": "Only GitHub tokens are present; neither is an OpenCode Go or Router credential. Values not recorded."
+  },
+  "adapter_unit_tests": {
+    "command": "python3 -m unittest tests.test_usage_from_router_log tests.test_usage_instrumentation",
+    "result": "PASS",
+    "tests_run": 29,
+    "note": "Synthetic fixtures inside the test suite; not evidence for either route."
+  },
+  "retries_used": 0,
+  "secrets_stored": false,
+  "pilot_batch_started": false,
+  "pilot_batch_runs": 0,
+  "blocker": "No OpenCode Go provider credential or configuration is present in the Arena runtime. The Codex Router usage-events source is also absent, and the opencode CLI is not installed. Because the credential gate failed, no live calls were made.",
+  "egress_note": "Sandbox outbound allowlist covers github.com, codeload.github.com, api.github.com, registry.npmjs.org, pypi.org and files.pythonhosted.org. No OpenCode Go endpoint is on it. This was not tested with a live request.",
+  "next_action": "Owner/Arena admin provisions the OpenCode Go provider credential through the Arena secret store (not the repo), and confirms the Router/usage-event source and egress path for that runtime. Then rerun this preflight. Do not start Pilot Batch 1 and do not generate synthetic usage.",
+  "repository_changes": ["evidence/exp-13/opencode-go-preflight/"]
+}
