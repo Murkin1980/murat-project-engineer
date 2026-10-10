@@ -1,0 +1,26 @@
+{
+  "case_id": "EXP12-P-006",
+  "registration_ref": "evidence/exp-12/prospective/P-006_PRE_REGISTRATION.json",
+  "registration_sha256": "92728f269967d0fc98d08c6094c29c9760de7ef9dc13a4bc376725b9b1db1d33",
+  "engine_ref": "scripts/triage_engine.py",
+  "engine_sha256": "25732b512de7396f8026b4d23991a99362f1b44e3ae9b77ba819481a23199886",
+  "engine_output": {
+    "task_id": "EXP12-P-006",
+    "execution_confidence": 85,
+    "complexity": 2,
+    "risk": 2,
+    "blast_radius": 0,
+    "affected_repositories": [
+      "salamat-projects-dashboard"
+    ],
+    "architectural_impact": 0,
+    "data_sensitivity": 0,
+    "unknowns": 1,
+    "deep_change_probability": 5,
+    "human_approval_required": false,
+    "human_approval_reasons": [],
+    "recommended_risk_tier": "VERIFIED",
+    "engine_version": "0.1.0"
+  },
+  "state": "EXECUTED"
+}
