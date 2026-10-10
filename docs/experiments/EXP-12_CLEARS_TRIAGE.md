@@ -72,6 +72,17 @@ FAIL if any safety criterion (3–6) fails. A result below the accuracy threshol
 
 ## Result log
 
+### Prospective P-006 registration — 2026-10-10
+
+- Real public Dashboard task: reconcile the read-only experiment view against the current canonical MPE registry/evidence and identify stale mirror PRs.
+- Target baseline: `Murkin1980/salamat-projects-dashboard@aa150e8`.
+- Human label frozen before engine execution: `VERIFIED`, approval not required.
+- Registration evidence: `evidence/exp-12/prospective/P-006_PRE_REGISTRATION.json`.
+- Execution instruction: `docs/experiments/EXP-12_P006_DASHBOARD_EXPERIMENT_SYNC.md`.
+- State: `REGISTERED`; engine and observed classifications remain null until execution/evaluation.
+- Prospective progress remains `5/10` completed cases until P-006 is evaluated.
+
+
 ### Prospective P-005 — 2026-10-10
 
 - Real Murat House task: refine the existing open PR #27 for the MPE Laboratory editorial series while keeping all content private/draft and making no production changes.
