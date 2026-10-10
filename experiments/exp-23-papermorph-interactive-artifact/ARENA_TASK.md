@@ -1,5 +1,35 @@
 # Arena task — EXP-23 Papermorph
 
+## Bootstrap preflight — first real post-CP-07 run
+
+This experiment is the next real bootstrap validation after EXP-29 CP-07.
+
+Before normal experiment work:
+
+1. Start from fresh `main`.
+2. Generate an EXP-29 Arena Bootstrap packet for **EXP-23 / CP-01** using:
+   `experiments/exp-29-arena-bootstrap-harness/harness/bootstrap_builder.py`.
+3. Verify the packet.
+4. Continue only if verdict = `FRESH`.
+5. Use the packet as startup context, but keep canonical Git files authoritative.
+6. If verdict is `STALE` or `REJECTED`, stop EXP-23 execution and report the exact bootstrap defect/conflict first.
+7. Do not modify the EXP-29 harness inside EXP-23. Any harness defect is a separate finding/checkpoint.
+
+Record bootstrap-start evidence under:
+`experiments/exp-23-papermorph-interactive-artifact/evidence/bootstrap/`
+
+Capture at minimum:
+- packet bytes;
+- source-ref count;
+- files read before first useful EXP-23 action;
+- bytes read before first useful action;
+- tool operations before first useful action;
+- whether EXP-23 status, priority, checkpoint chain, stop rules, and next action were understood correctly from the packet;
+- any rediscovery the packet failed to prevent;
+- whether any stale or contradictory state was detected.
+
+The purpose is to test whether a **fresh Arena session** can begin the next experiment from Git + bootstrap without relying on prior sandbox/session memory.
+
 Do not start until EXP-22 Colibri has finished or Murat explicitly reprioritizes this experiment.
 
 Read first:
