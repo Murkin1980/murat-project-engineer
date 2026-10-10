@@ -461,11 +461,11 @@
       "experiment_id": "EXP-23",
       "name": "Papermorph document → interactive artifact",
       "owning_project": "Murat Project Engineer",
-      "status": "PARTIAL",
+      "status": "PASS",
       "why": "Test whether Papermorph's document/script → structured storyboard → narration → procedural animation/interaction pipeline yields reusable value for existing Murat projects without creating a parallel product or repository.",
       "date_added": "2026-10-06",
-      "next_action": "Rerun CP-02 when the owner supplies an AI-serial fixture or canon location; replace the 3 silent placeholder beats (wrap/final1/finish) with real TTS via work/tools/build_timings.py + re-verify; register the REUSE_COMPONENT decision in the owning projects' bounded runs if accepted (MIT notice retained; no engine vendoring into MPE).",
-      "result_summary": "PARTIAL (2026-10-10). CP-01 READY: stock Papermorph pipeline (pinned 093418e, MIT) executed on the MPE governance doc; pilot ch01 = playable 11-beat narrated interactive web book; 0 factual errors, 2 manual corrections, beat-level regeneration proven. CP-02 BLOCKED: no existing AI-serial scene/episode exists in any accessible canonical source (repo, 37 GitHub repos, portfolio dashboard, code search) - external fixture gap, no canon invented. CP-03 READY: component map. Recommendation: REUSE_COMPONENT - mark-based narration/visual sync contract (to EXP-24 storyboard/narration layers incl. the AI-serial GENERATIVE path) + quiz data model with first-attempt scoring (to 1C Tutor KZ); engine explicitly NOT adopted (parallel-runtime trap). First real post-CP-07 bootstrap validation: EXP-29 packet for EXP-23/CP-01 verified FRESH. No deep change, no new repo, no production integration.",
+      "next_action": "Experiment closed with REUSE_COMPONENT. Do not adopt the Papermorph engine. If the owner accepts reuse, evaluate the mark-based narration↔visual sync contract in EXP-24 and the quiz data model in 1C Tutor KZ through separate bounded owning-project checkpoints. Replacing the 3 CP-01 silent TTS placeholders is optional evidence hygiene, not a blocker.",
+      "result_summary": "PASS / REUSE_COMPONENT (2026-10-10). Bootstrap preflight FRESH. CP-01 READY: stock Papermorph @093418e (MIT) on the MPE governance doc produced a playable 11-beat interactive artifact with 0 factual errors, 2 manual corrections and beat-level regeneration. CP-02 READY after correcting the private-repo access/search-scope error: AI-serial-v2 E01-S005 APPROVED FOR VISUAL DEVELOPMENT, 20/20 action steps mapped, 0 omitted / 0 added, dialogue and scene boundary preserved, continuity checked, 6/6 bounded previs stills, no TTS and no canon changes. CP-03 READY: reuse only the mark-based narration↔visual sync contract and quiz data model; Papermorph engine explicitly not adopted. No deep change, no new repo, no production integration.",
       "repo": "Murkin1980/murat-project-engineer",
       "experiment_path": "experiments/exp-23-papermorph-interactive-artifact",
       "evidence_links": [
@@ -477,9 +477,14 @@
         "experiments/exp-23-papermorph-interactive-artifact/evidence/upstream.md",
         "experiments/exp-23-papermorph-interactive-artifact/evidence/cp01-document-results.md",
         "experiments/exp-23-papermorph-interactive-artifact/evidence/cp02-ai-serial-results.md",
-        "experiments/exp-23-papermorph-interactive-artifact/evidence/cp03-component-map.md"
+        "experiments/exp-23-papermorph-interactive-artifact/evidence/cp03-component-map.md",
+        "experiments/exp-23-papermorph-interactive-artifact/evidence/cp02-beat-map.md",
+        "experiments/exp-23-papermorph-interactive-artifact/evidence/cp02-previs/README.md"
       ],
-      "pr_or_issue_links": [],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/76",
+        "https://github.com/Murkin1980/murat-project-engineer/pull/77"
+      ],
       "updated_at": "2026-10-10"
     },
     {
