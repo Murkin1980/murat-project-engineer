@@ -1,0 +1,4 @@
+CHANGED beats[5].caption: "A quiet warning. The president is leaving." -> null
+CHANGED beats[5].cues: [{"cue_id": "B06-C01", "kind": "caption_in", "at_s": 0.3}, {"cue_id": "B06-C02", "kind": "caption_out", "at_s": 4.2}] -> []
+CHANGED beats[5].duration_s: 4.5 -> 3.5
+TOTAL_FIELD_CHANGES 3

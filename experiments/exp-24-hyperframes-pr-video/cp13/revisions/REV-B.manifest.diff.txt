@@ -1,0 +1,10 @@
+CHANGED entries[3].asset_path: "assets/beats/B04-v1.jpg" -> "assets/beats/B04-v3.jpg"
+CHANGED entries[3].asset_sha256: "9daa81bab1da2ea07a4ff12f7fabaf50bf31cd20314c7710471c4f735d2eec08" -> "f89dc6fb92c6248ed3e9ca21406a4b74aec5357d28f3677508241a14c7be661d"
+CHANGED entries[3].generation_attempt: 1 -> 3
+CHANGED entries[3].provenance.generator: "arena generate_image (single agent, same session)" -> "arena generate_image (single agent, same session; revision B)"
+CHANGED entries[3].provenance.raw_original_path: "/home/user/exp24-artifacts/raw/B04-v1.png" -> "/home/user/exp24-artifacts/raw/B04-v3.png"
+CHANGED entries[3].provenance.raw_original_sha256: "4f5d9ab032cebe074b0fc226051bfc2dfb44fb023ce9b407a34cfb76ab26b205" -> "aec724939a79b3107723b0a7d99d7c3a3d558b85c85232cc2b717e1677b3eaae"
+CHANGED entries[3].rejected_attempts: "<absent>" -> [{"attempt": 2, "file": "B04-v2 (raw REJECTED-B04-v2.png)", "reason": "near-duplicate of v1 (same framing, clock not visible enough); not used"}]
+CHANGED entries[3].replaces: null -> "B04-v1 (superseded; kept in repo as history)"
+CHANGED generation_budget_used_turn: 6 -> "<absent>"
+TOTAL_FIELD_CHANGES 9

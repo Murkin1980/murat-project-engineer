@@ -1,0 +1,141 @@
+{
+  "manifest_id": "EXP-24-CP13-MEDIA-E01-S005",
+  "schema_version": 1,
+  "scene_id": "E01-S005",
+  "storyboard_ref": "cp13/EDITORIAL_STORYBOARD.json",
+  "contract_ref": "cp13/SCENE_CONTRACT.json",
+  "rule": "exactly one visual asset per beat; slot-to-file mapping lives only here",
+  "generation_budget_used_turn": 6,
+  "entries": [
+    {
+      "beat_id": "B01",
+      "asset_slot": "slot:B01",
+      "asset_path": "assets/beats/B01-v1.jpg",
+      "asset_path_root": "remotion/public/",
+      "asset_sha256": "07cf706bf1e382be4b32e8a4894cc872024d8e088ad8c8a497f48fd97bc15a4d",
+      "asset_kind": "test_visual_still",
+      "resolution": "1280x720",
+      "provenance": {
+        "origin": "ARENA_GENERATED",
+        "generator": "arena generate_image (single agent, same session)",
+        "raw_original_path": "/home/user/exp24-artifacts/raw/B01-v1.png",
+        "raw_original_sha256": "cf5bd55391a33280f81ab8bc01311d3ea6940ea21f616db851b4eb6cce20326b",
+        "derivation": "resized to 1280x720 and encoded as JPEG q88 (LANCZOS)",
+        "canon_status": "DERIVED_VISUAL_NOT_CANON"
+      },
+      "generation_attempt": 1,
+      "approval_state": "APPROVED_FOR_TEST",
+      "replaces": null,
+      "license_note": "generated test imagery; no third-party licensed media used"
+    },
+    {
+      "beat_id": "B02",
+      "asset_slot": "slot:B02",
+      "asset_path": "assets/beats/B02-v1.jpg",
+      "asset_path_root": "remotion/public/",
+      "asset_sha256": "b078cda21f078ab95445b51c79780cefe1a1c193a22d0ee4728b51bbae566a09",
+      "asset_kind": "test_visual_still",
+      "resolution": "1280x720",
+      "provenance": {
+        "origin": "ARENA_GENERATED",
+        "generator": "arena generate_image (single agent, same session)",
+        "raw_original_path": "/home/user/exp24-artifacts/raw/B02-v1.png",
+        "raw_original_sha256": "ca9c1d60349bf928f45cc6fdbcd1172a45fa99de3338dc15ed518a14e0ab7746",
+        "derivation": "resized to 1280x720 and encoded as JPEG q88 (LANCZOS)",
+        "canon_status": "DERIVED_VISUAL_NOT_CANON"
+      },
+      "generation_attempt": 1,
+      "approval_state": "APPROVED_FOR_TEST",
+      "replaces": null,
+      "license_note": "generated test imagery; no third-party licensed media used"
+    },
+    {
+      "beat_id": "B03",
+      "asset_slot": "slot:B03",
+      "asset_path": "assets/beats/B03-v1.jpg",
+      "asset_path_root": "remotion/public/",
+      "asset_sha256": "3f752f373dd4b8f4da668e44b3d72bd6eeae26ee6a99a7c651db6a7ed80cef40",
+      "asset_kind": "test_visual_still",
+      "resolution": "1280x720",
+      "provenance": {
+        "origin": "ARENA_GENERATED",
+        "generator": "arena generate_image (single agent, same session)",
+        "raw_original_path": "/home/user/exp24-artifacts/raw/B03-v1.png",
+        "raw_original_sha256": "6b44fb0dda4921f441fdc2b05b3e644983f4c7491b5b31d3e910b8546e3267a1",
+        "derivation": "resized to 1280x720 and encoded as JPEG q88 (LANCZOS)",
+        "canon_status": "DERIVED_VISUAL_NOT_CANON"
+      },
+      "generation_attempt": 1,
+      "approval_state": "APPROVED_FOR_TEST",
+      "replaces": null,
+      "license_note": "generated test imagery; no third-party licensed media used"
+    },
+    {
+      "beat_id": "B04",
+      "asset_slot": "slot:B04",
+      "asset_path": "assets/beats/B04-v1.jpg",
+      "asset_path_root": "remotion/public/",
+      "asset_sha256": "9daa81bab1da2ea07a4ff12f7fabaf50bf31cd20314c7710471c4f735d2eec08",
+      "asset_kind": "test_visual_still",
+      "resolution": "1280x720",
+      "provenance": {
+        "origin": "ARENA_GENERATED",
+        "generator": "arena generate_image (single agent, same session)",
+        "raw_original_path": "/home/user/exp24-artifacts/raw/B04-v1.png",
+        "raw_original_sha256": "4f5d9ab032cebe074b0fc226051bfc2dfb44fb023ce9b407a34cfb76ab26b205",
+        "derivation": "resized to 1280x720 and encoded as JPEG q88 (LANCZOS)",
+        "canon_status": "DERIVED_VISUAL_NOT_CANON"
+      },
+      "generation_attempt": 1,
+      "approval_state": "APPROVED_FOR_TEST",
+      "replaces": null,
+      "license_note": "generated test imagery; no third-party licensed media used"
+    },
+    {
+      "beat_id": "B05",
+      "asset_slot": "slot:B05",
+      "asset_path": "assets/beats/B05-v1.jpg",
+      "asset_path_root": "remotion/public/",
+      "asset_sha256": "29d84fa67b4db1bce032c9e4b137b92ddb4ff21e9d1dced27320abddf050a55e",
+      "asset_kind": "test_visual_still",
+      "resolution": "1280x720",
+      "provenance": {
+        "origin": "ARENA_GENERATED",
+        "generator": "arena generate_image (single agent, same session)",
+        "raw_original_path": "/home/user/exp24-artifacts/raw/B05-v1.png",
+        "raw_original_sha256": "0b2d9fedc5a76607907042fd3cbfba3e8157029bf419a8c11a0810ac5a0a241c",
+        "derivation": "resized to 1280x720 and encoded as JPEG q88 (LANCZOS)",
+        "canon_status": "DERIVED_VISUAL_NOT_CANON"
+      },
+      "generation_attempt": 1,
+      "approval_state": "APPROVED_FOR_TEST",
+      "replaces": null,
+      "license_note": "generated test imagery; no third-party licensed media used"
+    },
+    {
+      "beat_id": "B06",
+      "asset_slot": "slot:B06",
+      "asset_path": "assets/beats/B06-v1.jpg",
+      "asset_path_root": "remotion/public/",
+      "asset_sha256": "0fd76c936b27e88a917ac22dc55ef578af49e0fa5a1a148b716b1be1bfd8f1a1",
+      "asset_kind": "test_visual_still",
+      "resolution": "1280x720",
+      "provenance": {
+        "origin": "ARENA_GENERATED",
+        "generator": "arena generate_image (single agent, same session)",
+        "raw_original_path": "/home/user/exp24-artifacts/raw/B06-v1.png",
+        "raw_original_sha256": "154a56d6506d5c36725bce8cfc62fa9b9f3ebe9c480c4ae58d32b34f7f005fc0",
+        "derivation": "resized to 1280x720 and encoded as JPEG q88 (LANCZOS)",
+        "canon_status": "DERIVED_VISUAL_NOT_CANON"
+      },
+      "generation_attempt": 1,
+      "approval_state": "APPROVED_FOR_TEST",
+      "replaces": null,
+      "license_note": "generated test imagery; no third-party licensed media used"
+    }
+  ],
+  "voice": {
+    "provider": "none",
+    "note": "no TTS in this bounded run"
+  }
+}
