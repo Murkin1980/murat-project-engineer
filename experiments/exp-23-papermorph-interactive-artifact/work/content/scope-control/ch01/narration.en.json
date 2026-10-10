@@ -1,0 +1,17 @@
+{
+  "voice": "en-US-AndrewMultilingualNeural",
+  "rate": "-4%",
+  "beats": {
+    "intro": "Chapter one. [[sub]]How to do a task with the smallest change that is still correct.",
+    "principle": "This book is about a working rule: the [[rule]]scope and change control policy. Its first section is one sentence. [[one]]Perform the task with the smallest sufficient correct change. Why minimum? [[why]]Because every extra line of code, dependency, or configuration is something to review, break, and maintain later. So you deliver the requested behavior with the [[min]]minimum necessary new code, dependencies, infrastructure, configuration, abstractions, and unrelated edits. [[simplicity]]Simplicity first.",
+    "q1": "Quick check. [[pick]]Pick the missing word.",
+    "ladder": "Now suppose two sources give different answers. The policy gives a priority order for exactly this. [[ladder]]Here is the source of truth ladder, from highest to lowest. [[r1]]One: an explicit current owner instruction. [[r2]]Two: the current approved checkpoint or spec. [[r3]]Three: repository local, mandatory governance. [[r4]]Four: existing architecture, product, and domain contracts. [[r5]]Five: existing code and tests. [[r6]]Six: historical conventions and prior decisions.",
+    "conflict": "When sources [[conflict]]materially conflict, the rule is blunt. Do not silently pick the [[silent]]convenient interpretation. [[surface]]Surface the conflict, and follow the higher priority source — unless a deep change decision is required.",
+    "q2": "Quick check. [[tap]]Tap the source that outranks the other two.",
+    "boundary": "Section three says the checkpoint is the task boundary. [[rules]]Under a checkpoint: implement only that checkpoint. Do not invent the next one. Do not prebuild later work. Do not turn a discovered opportunity into current scope. Stop when it is complete. And if the spec says [[stop]]stop, stop. [[new]]A new checkpoint begins only after an owner instruction or committed owner approved spec authorizes it.",
+    "q3": "Quick check. [[pick]]The checkpoint is complete, and you found a great opportunity. What do you do?",
+    "wrap": "To sum up. [[w1]]Smallest sufficient correct change, and simplicity first. [[w2]]Six sources in a strict order, with the owner instruction on top. [[w3]]In a real conflict, surface it, and follow the higher priority. [[w4]]The checkpoint is the boundary, and stop means stop. [[end]]Now, the chapter practice.",
+    "final1": "Chapter practice. Two questions, one at a time. [[go]]Start when you are ready.",
+    "finish": "Well done. That is the end of chapter one."
+  }
+}

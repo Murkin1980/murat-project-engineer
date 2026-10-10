@@ -1,0 +1,7 @@
+[
+  {"folder": "ch01", "title": "Smallest Sufficient Change", "start": 1, "end": 2, "unit": "Core discipline"},
+  {"folder": "ch02", "title": "The Gates: Filter, Deep-Change, Minimal Diff", "start": 3, "end": 4, "unit": "Core discipline"},
+  {"folder": "ch03", "title": "Working Cleanly: Dependencies, Adjacent, Testing", "start": 5, "end": 6, "unit": "Craft"},
+  {"folder": "ch04", "title": "Scope Under Pressure: Growth, Parallel Systems, Merge Pressure", "start": 7, "end": 8, "unit": "Craft"},
+  {"folder": "ch05", "title": "Authority, Done, Report", "start": 9, "end": 10, "unit": "Accountability"}
+]

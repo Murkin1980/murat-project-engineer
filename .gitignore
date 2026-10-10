@@ -13,3 +13,7 @@ dist/
 .artifacts/
 .mpe-runtime/mailboxes/
 .devcontainer/OPENCODE_MOBILE_CONNECTION.txt
+
+# EXP-23 Papermorph pilot: rendered page references (direct + preview) are private, regenerable from book.pdf via split_pages.py
+experiments/exp-23-papermorph-interactive-artifact/work/books/*/pages/*.png
+experiments/exp-23-papermorph-interactive-artifact/work/books/*/pages/preview/
