@@ -206,3 +206,79 @@ Update RESULTS.md with a distinct **Phase 2 Result** section:
 - next action
 
 Do not overwrite the Phase 1 terminal record.
+
+
+## CP-13 — Adopt EXP-23 scene timing/sync contract
+
+Owner authorization: 2026-10-10  
+Source experiment: EXP-23 Papermorph — **PASS / REUSE_COMPONENT**
+
+Primary decision: **EXTEND_EXISTING**.
+
+Purpose: reuse only the proven scene representation pattern from EXP-23 inside the existing EXP-24 Phase 2 pipeline. Do not adopt the Papermorph engine/runtime.
+
+### Required contract
+
+Extend the existing editorial/storyboard representation with the smallest stable fields needed to support:
+
+```text
+scene
+→ ordered beats
+→ optional narration marks
+→ cues/timings
+→ per-beat visual asset
+→ per-beat regeneration
+→ renderer/voice adapters
+```
+
+At minimum the bounded fixture must demonstrate:
+
+- stable scene id + beat ids/order;
+- each material script/action beat maps to exactly one or explicitly grouped visual beat;
+- narration marks/cues are addressable without rewriting the whole scene;
+- timing belongs to the derived presentation layer, not AI-serial canon;
+- one beat/asset can be regenerated or replaced without changing approved unrelated beats;
+- visual/media provenance remains traceable;
+- the contract works with the existing Remotion-first Phase 2 path;
+- GENERATED and REAL_FOOTAGE modes share the same scene/beat/timing contract where practical.
+
+### AI-serial boundary
+
+For GENERATIVE mode:
+- read AI-serial canon only from an explicitly authorized canonical source;
+- generated storyboard, image, timing and video remain derived artifacts;
+- do not promote generated details to canon;
+- do not invent missing character biography, dialogue, setting facts or chronology;
+- character/style consistency is a downstream visual-generation concern, not authority to rewrite canon.
+
+### EXP-23 evidence to reuse
+
+Use the EXP-23 result as reference evidence:
+- CP-02 E01-S005 mapped 20/20 source actions;
+- omitted / added beats = 0 / 0;
+- 6/6 bounded previs stills;
+- storyboard/previs class only;
+- no AI-serial canon change.
+
+Do not regenerate EXP-23 evidence merely to start CP-13.
+
+### Media-generation constraint
+
+Arena media tools may be limited to about 10 image/audio generations per turn.
+Pre-plan batches accordingly.
+Do not replace quality-critical final assets with placeholders merely to finish a checkpoint; continue in a later turn instead.
+Placeholders are acceptable only when the checkpoint tests structure/assembly rather than media quality, and must be explicitly labeled.
+
+### PASS
+
+CP-13 passes only if one bounded Phase 2 fixture proves:
+1. deterministic scene → beat mapping;
+2. explicit marks/cues/timings;
+3. per-beat minimal-diff regeneration;
+4. compatibility with the existing EXP-24 storyboard/media/voice/render contracts;
+5. no Papermorph runtime/vendor dependency;
+6. no new repo/service/DB/queue/control plane;
+7. no AI-serial canon mutation.
+
+Record the adopted schema/contract and proof in EXP-24 evidence/RESULTS.
+Do not production-deploy or publish from this checkpoint.
