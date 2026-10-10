@@ -155,13 +155,14 @@
       "status": "READY_TO_TEST",
       "why": "Test deterministic pre-execution route checks before spending budget.",
       "date_added": "2026-08-21",
-      "next_action": "Run the owner-authorized OpenCode Go connectivity/usage preflight in docs/experiments/EXP-13_OPENCODE_GO_PREFLIGHT.md. Do not start Pilot Batch 1 unless the result is READY_FOR_EXP13.",
+      "next_action": "Run docs/experiments/EXP-13_ARENA_SECRET_PREFLIGHT.md to determine whether Arena supports secure owner/admin secret injection for OpenCode Go. Do not make live provider calls or start Pilot Batch 1.",
       "result_summary": "Harness and usage adapters exist; no Pilot Batch 1 runs have executed.",
       "repo": "Murkin1980/murat-project-engineer",
       "experiment_path": "docs/experiments/EXP-13_LOW_COST_EVALUATION_HARNESS.md",
       "evidence_links": [
         "https://github.com/Murkin1980/murat-project-engineer/blob/main/evidence/exp-13/PILOT_BATCH1_PRE_REGISTRATION.json",
-        "docs/experiments/EXP-13_OPENCODE_GO_PREFLIGHT.md"
+        "docs/experiments/EXP-13_OPENCODE_GO_PREFLIGHT.md",
+        "docs/experiments/EXP-13_ARENA_SECRET_PREFLIGHT.md"
       ],
       "pr_or_issue_links": [],
       "updated_at": "2026-10-10"
