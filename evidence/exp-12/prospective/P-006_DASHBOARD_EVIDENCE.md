@@ -67,3 +67,19 @@ No production deployment occurred. No Cloudflare or Pages configuration was touc
 The change is committed and fully validated on the local branch, but the Arena sandbox's GitHub connection is read-only for `Murkin1980/salamat-projects-dashboard`: `git push` returns 403 ("Permission to Murkin1980/salamat-projects-dashboard.git denied to Murkin1980") and REST ref creation returns 403 "Resource not accessible by integration". No PR could therefore be opened from the sandbox.
 
 Applicable artifact: `P-006_DASHBOARD_PATCH.patch` (same directory) — `git checkout -b arena/ddd6961d-exp12-p006-experiments-sync aa150e8 && git am P-006_DASHBOARD_PATCH.patch` (or `git apply`), push, open a bounded PR against `main`, CI `validate` job, owner merge decision.
+
+
+## Owner execution completion
+
+The Arena publication blocker was resolved through the owner-authorized GitHub execution surface.
+
+- Dashboard branch pushed: `task/exp12-p006-experiments-sync`.
+- Bounded dashboard PR opened: **#32**.
+- Final PR head: `1e67d23258e53609b517faf8c34913fd57f4b9c6`.
+- Stale mirror PRs **#16, #17, #18, #19** closed as superseded; none merged.
+- First GitHub CI run correctly failed because the existing strict experiment-registry contract did not accept the root `source` field that the existing `sync-mpe-experiments.ts` already emits.
+- Bounded correction: accept `source: 'Murkin1980/murat-project-engineer'` in the existing contract. This aligns the parser with the existing generator and does not add a new source-of-truth field or mechanism.
+- Final GitHub Actions **Project Validation: PASS**: install, tests, committed snapshot verification, read-only Discovery sync exercise, and build all passed.
+- PR #32 remains open and unmerged. No deployment occurred.
+
+This resolves the target-publication blocker for P-006. The prospective case is complete as `PASS` with observed `VERIFIED / approval not required`.
