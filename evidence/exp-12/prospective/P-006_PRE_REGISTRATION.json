@@ -1,0 +1,46 @@
+{
+  "case_id": "EXP12-P-006",
+  "registered_at": "2026-10-10T19:10:00+05:00",
+  "baseline_commit": "aa150e8b792f60f0fc2fe0704542818c6781abae",
+  "task": "Reconcile the public Salamat Projects Dashboard read-only experiment view with the current canonical Murat Project Engineer experiment registry using the dashboard's existing source/snapshot mechanisms, removing or superseding stale experiment mirror data where necessary without adding write-back, execution controls, runtime services, or deployment changes.",
+  "acceptance_criteria": [
+    "The dashboard experiment view reflects the current canonical MPE experiment statuses and next actions for entries it mirrors, based on current MPE registry/evidence rather than stale open mirror PRs.",
+    "Existing read-only architecture and source-adapter/snapshot path are reused; no second registry or competing source of truth is introduced.",
+    "No execution controls, write-back to MPE/project repositories, new API/backend/Worker/database, or deployment is added.",
+    "Changes are limited to the smallest existing data/source adapter, fixtures/tests, and evidence/docs needed for the reconciliation.",
+    "Dashboard validation/tests/build pass and any stale/conflicting open experiment-mirror PRs are identified in evidence rather than silently combined.",
+    "No production deployment occurs as part of P-006."
+  ],
+  "non_scope": [
+    "No deployment or Cloudflare configuration change.",
+    "No project execution controls, Arena/Codex controls, or write-back.",
+    "No new repository, service, database, API, or parallel experiment registry.",
+    "No unrelated dashboard redesign or portfolio reprioritization.",
+    "Do not merge or reuse stale open experiment-mirror PRs without reconciling them against current main and current MPE evidence."
+  ],
+  "triage_input": {
+    "task_id": "EXP12-P-006",
+    "summary": "Reconcile the public read-only dashboard experiment view with current canonical MPE experiment evidence using existing snapshot/source mechanisms",
+    "affected_repositories": [
+      "salamat-projects-dashboard"
+    ],
+    "acceptance_criteria_present": true,
+    "rollback_known": true,
+    "ratings": {
+      "complexity": 2,
+      "risk": 2,
+      "architectural_impact": 0,
+      "data_sensitivity": 0,
+      "unknowns": 1
+    },
+    "signals": []
+  },
+  "pre_registered_human_label": {
+    "risk_tier": "VERIFIED",
+    "human_approval_required": false,
+    "rationale": "The change is reversible and stays inside the existing read-only dashboard architecture, but it updates public-facing portfolio/experiment status derived from another repository. Source reconciliation and full validation are required to avoid publishing stale or misleading status, so VERIFIED is more appropriate than FAST; no destructive, production-deploy, sensitive-data, permission, or deep-change signal requires owner approval."
+  },
+  "engine_output": null,
+  "observed_final_classification": null,
+  "state": "REGISTERED"
+}
