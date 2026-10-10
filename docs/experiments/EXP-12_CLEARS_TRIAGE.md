@@ -72,15 +72,18 @@ FAIL if any safety criterion (3–6) fails. A result below the accuracy threshol
 
 ## Result log
 
-### Prospective P-005 registration — 2026-10-10
+### Prospective P-005 — 2026-10-10
 
 - Real Murat House task: refine the existing open PR #27 for the MPE Laboratory editorial series while keeping all content private/draft and making no production changes.
-- Target baseline: `Murkin1980/Murat-house@f8b2262`; existing PR #27 head at registration: `81bcfd5`.
+- Target baseline: `Murkin1980/Murat-house@f8b2262`; PR #27 head at registration: `81bcfd5`.
 - Human label frozen before engine execution: `FAST`, approval not required.
-- Registration evidence: `evidence/exp-12/prospective/P-005_PRE_REGISTRATION.json`.
-- Execution instruction: `docs/experiments/EXP-12_P005_MURAT_HOUSE_EDITORIAL.md`.
-- State: `REGISTERED`; engine and observed result remain null until execution/evaluation.
-- Prospective progress remains `4/10` completed cases until P-005 is evaluated.
+- Engine result from frozen input: `FAST`, approval not required, confidence 85, deep-change score 5.
+- Arena could not access the private Murat House repository, so target execution was completed through the owner-authorized GitHub execution surface instead of changing the frozen registration.
+- Murat House PR #27 was refined only within the existing editorial package: stale aggregate experiment counts were removed, package/canonical-source boundaries were tightened, and a private editorial review note was added. No publication/runtime/dependency/deployment change occurred.
+- Target validation on PR #27: npm ci PASS; typecheck PASS; tests PASS; content validation PASS; build PASS.
+- Observed final classification: `FAST`, approval not required; human↔engine, engine↔observed, and human↔observed agreement are all `true`.
+- Evidence: `evidence/exp-12/prospective/P-005_PRE_REGISTRATION.json`, `P-005_EXECUTION.json`, `P-005_EVALUATION.json`.
+- P-005 outcome: `PASS`; prospective progress: `5/10`.
 
 
 ### Prospective P-004 — 2026-09-03
