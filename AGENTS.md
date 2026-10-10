@@ -109,6 +109,14 @@ When the owner asks for instructions for Arena, Codex, Claude Code, or another c
 
 The repository version is authoritative; the chat block is only a compact launch pointer.
 
+### Reusable derived-artifact pattern rule
+
+For tasks that transform an authoritative source into visual, media, interactive, training, presentation, or similar derived artifacts, read and evaluate:
+
+- `docs/REUSABLE_DERIVED_ARTIFACT_PATTERN.md`
+
+Prefer reuse of its stable source→beats/work-units→marks/cues/timings→asset-slots→QA→minimal-diff revision contract before designing a new parallel pipeline. Do not apply it to unrelated work where the structure adds no value.
+
 ### Arena bootstrap rule
 
 For **Arena** tasks that are context-heavy, resume prior work, depend on multiple repository sources, or rely on accumulated experiment lessons, prepare the handoff with the validated EXP-29 bootstrap pattern before giving Arena the chat instruction.
