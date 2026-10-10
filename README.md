@@ -36,6 +36,10 @@ EXP-12 adds a bounded, stateless triage prototype and a 20-case retrospective ba
 
 Prospective cases use immutable REGISTERED, EXECUTED and EVALUATED evidence with hashes. P-001–P-004 are complete; P-003 is the first external product case and P-004 is the first FAST dashboard UI case. Progress is 4/10.
 
+## Model artifact resilience
+
+EXP-18 established and adopted a bounded practice for independently verifiable model fallback artifacts. When a fallback path is useful, pin the exact model revision, preserve a canonical per-file SHA-256 manifest and fallback reference, and verify hashes after retrieval. This does not authorize production fallback routing, background downloading, seeding, or a new model registry. See `docs/MODEL_ARTIFACT_RESILIENCE.md`.
+
 ## Portfolio dashboard
 
 Live project status map: https://murat-project-engineer.muriktl.workers.dev
