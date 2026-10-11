@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-10-10",
+  "updated_at": "2026-10-11",
   "experiments": [
     {
       "experiment_id": "EXP-ALEXANDRIA",
@@ -658,6 +658,24 @@
         "https://github.com/Murkin1980/murat-project-engineer/pull/65"
       ],
       "updated_at": "2026-10-09"
+    },
+    {
+      "experiment_id": "EXP-30",
+      "name": "Crisp Diagrams — branded SVG documentation pilot",
+      "owning_project": "Murat Project Engineer",
+      "status": "PLANNED",
+      "why": "Evaluate source-grounded, branded SVG diagrams and mobile legibility against existing diagram tooling without a duplicate visualization system.",
+      "date_added": "2026-10-11",
+      "next_action": "Run one bounded read-only documentation pilot after license/security review: verified MPE architecture diagram versus existing tooling; validate mobile SVG, dark mode, PNG, prompt and STYLE.md reuse. No install/integration approved by registration.",
+      "result_summary": "Registration only; no skill installed, diagram generated, integration changed, or production effect.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/exp-30-crisp-diagrams",
+      "evidence_links": [
+        "experiments/exp-30-crisp-diagrams/README.md",
+        "https://github.com/sandrinodm/skills"
+      ],
+      "pr_or_issue_links": [],
+      "updated_at": "2026-10-11"
     }
   ]
 }
