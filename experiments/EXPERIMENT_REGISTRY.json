@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-10-10",
+  "updated_at": "2026-10-16",
   "experiments": [
     {
       "experiment_id": "EXP-ALEXANDRIA",
@@ -658,6 +658,21 @@
         "https://github.com/Murkin1980/murat-project-engineer/pull/65"
       ],
       "updated_at": "2026-10-09"
+    },
+    {
+      "experiment_id": "EXP-32",
+      "name": "OpenMuse reusable component evaluation",
+      "owning_project": "Murat Project Engineer",
+      "status": "PLANNED",
+      "why": "Validate OpenMuse browser handoff, resumable tasks and AG-UI rich UI components for reuse in existing Murat AI Stack projects without duplicate agent infrastructure.",
+      "date_added": "2026-10-16",
+      "next_action": "Run read-only CP-01 upstream-code audit and baseline comparison; do not integrate or deploy without evidence and deep-change approval.",
+      "result_summary": "Registered only; no tests, live integrations, credentials, or deployment performed.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/exp-32-openmuse-component-evaluation/README.md",
+      "evidence_links": [],
+      "pr_or_issue_links": [],
+      "updated_at": "2026-10-16"
     }
   ]
 }
