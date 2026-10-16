@@ -3,7 +3,7 @@
   "basis": "retrieval-cost proxy: bytes of canonical files a fresh executor reads; not a wall-clock or human-time measurement",
   "extra_rediscovery_remains": true,
   "packet_plus_remaining_reads": {
-   "bytes": 32033,
+   "bytes": 32480,
    "files": 4,
    "remaining_reads": [
     {
@@ -24,7 +24,7 @@
    ]
   },
   "rediscovery_without_packet": {
-   "bytes": 71738,
+   "bytes": 78147,
    "files": 4,
    "reads": [
     "STATUS.md",
@@ -69,7 +69,7 @@
     "value": "EXPERIMENT"
    }
   ],
-  "json_bytes": 13422,
+  "json_bytes": 13869,
   "markdown_headings": [
    "## NOW",
    "## RULES (mandatory)",
@@ -80,7 +80,7 @@
    "## PROVENANCE (canonical sources + digests)",
    "## FRESHNESS"
   ],
-  "md_bytes": 11041,
+  "md_bytes": 11541,
   "stop_rules": 25,
   "stop_rules_intro": "Not allowed: / STOP or FAIL if:",
   "stop_rules_source": "experiments/exp-22-colibri-local-inference/ARENA_TASK.md#boundaries + experiments/exp-22-colibri-local-inference/README.md#failure-stop-criteria + experiments/exp-22-colibri-local-inference/README.md#guardrails",

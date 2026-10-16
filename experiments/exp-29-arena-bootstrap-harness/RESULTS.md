@@ -577,9 +577,153 @@ Colibri conclusions are unchanged.
 | Secrets | token/key/password pattern scan over changed files | 0 hits |
 | Dashboard | `npm run build` + `npm run check` | exit 0; ALL CHECKS PASSED 43/43 (views 7/7, parity 5/5, mobile-390 6/6, content 8/8) |
 
+## CP-08 — Bootstrap state consistency recovery: PASS
+
+Owner-authorized corrective checkpoint (see `ARENA_TASK.md`, CP-08; instruction:
+`experiments/exp-29-arena-bootstrap-harness/CP-08-ARENA-INSTRUCTION.md` in PR #108).
+Scope: the harness and its state only — no production code, governance, Router,
+contract, gate, registry or EXP-12 change was made, and no memory service, database,
+runtime or scheduler was added. The EXP-29 disposition stays `REUSE_COMPONENT`.
+
+### Reproduction (before editing, canonical `main` at `653abff` = PR #109 → #110)
+
+| Observation | Evidence |
+|---|---|
+| Committed `ARENA_CONTEXT.json`/`.md` verified `STALE` (registry, `STATUS.md`, `AGENTS.md`, governance digests) and was not rebuild-identical | `bootstrap_builder.py verify`, `test_committed_packet_is_fresh`, `test_committed_packet_matches_fresh_build` |
+| The committed artifact described the **frozen CP-03 fixture** (`task EXP-27/CP-05`) with the CP-05-era resume "… **STOP after CP-05** per `ARENA_TASK.md`. Any implementation of the BORROW/ADAPT" — cut off mid-word | committed JSON/MD; `exp29_proof.py cp02` re-published the fixture packet |
+| The CP-07 session packet for **this** experiment recorded **no disposition at all** and still verified `FRESH` (all seven checks true) | `evidence/cp07/session_bootstrap/ARENA_CONTEXT.json`, `…/verify.json` |
+| Focused suite 34 tests / 2 failures; full suite 432 tests / 29 failures / 1 skipped (preflight in the registry recorded 27 — the delta is the two EXP-29 committed-artifact failures that appeared with the #110 registry reconciliation) | `python3 -m unittest tests.test_exp29_bootstrap`; `python3 -m unittest discover -s tests` |
+
+Root cause: **freshness was digest/rebuild freshness only.** The builder read one
+declaration form (`Decision:`) and one physical line of prose, so EXP-29's
+`Primary disposition` was silently dropped and the resume instruction was truncated;
+the verifier treated an absent disposition as acceptable; and the documented ritual
+published the frozen fixture as the experiment's own launch brief. Every one of those
+states was `FRESH`, so digest freshness could not distinguish correct current task,
+checkpoint, disposition, or authorized resume action.
+
+### Repair (smallest targeted change inside the existing harness)
+
+1. `harness/bootstrap_builder.py`
+   - `_parse_dispositions()` replaces the single-form `_parse_disposition()`: it reads
+     `Decision: <value>`, `Primary disposition: <value>` and the `## Primary disposition`
+     heading, and returns *every* declared value so a conflict surfaces instead of
+     winning by order.
+   - `_parse_next_authorized_action()` returns the **complete first paragraph** of the
+     canonical section, not the first physical line.
+   - Fail-closed safety gains two invariants: a missing disposition
+     (`missing_disposition`) and an active checkpoint no canonical file declares
+     (`unsupported_active_checkpoint:<CP>`) are `REJECTED`, with matching
+     `checks.disposition_declared` / `checks.active_checkpoint_declared` and updated
+     `safety_invariants`.
+2. `harness/fresh_session.py` — Arm B refuses the same two conditions; the Arm A
+   rediscovery parser reads the same canonical disposition forms and joins the resume
+   paragraph, so the arms still agree on the contract.
+3. `harness/exp29_proof.py` — `CURRENT = {EXP-29, CP-08}` is now the task the committed
+   artifacts are published for (the frozen fixture stays the CP-02/CP-03/CP-04 proof
+   subject and is still evidenced and FRESH); new `cp08` step verifies the committed
+   artifact against canonical current state and runs the drift negative controls.
+4. `ARENA_TASK.md` — the CP-08 checkpoint is declared canonically (so `CP-08` is part of
+   the packet's checkpoint chain and the builder can never publish an undeclared task).
+5. `README.md` — status/checkpoint chain reconciled with the recorded result (CP-01…CP-07
+   executed, CP-08 current); `Primary disposition: **REUSE_COMPONENT**` unchanged.
+6. `tests/test_exp29_bootstrap.py` — the two committed-artifact tests now assert the
+   contract for the task the artifact declares; new `Exp29StateConsistencyTests` (8 tests)
+   covers disposition preservation, task/checkpoint consistency, complete resume action,
+   registry agreement, provenance, and the fail-closed negative controls.
+
+### After (same checkpoints, repaired harness)
+
+| Check | Result |
+|---|---|
+| Committed packet | `EXP-29/CP-08`, chain `CP-01…CP-08`, disposition `REUSE_COMPONENT` from both canonical files, complete resume action, `verify` → `FRESH`, rebuild-identical (`evidence/cp08/verify.json`) |
+| Drift negatives | missing disposition → `REJECTED` (`missing_disposition`) and refused by the worker; undeclared active checkpoint → `REJECTED` (`unsupported_active_checkpoint:CP-99`); superseded CP-05-era instruction carried as current → not `FRESH`, named in `field_diffs` (`evidence/cp08.json`, NC-08A/B/C) |
+| Pre-repair drift packet | the CP-07 EXP-29 packet is now `REJECTED` (`missing_disposition`) instead of `FRESH` — the repaired invariant catches the real defect |
+| Fixture/EXP-22 preserved | EXP-27/CP-05 fixture and EXP-22/CP-01 both still build and verify `FRESH`; CP-04 NC-01…NC-06 unchanged (4 `STALE`, 2 `REJECTED`) |
+| Focused suite | 42 tests, OK (was 34 tests / 2 failures) |
+| Full suite | 440 tests, 1 skipped, 27 failures — the two EXP-29 committed-artifact failures are cleared, 8 CP-08 tests are added, and the remaining 27 are exactly the pre-existing #110 dashboard/reladraw set, classified below |
+| Committed artifact size | 15,057 B JSON / 12,020 B MD (CP-08 task; the CP-05/CP-06 byte rows describe the frozen EXP-27 fixture packet, still built and verified by `cp02`) |
+| CP-03 A/B re-run (fixture) | Arm A 5 files / 91,888 B / 7 ops vs Arm B 1 file / 13,631 B / 1 op — 85.17% fewer bytes, identical answers |
+
+### Verified scope of the stricter verifier (sweep over every experiment with an `ARENA_TASK.md`)
+
+| Experiment | Before (baseline builder) | After (CP-08) | Note |
+|---|---|---|---|
+| EXP-22, EXP-24, EXP-25, EXP-26, EXP-27 | FRESH | FRESH | unchanged |
+| EXP-29 | FRESH, disposition `""` | FRESH, disposition `REUSE_COMPONENT` | the repaired silent drift |
+| EXP-20 | REJECTED | REJECTED | pre-existing (no recognised disposition declaration; "Primary MPE disposition:" is not a canonical form — the harness refuses rather than guesses) |
+| EXP-28 | REJECTED | REJECTED | pre-existing |
+| EXP-23 | FRESH | REJECTED (`ambiguous_disposition`) | intentional fail-closed: its `README.md` declares both `Decision: REUSE_COMPONENT` and `Primary disposition: **EXPERIMENT**`; the conflict was previously resolved silently by document order |
+
+EXP-23 has no committed bootstrap packet and no regression test, so no evidence
+contradicts this outcome; normalizing another experiment's declaration is a separate
+owner decision and was not done here. These are verification outcomes only — the unit
+suites show no new failure.
+
+### Files changed (CP-08)
+
+| Path | Change |
+|---|---|
+| `experiments/exp-29-arena-bootstrap-harness/harness/bootstrap_builder.py` | disposition forms + full-paragraph resume action + two fail-closed invariants |
+| `experiments/exp-29-arena-bootstrap-harness/harness/fresh_session.py` | matching refusal checks; Arm A reads the same declaration forms and paragraph |
+| `experiments/exp-29-arena-bootstrap-harness/harness/exp29_proof.py` | `CURRENT` artifact target, `cp08` step, EXP-29 source files added to the immutability list |
+| `experiments/exp-29-arena-bootstrap-harness/ARENA_TASK.md` | CP-08 checkpoint spec (owner authorized) |
+| `experiments/exp-29-arena-bootstrap-harness/README.md` | status/checkpoint reconciliation |
+| `experiments/exp-29-arena-bootstrap-harness/RESULTS.md` | this section; current authorized action restructured, earlier actions kept as history |
+| `experiments/exp-29-arena-bootstrap-harness/ARENA_CONTEXT.json` / `.md` | regenerated derived artifacts — now the current task, verified `FRESH` |
+| `experiments/exp-29-arena-bootstrap-harness/evidence/cp02.json`, `cp03.json`, `cp04.json`, `cp06.json`, `immutability.json`, `proof_run*.json` | regenerated by the documented ritual (deterministic) |
+| `experiments/exp-29-arena-bootstrap-harness/evidence/cp08.json`, `evidence/cp08/verify.json` | new — CP-08 gate evidence |
+| `tests/test_exp29_bootstrap.py` | committed-artifact contract tests updated; `Exp29StateConsistencyTests` added |
+
+No change was made to `experiments/EXPERIMENT_REGISTRY.json`: the merged #110 entry
+already records the current authorized action (`next_action` names CP-08) and the
+historical `PASS / REUSE_COMPONENT` result, and editing it would require the Reladraw
+dashboard ritual for an unrelated set of generated views. Recording CP-08 completion
+in the registry stays a separate owner decision, exactly as CP-06/CP-07 recorded.
+
+### Checks run (CP-08 gate)
+
+| Gate | Command | Result |
+|---|---|---|
+| Focused suite, before | `python3 -m unittest tests.test_exp29_bootstrap` | 34 tests — 2 failures (`test_committed_packet_is_fresh`, `test_committed_packet_matches_fresh_build`) |
+| Focused suite, after | same | 42 tests — OK |
+| Full unit suite, before | `PYTHONHASHSEED=0 python3 -m unittest discover -s tests` | 432 tests — 29 failures, 1 skipped |
+| Full unit suite, after | same | 440 tests — 27 failures, 1 skipped; failure set is the pre-existing dashboard/reladraw/registry-schema set, **no new failure** |
+| EXP-29 proof harness | `python3 …/harness/exp29_proof.py all --workdir /tmp/exp29-work` | exit 0, `summary.result = PASS` (CP-02/03/04/06/08 PASS, NC-01…NC-06 + NC-08A/B/C fail closed) |
+| Committed artifact | `bootstrap_builder.py verify --packet …/ARENA_CONTEXT.json` | exit 0, `FRESH`, rebuild-identical |
+| Package validator | `python3 scripts/validate_package.py .` | VALIDATION PASSED |
+| Whitespace | `git diff --check` | clean |
+| Scope | `git status --porcelain` vs the CP-08 allowed paths | only EXP-29 files and `tests/test_exp29_bootstrap.py` |
+| Secrets | token/key/password pattern scan over changed files | 0 hits (positive control matched) |
+| Dashboard | `npm run build` + `npm run check` | exit 0; ALL CHECKS PASSED (unrelated generated views untouched) |
+
+### CP-08 PASS criteria
+
+| Criterion | Status |
+|---|---|
+| Committed packet `FRESH` and rebuild-identical | PASS |
+| Names the current authorized task/checkpoint | PASS (`EXP-29/CP-08`) |
+| `REUSE_COMPONENT` disposition preserved | PASS (both canonical declarations) |
+| Resume action complete, current, authorized | PASS (canonical paragraph; registry action) |
+| CP-01…CP-07 kept as historical checkpoints | PASS (chain `CP-01…CP-08`, evidence untouched) |
+| Fail-closed coverage for the drift | PASS (`Exp29StateConsistencyTests`, NC-08A/B/C) |
+| No new failing full-suite test | PASS (29 → 27 failures, all remaining pre-existing) |
+| Delivered as one bounded PR on the `arena/…` session branch, not merged | PASS |
+
+### Rollback (CP-08)
+
+Revert the CP-08 commit: the builder/worker/proof return to the pre-repair parsers and
+invariants, `ARENA_TASK.md`/`README.md`/`RESULTS.md` return to the CP-07 text, and the
+committed `ARENA_CONTEXT.*` can be rebuilt at any time. The two EXP-29 committed-artifact
+tests return to their pre-repair form. Nothing outside
+`experiments/exp-29-arena-bootstrap-harness/**` and `tests/test_exp29_bootstrap.py` is
+affected; the CP-07 evidence under `evidence/cp07/` is preserved either way.
+
 ## Measurements (required list)
 
 > Byte and packet-size rows below are the CP-05 record. They are superseded by the CP-06 values (Arm A 84,978 B / 7 ops; Arm B 13,087 B / 1 op; 84.60%; committed JSON 13,113 B). See the CP-06 section.
+>
+> The CP-05/CP-06 rows measure the **frozen EXP-27 fixture packet**, which `exp29_proof.py cp02` still builds and verifies (`evidence/cp02.json`, `fixture_packet`). Since CP-08 the committed `ARENA_CONTEXT.*` is the **current task** artifact (EXP-29/CP-08, 15,057 B JSON / 12,020 B MD), so these rows must not be read as that artifact's size — the CP-08 section records the current values.
 
 | Metric | Value |
 |---|---|
@@ -606,7 +750,7 @@ Colibri conclusions are unchanged.
 | `experiments/exp-29-arena-bootstrap-harness/harness/bootstrap_builder.py` | new — CP-02 deterministic builder + fail-closed verifier + CLI; CP-06 modified (H-1/H-2/H-3 repair, `ambiguous_disposition` refusal) |
 | `experiments/exp-29-arena-bootstrap-harness/harness/fresh_session.py` | new — CP-03 isolated Arm A / Arm B workers; CP-06 modified (Arm B also refuses `ambiguous_disposition`) |
 | `experiments/exp-29-arena-bootstrap-harness/harness/exp29_proof.py` | new — CP-02…CP-04 proof harness; CP-06 adds the `cp06` step to the CLI and `run_all` |
-| `experiments/exp-29-arena-bootstrap-harness/ARENA_CONTEXT.json` | new — generated derived packet (fixture EXP-27/CP-05); CP-06 regenerated it (was STALE, now FRESH) |
+| `experiments/exp-29-arena-bootstrap-harness/ARENA_CONTEXT.json` | new — generated derived packet (fixture EXP-27/CP-05); CP-06 regenerated it (was STALE, now FRESH); CP-08 publishes the current task (EXP-29/CP-08) instead of the fixture |
 | `experiments/exp-29-arena-bootstrap-harness/ARENA_CONTEXT.md` | new — generated derived launch brief |
 | `experiments/exp-29-arena-bootstrap-harness/RESULTS.md` | new — this report; CP-06 section and supersession notes added |
 | `experiments/exp-29-arena-bootstrap-harness/README.md` | status PLANNED → executed/closed |
@@ -742,6 +886,19 @@ unaffected). No harness, production, governance, contract, or gate file was
 touched, so nothing else depends on the reverted files.
 
 ## Next authorized action
+
+CP-08 (bootstrap state consistency recovery) is complete as a bounded checkpoint and is
+the current authorized action: the committed `ARENA_CONTEXT.json` / `.md` describe the
+current task (`EXP-29/CP-08`) with the `REUSE_COMPONENT` disposition and a complete
+resume action, an absent disposition or an undeclared active checkpoint now fails closed,
+and the documented ritual publishes the current task for this experiment instead of the
+frozen CP-03 fixture (`evidence/cp08.json`). Its PR is opened and must not be merged as
+part of this checkpoint: **STOP after PR delivery and await owner review.** Recording
+CP-08 completion in the EXP-29 registry entry, and any broader adoption (automatic packet
+generation per session, GLOBAL lesson promotion, runtime integration), remain separate
+owner decisions with their own New Idea Filter / deep-change assessment.
+
+### Historical (superseded) next actions
 
 CP-07 (canonical current-state gap) is complete as a bounded checkpoint: the
 FRESH-but-stale-state gap is closed through the existing registry/RESULTS.md

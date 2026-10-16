@@ -362,3 +362,59 @@ PASS only if:
 7. registry/dashboard ritual and project validation pass.
 
 Open one bounded PR and do not merge.
+
+## CP-08 — Bootstrap state consistency recovery (owner authorized 2026-10-16)
+
+Trigger: a committed packet can verify `FRESH` while its current task, checkpoint,
+disposition or resume instruction is wrong or incomplete. Evidence on `main` at `653abff`
+(merged PR #109 then #110):
+
+- the committed `ARENA_CONTEXT.json` / `.md` still carried the CP-05-era EXP-27 fixture
+  state (`task EXP-27/CP-05`, `resume` "STOP after CP-05") as the experiment's launch
+  brief;
+- `resume.next_authorized_action` was cut off mid-sentence ("… BORROW/ADAPT");
+- the CP-07 session packet recorded **no** disposition at all and still verified `FRESH`;
+- `exp29_proof.py cp02` re-published the fixture packet as the committed artifact, so the
+  documented ritual reproduced the drift instead of catching it.
+
+This checkpoint is limited to that root cause: freshness by file digest must not be
+mistaken for correct current task, checkpoint, disposition, or authorized resume action.
+
+### Required repair
+
+1. Reproduce the focused and full test baselines on current canonical `main` before editing.
+2. Keep the existing deterministic builder and provenance; make the smallest targeted change.
+3. Ensure the EXP-29 disposition (`REUSE_COMPONENT`) survives extraction, and that a missing
+   or conflicting disposition fails closed instead of disappearing silently.
+4. Ensure `resume.next_authorized_action` is the complete canonical paragraph and is current.
+5. Fail closed for a missing, conflicting or undeclared authorization-critical state; no
+   heuristic fabrication.
+6. Publish the committed `ARENA_CONTEXT.json` / `.md` as the **current** task artifact (the
+   CP-01…CP-07 chain stays visible as history) and require `FRESH` plus rebuild-identical.
+7. Add focused regression coverage: disposition preservation, status/checkpoint consistency,
+   complete resume action, contradictory/stale active instructions, deterministic provenance,
+   fail-closed negative controls.
+8. Record before/after test results and classify unrelated pre-existing failures.
+
+### Scope
+
+Allowed changes:
+
+- `experiments/exp-29-arena-bootstrap-harness/**`;
+- `tests/test_exp29_bootstrap.py`;
+- registry/result metadata if required by the established experiment ritual.
+
+Do not change production code, governance, Router, contracts, gates, the EXP-12 P-001…P-006
+result, the #110 registry reconciliation, or unrelated experiments.
+
+If the repair requires changing the source of truth, the builder's authority model, or adding
+a memory service/database/runtime/scheduler, STOP with `DEEP_CHANGE_REQUIRED`.
+
+### CP-08 PASS
+
+PASS only if the committed packet is `FRESH` and rebuild-identical, names the current
+authorized task and checkpoint, preserves the `REUSE_COMPONENT` disposition, carries a
+complete/current/authorized resume action, keeps CP-01…CP-07 as historical checkpoints, has
+fail-closed regression coverage for the drift, and adds no new failing full-suite test.
+
+Open one bounded PR and do not merge.

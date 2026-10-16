@@ -1,13 +1,15 @@
 {
  "artifacts": {
   "generated_against": {
-   "git_base": "a5a16bbf2cf339a3ff2eac398486ba9ad7c9e41f",
-   "git_branch": "arena/4c9d8b8c-murat-project-engineer",
-   "git_head": "a5a16bbf2cf339a3ff2eac398486ba9ad7c9e41f"
+   "git_base": "653abffad4ff07b6bb1476f2d65e3dbd35d70402",
+   "git_branch": "arena/dce03808-murat-project-engineer",
+   "git_head": "653abffad4ff07b6bb1476f2d65e3dbd35d70402"
   },
-  "json_bytes": 13113,
-  "md_bytes": 10382,
-  "packet_task": "EXP-27/CP-05",
+  "json_bytes": 15057,
+  "md_bytes": 12020,
+  "packet_checkpoint": "CP-08",
+  "packet_disposition": "REUSE_COMPONENT",
+  "packet_task": "EXP-29/CP-08",
   "paths": [
    "experiments/exp-29-arena-bootstrap-harness/ARENA_CONTEXT.json",
    "experiments/exp-29-arena-bootstrap-harness/ARENA_CONTEXT.md"
@@ -16,22 +18,33 @@
  },
  "checks": {
   "all_layers_present": true,
+  "artifacts_describe_current_task": true,
   "artifacts_fresh": true,
   "authority_declared": true,
   "deterministic_output": true,
+  "fixture_packet_still_fresh": true,
   "provenance_complete": true,
   "safety_structure_present": true
  },
  "determinism": {
   "json_byte_identical": true,
-  "json_bytes": 13087,
+  "json_bytes": 13631,
   "md_byte_identical": true,
-  "md_bytes": 10356,
+  "md_bytes": 10953,
   "pinned_git_refs": {
    "git_base": "1111111111111111111111111111111111111111",
    "git_branch": "arena/proof",
    "git_head": "0000000000000000000000000000000000000000"
   }
+ },
+ "fixture_packet": {
+  "fixture": {
+   "checkpoint": "CP-05",
+   "experiment_id": "EXP-27"
+  },
+  "json_bytes": 13603,
+  "packet_task": "EXP-27/CP-05",
+  "verify_status": "FRESH"
  },
  "provenance": {
   "all_digests_match": true,

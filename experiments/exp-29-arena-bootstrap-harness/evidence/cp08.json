@@ -1,0 +1,111 @@
+{
+ "checks": {
+  "checkpoint_chain_preserves_history": true,
+  "committed_packet_fresh": true,
+  "committed_packet_rebuild_identical": true,
+  "disposition_preserved": true,
+  "missing_disposition_fails_closed": true,
+  "pre_repair_packet_no_longer_passes": true,
+  "registry_agrees_with_packet": true,
+  "resume_action_complete_and_current": true,
+  "stale_active_instruction_is_not_fresh": true,
+  "task_is_current": true,
+  "unsupported_active_checkpoint_fails_closed": true
+ },
+ "current_task": "EXP-29/CP-08",
+ "drift_before_repair": {
+  "disposition": "",
+  "disposition_sources": [],
+  "next_authorized_action": "CP-06 (first real-use repair) is complete as a bounded checkpoint. Its PR is",
+  "observed_after_repair": {
+   "reasons": [
+    "missing_disposition",
+    "source_digest_mismatch:experiments/EXPERIMENT_REGISTRY.json",
+    "source_digest_mismatch:experiments/exp-29-arena-bootstrap-harness/ARENA_TASK.md",
+    "source_digest_mismatch:experiments/exp-29-arena-bootstrap-harness/README.md",
+    "source_digest_mismatch:experiments/exp-29-arena-bootstrap-harness/RESULTS.md",
+    "source_digest_mismatch:STATUS.md",
+    "source_digest_mismatch:AGENTS.md",
+    "source_digest_mismatch:docs/governance/SCOPE-CHANGE-CONTROL.md",
+    "content_differs_from_rebuild:known_traps",
+    "content_differs_from_rebuild:now.checkpoints",
+    "content_differs_from_rebuild:now.disposition",
+    "content_differs_from_rebuild:now.disposition_sources",
+    "content_differs_from_rebuild:now.nearest_action",
+    "content_differs_from_rebuild:now.registry_updated_at",
+    "content_differs_from_rebuild:resume.next_action",
+    "content_differs_from_rebuild:resume.next_authorized_action",
+    "content_differs_from_rebuild:source_refs[0].sha256",
+    "content_differs_from_rebuild:source_refs[1].sha256"
+   ],
+   "status": "REJECTED"
+  },
+  "published_task": "EXP-27/CP-05 (fixture packet, CP-05-era resume instruction)",
+  "recorded_verify_status": "FRESH (evidence/cp07/session_bootstrap/verify.json)"
+ },
+ "negative_controls": [
+  {
+   "expected": "REJECTED",
+   "id": "NC-08A",
+   "name": "disposition missing from the packet",
+   "observed_status": "REJECTED",
+   "reasons": [
+    "missing_disposition",
+    "content_differs_from_rebuild:now.disposition",
+    "content_differs_from_rebuild:now.disposition_sources"
+   ],
+   "worker_refused": true
+  },
+  {
+   "expected": "REJECTED",
+   "id": "NC-08B",
+   "name": "active checkpoint not declared by any canonical file",
+   "observed_status": "REJECTED",
+   "reasons": [
+    "unsupported_active_checkpoint:CP-99"
+   ],
+   "worker_refused": true
+  },
+  {
+   "expected": "not FRESH",
+   "field_diff_names_resume_action": true,
+   "id": "NC-08C",
+   "name": "superseded CP-05-era instruction carried as current",
+   "observed_status": "STALE"
+  }
+ ],
+ "packet": {
+  "checkpoints": [
+   "CP-01",
+   "CP-02",
+   "CP-03",
+   "CP-04",
+   "CP-05",
+   "CP-06",
+   "CP-07",
+   "CP-08"
+  ],
+  "disposition": "REUSE_COMPONENT",
+  "disposition_sources": [
+   {
+    "path": "experiments/exp-29-arena-bootstrap-harness/ARENA_TASK.md",
+    "value": "REUSE_COMPONENT"
+   },
+   {
+    "path": "experiments/exp-29-arena-bootstrap-harness/README.md",
+    "value": "REUSE_COMPONENT"
+   }
+  ],
+  "json_bytes": 15057,
+  "nearest_action": "CP-08 Bootstrap State Consistency Recovery: reconcile registry and current checkpoint state, preserve REUSE_COMPONENT, regenerate and verify a fresh and semantically consistent packet; follow owner instruction in PR #108. Do not merge or deploy without authorization.",
+  "next_authorized_action_bytes": 860,
+  "registry_status": "PASS",
+  "task": "EXP-29/CP-08"
+ },
+ "result": "PASS",
+ "verification": {
+  "evidence": "experiments/exp-29-arena-bootstrap-harness/evidence/cp08/verify.json",
+  "reasons": [],
+  "status": "FRESH"
+ }
+}

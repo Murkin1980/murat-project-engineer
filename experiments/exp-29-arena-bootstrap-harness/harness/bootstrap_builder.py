@@ -16,7 +16,8 @@ Properties (per ``ARENA_TASK.md`` CP-02):
   the SHA-256 of every source it was derived from;
 - fail-closed verification: ``verify`` re-derives the packet from current
   sources and recomputes every digest. Any source change, digest mismatch,
-  missing stop/deep-change rule, or invalid lesson scope makes the packet
+  missing stop/deep-change rule, missing or conflicting disposition, an active
+  checkpoint no canonical file declares, or invalid lesson scope makes the packet
   STALE or REJECTED and therefore a non-authoritative hint. The packet never
   overrides canonical files.
 
@@ -52,6 +53,8 @@ GLOBAL_PROMOTION_MARKER = "PROMOTED_TO_GLOBAL"
 
 CHECKPOINT_RE = re.compile(r"^#{2,3}\s+(CP-\d+)\b", flags=re.M)
 LESSON_HEADING_RE = re.compile(r"^###\s+(R\d+)\s+—\s+(.+)$")
+DISPOSITION_LINE_RE = re.compile(r"^(?:Decision|Primary disposition):\s*(.+)$")
+DISPOSITION_HEADING_RE = re.compile(r"^#{2,3}\s+Primary disposition\s*$")
 
 # Recognised boundary sections that carry task-local stop / deep-change rules. The
 # titles are the headings canonical experiment files actually use (EXP-27 "Stop
@@ -171,14 +174,44 @@ def _parse_checkpoints(task_text: str) -> list[str]:
     return out
 
 
-def _parse_disposition(text: str) -> str:
-    """Value of the first ``Decision:`` line in one canonical file ("" if none)."""
-    for line in text.splitlines():
-        if line.startswith("Decision:"):
-            if "**" in line:
-                return line.split("**")[1].strip()
-            return line.split(":", 1)[1].strip()
-    return ""
+def _strip_bold(value: str) -> str:
+    value = value.strip()
+    if len(value) > 4 and value.startswith("**") and value.endswith("**"):
+        return value[2:-2].strip()
+    return value
+
+
+def _parse_dispositions(text: str) -> list[str]:
+    """Every disposition one canonical file declares, in document order.
+
+    The canonical declaration forms actually used by MPE experiment files:
+
+    - ``Decision: <value>`` (EXP-22 ``README.md``);
+    - ``Primary disposition: <value>`` (EXP-29 ``README.md``);
+    - a ``## Primary disposition`` heading whose first non-empty line is the value
+      (EXP-29 ``ARENA_TASK.md``).
+
+    Every value found is returned, so a file that declares two different
+    dispositions surfaces as ambiguous instead of silently winning by order.
+    """
+    values: list[str] = []
+    lines = text.splitlines()
+    for index, line in enumerate(lines):
+        stripped = line.strip()
+        match = DISPOSITION_LINE_RE.match(stripped)
+        if match:
+            value = _strip_bold(match.group(1))
+        elif DISPOSITION_HEADING_RE.match(stripped):
+            value = ""
+            for follow in lines[index + 1:]:
+                if follow.strip():
+                    value = _strip_bold(follow)
+                    break
+        else:
+            continue
+        if value and value not in values:
+            values.append(value)
+    return values
 
 
 def _titled_sections(text: str, titles: tuple[str, ...]) -> list[tuple[str, list[str]]]:
@@ -299,10 +332,21 @@ def _parse_traps(results_text: str) -> list[str]:
 
 
 def _parse_next_authorized_action(results_text: str) -> str:
+    """The complete first paragraph of the ``## Next authorized action`` section.
+
+    The authorization is prose, so the paragraph — not the first physical line —
+    is the resume instruction. Taking one line cut the sentence off mid-word and
+    left the packet carrying an incomplete authorization.
+    """
+    paragraph: list[str] = []
     for line in _section(results_text, r"^##\s+Next authorized action\s*$"):
-        if line.strip():
-            return line.strip()
-    return ""
+        stripped = line.strip()
+        if not stripped or stripped.startswith("#"):
+            if paragraph:
+                break
+            continue
+        paragraph.append(stripped)
+    return " ".join(paragraph)
 
 
 def _parse_deep_change_gate(governance_text: str) -> dict:
@@ -362,8 +406,7 @@ def build_packet(
         checkpoint = checkpoints[-1]
     disposition_sources = []
     for path, text in ((task_path, task_text), (readme_path, readme_text)):
-        value = _parse_disposition(text)
-        if value:
+        for value in _parse_dispositions(text):
             disposition_sources.append({"path": str(path.relative_to(root)), "value": value})
 
     sources = [
@@ -485,6 +528,11 @@ def build_packet(
                 "authority disclaimer present (DERIVED_VIEW_NON_AUTHORITATIVE)",
                 "at least one task stop/deep-change rule present",
                 "deep-change gate bullets present",
+                "a disposition is declared by a canonical source; a missing or "
+                "conflicting disposition is never resolved silently "
+                "(missing/ambiguous disposition ⇒ REJECTED)",
+                "the active checkpoint is declared in the packet's canonical "
+                "checkpoint chain (unsupported active checkpoint ⇒ REJECTED)",
                 "lesson scopes limited to GLOBAL/PROJECT/TASK/NO_CHANGE; GLOBAL requires a "
                 "PROMOTED_TO_GLOBAL marker in the canonical lesson source (no current source has one)",
             ],
@@ -519,7 +567,8 @@ def render_markdown(packet: dict) -> str:
         f"> **{packet['authority']}**: {packet['authority_note']}",
         "",
         f"Verify freshness before use: `{packet['verification']['command']}`. "
-        "Any source digest mismatch ⇒ STALE; missing stop rule or invalid lesson scope ⇒ REJECTED.",
+        "Any source digest mismatch ⇒ STALE; missing stop rule, missing/ambiguous "
+        "disposition, unsupported active checkpoint, or invalid lesson scope ⇒ REJECTED.",
         "",
         "## NOW",
         "",
@@ -650,8 +699,16 @@ def _safety_violations(packet: dict, root: Path) -> list[str]:
     if not rules.get("stop_rules"):
         violations.append("missing_stop_rules")
     declared = {item.get("value") for item in packet.get("now", {}).get("disposition_sources", [])}
-    if len(declared) > 1:
+    if not declared:
+        # A missing disposition is authorization-critical state: never let it
+        # disappear silently as an empty field.
+        violations.append("missing_disposition")
+    elif len(declared) > 1:
         violations.append("ambiguous_disposition")
+    active = packet.get("now", {}).get("checkpoint") or ""
+    if active and active not in (packet.get("now", {}).get("checkpoints") or []):
+        # The packet claims a current checkpoint no canonical file declares.
+        violations.append(f"unsupported_active_checkpoint:{active}")
     if not (rules.get("deep_change_gate") or {}).get("bullets"):
         violations.append("missing_deep_change_gate")
     for lesson in packet.get("known_lessons", []):
@@ -742,7 +799,11 @@ def verify_packet(packet: dict, root) -> dict:
             "stop_rules_present": "missing_stop_rules" not in safety,
             "deep_change_gate_present": "missing_deep_change_gate" not in safety,
             "lesson_scopes_valid": not any(v.startswith(("invalid_lesson_scope", "lesson_promoted")) for v in safety),
+            "disposition_declared": "missing_disposition" not in safety,
             "disposition_unambiguous": "ambiguous_disposition" not in safety,
+            "active_checkpoint_declared": not any(
+                v.startswith("unsupported_active_checkpoint") for v in safety
+            ),
             "source_digests_match": not digests,
             "matches_rebuild": not diffs,
         },

@@ -141,10 +141,13 @@ class Exp29BootstrapTests(unittest.TestCase):
         )
 
     def test_committed_packet_matches_fresh_build(self):
+        # The committed artifact must equal a deterministic rebuild of the task it
+        # itself declares (CP-08: the published artifact is the experiment's current
+        # task, not the frozen CP-03 fixture).
         committed = json.loads(COMMITTED_JSON.read_text(encoding="utf-8"))
-        against = committed["generated_against"]
+        now, against = committed["now"], committed["generated_against"]
         rebuilt = builder.build_packet(
-            ROOT, FIXTURE_EXPERIMENT, FIXTURE_CHECKPOINT,
+            ROOT, now["experiment_id"], now["checkpoint"],
             git_branch=against["git_branch"], git_head=against["git_head"],
             git_base=against["git_base"],
         )
@@ -866,7 +869,19 @@ class Exp29CanonicalStateTests(unittest.TestCase):
         self.assertEqual(committed["answers"]["q_repeat_first_checkpoint"], "NO")
         # A fresh run of the same consumer on the same packet reproduces the answers.
         fresh = _run_cp07_consumer(self.packet_path, self.workdir, "evidence_replay.json")
-        self.assertEqual(fresh["answers"], committed["answers"])
+        # CP-08: the only recorded answer the repair changes is the resume action, and it
+        # changes by completion — the pre-repair builder returned the first physical line,
+        # the repaired one returns the whole canonical paragraph. The CP-07 record is
+        # preserved verbatim as a prefix; every other answer is byte-identical.
+        recorded = committed["answers"]["q_next_authorized_action"]
+        repaired = fresh["answers"]["q_next_authorized_action"]
+        self.assertTrue(repaired.startswith(recorded), repaired)
+        self.assertGreater(len(repaired), len(recorded), "the recorded CP-07 answer was truncated")
+        self.assertTrue(repaired.endswith("."), repaired)
+        self.assertEqual(
+            {k: v for k, v in fresh["answers"].items() if k != "q_next_authorized_action"},
+            {k: v for k, v in committed["answers"].items() if k != "q_next_authorized_action"},
+        )
 
     # 4 — the pre-repair packet can no longer pass as current state
 
@@ -880,6 +895,171 @@ class Exp29CanonicalStateTests(unittest.TestCase):
                 for d in result["field_diffs"]),
             f"stale registry-driven fields must be named: {result['field_diffs']}",
         )
+
+
+# --- CP-08: bootstrap state consistency ---------------------------------------
+
+CP07_SESSION_PACKET = EXPERIMENT / "evidence" / "cp07" / "session_bootstrap" / "ARENA_CONTEXT.json"
+CURRENT_EXPERIMENT = "EXP-29"
+CURRENT_CHECKPOINT = "CP-08"
+EXP29_PATH = "experiments/exp-29-arena-bootstrap-harness"
+
+# The superseded CP-05-era instruction the committed packet carried as its active
+# resume action before CP-08 (and truncated mid-word on top of that).
+STALE_RESUME = (
+    "None inside this experiment — **STOP after CP-05** per `ARENA_TASK.md`. "
+    "Any implementation of the BORROW/ADAPT"
+)
+
+
+def _resume_paragraph(experiment_path):
+    """First paragraph of ``## Next authorized action`` — extraction independent of
+    the builder's own parser, so the tests assert the contract, not the implementation."""
+    text = (ROOT / experiment_path / "RESULTS.md").read_text(encoding="utf-8")
+    lines = text.splitlines()
+    start = next(i for i, line in enumerate(lines) if line.strip() == "## Next authorized action")
+    paragraph = []
+    for line in lines[start + 1:]:
+        stripped = line.strip()
+        if stripped.startswith("#") or (not stripped and paragraph):
+            break
+        if stripped:
+            paragraph.append(stripped)
+    return " ".join(paragraph)
+
+
+def _registry_entry(experiment_id):
+    registry = json.loads(
+        (ROOT / "experiments" / "EXPERIMENT_REGISTRY.json").read_text(encoding="utf-8"))
+    return next(e for e in registry["experiments"] if e["experiment_id"] == experiment_id)
+
+
+class Exp29StateConsistencyTests(unittest.TestCase):
+    """CP-08: a FRESH packet must still carry the correct current state.
+
+    Freshness by file digest is not authorization: the committed artifact must name
+    the current authorized task, preserve the disposition, carry the complete resume
+    action, and fail closed when any of that is missing, unsupported or superseded.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        cls._tmp = tempfile.TemporaryDirectory(prefix="exp29-cp08-")
+        cls.workdir = Path(cls._tmp.name)
+        cls.packet = json.loads(COMMITTED_JSON.read_text(encoding="utf-8"))
+
+    @classmethod
+    def tearDownClass(cls):
+        cls._tmp.cleanup()
+
+    def _refuse(self, packet, name):
+        packet_path = self.workdir / f"{name}.json"
+        packet_path.write_text(json.dumps(packet, sort_keys=True, indent=1) + "\n", encoding="utf-8")
+        return _run_worker(
+            ["answer", "--packet", str(packet_path), "--out", str(self.workdir / f"{name}_worker.json")],
+            cwd=self.workdir / f"{name}_cwd",
+        )
+
+    # 1 — the committed artifact describes the current authorized task
+
+    def test_committed_packet_names_the_current_authorized_task(self):
+        now = self.packet["now"]
+        self.assertEqual(now["experiment_id"], CURRENT_EXPERIMENT)
+        self.assertEqual(now["checkpoint"], CURRENT_CHECKPOINT)
+        self.assertEqual(now["task"], f"{CURRENT_EXPERIMENT}/{CURRENT_CHECKPOINT}")
+        self.assertIn(now["checkpoint"], now["checkpoints"])
+        # CP-01…CP-07 stay visible as history: the repair distinguishes the current
+        # task from historical checkpoints instead of replacing the chain.
+        self.assertEqual(now["checkpoints"], [f"CP-{i:02d}" for i in range(1, 9)])
+        self.assertEqual(builder.verify_packet(self.packet, ROOT)["status"], "FRESH")
+
+    def test_committed_packet_agrees_with_the_registry_authorized_action(self):
+        entry = _registry_entry(CURRENT_EXPERIMENT)
+        now, resume = self.packet["now"], self.packet["resume"]
+        self.assertEqual(now["nearest_action"], entry["next_action"])
+        self.assertEqual(resume["next_action"], entry["next_action"])
+        self.assertEqual(resume["status"], entry["status"])
+        self.assertIn(CURRENT_CHECKPOINT, entry["next_action"])
+        self.assertNotIn("STOP after CP-05", resume["next_authorized_action"])
+
+    # 2 — the disposition survives extraction from canonical sources
+
+    def test_exp29_disposition_survives_extraction(self):
+        now = self.packet["now"]
+        self.assertEqual(now["disposition"], "REUSE_COMPONENT")
+        self.assertEqual(
+            {item["path"]: item["value"] for item in now["disposition_sources"]},
+            {
+                f"{EXP29_PATH}/ARENA_TASK.md": "REUSE_COMPONENT",
+                f"{EXP29_PATH}/README.md": "REUSE_COMPONENT",
+            },
+        )
+        self.assertIn("- Disposition: REUSE_COMPONENT", builder.render_markdown(self.packet))
+
+    # 3 — the resume action is complete and current, never a truncated line
+
+    def test_resume_next_authorized_action_is_the_complete_paragraph(self):
+        expected = _resume_paragraph(EXP29_PATH)
+        self.assertTrue(expected)
+        self.assertEqual(self.packet["resume"]["next_authorized_action"], expected)
+        self.assertIn(CURRENT_CHECKPOINT, expected)
+        self.assertTrue(expected.endswith("."))
+        fixture = builder.build_packet(ROOT, FIXTURE_EXPERIMENT, FIXTURE_CHECKPOINT, **PINNED_GIT)
+        fixture_expected = _resume_paragraph(
+            "experiments/exp-27-paperclip-orchestration-patterns")
+        self.assertEqual(fixture["resume"]["next_authorized_action"], fixture_expected)
+        self.assertTrue(fixture_expected.endswith("result."))
+        self.assertEqual(builder.verify_packet(fixture, ROOT)["status"], "FRESH")
+
+    # 4 — fail-closed negative controls for authorization-critical drift
+
+    def test_missing_disposition_fails_closed(self):
+        tampered = json.loads(json.dumps(self.packet))
+        tampered["now"]["disposition"] = ""
+        tampered["now"]["disposition_sources"] = []
+        result = builder.verify_packet(tampered, ROOT)
+        self.assertEqual(result["status"], "REJECTED")
+        self.assertIn("missing_disposition", result["reasons"])
+        self.assertFalse(result["checks"]["disposition_declared"])
+        worker = self._refuse(tampered, "nc08_missing_disposition")
+        self.assertTrue(worker["refused"])
+        self.assertIn("missing_disposition", worker["refusal_reasons"])
+        # The pre-repair CP-07 EXP-29 packet lost its disposition and still recorded
+        # FRESH (evidence/cp07/session_bootstrap/verify.json); it cannot pass now.
+        before = json.loads(CP07_SESSION_PACKET.read_text(encoding="utf-8"))
+        self.assertEqual(before["now"]["disposition_sources"], [])
+        repaired = builder.verify_packet(before, ROOT)
+        self.assertEqual(repaired["status"], "REJECTED")
+        self.assertIn("missing_disposition", repaired["reasons"])
+
+    def test_undeclared_active_checkpoint_fails_closed(self):
+        tampered = json.loads(json.dumps(self.packet))
+        tampered["now"]["checkpoint"] = "CP-99"
+        tampered["now"]["task"] = f"{CURRENT_EXPERIMENT}/CP-99"
+        result = builder.verify_packet(tampered, ROOT)
+        self.assertEqual(result["status"], "REJECTED")
+        self.assertIn("unsupported_active_checkpoint:CP-99", result["reasons"])
+        self.assertFalse(result["checks"]["active_checkpoint_declared"])
+        worker = self._refuse(tampered, "nc08_unsupported_checkpoint")
+        self.assertTrue(worker["refused"])
+
+    def test_superseded_instruction_carried_as_current_is_not_fresh(self):
+        tampered = json.loads(json.dumps(self.packet))
+        tampered["resume"]["next_authorized_action"] = STALE_RESUME
+        result = builder.verify_packet(tampered, ROOT)
+        self.assertNotEqual(result["status"], "FRESH")
+        self.assertTrue(
+            any(d["field"] == "resume.next_authorized_action" for d in result["field_diffs"]),
+            result["field_diffs"],
+        )
+
+    def test_proof_harness_publishes_the_current_task_artifact(self):
+        # The documented ritual must keep publishing the current task; publishing the
+        # frozen CP-03 fixture here is what let a FRESH artifact carry CP-05-era state.
+        import exp29_proof
+
+        self.assertEqual(exp29_proof.CURRENT["experiment_id"], CURRENT_EXPERIMENT)
+        self.assertEqual(exp29_proof.CURRENT["checkpoint"], CURRENT_CHECKPOINT)
 
 
 if __name__ == "__main__":
