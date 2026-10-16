@@ -11,12 +11,12 @@ Repair the EXP-29 Bootstrap state-drift root cause in the existing harness: fres
 
 ## Phase 0 — read and reproduce
 1. Read `docs/governance/SCOPE-CHANGE-CONTROL.md` **first**, then `AGENTS.md`, `docs/NEW_IDEA_FILTER_POLICY.md` if relevant, `experiments/exp-29-arena-bootstrap-harness/README.md`, `ARENA_TASK.md`, `RESULTS.md`, `harness/bootstrap_builder.py`, `tests/test_exp29_bootstrap.py`, experiment registry, and the existing CP-06/CP-07 evidence.
-2. Compare current `main` and session branch, inspect merged PRs #70/#74 before claiming status. Do not treat the derived packet as source of truth.
-3. Record baseline: `python3 -m unittest tests.test_exp29_bootstrap` and the documented full test suite. Prior preflight reported 34 tests/2 failures, 432 tests/27 failures/1 skipped; these numbers must be reproduced or explained, not assumed.
+2. Start from current canonical `main` at or after `653abff` (merged PR #109 then #110). Compare that state with the Arena session branch before claiming status. Treat #109 core stabilization and #110 registry reconciliation as canonical inputs. Do not treat the derived packet as source of truth.
+3. Record a fresh baseline on the current canonical main: `python3 -m unittest tests.test_exp29_bootstrap` and the documented full test suite. Prior preflight reported 34 tests/2 failures and 432 tests/27 failures/1 skipped, but those figures predate #109/#110 and must be reproduced or explained rather than assumed.
 4. Verify actual branch write by authorized git workflow, not merely HTTP receive-pack availability.
 
 ## Phase 1 — reconcile canonical state
-- Confirm actual CP-06/CP-07 state from Git evidence and reconcile experiment registry/README/results only as warranted.
+- Confirm actual CP-06/CP-07 state from Git evidence and the merged #109/#110 canonical state; reconcile EXP-29 README/results/derived packet only as warranted. Do not undo EXP-12 P-001–P-006 = 6/10 or the #110 registry reconciliation.
 - Preserve historical checkpoint evidence and the EXP-29 `REUSE_COMPONENT` decision; no retroactive invented successes.
 - Replace active CP-05-era `status`/`nearest_action`/resume instructions with evidence-supported state. Explicitly distinguish current task CP-08 from historical checkpoints.
 - Resolve conflicting canonical sources according to governance, or STOP for owner decision.
