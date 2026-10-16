@@ -261,6 +261,8 @@ A parallel system requires explicit justification and the New Idea Filter.
 
 ## 20. Evidence
 
+**Agent claims are not evidence.** A statement such as `tests passed`, `deployment succeeded`, `file updated`, or `requirement completed` does not clear a gate by itself. Verify the claim from the execution surface: command result/exit status, Git diff/read-back, deployment/version plus live read-back, or an acceptance-criteria-to-evidence mapping. If required evidence is unavailable or ambiguous, record `UNVERIFIED`, `NOT_OBSERVABLE`, or the repository's equivalent fail-closed state rather than inventing PASS.
+
 After substantial work, leave enough evidence in the project's established format for the next executor to continue without rediscovery.
 
 As applicable, include:

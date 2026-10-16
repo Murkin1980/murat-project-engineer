@@ -1,6 +1,6 @@
 # Murat Project Engineer — Status
 
-Updated: 2026-10-01 (EXP-14 checkpoint EXP-14-CP-01 executed and closed with RESULT = FAIL; Laya is not integrated and gains no decision authority; no production routing change)
+Updated: 2026-10-16 (core stabilization against main ca16094; EXP-12 prospective progress reconciled to 6/10; EXP-23/24/25/26/27/28/29 outcomes reflected; queued experiment-ID collisions must be renumbered before merge)
 
 ## Current version
 
@@ -36,9 +36,17 @@ Implemented and available:
 - Stage 2 evidence for Runs 01–13
 - bounded runtime-coordination contracts and stateless helpers from Run 11
 - EXP-002 Machine Protocol (CLOSED, verdict PASS): external models correctly understood the frozen MPE IR (cross-model semantic portability supported); confirmed cross-executor execution is NOT demonstrated (INCONCLUSIVE — no real tool/repository access; self-reported execution claims remain UNVERIFIED). The evidence-trust boundary rule is promoted into `scripts/validate_package.py`
-- EXP-12 deterministic triage prototype, contracts and first retrospective backtest
+- EXP-12 deterministic triage prototype, contracts, retrospective backtest, and prospective cases P-001–P-006
 - EXP-13 low-cost evaluation harness + pre-execution rework (frozen dataset v2, routes A/B/premium, thresholds, pricing snapshot, checks, and Pilot Batch 1 pre-registration). Telemetry state: usage evidence adapters exist in main for all routes (`scripts/usage_from_router_log.py` for A/B isolated metered Router windows; `scripts/usage_from_codex_rollout.py` for one explicit premium Codex turn with a complete per-call breakdown, fail-closed otherwise); no Pilot Batch 1 runs have been executed yet
 - EXP-14 Laya / System One Decision Layer — **EXECUTED, CLOSED, verdict FAIL** (checkpoint `EXP-14-CP-01`, run 2026-09-30 → 2026-10-01, evidence `experiments/exp-14-laya/2026-09-30/`, pointer `experiments/exp-14-laya-system-one/EXECUTION_RECORD.md`). Frozen 43-case dataset (sha256 `aef7d8bf…3803b648`) + rule-derived oracle validated against 25 pre-existing frozen labels before any model call. Sequence A deterministic control: exact 0.8605, blocking safety gate PASS, routine coverage 12/12, 0.0095 ms median, $0.0. Sequence B Laya zero-shot (`laya==0.3.22`, `convaiinnovations/laya` @ `55cf4c4e…`, CPU, 3 reproducible passes): exact **7/43 = 0.1628**, routine coverage **0/12**, 0 protected false negatives and 0 unsafe FAST decisions but **5 protected escalation false negatives → blocking safety gate FAIL**, 3367.8 ms median → `B_MODEL_RESULT = FAIL`, `B_SAFETY_RESULT = FAIL`, classification `MODEL_FAIL`. Reference arm B2 (vendor fine-tuned `typed-decisions`, attempt 1 `INFRASTRUCTURE_BLOCKED` by a harness pin defect fixed minimally in `2acd481d`): exact 5/43 = 0.1163, routine coverage 1/12, gate PASS but 23 gate false positives → `B2_RESULT = FAIL`. `CONFIDENCE_SIGNAL = NOT_USEFUL` (`risk_tier` confidence AUC 0.5263 / 0.4878; best threshold cut is the trivial one, coverage 0.0 / 0.0833), so **calibration NOT_RUN / NOT_JUSTIFIED** and **fine-tuning NOT_RUN** (forbidden at this checkpoint). `PASS_FOR_NEXT_EXPERIMENT = NO`; `integration_authorized` remains false; 36/36 production and governing files digest-identical to `d2ec6453`; the temporary branch-scoped CI workflow used to reach the pinned checkpoint was deleted at close.
+- EXP-23 Papermorph — PASS / REUSE_COMPONENT: reuse mark-based narration↔visual sync and quiz-data patterns; do not adopt the Papermorph engine
+- EXP-24 agentic text→film pipeline — PASS / REUSE_COMPONENT: reuse the source→beats/work-units→marks/cues/timings→asset-slots→QA→minimal-diff revision contract; do not require HyperFrames or Papermorph
+- EXP-25 Atomic CRM extraction — PASS / ADOPT_WITH_CHANGES at pattern level only; no parallel CRM or second source of truth
+- EXP-26 TencentDB memory extraction — PARTIAL / ADOPT_WITH_CHANGES at pattern level only; no memory platform, database, vector store, autonomous write, or production integration
+- EXP-27 Paperclip orchestration patterns — PASS / ADOPT_WITH_CHANGES at pattern level only; bounded ancestry, lease/resume, budget, and approval patterns only; no Paperclip control plane
+- EXP-28 workflow retrospective — PASS / ADOPT_WITH_CHANGES as a manual evidence-gated pattern; no automatic post-run trigger
+- EXP-29 Arena Bootstrap Harness — PASS / REUSE_COMPONENT: deterministic Git-derived bootstrap packets for context-heavy Arena tasks; Git remains canonical and packets must verify FRESH
+- EXP-S2C-01 UI reconstruction feedback loop — PASS / REUSE_COMPONENT: 1 initial render + up to 3 targeted correction cycles with early stop
 - portfolio dashboard (read-only static asset, Workers Static Assets, auto-deploy on configured main push)
 
 ## Stage 2 run status
@@ -65,7 +73,7 @@ Run 07 PASS applies only to completion of the controlled evaluation. Strix execu
 
 Run 09 remains REWORK until its unresolved production-rule, external-LLM, Git-boundary, and source-of-truth findings are addressed. Run 10 remains historically BLOCKED. Run 11 remains inside Option A+ only while its mailbox, JSONL, and lifecycle elements stay bounded, stateless, conditional helpers rather than runtime authority.
 
-Run 12 PASS validates deterministic execution and retrospective fixture consistency. Prospective P-001–P-004 are complete; P-003 is the first external product case (`mebeldocs-ai@987c13e`) and P-004 is the first FAST dashboard UI case. Every case has three-way human/engine/observed agreement. Progress is 4/10, still insufficient for operational reliance.
+Run 12 PASS validates deterministic execution and retrospective fixture consistency. Prospective P-001–P-006 are complete. P-003 is the first external product case (`mebeldocs-ai@987c13e`), P-004 is the first FAST dashboard UI case, P-005 covers Murat House editorial work, and P-006 covers dashboard reconciliation. All six completed prospective cases preserve human/engine/observed agreement. Progress is 6/10, still insufficient for operational reliance.
 
 ## New Idea Filter
 
@@ -113,16 +121,16 @@ The experiment must measure quality, rework, reviewer value, interruption recove
 
 ## Next actions
 
-**Nearest single action (as of 2026-09-10):** choose one small real task from an active project and run it through the existing MPE, recording the outcome, time, rework, and available telemetry. Do not run EXP-13 Pilot Batch 1 yet.
+**Nearest single action (as of 2026-10-16):** complete EXP-29 CP-08 bootstrap semantic-consistency recovery, then continue fresh real Stage 2 / EXP-12 prospective cases. Do not run EXP-13 Pilot Batch 1 until credential, egress, and telemetry preconditions are genuinely satisfied.
 
 1. Preserve the historical Run 05 and Run 10 BLOCKED outcomes; do not retroactively promote them.
 2. Keep Run 09 in REWORK until the recorded findings are resolved or explicitly scoped out.
-3. Continue Runs 14–20 with fresh real work; pre-register the next EXP-12 case only when its real task is selected and reach 10 cases before operational reliance.
+3. Continue Runs 14–20 with fresh real work; EXP-12 prospective progress is 6/10, so pre-register P-007 only when its real task is selected and reach 10/10 before operational reliance.
 4. Ensure the 20-run set contains at least five baseline runs total; Runs 01–04 currently provide four historical baselines.
 5. Use independent Reviewer on enough VERIFIED runs to measure reviewer usefulness and false positives.
 6. Keep Run 11 helpers conditional and bounded. A poller, daemon, retry worker, router, scheduler, shared state, database, or generic messaging/runtime layer requires a new filter and DEEP-CHANGE review.
 7. Add selected deterministic gates to GitHub CI only through a separate bounded change.
-8. Maintain the portfolio dashboard snapshot as part of the weekly status ritual.
+8. Maintain the portfolio dashboard snapshot as part of the weekly status ritual. Before merging any queued experiment registration, ensure its experiment ID is unique in canonical `experiments/EXPERIMENT_REGISTRY.json`; do not merge competing identities under the same EXP number.
 9. EXP-13 Pilot Batch 1 has fail-closed usage paths for all routes: `scripts/usage_from_router_log.py` imports isolated metered A/B Router windows, while `scripts/usage_from_codex_rollout.py` can import one explicit premium Codex turn only when its rollout contains a complete token breakdown. Native Router events and opaque-total rollout events remain unusable; do not substitute synthetic telemetry. The three T-008 routes legally stop without usage. Run the 18-entry batch only after each proceeding run has a valid source record, then STOP and analyse.
 10. EXP-14 checkpoint `EXP-14-CP-01` is closed with `RESULT = FAIL` and `PASS_FOR_NEXT_EXPERIMENT = NO`: Laya zero-shot closed 0 of 12 routine cases and tripped the blocking safety gate on 5 protected escalation false negatives, and the vendor fine-tuned reference arm closed 1 of 12. Do not integrate Laya and do not grant it any decision authority. Do not fine-tune on the 43-case evaluation dataset; any continuation needs a new pre-registration with a new, separately frozen dataset whose splits do not overlap those cases (`experiments/exp-14-laya/2026-09-30/FINE_TUNING.md`). Any proposal to integrate a learned System One model into the production decision path still requires a separate New Idea Filter decision and applicable DEEP-CHANGE approval. The cheapest improvement this checkpoint identified is not a model: the deterministic engine under-tiers five DEEP-CHANGE cases (credentials/security, destructive-without-rollback, source-of-truth changes) that MPE rule text already covers — fixing that in `scripts/triage_engine.py` is a production decision-path change and requires its own filter decision and, if it touches protected routing boundaries, DEEP-CHANGE approval.
 
