@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-10-10",
+  "updated_at": "2026-10-16",
   "experiments": [
     {
       "experiment_id": "EXP-ALEXANDRIA",
@@ -138,15 +138,17 @@
       "status": "PASS",
       "why": "Validate deterministic triage and executability classifications.",
       "date_added": "2026-08-21",
-      "next_action": "Execute pre-registered P-006 using docs/experiments/EXP-12_P006_DASHBOARD_EXPERIMENT_SYNC.md. Human label VERIFIED/no-approval is frozen. Reconcile the public read-only dashboard experiment view against current canonical MPE evidence, validate, do not deploy, then record execution/evaluation evidence.",
-      "result_summary": "Retrospective mechanics passed; four prospective cases are complete, but the evidence remains insufficient for operational reliance.",
+      "next_action": "P-006 is EVALUATED and complete. Continue toward the 10-case prospective target by selecting and pre-registering a new real task as P-007; freeze its human label before engine execution. Do not claim operational reliance at 6/10.",
+      "result_summary": "Retrospective mechanics PASS; prospective P-001–P-006 are complete (6/10). P-006 has canonical EXECUTED and EVALUATED records; human, engine, and observed classifications agree (VERIFIED, approval not required). Evidence is still insufficient for operational reliance until the prospective target and associated review gates are satisfied.",
       "repo": "Murkin1980/murat-project-engineer",
       "experiment_path": "docs/experiments/EXP-12_CLEARS_TRIAGE.md",
       "evidence_links": [
-        "https://github.com/Murkin1980/murat-project-engineer/blob/main/evidence/backtest/EXP-12_BACKTEST_RESULTS.json"
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/evidence/backtest/EXP-12_BACKTEST_RESULTS.json",
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/evidence/exp-12/prospective/P-006_EXECUTION.json",
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/evidence/exp-12/prospective/P-006_EVALUATION.json"
       ],
       "pr_or_issue_links": [],
-      "updated_at": "2026-10-10"
+      "updated_at": "2026-10-16"
     },
     {
       "experiment_id": "EXP-13",
@@ -634,8 +636,8 @@
       "status": "PASS",
       "why": "Test whether a deterministic Git-derived startup packet can let a fresh Arena session resume context-heavy MPE work with less rediscovery while preserving Git as the only source of truth and avoiding a separate memory platform.",
       "date_added": "2026-10-09",
-      "next_action": "Closed at CP-05 with PASS / REUSE_COMPONENT. Reuse the derived-packet pattern for context-heavy Arena tasks through the documented builder command (experiments/exp-29-arena-bootstrap-harness/harness/bootstrap_builder.py build/verify). Broader adoption — automatic packet generation, lesson promotion beyond the recorded PROJECT/TASK/NO_CHANGE scopes, or any runtime integration — requires a separate owner decision. Do not merge the PR as part of this experiment.",
-      "result_summary": "PASS / REUSE_COMPONENT: a deterministic, LLM-free bootstrap builder derives ARENA_CONTEXT.json/.md from canonical Git sources (registry, task files, STATUS, AGENTS, governance, EXP-27/EXP-28 results) with sha256 provenance for every source and every item source-linked. Fresh-session A/B on the frozen fixture EXP-27 (real completed context-heavy task, isolated python3 -I workers): Arm A normal rediscovery 5 files / 83 KB / 7 tool ops vs Arm B packet 1 file / 12.8 KB / 1 tool op (~85% fewer context bytes, identical answers, genealogy and stop conditions reproduced in both arms). Six stale/unsafe negative controls fail closed: source changed, digest mismatch, stale NEXT ACTION and canonical-override attempts degrade to STALE non-authoritative hints; missing stop rule and GLOBAL lesson promotion are REJECTED (and refused by the fresh-session worker). Canonical sources digest-identical before/after; only the two derived artifacts are written. No memory service, vector store, daemon, scheduler, persistent agent runtime, Router change, automatic learning, or second source of truth.",
+      "next_action": "CP-08 Bootstrap State Consistency Recovery: reconcile registry and current checkpoint state, preserve REUSE_COMPONENT, regenerate and verify a fresh and semantically consistent packet; follow owner instruction in PR #108. Do not merge or deploy without authorization.",
+      "result_summary": "PASS / REUSE_COMPONENT: a deterministic, LLM-free bootstrap builder derives ARENA_CONTEXT.json/.md from canonical Git sources (registry, task files, STATUS, AGENTS, governance, EXP-27/EXP-28 results) with sha256 provenance for every source and every item source-linked. Fresh-session A/B on the frozen fixture EXP-27 (real completed context-heavy task, isolated python3 -I workers): Arm A normal rediscovery 5 files / 83 KB / 7 tool ops vs Arm B packet 1 file / 12.8 KB / 1 tool op (~85% fewer context bytes, identical answers, genealogy and stop conditions reproduced in both arms). Six stale/unsafe negative controls fail closed: source changed, digest mismatch, stale NEXT ACTION and canonical-override attempts degrade to STALE non-authoritative hints; missing stop rule and GLOBAL lesson promotion are REJECTED (and refused by the fresh-session worker). Canonical sources digest-identical before/after; only the two derived artifacts are written. No memory service, vector store, daemon, scheduler, persistent agent runtime, Router change, automatic learning, or second source of truth. 2026-10-16 follow-up: CP-07 preflight reported committed packet STALE (AGENTS.md and registry digests), 2/34 focused test failures and 27/432 full-suite failures (1 skipped); CP-08 recovery instruction is proposed in draft PR #108, not yet implemented. Historical PASS result retained pending reconciliation.",
       "repo": "Murkin1980/murat-project-engineer",
       "experiment_path": "experiments/exp-29-arena-bootstrap-harness",
       "evidence_links": [
@@ -655,9 +657,10 @@
         "experiments/exp-28-agent-workflow-skills-retro/RESULTS.md"
       ],
       "pr_or_issue_links": [
-        "https://github.com/Murkin1980/murat-project-engineer/pull/65"
+        "https://github.com/Murkin1980/murat-project-engineer/pull/65",
+        "https://github.com/Murkin1980/murat-project-engineer/pull/108"
       ],
-      "updated_at": "2026-10-09"
+      "updated_at": "2026-10-16"
     }
   ]
 }
