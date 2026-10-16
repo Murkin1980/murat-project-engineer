@@ -660,7 +660,7 @@
       "updated_at": "2026-10-09"
     },
     {
-      "experiment_id": "EXP-30",
+      "experiment_id": "EXP-31",
       "name": "HtmlVR / Seven Minutes pilot video assembly",
       "owning_project": "Murat Project Engineer / AI-serial-v2",
       "status": "PLANNED",
@@ -669,7 +669,7 @@
       "next_action": "Arena CP-01A audit; if PASS, CP-01B isolated 20–30 second MP4 proof using E01-S004..S006.",
       "result_summary": "Experiment specified only; no runtime, integration or render performed.",
       "repo": "Murkin1980/murat-project-engineer",
-      "experiment_path": "experiments/exp-30-htmlvr-seven-minutes/ARENA_TASK.md",
+      "experiment_path": "experiments/exp-31-htmlvr-seven-minutes/ARENA_TASK.md",
       "evidence_links": [
         "https://github.com/AntSed/HtmlVR",
         "https://github.com/Murkin1980/AI-serial-v2/blob/main/episodes/01_SEVEN_MINUTES/SCENE_MAP.md"
