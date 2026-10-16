@@ -660,7 +660,7 @@
       "updated_at": "2026-10-09"
     },
     {
-      "experiment_id": "EXP-30",
+      "experiment_id": "EXP-32",
       "name": "OpenMuse reusable component evaluation",
       "owning_project": "Murat Project Engineer",
       "status": "PLANNED",
@@ -669,7 +669,7 @@
       "next_action": "Run read-only CP-01 upstream-code audit and baseline comparison; do not integrate or deploy without evidence and deep-change approval.",
       "result_summary": "Registered only; no tests, live integrations, credentials, or deployment performed.",
       "repo": "Murkin1980/murat-project-engineer",
-      "experiment_path": "experiments/exp-30-openmuse-component-evaluation/README.md",
+      "experiment_path": "experiments/exp-32-openmuse-component-evaluation/README.md",
       "evidence_links": [],
       "pr_or_issue_links": [],
       "updated_at": "2026-10-16"
