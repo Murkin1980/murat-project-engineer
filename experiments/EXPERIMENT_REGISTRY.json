@@ -138,15 +138,17 @@
       "status": "PASS",
       "why": "Validate deterministic triage and executability classifications.",
       "date_added": "2026-08-21",
-      "next_action": "Execute pre-registered P-006 using docs/experiments/EXP-12_P006_DASHBOARD_EXPERIMENT_SYNC.md. Human label VERIFIED/no-approval is frozen. Reconcile the public read-only dashboard experiment view against current canonical MPE evidence, validate, do not deploy, then record execution/evaluation evidence.",
-      "result_summary": "Retrospective mechanics passed; four prospective cases are complete, but the evidence remains insufficient for operational reliance.",
+      "next_action": "P-006 is EVALUATED and complete. Continue toward the 10-case prospective target by selecting and pre-registering a new real task as P-007; freeze its human label before engine execution. Do not claim operational reliance at 6/10.",
+      "result_summary": "Retrospective mechanics PASS; prospective P-001–P-006 are complete (6/10). P-006 has canonical EXECUTED and EVALUATED records; human, engine, and observed classifications agree (VERIFIED, approval not required). Evidence is still insufficient for operational reliance until the prospective target and associated review gates are satisfied.",
       "repo": "Murkin1980/murat-project-engineer",
       "experiment_path": "docs/experiments/EXP-12_CLEARS_TRIAGE.md",
       "evidence_links": [
-        "https://github.com/Murkin1980/murat-project-engineer/blob/main/evidence/backtest/EXP-12_BACKTEST_RESULTS.json"
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/evidence/backtest/EXP-12_BACKTEST_RESULTS.json",
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/evidence/exp-12/prospective/P-006_EXECUTION.json",
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/evidence/exp-12/prospective/P-006_EVALUATION.json"
       ],
       "pr_or_issue_links": [],
-      "updated_at": "2026-10-10"
+      "updated_at": "2026-10-16"
     },
     {
       "experiment_id": "EXP-13",
