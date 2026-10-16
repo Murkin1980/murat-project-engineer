@@ -660,7 +660,7 @@
       "updated_at": "2026-10-09"
     },
     {
-      "experiment_id": "EXP-30",
+      "experiment_id": "EXP-33",
       "name": "Seedance 2.5 structured video prompts / AI-Serial",
       "owning_project": "Murat Project Engineer / AI-Serial Studio",
       "status": "PLANNED",
@@ -669,7 +669,7 @@
       "next_action": "Arena CP-01: read-only source/Skill audit and sanitized A/B/C prompt fixture; no paid runs or executable Skill installation.",
       "result_summary": "Plan only: no generation, installation, production integration or quality improvement verified.",
       "repo": "Murkin1980/murat-project-engineer",
-      "experiment_path": "experiments/exp-30-seedance-25-prompt-evaluation/ARENA_TASK.md",
+      "experiment_path": "experiments/exp-33-seedance-25-prompt-evaluation/ARENA_TASK.md",
       "evidence_links": [
         "https://bytedance.larkoffice.com/docx/A88jd0B47oAd8zxWp5ycZFMfnxh"
       ],
