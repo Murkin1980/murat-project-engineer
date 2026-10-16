@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-10-10",
+  "updated_at": "2026-10-16",
   "experiments": [
     {
       "experiment_id": "EXP-ALEXANDRIA",
@@ -658,6 +658,23 @@
         "https://github.com/Murkin1980/murat-project-engineer/pull/65"
       ],
       "updated_at": "2026-10-09"
+    },
+    {
+      "experiment_id": "EXP-33",
+      "name": "Seedance 2.5 structured video prompts / AI-Serial",
+      "owning_project": "Murat Project Engineer / AI-Serial Studio",
+      "status": "PLANNED",
+      "why": "Reuse official Seedance 2.5 reference-role and camera prompting guidance in existing AI-serial beat workflow rather than a new pipeline.",
+      "date_added": "2026-10-16",
+      "next_action": "Arena CP-01: read-only source/Skill audit and sanitized A/B/C prompt fixture; no paid runs or executable Skill installation.",
+      "result_summary": "Plan only: no generation, installation, production integration or quality improvement verified.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/exp-33-seedance-25-prompt-evaluation/ARENA_TASK.md",
+      "evidence_links": [
+        "https://bytedance.larkoffice.com/docx/A88jd0B47oAd8zxWp5ycZFMfnxh"
+      ],
+      "pr_or_issue_links": [],
+      "updated_at": "2026-10-16"
     }
   ]
 }
