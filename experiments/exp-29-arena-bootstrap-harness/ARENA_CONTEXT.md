@@ -2,33 +2,40 @@
 
 > **DERIVED_VIEW_NON_AUTHORITATIVE**: Derived, non-authoritative launch brief assembled from canonical Git sources. Git remains the only source of truth: on any conflict the canonical files win; verify freshness before use and re-derive or discard this packet on any mismatch.
 
-Verify freshness before use: `python3 experiments/exp-29-arena-bootstrap-harness/harness/bootstrap_builder.py verify --packet <ARENA_CONTEXT.json> --root <repo-root>`. Any source digest mismatch ⇒ STALE; missing stop rule or invalid lesson scope ⇒ REJECTED.
+Verify freshness before use: `python3 experiments/exp-29-arena-bootstrap-harness/harness/bootstrap_builder.py verify --packet <ARENA_CONTEXT.json> --root <repo-root>`. Any source digest mismatch ⇒ STALE; missing stop rule, missing/ambiguous disposition, unsupported active checkpoint, or invalid lesson scope ⇒ REJECTED.
 
 ## NOW
 
 - Project: Murat Project Engineer
-- Goal: Extract and test high-value orchestration patterns from Paperclip—goal context, atomic task lease, persistent resumable evidence, budget/runaway guards, and approval gates—inside existing MPE/murat-ai-orchestrator components without adopting a parallel control plane.
-- Task: EXP-27/CP-05 (checkpoint CP-05)
-- Experiment: EXP-27 — Paperclip orchestration patterns (`experiments/exp-27-paperclip-orchestration-patterns`)
-- Checkpoint chain: CP-01 → CP-02 → CP-03 → CP-04 → CP-05
+- Goal: Test whether a deterministic Git-derived startup packet can let a fresh Arena session resume context-heavy MPE work with less rediscovery while preserving Git as the only source of truth and avoiding a separate memory platform.
+- Task: EXP-29/CP-08 (checkpoint CP-08)
+- Experiment: EXP-29 — Arena Bootstrap Harness (`experiments/exp-29-arena-bootstrap-harness`)
+- Checkpoint chain: CP-01 → CP-02 → CP-03 → CP-04 → CP-05 → CP-06 → CP-07 → CP-08
 - Disposition: REUSE_COMPONENT
-- Registry status: PASS (updated 2026-10-06)
-- Nearest action: Closed at bounded pattern extraction. No production integration, Router change, governance change, or follow-on checkpoint is authorized by this result; a future owner decision is required before any pattern is implemented in an existing component.
-- Generated against (informational): branch `arena/673eac20-murat-project-engineer`, head `acc89fc0ac0b45eef23ef9053f7b1521cf00ddf6`, base `acc89fc0ac0b45eef23ef9053f7b1521cf00ddf6`
+- Registry status: PASS (updated 2026-10-16)
+- Nearest action: CP-08 Bootstrap State Consistency Recovery: reconcile registry and current checkpoint state, preserve REUSE_COMPONENT, regenerate and verify a fresh and semantically consistent packet; follow owner instruction in PR #108. Do not merge or deploy without authorization.
+- Generated against (informational): branch `arena/dce03808-murat-project-engineer`, head `653abffad4ff07b6bb1476f2d65e3dbd35d70402`, base `653abffad4ff07b6bb1476f2d65e3dbd35d70402`
 
 ## RULES (mandatory)
 
-Stop rules (experiments/exp-27-paperclip-orchestration-patterns/README.md#stop-conditions):
-  > Stop and report before:
-- new repo;
-- persistent Paperclip service;
-- new DB/queue/daemon;
-- Router authority change;
-- governance replacement;
-- Git/source-of-truth change;
-- autonomous merge/deploy;
-- recurring paid infrastructure;
-- production integration.
+Stop rules (experiments/exp-29-arena-bootstrap-harness/ARENA_TASK.md#scope-stop-rules + experiments/exp-29-arena-bootstrap-harness/README.md#boundaries):
+  > Stop before implementation and return `DEEP_CHANGE_REQUIRED` if the solution needs any of: / This experiment must not create:
+- memory database/vector store;
+- daemon/scheduler;
+- automatic persistent learning;
+- Router authority;
+- autonomous promotion of rules;
+- shared orchestration state;
+- new canonical source of truth;
+- generic workflow engine.
+- a memory service;
+- a vector database;
+- a daemon or scheduler;
+- automatic memory promotion;
+- a persistent agent runtime;
+- a second canonical source of truth;
+- Router authority changes;
+- global AGENTS.md rule growth merely to feed the packet.
 
 Deep-change gate (docs/governance/SCOPE-CHANGE-CONTROL.md §6):
   > Do not execute a substantial change without explicit approval when it:
@@ -69,46 +76,53 @@ Graceful handoff minimum (AGENTS.md): STATE, EVIDENCE, CHANGES, RESULT, BLOCKER,
   - verify: In any future promotion proposal, require recurrence or high, evidenced cost across independent runs, show it maps to an existing instruction/check location, and demonstrate that the change prevents…
   - source: `experiments/exp-28-agent-workflow-skills-retro/RESULTS.md#R3` — EXP-28 RESULTS.md R3 heading records 'rejected' — observed, not promoted into the bootstrap.
 
-## REUSABLE COMPONENTS (from experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md)
+## REUSABLE COMPONENTS (from experiments/exp-29-arena-bootstrap-harness/RESULTS.md)
 
-- Goal ancestry / context — BORROW → **ADOPT_IN_MPE** (derived packet + source digests; Git stays canonical) (`experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md`)
-- Atomic task lease — ADAPT → **ADOPT_IN_ORCHESTRATOR** (single-host lease as an extension of `scripts/runtime_coordination.py`, in a future authorized checkpoint) (`experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md`)
-- Persistent resumable evidence — KEEP + BORROW → **REUSE_PATTERN_ONLY** (add digest/idempotency key + completeness assertion to existing handoffs; no new store) (`experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md`)
-- Budget / runaway guard — ADAPT → **ADOPT_IN_MPE** (enforced bounded-stop mapped onto the existing compute-budget status vocabulary) (`experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md`)
-- Approval / governance gate — REJECT → **REJECT** donor mechanism; keep the existing MPE gate unchanged (`experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md`)
-- Paperclip as a system/service/DB — REJECT → **DO_NOT_ADOPT** (parallel control plane, second source of truth) (`experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md`)
+- (none parsed)
 
-## KNOWN TRAPS (verified limitations, from experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md)
+## KNOWN TRAPS (verified limitations, from experiments/exp-29-arena-bootstrap-harness/RESULTS.md)
 
-- The lease proof is **single-host, file-backed**. MPE has no shared-filesystem guarantee across executors, so this (`experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md`)
-- The wall-time boundary is demonstrated with an **injected deterministic clock** (the real measured duration of (`experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md`)
-- Token/cost boundaries were exercised only through the existing `hard_limit`/`budget_health` contract; no live (`experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md`)
-- CP-02's "rediscovery cost" is a file-read/byte proxy measured in the harness, not a human user measurement; (`experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md`)
-- The donor was audited by reading, not by running Paperclip; anything about its runtime behaviour is the donor's (`experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md`)
-- 7 pre-existing unittest failures remain (unchanged by this experiment), plus the pre-existing stale (`experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md`)
+- **CP-06 — prose STOP sentences are not parsed.** EXP-22's (`experiments/exp-29-arena-bootstrap-harness/RESULTS.md`)
+- **CP-06 — boundary titles are an explicit list** (`STOP_SECTION_TITLES`). A (`experiments/exp-29-arena-bootstrap-harness/RESULTS.md`)
+- **CP-06 — every `## Guardrails` bullet is a rule, preferences included** (for (`experiments/exp-29-arena-bootstrap-harness/RESULTS.md`)
+- **CP-06 — union is not reconciliation.** Rules from different sections are all (`experiments/exp-29-arena-bootstrap-harness/RESULTS.md`)
+- **CP-06 — disposition conflicts are checked only between ARENA_TASK.md and (`experiments/exp-29-arena-bootstrap-harness/RESULTS.md`)
+- **CP-06 — FRESH is not complete startup.** The EXP-22 packet is FRESH but lacks (`experiments/exp-29-arena-bootstrap-harness/RESULTS.md`)
+- **CP-06 — point-in-time EXP-22 packet.** `evidence/bootstrap/cp06/` becomes (`experiments/exp-29-arena-bootstrap-harness/RESULTS.md`)
+- **Pre-existing, not changed:** the EXP-29 README top line `Status: PLANNED` (`experiments/exp-29-arena-bootstrap-harness/RESULTS.md`)
+- **Registry not updated for CP-06.** The EXP-29 registry entry still describes (`experiments/exp-29-arena-bootstrap-harness/RESULTS.md`)
+- **CP-07 — registry status enum has no `PARTIAL`.** The EXP-22 entry records (`experiments/exp-29-arena-bootstrap-harness/RESULTS.md`)
+- **CP-07 — the registry carries run state as free text.** `result_summary` / (`experiments/exp-29-arena-bootstrap-harness/RESULTS.md`)
+- **CP-07 — point-in-time EXP-22 packet.** `evidence/bootstrap/cp07/` (like (`experiments/exp-29-arena-bootstrap-harness/RESULTS.md`)
+- The A/B comparison is a **retrieval-cost proxy** (bytes/files/tool ops counted (`experiments/exp-29-arena-bootstrap-harness/RESULTS.md`)
+- One frozen fixture (EXP-27). EXP-27 CP-02 additionally verified EXP-25 with (`experiments/exp-29-arena-bootstrap-harness/RESULTS.md`)
+- The builder parses canonical prose (headings, tables, bullets). A formatting (`experiments/exp-29-arena-bootstrap-harness/RESULTS.md`)
+- `generated_against` git refs are informational and excluded from the (`experiments/exp-29-arena-bootstrap-harness/RESULTS.md`)
+- The worker refuses any GLOBAL lesson scope outright (it cannot check the (`experiments/exp-29-arena-bootstrap-harness/RESULTS.md`)
+- The 7 pre-existing unittest failures (registry-status schema mismatches for (`experiments/exp-29-arena-bootstrap-harness/RESULTS.md`)
 
 ## RESUME
 
 - Status: PASS
-- Result summary: PASS / ADOPT_WITH_CHANGES at pattern level only. Donor audited at paperclipai/paperclip@d9f60004 (MIT; release tag v2026.1005.0 = 467125fa) and used as reference only. CP-02: a compact ancestry packet derived from the registry + ARENA_TASK let an isolated fresh process state project, parent goal, c…
-- Next action: Closed at bounded pattern extraction. No production integration, Router change, governance change, or follow-on checkpoint is authorized by this result; a future owner decision is required before any pattern is implemented in an existing component.
-- Next authorized action: None inside this experiment — **STOP after CP-05** per `ARENA_TASK.md`. Any implementation of the BORROW/ADAPT
-- Evidence: `experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md` (full result record in the canonical experiment RESULTS.md)
+- Result summary: PASS / REUSE_COMPONENT: a deterministic, LLM-free bootstrap builder derives ARENA_CONTEXT.json/.md from canonical Git sources (registry, task files, STATUS, AGENTS, governance, EXP-27/EXP-28 results) with sha256 provenance for every source and every item source-linked. Fresh-session A/B on the froz…
+- Next action: CP-08 Bootstrap State Consistency Recovery: reconcile registry and current checkpoint state, preserve REUSE_COMPONENT, regenerate and verify a fresh and semantically consistent packet; follow owner instruction in PR #108. Do not merge or deploy without authorization.
+- Next authorized action: CP-08 (bootstrap state consistency recovery) is complete as a bounded checkpoint and is the current authorized action: the committed `ARENA_CONTEXT.json` / `.md` describe the current task (`EXP-29/CP-08`) with the `REUSE_COMPONENT` disposition and a complete resume action, an absent disposition or an undeclared active checkpoint now fails closed, and the documented ritual publishes the current task for this experiment instead of the frozen CP-03 fixture (`evidence/cp08.json`). Its PR is opened and must not be merged as part of this checkpoint: **STOP after PR delivery and await owner review.** Recording CP-08 completion in the EXP-29 registry entry, and any broader adoption (automatic packet generation per session, GLOBAL lesson promotion, runtime integration), remain separate owner decisions with their own New Idea Filter / deep-change assessment.
+- Evidence: `experiments/exp-29-arena-bootstrap-harness/RESULTS.md` (full result record in the canonical experiment RESULTS.md)
 
 ## PROVENANCE (canonical sources + digests)
 
 | Path | SHA-256 | Role |
 |---|---|---|
-| `experiments/EXPERIMENT_REGISTRY.json` | `a8b9e9a86746f92d338728b5fda17260fa33a7f630e6d611a812c7db131b8813` | registry |
-| `experiments/exp-27-paperclip-orchestration-patterns/ARENA_TASK.md` | `ed3bed1a1de39eecbc2167efd25e41aece0f7876c6b02b26a61ed88fc803c1e3` | task_instructions |
-| `experiments/exp-27-paperclip-orchestration-patterns/README.md` | `dba4d48d997e155e91ec220e2fb13e2525e6100f3ffb110a01086b3689216ef4` | task_readme |
-| `experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md` | `8fde29e81e2c05c42a48acb6d1a483077d81e61399573fb1f0653cff2ef9ae5c` | experiment_results |
-| `STATUS.md` | `968d47ad10910c5875f83f6c74933369aa0b70486e51cbd2bcb7b65ccb2d96e5` | project_status |
-| `AGENTS.md` | `1058d30369c36609918f08374bcac2ff01ded85d5ea2baa94fdce75c280d8bc5` | agents_rules |
-| `docs/governance/SCOPE-CHANGE-CONTROL.md` | `c4b747249f37d94dab9e5597b6e03692d2064846a4b7903a5b68036f996a0f9e` | governance |
+| `experiments/EXPERIMENT_REGISTRY.json` | `ffc8ca0f74672b71879da4e1f6114f121b301d4ff149edbabc60e2db98dd3834` | registry |
+| `experiments/exp-29-arena-bootstrap-harness/ARENA_TASK.md` | `cf4d92a7b865c4bc8a6dd21fd4397d7f05f164504a0f7e4224e151cb1668ae55` | task_instructions |
+| `experiments/exp-29-arena-bootstrap-harness/README.md` | `5003d01416b2a8a3665676bec390a6d5ddb6c8d90e91d7c06a4cb5323cffab64` | task_readme |
+| `experiments/exp-29-arena-bootstrap-harness/RESULTS.md` | `09456d90e71a5199a24e3e06b165e96fa0d89c8a13cca99043017a1d46d74ab4` | experiment_results |
+| `STATUS.md` | `a9c3bc395ac06371913334d8cd920603edeaaed33d2225956445f2e7afdbbfb5` | project_status |
+| `AGENTS.md` | `bb4e5e24858c9725980f83c3ab4c1bb4ff2c3b8d44dbb74ef5edff4edfa179e7` | agents_rules |
+| `docs/governance/SCOPE-CHANGE-CONTROL.md` | `954a9a58fd5d35352b808a8c78600da821893fea078c02aa8b67f46ae593447b` | governance |
 | `experiments/exp-28-agent-workflow-skills-retro/RESULTS.md` | `35a98ee8609a4b0b6dbf712b423d677b91aae70d52f0fd7ccd2a82c8966562a8` | accepted_lessons |
 
 ## FRESHNESS
 
 - Rule: FRESH only when every source_refs sha256 matches the current file AND the packet equals a deterministic rebuild from current sources; otherwise the packet is STALE or REJECTED and must be treated as a non-authoritative hint.
-- Safety invariants: authority disclaimer present (DERIVED_VIEW_NON_AUTHORITATIVE); at least one task stop/deep-change rule present; deep-change gate bullets present; lesson scopes limited to GLOBAL/PROJECT/TASK/NO_CHANGE; GLOBAL requires a PROMOTED_TO_GLOBAL marker in the canonical lesson source (no current source has one)
+- Safety invariants: authority disclaimer present (DERIVED_VIEW_NON_AUTHORITATIVE); at least one task stop/deep-change rule present; deep-change gate bullets present; a disposition is declared by a canonical source; a missing or conflicting disposition is never resolved silently (missing/ambiguous disposition ⇒ REJECTED); the active checkpoint is declared in the packet's canonical checkpoint chain (unsupported active checkpoint ⇒ REJECTED); lesson scopes limited to GLOBAL/PROJECT/TASK/NO_CHANGE; GLOBAL requires a PROMOTED_TO_GLOBAL marker in the canonical lesson source (no current source has one)

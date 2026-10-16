@@ -18,7 +18,11 @@ Checkpoints:
   canonical-source immutability;
 - CP-06 — first real-use repair: EXP-22 / CP-01 must rebuild and verify FRESH from
   current Git with the H-1/H-2/H-3 defects repaired (regression coverage lives in
-  ``tests/test_exp29_bootstrap.py``).
+  ``tests/test_exp29_bootstrap.py``);
+- CP-08 — bootstrap state consistency: the committed derived artifacts describe the
+  CURRENT authorized task (``CURRENT``), keep the canonical disposition and resume
+  action, and fail closed on a missing disposition, an undeclared active checkpoint,
+  or a superseded instruction carried as current.
 
 Usage:
     python3 experiments/exp-29-arena-bootstrap-harness/harness/exp29_proof.py all
@@ -43,8 +47,18 @@ sys.path.insert(0, str(HARNESS_DIR))
 
 import bootstrap_builder as builder  # noqa: E402
 
-# Frozen fixture: one real, already completed context-heavy MPE task.
+# Frozen fixture: one real, already completed context-heavy MPE task. It stays the
+# CP-03 A/B fixture and the CP-02/CP-04 proof subject; it is NOT the task the
+# committed derived artifacts describe (see CURRENT).
 FIXTURE = {"experiment_id": "EXP-27", "checkpoint": "CP-05"}
+
+# Current authorized task of this experiment, published into the committed
+# ``ARENA_CONTEXT.json`` / ``ARENA_CONTEXT.md``. Owner authorized in CP-08
+# (``ARENA_TASK.md``, instruction PR #108); the EXP-29 registry entry records the
+# same action as ``next_action``. The builder fail-closes if this checkpoint is not
+# declared by a canonical EXP-29 file, so the artifact can never be published for
+# an unsupported or silently stale task. Bump it with the next authorized checkpoint.
+CURRENT = {"experiment_id": "EXP-29", "checkpoint": "CP-08"}
 
 # Canonical sources the builder derives from (must never be written by EXP-29).
 CANONICAL_SOURCES = (
@@ -52,6 +66,9 @@ CANONICAL_SOURCES = (
     "experiments/exp-27-paperclip-orchestration-patterns/ARENA_TASK.md",
     "experiments/exp-27-paperclip-orchestration-patterns/README.md",
     "experiments/exp-27-paperclip-orchestration-patterns/RESULTS.md",
+    "experiments/exp-29-arena-bootstrap-harness/ARENA_TASK.md",
+    "experiments/exp-29-arena-bootstrap-harness/README.md",
+    "experiments/exp-29-arena-bootstrap-harness/RESULTS.md",
     "experiments/exp-28-agent-workflow-skills-retro/RESULTS.md",
     "STATUS.md",
     "AGENTS.md",
@@ -175,20 +192,33 @@ def cp02(workdir):
         "traps": len(packet["known_traps"]),
     }
 
-    # derived artifacts: (re)generate the committed ARENA_CONTEXT.json/.md in place
+    # derived artifacts: (re)generate the committed ARENA_CONTEXT.json/.md in place.
+    # They describe the CURRENT authorized task of this experiment; publishing the
+    # frozen fixture here is what let a FRESH packet carry a CP-05-era task.
     artifact_json = EXPERIMENT_DIR / "ARENA_CONTEXT.json"
     artifact_md = EXPERIMENT_DIR / "ARENA_CONTEXT.md"
-    committed = builder.build_packet(ROOT, FIXTURE["experiment_id"], FIXTURE["checkpoint"])
+    committed = builder.build_packet(ROOT, CURRENT["experiment_id"], CURRENT["checkpoint"])
     _write_json(artifact_json, committed)
     artifact_md.write_text(builder.render_markdown(committed), encoding="utf-8")
     verification = builder.verify_packet(committed, ROOT)
+    fixture_verification = builder.verify_packet(packet, ROOT)
     results["artifacts"] = {
         "paths": list(DERIVED_ARTIFACTS),
         "json_bytes": artifact_json.stat().st_size,
         "md_bytes": artifact_md.stat().st_size,
         "verify_status": verification["status"],
         "packet_task": committed["now"]["task"],
+        "packet_checkpoint": committed["now"]["checkpoint"],
+        "packet_disposition": committed["now"]["disposition"],
         "generated_against": committed["generated_against"],
+    }
+    # the frozen fixture packet stays reproducible (and evidenced) without being
+    # published as the experiment's own launch brief
+    results["fixture_packet"] = {
+        "fixture": FIXTURE,
+        "packet_task": packet["now"]["task"],
+        "json_bytes": len(json.dumps(packet, ensure_ascii=False, sort_keys=True, indent=1)) + 1,
+        "verify_status": fixture_verification["status"],
     }
 
     checks = {
@@ -208,6 +238,11 @@ def cp02(workdir):
             and results["structure"]["deep_change_gate_bullets"] > 0
         ),
         "artifacts_fresh": results["artifacts"]["verify_status"] == "FRESH",
+        "artifacts_describe_current_task": (
+            results["artifacts"]["packet_task"]
+            == f"{CURRENT['experiment_id']}/{CURRENT['checkpoint']}"
+        ),
+        "fixture_packet_still_fresh": results["fixture_packet"]["verify_status"] == "FRESH",
     }
     results["checks"] = checks
     results["result"] = "PASS" if all(checks.values()) else "FAIL"
@@ -563,6 +598,191 @@ def cp06(workdir):
     return results
 
 
+# --- CP-08: bootstrap state consistency ----------------------------------------
+
+# The pre-repair CP-07 session packet: an EXP-29 packet that recorded no disposition
+# at all and still verified FRESH. Kept as evidence that the drift was real.
+CP07_SESSION_PACKET = EXPERIMENT_DIR / "evidence" / "cp07" / "session_bootstrap" / "ARENA_CONTEXT.json"
+
+# The CP-05-era active instruction a stale packet must not carry as current.
+STALE_RESUME_TEXT = (
+    "None inside this experiment — **STOP after CP-05** per `ARENA_TASK.md`. "
+    "Any implementation of the BORROW/ADAPT"
+)
+
+
+def _registry_entry(experiment_id):
+    registry = json.loads((ROOT / "experiments" / "EXPERIMENT_REGISTRY.json").read_text(encoding="utf-8"))
+    return next(e for e in registry["experiments"] if e["experiment_id"] == experiment_id)
+
+
+def _canonical_resume_paragraph(experiment_id):
+    """First paragraph of the canonical ``## Next authorized action`` section.
+
+    Independent of the builder's parser: this is what the packet must reproduce.
+    """
+    entry = _registry_entry(experiment_id)
+    text = (ROOT / entry["experiment_path"] / "RESULTS.md").read_text(encoding="utf-8")
+    lines = text.splitlines()
+    start = next(i for i, line in enumerate(lines) if line.strip() == "## Next authorized action")
+    paragraph = []
+    for line in lines[start + 1:]:
+        stripped = line.strip()
+        if stripped.startswith("#") or (not stripped and paragraph):
+            break
+        if stripped:
+            paragraph.append(stripped)
+    return " ".join(paragraph)
+
+
+def cp08(workdir):
+    _log("CP-08: bootstrap state consistency (current task, disposition, resume action)")
+    artifact_json = EXPERIMENT_DIR / "ARENA_CONTEXT.json"
+    committed = json.loads(artifact_json.read_text(encoding="utf-8"))
+    verification = builder.verify_packet(committed, ROOT)
+    now, resume = committed["now"], committed["resume"]
+    entry = _registry_entry(CURRENT["experiment_id"])
+    canonical_resume = _canonical_resume_paragraph(CURRENT["experiment_id"])
+    expected_task = f"{CURRENT['experiment_id']}/{CURRENT['checkpoint']}"
+
+    # negative control A: the disposition disappears from the packet
+    nc_missing = json.loads(json.dumps(committed))
+    nc_missing["now"]["disposition"] = ""
+    nc_missing["now"]["disposition_sources"] = []
+    missing_path = _write_json(workdir / "cp08/nc_missing_disposition.json", nc_missing)
+    missing_observed = builder.verify_packet(nc_missing, ROOT)
+    missing_worker = _run_worker(
+        ["answer", "--packet", str(missing_path), "--out", str(workdir / "cp08/nc_missing_worker.json")],
+        cwd=workdir / "cp08/nc_missing_cwd",
+    )
+
+    # negative control B: the packet claims an active checkpoint no canonical file declares
+    nc_checkpoint = json.loads(json.dumps(committed))
+    nc_checkpoint["now"]["checkpoint"] = "CP-99"
+    nc_checkpoint["now"]["task"] = f"{CURRENT['experiment_id']}/CP-99"
+    checkpoint_path = _write_json(workdir / "cp08/nc_unsupported_checkpoint.json", nc_checkpoint)
+    checkpoint_observed = builder.verify_packet(nc_checkpoint, ROOT)
+    checkpoint_worker = _run_worker(
+        ["answer", "--packet", str(checkpoint_path), "--out", str(workdir / "cp08/nc_checkpoint_worker.json")],
+        cwd=workdir / "cp08/nc_checkpoint_cwd",
+    )
+
+    # negative control C: the packet carries the superseded CP-05-era instruction as current
+    nc_stale = json.loads(json.dumps(committed))
+    nc_stale["resume"]["next_authorized_action"] = STALE_RESUME_TEXT
+    stale_observed = builder.verify_packet(nc_stale, ROOT)
+    stale_named = any(
+        d["field"] == "resume.next_authorized_action" for d in stale_observed.get("field_diffs", [])
+    )
+
+    # the pre-repair drift packet can no longer pass as current state
+    before = json.loads(CP07_SESSION_PACKET.read_text(encoding="utf-8"))
+    before_observed = builder.verify_packet(before, ROOT)
+
+    checks = {
+        "committed_packet_fresh": verification["status"] == "FRESH",
+        "committed_packet_rebuild_identical": verification["checks"]["matches_rebuild"],
+        "task_is_current": now["task"] == expected_task and now["checkpoint"] == CURRENT["checkpoint"],
+        "checkpoint_chain_preserves_history": (
+            now["checkpoints"] == [f"CP-{i:02d}" for i in range(1, 9)]
+            and now["checkpoint"] in now["checkpoints"]
+        ),
+        "disposition_preserved": (
+            now["disposition"] == "REUSE_COMPONENT"
+            and {item["value"] for item in now["disposition_sources"]} == {"REUSE_COMPONENT"}
+            and len(now["disposition_sources"]) == 2
+        ),
+        "resume_action_complete_and_current": (
+            bool(canonical_resume) and resume["next_authorized_action"] == canonical_resume
+        ),
+        "registry_agrees_with_packet": (
+            now["nearest_action"] == entry["next_action"]
+            and resume["next_action"] == entry["next_action"]
+            and resume["status"] == entry["status"]
+            and CURRENT["checkpoint"] in entry["next_action"]
+        ),
+        "missing_disposition_fails_closed": (
+            missing_observed["status"] == "REJECTED"
+            and "missing_disposition" in missing_observed["reasons"]
+            and missing_worker["refused"]
+            and "missing_disposition" in missing_worker["refusal_reasons"]
+        ),
+        "unsupported_active_checkpoint_fails_closed": (
+            checkpoint_observed["status"] == "REJECTED"
+            and any(r.startswith("unsupported_active_checkpoint") for r in checkpoint_observed["reasons"])
+            and checkpoint_worker["refused"]
+        ),
+        "stale_active_instruction_is_not_fresh": (
+            stale_observed["status"] != "FRESH" and stale_named
+        ),
+        "pre_repair_packet_no_longer_passes": (
+            before_observed["status"] == "REJECTED"
+            and "missing_disposition" in before_observed["reasons"]
+        ),
+    }
+    verify_path = _write_json(
+        EVIDENCE_DIR / "cp08" / "verify.json",
+        {"artifact": str(artifact_json.relative_to(ROOT)), **verification},
+    )
+    results = {
+        "checks": checks,
+        "result": "PASS" if all(checks.values()) else "FAIL",
+        "current_task": expected_task,
+        "verification": {
+            "status": verification["status"],
+            "reasons": verification["reasons"],
+            "evidence": str(verify_path.relative_to(ROOT)),
+        },
+        "packet": {
+            "task": now["task"],
+            "checkpoints": now["checkpoints"],
+            "disposition": now["disposition"],
+            "disposition_sources": now["disposition_sources"],
+            "registry_status": now["registry_status"],
+            "nearest_action": now["nearest_action"],
+            "next_authorized_action_bytes": len(resume["next_authorized_action"].encode("utf-8")),
+            "json_bytes": artifact_json.stat().st_size,
+        },
+        "drift_before_repair": {
+            "published_task": "EXP-27/CP-05 (fixture packet, CP-05-era resume instruction)",
+            "disposition": before["now"]["disposition"],
+            "disposition_sources": before["now"]["disposition_sources"],
+            "next_authorized_action": before["resume"]["next_authorized_action"],
+            "recorded_verify_status": "FRESH (evidence/cp07/session_bootstrap/verify.json)",
+            "observed_after_repair": {
+                "status": before_observed["status"],
+                "reasons": before_observed["reasons"],
+            },
+        },
+        "negative_controls": [
+            {
+                "id": "NC-08A",
+                "name": "disposition missing from the packet",
+                "expected": "REJECTED",
+                "observed_status": missing_observed["status"],
+                "reasons": missing_observed["reasons"],
+                "worker_refused": missing_worker["refused"],
+            },
+            {
+                "id": "NC-08B",
+                "name": "active checkpoint not declared by any canonical file",
+                "expected": "REJECTED",
+                "observed_status": checkpoint_observed["status"],
+                "reasons": checkpoint_observed["reasons"],
+                "worker_refused": checkpoint_worker["refused"],
+            },
+            {
+                "id": "NC-08C",
+                "name": "superseded CP-05-era instruction carried as current",
+                "expected": "not FRESH",
+                "observed_status": stale_observed["status"],
+                "field_diff_names_resume_action": stale_named,
+            },
+        ],
+    }
+    return results
+
+
 # --- full run -------------------------------------------------------------------
 
 def run_all(workdir):
@@ -576,6 +796,7 @@ def run_all(workdir):
     cp03_results = cp03(workdir)
     cp04_results = cp04(workdir)
     cp06_results = cp06(workdir)
+    cp08_results = cp08(workdir)
 
     after = _canonical_digests()
     immutability = {
@@ -591,11 +812,13 @@ def run_all(workdir):
         "cp03_pass": cp03_results["result"] == "PASS",
         "cp04_pass": cp04_results["result"] == "PASS",
         "cp06_pass": cp06_results["result"] == "PASS",
+        "cp08_pass": cp08_results["result"] == "PASS",
         "canonical_sources_unchanged": immutability["canonical_sources_unchanged"],
     }
     summary = {
         "experiment": "EXP-29",
         "fixture": FIXTURE,
+        "current_task": f"{CURRENT['experiment_id']}/{CURRENT['checkpoint']}",
         "result": "PASS" if all(checks.values()) else "FAIL",
         "checks": checks,
         "measurements": {
@@ -613,13 +836,14 @@ def run_all(workdir):
         "cp03": cp03_results,
         "cp04": cp04_results,
         "cp06": cp06_results,
+        "cp08": cp08_results,
         "immutability": immutability,
     }
 
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description="EXP-29 Arena Bootstrap Harness proof")
-    parser.add_argument("checkpoint", choices=("all", "cp02", "cp03", "cp04", "cp06"))
+    parser.add_argument("checkpoint", choices=("all", "cp02", "cp03", "cp04", "cp06", "cp08"))
     parser.add_argument("--workdir", default=str(EXPERIMENT_DIR / "evidence" / "work"))
     args = parser.parse_args(argv)
 
@@ -635,6 +859,8 @@ def main(argv=None):
             results = {"cp03": cp03(workdir)}
         elif args.checkpoint == "cp06":
             results = {"cp06": cp06(workdir)}
+        elif args.checkpoint == "cp08":
+            results = {"cp08": cp08(workdir)}
         else:
             results = {"cp04": cp04(workdir)}
         results["immutability"] = {

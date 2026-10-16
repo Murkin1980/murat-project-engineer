@@ -13,7 +13,9 @@ the point of the fresh-session comparison:
 - ``answer`` (Arm B — bootstrap): the worker receives the same task pointer plus
   the generated ``ARENA_CONTEXT.json`` packet and answers from the packet alone
   (exactly one file read). It fail-closed refuses packets that lack the authority
-  disclaimer, stop rules, deep-change gate, or that claim a GLOBAL lesson scope.
+  disclaimer, stop rules, deep-change gate, or disposition declaration, that claim
+  an active checkpoint no canonical file declares, or that claim a GLOBAL lesson
+  scope.
 
 Both arms emit the same answer schema so the proof can compare them. The worker
 uses its own independent parsers (stdlib only); it does not import the builder.
@@ -52,6 +54,40 @@ QUESTIONS = (
 GENEALOGY_BLOCK = frozenset(QUESTIONS[:6])
 
 CHECKPOINT_RE = re.compile(r"^#{2,3}\s+(CP-\d+)\b", flags=re.M)
+DISPOSITION_LINE_RE = re.compile(r"^(?:Decision|Primary disposition):\s*(.+)$")
+DISPOSITION_HEADING_RE = re.compile(r"^#{2,3}\s+Primary disposition\s*$")
+
+
+def _strip_bold(value):
+    value = value.strip()
+    if len(value) > 4 and value.startswith("**") and value.endswith("**"):
+        return value[2:-2].strip()
+    return value
+
+
+def _declared_disposition(text):
+    """First disposition the file declares, or "" (the canonical declaration forms).
+
+    Recognises ``Decision: <value>``, ``Primary disposition: <value>`` and a
+    ``## Primary disposition`` heading followed by the value.
+    """
+    lines = text.splitlines()
+    for index, line in enumerate(lines):
+        stripped = line.strip()
+        match = DISPOSITION_LINE_RE.match(stripped)
+        if match:
+            value = _strip_bold(match.group(1))
+        elif DISPOSITION_HEADING_RE.match(stripped):
+            value = ""
+            for follow in lines[index + 1:]:
+                if follow.strip():
+                    value = _strip_bold(follow)
+                    break
+        else:
+            continue
+        if value:
+            return value
+    return ""
 
 
 class Tracer:
@@ -169,11 +205,8 @@ def _answers_from_sources(tracer, root, experiment_id):
             seen.add(match.group(1))
             checkpoints.append(match.group(1))
     answers["q_checkpoints"] = checkpoints
-    disposition = ""
-    for line in task_text.splitlines():
-        if line.startswith("Decision:"):
-            disposition = line.split("**")[1] if "**" in line else line.split(":", 1)[1].strip()
-            break
+    # Task file declares the disposition; the README is the documented fallback.
+    disposition = _declared_disposition(task_text) or _declared_disposition(readme_text)
     answers["q_disposition"] = disposition
     stop_rules = _bullets(_section(readme_text, r"^##\s+(Stop conditions|Scope stop rules)\s*$"))
     if not stop_rules:
@@ -194,8 +227,18 @@ def _answers_from_sources(tracer, root, experiment_id):
     answers["q_reusable_component"] = f"{first[1]} — {first[3]}"
     traps = _bullets(_section(results_text, r"^##\s+Known limitations / blockers\s*$"))
     answers["q_known_trap"] = traps[0] if traps else ""
-    next_action_lines = [line.strip() for line in _section(results_text, r"^##\s+Next authorized action\s*$") if line.strip()]
-    answers["q_next_authorized_action"] = next_action_lines[0] if next_action_lines else ""
+    # The authorization is the first paragraph of the section: joining the wrapped
+    # lines is what makes the rediscovery arm agree with the packet's resume block
+    # (a single physical line would be a truncated instruction).
+    paragraph = []
+    for line in _section(results_text, r"^##\s+Next authorized action\s*$"):
+        stripped = line.strip()
+        if not stripped or stripped.startswith("#"):
+            if paragraph:
+                break
+            continue
+        paragraph.append(stripped)
+    answers["q_next_authorized_action"] = " ".join(paragraph)
 
     # cumulative cost at the moment the genealogy block became answerable
     # (after the ARENA_TASK read, which is entry index 5: STATUS, 2x listdir,
@@ -215,8 +258,13 @@ def _packet_selfcheck(packet):
     if not (packet.get("rules", {}).get("deep_change_gate", {}).get("bullets")):
         problems.append("missing_deep_change_gate")
     declared = {item.get("value") for item in packet.get("now", {}).get("disposition_sources", [])}
-    if len(declared) > 1:
+    if not declared:
+        problems.append("missing_disposition")
+    elif len(declared) > 1:
         problems.append("ambiguous_disposition")
+    active = packet.get("now", {}).get("checkpoint") or ""
+    if active and active not in (packet.get("now", {}).get("checkpoints") or []):
+        problems.append(f"unsupported_active_checkpoint:{active}")
     for lesson in packet.get("known_lessons", []):
         if lesson.get("scope") not in LESSON_SCOPES:
             problems.append(f"invalid_lesson_scope:{lesson.get('id')}")

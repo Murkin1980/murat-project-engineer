@@ -4,8 +4,10 @@
   "cp02_pass": true,
   "cp03_pass": true,
   "cp04_pass": true,
-  "cp06_pass": true
+  "cp06_pass": true,
+  "cp08_pass": true
  },
+ "current_task": "EXP-29/CP-08",
  "experiment": "EXP-29",
  "fixture": {
   "checkpoint": "CP-05",
@@ -13,7 +15,7 @@
  },
  "measurements": {
   "arm_a": {
-   "bytes_read": 85479,
+   "bytes_read": 91888,
    "failed_ops": 0,
    "files_read": 5,
    "listdir_ops": 2,
@@ -21,17 +23,17 @@
    "tool_ops": 7
   },
   "arm_b": {
-   "bytes_read": 13087,
+   "bytes_read": 13631,
    "failed_ops": 0,
    "files_read": 1,
    "listdir_ops": 0,
    "read_ops": 1,
    "tool_ops": 1
   },
-  "bytes_reduction_ratio": 0.8469,
-  "genealogy_cost_reduction_ratio": 0.8202,
-  "packet_json_bytes": 13113,
-  "packet_md_bytes": 10382
+  "bytes_reduction_ratio": 0.8517,
+  "genealogy_cost_reduction_ratio": 0.8279,
+  "packet_json_bytes": 15057,
+  "packet_md_bytes": 12020
  },
  "result": "PASS"
 }

@@ -1,6 +1,7 @@
 # EXP-29 — Arena Bootstrap Harness
 
-Status: **PLANNED**
+Status: **PASS / REUSE_COMPONENT** (CP-01…CP-07 executed; CP-08 state-consistency
+recovery is the current authorized checkpoint — see `RESULTS.md`)
 Primary disposition: **REUSE_COMPONENT**
 
 ## Purpose
@@ -57,6 +58,15 @@ See `ARENA_TASK.md` and `RESULTS.md`.
   disposition, with ambiguous disposition refused): EXP-22/CP-01 now verifies
   FRESH (was REJECTED); six negative controls still fail closed; regression
   tests in `tests/test_exp29_bootstrap.py`. Not merged. See RESULTS.md, CP-06.
+- **CP-07** — canonical current-state gap: the EXP-22 registry/RESULTS path was
+  corrected through the existing mechanisms, the rebuilt EXP-22/CP-01 bootstrap
+  is FRESH and truthful, and a fresh isolated consumer no longer proposes
+  repeating CP-01. See RESULTS.md, CP-07.
+- **CP-08** — bootstrap state consistency recovery (current, owner authorized
+  2026-10-16): the committed packet must not verify FRESH while carrying a stale
+  task/checkpoint, a lost disposition, or a truncated resume action; disposition
+  and active checkpoint now fail closed, and the committed `ARENA_CONTEXT.*` is
+  published for the current authorized task. See RESULTS.md, CP-08.
 
 EXP-20 (Dify/OpenHands component extraction) was complete before this
 experiment started, satisfying the queue condition.

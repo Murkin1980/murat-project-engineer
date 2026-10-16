@@ -11,9 +11,9 @@
    "expected": "STALE",
    "field_diffs": [
     {
-     "canonical": "e0603787c154c672f5a63645b8116444377021d91cafe6e693ea36ea5d99ad60",
+     "canonical": "cf8e307ff11644c976ff644729af79e50712be3a2baf1c635c5667b66f880840",
      "field": "source_refs[4].sha256",
-     "packet": "968d47ad10910c5875f83f6c74933369aa0b70486e51cbd2bcb7b65ccb2d96e5"
+     "packet": "a9c3bc395ac06371913334d8cd920603edeaaed33d2225956445f2e7afdbbfb5"
     }
    ],
    "id": "NC-01",
@@ -31,7 +31,7 @@
    "expected": "STALE",
    "field_diffs": [
     {
-     "canonical": "ef3ca4dd38a172146f4ae0f1574be5fbf2cd4ca682ee730c146e1ed54d2bd6c7",
+     "canonical": "ffc8ca0f74672b71879da4e1f6114f121b301d4ff149edbabc60e2db98dd3834",
      "field": "source_refs[0].sha256",
      "packet": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
     }
@@ -86,9 +86,9 @@
      "packet": "Closed at bounded pattern extraction. No production integration, Router change, governance change, or follow-on checkpo…"
     },
     {
-     "canonical": "740cdb240429f19fdb23baf6995c28496c96929602e74c0a26c6382454d13c13",
+     "canonical": "ae7a1d51511ae5dc5920684af914b27e291a43742f9409184ba1fa095818a866",
      "field": "source_refs[0].sha256",
-     "packet": "ef3ca4dd38a172146f4ae0f1574be5fbf2cd4ca682ee730c146e1ed54d2bd6c7"
+     "packet": "ffc8ca0f74672b71879da4e1f6114f121b301d4ff149edbabc60e2db98dd3834"
     }
    ],
    "id": "NC-04",

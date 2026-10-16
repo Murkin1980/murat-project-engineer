@@ -2,13 +2,15 @@
  "cp02": {
   "artifacts": {
    "generated_against": {
-    "git_base": "a5a16bbf2cf339a3ff2eac398486ba9ad7c9e41f",
-    "git_branch": "arena/4c9d8b8c-murat-project-engineer",
-    "git_head": "a5a16bbf2cf339a3ff2eac398486ba9ad7c9e41f"
+    "git_base": "653abffad4ff07b6bb1476f2d65e3dbd35d70402",
+    "git_branch": "arena/dce03808-murat-project-engineer",
+    "git_head": "653abffad4ff07b6bb1476f2d65e3dbd35d70402"
    },
-   "json_bytes": 13113,
-   "md_bytes": 10382,
-   "packet_task": "EXP-27/CP-05",
+   "json_bytes": 15057,
+   "md_bytes": 12020,
+   "packet_checkpoint": "CP-08",
+   "packet_disposition": "REUSE_COMPONENT",
+   "packet_task": "EXP-29/CP-08",
    "paths": [
     "experiments/exp-29-arena-bootstrap-harness/ARENA_CONTEXT.json",
     "experiments/exp-29-arena-bootstrap-harness/ARENA_CONTEXT.md"
@@ -17,22 +19,33 @@
   },
   "checks": {
    "all_layers_present": true,
+   "artifacts_describe_current_task": true,
    "artifacts_fresh": true,
    "authority_declared": true,
    "deterministic_output": true,
+   "fixture_packet_still_fresh": true,
    "provenance_complete": true,
    "safety_structure_present": true
   },
   "determinism": {
    "json_byte_identical": true,
-   "json_bytes": 13087,
+   "json_bytes": 13631,
    "md_byte_identical": true,
-   "md_bytes": 10356,
+   "md_bytes": 10953,
    "pinned_git_refs": {
     "git_base": "1111111111111111111111111111111111111111",
     "git_branch": "arena/proof",
     "git_head": "0000000000000000000000000000000000000000"
    }
+  },
+  "fixture_packet": {
+   "fixture": {
+    "checkpoint": "CP-05",
+    "experiment_id": "EXP-27"
+   },
+   "json_bytes": 13603,
+   "packet_task": "EXP-27/CP-05",
+   "verify_status": "FRESH"
   },
   "provenance": {
    "all_digests_match": true,
@@ -147,7 +160,7 @@
    "q_experiment_path": "experiments/exp-27-paperclip-orchestration-patterns",
    "q_known_trap": "The lease proof is **single-host, file-backed**. MPE has no shared-filesystem guarantee across executors, so this",
    "q_next_action": "Closed at bounded pattern extraction. No production integration, Router change, governance change, or follow-on checkpoint is authorized by this result; a future owner decision is required before any pattern is implemented in an existing component.",
-   "q_next_authorized_action": "None inside this experiment — **STOP after CP-05** per `ARENA_TASK.md`. Any implementation of the BORROW/ADAPT",
+   "q_next_authorized_action": "None inside this experiment — **STOP after CP-05** per `ARENA_TASK.md`. Any implementation of the BORROW/ADAPT patterns (lease primitive in `scripts/runtime_coordination.py`, ancestry packet helper, enforced bounded-stop guard) requires a separate owner-authorized checkpoint and its own deep-change assessment. No productionization is authorized by this result.",
    "q_parent_goal": "Extract and test high-value orchestration patterns from Paperclip—goal context, atomic task lease, persistent resumable evidence, budget/runaway guards, and approval gates—inside existing MPE/murat-ai-orchestrator components without adopting a parallel control plane.",
    "q_project": "Murat Project Engineer",
    "q_result_status": "PASS",
@@ -168,7 +181,7 @@
    "arm": "A_rediscovery",
    "cost": {
     "at_all_answers": {
-     "bytes_read": 85479,
+     "bytes_read": 91888,
      "failed_ops": 0,
      "files_read": 5,
      "listdir_ops": 2,
@@ -176,7 +189,7 @@
      "tool_ops": 7
     },
     "at_genealogy_complete": {
-     "bytes_read": 72796,
+     "bytes_read": 79205,
      "failed_ops": 0,
      "files_read": 4,
      "listdir_ops": 2,
@@ -187,7 +200,7 @@
    "packet_used": false,
    "read_from_chat": false,
    "totals": {
-    "bytes_read": 85479,
+    "bytes_read": 91888,
     "failed_ops": 0,
     "files_read": 5,
     "listdir_ops": 2,
@@ -197,7 +210,7 @@
   },
   "arm_a_trace": [
    {
-    "bytes": 12081,
+    "bytes": 13844,
     "ok": true,
     "op": "read",
     "path": "/home/user/murat-project-engineer/STATUS.md"
@@ -221,7 +234,7 @@
     "path": "/home/user/murat-project-engineer/experiments/exp-27-paperclip-orchestration-patterns/README.md"
    },
    {
-    "bytes": 51114,
+    "bytes": 55760,
     "ok": true,
     "op": "read",
     "path": "/home/user/murat-project-engineer/experiments/EXPERIMENT_REGISTRY.json"
@@ -243,7 +256,7 @@
    "arm": "B_bootstrap",
    "cost": {
     "at_all_answers": {
-     "bytes_read": 13087,
+     "bytes_read": 13631,
      "failed_ops": 0,
      "files_read": 1,
      "listdir_ops": 0,
@@ -251,7 +264,7 @@
      "tool_ops": 1
     },
     "at_genealogy_complete": {
-     "bytes_read": 13087,
+     "bytes_read": 13631,
      "failed_ops": 0,
      "files_read": 1,
      "listdir_ops": 0,
@@ -263,7 +276,7 @@
    "read_from_chat": false,
    "refused": false,
    "totals": {
-    "bytes_read": 13087,
+    "bytes_read": 13631,
     "failed_ops": 0,
     "files_read": 1,
     "listdir_ops": 0,
@@ -273,10 +286,10 @@
   },
   "arm_b_trace": [
    {
-    "bytes": 13087,
+    "bytes": 13631,
     "ok": true,
     "op": "read",
-    "path": "/home/user/murat-project-engineer/experiments/exp-29-arena-bootstrap-harness/evidence/work/cp03/packet.json"
+    "path": "/tmp/exp29-work/cp03/packet.json"
    }
   ],
   "checks": {
@@ -295,7 +308,7 @@
   "comparison": {
    "arm_a_cost": {
     "at_all_answers": {
-     "bytes_read": 85479,
+     "bytes_read": 91888,
      "failed_ops": 0,
      "files_read": 5,
      "listdir_ops": 2,
@@ -303,7 +316,7 @@
      "tool_ops": 7
     },
     "at_genealogy_complete": {
-     "bytes_read": 72796,
+     "bytes_read": 79205,
      "failed_ops": 0,
      "files_read": 4,
      "listdir_ops": 2,
@@ -312,7 +325,7 @@
     }
    },
    "arm_a_totals": {
-    "bytes_read": 85479,
+    "bytes_read": 91888,
     "failed_ops": 0,
     "files_read": 5,
     "listdir_ops": 2,
@@ -321,7 +334,7 @@
    },
    "arm_b_cost": {
     "at_all_answers": {
-     "bytes_read": 13087,
+     "bytes_read": 13631,
      "failed_ops": 0,
      "files_read": 1,
      "listdir_ops": 0,
@@ -329,7 +342,7 @@
      "tool_ops": 1
     },
     "at_genealogy_complete": {
-     "bytes_read": 13087,
+     "bytes_read": 13631,
      "failed_ops": 0,
      "files_read": 1,
      "listdir_ops": 0,
@@ -338,20 +351,20 @@
     }
    },
    "arm_b_totals": {
-    "bytes_read": 13087,
+    "bytes_read": 13631,
     "failed_ops": 0,
     "files_read": 1,
     "listdir_ops": 0,
     "read_ops": 1,
     "tool_ops": 1
    },
-   "bytes_reduction_ratio": 0.8469,
+   "bytes_reduction_ratio": 0.8517,
    "fixture": {
     "checkpoint": "CP-05",
     "experiment_id": "EXP-27"
    },
-   "genealogy_cost_reduction_ratio": 0.8202,
-   "packet_bytes": 13087,
+   "genealogy_cost_reduction_ratio": 0.8279,
+   "packet_bytes": 13631,
    "verify_before_arms": "FRESH"
   },
   "fixture": {
@@ -374,9 +387,9 @@
     "expected": "STALE",
     "field_diffs": [
      {
-      "canonical": "e0603787c154c672f5a63645b8116444377021d91cafe6e693ea36ea5d99ad60",
+      "canonical": "cf8e307ff11644c976ff644729af79e50712be3a2baf1c635c5667b66f880840",
       "field": "source_refs[4].sha256",
-      "packet": "968d47ad10910c5875f83f6c74933369aa0b70486e51cbd2bcb7b65ccb2d96e5"
+      "packet": "a9c3bc395ac06371913334d8cd920603edeaaed33d2225956445f2e7afdbbfb5"
      }
     ],
     "id": "NC-01",
@@ -394,7 +407,7 @@
     "expected": "STALE",
     "field_diffs": [
      {
-      "canonical": "ef3ca4dd38a172146f4ae0f1574be5fbf2cd4ca682ee730c146e1ed54d2bd6c7",
+      "canonical": "ffc8ca0f74672b71879da4e1f6114f121b301d4ff149edbabc60e2db98dd3834",
       "field": "source_refs[0].sha256",
       "packet": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
      }
@@ -449,9 +462,9 @@
       "packet": "Closed at bounded pattern extraction. No production integration, Router change, governance change, or follow-on checkpo…"
      },
      {
-      "canonical": "740cdb240429f19fdb23baf6995c28496c96929602e74c0a26c6382454d13c13",
+      "canonical": "ae7a1d51511ae5dc5920684af914b27e291a43742f9409184ba1fa095818a866",
       "field": "source_refs[0].sha256",
-      "packet": "ef3ca4dd38a172146f4ae0f1574be5fbf2cd4ca682ee730c146e1ed54d2bd6c7"
+      "packet": "ffc8ca0f74672b71879da4e1f6114f121b301d4ff149edbabc60e2db98dd3834"
      }
     ],
     "id": "NC-04",
@@ -519,7 +532,7 @@
    "basis": "retrieval-cost proxy: bytes of canonical files a fresh executor reads; not a wall-clock or human-time measurement",
    "extra_rediscovery_remains": true,
    "packet_plus_remaining_reads": {
-    "bytes": 32033,
+    "bytes": 32480,
     "files": 4,
     "remaining_reads": [
      {
@@ -540,7 +553,7 @@
     ]
    },
    "rediscovery_without_packet": {
-    "bytes": 71738,
+    "bytes": 78147,
     "files": 4,
     "reads": [
      "STATUS.md",
@@ -585,7 +598,7 @@
      "value": "EXPERIMENT"
     }
    ],
-   "json_bytes": 13422,
+   "json_bytes": 13869,
    "markdown_headings": [
     "## NOW",
     "## RULES (mandatory)",
@@ -596,7 +609,7 @@
     "## PROVENANCE (canonical sources + digests)",
     "## FRESHNESS"
    ],
-   "md_bytes": 11041,
+   "md_bytes": 11541,
    "stop_rules": 25,
    "stop_rules_intro": "Not allowed: / STOP or FAIL if:",
    "stop_rules_source": "experiments/exp-22-colibri-local-inference/ARENA_TASK.md#boundaries + experiments/exp-22-colibri-local-inference/README.md#failure-stop-criteria + experiments/exp-22-colibri-local-inference/README.md#guardrails",
@@ -604,6 +617,117 @@
   },
   "result": "PASS",
   "verification": {
+   "reasons": [],
+   "status": "FRESH"
+  }
+ },
+ "cp08": {
+  "checks": {
+   "checkpoint_chain_preserves_history": true,
+   "committed_packet_fresh": true,
+   "committed_packet_rebuild_identical": true,
+   "disposition_preserved": true,
+   "missing_disposition_fails_closed": true,
+   "pre_repair_packet_no_longer_passes": true,
+   "registry_agrees_with_packet": true,
+   "resume_action_complete_and_current": true,
+   "stale_active_instruction_is_not_fresh": true,
+   "task_is_current": true,
+   "unsupported_active_checkpoint_fails_closed": true
+  },
+  "current_task": "EXP-29/CP-08",
+  "drift_before_repair": {
+   "disposition": "",
+   "disposition_sources": [],
+   "next_authorized_action": "CP-06 (first real-use repair) is complete as a bounded checkpoint. Its PR is",
+   "observed_after_repair": {
+    "reasons": [
+     "missing_disposition",
+     "source_digest_mismatch:experiments/EXPERIMENT_REGISTRY.json",
+     "source_digest_mismatch:experiments/exp-29-arena-bootstrap-harness/ARENA_TASK.md",
+     "source_digest_mismatch:experiments/exp-29-arena-bootstrap-harness/README.md",
+     "source_digest_mismatch:experiments/exp-29-arena-bootstrap-harness/RESULTS.md",
+     "source_digest_mismatch:STATUS.md",
+     "source_digest_mismatch:AGENTS.md",
+     "source_digest_mismatch:docs/governance/SCOPE-CHANGE-CONTROL.md",
+     "content_differs_from_rebuild:known_traps",
+     "content_differs_from_rebuild:now.checkpoints",
+     "content_differs_from_rebuild:now.disposition",
+     "content_differs_from_rebuild:now.disposition_sources",
+     "content_differs_from_rebuild:now.nearest_action",
+     "content_differs_from_rebuild:now.registry_updated_at",
+     "content_differs_from_rebuild:resume.next_action",
+     "content_differs_from_rebuild:resume.next_authorized_action",
+     "content_differs_from_rebuild:source_refs[0].sha256",
+     "content_differs_from_rebuild:source_refs[1].sha256"
+    ],
+    "status": "REJECTED"
+   },
+   "published_task": "EXP-27/CP-05 (fixture packet, CP-05-era resume instruction)",
+   "recorded_verify_status": "FRESH (evidence/cp07/session_bootstrap/verify.json)"
+  },
+  "negative_controls": [
+   {
+    "expected": "REJECTED",
+    "id": "NC-08A",
+    "name": "disposition missing from the packet",
+    "observed_status": "REJECTED",
+    "reasons": [
+     "missing_disposition",
+     "content_differs_from_rebuild:now.disposition",
+     "content_differs_from_rebuild:now.disposition_sources"
+    ],
+    "worker_refused": true
+   },
+   {
+    "expected": "REJECTED",
+    "id": "NC-08B",
+    "name": "active checkpoint not declared by any canonical file",
+    "observed_status": "REJECTED",
+    "reasons": [
+     "unsupported_active_checkpoint:CP-99"
+    ],
+    "worker_refused": true
+   },
+   {
+    "expected": "not FRESH",
+    "field_diff_names_resume_action": true,
+    "id": "NC-08C",
+    "name": "superseded CP-05-era instruction carried as current",
+    "observed_status": "STALE"
+   }
+  ],
+  "packet": {
+   "checkpoints": [
+    "CP-01",
+    "CP-02",
+    "CP-03",
+    "CP-04",
+    "CP-05",
+    "CP-06",
+    "CP-07",
+    "CP-08"
+   ],
+   "disposition": "REUSE_COMPONENT",
+   "disposition_sources": [
+    {
+     "path": "experiments/exp-29-arena-bootstrap-harness/ARENA_TASK.md",
+     "value": "REUSE_COMPONENT"
+    },
+    {
+     "path": "experiments/exp-29-arena-bootstrap-harness/README.md",
+     "value": "REUSE_COMPONENT"
+    }
+   ],
+   "json_bytes": 15057,
+   "nearest_action": "CP-08 Bootstrap State Consistency Recovery: reconcile registry and current checkpoint state, preserve REUSE_COMPONENT, regenerate and verify a fresh and semantically consistent packet; follow owner instruction in PR #108. Do not merge or deploy without authorization.",
+   "next_authorized_action_bytes": 860,
+   "registry_status": "PASS",
+   "task": "EXP-29/CP-08"
+  },
+  "result": "PASS",
+  "verification": {
+   "evidence": "experiments/exp-29-arena-bootstrap-harness/evidence/cp08/verify.json",
    "reasons": [],
    "status": "FRESH"
   }
@@ -622,8 +746,10 @@
    "cp02_pass": true,
    "cp03_pass": true,
    "cp04_pass": true,
-   "cp06_pass": true
+   "cp06_pass": true,
+   "cp08_pass": true
   },
+  "current_task": "EXP-29/CP-08",
   "experiment": "EXP-29",
   "fixture": {
    "checkpoint": "CP-05",
@@ -631,7 +757,7 @@
   },
   "measurements": {
    "arm_a": {
-    "bytes_read": 85479,
+    "bytes_read": 91888,
     "failed_ops": 0,
     "files_read": 5,
     "listdir_ops": 2,
@@ -639,17 +765,17 @@
     "tool_ops": 7
    },
    "arm_b": {
-    "bytes_read": 13087,
+    "bytes_read": 13631,
     "failed_ops": 0,
     "files_read": 1,
     "listdir_ops": 0,
     "read_ops": 1,
     "tool_ops": 1
    },
-   "bytes_reduction_ratio": 0.8469,
-   "genealogy_cost_reduction_ratio": 0.8202,
-   "packet_json_bytes": 13113,
-   "packet_md_bytes": 10382
+   "bytes_reduction_ratio": 0.8517,
+   "genealogy_cost_reduction_ratio": 0.8279,
+   "packet_json_bytes": 15057,
+   "packet_md_bytes": 12020
   },
   "result": "PASS"
  }
