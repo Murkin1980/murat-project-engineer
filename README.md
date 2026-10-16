@@ -36,6 +36,10 @@ EXP-12 adds a bounded, stateless triage prototype and a 20-case retrospective ba
 
 Prospective cases use immutable REGISTERED, EXECUTED and EVALUATED evidence with hashes. P-001–P-006 are complete; P-003 is the first external product case, P-004 is the first FAST dashboard UI case, P-005 covers Murat House editorial work, and P-006 covers dashboard reconciliation. Progress is 6/10.
 
+## Reusable resilience practice
+
+For pinned external model artifacts that need an independent recovery path, use `docs/MODEL_ARTIFACT_RESILIENCE.md`. This is provenance/hash guidance only; it does not authorize a model registry, downloader, routing layer, or background service.
+
 ## Portfolio dashboard
 
 Live project status map: https://murat-project-engineer.muriktl.workers.dev
