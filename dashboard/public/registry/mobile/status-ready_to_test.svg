@@ -1,14 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="346" height="279" viewBox="0 0 346 279" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
+<svg xmlns="http://www.w3.org/2000/svg" width="355" height="298" viewBox="0 0 355 298" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
   <defs>
   </defs>
-  <rect x="0" y="0" width="346" height="279" fill="#ffffff"/>
-  <path d="M48 40 H298 a8 8 0 0 1 8 8 V231 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <rect x="0" y="0" width="355" height="298" fill="#ffffff"/>
+  <path d="M48 40 H307 a8 8 0 0 1 8 8 V250 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
   <text x="54" y="68.4" fill="#1f2328" text-anchor="start">READY_TO_TEST (1)</text>
-  <path d="M62 83 H284 a8 8 0 0 1 8 8 V217 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V91 a8 8 0 0 1 8 -8 Z" fill="#dbeafe" stroke="#2563eb"/>
-  <text x="173" y="111.4" fill="#1f2328" text-anchor="middle">EXP-13 · MPE</text>
-  <text x="173" y="130.4" fill="#1f2328" text-anchor="middle">Low-cost evaluation</text>
-  <text x="173" y="149.4" fill="#1f2328" text-anchor="middle">harness</text>
-  <text x="173" y="168.4" fill="#1f2328" text-anchor="middle">→ Run the frozen 18-entry</text>
-  <text x="173" y="187.4" fill="#1f2328" text-anchor="middle">Pilot Batch 1 only when</text>
-  <text x="173" y="206.4" fill="#1f2328" text-anchor="middle">every proceeding rout…</text>
+  <path d="M62 83 H293 a8 8 0 0 1 8 8 V236 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V91 a8 8 0 0 1 8 -8 Z" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="177.5" y="111.4" fill="#1f2328" text-anchor="middle">EXP-13 · MPE</text>
+  <text x="177.5" y="130.4" fill="#1f2328" text-anchor="middle">Low-cost evaluation</text>
+  <text x="177.5" y="149.4" fill="#1f2328" text-anchor="middle">harness</text>
+  <text x="177.5" y="168.4" fill="#1f2328" text-anchor="middle">→ Run</text>
+  <text x="177.5" y="187.4" fill="#1f2328" text-anchor="middle">docs/experiments/EXP-13_CL</text>
+  <text x="177.5" y="206.4" fill="#1f2328" text-anchor="middle">OUDFLARE_RELAY_PREFLIGHT.m</text>
+  <text x="177.5" y="225.4" fill="#1f2328" text-anchor="middle">d. First prov…</text>
 </svg>
