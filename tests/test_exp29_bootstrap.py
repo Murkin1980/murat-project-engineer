@@ -15,7 +15,12 @@ These tests execute the experiment-local harness in
 * CP-07 — canonical current-state gap: the registry/RESULTS.md path must carry the
   truthful EXP-22 state (PARTIAL / HOLD, CP-01..CP-03 already executed, bounded
   released-weight next action) so that a fresh isolated consumer answering from the
-  packet alone never proposes repeating CP-01.
+  packet alone never proposes repeating CP-01;
+* CP-09 recovery — disposition lifecycle: a New Idea Filter section's initial
+  routing decision (``docs/NEW_IDEA_FILTER_POLICY.md``) never conflicts with the
+  experiment's final ``Decision:``/``Primary disposition:`` declaration (EXP-23
+  route ``EXPERIMENT`` → final ``REUSE_COMPONENT``), while true conflicting final
+  dispositions and a missing final disposition still fail closed.
 
 They test contract behaviour (determinism, provenance, staleness detection,
 fail-closed refusal, no second source of truth, unchanged canonical sources),
@@ -1060,6 +1065,134 @@ class Exp29StateConsistencyTests(unittest.TestCase):
 
         self.assertEqual(exp29_proof.CURRENT["experiment_id"], CURRENT_EXPERIMENT)
         self.assertEqual(exp29_proof.CURRENT["checkpoint"], CURRENT_CHECKPOINT)
+
+
+# --- CP-09 recovery: disposition lifecycle (initial route vs final decision) ----
+#
+# `docs/NEW_IDEA_FILTER_POLICY.md` defines the New Idea Filter "primary
+# disposition" as the intake routing decision taken BEFORE implementation.
+# The experiment's final lifecycle disposition is declared by the `Decision:` /
+# `Primary disposition:` forms outside that section and is what the registry,
+# FINDINGS and the final README conclusion record. EXP-23 is the canonical case:
+# initial route `EXPERIMENT` (New Idea Filter section, immutable history), final
+# `Decision: REUSE_COMPONENT` (header line, updated at finalize — commit c31cf12).
+
+EXP23_STYLE_README = """# EXP-22 — Colibri local inference / Brio routing (fixture)
+
+Status: PASS
+Decision: REUSE_COMPONENT
+
+## New Idea Filter
+
+Primary disposition: **EXPERIMENT**
+
+- Existing project fit: strong.
+
+## Experiment scope
+
+### CP-01 — Brio status classifier
+
+Classify the status.
+
+## Failure / stop criteria
+
+STOP or FAIL if:
+- setup cost exceeds the value of the narrow task;
+
+## Guardrails
+
+- No production traffic.
+"""
+
+FILTER_ONLY_README = """# EXP-22 — Colibri local inference / Brio routing (fixture)
+
+## New Idea Filter
+
+Primary disposition: **EXPERIMENT**
+
+- Existing project fit: strong.
+
+## Experiment scope
+
+### CP-01 — Brio status classifier
+
+Classify the status.
+
+## Failure / stop criteria
+
+STOP or FAIL if:
+- setup cost exceeds the value of the narrow task;
+
+## Guardrails
+
+- No production traffic.
+"""
+
+
+class Exp29DispositionLifecycleTests(unittest.TestCase):
+    """Positive + negative regressions for the initial-route / final-decision rule."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls._tmp = tempfile.TemporaryDirectory(prefix="exp29-cp09-disposition-")
+        cls.workdir = Path(cls._tmp.name)
+
+    @classmethod
+    def tearDownClass(cls):
+        cls._tmp.cleanup()
+
+    def _packet(self, root, checkpoint="CP-01"):
+        return builder.build_packet(root, "EXP-22", checkpoint, **PINNED_GIT)
+
+    def test_initial_filter_route_does_not_conflict_with_the_final_decision(self):
+        root = _real_use_root(self.workdir, "filter_vs_final", readme=EXP23_STYLE_README)
+        packet = self._packet(root)
+        self.assertEqual(packet["now"]["disposition"], "REUSE_COMPONENT")
+        self.assertEqual(
+            packet["now"]["disposition_sources"],
+            [{"path": f"{EXP22_PATH}/README.md", "value": "REUSE_COMPONENT"}],
+        )
+        result = builder.verify_packet(packet, root)
+        self.assertEqual(result["status"], "FRESH", result["reasons"])
+        self.assertTrue(result["checks"]["disposition_unambiguous"])
+
+    def test_exp23_live_packet_resolves_to_the_canonical_final_decision(self):
+        entry = _registry_entry("EXP-23")
+        self.assertTrue(entry["result_summary"].startswith("PASS / REUSE_COMPONENT"))
+        packet = builder.build_packet(ROOT, "EXP-23", "CP-03", **PINNED_GIT)
+        self.assertEqual(packet["now"]["disposition"], "REUSE_COMPONENT")
+        self.assertEqual(
+            {item["value"] for item in packet["now"]["disposition_sources"]},
+            {"REUSE_COMPONENT"},
+        )
+        result = builder.verify_packet(packet, ROOT)
+        self.assertEqual(result["status"], "FRESH", result["reasons"])
+        # The canonical files keep both lifecycle stages: nothing is rewritten.
+        readme = (ROOT / entry["experiment_path"] / "README.md").read_text(encoding="utf-8")
+        self.assertIn("Decision: REUSE_COMPONENT", readme)
+        self.assertIn("Primary disposition: **EXPERIMENT**", readme)
+
+    def test_conflicting_final_dispositions_still_fail_closed(self):
+        readme = EXP23_STYLE_README.replace(
+            "## New Idea Filter",
+            "Primary disposition: **HOLD**\n\n## New Idea Filter",
+            1,
+        )
+        root = _real_use_root(self.workdir, "final_conflict", readme=readme)
+        packet = self._packet(root)
+        result = builder.verify_packet(packet, root)
+        self.assertEqual(result["status"], "REJECTED")
+        self.assertIn("ambiguous_disposition", result["reasons"])
+        self.assertFalse(result["checks"]["disposition_unambiguous"])
+
+    def test_filter_route_without_final_disposition_fails_closed(self):
+        root = _real_use_root(self.workdir, "filter_only", readme=FILTER_ONLY_README)
+        packet = self._packet(root)
+        self.assertEqual(packet["now"]["disposition"], "")
+        result = builder.verify_packet(packet, root)
+        self.assertEqual(result["status"], "REJECTED")
+        self.assertIn("missing_disposition", result["reasons"])
+        self.assertFalse(result["checks"]["disposition_declared"])
 
 
 if __name__ == "__main__":
