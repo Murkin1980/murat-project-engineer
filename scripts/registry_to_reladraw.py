@@ -48,9 +48,30 @@ def esc(text: str) -> str:
     return text.replace(" / ", " \\/ ")
 
 
+# Reladraw `wrap` folds text only at word boundaries (SYNTAX.md), so one long
+# whitespace-free run (a file path in `next_action`, e.g. EXP-13) outgrows the
+# 390px mobile width contract. Deterministic display rule: break such runs at
+# fixed TOKEN_CHUNK-character chunk boundaries. The inserted spaces are ordinary
+# spaces, so a reader reassembles the exact same display text and every view
+# stays byte-comparable across regenerations.
+TOKEN_CHUNK = 26
+
+
 def short(text: str, n: int) -> str:
-    text = " ".join(text.split())
-    return text if len(text) <= n else text[: n - 1].rstrip() + "…"
+    """Deterministic display transform shared by the producers and the tests.
+
+    Collapses whitespace, truncates to ``n`` chars with a trailing ellipsis, and
+    splits whitespace-free runs longer than ``TOKEN_CHUNK`` at chunk boundaries
+    (see above) so no rendered line can outgrow the mobile wrap.
+    """
+    text = " ".join(str(text).split())
+    if len(text) > n:
+        text = text[: n - 1].rstrip() + "…"
+    return " ".join(
+        chunk
+        for word in text.split(" ")
+        for chunk in [word[i:i + TOKEN_CHUNK] for i in range(0, len(word), TOKEN_CHUNK)] or [""]
+    )
 
 
 def inferred_dependencies(experiments: list[dict]) -> list[tuple[str, str]]:
