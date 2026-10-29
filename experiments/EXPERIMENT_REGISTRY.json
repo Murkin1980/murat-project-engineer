@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-10-16",
+  "updated_at": "2026-10-29",
   "experiments": [
     {
       "experiment_id": "EXP-ALEXANDRIA",
@@ -661,6 +661,21 @@
         "https://github.com/Murkin1980/murat-project-engineer/pull/108"
       ],
       "updated_at": "2026-10-16"
+    },
+    {
+      "experiment_id": "EXP-30",
+      "name": "AI Process Discovery — Stopwatch / Atomic Steps / Three Colors",
+      "owning_project": "Murat Project Engineer",
+      "status": "PLANNED",
+      "why": "Validate measurable process discovery before proposing AI automation; start with Grand Mebel Document Control and avoid duplicating MCC, existing governance or document workflows.",
+      "date_added": "2026-10-29",
+      "next_action": "Read-only 10-document pilot: interview actual operators, log touch and lead times, decompose atomic steps, collect exceptions, classify RULE/JUDGMENT/MONEY, rank frequency × minutes × error impact, measure baseline eligible touchless rate and propose an ROI-gated extension. No code, deploy or autonomous financial/document approval.",
+      "result_summary": "Registered only; no measurement, implementation, or operational change.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/EXP-30_AI_PROCESS_DISCOVERY.md",
+      "evidence_links": [],
+      "pr_or_issue_links": [],
+      "updated_at": "2026-10-29"
     }
   ]
 }
