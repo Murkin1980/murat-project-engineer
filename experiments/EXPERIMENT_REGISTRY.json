@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-10-16",
+  "updated_at": "2026-10-29",
   "experiments": [
     {
       "experiment_id": "EXP-ALEXANDRIA",
@@ -661,6 +661,24 @@
         "https://github.com/Murkin1980/murat-project-engineer/pull/108"
       ],
       "updated_at": "2026-10-16"
+    },
+    {
+      "experiment_id": "EXP-MCC-BOUNDED-AGENTS",
+      "name": "MCC secure parallel Arena / isolated Survival and server-options draft",
+      "owning_project": "Murat Control Center / MPE",
+      "status": "PLANNED",
+      "why": "Prove safety before autonomous parallel task execution; reduce manual checkpoint management while keeping Work Mode isolated from optional Survival.",
+      "date_added": "2026-10-29",
+      "next_action": "Include open issue #121 in idea-draft reviews; after owner authorization, validate P0 synthetic boundaries. Server options P4 remain idea only.",
+      "result_summary": "Brainstorm and prioritized experiment specification only; all execution, provider permissions, hosting choice and deep-change approvals pending.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "docs/experiments/EXP-MCC-BOUNDED-AGENTS-2026-10-29.md",
+      "evidence_links": [],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/issues/121",
+        "https://github.com/Murkin1980/murat-project-engineer/pull/120"
+      ],
+      "updated_at": "2026-10-29"
     }
   ]
 }
