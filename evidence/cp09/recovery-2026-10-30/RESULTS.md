@@ -8,7 +8,7 @@
 - Current `main` / recovery base: `db4fff4d3258f57318f8eeb2e883ce29877940fb` (includes merged PR #122)
 - PR #115 historical head integrated locally: `3bf900b4ad92a79945b5020cd1c4c63f02e04555`
 - Recovery branch: `arena/4d9540dc-murat-project-engineer`
-- Recovery merge commit: recorded in the PR #115 recovery comment after push (this file is part of that merge).
+- Recovery merge commit: `8cb629706381c43e1299cd2f1fa1351f37c791bc` (published on the permitted recovery branch; PR #115 head not yet updated by an authorized maintainer).
 - Merge into `main`: **NOT PERFORMED**
 - Deploy: **NOT PERFORMED**
 

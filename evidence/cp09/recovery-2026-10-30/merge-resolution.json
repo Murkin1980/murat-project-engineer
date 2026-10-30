@@ -20,5 +20,6 @@
   ],
   "resolved_index_sha256": "415305efefe7b40e702a0b19c8ddd89641f514075c98b88230afacfda1c1ddcb",
   "schema_applied": false,
-  "schema_gate": "BLOCKED_DEEP_CHANGE / HUMAN_REQUIRED"
+  "schema_gate": "BLOCKED_DEEP_CHANGE / HUMAN_REQUIRED",
+  "recovery_merge_commit": "8cb629706381c43e1299cd2f1fa1351f37c791bc"
 }
