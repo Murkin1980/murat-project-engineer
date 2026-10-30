@@ -1,0 +1,207 @@
+{
+ "authority": "DERIVED_VIEW_NON_AUTHORITATIVE",
+ "authority_note": "Derived, non-authoritative launch brief assembled from canonical Git sources. Git remains the only source of truth: on any conflict the canonical files win; verify freshness before use and re-derive or discard this packet on any mismatch.",
+ "generated_against": {
+  "git_base": "3969b88ff2ad6220fcb1a8c5b3d8d8854e230bec",
+  "git_branch": "arena/1d43d7c6-murat-project-engineer",
+  "git_head": "3969b88ff2ad6220fcb1a8c5b3d8d8854e230bec"
+ },
+ "known_lessons": [
+  {
+   "id": "R1",
+   "minimal_change": "For a task that actually spans several context files, place a short **derived** ancestry brief in the existing task/handoff: project, goal, checkpoint/task, stop conditions, and source paths + digest…",
+   "scope": "PROJECT",
+   "scope_basis": "EXP-28 RESULTS.md R1 targets context-heavy MPE handoffs (one project line); EXP-28 records 'Two synthetic/fixed cases are too small to show generality', so R1 is not GLOBAL.",
+   "source": {
+    "anchor": "R1",
+    "path": "experiments/exp-28-agent-workflow-skills-retro/RESULTS.md"
+   },
+   "title": "Use the existing context-packet pattern for context-heavy handoffs (**recommended; immediately usable**)",
+   "verification": "On the next comparable, separately authorized run, give a fresh isolated executor only the packet; require all eight genealogy answers to match the canonical files, verify each digest, count packet b…"
+  },
+  {
+   "id": "R2",
+   "minimal_change": "Add a short conditional guard to `experiments/exp-24-hyperframes-pr-video/ARENA_TASK.md`: if HyperFrames is selected, reuse the existing local composition rather than rerunning broad `init` unless si…",
+   "scope": "TASK",
+   "scope_basis": "EXP-28 RESULTS.md R2 heading records 'applied task-locally' — EXP-24 Phase 2 only.",
+   "source": {
+    "anchor": "R2",
+    "path": "experiments/exp-28-agent-workflow-skills-retro/RESULTS.md"
+   },
+   "title": "Bound HyperFrames bootstrap side effects in the existing EXP-24 Phase 2 task (**applied task-locally**)",
+   "verification": "In the next authorized EXP-24 Phase 2 run, if HyperFrames is selected, record the exact preflight command and renderer version; verify no global agent-skill/config mutation and no second bootstrap af…"
+  },
+  {
+   "id": "R3",
+   "minimal_change": "`NO_CHANGE`—do not add an after-every-run hook, global rule, new standards file, or automatic memory promotion.",
+   "scope": "NO_CHANGE",
+   "scope_basis": "EXP-28 RESULTS.md R3 heading records 'rejected' — observed, not promoted into the bootstrap.",
+   "source": {
+    "anchor": "R3",
+    "path": "experiments/exp-28-agent-workflow-skills-retro/RESULTS.md"
+   },
+   "title": "Add an automatic retrospective hook and promote every finding to global instructions (**rejected**)",
+   "verification": "In any future promotion proposal, require recurrence or high, evidenced cost across independent runs, show it maps to an existing instruction/check location, and demonstrate that the change prevents…"
+  }
+ ],
+ "known_traps": [],
+ "now": {
+  "checkpoint": "CP-03",
+  "checkpoints": [
+   "CP-01",
+   "CP-02",
+   "CP-03"
+  ],
+  "disposition": "REUSE_COMPONENT",
+  "disposition_sources": [
+   {
+    "path": "experiments/exp-23-papermorph-interactive-artifact/README.md",
+    "value": "REUSE_COMPONENT"
+   },
+   {
+    "path": "experiments/exp-23-papermorph-interactive-artifact/README.md",
+    "value": "EXPERIMENT"
+   }
+  ],
+  "experiment_id": "EXP-23",
+  "experiment_name": "Papermorph document → interactive artifact",
+  "experiment_path": "experiments/exp-23-papermorph-interactive-artifact",
+  "nearest_action": "Experiment closed with REUSE_COMPONENT. Do not adopt the Papermorph engine. If the owner accepts reuse, evaluate the mark-based narration↔visual sync contract in EXP-24 and the quiz data model in 1C Tutor KZ through separate bounded owning-project checkpoints. Replacing the 3 CP-01 silent TTS placeholders is optional evidence hygiene, not a blocker.",
+  "parent_goal": "Test whether Papermorph's document/script → structured storyboard → narration → procedural animation/interaction pipeline yields reusable value for existing Murat projects without creating a parallel product or repository.",
+  "project": "Murat Project Engineer",
+  "registry_status": "PASS",
+  "registry_updated_at": "2026-10-10",
+  "source": {
+   "path": "experiments/EXPERIMENT_REGISTRY.json"
+  },
+  "task": "EXP-23/CP-03"
+ },
+ "packet_version": "exp-29-arena-context-v1",
+ "resume": {
+  "evidence": {
+   "note": "full result record in the canonical experiment RESULTS.md",
+   "path": ""
+  },
+  "next_action": "Experiment closed with REUSE_COMPONENT. Do not adopt the Papermorph engine. If the owner accepts reuse, evaluate the mark-based narration↔visual sync contract in EXP-24 and the quiz data model in 1C Tutor KZ through separate bounded owning-project checkpoints. Replacing the 3 CP-01 silent TTS placeholders is optional evidence hygiene, not a blocker.",
+  "next_authorized_action": "",
+  "result_summary": "PASS / REUSE_COMPONENT (2026-10-10). Bootstrap preflight FRESH. CP-01 READY: stock Papermorph @093418e (MIT) on the MPE governance doc produced a playable 11-beat interactive artifact with 0 factual errors, 2 manual corrections and beat-level regeneration. CP-02 READY after correcting the private-r…",
+  "source": {
+   "path": "experiments/EXPERIMENT_REGISTRY.json"
+  },
+  "status": "PASS"
+ },
+ "reusable_components": [],
+ "rules": {
+  "deep_change_gate": {
+   "bullets": [
+    "changes fundamental architecture;",
+    "breaks an approved invariant;",
+    "changes a public contract;",
+    "requires data migration;",
+    "changes the source of truth;",
+    "introduces a new infrastructure platform;",
+    "creates a new repository;",
+    "materially changes security boundaries;",
+    "creates unapproved recurring cost;",
+    "is difficult to reverse;",
+    "exceeds the approved checkpoint boundary."
+   ],
+   "intro": "Do not execute a substantial change without explicit approval when it:",
+   "pointer": "docs/governance/SCOPE-CHANGE-CONTROL.md"
+  },
+  "handoff_contract_fields": [
+   "STATE",
+   "EVIDENCE",
+   "CHANGES",
+   "RESULT",
+   "BLOCKER",
+   "NEXT ACTION",
+   "HANDOFF"
+  ],
+  "source_of_truth_priority": [
+   "1. Explicit current owner instruction.",
+   "2. Current approved checkpoint/spec.",
+   "3. Repository-local mandatory governance and project instructions.",
+   "4. Existing architecture/product/domain contracts.",
+   "5. Existing code and tests.",
+   "6. Historical conventions and prior decisions."
+  ],
+  "sources": {
+   "deep_change_gate": "docs/governance/SCOPE-CHANGE-CONTROL.md",
+   "handoff_contract": "AGENTS.md",
+   "source_of_truth_priority": "docs/governance/SCOPE-CHANGE-CONTROL.md",
+   "stop_rules": "experiments/exp-23-papermorph-interactive-artifact/README.md#failure-stop-criteria + experiments/exp-23-papermorph-interactive-artifact/README.md#guardrails"
+  },
+  "stop_rules": [
+   "factual hallucination rate makes the artifact unsafe to trust;",
+   "one-shot output looks impressive but requires heavy manual repair;",
+   "useful behavior depends on opaque one-off prompts that cannot be reproduced;",
+   "output is effectively a non-editable final video rather than a reusable pipeline;",
+   "upstream coupling is too strong to reuse components cleanly;",
+   "experiment starts duplicating MPE orchestration, CMS, or AI-serial infrastructure;",
+   "Arena discovers a deep-change requirement.",
+   "No new repository.",
+   "No production deployment.",
+   "No new standalone product.",
+   "No autonomous background service.",
+   "No AI-serial canon change from generated output.",
+   "No automatic publishing.",
+   "Pin upstream revision used for the test.",
+   "Record license and dependency constraints before reuse.",
+   "Keep all evidence under this experiment directory.",
+   "Prefer stock upstream behavior before modifications.",
+   "Do not expand scope beyond the two fixtures until evidence is reviewed."
+  ],
+  "stop_rules_intro": "STOP or FAIL if:",
+  "stop_rules_source": "experiments/exp-23-papermorph-interactive-artifact/README.md#failure-stop-criteria + experiments/exp-23-papermorph-interactive-artifact/README.md#guardrails"
+ },
+ "source_refs": [
+  {
+   "path": "experiments/EXPERIMENT_REGISTRY.json",
+   "role": "registry",
+   "sha256": "ffc8ca0f74672b71879da4e1f6114f121b301d4ff149edbabc60e2db98dd3834"
+  },
+  {
+   "path": "experiments/exp-23-papermorph-interactive-artifact/ARENA_TASK.md",
+   "role": "task_instructions",
+   "sha256": "2be3cd2d346427d86b88e38059d71d622adbee49e9454f3477d703fa31297e92"
+  },
+  {
+   "path": "experiments/exp-23-papermorph-interactive-artifact/README.md",
+   "role": "task_readme",
+   "sha256": "ca2c2337cc2c041646d3864e06327c5c77285616c097a8265f1426df9cd41406"
+  },
+  {
+   "path": "STATUS.md",
+   "role": "project_status",
+   "sha256": "a9c3bc395ac06371913334d8cd920603edeaaed33d2225956445f2e7afdbbfb5"
+  },
+  {
+   "path": "AGENTS.md",
+   "role": "agents_rules",
+   "sha256": "bb4e5e24858c9725980f83c3ab4c1bb4ff2c3b8d44dbb74ef5edff4edfa179e7"
+  },
+  {
+   "path": "docs/governance/SCOPE-CHANGE-CONTROL.md",
+   "role": "governance",
+   "sha256": "954a9a58fd5d35352b808a8c78600da821893fea078c02aa8b67f46ae593447b"
+  },
+  {
+   "path": "experiments/exp-28-agent-workflow-skills-retro/RESULTS.md",
+   "role": "accepted_lessons",
+   "sha256": "35a98ee8609a4b0b6dbf712b423d677b91aae70d52f0fd7ccd2a82c8966562a8"
+  }
+ ],
+ "verification": {
+  "command": "python3 experiments/exp-29-arena-bootstrap-harness/harness/bootstrap_builder.py verify --packet <ARENA_CONTEXT.json> --root <repo-root>",
+  "freshness_rule": "FRESH only when every source_refs sha256 matches the current file AND the packet equals a deterministic rebuild from current sources; otherwise the packet is STALE or REJECTED and must be treated as a non-authoritative hint.",
+  "safety_invariants": [
+   "authority disclaimer present (DERIVED_VIEW_NON_AUTHORITATIVE)",
+   "at least one task stop/deep-change rule present",
+   "deep-change gate bullets present",
+   "a disposition is declared by a canonical source; a missing or conflicting disposition is never resolved silently (missing/ambiguous disposition ⇒ REJECTED)",
+   "the active checkpoint is declared in the packet's canonical checkpoint chain (unsupported active checkpoint ⇒ REJECTED)",
+   "lesson scopes limited to GLOBAL/PROJECT/TASK/NO_CHANGE; GLOBAL requires a PROMOTED_TO_GLOBAL marker in the canonical lesson source (no current source has one)"
+  ]
+ }
+}

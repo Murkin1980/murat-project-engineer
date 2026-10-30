@@ -1,52 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="355" height="1096" viewBox="0 0 355 1096" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
+<svg xmlns="http://www.w3.org/2000/svg" width="346" height="621" viewBox="0 0 346 621" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
   <defs>
   </defs>
-  <rect x="0" y="0" width="355" height="1096" fill="#ffffff"/>
-  <path d="M48 40 H307 a8 8 0 0 1 8 8 V1048 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
-  <text x="54" y="68.4" fill="#1f2328" text-anchor="start">PLANNED (6)</text>
-  <path d="M62 83 H293 a8 8 0 0 1 8 8 V236 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V91 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="177.5" y="111.4" fill="#1f2328" text-anchor="middle">EXP-ALEXANDRIA ·</text>
-  <text x="177.5" y="130.4" fill="#1f2328" text-anchor="middle">Orchestrator</text>
-  <text x="177.5" y="149.4" fill="#1f2328" text-anchor="middle">Firecrawl Alexandria</text>
-  <text x="177.5" y="168.4" fill="#1f2328" text-anchor="middle">source discovery</text>
-  <text x="177.5" y="187.4" fill="#1f2328" text-anchor="middle">→ Execute the isolated</text>
-  <text x="177.5" y="206.4" fill="#1f2328" text-anchor="middle">five-task comparison and</text>
-  <text x="177.5" y="225.4" fill="#1f2328" text-anchor="middle">record per-run evidence…</text>
-  <path d="M62 254 H293 a8 8 0 0 1 8 8 V388 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V262 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="177.5" y="282.4" fill="#1f2328" text-anchor="middle">EXP-RANKCONTROL · House</text>
-  <text x="177.5" y="301.4" fill="#1f2328" text-anchor="middle">RankControl AI visibility</text>
-  <text x="177.5" y="320.4" fill="#1f2328" text-anchor="middle">→ After owner</text>
-  <text x="177.5" y="339.4" fill="#1f2328" text-anchor="middle">registration, run and</text>
-  <text x="177.5" y="358.4" fill="#1f2328" text-anchor="middle">record the first</text>
-  <text x="177.5" y="377.4" fill="#1f2328" text-anchor="middle">fixed-query baseli…</text>
-  <path d="M62 406 H293 a8 8 0 0 1 8 8 V559 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V414 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="177.5" y="434.4" fill="#1f2328" text-anchor="middle">EXP-S2C-01 · MPE</text>
-  <text x="177.5" y="453.4" fill="#1f2328" text-anchor="middle">Screenshot-to-Code Visual</text>
-  <text x="177.5" y="472.4" fill="#1f2328" text-anchor="middle">Workflow</text>
-  <text x="177.5" y="491.4" fill="#1f2328" text-anchor="middle">→ Freeze one</text>
-  <text x="177.5" y="510.4" fill="#1f2328" text-anchor="middle">existing-project fixture</text>
-  <text x="177.5" y="529.4" fill="#1f2328" text-anchor="middle">and baseline/candidate</text>
-  <text x="177.5" y="548.4" fill="#1f2328" text-anchor="middle">instructio…</text>
-  <path d="M62 577 H293 a8 8 0 0 1 8 8 V730 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V585 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="177.5" y="605.4" fill="#1f2328" text-anchor="middle">EXP-21 · MebelFlow AI</text>
-  <text x="177.5" y="624.4" fill="#1f2328" text-anchor="middle">EasyKitchen / SketchUp</text>
-  <text x="177.5" y="643.4" fill="#1f2328" text-anchor="middle">production backe…</text>
-  <text x="177.5" y="662.4" fill="#1f2328" text-anchor="middle">→ Perform focused</text>
-  <text x="177.5" y="681.4" fill="#1f2328" text-anchor="middle">technical reconnaissance</text>
-  <text x="177.5" y="700.4" fill="#1f2328" text-anchor="middle">of SketchUp Ruby +</text>
-  <text x="177.5" y="719.4" fill="#1f2328" text-anchor="middle">EasyKitch…</text>
-  <path d="M62 748 H293 a8 8 0 0 1 8 8 V882 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V756 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="177.5" y="776.4" fill="#1f2328" text-anchor="middle">EXP-23 · MPE</text>
-  <text x="177.5" y="795.4" fill="#1f2328" text-anchor="middle">Papermorph document →</text>
-  <text x="177.5" y="814.4" fill="#1f2328" text-anchor="middle">interactive artif…</text>
-  <text x="177.5" y="833.4" fill="#1f2328" text-anchor="middle">→ After EXP-22 Colibri</text>
-  <text x="177.5" y="852.4" fill="#1f2328" text-anchor="middle">completes, Arena runs one</text>
-  <text x="177.5" y="871.4" fill="#1f2328" text-anchor="middle">technical/business doc…</text>
-  <path d="M62 900 H293 a8 8 0 0 1 8 8 V1034 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V908 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="177.5" y="928.4" fill="#1f2328" text-anchor="middle">EXP-24 · MPE</text>
-  <text x="177.5" y="947.4" fill="#1f2328" text-anchor="middle">Agentic text → film</text>
-  <text x="177.5" y="966.4" fill="#1f2328" text-anchor="middle">pipeline (HyperFram…</text>
-  <text x="177.5" y="985.4" fill="#1f2328" text-anchor="middle">→ Run owner-authorized</text>
-  <text x="177.5" y="1004.4" fill="#1f2328" text-anchor="middle">Phase 2 CP-06…CP-12. Start</text>
-  <text x="177.5" y="1023.4" fill="#1f2328" text-anchor="middle">with one bounded sour…</text>
+  <rect x="0" y="0" width="346" height="621" fill="#ffffff"/>
+  <path d="M48 40 H298 a8 8 0 0 1 8 8 V573 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <text x="54" y="68.4" fill="#1f2328" text-anchor="start">PLANNED (3)</text>
+  <path d="M62 83 H284 a8 8 0 0 1 8 8 V236 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V91 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="173" y="111.4" fill="#1f2328" text-anchor="middle">EXP-ALEXANDRIA ·</text>
+  <text x="173" y="130.4" fill="#1f2328" text-anchor="middle">Orchestrator</text>
+  <text x="173" y="149.4" fill="#1f2328" text-anchor="middle">Firecrawl Alexandria</text>
+  <text x="173" y="168.4" fill="#1f2328" text-anchor="middle">source discovery</text>
+  <text x="173" y="187.4" fill="#1f2328" text-anchor="middle">→ Execute the isolated</text>
+  <text x="173" y="206.4" fill="#1f2328" text-anchor="middle">five-task comparison and</text>
+  <text x="173" y="225.4" fill="#1f2328" text-anchor="middle">record per-run evidence…</text>
+  <path d="M62 254 H284 a8 8 0 0 1 8 8 V388 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V262 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="173" y="282.4" fill="#1f2328" text-anchor="middle">EXP-RANKCONTROL · House</text>
+  <text x="173" y="301.4" fill="#1f2328" text-anchor="middle">RankControl AI visibility</text>
+  <text x="173" y="320.4" fill="#1f2328" text-anchor="middle">→ After owner</text>
+  <text x="173" y="339.4" fill="#1f2328" text-anchor="middle">registration, run and</text>
+  <text x="173" y="358.4" fill="#1f2328" text-anchor="middle">record the first</text>
+  <text x="173" y="377.4" fill="#1f2328" text-anchor="middle">fixed-query baseli…</text>
+  <path d="M62 406 H284 a8 8 0 0 1 8 8 V559 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V414 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="173" y="434.4" fill="#1f2328" text-anchor="middle">EXP-21 · MebelFlow AI</text>
+  <text x="173" y="453.4" fill="#1f2328" text-anchor="middle">EasyKitchen / SketchUp</text>
+  <text x="173" y="472.4" fill="#1f2328" text-anchor="middle">production backe…</text>
+  <text x="173" y="491.4" fill="#1f2328" text-anchor="middle">→ Perform focused</text>
+  <text x="173" y="510.4" fill="#1f2328" text-anchor="middle">technical reconnaissance</text>
+  <text x="173" y="529.4" fill="#1f2328" text-anchor="middle">of SketchUp Ruby +</text>
+  <text x="173" y="548.4" fill="#1f2328" text-anchor="middle">EasyKitch…</text>
 </svg>

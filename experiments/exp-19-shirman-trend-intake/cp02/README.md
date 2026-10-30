@@ -12,7 +12,10 @@
 | `portfolio-mobile-390px.png` | Same SVG scaled to a 390px phone width |
 | `tests/test_registry_to_reladraw.py` | Coverage + stale-diagram + dependency checks |
 
-Regenerate: `python scripts/registry_to_reladraw.py --out experiments/exp-19-shirman-trend-intake/cp02/portfolio.reladraw`
+Regenerate: `python scripts/registry_to_reladraw.py --out experiments/exp-19-shirman-trend-intake/cp02/portfolio.reladraw`,
+then `npx reladraw@0.13.0 experiments/exp-19-shirman-trend-intake/cp02/portfolio.reladraw -o experiments/exp-19-shirman-trend-intake/cp02/portfolio.svg`,
+then `python scripts/registry_to_reladraw.py --svg experiments/exp-19-shirman-trend-intake/cp02/portfolio.svg`.
+The SVG post-pass joins marked long-token visual lines into one copyable text node; it does not insert spaces into paths/identifiers.
 
 ## Data reused (single source of truth, nothing copied)
 `experiments/EXPERIMENT_REGISTRY.json` only: `owning_project` → project container, `status` → column,
@@ -49,7 +52,7 @@ A real dependency graph would need an optional `depends_on: [EXP-id]` field in t
 
 - **Result**: PASS · registry schema unchanged · no `depends_on` · the desktop `portfolio.*` files are byte-identical to CP-02.
 - **Approach**: one view **per status**, a single column of cards (wrap 26 chars, project shown as a short label on each card).
-- **Generate**: `python scripts/registry_to_reladraw.py --mobile-dir experiments/exp-19-shirman-trend-intake/cp02/mobile`, then `npx reladraw@0.13.0 <file>.reladraw -o <file>.svg`.
+- **Generate**: `python scripts/registry_to_reladraw.py --mobile-dir experiments/exp-19-shirman-trend-intake/cp02/mobile`, then `npx reladraw@0.13.0 <file>.reladraw -o <file>.svg`, then `python scripts/registry_to_reladraw.py --svg <file>.svg` for each rendered mobile view. Copy the resulting SVGs byte-for-byte to `dashboard/public/registry/` (mobile views under `mobile/`).
 
 | View | SVG width | Cards |
 |---|---|---|

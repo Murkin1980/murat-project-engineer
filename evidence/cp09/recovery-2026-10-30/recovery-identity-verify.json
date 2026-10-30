@@ -1,0 +1,20 @@
+{
+ "checks": {
+  "active_checkpoint_declared": false,
+  "authority_disclaimer": true,
+  "deep_change_gate_present": true,
+  "disposition_declared": true,
+  "disposition_unambiguous": true,
+  "lesson_scopes_valid": true,
+  "matches_rebuild": true,
+  "source_digests_match": true,
+  "stop_rules_present": true
+ },
+ "consistent_with_canonical_sources": false,
+ "disposition": "Refuse the packet: a safety invariant is violated (authority disclaimer, stop/deep-change rules, lesson scope, or a disposition that canonical files declare inconsistently). Re-derive from canonical sources.",
+ "field_diffs": [],
+ "reasons": [
+  "unsupported_active_checkpoint:CP-09-RECOVERY"
+ ],
+ "status": "REJECTED"
+}

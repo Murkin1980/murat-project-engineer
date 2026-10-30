@@ -1,0 +1,25 @@
+{
+  "main_sha": "db4fff4d3258f57318f8eeb2e883ce29877940fb",
+  "pr115_head_sha": "3bf900b4ad92a79945b5020cd1c4c63f02e04555",
+  "conflicted_file": "dashboard/public/index.html",
+  "resolution": "current main bytes preserved; only PARTIAL/FAIL/RETIRED details blocks appended after HOLD from PR #115",
+  "main_bytes_preserved_after_removing_added_blocks": true,
+  "added_status_blocks": [
+    "PARTIAL",
+    "FAIL",
+    "RETIRED"
+  ],
+  "navigation_links": 6,
+  "status_blocks": [
+    "READY_TO_TEST",
+    "PLANNED",
+    "HOLD",
+    "PARTIAL",
+    "FAIL",
+    "RETIRED"
+  ],
+  "resolved_index_sha256": "415305efefe7b40e702a0b19c8ddd89641f514075c98b88230afacfda1c1ddcb",
+  "schema_applied": false,
+  "schema_gate": "BLOCKED_DEEP_CHANGE / HUMAN_REQUIRED",
+  "recovery_merge_commit": "8cb629706381c43e1299cd2f1fa1351f37c791bc"
+}

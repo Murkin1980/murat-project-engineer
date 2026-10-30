@@ -61,6 +61,46 @@ class DashboardRegistryViewTests(unittest.TestCase):
             with self.subTest(status=status):
                 self.assertIn(asset, self.parser.image_sources)
 
+    def test_conflict_resolution_preserves_navigation_and_all_status_views(self):
+        class NavigationParser(HTMLParser):
+            def __init__(self):
+                super().__init__()
+                self.in_nav = False
+                self.links = []
+                self.statuses = []
+                self.in_summary = False
+
+            def handle_starttag(self, tag, attrs):
+                attrs = dict(attrs)
+                if tag == "nav":
+                    self.in_nav = True
+                if tag == "a" and self.in_nav:
+                    self.links.append(attrs.get("href"))
+                if tag == "details" and "registry-status" in attrs.get("class", "").split():
+                    self.statuses.append(True)
+                if tag == "summary" and self.statuses:
+                    self.in_summary = True
+
+            def handle_endtag(self, tag):
+                if tag == "nav":
+                    self.in_nav = False
+                if tag == "summary":
+                    self.in_summary = False
+
+            def handle_data(self, data):
+                if self.in_summary and self.statuses and data.strip():
+                    self.statuses[-1] = data.strip()
+
+        parser = NavigationParser()
+        parser.feed(self.html)
+        self.assertEqual(parser.links, ["#brief", "#p0", "#support", "#hold", "#ideas", "#registry"])
+        self.assertEqual(set(parser.statuses), {e["status"] for e in REGISTRY["experiments"]})
+        self.assertEqual(len(parser.statuses), len(set(parser.statuses)))
+        # The 26.10 monitoring snapshot merged through main must survive the
+        # recovery merge; PR #115's older 07.09 brief must not replace it.
+        self.assertIn("26.10.2026", self.html)
+        self.assertIn("мониторинг", self.html.lower())
+
     def test_dashboard_renders_match_the_validated_cp02_artifacts(self):
         pairs = [(PUBLIC_VIEWS / "portfolio.svg", CP02 / "portfolio.svg")]
         for status in {e["status"] for e in REGISTRY["experiments"]}:
@@ -81,7 +121,7 @@ class DashboardRegistryViewTests(unittest.TestCase):
         for path, items, name_chars, next_chars in views:
             svg_root = ET.parse(path).getroot()
             rendered = " ".join(
-                " ".join((element.text or "").split())
+                " ".join("".join(element.itertext()).split())
                 for element in svg_root.iter()
                 if element.tag.endswith("text")
             )

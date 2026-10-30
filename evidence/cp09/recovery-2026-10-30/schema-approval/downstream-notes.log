@@ -1,0 +1,5 @@
+EXP-14 historical freeze line: 4e74c3a2c5ca53215d7a8b281479cc66c228158fda8ce35b0eaaec05e0879650  contracts/EXPERIMENT_REGISTRY.schema.json   # UNCHANGED since d2ec64531e4c
+current schema sha256: 5f35226492a66c55484fb30fd4ec643c9a57445ca3e2b6a56fb9244caecfa863
+classification: expected historical digest drift from owner-approved public enum addition; no active test/CI consumer found; historical HASHES.txt preserved unchanged
+registry status counts: {'FAIL': 1, 'HOLD': 6, 'PARTIAL': 1, 'PASS': 15, 'PLANNED': 3, 'READY_TO_TEST': 1, 'RETIRED': 3}
+registry_to_reladraw: PARTIAL explicitly ordered; RETIRED uses existing deterministic fallback order; dashboard exposes all registry statuses; no producer change required

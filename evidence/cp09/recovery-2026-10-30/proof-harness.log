@@ -1,0 +1,12 @@
+CP-02: determinism + provenance + derived artifacts
+CP-03: fresh-session A/B comparison on frozen fixture EXP-27
+CP-04: stale/unsafe packet negative controls
+  NC-01: expected=STALE observed=STALE pass=True
+  NC-02: expected=STALE observed=STALE pass=True
+  NC-03: expected=REJECTED observed=REJECTED pass=True
+  NC-04: expected=STALE observed=STALE pass=True
+  NC-05: expected=STALE observed=STALE pass=True
+  NC-06: expected=REJECTED observed=REJECTED pass=True
+CP-06: first real-use repair (EXP-22 / CP-01 bootstrap)
+CP-08: bootstrap state consistency (current task, disposition, resume action)
+EXP-29 proof result: PASS
