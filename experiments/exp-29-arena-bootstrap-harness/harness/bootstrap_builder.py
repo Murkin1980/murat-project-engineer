@@ -55,6 +55,13 @@ CHECKPOINT_RE = re.compile(r"^#{2,3}\s+(CP-\d+)\b", flags=re.M)
 LESSON_HEADING_RE = re.compile(r"^###\s+(R\d+)\s+—\s+(.+)$")
 DISPOSITION_LINE_RE = re.compile(r"^(?:Decision|Primary disposition):\s*(.+)$")
 DISPOSITION_HEADING_RE = re.compile(r"^#{2,3}\s+Primary disposition\s*$")
+# ``docs/NEW_IDEA_FILTER_POLICY.md`` defines the New Idea Filter "primary
+# disposition" as the intake routing decision taken BEFORE implementation
+# (EXTEND_EXISTING / REUSE_COMPONENT / MERGE / EXPERIMENT / …). Declarations in
+# that section record the initial route of the idea, not the experiment's final
+# lifecycle disposition (compare EXP-23: filter route `EXPERIMENT`, final
+# `Decision: REUSE_COMPONENT` — commit c31cf12).
+NEW_IDEA_FILTER_HEADING_RE = re.compile(r"^##\s+New Idea Filter\b", flags=re.IGNORECASE)
 
 # Recognised boundary sections that carry task-local stop / deep-change rules. The
 # titles are the headings canonical experiment files actually use (EXP-27 "Stop
@@ -182,7 +189,7 @@ def _strip_bold(value: str) -> str:
 
 
 def _parse_dispositions(text: str) -> list[str]:
-    """Every disposition one canonical file declares, in document order.
+    """Every final disposition one canonical file declares, in document order.
 
     The canonical declaration forms actually used by MPE experiment files:
 
@@ -191,13 +198,23 @@ def _parse_dispositions(text: str) -> list[str]:
     - a ``## Primary disposition`` heading whose first non-empty line is the value
       (EXP-29 ``ARENA_TASK.md``).
 
-    Every value found is returned, so a file that declares two different
-    dispositions surfaces as ambiguous instead of silently winning by order.
+    Declarations inside a ``## New Idea Filter`` section are excluded: that
+    section records the initial intake routing decision of
+    ``docs/NEW_IDEA_FILTER_POLICY.md``, a different lifecycle stage from the
+    experiment's final disposition (EXP-23 keeps route ``EXPERIMENT`` there while
+    the final ``Decision:`` line is ``REUSE_COMPONENT``). Every remaining value
+    found is returned, so a file that declares two different final dispositions
+    surfaces as ambiguous instead of silently winning by order.
     """
     values: list[str] = []
     lines = text.splitlines()
+    in_new_idea_filter = False
     for index, line in enumerate(lines):
         stripped = line.strip()
+        if stripped.startswith("## "):
+            in_new_idea_filter = bool(NEW_IDEA_FILTER_HEADING_RE.match(stripped))
+        if in_new_idea_filter:
+            continue
         match = DISPOSITION_LINE_RE.match(stripped)
         if match:
             value = _strip_bold(match.group(1))

@@ -1,0 +1,20 @@
+test_long_token_svg_lines_keep_one_copyable_text_content (tests.test_registry_to_reladraw.DisplayLayoutTests.test_long_token_svg_lines_keep_one_copyable_text_content) ... ok
+test_short_preserves_long_tokens_and_spaced_slashes (tests.test_registry_to_reladraw.DisplayLayoutTests.test_short_preserves_long_tokens_and_spaced_slashes) ... ok
+test_committed_mobile_views_are_fresh (tests.test_registry_to_reladraw.MobileViewTests.test_committed_mobile_views_are_fresh) ... ok
+test_each_experiment_in_exactly_one_status_view (tests.test_registry_to_reladraw.MobileViewTests.test_each_experiment_in_exactly_one_status_view) ... ok
+test_no_depends_on_in_registry (tests.test_registry_to_reladraw.MobileViewTests.test_no_depends_on_in_registry) ... ok
+test_rendered_mobile_svgs_fit_390px_unscaled (tests.test_registry_to_reladraw.MobileViewTests.test_rendered_mobile_svgs_fit_390px_unscaled) ... ok
+test_committed_diagram_is_fresh (tests.test_registry_to_reladraw.RegistryToReladrawTests.test_committed_diagram_is_fresh) ... ok
+test_every_experiment_rendered (tests.test_registry_to_reladraw.RegistryToReladrawTests.test_every_experiment_rendered) ... ok
+test_inferred_dependency (tests.test_registry_to_reladraw.RegistryToReladrawTests.test_inferred_dependency) ... ok
+test_conflict_resolution_preserves_navigation_and_all_status_views (tests.test_dashboard_registry_views.DashboardRegistryViewTests.test_conflict_resolution_preserves_navigation_and_all_status_views) ... ok
+test_dashboard_exposes_a_mobile_view_for_each_registry_status (tests.test_dashboard_registry_views.DashboardRegistryViewTests.test_dashboard_exposes_a_mobile_view_for_each_registry_status) ... ok
+test_dashboard_exposes_the_generated_desktop_portfolio (tests.test_dashboard_registry_views.DashboardRegistryViewTests.test_dashboard_exposes_the_generated_desktop_portfolio) ... ok
+test_dashboard_mobile_views_fit_390px_at_native_readable_text_size (tests.test_dashboard_registry_views.DashboardRegistryViewTests.test_dashboard_mobile_views_fit_390px_at_native_readable_text_size) ... ok
+test_dashboard_renders_match_the_validated_cp02_artifacts (tests.test_dashboard_registry_views.DashboardRegistryViewTests.test_dashboard_renders_match_the_validated_cp02_artifacts) ... ok
+test_rendered_dashboard_text_tracks_registry_ids_names_and_next_steps (tests.test_dashboard_registry_views.DashboardRegistryViewTests.test_rendered_dashboard_text_tracks_registry_ids_names_and_next_steps) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.013s
+
+OK

@@ -17,6 +17,7 @@ Usage:
   python scripts/registry_to_reladraw.py [--registry PATH] [--out PATH] [--next-chars N]
 Render (optional, external tool, not a dependency of MPE):
   npx reladraw@0.13.0 OUT.reladraw -o OUT.svg
+  python scripts/registry_to_reladraw.py --svg OUT.svg
 """
 from __future__ import annotations
 
@@ -48,9 +49,78 @@ def esc(text: str) -> str:
     return text.replace(" / ", " \\/ ")
 
 
+# Reladraw 0.13 folds only at word boundaries. Long paths/identifiers therefore
+# need explicit layout breaks. ``short`` stays content-true; only the derived
+# layout splits long runs. A zero-width space marks a continuation so the SVG
+# post-pass can join the visual lines back into one copyable text node.
+TOKEN_CHUNK = 26
+CONTINUATION = "\u200b"
+
+
 def short(text: str, n: int) -> str:
-    text = " ".join(text.split())
+    text = " ".join(str(text).split())
     return text if len(text) <= n else text[: n - 1].rstrip() + "…"
+
+
+def layout_text(text: str) -> str:
+    """Escape display text and add non-content layout breaks for long tokens."""
+    def phrase(text: str) -> str:
+        parts: list[str] = []
+        for word in text.split(" "):
+            chunks = [word[i:i + TOKEN_CHUNK] for i in range(0, len(word), TOKEN_CHUNK)] or [""]
+            for index, chunk in enumerate(chunks):
+                if parts:
+                    parts.append(" / " + CONTINUATION if index else " ")
+                parts.append(esc(chunk))
+        return "".join(parts)
+
+    # A spaced slash in registry text is content, not a layout break. Preserve
+    # the producer's existing escaped-slash convention between phrases.
+    return " \\/ ".join(phrase(part) for part in text.split(" / "))
+
+
+def join_svg_continuations(svg: str) -> str:
+    """Join marked visual lines into one SVG text node without inserting spaces.
+
+    Each visual line keeps its own x/y in a tspan, so the pinned renderer's
+    layout is unchanged. textContent remains the original display token.
+    """
+    pattern = re.compile(r'<text\b[^>]*>.*?</text>', re.S)
+    matches = list(pattern.finditer(svg))
+    out: list[str] = []
+    cursor = 0
+    index = 0
+
+    def content(match: re.Match) -> str:
+        return match.group(0).split(">", 1)[1].rsplit("</text>", 1)[0]
+
+    def flush(group: list[re.Match]) -> None:
+        if len(group) == 1:
+            out.append(group[0].group(0))
+            return
+        opening = group[0].group(0).split(">", 1)[0] + ">"
+        spans = []
+        for match in group:
+            tag = match.group(0).split(">", 1)[0]
+            x = re.search(r'\bx="([^"]+)"', tag).group(1)
+            y = re.search(r'\by="([^"]+)"', tag).group(1)
+            spans.append(f'<tspan x="{x}" y="{y}">{content(match).removeprefix(CONTINUATION)}</tspan>')
+        out.append(opening + "".join(spans) + "</text>")
+
+    while index < len(matches):
+        group = [matches[index]]
+        index += 1
+        while index < len(matches):
+            gap = svg[matches[index - 1].end():matches[index].start()]
+            if gap.strip() or not content(matches[index]).startswith(CONTINUATION):
+                break
+            group.append(matches[index])
+            index += 1
+        out.append(svg[cursor:group[0].start()])
+        flush(group)
+        cursor = group[-1].end()
+    out.append(svg[cursor:])
+    return "".join(out)
 
 
 def inferred_dependencies(experiments: list[dict]) -> list[tuple[str, str]]:
@@ -101,8 +171,8 @@ def build(registry: dict, next_chars: int = 48) -> str:
                 node_of[e["experiment_id"]] = n
                 nxt = short(e.get("next_action", ""), next_chars)
                 line1 = esc(e["experiment_id"])
-                line2 = esc(short(e["name"], 30))
-                line3 = esc("→ " + nxt)
+                line2 = layout_text(short(e["name"], 30))
+                line3 = layout_text("→ " + nxt)
                 out.append(
                     f'node {n} "{line1} / {line2} / {line3}" (wrap: 34)'
                     f"  style: {STATUS_STYLE.get(status, 'st_planned')}"
@@ -140,8 +210,8 @@ def build_status_view(registry: dict, status: str, wrap: int = 26) -> str:
     for e in items:
         proj = PROJECT_ABBR.get(e["owning_project"], short(e["owning_project"], 16))
         text = (
-            f"{esc(e['experiment_id'])} · {esc(proj)} / {esc(short(e['name'], 40))}"
-            f" / {esc('→ ' + short(e.get('next_action', ''), 70))}"
+            f"{esc(e['experiment_id'])} · {esc(proj)} / {layout_text(short(e['name'], 40))}"
+            f" / {layout_text('→ ' + short(e.get('next_action', ''), 70))}"
         )
         out.append(f'node col.{slug(e["experiment_id"])} "{text}" (wrap: {wrap})  style: {style}')
     return "\n".join(out) + "\n"
@@ -162,11 +232,17 @@ def write_mobile(registry: dict, out_dir: Path) -> list[Path]:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--registry", type=Path, default=DEFAULT_REGISTRY)
+    ap.add_argument("--svg", type=Path, default=None,
+                    help="post-process a rendered SVG: join marked long-token lines in place")
     ap.add_argument("--out", type=Path, default=None)
     ap.add_argument("--next-chars", type=int, default=48)
     ap.add_argument("--mobile-dir", type=Path, default=None,
                     help="also write one narrow per-status view per file into this directory")
     a = ap.parse_args(argv)
+    if a.svg:
+        a.svg.write_text(join_svg_continuations(a.svg.read_text(encoding="utf-8")), encoding="utf-8")
+        print(a.svg)
+        return 0
     if a.mobile_dir:
         for pth in write_mobile(json.loads(a.registry.read_text(encoding="utf-8")), a.mobile_dir):
             print(pth)

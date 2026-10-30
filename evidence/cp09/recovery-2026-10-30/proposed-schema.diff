@@ -1,0 +1,13 @@
+diff --git a/contracts/EXPERIMENT_REGISTRY.schema.json b/contracts/EXPERIMENT_REGISTRY.schema.json
+index 6b6c543..7143253 100644
+--- a/contracts/EXPERIMENT_REGISTRY.schema.json
++++ b/contracts/EXPERIMENT_REGISTRY.schema.json
+@@ -18,7 +18,7 @@
+           "experiment_id": {"type": "string", "pattern": "^EXP-[A-Z0-9-]+$"},
+           "name": {"type": "string", "minLength": 1},
+           "owning_project": {"type": "string", "minLength": 1},
+-          "status": {"enum": ["IDEA", "PLANNED", "READY_TO_TEST", "RUNNING", "PASS", "FAIL", "HOLD", "ADOPTED"]},
++          "status": {"enum": ["IDEA", "PLANNED", "READY_TO_TEST", "RUNNING", "PASS", "PARTIAL", "FAIL", "HOLD", "RETIRED", "ADOPTED"]},
+           "why": {"type": "string", "minLength": 1},
+           "date_added": {"type": "string", "format": "date"},
+           "next_action": {"type": "string", "minLength": 1},

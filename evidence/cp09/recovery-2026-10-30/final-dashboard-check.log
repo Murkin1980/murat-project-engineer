@@ -1,0 +1,31 @@
+
+> murat-project-engineer-dashboard@1.0.0 check
+> node scripts/check_dashboard_deploy.mjs
+
+DASHBOARD BUILD PASSED
+source:      dashboard/public
+output dir:  dist
+assets:      9 files, 64168 bytes (0 written, 9 unchanged)
+views:       desktop /registry/portfolio.svg; mobile 7 status views (<= 390px, 14px)
+  415305efefe7   16306 B  /index.html
+  e2a26aefadb8    1191 B  /registry/mobile/status-fail.svg
+  8b6ce9ff0379    4580 B  /registry/mobile/status-hold.svg
+  f64ba48f7400    1203 B  /registry/mobile/status-partial.svg
+  37ab595da897   10696 B  /registry/mobile/status-pass.svg
+  8758e7756cf6    2719 B  /registry/mobile/status-planned.svg
+  b49e04716cf2    1229 B  /registry/mobile/status-ready_to_test.svg
+  2f77bfb84053    2577 B  /registry/mobile/status-retired.svg
+  0b900ab6f7cd   23667 B  /registry/portfolio.svg
+
+DASHBOARD DEPLOY CHECKS
+PASS  config (5/5)
+PASS  build (1/1)
+PASS  preview (1/1)
+PASS  route (5/5)
+PASS  asset (8/8)
+PASS  parity (8/8)
+PASS  views (7/7)
+PASS  mobile-390 (9/9)
+PASS  content (8/8)
+
+ALL CHECKS PASSED: 52/52

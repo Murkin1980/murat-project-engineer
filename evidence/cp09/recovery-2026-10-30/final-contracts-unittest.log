@@ -1,0 +1,53 @@
+test_canonical_experiment_registry_has_required_identity_and_status_fields (tests.test_contracts.PackageContractTests.test_canonical_experiment_registry_has_required_identity_and_status_fields) ...
+  test_canonical_experiment_registry_has_required_identity_and_status_fields (tests.test_contracts.PackageContractTests.test_canonical_experiment_registry_has_required_identity_and_status_fields) (experiment='EXP-QOOPIA-MEMORY') ... FAIL
+  test_canonical_experiment_registry_has_required_identity_and_status_fields (tests.test_contracts.PackageContractTests.test_canonical_experiment_registry_has_required_identity_and_status_fields) (experiment='EXP-UX-UI-SKILLS') ... FAIL
+  test_canonical_experiment_registry_has_required_identity_and_status_fields (tests.test_contracts.PackageContractTests.test_canonical_experiment_registry_has_required_identity_and_status_fields) (experiment='EXP-16') ... FAIL
+  test_canonical_experiment_registry_has_required_identity_and_status_fields (tests.test_contracts.PackageContractTests.test_canonical_experiment_registry_has_required_identity_and_status_fields) (experiment='EXP-26') ... FAIL
+test_deep_change_stops (tests.test_contracts.PackageContractTests.test_deep_change_stops) ... ok
+test_directory_slug_accepts_the_legacy_workspace_name (tests.test_contracts.PackageContractTests.test_directory_slug_accepts_the_legacy_workspace_name) ... ok
+test_exp002_frozen_ir_conformance_rejects_drift (tests.test_contracts.PackageContractTests.test_exp002_frozen_ir_conformance_rejects_drift) ... ok
+test_exp002_frozen_ir_matches_schema (tests.test_contracts.PackageContractTests.test_exp002_frozen_ir_matches_schema) ... ok
+test_explicit_routes_and_experiment_template (tests.test_contracts.PackageContractTests.test_explicit_routes_and_experiment_template) ... ok
+test_gate_detection_and_human_approval_are_separate (tests.test_contracts.PackageContractTests.test_gate_detection_and_human_approval_are_separate) ... ok
+test_package_contracts (tests.test_contracts.PackageContractTests.test_package_contracts) ... ok
+test_prospective_contract_field_parity (tests.test_contracts.PackageContractTests.test_prospective_contract_field_parity) ... ok
+test_reviewer_is_independent (tests.test_contracts.PackageContractTests.test_reviewer_is_independent) ... ok
+test_stage2_experiment_records_have_canonical_required_fields (tests.test_contracts.PackageContractTests.test_stage2_experiment_records_have_canonical_required_fields) ... ok
+test_triage_contracts_match_fixture_and_engine_output (tests.test_contracts.PackageContractTests.test_triage_contracts_match_fixture_and_engine_output) ... ok
+
+======================================================================
+FAIL: test_canonical_experiment_registry_has_required_identity_and_status_fields (tests.test_contracts.PackageContractTests.test_canonical_experiment_registry_has_required_identity_and_status_fields) (experiment='EXP-QOOPIA-MEMORY')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_contracts.py", line 53, in test_canonical_experiment_registry_has_required_identity_and_status_fields
+    self.assertIn(experiment["status"], allowed_statuses)
+AssertionError: 'RETIRED' not found in {'READY_TO_TEST', 'PLANNED', 'FAIL', 'IDEA', 'PASS', 'HOLD', 'RUNNING', 'ADOPTED'}
+
+======================================================================
+FAIL: test_canonical_experiment_registry_has_required_identity_and_status_fields (tests.test_contracts.PackageContractTests.test_canonical_experiment_registry_has_required_identity_and_status_fields) (experiment='EXP-UX-UI-SKILLS')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_contracts.py", line 53, in test_canonical_experiment_registry_has_required_identity_and_status_fields
+    self.assertIn(experiment["status"], allowed_statuses)
+AssertionError: 'RETIRED' not found in {'READY_TO_TEST', 'PLANNED', 'FAIL', 'IDEA', 'PASS', 'HOLD', 'RUNNING', 'ADOPTED'}
+
+======================================================================
+FAIL: test_canonical_experiment_registry_has_required_identity_and_status_fields (tests.test_contracts.PackageContractTests.test_canonical_experiment_registry_has_required_identity_and_status_fields) (experiment='EXP-16')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_contracts.py", line 53, in test_canonical_experiment_registry_has_required_identity_and_status_fields
+    self.assertIn(experiment["status"], allowed_statuses)
+AssertionError: 'RETIRED' not found in {'READY_TO_TEST', 'PLANNED', 'FAIL', 'IDEA', 'PASS', 'HOLD', 'RUNNING', 'ADOPTED'}
+
+======================================================================
+FAIL: test_canonical_experiment_registry_has_required_identity_and_status_fields (tests.test_contracts.PackageContractTests.test_canonical_experiment_registry_has_required_identity_and_status_fields) (experiment='EXP-26')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_contracts.py", line 53, in test_canonical_experiment_registry_has_required_identity_and_status_fields
+    self.assertIn(experiment["status"], allowed_statuses)
+AssertionError: 'PARTIAL' not found in {'READY_TO_TEST', 'PLANNED', 'FAIL', 'IDEA', 'PASS', 'HOLD', 'RUNNING', 'ADOPTED'}
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.064s
+
+FAILED (failures=4)
