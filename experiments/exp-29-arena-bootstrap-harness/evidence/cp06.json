@@ -24,7 +24,7 @@
    ]
   },
   "rediscovery_without_packet": {
-   "bytes": 78147,
+   "bytes": 78927,
    "files": 4,
    "reads": [
     "STATUS.md",

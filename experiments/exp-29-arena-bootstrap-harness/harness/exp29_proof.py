@@ -19,8 +19,9 @@ Checkpoints:
 - CP-06 — first real-use repair: EXP-22 / CP-01 must rebuild and verify FRESH from
   current Git with the H-1/H-2/H-3 defects repaired (regression coverage lives in
   ``tests/test_exp29_bootstrap.py``);
-- CP-08 — bootstrap state consistency: the committed derived artifacts describe the
-  CURRENT authorized task (``CURRENT``), keep the canonical disposition and resume
+- CP-08/CP-09 — bootstrap state consistency and canonical closure: the committed
+  derived artifacts describe the CURRENT authorized task (``CURRENT``), keep the
+  canonical disposition and resume
   action, and fail closed on a missing disposition, an undeclared active checkpoint,
   or a superseded instruction carried as current.
 
@@ -53,12 +54,12 @@ import bootstrap_builder as builder  # noqa: E402
 FIXTURE = {"experiment_id": "EXP-27", "checkpoint": "CP-05"}
 
 # Current authorized task of this experiment, published into the committed
-# ``ARENA_CONTEXT.json`` / ``ARENA_CONTEXT.md``. Owner authorized in CP-08
-# (``ARENA_TASK.md``, instruction PR #108); the EXP-29 registry entry records the
+# ``ARENA_CONTEXT.json`` / ``ARENA_CONTEXT.md``. Owner authorized in CP-09
+# (``ARENA_TASK.md`` — canonical closure); the EXP-29 registry entry records the
 # same action as ``next_action``. The builder fail-closes if this checkpoint is not
 # declared by a canonical EXP-29 file, so the artifact can never be published for
 # an unsupported or silently stale task. Bump it with the next authorized checkpoint.
-CURRENT = {"experiment_id": "EXP-29", "checkpoint": "CP-08"}
+CURRENT = {"experiment_id": "EXP-29", "checkpoint": "CP-09"}
 
 # Canonical sources the builder derives from (must never be written by EXP-29).
 CANONICAL_SOURCES = (
@@ -684,7 +685,7 @@ def cp08(workdir):
         "committed_packet_rebuild_identical": verification["checks"]["matches_rebuild"],
         "task_is_current": now["task"] == expected_task and now["checkpoint"] == CURRENT["checkpoint"],
         "checkpoint_chain_preserves_history": (
-            now["checkpoints"] == [f"CP-{i:02d}" for i in range(1, 9)]
+            now["checkpoints"] == [f"CP-{i:02d}" for i in range(1, 10)]
             and now["checkpoint"] in now["checkpoints"]
         ),
         "disposition_preserved": (

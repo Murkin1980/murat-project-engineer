@@ -719,6 +719,111 @@ tests return to their pre-repair form. Nothing outside
 `experiments/exp-29-arena-bootstrap-harness/**` and `tests/test_exp29_bootstrap.py` is
 affected; the CP-07 evidence under `evidence/cp07/` is preserved either way.
 
+## CP-09 — Canonical closure: PASS
+
+Owner-authorized final checkpoint (see `ARENA_TASK.md`, CP-09). Scope: reconcile the existing
+canonical records so the experiment closes, and republish the derived packet. No builder, packet
+schema, authority-model, production, governance, contract, gate, Router or infrastructure change;
+no new source of truth; CP-08 was **not** re-run, re-implemented or re-accepted. The EXP-29
+disposition stays `REUSE_COMPONENT`.
+
+### Trigger
+
+CP-08 was delivered (PR #111, head `23a0b1ba`, merged as `94eeed9`) and accepted independently
+(`evidence/acceptance/CP-08_FINAL_ACCEPTANCE.md`, PR #122), yet every canonical record still
+described it as pending work: the registry `next_action` said "follow owner instruction in PR
+#108", its `result_summary` ended "... proposed in draft PR #108, not yet implemented. Historical
+PASS result retained pending reconciliation", and `STATUS.md` asked to "complete EXP-29 CP-08
+bootstrap semantic-consistency recovery". A packet rebuilt from those sources verifies **FRESH**
+and still tells a fresh session to execute a finished checkpoint — the same fail-open class CP-08
+closed, one layer up: freshness cannot be correct if the canonical sources themselves are stale.
+
+### Reconciliation (existing record fields only)
+
+| File | Change |
+|---|---|
+| `experiments/EXPERIMENT_REGISTRY.json` | EXP-29 `next_action` now names CP-09 canonical closure (no CP-08 re-run); `result_summary` records the CP-08 acceptance + merge and the closure, replacing the "not yet implemented" tail; `pr_or_issue_links` adds PR #111 and the acceptance PR #122; entry `updated_at` and the file-level `updated_at` are `2026-10-29`. 7 insertions / 5 deletions — only the EXP-29 record plus the file header date. |
+| `STATUS.md` | nearest single action: "EXP-29 is closed at PASS / REUSE_COMPONENT (CP-08 accepted via PR #111, canonical closure at CP-09)"; the CP-08 instruction is removed from the current action. |
+| `ARENA_TASK.md` | the CP-09 checkpoint spec is declared canonically, so `CP-09` is part of the packet's checkpoint chain and the builder can never publish an undeclared task. |
+| `README.md` | status reconciled to "PASS / REUSE_COMPONENT — closed at CP-09"; CP-08 marked accepted/merged; CP-09 recorded as the current checkpoint. `Primary disposition: **REUSE_COMPONENT**` unchanged. |
+| `RESULTS.md` | this section; the current `## Next authorized action` paragraph is the closure instruction and the CP-08 paragraph moved to `### Historical (superseded) next actions`. |
+| `harness/exp29_proof.py` | `CURRENT = {EXP-29, CP-09}`; the committed-artifact chain check accepts `CP-01…CP-09`. No parser, verifier or authority change. |
+| `tests/test_exp29_bootstrap.py` | `CURRENT_CHECKPOINT = "CP-09"`, chain length 9, plus one CP-09 regression (below). |
+| `ARENA_CONTEXT.json` / `.md`, `evidence/*.json` | republished by the documented ritual; packet size recorded in `evidence/cp09.json`. |
+
+No dashboard/Reladraw artifact was regenerated here — see "Dashboard / Reladraw impact".
+
+The ritual's `cp08` step validates the **current** task, so `evidence/cp08.json` is regenerated
+with `current_task: EXP-29/CP-09` and the new digests/byte counts. Only derived values move:
+`result: PASS`, every check, the `drift_before_repair` record and the NC-08A/B/C negative controls
+are unchanged, so the CP-08 gate history is preserved rather than rewritten. The same applies to
+`evidence/cp02|cp03|cp04|cp06.json` and `proof_run*.json` — the CP-08 checkpoint already
+established this regeneration pattern.
+
+### Fail-closed coverage for the closure
+
+`Exp29StateConsistencyTests.test_canonical_records_do_not_instruct_repeating_a_finished_checkpoint`
+asserts the closure from canonical sources, not from prose: the registry no longer contains "not
+yet implemented", it records the acceptance, it cites PR #111, `STATUS.md` no longer asks to
+complete CP-08, and the packet's resume action names `CP-09`. Verified as a real negative control:
+with the pre-CP-09 `STATUS.md` + registry restored the test **fails** on
+`'not yet implemented' unexpectedly found in ...`; with the closure applied it passes.
+
+### Checks run (CP-09 gate)
+
+| Gate | Command | Result |
+|---|---|---|
+| Committed artifact | `bootstrap_builder.py verify --packet …/ARENA_CONTEXT.json` | `FRESH`, all checks true, `field_diffs: []`, rebuild-identical |
+| Packet identity | `now.task` / `now.checkpoints` | `EXP-29/CP-09`, chain `CP-01 → … → CP-09` (CP-01…CP-08 kept as history) |
+| Disposition | `now.disposition_sources` | `REUSE_COMPONENT` from `ARENA_TASK.md` **and** `README.md` |
+| Resume action | `resume.next_authorized_action` vs canonical paragraph | equal, complete, names CP-09, ends with `.` |
+| EXP-29 proof harness | `python3 …/harness/exp29_proof.py all` | exit 0, `summary.result = PASS` (CP-02/03/04/06/08 PASS) |
+| Negative controls | NC-01…NC-06 | 4 `STALE`, 2 `REJECTED` — unchanged |
+| Drift controls | NC-08A/B/C | fail closed — unchanged |
+| Focused suite | `PYTHONHASHSEED=0 python3 -m unittest tests.test_exp29_bootstrap` | **43 tests — OK** (42 preserved + 1 CP-09) |
+| Full unit suite, before | `PYTHONHASHSEED=0 python3 -m unittest discover -s tests` on `main` @ `83c786b` | 440 tests — 27 failures, 1 skipped |
+| Full unit suite, after | same command on this branch | 440 tests — **27 failures, 1 skipped**; failure set identical (`comm` delta empty in both directions) — **no new failing test** |
+| Package validator | `python3 scripts/validate_package.py .` | `VALIDATION PASSED` |
+| Whitespace | `git diff --check` | clean |
+| Secrets | token/key/password pattern scan over the branch diff | 0 hits |
+| Scope | `git status --porcelain` | only the CP-09 allowed paths (table above) + the CP-08 acceptance record from PR #122 |
+
+The 27 remaining failures are the pre-existing registry-schema / dashboard / Reladraw set already
+classified in the CP-08 acceptance record; they exist on `main` before this change and are owned by
+the CP-09 **recovery** work in PR #115.
+
+### Dashboard / Reladraw impact (measured, not applied)
+
+`scripts/registry_to_reladraw.py` output was generated twice into a temp directory — once from the
+registry at `HEAD`, once from the reconciled registry — and diffed. The incremental effect of this
+checkpoint is **16 changed lines in 8 generated files**: the `updated_at 2026-10-16 → 2026-10-29`
+header line in `portfolio.reladraw` plus all seven `mobile/status-*.reladraw` views, and the EXP-29
+node text in `portfolio.reladraw` and `mobile/status-pass.reladraw`. No generated artifact is
+committed, regenerated or duplicated here: PR #115 owns the regeneration ritual and its renderer
+change, so committing the views now would overwrite work that branch is delivering. Consequence to
+carry: after either branch merges, the dashboard ritual must be run once against the merged
+registry (PR #115 already plans exactly that).
+
+### Coordination with PR #115 (CP-09 recovery)
+
+Both branches are called CP-09 but they are different checkpoint families: PR #115 is the
+repository-level **CP-09 recovery** (`docs/checkpoints/CP-09-RECOVERY-ARENA-INSTRUCTION.md`) and
+this is **EXP-29 CP-09 canonical closure**. Their file sets overlap in exactly two files, and the
+hunks are disjoint: #115 edits `tests/test_exp29_bootstrap.py` at the module docstring (lines ~16)
+and appends a new `Exp29DispositionLifecycleTests` class at the end (line ~1063+), while this
+checkpoint edits line 904 (`CURRENT_CHECKPOINT`) and lines 973–991 (chain length + the new
+regression). #115 edits `harness/bootstrap_builder.py` (`_parse_dispositions` New Idea Filter
+handling); this checkpoint does not touch `bootstrap_builder.py` at all. `EXPERIMENT_REGISTRY.json`,
+`STATUS.md` and `exp29_proof.py` are untouched by #115. No governance, contract or architecture
+change was needed for this closure, so no owner decision is required on that axis.
+
+### Rollback (CP-09)
+
+Revert the CP-09 commit: the registry EXP-29 entry, `STATUS.md`, `ARENA_TASK.md`, `README.md` and
+`RESULTS.md` return to their CP-08 text, `CURRENT` returns to `CP-08`, and the packet is rebuilt at
+that state. Nothing outside `experiments/exp-29-arena-bootstrap-harness/**`, the EXP-29 registry
+record, `STATUS.md` and `tests/test_exp29_bootstrap.py` is affected.
+
 ## Measurements (required list)
 
 > Byte and packet-size rows below are the CP-05 record. They are superseded by the CP-06 values (Arm A 84,978 B / 7 ops; Arm B 13,087 B / 1 op; 84.60%; committed JSON 13,113 B). See the CP-06 section.
@@ -859,6 +964,17 @@ reladraw outputs unchanged.
   EXP-16/EXP-26/EXP-QOOPIA-MEMORY/EXP-UX-UI-SKILLS and the 3 missing
   mobile-status references in `dashboard/public/index.html`) are recorded, not
   repaired — fixing the status contract is a separate decision (per EXP-28).
+- **CP-09 — generated dashboard views are intentionally not regenerated here.** The
+  reconciled registry implies 16 changed lines in the 8 generated
+  `portfolio.reladraw` / `mobile/status-*.reladraw` views; PR #115 owns that
+  ritual, so the views must be regenerated once against whichever registry lands.
+  Until then `test_registry_to_reladraw` and `test_dashboard_registry_views` stay
+  red for that pre-existing reason — not because of this experiment's contract.
+- **CP-09 — two different CP-09 checkpoints exist.** PR #115 is the repository-level
+  CP-09 *recovery* (`docs/checkpoints/CP-09-RECOVERY-ARENA-INSTRUCTION.md`); this
+  experiment's CP-09 is the *canonical closure* and is the one the EXP-29 registry
+  `next_action` and this packet name. Do not treat the registry action as authority
+  over the recovery work, or vice versa.
 
 ## Rollback
 
@@ -887,18 +1003,26 @@ touched, so nothing else depends on the reverted files.
 
 ## Next authorized action
 
-CP-08 (bootstrap state consistency recovery) is complete as a bounded checkpoint and is
-the current authorized action: the committed `ARENA_CONTEXT.json` / `.md` describe the
-current task (`EXP-29/CP-08`) with the `REUSE_COMPONENT` disposition and a complete
-resume action, an absent disposition or an undeclared active checkpoint now fails closed,
-and the documented ritual publishes the current task for this experiment instead of the
-frozen CP-03 fixture (`evidence/cp08.json`). Its PR is opened and must not be merged as
-part of this checkpoint: **STOP after PR delivery and await owner review.** Recording
-CP-08 completion in the EXP-29 registry entry, and any broader adoption (automatic packet
-generation per session, GLOBAL lesson promotion, runtime integration), remain separate
-owner decisions with their own New Idea Filter / deep-change assessment.
+CP-09 (canonical closure) is complete as a bounded checkpoint and is the current authorized
+action: the canonical records no longer instruct a CP-08 re-run — the registry entry, `STATUS.md`
+and this file name CP-08 as accepted and merged (PR #111, merge `94eeed9`) — the committed
+`ARENA_CONTEXT.json` / `.md` are republished for `EXP-29/CP-09` with the `REUSE_COMPONENT`
+disposition and a complete resume action, and the chain `CP-01…CP-09` preserves the executed
+history. Its PR is opened and must not be merged as part of this checkpoint: **STOP after PR
+delivery and await owner review.** Adoption of the harness beyond this experiment (automatic
+packet generation per session, GLOBAL lesson promotion, runtime integration) remains a separate
+owner decision with its own New Idea Filter / deep-change assessment.
 
 ### Historical (superseded) next actions
+
+CP-08 (bootstrap state consistency recovery) was the action until 2026-10-29: the committed
+`ARENA_CONTEXT.json` / `.md` described the current task (`EXP-29/CP-08`) with the
+`REUSE_COMPONENT` disposition and a complete resume action, an absent disposition or an
+undeclared active checkpoint fails closed, and the documented ritual publishes the current task
+for this experiment instead of the frozen CP-03 fixture (`evidence/cp08.json`). It was delivered
+as a bounded PR, accepted independently (`evidence/acceptance/CP-08_FINAL_ACCEPTANCE.md`) and
+merged as PR #111. Recording that completion in the EXP-29 registry entry was deferred to CP-09
+and is now done there.
 
 CP-07 (canonical current-state gap) is complete as a bounded checkpoint: the
 FRESH-but-stale-state gap is closed through the existing registry/RESULTS.md

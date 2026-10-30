@@ -12,7 +12,7 @@
   "task_is_current": true,
   "unsupported_active_checkpoint_fails_closed": true
  },
- "current_task": "EXP-29/CP-08",
+ "current_task": "EXP-29/CP-09",
  "drift_before_repair": {
   "disposition": "",
   "disposition_sources": [],
@@ -83,7 +83,8 @@
    "CP-05",
    "CP-06",
    "CP-07",
-   "CP-08"
+   "CP-08",
+   "CP-09"
   ],
   "disposition": "REUSE_COMPONENT",
   "disposition_sources": [
@@ -96,11 +97,11 @@
     "value": "REUSE_COMPONENT"
    }
   ],
-  "json_bytes": 15057,
-  "nearest_action": "CP-08 Bootstrap State Consistency Recovery: reconcile registry and current checkpoint state, preserve REUSE_COMPONENT, regenerate and verify a fresh and semantically consistent packet; follow owner instruction in PR #108. Do not merge or deploy without authorization.",
-  "next_authorized_action_bytes": 860,
+  "json_bytes": 15660,
+  "nearest_action": "CP-09 Canonical Closure: reconcile the EXP-29 registry, STATUS.md and RESULTS.md entries so CP-08 reads as accepted and merged (PR #111, merge 94eeed9) and the experiment closes at PASS / REUSE_COMPONENT, then republish and verify a FRESH packet for EXP-29/CP-09. One bounded PR; no merge, deploy or production integration without owner authorization.",
+  "next_authorized_action_bytes": 822,
   "registry_status": "PASS",
-  "task": "EXP-29/CP-08"
+  "task": "EXP-29/CP-09"
  },
  "result": "PASS",
  "verification": {

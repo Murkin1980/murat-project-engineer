@@ -418,3 +418,55 @@ complete/current/authorized resume action, keeps CP-01…CP-07 as historical che
 fail-closed regression coverage for the drift, and adds no new failing full-suite test.
 
 Open one bounded PR and do not merge.
+
+## CP-09 — Canonical closure (owner authorized 2026-10-29)
+
+Trigger: CP-08 was accepted independently and is already merged (PR #111, head `23a0b1ba`,
+merge `94eeed9`), but the canonical records still described CP-08 as pending work — the registry
+`next_action` said "follow owner instruction in PR #108", `result_summary` said "not yet
+implemented", and `STATUS.md` still asked to "complete EXP-29 CP-08 …". A verified `FRESH`
+packet therefore still told a fresh session to execute an already-completed checkpoint, which is
+the same fail-open class CP-08 closed.
+
+This checkpoint is limited to reconciling the existing canonical records and closing the
+experiment. It does not re-run, re-implement or re-accept CP-08, and it does not change the
+builder, the packet schema or the authority model.
+
+### Required work
+
+1. Registry `EXP-29` entry: `next_action` no longer instructs a CP-08 re-run; `result_summary`
+   records the accepted CP-08 outcome and the closure; `pr_or_issue_links` cite PR #111 and the
+   independent acceptance record (PR #122); `updated_at` reflects the closure.
+2. `STATUS.md`: the nearest single action no longer asks for CP-08 completion.
+3. `RESULTS.md`: record CP-09 and replace the current `## Next authorized action` paragraph; every
+   earlier action stays visible under `### Historical (superseded) next actions`.
+4. Republish `ARENA_CONTEXT.json` / `ARENA_CONTEXT.md` for `EXP-29/CP-09` with the chain
+   `CP-01…CP-09` preserved, and require `FRESH` plus rebuild-identical.
+5. Keep every fail-closed control green (NC-01…NC-06, NC-08A/B/C) and add no new full-suite
+   failure.
+
+### Scope
+
+Allowed changes:
+
+- `experiments/exp-29-arena-bootstrap-harness/**` (task, readme, results, derived packet,
+  `harness/exp29_proof.py`, evidence);
+- `tests/test_exp29_bootstrap.py` (current-checkpoint constants and chain length only);
+- the `EXP-29` record in `experiments/EXPERIMENT_REGISTRY.json`;
+- `STATUS.md`.
+
+Do not change production code, governance, Router, contracts, gates, other experiments, or the
+CP-09 recovery work in PR #115 — the dashboard/Reladraw regeneration stays with that work, so it
+must not be duplicated or overwritten here.
+
+If the closure required changing governance, a contract, the source of truth, or the builder's
+authority model, STOP and report the conflict instead of proceeding.
+
+### CP-09 PASS
+
+PASS only if the committed packet is `FRESH` and rebuild-identical for `EXP-29/CP-09`, the
+`REUSE_COMPONENT` disposition survives from both canonical declarations, the resume action is the
+complete canonical paragraph, no canonical record still instructs a CP-08 re-run, `CP-01…CP-09`
+remain in the chain, the fail-closed controls stay green, and no new full-suite test fails.
+
+Open one bounded PR and do not merge.

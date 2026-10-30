@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-10-16",
+  "updated_at": "2026-10-29",
   "experiments": [
     {
       "experiment_id": "EXP-ALEXANDRIA",
@@ -636,8 +636,8 @@
       "status": "PASS",
       "why": "Test whether a deterministic Git-derived startup packet can let a fresh Arena session resume context-heavy MPE work with less rediscovery while preserving Git as the only source of truth and avoiding a separate memory platform.",
       "date_added": "2026-10-09",
-      "next_action": "CP-08 Bootstrap State Consistency Recovery: reconcile registry and current checkpoint state, preserve REUSE_COMPONENT, regenerate and verify a fresh and semantically consistent packet; follow owner instruction in PR #108. Do not merge or deploy without authorization.",
-      "result_summary": "PASS / REUSE_COMPONENT: a deterministic, LLM-free bootstrap builder derives ARENA_CONTEXT.json/.md from canonical Git sources (registry, task files, STATUS, AGENTS, governance, EXP-27/EXP-28 results) with sha256 provenance for every source and every item source-linked. Fresh-session A/B on the frozen fixture EXP-27 (real completed context-heavy task, isolated python3 -I workers): Arm A normal rediscovery 5 files / 83 KB / 7 tool ops vs Arm B packet 1 file / 12.8 KB / 1 tool op (~85% fewer context bytes, identical answers, genealogy and stop conditions reproduced in both arms). Six stale/unsafe negative controls fail closed: source changed, digest mismatch, stale NEXT ACTION and canonical-override attempts degrade to STALE non-authoritative hints; missing stop rule and GLOBAL lesson promotion are REJECTED (and refused by the fresh-session worker). Canonical sources digest-identical before/after; only the two derived artifacts are written. No memory service, vector store, daemon, scheduler, persistent agent runtime, Router change, automatic learning, or second source of truth. 2026-10-16 follow-up: CP-07 preflight reported committed packet STALE (AGENTS.md and registry digests), 2/34 focused test failures and 27/432 full-suite failures (1 skipped); CP-08 recovery instruction is proposed in draft PR #108, not yet implemented. Historical PASS result retained pending reconciliation.",
+      "next_action": "CP-09 Canonical Closure: reconcile the EXP-29 registry, STATUS.md and RESULTS.md entries so CP-08 reads as accepted and merged (PR #111, merge 94eeed9) and the experiment closes at PASS / REUSE_COMPONENT, then republish and verify a FRESH packet for EXP-29/CP-09. One bounded PR; no merge, deploy or production integration without owner authorization.",
+      "result_summary": "PASS / REUSE_COMPONENT: a deterministic, LLM-free bootstrap builder derives ARENA_CONTEXT.json/.md from canonical Git sources (registry, task files, STATUS, AGENTS, governance, EXP-27/EXP-28 results) with sha256 provenance for every source and every item source-linked. Fresh-session A/B on the frozen fixture EXP-27 (real completed context-heavy task, isolated python3 -I workers): Arm A normal rediscovery 5 files / 83 KB / 7 tool ops vs Arm B packet 1 file / 12.8 KB / 1 tool op (~85% fewer context bytes, identical answers, genealogy and stop conditions reproduced in both arms). Six stale/unsafe negative controls fail closed: source changed, digest mismatch, stale NEXT ACTION and canonical-override attempts degrade to STALE non-authoritative hints; missing stop rule and GLOBAL lesson promotion are REJECTED (and refused by the fresh-session worker). Canonical sources digest-identical before/after; only the two derived artifacts are written. No memory service, vector store, daemon, scheduler, persistent agent runtime, Router change, automatic learning, or second source of truth. 2026-10-16: a CP-07 preflight found the committed packet STALE (AGENTS.md and registry digests) with 2/34 focused and 27/432 full-suite failures; the CP-08 state-consistency recovery repaired that drift (an absent disposition or an undeclared active checkpoint now fails closed and the committed packet is republished for the current task). 2026-10-29: CP-08 accepted independently on main (packet FRESH and rebuild-identical, focused suite 42 tests OK, proof harness PASS with NC-01..NC-06 and NC-08A/B/C fail-closed, 440-test full suite at 27 pre-existing failures against 29 at the CP-08 merge base with no regression; record evidence/acceptance/CP-08_FINAL_ACCEPTANCE.md) and merged in PR #111; CP-09 canonical closure reconciled the registry, STATUS.md and RESULTS.md and closed the experiment at PASS / REUSE_COMPONENT.",
       "repo": "Murkin1980/murat-project-engineer",
       "experiment_path": "experiments/exp-29-arena-bootstrap-harness",
       "evidence_links": [
@@ -658,9 +658,11 @@
       ],
       "pr_or_issue_links": [
         "https://github.com/Murkin1980/murat-project-engineer/pull/65",
-        "https://github.com/Murkin1980/murat-project-engineer/pull/108"
+        "https://github.com/Murkin1980/murat-project-engineer/pull/108",
+        "https://github.com/Murkin1980/murat-project-engineer/pull/111",
+        "https://github.com/Murkin1980/murat-project-engineer/pull/122"
       ],
-      "updated_at": "2026-10-16"
+      "updated_at": "2026-10-29"
     }
   ]
 }

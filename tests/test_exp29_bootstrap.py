@@ -901,7 +901,7 @@ class Exp29CanonicalStateTests(unittest.TestCase):
 
 CP07_SESSION_PACKET = EXPERIMENT / "evidence" / "cp07" / "session_bootstrap" / "ARENA_CONTEXT.json"
 CURRENT_EXPERIMENT = "EXP-29"
-CURRENT_CHECKPOINT = "CP-08"
+CURRENT_CHECKPOINT = "CP-09"
 EXP29_PATH = "experiments/exp-29-arena-bootstrap-harness"
 
 # The superseded CP-05-era instruction the committed packet carried as its active
@@ -968,9 +968,9 @@ class Exp29StateConsistencyTests(unittest.TestCase):
         self.assertEqual(now["checkpoint"], CURRENT_CHECKPOINT)
         self.assertEqual(now["task"], f"{CURRENT_EXPERIMENT}/{CURRENT_CHECKPOINT}")
         self.assertIn(now["checkpoint"], now["checkpoints"])
-        # CP-01…CP-07 stay visible as history: the repair distinguishes the current
+        # CP-01…CP-08 stay visible as history: the repair distinguishes the current
         # task from historical checkpoints instead of replacing the chain.
-        self.assertEqual(now["checkpoints"], [f"CP-{i:02d}" for i in range(1, 9)])
+        self.assertEqual(now["checkpoints"], [f"CP-{i:02d}" for i in range(1, 10)])
         self.assertEqual(builder.verify_packet(self.packet, ROOT)["status"], "FRESH")
 
     def test_committed_packet_agrees_with_the_registry_authorized_action(self):
@@ -981,6 +981,20 @@ class Exp29StateConsistencyTests(unittest.TestCase):
         self.assertEqual(resume["status"], entry["status"])
         self.assertIn(CURRENT_CHECKPOINT, entry["next_action"])
         self.assertNotIn("STOP after CP-05", resume["next_authorized_action"])
+
+    def test_canonical_records_do_not_instruct_repeating_a_finished_checkpoint(self):
+        # CP-09: a FRESH packet cannot help if the canonical records still ask for a
+        # checkpoint that is already delivered, so the closure itself is the contract.
+        entry = _registry_entry(CURRENT_EXPERIMENT)
+        self.assertNotIn("not yet implemented", entry["result_summary"])
+        self.assertNotIn("not yet implemented", entry["next_action"])
+        self.assertIn("accepted", entry["result_summary"])
+        self.assertIn("https://github.com/Murkin1980/murat-project-engineer/pull/111",
+                      entry["pr_or_issue_links"])
+        status = (ROOT / "STATUS.md").read_text(encoding="utf-8")
+        self.assertNotIn("complete EXP-29 CP-08", status)
+        # and the resume action the packet carries is the closed-experiment one
+        self.assertIn("CP-09", self.packet["resume"]["next_authorized_action"])
 
     # 2 — the disposition survives extraction from canonical sources
 

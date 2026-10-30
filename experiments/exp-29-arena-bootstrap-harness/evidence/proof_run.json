@@ -7,7 +7,7 @@
   "cp06_pass": true,
   "cp08_pass": true
  },
- "current_task": "EXP-29/CP-08",
+ "current_task": "EXP-29/CP-09",
  "experiment": "EXP-29",
  "fixture": {
   "checkpoint": "CP-05",
@@ -15,7 +15,7 @@
  },
  "measurements": {
   "arm_a": {
-   "bytes_read": 91888,
+   "bytes_read": 92668,
    "failed_ops": 0,
    "files_read": 5,
    "listdir_ops": 2,
@@ -30,10 +30,10 @@
    "read_ops": 1,
    "tool_ops": 1
   },
-  "bytes_reduction_ratio": 0.8517,
-  "genealogy_cost_reduction_ratio": 0.8279,
-  "packet_json_bytes": 15057,
-  "packet_md_bytes": 12020
+  "bytes_reduction_ratio": 0.8529,
+  "genealogy_cost_reduction_ratio": 0.8296,
+  "packet_json_bytes": 15660,
+  "packet_md_bytes": 12449
  },
  "result": "PASS"
 }

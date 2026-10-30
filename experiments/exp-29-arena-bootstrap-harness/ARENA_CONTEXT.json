@@ -2,9 +2,9 @@
  "authority": "DERIVED_VIEW_NON_AUTHORITATIVE",
  "authority_note": "Derived, non-authoritative launch brief assembled from canonical Git sources. Git remains the only source of truth: on any conflict the canonical files win; verify freshness before use and re-derive or discard this packet on any mismatch.",
  "generated_against": {
-  "git_base": "653abffad4ff07b6bb1476f2d65e3dbd35d70402",
-  "git_branch": "arena/dce03808-murat-project-engineer",
-  "git_head": "653abffad4ff07b6bb1476f2d65e3dbd35d70402"
+  "git_base": "83c786b291c4c1dff9633434562a1bb457713cdf",
+  "git_branch": "arena/e51ab251-murat-project-engineer",
+  "git_head": "72cb1c7a469ade5863b9b8f6c6c322c7a03cb651"
  },
  "known_lessons": [
   {
@@ -170,10 +170,24 @@
     "path": "experiments/exp-29-arena-bootstrap-harness/RESULTS.md"
    },
    "trap": "The 7 pre-existing unittest failures (registry-status schema mismatches for"
+  },
+  {
+   "source": {
+    "anchor": "known-limitations",
+    "path": "experiments/exp-29-arena-bootstrap-harness/RESULTS.md"
+   },
+   "trap": "**CP-09 — generated dashboard views are intentionally not regenerated here.** The"
+  },
+  {
+   "source": {
+    "anchor": "known-limitations",
+    "path": "experiments/exp-29-arena-bootstrap-harness/RESULTS.md"
+   },
+   "trap": "**CP-09 — two different CP-09 checkpoints exist.** PR #115 is the repository-level"
   }
  ],
  "now": {
-  "checkpoint": "CP-08",
+  "checkpoint": "CP-09",
   "checkpoints": [
    "CP-01",
    "CP-02",
@@ -182,7 +196,8 @@
    "CP-05",
    "CP-06",
    "CP-07",
-   "CP-08"
+   "CP-08",
+   "CP-09"
   ],
   "disposition": "REUSE_COMPONENT",
   "disposition_sources": [
@@ -198,15 +213,15 @@
   "experiment_id": "EXP-29",
   "experiment_name": "Arena Bootstrap Harness",
   "experiment_path": "experiments/exp-29-arena-bootstrap-harness",
-  "nearest_action": "CP-08 Bootstrap State Consistency Recovery: reconcile registry and current checkpoint state, preserve REUSE_COMPONENT, regenerate and verify a fresh and semantically consistent packet; follow owner instruction in PR #108. Do not merge or deploy without authorization.",
+  "nearest_action": "CP-09 Canonical Closure: reconcile the EXP-29 registry, STATUS.md and RESULTS.md entries so CP-08 reads as accepted and merged (PR #111, merge 94eeed9) and the experiment closes at PASS / REUSE_COMPONENT, then republish and verify a FRESH packet for EXP-29/CP-09. One bounded PR; no merge, deploy or production integration without owner authorization.",
   "parent_goal": "Test whether a deterministic Git-derived startup packet can let a fresh Arena session resume context-heavy MPE work with less rediscovery while preserving Git as the only source of truth and avoiding a separate memory platform.",
   "project": "Murat Project Engineer",
   "registry_status": "PASS",
-  "registry_updated_at": "2026-10-16",
+  "registry_updated_at": "2026-10-29",
   "source": {
    "path": "experiments/EXPERIMENT_REGISTRY.json"
   },
-  "task": "EXP-29/CP-08"
+  "task": "EXP-29/CP-09"
  },
  "packet_version": "exp-29-arena-context-v1",
  "resume": {
@@ -214,8 +229,8 @@
    "note": "full result record in the canonical experiment RESULTS.md",
    "path": "experiments/exp-29-arena-bootstrap-harness/RESULTS.md"
   },
-  "next_action": "CP-08 Bootstrap State Consistency Recovery: reconcile registry and current checkpoint state, preserve REUSE_COMPONENT, regenerate and verify a fresh and semantically consistent packet; follow owner instruction in PR #108. Do not merge or deploy without authorization.",
-  "next_authorized_action": "CP-08 (bootstrap state consistency recovery) is complete as a bounded checkpoint and is the current authorized action: the committed `ARENA_CONTEXT.json` / `.md` describe the current task (`EXP-29/CP-08`) with the `REUSE_COMPONENT` disposition and a complete resume action, an absent disposition or an undeclared active checkpoint now fails closed, and the documented ritual publishes the current task for this experiment instead of the frozen CP-03 fixture (`evidence/cp08.json`). Its PR is opened and must not be merged as part of this checkpoint: **STOP after PR delivery and await owner review.** Recording CP-08 completion in the EXP-29 registry entry, and any broader adoption (automatic packet generation per session, GLOBAL lesson promotion, runtime integration), remain separate owner decisions with their own New Idea Filter / deep-change assessment.",
+  "next_action": "CP-09 Canonical Closure: reconcile the EXP-29 registry, STATUS.md and RESULTS.md entries so CP-08 reads as accepted and merged (PR #111, merge 94eeed9) and the experiment closes at PASS / REUSE_COMPONENT, then republish and verify a FRESH packet for EXP-29/CP-09. One bounded PR; no merge, deploy or production integration without owner authorization.",
+  "next_authorized_action": "CP-09 (canonical closure) is complete as a bounded checkpoint and is the current authorized action: the canonical records no longer instruct a CP-08 re-run — the registry entry, `STATUS.md` and this file name CP-08 as accepted and merged (PR #111, merge `94eeed9`) — the committed `ARENA_CONTEXT.json` / `.md` are republished for `EXP-29/CP-09` with the `REUSE_COMPONENT` disposition and a complete resume action, and the chain `CP-01…CP-09` preserves the executed history. Its PR is opened and must not be merged as part of this checkpoint: **STOP after PR delivery and await owner review.** Adoption of the harness beyond this experiment (automatic packet generation per session, GLOBAL lesson promotion, runtime integration) remains a separate owner decision with its own New Idea Filter / deep-change assessment.",
   "result_summary": "PASS / REUSE_COMPONENT: a deterministic, LLM-free bootstrap builder derives ARENA_CONTEXT.json/.md from canonical Git sources (registry, task files, STATUS, AGENTS, governance, EXP-27/EXP-28 results) with sha256 provenance for every source and every item source-linked. Fresh-session A/B on the froz…",
   "source": {
    "path": "experiments/EXPERIMENT_REGISTRY.json"
@@ -289,27 +304,27 @@
   {
    "path": "experiments/EXPERIMENT_REGISTRY.json",
    "role": "registry",
-   "sha256": "ffc8ca0f74672b71879da4e1f6114f121b301d4ff149edbabc60e2db98dd3834"
+   "sha256": "68500960a7ad728425c8a3f1a4ba41f07140c04f611da277e35ddfcf5933a90c"
   },
   {
    "path": "experiments/exp-29-arena-bootstrap-harness/ARENA_TASK.md",
    "role": "task_instructions",
-   "sha256": "cf4d92a7b865c4bc8a6dd21fd4397d7f05f164504a0f7e4224e151cb1668ae55"
+   "sha256": "42052fd0c9833988dc325dc75d400594aa2c6c243997b045f17a0610166690b6"
   },
   {
    "path": "experiments/exp-29-arena-bootstrap-harness/README.md",
    "role": "task_readme",
-   "sha256": "5003d01416b2a8a3665676bec390a6d5ddb6c8d90e91d7c06a4cb5323cffab64"
+   "sha256": "bbefff6dcf8e12d02435fd97393690a3605707275b6fc2a1b0dfb374a9bec8c2"
   },
   {
    "path": "experiments/exp-29-arena-bootstrap-harness/RESULTS.md",
    "role": "experiment_results",
-   "sha256": "09456d90e71a5199a24e3e06b165e96fa0d89c8a13cca99043017a1d46d74ab4"
+   "sha256": "0ee76d970971c99be3870886975f4c94f45e8d564aa716617b507f158224a9be"
   },
   {
    "path": "STATUS.md",
    "role": "project_status",
-   "sha256": "a9c3bc395ac06371913334d8cd920603edeaaed33d2225956445f2e7afdbbfb5"
+   "sha256": "c52bbd5c625157772756008a5ae506b8670b0feb0c113fecac46384f0ab1ae91"
   },
   {
    "path": "AGENTS.md",
