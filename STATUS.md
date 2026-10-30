@@ -2,6 +2,15 @@
 
 Updated: 2026-10-16 (core stabilization against main ca16094; EXP-12 prospective progress reconciled to 6/10; EXP-23/24/25/26/27/28/29 outcomes reflected; queued experiment-ID collisions must be renumbered before merge)
 
+## CP-09 Recovery — verified merge (2026-10-30)
+
+- **PR #115: MERGED** into `main`; approved head `34827c9dfc2e17e8454114f1d339c902e54f7c00`, merge commit `57a38b6277c155707aa6d935a54aac0196226ddb`.
+- Acceptance before merge: full unittest 448 passed, 0 failed, 1 skipped; contract 12 OK; EXP-29 focused 47 OK; Dashboard/Reladraw 15 OK; package validator PASS; `npm run check` 52/52; EXP-29 proof PASS; EXP-29 and EXP-23 packets FRESH. These are pre-merge acceptance results, not a post-merge test rerun.
+- GitHub post-merge verification: PR marked merged/closed and `main` was identical to merge commit at read-back.
+- Schema: owner-approved additive `PARTIAL`/`RETIRED` statuses only. No production deploy authorized or performed in this task.
+- **Next:** Harness² PR #113 / CP-SI-01 audit/design may be prepared after confirming canonical baseline and its separate gates. No agent self-modification execution, automatic merge or deploy authorized.
+- Portfolio dashboard full-source synchronization remains **PENDING / NOT VERIFIED**; no claim of deployment or all-repository refresh.
+
 ## Current version
 
 - Release: v1.0
