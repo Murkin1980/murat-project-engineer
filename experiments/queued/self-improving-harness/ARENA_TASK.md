@@ -1,31 +1,31 @@
-# EXP-34 — Self-Improving Harness / Arena task
+# SUPERSEDED — former EXP-34 Self-Improving Harness intake
 
-Status: EXP-34 ASSIGNED IN INTAKE BRANCH / NOT YET MERGED INTO MAIN
-MPE New Idea Filter: EXPERIMENT
-Priority proposal: P1 (subject to portfolio comparison)
-Owner-authorized scope: one Arena session, isolated evaluation, 3 sequential improvement cycles.
-This file assigns EXP-34 for the owner-approved experiment in this branch; canonical registry registration and merge into main remain separate controlled steps. It is NOT permission to alter core runtime.
+**Owner decision: MERGE (2026-10-30).** EXP-34 is **CANCELLED / NOT RESERVED / DO NOT REGISTER**. This file is historical intake only. Do not execute its former experiment plan.
 
-## CP-00 — verify EXP-34 reservation, STOP if collision
+**Canonical consolidation target:** [Harness² Self-Improvement Lab PR #113](https://github.com/Murkin1980/murat-project-engineer/pull/113), branch `experiment/harness2-self-improvement-lab`, authoritative plan `experiments/harness2-self-improvement/EXPERIMENT_PLAN.md`. Preserve E0, E1–E5, and CP-SI-01…07; do not renumber EXP-30…33.
 
-1. Read `docs/governance/SCOPE-CHANGE-CONTROL.md` before anything else, then `AGENTS.md`, `docs/NEW_IDEA_FILTER_POLICY.md`, `docs/GLOBAL_MPE_ENFORCEMENT.md`, `docs/OPINIONATED_WORKSPACE_POLICY.md`, human-value / unit economics policies as applicable, and current registry/status.
-2. Read `experiments/EXPERIMENT_REGISTRY.json` at the actual target `main` head. Inspect active/pending PRs, experiment directories, issues/queued drafts, and any documented experiment-ID reservation protocol; do not rely on largest number in main only.
-3. Existing candidates already observed: EXP-30 collisions (OpenViking, AI Process Discovery, Crisp Diagrams, Nodecode Lisp), EXP-31 HtmlVR, EXP-32 OpenMuse, EXP-33 Seedance 2.5. These may be pending/unmerged. Revalidate their live state.
-4. Owner-assigned candidate ID: EXP-34. Revalidate absence of conflicting reservations before canonical registry registration; if a conflict is discovered, STOP and report it rather than silently renumbering or editing other experiments. Do not self-assign EXP-30.
-5. Inspect EXP-27 (lease/budget/approval), EXP-28 (evidence-gated retrospective), EXP-29 (Git-derived bootstrap) and any existing self-improvement work. Avoid a second agent framework or source of truth. Compare P1 priority and smallest useful value/ROI proxy.
-6. Run focused baseline; label pre-existing failures, and do not silently fix unrelated failures.
+**Priority dependency:** PR #115 stabilization/recovery must be accepted and validated first, before Harness² experiment execution.
 
-## CP-01 — bounded design
-After the identifier gate passes, define a frozen replayable, non-production MPE task plus an independent unseen holdout. Benchmark the unchanged harness (A), then three sequential candidate improvements (B, C, D) with identical task inputs and evaluation criteria. Specify measurable quality, completion, tool calls, context bytes, runtime, tokens/cost where available, retries, and permission outcomes. Label proxies as proxies. Maintain hashes/provenance and reproducible inputs.
+## CP-00 collision-resolution handoff for Arena
 
-## CP-02 — constrained iterative execution
-Use only an isolated Arena sandbox and existing harness/test primitives. For each of three rounds, identify a real bottleneck, change only an explicitly allowlisted experiment-local harness/config candidate, execute tests and fresh holdout validation, and compare against the best prior candidate. Only accept improvements that preserve correctness and safety, are reproducible, and improve a meaningful metric without unacceptable regression. Roll back otherwise. Negative controls must show attempted override of governance, unauthorized writes, or benchmark shortcut fails closed. Any LLM-generated modification is untrusted until independently verified.
+1. Read mandatory MPE governance and the current PR #113 plan; re-read this superseded intake and current registry/PR state.
+2. Record comparison of goals, mechanics, checkpoints, metrics, safety gates, and genuinely unique requirements. Eliminate duplicate design.
+3. Suggest only minimal missing requirements for PR #113; no parallel registry entry or experiment implementation.
+4. Check reuse of EXP-27 orchestration/budget/approval, EXP-28 retrospective, and EXP-29 Git-derived bootstrap.
+5. Keep CP-SI-01…07 unchanged. Record CP-00 disposition and prepare existing CP-SI-01 as documentation/audit only; no independent execution before upstream PR #115 readiness.
+6. Verify PR branch/work permissions before any edit. Do **not** automatically change PR #113, merge, deploy, run a self-modifying agent, or weaken governance. On deep-change, report `DEEP_CHANGE_REQUIRED` and stop.
+7. Final report: PASS / PARTIAL / BLOCKED; overlap/unique requirements matrix; minimal proposed diffs; PR/SHA; next authorized checkpoint.
 
-## CP-03 — evidence and handoff
-Write experiment-local README, RESULTS, candidate diffs, test commands, machine-readable measurements and provenance, and comparative table. Use existing MPE evidence formats. Report PASS/PARTIAL/FAIL/INCONCLUSIVE separately from adoption disposition. Distinguish real gains from overfitting and unmeasured claims. If registry/dashboard/Reladraw changes are required, use established regeneration and validation contracts; never manufacture a FRESH derived packet.
+## Initial comparison (design review; verify in Arena)
 
-## Hard boundaries / STOP
-No new repository, service, worker, database, credentials, model-weight training, persistent self-modification, self-issued permissions, router/governance/source-of-truth changes, production access, autonomous merge or deploy, or unapproved spend. Never modify outside the approved experiment-local allowlist. Deep-change or collision => STOP for that action and request owner approval. Do not merge even if checks pass. Any PR must be review-only and only within session branch write permissions.
+| Topic | PR #113 | Superseded intake | Recommendation |
+| --- | --- | --- | --- |
+| Objective | Recursive Propose-Probe-Compose; safe generalization | Three sequential harness improvements | OVERLAP; keep #113 |
+| Runs | E1 baseline; E2 k=1/3/5; E3 held-out transfer | A baseline + B/C/D three iterations | OVERLAP; optional predeclared three-step sequential arm within E2, only if marginal evidence |
+| Metrics | Held-out success, cost/correct task, tokens, time, retries, violations | Also context bytes/tool calls explicitly | Candidate tiny addition: measure context bytes and tool calls when instrumentable |
+| Safety | E0 isolation, E4 adversarial suite, fail-closed | Allowlisted scratch diff, rollback, immutable governance | OVERLAP; retain #113; make rollback checks explicit if currently untested |
+| Reuse | EXP-29 and existing MPE | EXP-27/28/29 explicitly | Candidate tiny addition: explicitly document EXP-27 lease/budget/approval and EXP-28 retrospective reuse |
+| Evidence | Hashes, settings, costs, frozen rubrics, logs | Four-arm table, candidate diff, outcome | OVERLAP; no duplicate evidence format |
+| Scope | CP-SI-01 design only, STOP | Full execution in one session | Conflict: #113 wins; do not jump to execution |
 
-## Delivery
-Return verified registry allocation status, exact selected ID if safely reserved, branch/head/PR (if authorized), baseline, all arms' evidence, accepted/rejected diffs, safety gates, validation results, blockers, and the smallest next owner decision. Preserve STATE / EVIDENCE / CHANGES / RESULT / BLOCKER / NEXT ACTION / HANDOFF.
+Historical EXP-34 instructions are superseded by this file.
