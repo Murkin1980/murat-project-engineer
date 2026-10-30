@@ -1,7 +1,8 @@
 # EXP-29 — Arena Bootstrap Harness
 
-Status: **PASS / REUSE_COMPONENT** (CP-01…CP-07 executed; CP-08 state-consistency
-recovery is the current authorized checkpoint — see `RESULTS.md`)
+Status: **PASS / REUSE_COMPONENT — closed at CP-09** (CP-01…CP-09 executed; CP-08
+state-consistency recovery accepted via PR #111, canonical closure recorded at
+CP-09 — see `RESULTS.md`)
 Primary disposition: **REUSE_COMPONENT**
 
 ## Purpose
@@ -62,11 +63,19 @@ See `ARENA_TASK.md` and `RESULTS.md`.
   corrected through the existing mechanisms, the rebuilt EXP-22/CP-01 bootstrap
   is FRESH and truthful, and a fresh isolated consumer no longer proposes
   repeating CP-01. See RESULTS.md, CP-07.
-- **CP-08** — bootstrap state consistency recovery (current, owner authorized
-  2026-10-16): the committed packet must not verify FRESH while carrying a stale
+- **CP-08** — bootstrap state consistency recovery (owner authorized 2026-10-16):
+  the committed packet must not verify FRESH while carrying a stale
   task/checkpoint, a lost disposition, or a truncated resume action; disposition
   and active checkpoint now fail closed, and the committed `ARENA_CONTEXT.*` is
-  published for the current authorized task. See RESULTS.md, CP-08.
+  published for the current authorized task. Accepted independently and merged
+  via PR #111 (merge `94eeed9`). See RESULTS.md, CP-08.
+- **CP-09** — canonical closure (owner authorized 2026-10-29, current): CP-08 was
+  accepted and merged, but the registry, `STATUS.md` and `RESULTS.md` still
+  instructed a CP-08 re-run, so a FRESH packet pointed at completed work. The
+  canonical records are reconciled, the packet is republished for `EXP-29/CP-09`,
+  and the experiment closes at PASS / REUSE_COMPONENT without changing the
+  builder, the packet schema or any production/governance/contract surface. See
+  RESULTS.md, CP-09.
 
 EXP-20 (Dify/OpenHands component extraction) was complete before this
 experiment started, satisfying the queue condition.

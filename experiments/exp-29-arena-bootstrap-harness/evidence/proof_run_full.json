@@ -2,15 +2,15 @@
  "cp02": {
   "artifacts": {
    "generated_against": {
-    "git_base": "653abffad4ff07b6bb1476f2d65e3dbd35d70402",
-    "git_branch": "arena/dce03808-murat-project-engineer",
-    "git_head": "653abffad4ff07b6bb1476f2d65e3dbd35d70402"
+    "git_base": "83c786b291c4c1dff9633434562a1bb457713cdf",
+    "git_branch": "arena/e51ab251-murat-project-engineer",
+    "git_head": "72cb1c7a469ade5863b9b8f6c6c322c7a03cb651"
    },
-   "json_bytes": 15057,
-   "md_bytes": 12020,
-   "packet_checkpoint": "CP-08",
+   "json_bytes": 15660,
+   "md_bytes": 12449,
+   "packet_checkpoint": "CP-09",
    "packet_disposition": "REUSE_COMPONENT",
-   "packet_task": "EXP-29/CP-08",
+   "packet_task": "EXP-29/CP-09",
    "paths": [
     "experiments/exp-29-arena-bootstrap-harness/ARENA_CONTEXT.json",
     "experiments/exp-29-arena-bootstrap-harness/ARENA_CONTEXT.md"
@@ -181,7 +181,7 @@
    "arm": "A_rediscovery",
    "cost": {
     "at_all_answers": {
-     "bytes_read": 91888,
+     "bytes_read": 92668,
      "failed_ops": 0,
      "files_read": 5,
      "listdir_ops": 2,
@@ -189,7 +189,7 @@
      "tool_ops": 7
     },
     "at_genealogy_complete": {
-     "bytes_read": 79205,
+     "bytes_read": 79985,
      "failed_ops": 0,
      "files_read": 4,
      "listdir_ops": 2,
@@ -200,7 +200,7 @@
    "packet_used": false,
    "read_from_chat": false,
    "totals": {
-    "bytes_read": 91888,
+    "bytes_read": 92668,
     "failed_ops": 0,
     "files_read": 5,
     "listdir_ops": 2,
@@ -210,7 +210,7 @@
   },
   "arm_a_trace": [
    {
-    "bytes": 13844,
+    "bytes": 13877,
     "ok": true,
     "op": "read",
     "path": "/home/user/murat-project-engineer/STATUS.md"
@@ -234,7 +234,7 @@
     "path": "/home/user/murat-project-engineer/experiments/exp-27-paperclip-orchestration-patterns/README.md"
    },
    {
-    "bytes": 55760,
+    "bytes": 56507,
     "ok": true,
     "op": "read",
     "path": "/home/user/murat-project-engineer/experiments/EXPERIMENT_REGISTRY.json"
@@ -289,7 +289,7 @@
     "bytes": 13631,
     "ok": true,
     "op": "read",
-    "path": "/tmp/exp29-work/cp03/packet.json"
+    "path": "/tmp/exp29-cp09-final2/cp03/packet.json"
    }
   ],
   "checks": {
@@ -308,7 +308,7 @@
   "comparison": {
    "arm_a_cost": {
     "at_all_answers": {
-     "bytes_read": 91888,
+     "bytes_read": 92668,
      "failed_ops": 0,
      "files_read": 5,
      "listdir_ops": 2,
@@ -316,7 +316,7 @@
      "tool_ops": 7
     },
     "at_genealogy_complete": {
-     "bytes_read": 79205,
+     "bytes_read": 79985,
      "failed_ops": 0,
      "files_read": 4,
      "listdir_ops": 2,
@@ -325,7 +325,7 @@
     }
    },
    "arm_a_totals": {
-    "bytes_read": 91888,
+    "bytes_read": 92668,
     "failed_ops": 0,
     "files_read": 5,
     "listdir_ops": 2,
@@ -358,12 +358,12 @@
     "read_ops": 1,
     "tool_ops": 1
    },
-   "bytes_reduction_ratio": 0.8517,
+   "bytes_reduction_ratio": 0.8529,
    "fixture": {
     "checkpoint": "CP-05",
     "experiment_id": "EXP-27"
    },
-   "genealogy_cost_reduction_ratio": 0.8279,
+   "genealogy_cost_reduction_ratio": 0.8296,
    "packet_bytes": 13631,
    "verify_before_arms": "FRESH"
   },
@@ -387,9 +387,9 @@
     "expected": "STALE",
     "field_diffs": [
      {
-      "canonical": "cf8e307ff11644c976ff644729af79e50712be3a2baf1c635c5667b66f880840",
+      "canonical": "39e8d46a627256dbdd482bdcfbf81ce5731ba6c649d0b31fb3f7221c60c87c04",
       "field": "source_refs[4].sha256",
-      "packet": "a9c3bc395ac06371913334d8cd920603edeaaed33d2225956445f2e7afdbbfb5"
+      "packet": "c52bbd5c625157772756008a5ae506b8670b0feb0c113fecac46384f0ab1ae91"
      }
     ],
     "id": "NC-01",
@@ -407,7 +407,7 @@
     "expected": "STALE",
     "field_diffs": [
      {
-      "canonical": "ffc8ca0f74672b71879da4e1f6114f121b301d4ff149edbabc60e2db98dd3834",
+      "canonical": "68500960a7ad728425c8a3f1a4ba41f07140c04f611da277e35ddfcf5933a90c",
       "field": "source_refs[0].sha256",
       "packet": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
      }
@@ -462,9 +462,9 @@
       "packet": "Closed at bounded pattern extraction. No production integration, Router change, governance change, or follow-on checkpo…"
      },
      {
-      "canonical": "ae7a1d51511ae5dc5920684af914b27e291a43742f9409184ba1fa095818a866",
+      "canonical": "4d6a66f7ac112b41b925d28d6c03128850bc13a16b0922a25b171f8f75497ddf",
       "field": "source_refs[0].sha256",
-      "packet": "ffc8ca0f74672b71879da4e1f6114f121b301d4ff149edbabc60e2db98dd3834"
+      "packet": "68500960a7ad728425c8a3f1a4ba41f07140c04f611da277e35ddfcf5933a90c"
      }
     ],
     "id": "NC-04",
@@ -553,7 +553,7 @@
     ]
    },
    "rediscovery_without_packet": {
-    "bytes": 78147,
+    "bytes": 78927,
     "files": 4,
     "reads": [
      "STATUS.md",
@@ -635,7 +635,7 @@
    "task_is_current": true,
    "unsupported_active_checkpoint_fails_closed": true
   },
-  "current_task": "EXP-29/CP-08",
+  "current_task": "EXP-29/CP-09",
   "drift_before_repair": {
    "disposition": "",
    "disposition_sources": [],
@@ -706,7 +706,8 @@
     "CP-05",
     "CP-06",
     "CP-07",
-    "CP-08"
+    "CP-08",
+    "CP-09"
    ],
    "disposition": "REUSE_COMPONENT",
    "disposition_sources": [
@@ -719,11 +720,11 @@
      "value": "REUSE_COMPONENT"
     }
    ],
-   "json_bytes": 15057,
-   "nearest_action": "CP-08 Bootstrap State Consistency Recovery: reconcile registry and current checkpoint state, preserve REUSE_COMPONENT, regenerate and verify a fresh and semantically consistent packet; follow owner instruction in PR #108. Do not merge or deploy without authorization.",
-   "next_authorized_action_bytes": 860,
+   "json_bytes": 15660,
+   "nearest_action": "CP-09 Canonical Closure: reconcile the EXP-29 registry, STATUS.md and RESULTS.md entries so CP-08 reads as accepted and merged (PR #111, merge 94eeed9) and the experiment closes at PASS / REUSE_COMPONENT, then republish and verify a FRESH packet for EXP-29/CP-09. One bounded PR; no merge, deploy or production integration without owner authorization.",
+   "next_authorized_action_bytes": 822,
    "registry_status": "PASS",
-   "task": "EXP-29/CP-08"
+   "task": "EXP-29/CP-09"
   },
   "result": "PASS",
   "verification": {
@@ -749,7 +750,7 @@
    "cp06_pass": true,
    "cp08_pass": true
   },
-  "current_task": "EXP-29/CP-08",
+  "current_task": "EXP-29/CP-09",
   "experiment": "EXP-29",
   "fixture": {
    "checkpoint": "CP-05",
@@ -757,7 +758,7 @@
   },
   "measurements": {
    "arm_a": {
-    "bytes_read": 91888,
+    "bytes_read": 92668,
     "failed_ops": 0,
     "files_read": 5,
     "listdir_ops": 2,
@@ -772,10 +773,10 @@
     "read_ops": 1,
     "tool_ops": 1
    },
-   "bytes_reduction_ratio": 0.8517,
-   "genealogy_cost_reduction_ratio": 0.8279,
-   "packet_json_bytes": 15057,
-   "packet_md_bytes": 12020
+   "bytes_reduction_ratio": 0.8529,
+   "genealogy_cost_reduction_ratio": 0.8296,
+   "packet_json_bytes": 15660,
+   "packet_md_bytes": 12449
   },
   "result": "PASS"
  }

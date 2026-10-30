@@ -121,7 +121,7 @@ The experiment must measure quality, rework, reviewer value, interruption recove
 
 ## Next actions
 
-**Nearest single action (as of 2026-10-16):** complete EXP-29 CP-08 bootstrap semantic-consistency recovery, then continue fresh real Stage 2 / EXP-12 prospective cases. Do not run EXP-13 Pilot Batch 1 until credential, egress, and telemetry preconditions are genuinely satisfied.
+**Nearest single action (as of 2026-10-29):** EXP-29 is closed at PASS / REUSE_COMPONENT (CP-08 accepted via PR #111, canonical closure at CP-09); continue fresh real Stage 2 / EXP-12 prospective cases. Do not run EXP-13 Pilot Batch 1 until credential, egress, and telemetry preconditions are genuinely satisfied.
 
 1. Preserve the historical Run 05 and Run 10 BLOCKED outcomes; do not retroactively promote them.
 2. Keep Run 09 in REWORK until the recorded findings are resolved or explicitly scoped out.
