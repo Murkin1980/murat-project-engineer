@@ -1,17 +1,17 @@
-# QUEUED — Self-Improving Harness / Arena task
+# EXP-34 — Self-Improving Harness / Arena task
 
-Status: INTAKE / NUMBER NOT RESERVED
+Status: EXP-34 ASSIGNED IN INTAKE BRANCH / NOT YET MERGED INTO MAIN
 MPE New Idea Filter: EXPERIMENT
 Priority proposal: P1 (subject to portfolio comparison)
 Owner-authorized scope: one Arena session, isolated evaluation, 3 sequential improvement cycles.
-This file is an intake instruction, NOT a canonical experiment registration or permission to alter core runtime.
+This file assigns EXP-34 for the owner-approved experiment in this branch; canonical registry registration and merge into main remain separate controlled steps. It is NOT permission to alter core runtime.
 
-## CP-00 — mandatory number reconciliation, STOP if ambiguous
+## CP-00 — verify EXP-34 reservation, STOP if collision
 
 1. Read `docs/governance/SCOPE-CHANGE-CONTROL.md` before anything else, then `AGENTS.md`, `docs/NEW_IDEA_FILTER_POLICY.md`, `docs/GLOBAL_MPE_ENFORCEMENT.md`, `docs/OPINIONATED_WORKSPACE_POLICY.md`, human-value / unit economics policies as applicable, and current registry/status.
 2. Read `experiments/EXPERIMENT_REGISTRY.json` at the actual target `main` head. Inspect active/pending PRs, experiment directories, issues/queued drafts, and any documented experiment-ID reservation protocol; do not rely on largest number in main only.
 3. Existing candidates already observed: EXP-30 collisions (OpenViking, AI Process Discovery, Crisp Diagrams, Nodecode Lisp), EXP-31 HtmlVR, EXP-32 OpenMuse, EXP-33 Seedance 2.5. These may be pending/unmerged. Revalidate their live state.
-4. Choose a unique ID only if all checks prove no collision and registry rules authorize assigning it. If ambiguous, leave this as a QUEUED unnumbered intake and report the allocation blocker; do not self-assign EXP-30, rename others, or edit canonical registration.
+4. Owner-assigned candidate ID: EXP-34. Revalidate absence of conflicting reservations before canonical registry registration; if a conflict is discovered, STOP and report it rather than silently renumbering or editing other experiments. Do not self-assign EXP-30.
 5. Inspect EXP-27 (lease/budget/approval), EXP-28 (evidence-gated retrospective), EXP-29 (Git-derived bootstrap) and any existing self-improvement work. Avoid a second agent framework or source of truth. Compare P1 priority and smallest useful value/ROI proxy.
 6. Run focused baseline; label pre-existing failures, and do not silently fix unrelated failures.
 
