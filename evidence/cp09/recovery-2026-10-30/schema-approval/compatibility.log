@@ -1,0 +1,20 @@
+exact approved enum addition: PASS
+schema_version unchanged: 1.0.0
+registry statuses: ['FAIL', 'HOLD', 'PARTIAL', 'PASS', 'PLANNED', 'READY_TO_TEST', 'RETIRED']
+registry records: 30
+required/closed-field compatibility: PASS
+new schema sha256: 5f35226492a66c55484fb30fd4ec643c9a57445ca3e2b6a56fb9244caecfa863
+
+--- downstream schema consumers ---
+./tests/test_contracts.py:42:        schema = json.loads((ROOT / "contracts" / "EXPERIMENT_REGISTRY.schema.json").read_text(encoding="utf-8"))
+./experiments/exp-14-laya/2026-09-30/harness/make_hashes.py:39:    "contracts/EXPERIMENT_REGISTRY.schema.json",
+./experiments/exp-14-laya/2026-09-30/HASHES.txt:93:4e74c3a2c5ca53215d7a8b281479cc66c228158fda8ce35b0eaaec05e0879650  contracts/EXPERIMENT_REGISTRY.schema.json   # UNCHANGED since d2ec64531e4c
+./experiments/exp-29-arena-bootstrap-harness/RESULTS.md:408:  (`contracts/EXPERIMENT_REGISTRY.schema.json`) is
+./experiments/exp-25-atomic-crm-component-extraction/RESULTS.md:127:- `tests/test_contracts.py::…required_identity_and_status_fields` fails 4 times because the registry contains statuses outside the `contracts/EXPERIMENT_REGISTRY.schema.json` enum (`PARTIAL` ×1, `RETIRED` ×3). EXP-25 deliberately uses `PASS`, which is in the enum.
+
+--- status consumers ---
+tests/test_contracts.py:45:        allowed_statuses = set(schema["properties"]["experiments"]["items"]["properties"]["status"]["enum"])
+tests/test_contracts.py:53:                self.assertIn(experiment["status"], allowed_statuses)
+scripts/registry_to_reladraw.py:32:STATUS_ORDER = ["PASS", "READY_TO_TEST", "PLANNED", "HOLD", "PARTIAL", "BLOCKED", "FAIL"]
+scripts/registry_to_reladraw.py:163:        statuses = sorted(projects[proj], key=lambda s: STATUS_ORDER.index(s) if s in STATUS_ORDER else 99)
+scripts/registry_to_reladraw.py:223:                      key=lambda s: STATUS_ORDER.index(s) if s in STATUS_ORDER else 99)
