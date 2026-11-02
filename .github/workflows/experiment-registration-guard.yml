@@ -34,4 +34,5 @@ jobs:
           GH_REPOSITORY: ${{ github.repository }}
           GH_EVENT_NAME: ${{ github.event_name }}
           GH_PR_NUMBER: ${{ github.event.pull_request.number }}
+          GH_BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: python3 scripts/check_experiment_registration.py
