@@ -1,0 +1,38 @@
+name: Experiment registration collision guard
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  merge_group:
+  push:
+    branches: [main]
+    paths:
+      - 'experiments/EXPERIMENT_REGISTRY.json'
+      - 'scripts/check_experiment_registration.py'
+      - '.github/workflows/experiment-registration-guard.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: mpe-experiment-registration-gate
+  cancel-in-progress: false
+
+jobs:
+  registry-collision-guard:
+    name: registry-collision-guard
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Validate canonical registration and competing claims
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPOSITORY: ${{ github.repository }}
+          GH_EVENT_NAME: ${{ github.event_name }}
+          GH_PR_NUMBER: ${{ github.event.pull_request.number }}
+          GH_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: python3 scripts/check_experiment_registration.py
