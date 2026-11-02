@@ -3,10 +3,6 @@ name: Experiment registration collision guard
 on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
-    paths:
-      - 'experiments/EXPERIMENT_REGISTRY.json'
-      - 'scripts/check_experiment_registration.py'
-      - '.github/workflows/experiment-registration-guard.yml'
   merge_group:
   push:
     branches: [main]
