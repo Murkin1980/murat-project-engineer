@@ -133,20 +133,112 @@ Expansion gate for JSONL + SQLite:
 
 Only then evaluate append-only JSONL, content-addressed artifacts and rebuildable SQLite index.
 
-## Stage 4 — Router Integration
+## Stage 4 — Execution Gateway and Router Boundary
 
-Default action: no Router code change.
+Goal: evaluate whether low-level multi-provider execution can be delegated to a mature gateway without moving MPE semantic/governance authority or creating a second telemetry source of truth.
 
-Use manually maintained route profiles above Router:
+This is an evidence stage, not authorization for Router replacement or production migration.
 
-- `default`;
-- `cheap-research`;
-- `coding`;
-- `strong-review`.
+### Stage 4.0 — Freeze Current Semantics
 
-Coordinator resolves the role/task policy to an explicit model slug. Router continues provider/model mapping, protocol translation, credential isolation, compaction and usage handling.
+Document the current responsibilities of:
 
-Do not implement adaptive routing until there is a task-specific eval corpus and stable cost/quality/latency telemetry. Any change to Router authority is `DEEP_CHANGE_REQUIRES_USER_APPROVAL`.
+- MPE / coordinator;
+- route profiles;
+- current Router;
+- provider/model mapping;
+- usage instrumentation;
+- Compute Budget estimation.
+
+Baseline boundary:
+
+```text
+MPE semantic/governance decision
+            ↓
+route profile / execution policy
+            ↓
+Codex Router / execution gateway boundary
+            ↓
+provider/model inference
+```
+
+MPE retains task classification, role selection, risk policy, reviewer escalation, human gates, capability requirements and budget policy. The execution layer may normalize provider APIs and execute an explicitly allowed route but must not become the authority for MPE risk or deep-change decisions.
+
+No code change is required for Stage 4.0.
+
+### Stage 4.1 — Model Gateway Bake-off
+
+Run a bounded experiment comparing at minimum:
+
+1. LiteLLM;
+2. current MPE / Router path as control.
+
+Where practical and cheap, also evaluate:
+
+3. Cloudflare AI Gateway.
+
+Use `docs/experiments/EXP-14_MODEL_GATEWAY_BAKEOFF.md` as the experiment specification.
+
+No production migration. No Router replacement. No credential-boundary change.
+
+### Stage 4.2 — Gateway Telemetry Adapter
+
+Only if Stage 4.1 shows useful telemetry, create the smallest adapter needed to map gateway/provider usage into existing MPE contracts.
+
+Prefer reuse of:
+
+- `contracts/USAGE_RECORD.md`;
+- `scripts/usage_instrumentation.py` / `UsageRecorder`;
+- `contracts/COMPUTE_BUDGET.md`;
+- existing Run Report projections.
+
+Do not create a second billing schema, telemetry platform or cost source of truth.
+
+### Stage 4.3 — Compute Budget Calibration
+
+Use authoritative gateway/provider telemetry to compare:
+
+```text
+MPE preflight estimate
+        vs
+actual observed usage/cost
+```
+
+Preserve the existing provenance semantics:
+
+```text
+observed
+estimated
+unobserved
+```
+
+A gateway estimate or price reconstruction is never promoted to `observed` unless the measurement source qualifies as authoritative under current instrumentation policy.
+
+### Stage 4.4 — Gateway Decision Gate
+
+After sufficient experiment evidence, choose one disposition:
+
+- keep current Router path;
+- adopt LiteLLM as execution gateway;
+- use Cloudflare AI Gateway;
+- use a hybrid;
+- reject gateway integration.
+
+The decision must be evidence-based and recommend one next direction. It does not itself authorize production integration.
+
+### Stage 4.5 — Integration RFC
+
+Create only if Stage 4.4 justifies further integration.
+
+Any proposal that changes Router authority, credential ownership, security boundaries, production traffic or central runtime responsibilities is:
+
+`DEEP_CHANGE_REQUIRES_USER_APPROVAL`
+
+Stop before implementation and request explicit approval.
+
+### Stage 4 sequencing
+
+EXP-14 has elevated priority because it directly affects Compute Budget calibration, low-cost model economics, provider lock-in and future multi-provider execution. However, it must not interrupt an already-running controlled experiment. As of 2026-08-21, EXP-13 is active and its Pilot Batch 1 is pre-registered but not yet executed; EXP-14 runtime execution begins only after EXP-13 is completed or safely checkpointed under its own rules.
 
 ## Stage 5 — Persistent Agents
 
@@ -261,7 +353,7 @@ Use three solvers only when expected failure cost materially exceeds roughly thr
 - Stage 1: disable runbook; retain inert reports.
 - Stage 2: remove optional Judge; deterministic checks remain useful.
 - Stage 3: stop emitting reports/index; no runtime state dependency.
-- Stage 4: revert profile instructions; Router unchanged.
+- Stage 4: remove/disable the isolated gateway experiment and revert Stage 4 policy docs; current Router path remains the control and no production migration is implied.
 - Stage 5: expire project lease, export reviewed state to project files, recreate temporary agent.
 - Stage 6: Git revert skill/policy patches.
 - Stage 7: stop isolated Prime runtime, revoke its capability access, archive/export non-secret artifacts, remove adapter.
@@ -283,5 +375,4 @@ Marker: `DEEP_CHANGE_REQUIRES_USER_APPROVAL`.
 
 ## Recommended Next Development Task
 
-Design `Murat Project Engineer v1.0` and the Stage 1 `SoftwareFeatureWorkflow` runbook in an isolated project, including risk tiers, deterministic gate registry and compact run report. Do not yet build Workflow DSL, persistent agents, Prime integration or Router v2.
-
+Complete or safely checkpoint the currently active EXP-13 Pilot Batch 1 under its frozen rules. Then execute the bounded EXP-14 Model Gateway Bake-off specification. Do not yet migrate production traffic, replace Router authority, create a new telemetry schema, or build a production gateway.
