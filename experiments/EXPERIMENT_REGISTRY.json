@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-10-29",
+  "updated_at": "2026-11-02",
   "experiments": [
     {
       "experiment_id": "EXP-ALEXANDRIA",
@@ -663,6 +663,310 @@
         "https://github.com/Murkin1980/murat-project-engineer/pull/122"
       ],
       "updated_at": "2026-10-29"
+    },
+    {
+      "experiment_id": "EXP-30",
+      "name": "Cinematic Scene Continuity",
+      "owning_project": "AI-serial-V2",
+      "status": "PLANNED",
+      "why": "Test a bounded scene-identity prompt method against the current shot-by-shot workflow without changing canon or production.",
+      "date_added": "2026-11-02",
+      "next_action": "Registration only: do not execute, merge, deploy, or change production without a separately authorized checkpoint.",
+      "result_summary": "PLANNED: canonical FIFO registration only; no experiment result is claimed.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/cinematic-scene-continuity-2026-10-08/TASK.md",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/blob/3bc3166750e71206b731feaf04128a109bb3cb1b/experiments/cinematic-scene-continuity-2026-10-08/TASK.md"
+      ],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/56"
+      ],
+      "updated_at": "2026-11-02"
+    },
+    {
+      "experiment_id": "EXP-31",
+      "name": "Text-to-CAD DXF manufacturing",
+      "owning_project": "Murat Project Engineer",
+      "status": "PLANNED",
+      "why": "Test whether a pinned Text-to-CAD workflow can create one manufacturable DXF with measurable reduction in manual cleanup.",
+      "date_added": "2026-11-02",
+      "next_action": "Registration only: do not execute, merge, deploy, or change production without a separately authorized checkpoint.",
+      "result_summary": "PLANNED: canonical FIFO registration only; no experiment result is claimed.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/text-to-cad/README.md",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/blob/920dceb028cc055d470fc2ce422b6c6a7faad0c0/experiments/text-to-cad/README.md"
+      ],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/58"
+      ],
+      "updated_at": "2026-11-02"
+    },
+    {
+      "experiment_id": "EXP-32",
+      "name": "Refero Styles Rich Message",
+      "owning_project": "Business Discovery",
+      "status": "PLANNED",
+      "why": "Test a compact project-local DESIGN.md against existing tokens for one Business Discovery Rich Message.",
+      "date_added": "2026-11-02",
+      "next_action": "Registration only: do not execute, merge, deploy, or change production without a separately authorized checkpoint.",
+      "result_summary": "PLANNED: canonical FIFO registration only; no experiment result is claimed.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/refero-styles-design-md/README.md",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/blob/9b1c7e58c77ad58f4d0a9fe5f88f28b1a0a9fb68/experiments/refero-styles-design-md/README.md"
+      ],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/59"
+      ],
+      "updated_at": "2026-11-02"
+    },
+    {
+      "experiment_id": "EXP-33",
+      "name": "REA reconnaissance",
+      "owning_project": "Murat Project Engineer",
+      "status": "PLANNED",
+      "why": "Test one lawful, read-only technical evidence capture only if it adds measurable value over existing capture methods.",
+      "date_added": "2026-11-02",
+      "next_action": "Registration only: do not execute, merge, deploy, or change production without a separately authorized checkpoint.",
+      "result_summary": "PLANNED: canonical FIFO registration only; no experiment result is claimed.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/rea-recon-intake/README.md",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/blob/82dc393a0400ada70cde592c143e82d3208bf0b6/experiments/rea-recon-intake/README.md"
+      ],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/60"
+      ],
+      "updated_at": "2026-11-02"
+    },
+    {
+      "experiment_id": "EXP-35",
+      "name": "Crisp Diagrams",
+      "owning_project": "Murat Project Engineer",
+      "status": "PLANNED",
+      "why": "Compare one source-grounded Crisp SVG with the existing diagram path without creating a second diagram system.",
+      "date_added": "2026-11-02",
+      "next_action": "Registration only: do not execute, merge, deploy, or change production without a separately authorized checkpoint.",
+      "result_summary": "PLANNED: canonical FIFO registration only; no experiment result is claimed.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/exp-35-crisp-diagrams/README.md",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/blob/25c8c37673d17e28680c627b5d6a913c8d2e60ab/experiments/exp-35-crisp-diagrams/README.md"
+      ],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/98"
+      ],
+      "updated_at": "2026-11-02"
+    },
+    {
+      "experiment_id": "EXP-36",
+      "name": "WaveSpeed evaluation series",
+      "owning_project": "Murat Project Engineer",
+      "status": "PLANNED",
+      "why": "Evaluate the single WaveSpeed parent series using ten bounded trials; registration alone authorizes no service workload.",
+      "date_added": "2026-11-02",
+      "next_action": "Registration only: do not execute, merge, deploy, or change production without a separately authorized checkpoint.",
+      "result_summary": "PLANNED: canonical FIFO registration only; no experiment result is claimed.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/wavespeed-evaluation/README.md",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/blob/089e2873ced13893d0dc7282e187811f472f7b5a/experiments/wavespeed-evaluation/README.md"
+      ],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/102"
+      ],
+      "updated_at": "2026-11-02"
+    },
+    {
+      "experiment_id": "EXP-37",
+      "name": "HtmlVR Seven Minutes",
+      "owning_project": "Murat Project Engineer",
+      "status": "PLANNED",
+      "why": "Evaluate the HtmlVR proposal through its bounded Arena task without altering production surfaces.",
+      "date_added": "2026-11-02",
+      "next_action": "Registration only: do not execute, merge, deploy, or change production without a separately authorized checkpoint.",
+      "result_summary": "PLANNED: canonical FIFO registration only; no experiment result is claimed.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/exp-37-htmlvr-seven-minutes/ARENA_TASK.md",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/blob/da885e39a701f6fe8facc11e12d46bce361409bf/experiments/exp-37-htmlvr-seven-minutes/ARENA_TASK.md"
+      ],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/103"
+      ],
+      "updated_at": "2026-11-02"
+    },
+    {
+      "experiment_id": "EXP-38",
+      "name": "OpenMuse component evaluation",
+      "owning_project": "Murat Project Engineer",
+      "status": "PARTIAL",
+      "why": "CP-01 read-only upstream audit passed; CP-02–CP-05 remain not authorized and upstream-as-a-system is not adopted.",
+      "date_added": "2026-11-02",
+      "next_action": "Preserve the CP-01 result and its five evidence files; do not start later checkpoints.",
+      "result_summary": "PARTIAL: CP-01 read-only investigation PASS from source PR #105; remaining checkpoints are NOT_AUTHORIZED.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/exp-38-openmuse-component-evaluation/README.md",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/blob/4a798f4/experiments/exp-38-openmuse-component-evaluation/README.md"
+      ],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/104"
+      ],
+      "updated_at": "2026-11-02"
+    },
+    {
+      "experiment_id": "EXP-39",
+      "name": "Arena coding-quality series",
+      "owning_project": "Murat Project Engineer",
+      "status": "PLANNED",
+      "why": "Keep five coding-quality tracks under one parent and compare them with existing quality and Harness² safeguards.",
+      "date_added": "2026-11-02",
+      "next_action": "Registration only: do not execute, merge, deploy, or change production without a separately authorized checkpoint.",
+      "result_summary": "PLANNED: canonical FIFO registration only; no experiment result is claimed.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/arena-coding-quality-2026-10/01-poteto-agent-verification.md",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/blob/fb7ba76/experiments/arena-coding-quality-2026-10/01-poteto-agent-verification.md"
+      ],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/106"
+      ],
+      "updated_at": "2026-11-02"
+    },
+    {
+      "experiment_id": "EXP-40",
+      "name": "Seedance 2.5 prompt evaluation",
+      "owning_project": "Murat Project Engineer",
+      "status": "PLANNED",
+      "why": "Evaluate Seedance 2.5 prompts only through the preserved bounded task and applicable media gates.",
+      "date_added": "2026-11-02",
+      "next_action": "Registration only: do not execute, merge, deploy, or change production without a separately authorized checkpoint.",
+      "result_summary": "PLANNED: canonical FIFO registration only; no experiment result is claimed.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/exp-40-seedance-25-prompt-evaluation/ARENA_TASK.md",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/blob/afa3c41/experiments/exp-40-seedance-25-prompt-evaluation/ARENA_TASK.md"
+      ],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/107"
+      ],
+      "updated_at": "2026-11-02"
+    },
+    {
+      "experiment_id": "EXP-41",
+      "name": "Harness² self-improvement lab",
+      "owning_project": "Murat Project Engineer",
+      "status": "PLANNED",
+      "why": "The sole self-improvement line, preserving E0–E5 and CP-SI-01…07 without autonomous activation.",
+      "date_added": "2026-11-02",
+      "next_action": "Registration only: do not execute, merge, deploy, or change production without a separately authorized checkpoint.",
+      "result_summary": "PLANNED: canonical FIFO registration only; no experiment result is claimed.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/harness2-self-improvement/EXPERIMENT_PLAN.md",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/blob/b4b2b0c/experiments/harness2-self-improvement/EXPERIMENT_PLAN.md"
+      ],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/113"
+      ],
+      "updated_at": "2026-11-02"
+    },
+    {
+      "experiment_id": "EXP-42",
+      "name": "OpenViking context retrieval",
+      "owning_project": "Murat Project Engineer",
+      "status": "PLANNED",
+      "why": "Compare ephemeral read-only retrieval against EXP-29 bootstrap without a persistent store or source-of-truth change.",
+      "date_added": "2026-11-02",
+      "next_action": "Registration only: do not execute, merge, deploy, or change production without a separately authorized checkpoint.",
+      "result_summary": "PLANNED: canonical FIFO registration only; no experiment result is claimed.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/exp-42-openviking-context-evaluation/README.md",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/blob/af14b78/experiments/exp-42-openviking-context-evaluation/README.md"
+      ],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/116"
+      ],
+      "updated_at": "2026-11-02"
+    },
+    {
+      "experiment_id": "EXP-43",
+      "name": "Nodecode Lisp Cells portability",
+      "owning_project": "Murat Project Engineer",
+      "status": "PLANNED",
+      "why": "Evaluate optional portable Lisp cells while keeping JSON MPE IR and verified evidence authoritative.",
+      "date_added": "2026-11-02",
+      "next_action": "Registration only: do not execute, merge, deploy, or change production without a separately authorized checkpoint.",
+      "result_summary": "PLANNED: canonical FIFO registration only; no experiment result is claimed.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/exp-43-nodecode-lisp-portability/README.md",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/blob/6efdde6/experiments/exp-43-nodecode-lisp-portability/README.md"
+      ],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/118"
+      ],
+      "updated_at": "2026-11-02"
+    },
+    {
+      "experiment_id": "EXP-44",
+      "name": "AI Process Discovery",
+      "owning_project": "Grand Mebel Document Control",
+      "status": "PLANNED",
+      "why": "Map real document workflows before automation using read-only, anonymized evidence and explicit human-money gates.",
+      "date_added": "2026-11-02",
+      "next_action": "Registration only: do not execute, merge, deploy, or change production without a separately authorized checkpoint.",
+      "result_summary": "PLANNED: canonical FIFO registration only; no experiment result is claimed.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/EXP-44_AI_PROCESS_DISCOVERY.md",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/blob/af910cb/experiments/EXP-44_AI_PROCESS_DISCOVERY.md"
+      ],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/119"
+      ],
+      "updated_at": "2026-11-02"
+    },
+    {
+      "experiment_id": "EXP-45",
+      "name": "MCC bounded agents / Arena / Survival",
+      "owning_project": "Murat Control Center",
+      "status": "PLANNED",
+      "why": "Validate security boundary first, then bounded orchestration and optional parallel Arena work; no new infrastructure is authorized.",
+      "date_added": "2026-11-02",
+      "next_action": "Registration only: do not execute, merge, deploy, or change production without a separately authorized checkpoint.",
+      "result_summary": "PLANNED: canonical FIFO registration only; no experiment result is claimed.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "docs/experiments/EXP-45-MCC-BOUNDED-AGENTS-2026-10-29.md",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/blob/c946e50/docs/experiments/EXP-45-MCC-BOUNDED-AGENTS-2026-10-29.md"
+      ],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/120"
+      ],
+      "updated_at": "2026-11-02"
+    },
+    {
+      "experiment_id": "EXP-46",
+      "name": "HackerTube Evidence-Method Discovery",
+      "owning_project": "Business Discovery",
+      "status": "PLANNED",
+      "why": "Research up to ten attributable HackerTube sources as evidence-method context without scraping, ingestion, or production integration.",
+      "date_added": "2026-11-02",
+      "next_action": "Registration only: do not execute, merge, deploy, or change production without a separately authorized checkpoint.",
+      "result_summary": "PLANNED: canonical FIFO registration only; no experiment result is claimed.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "docs/experiments/EXP-46-HACKERTUBE-INTAKE.md",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/blob/4829e0270c292e5233e1982da1e83261f0e22a78/docs/experiments/EXP-46-HACKERTUBE-INTAKE.md"
+      ],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/125"
+      ],
+      "updated_at": "2026-11-02"
     }
   ]
 }

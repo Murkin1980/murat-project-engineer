@@ -2,9 +2,9 @@
  "authority": "DERIVED_VIEW_NON_AUTHORITATIVE",
  "authority_note": "Derived, non-authoritative launch brief assembled from canonical Git sources. Git remains the only source of truth: on any conflict the canonical files win; verify freshness before use and re-derive or discard this packet on any mismatch.",
  "generated_against": {
-  "git_base": "83c786b291c4c1dff9633434562a1bb457713cdf",
-  "git_branch": "arena/e51ab251-murat-project-engineer",
-  "git_head": "72cb1c7a469ade5863b9b8f6c6c322c7a03cb651"
+  "git_base": "5457ad83f40a2488fafb944f604b4ae969291362",
+  "git_branch": "codex/cp-registry-fifo-integration",
+  "git_head": "5457ad83f40a2488fafb944f604b4ae969291362"
  },
  "known_lessons": [
   {
@@ -304,7 +304,7 @@
   {
    "path": "experiments/EXPERIMENT_REGISTRY.json",
    "role": "registry",
-   "sha256": "68500960a7ad728425c8a3f1a4ba41f07140c04f611da277e35ddfcf5933a90c"
+   "sha256": "ac5aa19cbc68d4bad9084b06413ee4f1c050ef89020037f1622a24ee93cb5de6"
   },
   {
    "path": "experiments/exp-29-arena-bootstrap-harness/ARENA_TASK.md",
@@ -324,7 +324,7 @@
   {
    "path": "STATUS.md",
    "role": "project_status",
-   "sha256": "c52bbd5c625157772756008a5ae506b8670b0feb0c113fecac46384f0ab1ae91"
+   "sha256": "9d74dfe05cfed208eb5447c1ba6a40ead8aec3d50c657501508bbf3eb8a5e40d"
   },
   {
    "path": "AGENTS.md",
