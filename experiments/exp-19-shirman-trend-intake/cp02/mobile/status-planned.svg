@@ -1,30 +1,144 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="346" height="621" viewBox="0 0 346 621" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
+<svg xmlns="http://www.w3.org/2000/svg" width="355" height="3072" viewBox="0 0 355 3072" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
   <defs>
   </defs>
-  <rect x="0" y="0" width="346" height="621" fill="#ffffff"/>
-  <path d="M48 40 H298 a8 8 0 0 1 8 8 V573 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
-  <text x="54" y="68.4" fill="#1f2328" text-anchor="start">PLANNED (3)</text>
-  <path d="M62 83 H284 a8 8 0 0 1 8 8 V236 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V91 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="173" y="111.4" fill="#1f2328" text-anchor="middle">EXP-ALEXANDRIA ·</text>
-  <text x="173" y="130.4" fill="#1f2328" text-anchor="middle">Orchestrator</text>
-  <text x="173" y="149.4" fill="#1f2328" text-anchor="middle">Firecrawl Alexandria</text>
-  <text x="173" y="168.4" fill="#1f2328" text-anchor="middle">source discovery</text>
-  <text x="173" y="187.4" fill="#1f2328" text-anchor="middle">→ Execute the isolated</text>
-  <text x="173" y="206.4" fill="#1f2328" text-anchor="middle">five-task comparison and</text>
-  <text x="173" y="225.4" fill="#1f2328" text-anchor="middle">record per-run evidence…</text>
-  <path d="M62 254 H284 a8 8 0 0 1 8 8 V388 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V262 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="173" y="282.4" fill="#1f2328" text-anchor="middle">EXP-RANKCONTROL · House</text>
-  <text x="173" y="301.4" fill="#1f2328" text-anchor="middle">RankControl AI visibility</text>
-  <text x="173" y="320.4" fill="#1f2328" text-anchor="middle">→ After owner</text>
-  <text x="173" y="339.4" fill="#1f2328" text-anchor="middle">registration, run and</text>
-  <text x="173" y="358.4" fill="#1f2328" text-anchor="middle">record the first</text>
-  <text x="173" y="377.4" fill="#1f2328" text-anchor="middle">fixed-query baseli…</text>
-  <path d="M62 406 H284 a8 8 0 0 1 8 8 V559 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V414 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
-  <text x="173" y="434.4" fill="#1f2328" text-anchor="middle">EXP-21 · MebelFlow AI</text>
-  <text x="173" y="453.4" fill="#1f2328" text-anchor="middle">EasyKitchen / SketchUp</text>
-  <text x="173" y="472.4" fill="#1f2328" text-anchor="middle">production backe…</text>
-  <text x="173" y="491.4" fill="#1f2328" text-anchor="middle">→ Perform focused</text>
-  <text x="173" y="510.4" fill="#1f2328" text-anchor="middle">technical reconnaissance</text>
-  <text x="173" y="529.4" fill="#1f2328" text-anchor="middle">of SketchUp Ruby +</text>
-  <text x="173" y="548.4" fill="#1f2328" text-anchor="middle">EasyKitch…</text>
+  <rect x="0" y="0" width="355" height="3072" fill="#ffffff"/>
+  <path d="M48 40 H307 a8 8 0 0 1 8 8 V3024 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <text x="54" y="68.4" fill="#1f2328" text-anchor="start">PLANNED (18)</text>
+  <path d="M62 83 H293 a8 8 0 0 1 8 8 V236 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V91 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="177.5" y="111.4" fill="#1f2328" text-anchor="middle">EXP-ALEXANDRIA ·</text>
+  <text x="177.5" y="130.4" fill="#1f2328" text-anchor="middle">Orchestrator</text>
+  <text x="177.5" y="149.4" fill="#1f2328" text-anchor="middle">Firecrawl Alexandria</text>
+  <text x="177.5" y="168.4" fill="#1f2328" text-anchor="middle">source discovery</text>
+  <text x="177.5" y="187.4" fill="#1f2328" text-anchor="middle">→ Execute the isolated</text>
+  <text x="177.5" y="206.4" fill="#1f2328" text-anchor="middle">five-task comparison and</text>
+  <text x="177.5" y="225.4" fill="#1f2328" text-anchor="middle">record per-run evidence…</text>
+  <path d="M62 254 H293 a8 8 0 0 1 8 8 V388 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V262 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="177.5" y="282.4" fill="#1f2328" text-anchor="middle">EXP-RANKCONTROL · House</text>
+  <text x="177.5" y="301.4" fill="#1f2328" text-anchor="middle">RankControl AI visibility</text>
+  <text x="177.5" y="320.4" fill="#1f2328" text-anchor="middle">→ After owner</text>
+  <text x="177.5" y="339.4" fill="#1f2328" text-anchor="middle">registration, run and</text>
+  <text x="177.5" y="358.4" fill="#1f2328" text-anchor="middle">record the first</text>
+  <text x="177.5" y="377.4" fill="#1f2328" text-anchor="middle">fixed-query baseli…</text>
+  <path d="M62 406 H293 a8 8 0 0 1 8 8 V559 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V414 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="177.5" y="434.4" fill="#1f2328" text-anchor="middle">EXP-21 · MebelFlow AI</text>
+  <text x="177.5" y="453.4" fill="#1f2328" text-anchor="middle">EasyKitchen / SketchUp</text>
+  <text x="177.5" y="472.4" fill="#1f2328" text-anchor="middle">production backe…</text>
+  <text x="177.5" y="491.4" fill="#1f2328" text-anchor="middle">→ Perform focused</text>
+  <text x="177.5" y="510.4" fill="#1f2328" text-anchor="middle">technical reconnaissance</text>
+  <text x="177.5" y="529.4" fill="#1f2328" text-anchor="middle">of SketchUp Ruby +</text>
+  <text x="177.5" y="548.4" fill="#1f2328" text-anchor="middle">EasyKitch…</text>
+  <path d="M62 577 H293 a8 8 0 0 1 8 8 V711 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V585 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="177.5" y="605.4" fill="#1f2328" text-anchor="middle">EXP-30 · AI-serial-V2</text>
+  <text x="177.5" y="624.4" fill="#1f2328" text-anchor="middle">Cinematic Scene Continuity</text>
+  <text x="177.5" y="643.4" fill="#1f2328" text-anchor="middle">→ Registration only: do</text>
+  <text x="177.5" y="662.4" fill="#1f2328" text-anchor="middle">not execute, merge,</text>
+  <text x="177.5" y="681.4" fill="#1f2328" text-anchor="middle">deploy, or change</text>
+  <text x="177.5" y="700.4" fill="#1f2328" text-anchor="middle">productio…</text>
+  <path d="M62 729 H293 a8 8 0 0 1 8 8 V882 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V737 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="177.5" y="757.4" fill="#1f2328" text-anchor="middle">EXP-31 · MPE</text>
+  <text x="177.5" y="776.4" fill="#1f2328" text-anchor="middle">Text-to-CAD DXF</text>
+  <text x="177.5" y="795.4" fill="#1f2328" text-anchor="middle">manufacturing</text>
+  <text x="177.5" y="814.4" fill="#1f2328" text-anchor="middle">→ Registration only: do</text>
+  <text x="177.5" y="833.4" fill="#1f2328" text-anchor="middle">not execute, merge,</text>
+  <text x="177.5" y="852.4" fill="#1f2328" text-anchor="middle">deploy, or change</text>
+  <text x="177.5" y="871.4" fill="#1f2328" text-anchor="middle">productio…</text>
+  <path d="M62 900 H293 a8 8 0 0 1 8 8 V1034 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V908 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="177.5" y="928.4" fill="#1f2328" text-anchor="middle">EXP-32 · Business Discov…</text>
+  <text x="177.5" y="947.4" fill="#1f2328" text-anchor="middle">Refero Styles Rich Message</text>
+  <text x="177.5" y="966.4" fill="#1f2328" text-anchor="middle">→ Registration only: do</text>
+  <text x="177.5" y="985.4" fill="#1f2328" text-anchor="middle">not execute, merge,</text>
+  <text x="177.5" y="1004.4" fill="#1f2328" text-anchor="middle">deploy, or change</text>
+  <text x="177.5" y="1023.4" fill="#1f2328" text-anchor="middle">productio…</text>
+  <path d="M62 1052 H293 a8 8 0 0 1 8 8 V1186 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V1060 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="177.5" y="1080.4" fill="#1f2328" text-anchor="middle">EXP-33 · MPE</text>
+  <text x="177.5" y="1099.4" fill="#1f2328" text-anchor="middle">REA reconnaissance</text>
+  <text x="177.5" y="1118.4" fill="#1f2328" text-anchor="middle">→ Registration only: do</text>
+  <text x="177.5" y="1137.4" fill="#1f2328" text-anchor="middle">not execute, merge,</text>
+  <text x="177.5" y="1156.4" fill="#1f2328" text-anchor="middle">deploy, or change</text>
+  <text x="177.5" y="1175.4" fill="#1f2328" text-anchor="middle">productio…</text>
+  <path d="M62 1204 H293 a8 8 0 0 1 8 8 V1338 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V1212 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="177.5" y="1232.4" fill="#1f2328" text-anchor="middle">EXP-35 · MPE</text>
+  <text x="177.5" y="1251.4" fill="#1f2328" text-anchor="middle">Crisp Diagrams</text>
+  <text x="177.5" y="1270.4" fill="#1f2328" text-anchor="middle">→ Registration only: do</text>
+  <text x="177.5" y="1289.4" fill="#1f2328" text-anchor="middle">not execute, merge,</text>
+  <text x="177.5" y="1308.4" fill="#1f2328" text-anchor="middle">deploy, or change</text>
+  <text x="177.5" y="1327.4" fill="#1f2328" text-anchor="middle">productio…</text>
+  <path d="M62 1356 H293 a8 8 0 0 1 8 8 V1509 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V1364 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="177.5" y="1384.4" fill="#1f2328" text-anchor="middle">EXP-36 · MPE</text>
+  <text x="177.5" y="1403.4" fill="#1f2328" text-anchor="middle">WaveSpeed evaluation</text>
+  <text x="177.5" y="1422.4" fill="#1f2328" text-anchor="middle">series</text>
+  <text x="177.5" y="1441.4" fill="#1f2328" text-anchor="middle">→ Registration only: do</text>
+  <text x="177.5" y="1460.4" fill="#1f2328" text-anchor="middle">not execute, merge,</text>
+  <text x="177.5" y="1479.4" fill="#1f2328" text-anchor="middle">deploy, or change</text>
+  <text x="177.5" y="1498.4" fill="#1f2328" text-anchor="middle">productio…</text>
+  <path d="M62 1527 H293 a8 8 0 0 1 8 8 V1661 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V1535 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="177.5" y="1555.4" fill="#1f2328" text-anchor="middle">EXP-37 · MPE</text>
+  <text x="177.5" y="1574.4" fill="#1f2328" text-anchor="middle">HtmlVR Seven Minutes</text>
+  <text x="177.5" y="1593.4" fill="#1f2328" text-anchor="middle">→ Registration only: do</text>
+  <text x="177.5" y="1612.4" fill="#1f2328" text-anchor="middle">not execute, merge,</text>
+  <text x="177.5" y="1631.4" fill="#1f2328" text-anchor="middle">deploy, or change</text>
+  <text x="177.5" y="1650.4" fill="#1f2328" text-anchor="middle">productio…</text>
+  <path d="M62 1679 H293 a8 8 0 0 1 8 8 V1832 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V1687 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="177.5" y="1707.4" fill="#1f2328" text-anchor="middle">EXP-39 · MPE</text>
+  <text x="177.5" y="1726.4" fill="#1f2328" text-anchor="middle">Arena coding-quality</text>
+  <text x="177.5" y="1745.4" fill="#1f2328" text-anchor="middle">series</text>
+  <text x="177.5" y="1764.4" fill="#1f2328" text-anchor="middle">→ Registration only: do</text>
+  <text x="177.5" y="1783.4" fill="#1f2328" text-anchor="middle">not execute, merge,</text>
+  <text x="177.5" y="1802.4" fill="#1f2328" text-anchor="middle">deploy, or change</text>
+  <text x="177.5" y="1821.4" fill="#1f2328" text-anchor="middle">productio…</text>
+  <path d="M62 1850 H293 a8 8 0 0 1 8 8 V2003 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V1858 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="177.5" y="1878.4" fill="#1f2328" text-anchor="middle">EXP-40 · MPE</text>
+  <text x="177.5" y="1897.4" fill="#1f2328" text-anchor="middle">Seedance 2.5 prompt</text>
+  <text x="177.5" y="1916.4" fill="#1f2328" text-anchor="middle">evaluation</text>
+  <text x="177.5" y="1935.4" fill="#1f2328" text-anchor="middle">→ Registration only: do</text>
+  <text x="177.5" y="1954.4" fill="#1f2328" text-anchor="middle">not execute, merge,</text>
+  <text x="177.5" y="1973.4" fill="#1f2328" text-anchor="middle">deploy, or change</text>
+  <text x="177.5" y="1992.4" fill="#1f2328" text-anchor="middle">productio…</text>
+  <path d="M62 2021 H293 a8 8 0 0 1 8 8 V2174 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V2029 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="177.5" y="2049.4" fill="#1f2328" text-anchor="middle">EXP-41 · MPE</text>
+  <text x="177.5" y="2068.4" fill="#1f2328" text-anchor="middle">Harness² self-improvement</text>
+  <text x="177.5" y="2087.4" fill="#1f2328" text-anchor="middle">lab</text>
+  <text x="177.5" y="2106.4" fill="#1f2328" text-anchor="middle">→ Registration only: do</text>
+  <text x="177.5" y="2125.4" fill="#1f2328" text-anchor="middle">not execute, merge,</text>
+  <text x="177.5" y="2144.4" fill="#1f2328" text-anchor="middle">deploy, or change</text>
+  <text x="177.5" y="2163.4" fill="#1f2328" text-anchor="middle">productio…</text>
+  <path d="M62 2192 H293 a8 8 0 0 1 8 8 V2345 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V2200 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="177.5" y="2220.4" fill="#1f2328" text-anchor="middle">EXP-42 · MPE</text>
+  <text x="177.5" y="2239.4" fill="#1f2328" text-anchor="middle">OpenViking context</text>
+  <text x="177.5" y="2258.4" fill="#1f2328" text-anchor="middle">retrieval</text>
+  <text x="177.5" y="2277.4" fill="#1f2328" text-anchor="middle">→ Registration only: do</text>
+  <text x="177.5" y="2296.4" fill="#1f2328" text-anchor="middle">not execute, merge,</text>
+  <text x="177.5" y="2315.4" fill="#1f2328" text-anchor="middle">deploy, or change</text>
+  <text x="177.5" y="2334.4" fill="#1f2328" text-anchor="middle">productio…</text>
+  <path d="M62 2363 H293 a8 8 0 0 1 8 8 V2516 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V2371 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="177.5" y="2391.4" fill="#1f2328" text-anchor="middle">EXP-43 · MPE</text>
+  <text x="177.5" y="2410.4" fill="#1f2328" text-anchor="middle">Nodecode Lisp Cells</text>
+  <text x="177.5" y="2429.4" fill="#1f2328" text-anchor="middle">portability</text>
+  <text x="177.5" y="2448.4" fill="#1f2328" text-anchor="middle">→ Registration only: do</text>
+  <text x="177.5" y="2467.4" fill="#1f2328" text-anchor="middle">not execute, merge,</text>
+  <text x="177.5" y="2486.4" fill="#1f2328" text-anchor="middle">deploy, or change</text>
+  <text x="177.5" y="2505.4" fill="#1f2328" text-anchor="middle">productio…</text>
+  <path d="M62 2534 H293 a8 8 0 0 1 8 8 V2668 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V2542 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="177.5" y="2562.4" fill="#1f2328" text-anchor="middle">EXP-44 · Grand Mebel Doc…</text>
+  <text x="177.5" y="2581.4" fill="#1f2328" text-anchor="middle">AI Process Discovery</text>
+  <text x="177.5" y="2600.4" fill="#1f2328" text-anchor="middle">→ Registration only: do</text>
+  <text x="177.5" y="2619.4" fill="#1f2328" text-anchor="middle">not execute, merge,</text>
+  <text x="177.5" y="2638.4" fill="#1f2328" text-anchor="middle">deploy, or change</text>
+  <text x="177.5" y="2657.4" fill="#1f2328" text-anchor="middle">productio…</text>
+  <path d="M62 2686 H293 a8 8 0 0 1 8 8 V2839 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V2694 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="177.5" y="2714.4" fill="#1f2328" text-anchor="middle">EXP-45 · Murat Control C…</text>
+  <text x="177.5" y="2733.4" fill="#1f2328" text-anchor="middle">MCC bounded agents / Arena</text>
+  <text x="177.5" y="2752.4" fill="#1f2328" text-anchor="middle">/ Survival</text>
+  <text x="177.5" y="2771.4" fill="#1f2328" text-anchor="middle">→ Registration only: do</text>
+  <text x="177.5" y="2790.4" fill="#1f2328" text-anchor="middle">not execute, merge,</text>
+  <text x="177.5" y="2809.4" fill="#1f2328" text-anchor="middle">deploy, or change</text>
+  <text x="177.5" y="2828.4" fill="#1f2328" text-anchor="middle">productio…</text>
+  <path d="M62 2857 H293 a8 8 0 0 1 8 8 V3010 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V2865 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="177.5" y="2885.4" fill="#1f2328" text-anchor="middle">EXP-46 · Business Discov…</text>
+  <text x="177.5" y="2904.4" fill="#1f2328" text-anchor="middle">HackerTube Evidence-Method</text>
+  <text x="177.5" y="2923.4" fill="#1f2328" text-anchor="middle">Discovery</text>
+  <text x="177.5" y="2942.4" fill="#1f2328" text-anchor="middle">→ Registration only: do</text>
+  <text x="177.5" y="2961.4" fill="#1f2328" text-anchor="middle">not execute, merge,</text>
+  <text x="177.5" y="2980.4" fill="#1f2328" text-anchor="middle">deploy, or change</text>
+  <text x="177.5" y="2999.4" fill="#1f2328" text-anchor="middle">productio…</text>
 </svg>

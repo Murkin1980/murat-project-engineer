@@ -100,7 +100,8 @@
   <path d="M474 1066.8 H755 a8 8 0 0 1 8 8 V1162.8 a8 8 0 0 1 -8 8 H474 a8 8 0 0 1 -8 -8 V1074.8 a8 8 0 0 1 8 -8 Z" fill="#dbeafe" stroke="#2563eb"/>
   <text x="614.5" y="1095.2" fill="#1f2328" text-anchor="middle">EXP-13</text>
   <text x="614.5" y="1114.2" fill="#1f2328" text-anchor="middle">Low-cost evaluation harness</text>
-  <text x="614.5" y="1133.2" fill="#1f2328" text-anchor="middle"><tspan x="614.5" y="1133.2">→ Run docs/experiments/EXP-13_CL</tspan><tspan x="614.5" y="1152.2">OUDFLARE_RELAY_PR…</tspan></text>
+  <text x="614.5" y="1133.2" fill="#1f2328" text-anchor="middle">→ Run docs/experiments/EXP-13_CL</text>
+  <text x="614.5" y="1152.2" fill="#1f2328" text-anchor="middle">​OUDFLARE_RELAY_PR…</text>
   <path d="M841 510.8 H1133 a8 8 0 0 1 8 8 V1689.8 a8 8 0 0 1 -8 8 H841 a8 8 0 0 1 -8 -8 V518.8 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
   <text x="847" y="539.2" fill="#1f2328" text-anchor="start">PLANNED (10)</text>
   <path d="M855 553.8 H1119 a8 8 0 0 1 8 8 V649.8 a8 8 0 0 1 -8 8 H855 a8 8 0 0 1 -8 -8 V561.8 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
@@ -159,7 +160,8 @@
   <text x="1364" y="800.7" fill="#1f2328" text-anchor="middle">EXP-09</text>
   <text x="1364" y="819.7" fill="#1f2328" text-anchor="middle">Personalized Assessment Engin…</text>
   <text x="1364" y="838.7" fill="#1f2328" text-anchor="middle">→ No further EXP-09</text>
-  <text x="1364" y="857.7" fill="#1f2328" text-anchor="middle"><tspan x="1364" y="857.7">implementation/reconstruct</tspan><tspan x="1364" y="876.7">ion…</tspan></text>
+  <text x="1364" y="857.7" fill="#1f2328" text-anchor="middle">implementation/reconstruct</text>
+  <text x="1364" y="876.7" fill="#1f2328" text-anchor="middle">​ion…</text>
   <path d="M1219 905.3 H1509 a8 8 0 0 1 8 8 V1001.3 a8 8 0 0 1 -8 8 H1219 a8 8 0 0 1 -8 -8 V913.3 a8 8 0 0 1 8 -8 Z" fill="#fef3c7" stroke="#d97706"/>
   <text x="1364" y="933.7" fill="#1f2328" text-anchor="middle">EXP-10</text>
   <text x="1364" y="952.7" fill="#1f2328" text-anchor="middle">Munder Difflin controlled pil…</text>
