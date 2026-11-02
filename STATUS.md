@@ -1,6 +1,6 @@
 # Murat Project Engineer — Status
 
-Updated: 2026-10-16 (core stabilization against main ca16094; EXP-12 prospective progress reconciled to 6/10; EXP-23/24/25/26/27/28/29 outcomes reflected; queued experiment-ID collisions must be renumbered before merge)
+Updated: 2026-11-02 (FIFO registry integration: EXP-30–45 registered, EXP-34 remains retired, and EXP-46 HackerTube is planned only)
 
 ## Current version
 
@@ -46,6 +46,10 @@ Implemented and available:
 - EXP-27 Paperclip orchestration patterns — PASS / ADOPT_WITH_CHANGES at pattern level only; bounded ancestry, lease/resume, budget, and approval patterns only; no Paperclip control plane
 - EXP-28 workflow retrospective — PASS / ADOPT_WITH_CHANGES as a manual evidence-gated pattern; no automatic post-run trigger
 - EXP-29 Arena Bootstrap Harness — PASS / REUSE_COMPONENT: deterministic Git-derived bootstrap packets for context-heavy Arena tasks; Git remains canonical and packets must verify FRESH
+- EXP-30–33, EXP-35–45 — PLANNED: FIFO registrations integrated from their preserved source PR contracts; no experiment execution, merge, deploy, or production integration is implied.
+- EXP-34 — RETIRED_NUMBER: deliberately unallocated; its former standalone self-improvement proposal remains consolidated only in EXP-41 Harness².
+- EXP-38 OpenMuse — PARTIAL: CP-01 read-only audit passed and its unique evidence is preserved; CP-02–CP-05 remain not authorized.
+- EXP-46 HackerTube Evidence-Method Discovery — PLANNED / P2: Business Discovery research-only intake; no scraping, ingestion, service, or research run has started.
 - EXP-S2C-01 UI reconstruction feedback loop — PASS / REUSE_COMPONENT: 1 initial render + up to 3 targeted correction cycles with early stop
 - portfolio dashboard (read-only static asset, Workers Static Assets, auto-deploy on configured main push)
 
