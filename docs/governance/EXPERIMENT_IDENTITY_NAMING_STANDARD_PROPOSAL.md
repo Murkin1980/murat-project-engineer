@@ -1,11 +1,13 @@
-# MPE Experiment Identity & Naming Standard — Proposed
+# MPE Experiment Identity & Naming Standard
 
-Status: PROPOSED / GOVERNANCE REVIEW REQUIRED
+Status: ACTIVE / MANDATORY FOR NEW REGISTRATIONS
 Date: 2026-11-02
 MPE New Idea Filter: EXTEND_EXISTING
 Scope: All new MPE-governed experiment intakes (ChatGPT, Work, Arena, Codex, GitHub and project-local drafts).
 Source of truth: Existing `experiments/EXPERIMENT_REGISTRY.json`; no parallel registry.
-Dependency: CP-REGISTRY-FIFO-INTEGRATION PR #126 is pending, and must not be overwritten.
+Dependency: CP-REGISTRY-FIFO-INTEGRATION PR #126 is merged in `main` at
+`76cfd29254656ff211524a816f7c7e72335520f1`; its allocation and provenance
+must not be overwritten.
 
 ## Objective
 Stop inconsistent, unnumbered and duplicate experiments from entering the portfolio. Keep the existing registry and schema intact; use a human-readable display convention without changing stored canonical IDs.
@@ -40,8 +42,8 @@ After approved canonical registry integration (and a fresh FIFO check): `EXP-46 
 No research is launched by registration.
 
 ## Rollout and safeguards
-- This document is a proposal only; it must not silently supersede existing governance or alter canonical ID schema.
-- If enforcing mandatory cross-repository behavior changes governance scope, existing contracts or authority, require explicit owner review/approval before activation (deep-change gate).
-- Implement by referencing/augmenting existing intake rules after the pending PR #126 is reconciled; no new service, repository, registry, automation or infrastructure.
+- This standard augments existing governance; it does not alter the canonical ID schema.
+- Enforcement remains a pre-registration procedure across every agent interface. A new cross-repository service, write authority, or automation is outside this standard and requires explicit owner approval through the deep-change gate.
+- Implement through the existing registry, schema validation, canonical tests and derived-view checks; no new service, repository, registry, automation or infrastructure.
 - Minimal acceptance: two identical requests resolve to the same prior experiment or one intake; two distinct requests receive ordered unique IDs by GitHub PR created_at; project-only names cannot masquerade as registered experiments; existing historical IDs stay intact; EXP-34 is never reused.
 - No merge, deploy, old-PR closure or branch deletion authorized by this draft.
