@@ -1,5 +1,7 @@
 import importlib.util
+import os
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 
@@ -52,6 +54,13 @@ class RegistrationRaceGuardTests(unittest.TestCase):
             guard.validate_new_identities({"EXP-NAMED": entry("EXP-NAMED", "New")}, [])
         with self.assertRaises(SystemExit):
             guard.records({"experiments": [{"experiment_id": "EXP-47"}]}, "test")
+
+    def test_missing_github_evidence_and_changed_main_fail_closed(self):
+        with patch.dict(os.environ, {}, clear=True):
+            with self.assertRaises(SystemExit):
+                guard.api("/repos/example/example")
+        with self.assertRaises(SystemExit):
+            guard.assert_current_main("129", "old-main", "new-main")
 
 
 if __name__ == "__main__":

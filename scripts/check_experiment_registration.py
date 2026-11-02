@@ -114,6 +114,13 @@ def assert_fifo(current_added, canonical, older_claims):
         fail(f"FIFO requires next free ID {expected}; proposed {actual}")
 
 
+def assert_current_main(current_pr, base_sha, main_sha):
+    if not current_pr.isdigit() or not base_sha or not main_sha:
+        fail("PR identity or current main evidence unavailable")
+    if base_sha != main_sha:
+        fail("PR is behind current main; update and rerun before registration can merge")
+
+
 def open_prs(repo):
     result = []
     for page in range(1, 11):
@@ -149,10 +156,7 @@ def main():
         fail("registration requires pull_request provenance; merge-group-only validation is insufficient")
     current_pr, base_sha = os.environ.get("GH_PR_NUMBER", ""), os.environ.get("GH_BASE_SHA", "")
     main_sha = api(f"/repos/{repo}/git/ref/heads/main").get("object", {}).get("sha")
-    if not current_pr.isdigit() or not base_sha or not main_sha:
-        fail("PR identity or current main evidence unavailable")
-    if base_sha != main_sha:
-        fail("PR is behind current main; update and rerun before registration can merge")
+    assert_current_main(current_pr, base_sha, main_sha)
     prs = open_prs(repo)
     own = next((item for item in prs if item["number"] == int(current_pr)), None)
     if own is None:
