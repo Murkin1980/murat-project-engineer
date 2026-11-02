@@ -1,8 +1,8 @@
 # Text-to-CAD — experiment candidate (2026-10-08)
 
-Status: **QUEUED / NOT EXECUTED**  
-Murat Project Engineer New Idea Filter: **EXPERIMENT**  
-Upstream: https://www.texttocad.dev/  
+Status: **QUEUED / NOT EXECUTED**
+Murat Project Engineer New Idea Filter: **EXPERIMENT**
+Upstream: https://www.texttocad.dev/
 Source: https://github.com/earthtojake/text-to-cad
 
 ## Purpose
@@ -33,8 +33,8 @@ One bounded test:
 - No merges/deploys/production actions as part of experiment intake.
 
 ## Outcome template
-`RESULT: PASS | PARTIAL | FAIL | BLOCKED`  
-`ADOPTION: ADOPT | ADOPT_WITH_CHANGES | HOLD | REJECT`  
+`RESULT: PASS | PARTIAL | FAIL | BLOCKED`
+`ADOPTION: ADOPT | ADOPT_WITH_CHANGES | HOLD | REJECT`
 Evidence: upstream pin; environment; commands; exported artifact hashes; CAD checks; CAM import proof; baseline comparison; blockers; follow-up owner decision.
 
 **Priority:** high relative to speculative agent integrations, because there is a concrete plasma-cutting case. Reassess against currently active production fixes before execution.

@@ -1,10 +1,10 @@
 # Experiment candidate — Cinematic Scene Continuity
 
-Status: **REGISTERED / NOT RUN**  
-Date: 2026-10-08  
-Murat Project Engineer New Idea Filter: **EXPERIMENT**  
-Owner project: **AI-serial-V2**  
-Execution venue: **Arena**, isolated branch and bounded run.  
+Status: **REGISTERED / NOT RUN**
+Date: 2026-10-08
+Murat Project Engineer New Idea Filter: **EXPERIMENT**
+Owner project: **AI-serial-V2**
+Execution venue: **Arena**, isolated branch and bounded run.
 No new repository, independent memory service, pipeline replacement or production integration.
 
 ## Source and hypothesis
