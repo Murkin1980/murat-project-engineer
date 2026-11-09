@@ -861,12 +861,13 @@
       "status": "PLANNED",
       "why": "The sole self-improvement line, preserving E0–E5 and CP-SI-01…07 without autonomous activation.",
       "date_added": "2026-11-02",
-      "next_action": "Registration only: do not execute, merge, deploy, or change production without a separately authorized checkpoint.",
-      "result_summary": "PLANNED: canonical FIFO registration only; no experiment result is claimed.",
+      "next_action": "EXP-41 CP-SI-01 only: read-only compare DeepSeek SuperAgent with Harness2, EXP-29 and EXP-45; STOP for owner review. No execution, merge, deploy or deep-change.",
+      "result_summary": "PLANNED: canonical FIFO registration; DeepSeek SuperAgent is an EXP-41 research intake, not a new EXP. No experiment result is claimed.",
       "repo": "Murkin1980/murat-project-engineer",
       "experiment_path": "experiments/harness2-self-improvement/EXPERIMENT_PLAN.md",
       "evidence_links": [
-        "https://github.com/Murkin1980/murat-project-engineer/blob/b4b2b0c/experiments/harness2-self-improvement/EXPERIMENT_PLAN.md"
+        "https://github.com/Murkin1980/murat-project-engineer/blob/b4b2b0c/experiments/harness2-self-improvement/EXPERIMENT_PLAN.md",
+        "https://github.com/Murkin1980/murat-project-engineer/blob/docs/exp41-deepseek-superagent-intake/experiments/harness2-self-improvement/DEEPSEEK_SUPERAGENT_INTAKE.md"
       ],
       "pr_or_issue_links": [
         "https://github.com/Murkin1980/murat-project-engineer/pull/113"
