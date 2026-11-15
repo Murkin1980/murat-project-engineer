@@ -52,3 +52,23 @@ RESULT: BLOCKED / HOLD, **not** PASS.
 BLOCKER: B-01 through B-05.
 NEXT ACTION: Owner-authorized execution of targeted verification/stabilization with independent evidence.
 STOP: No merge, deploy, new runtime, governance mutation, PR closure or claim of production readiness.
+
+## Verified follow-up — 2026-11-15
+
+B-02 updated from NOT_OBSERVABLE to **UNPROTECTED_MAIN / OWNER_GATE**: GET /branches/main returned `protected=false`, `protection.enabled=false`, and `required_status_checks.enforcement_level=off`; GET /rulesets returned `[]`. Classic protection details GET /branches/main/protection returned 403 under installed app credentials. Repository enforcement must be configured by the owner with an admin-capable GitHub session; this is a governance/security boundary change, not authorized by this evidence-only review.
+
+B-03 **REPRODUCED AND FIXED ON DRAFT PR #132, NOT IN MAIN**: initial GitHub Actions run 43704952479 (branch fix/cp-mpe-stability-01-20261115) ran 458 unittest cases (one skipped) with exactly one failure: `test_conflict_resolution_preserves_navigation_and_all_status_views` asserted presence of the obsolete snapshot text 26.10.2026 whereas the legitimate dashboard snapshot is 09.11.2026. The narrow test fix now checks a parsed monitoring snapshot date >= 2026-10-26 instead of exact equality, preserving the historical rollback guard. At head `483279dacf28abdec18572113ea8df8b064ca2fa`, run 43705117756 completed SUCCESS: Python suite, package validator, EXP-29 FRESH, dashboard build and dashboard check. Separate registry-collision-guard run 43705117718 SUCCESS. Independent current-main PASS still requires merge authorization plus after-merge run.
+
+B-04 **TRIAGED, NOT CLOSED**: added `OPEN_PR_INVENTORY.md` covering all 40 pre-existing open PRs and their file-level scope. No PR was closed or merged. Exact semantic supersession and owner dispositions remain pending.
+
+B-01 unchanged: Cloudflare worker latest confirmed deployed version was 2026-08-13. Do not deploy without owner authorization and exact source/asset parity.
+
+B-05 unchanged: Registry EXP-29 `next_action` stale. Do not mutate it without regenerating derived EXP-29 packet and Reladraw assets and proving their freshness; the latest baseline packet verification is FRESH before such mutation.
+
+Further execution boundary: no unattended main merge, no production deploy, no branch protection/ruleset changes, no automatic closure of historical PRs, and no false PASS.
+
+Evidence:
+- https://github.com/Murkin1980/murat-project-engineer/pull/132
+- https://github.com/Murkin1980/murat-project-engineer/actions/runs/43704952479
+- https://github.com/Murkin1980/murat-project-engineer/actions/runs/43705117756
+- https://github.com/Murkin1980/murat-project-engineer/actions/runs/43705117718
