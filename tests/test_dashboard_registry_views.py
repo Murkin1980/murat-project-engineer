@@ -99,7 +99,7 @@ class DashboardRegistryViewTests(unittest.TestCase):
         self.assertEqual(len(parser.statuses), len(set(parser.statuses)))
         # Keep the approved 26.10 monitoring baseline or any newer snapshot;
         # do not pin a single date that fails on the next weekly refresh.
-        match = re.search(r"Снимок:\\s*(\\d{2}\\.\\d{2}\\.\\d{4})", self.html)
+        match = re.search(r"Снимок:\s*(\d{2}\.\d{2}\.\d{4})", self.html)
         self.assertIsNotNone(match, "dashboard must disclose its monitoring snapshot date")
         snapshot_date = datetime.strptime(match.group(1), "%d.%m.%Y").date()
         self.assertGreaterEqual(snapshot_date, date(2026, 10, 26))
