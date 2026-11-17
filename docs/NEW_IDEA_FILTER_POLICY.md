@@ -53,3 +53,30 @@ Until the portfolio is intentionally re-prioritized, new ideas should preferenti
 ## Enforcement
 
 No new implementation or repository should begin from an unfiltered idea. The idea must first pass this policy and receive a recorded Murat Project Engineer disposition.
+
+## Experiment registration gate
+
+This gate applies before registering **every** proposed experiment, regardless of
+where the request originated: chat, an owner instruction, another repository,
+an issue, a pull request, an automation, Arena, Codex, or an imported research
+intake.
+
+Perform these checks in this exact order:
+
+1. **Canonical-ID and FIFO check.** Read the current canonical
+   `experiments/EXPERIMENT_REGISTRY.json`, reserved/retired identifiers, and the
+   current eligible intake queue. For numbered experiments, allocate only the
+   next eligible number by original intake `created_at`; dependent follow-ups do
+   not consume a second number. Never reuse a retired/reserved number.
+2. **Collision and dependency check.** Compare objective, owning project,
+   scope, upstream source, existing experiments, open PRs, completed results,
+   and evidence. Classify the proposal as independent, dependent, duplicate,
+   superseded, or blocked by an unresolved conflict.
+3. **Registration decision.** Only after checks 1–2 may a canonical registry
+   entry be created or changed. Preserve original intake URL, SHA/date where
+   available, dependencies, and unique evidence. Do not register a disputed
+   number as completed allocation.
+
+If the FIFO position, uniqueness, or conflict classification cannot be verified,
+record the intake without a canonical numbered ID as `HOLD`/`BLOCKED` evidence
+and stop before registry mutation. A request source cannot bypass this gate.

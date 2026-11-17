@@ -88,6 +88,15 @@ If an implementation materially conflicts with `docs/HUMAN_VALUE_DELIVERY_PRINCI
 
 These instructions apply to human contributors and coding agents, including Arena, Codex, Claude Code, and other automated coding systems operating on this repository.
 
+## Mandatory experiment-registration order
+
+Before any agent registers a proposed experiment, from any request channel, it
+must apply `docs/NEW_IDEA_FILTER_POLICY.md`'s Experiment registration gate in
+order: (1) canonical-ID/FIFO check, (2) collision/dependency check, then (3)
+canonical registration. The request's source does not create an exception.
+Unverified numbering or unresolved overlap is a stop condition for registry
+mutation; retain the intake and evidence without assigning a disputed EXP ID.
+
 
 ## Chat handoff format for Arena / Codex / coding-agent tasks
 
