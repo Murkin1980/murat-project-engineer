@@ -1,0 +1,90 @@
+name: MPE stability evidence (read-only)
+
+# Verification-only; no deploy, no write token, no mutating repository commands.
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/mpe-stability-evidence.yml'
+      - 'experiments/EXPERIMENT_REGISTRY.json'
+      - 'STATUS.md'
+      - 'dashboard/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - 'evidence/cp-mpe-stability-01/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  python-baseline:
+    name: mpe-python-baseline
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Record baseline identity
+        run: |
+          printf 'CHECKOUT_SHA=%s\n' "$GITHUB_SHA"
+          python --version
+      - name: Full Python unittest suite
+        run: |
+          set -o pipefail
+          python -m unittest discover -s tests -v 2>&1 | tee python-unittest.log
+      - name: Package validation
+        if: always()
+        run: |
+          set -o pipefail
+          python scripts/validate_package.py . 2>&1 | tee package-validation.log
+      - name: EXP-29 derived-packet freshness
+        if: always()
+        run: |
+          set -o pipefail
+          python experiments/exp-29-arena-bootstrap-harness/harness/bootstrap_builder.py verify --packet experiments/exp-29-arena-bootstrap-harness/ARENA_CONTEXT.json 2>&1 | tee exp29-freshness.log
+      - name: Upload evidence logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mpe-stability-python-${{ github.sha }}
+          path: |
+            python-unittest.log
+            package-validation.log
+            exp29-freshness.log
+          if-no-files-found: warn
+          retention-days: 14
+
+  dashboard-baseline:
+    name: mpe-dashboard-baseline
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build dashboard
+        run: |
+          set -o pipefail
+          npm run build 2>&1 | tee dashboard-build.log
+      - name: Check routes and generated assets
+        if: always()
+        run: |
+          set -o pipefail
+          npm run check 2>&1 | tee dashboard-check.log
+      - name: Upload evidence logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mpe-stability-dashboard-${{ github.sha }}
+          path: |
+            dashboard-build.log
+            dashboard-check.log
+          if-no-files-found: warn
+          retention-days: 14

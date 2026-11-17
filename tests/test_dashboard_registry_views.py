@@ -6,6 +6,7 @@ registry; these checks ensure the dashboard exposes the matching renders.
 """
 
 import importlib.util
+from datetime import date, datetime
 import json
 import re
 import unittest
@@ -96,9 +97,12 @@ class DashboardRegistryViewTests(unittest.TestCase):
         self.assertEqual(parser.links, ["#brief", "#p0", "#support", "#hold", "#ideas", "#registry"])
         self.assertEqual(set(parser.statuses), {e["status"] for e in REGISTRY["experiments"]})
         self.assertEqual(len(parser.statuses), len(set(parser.statuses)))
-        # The 26.10 monitoring snapshot merged through main must survive the
-        # recovery merge; PR #115's older 07.09 brief must not replace it.
-        self.assertIn("26.10.2026", self.html)
+        # Keep the approved 26.10 monitoring baseline or any newer snapshot;
+        # do not pin a single date that fails on the next weekly refresh.
+        match = re.search(r"Снимок:\s*(\d{2}\.\d{2}\.\d{4})", self.html)
+        self.assertIsNotNone(match, "dashboard must disclose its monitoring snapshot date")
+        snapshot_date = datetime.strptime(match.group(1), "%d.%m.%Y").date()
+        self.assertGreaterEqual(snapshot_date, date(2026, 10, 26))
         self.assertIn("мониторинг", self.html.lower())
 
     def test_dashboard_renders_match_the_validated_cp02_artifacts(self):
