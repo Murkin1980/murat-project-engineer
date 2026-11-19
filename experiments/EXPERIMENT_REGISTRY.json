@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-11-02",
+  "updated_at": "2026-11-19",
   "experiments": [
     {
       "experiment_id": "EXP-ALEXANDRIA",
@@ -967,6 +967,24 @@
         "https://github.com/Murkin1980/murat-project-engineer/pull/125"
       ],
       "updated_at": "2026-11-02"
+    },
+    {
+      "experiment_id": "EXP-47",
+      "name": "Skill Multik explainer-video component evaluation",
+      "owning_project": "AI Serial Studio",
+      "status": "PLANNED",
+      "why": "Compare reusable word-synchronized 9:16 motion-graphics components with existing AI Serial Studio and MPE EXP-24 Remotion pattern before considering any integration; no parallel pipeline.",
+      "date_added": "2026-11-19",
+      "next_action": "Registration only; obtain separate authorization for read-only CP-01 upstream/security/overlap audit. No installation, spending, media generation, merge or deploy.",
+      "result_summary": "PLANNED: FIFO number checked against current registry and open PR queue; no experiment run or adoption claimed.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "docs/experiments/EXP-47-SKILL-MULTIK-INTAKE.md",
+      "evidence_links": [
+        "https://github.com/artemiimillier/skill-multik",
+        "https://github.com/Murkin1980/murat-project-engineer/blob/main/docs/REUSABLE_DERIVED_ARTIFACT_PATTERN.md"
+      ],
+      "pr_or_issue_links": [],
+      "updated_at": "2026-11-19"
     }
   ]
 }
