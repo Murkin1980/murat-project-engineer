@@ -1,0 +1,3 @@
+# Передача Arena · заблокирована до регистрации
+
+Первый кандидат — proposal-1.md. Work сверяет актуальный canonical registry и разрешённый checkpoint, затем использует experiments/exp-29-arena-bootstrap-harness/harness/bootstrap_builder.py для конкретного EXP/CP. Сохранить ARENA_CONTEXT.json, ARENA_CONTEXT.md, verify output и SHA. Допуск только при FRESH, совпадении задачи и отдельном разрешении. При STALE/REJECTED пересобрать либо остановиться. После допуска Arena передаёт контрольный HTML, корпус, журнал ошибок и затраты Codex; самостоятельная приёмка запрещена.
