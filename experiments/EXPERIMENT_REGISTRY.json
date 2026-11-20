@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-11-19",
+  "updated_at": "2026-11-20",
   "experiments": [
     {
       "experiment_id": "EXP-ALEXANDRIA",
@@ -985,6 +985,25 @@
       ],
       "pr_or_issue_links": [],
       "updated_at": "2026-11-19"
+    },
+    {
+      "experiment_id": "EXP-48",
+      "name": "Agent delivery and request identification",
+      "owning_project": "AI Agent Delivery & Search Visibility",
+      "status": "PLANNED",
+      "why": "Measure extraction accuracy and request attribution across equivalent HTML, Markdown and JSON-LD snapshots.",
+      "date_added": "2026-11-20",
+      "next_action": "Await separate owner authorization and agreed budget before research execution.",
+      "result_summary": "PLANNED. No observations collected.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/exp-48-delivery-identification",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/blob/adf7ab95e67edde21a71c8c8acdf37fbff4e8221/docs/ai-agent-delivery/proposal-1.md"
+      ],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/134"
+      ],
+      "updated_at": "2026-11-20"
     }
   ]
 }

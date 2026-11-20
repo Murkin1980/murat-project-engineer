@@ -1,6 +1,6 @@
 # Murat Project Engineer — Status
 
-Updated: 2026-11-19 (proposed EXP-47 Skill Multik intake on review branch; no execution, merge or deployment)
+Updated: 2026-11-20 (EXP-48 · Agent delivery and request identification · PLANNED)
 
 ## Current version
 

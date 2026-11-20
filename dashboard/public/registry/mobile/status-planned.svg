@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="355" height="3243" viewBox="0 0 355 3243" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
+<svg xmlns="http://www.w3.org/2000/svg" width="355" height="3395" viewBox="0 0 355 3395" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
   <defs>
   </defs>
-  <rect x="0" y="0" width="355" height="3243" fill="#ffffff"/>
-  <path d="M48 40 H307 a8 8 0 0 1 8 8 V3195 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
-  <text x="54" y="68.4" fill="#1f2328" text-anchor="start">PLANNED (19)</text>
+  <rect x="0" y="0" width="355" height="3395" fill="#ffffff"/>
+  <path d="M48 40 H307 a8 8 0 0 1 8 8 V3347 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <text x="54" y="68.4" fill="#1f2328" text-anchor="start">PLANNED (20)</text>
   <path d="M62 83 H293 a8 8 0 0 1 8 8 V236 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V91 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
   <text x="177.5" y="111.4" fill="#1f2328" text-anchor="middle">EXP-ALEXANDRIA ·</text>
   <text x="177.5" y="130.4" fill="#1f2328" text-anchor="middle">Orchestrator</text>
@@ -149,4 +149,11 @@
   <text x="177.5" y="3132.4" fill="#1f2328" text-anchor="middle">obtain separate</text>
   <text x="177.5" y="3151.4" fill="#1f2328" text-anchor="middle">authorization for</text>
   <text x="177.5" y="3170.4" fill="#1f2328" text-anchor="middle">read-only CP-01…</text>
+  <path d="M62 3199 H293 a8 8 0 0 1 8 8 V3333 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V3207 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="177.5" y="3227.4" fill="#1f2328" text-anchor="middle">EXP-48 · AI Agent Delive…</text>
+  <text x="177.5" y="3246.4" fill="#1f2328" text-anchor="middle">Agent delivery and request</text>
+  <text x="177.5" y="3265.4" fill="#1f2328" text-anchor="middle">identificati…</text>
+  <text x="177.5" y="3284.4" fill="#1f2328" text-anchor="middle">→ Await separate owner</text>
+  <text x="177.5" y="3303.4" fill="#1f2328" text-anchor="middle">authorization and agreed</text>
+  <text x="177.5" y="3322.4" fill="#1f2328" text-anchor="middle">budget before research…</text>
 </svg>
