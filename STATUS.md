@@ -1,6 +1,6 @@
 # Murat Project Engineer — Status
 
-Updated: 2026-11-20 (EXP-48 · Agent delivery and request identification · PLANNED)
+Updated: 2026-11-20 (EXP-49 · Furniture estimate accuracy and tool access · PLANNED)
 
 ## Current version
 

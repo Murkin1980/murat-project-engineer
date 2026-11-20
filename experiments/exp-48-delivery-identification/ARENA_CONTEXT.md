@@ -14,7 +14,7 @@ Verify freshness before use: `python3 experiments/exp-29-arena-bootstrap-harness
 - Disposition: EXTEND_EXISTING
 - Registry status: PLANNED (updated 2026-11-20)
 - Nearest action: Await separate owner authorization and agreed budget before research execution.
-- Generated against (informational): branch `register/aid-delivery-identification`, head `a3c9f78147525043a9cd795c4b7730a27906eb7f`, base `unknown`
+- Generated against (informational): branch `registration/aid-exp-49`, head `7cc74af662f2de0276f1efbc9ca133574d624693`, base `unknown`
 
 ## RULES (mandatory)
 
@@ -82,10 +82,10 @@ Graceful handoff minimum (AGENTS.md): STATE, EVIDENCE, CHANGES, RESULT, BLOCKER,
 
 | Path | SHA-256 | Role |
 |---|---|---|
-| `experiments/EXPERIMENT_REGISTRY.json` | `92d96d5c50104f5c4ffae7bd548aade406f84aa8135589d3ae6f02f3b235a444` | registry |
+| `experiments/EXPERIMENT_REGISTRY.json` | `bf316e529e418860fc9fff276e3718879fb64fce2b9d066ba4600a70b04bb7e1` | registry |
 | `experiments/exp-48-delivery-identification/ARENA_TASK.md` | `3fb8f7672f5c0c1b91391d9e3b6a8d95cccf9cf90548a2ea835dd3a5af21d74e` | task_instructions |
 | `experiments/exp-48-delivery-identification/README.md` | `319ebece8e798820cf83ff5f3189504fec7cecb868f1e8729d2523ab6d717c6d` | task_readme |
-| `STATUS.md` | `2b8f4658e5251ef568b9e143c14c1c8a6f141fb55438e296e1e3beaf2de36105` | project_status |
+| `STATUS.md` | `1763ba261076123e1ec1826bd0b3bdaf5eb3989bde1dce7f49630da14901ab5a` | project_status |
 | `AGENTS.md` | `bb4e5e24858c9725980f83c3ab4c1bb4ff2c3b8d44dbb74ef5edff4edfa179e7` | agents_rules |
 | `docs/governance/SCOPE-CHANGE-CONTROL.md` | `954a9a58fd5d35352b808a8c78600da821893fea078c02aa8b67f46ae593447b` | governance |
 | `experiments/exp-28-agent-workflow-skills-retro/RESULTS.md` | `35a98ee8609a4b0b6dbf712b423d677b91aae70d52f0fd7ccd2a82c8966562a8` | accepted_lessons |

@@ -59,7 +59,12 @@ node p_business_discovery.planned "PLANNED (2)"  style: col
 node p_business_discovery.planned.exp_32 "EXP-32 / Refero Styles Rich Message / → Registration only: do not execute, merge, deplo…" (wrap: 34)  style: st_planned
 node p_business_discovery.planned.exp_46 "EXP-46 / HackerTube Evidence-Method Di… / → Registration only: do not execute, merge, deplo…" (wrap: 34)  style: st_planned
 
-node p_murat_ai_orchestrator "Murat AI Orchestrator"  below p_business_discovery
+node p_ai_agent_delivery_search_visibility "AI Agent Delivery & Search Visibility"  below p_business_discovery
+node p_ai_agent_delivery_search_visibility.planned "PLANNED (2)"  style: col
+node p_ai_agent_delivery_search_visibility.planned.exp_48 "EXP-48 / Agent delivery and request id… / → Await separate owner authorization and agreed b…" (wrap: 34)  style: st_planned
+node p_ai_agent_delivery_search_visibility.planned.exp_49 "EXP-49 / Furniture estimate accuracy a… / → Await separate owner authorization and agreed b…" (wrap: 34)  style: st_planned
+
+node p_murat_ai_orchestrator "Murat AI Orchestrator"  below p_ai_agent_delivery_search_visibility
 node p_murat_ai_orchestrator.planned "PLANNED (1)"  style: col
 node p_murat_ai_orchestrator.planned.exp_alexandria "EXP-ALEXANDRIA / Firecrawl Alexandria source d… / → Execute the isolated five-task comparison and r…" (wrap: 34)  style: st_planned
 
@@ -86,10 +91,6 @@ node p_murat_control_center.planned.exp_45 "EXP-45 / MCC bounded agents \/ Arena
 node p_ai_serial_studio "AI Serial Studio"  below p_murat_control_center
 node p_ai_serial_studio.planned "PLANNED (1)"  style: col
 node p_ai_serial_studio.planned.exp_47 "EXP-47 / Skill Multik explainer-video… / → Registration only; obtain separate authorizatio…" (wrap: 34)  style: st_planned
-
-node p_ai_agent_delivery_search_visibility "AI Agent Delivery & Search Visibility"  below p_ai_serial_studio
-node p_ai_agent_delivery_search_visibility.planned "PLANNED (1)"  style: col
-node p_ai_agent_delivery_search_visibility.planned.exp_48 "EXP-48 / Agent delivery and request id… / → Await separate owner authorization and agreed b…" (wrap: 34)  style: st_planned
 
 // dependencies INFERRED from free text (no depends_on field in registry)
 edge p_murat_project_engineer.hold.exp_stage3_synthetic -> p_murat_project_engineer.pass.exp_12  "waits on"  line: (pattern: dashed)
