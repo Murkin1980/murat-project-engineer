@@ -10,6 +10,7 @@ import json
 import re
 import unittest
 import xml.etree.ElementTree as ET
+from datetime import datetime
 from html.parser import HTMLParser
 from pathlib import Path
 
@@ -98,7 +99,11 @@ class DashboardRegistryViewTests(unittest.TestCase):
         self.assertEqual(len(parser.statuses), len(set(parser.statuses)))
         # The 26.10 monitoring snapshot merged through main must survive the
         # recovery merge; PR #115's older 07.09 brief must not replace it.
-        self.assertIn("26.10.2026", self.html)
+        snapshot = re.search(r"Снимок: (\d{2}\.\d{2}\.\d{4})", self.html)
+        self.assertIsNotNone(snapshot)
+        self.assertGreaterEqual(
+            datetime.strptime(snapshot.group(1), "%d.%m.%Y"), datetime(2026, 10, 26)
+        )
         self.assertIn("мониторинг", self.html.lower())
 
     def test_dashboard_renders_match_the_validated_cp02_artifacts(self):
