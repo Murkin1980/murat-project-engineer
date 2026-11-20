@@ -1,21 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="2786" height="4212" viewBox="-82 0 2786 4212" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
+<svg xmlns="http://www.w3.org/2000/svg" width="2786" height="4486" viewBox="-82 0 2786 4486" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
   <defs>
-    <marker id="r5801275d-arrow-7c83a0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <marker id="r05ec0756-arrow-7c83a0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M 0 0 L 10 5 L 0 10 z" fill="#7c83a0"/>
     </marker>
-    <marker id="r5801275d-arrow-7c83a0-back" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <marker id="r05ec0756-arrow-7c83a0-back" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M 0 0 L 10 5 L 0 10 z" fill="#7c83a0"/>
     </marker>
-    <mask id="r5801275d-cut-1" maskUnits="userSpaceOnUse" x="-82" y="0" width="2786" height="4212">
-      <rect x="-82" y="0" width="2786" height="4212" fill="white"/>
+    <mask id="r05ec0756-cut-1" maskUnits="userSpaceOnUse" x="-82" y="0" width="2786" height="4486">
+      <rect x="-82" y="0" width="2786" height="4486" fill="white"/>
       <circle cx="442.44" cy="486.8" r="6.2" fill="black"/>
     </mask>
-    <mask id="r5801275d-cut-2" maskUnits="userSpaceOnUse" x="-82" y="0" width="2786" height="4212">
-      <rect x="-82" y="0" width="2786" height="4212" fill="white"/>
+    <mask id="r05ec0756-cut-2" maskUnits="userSpaceOnUse" x="-82" y="0" width="2786" height="4486">
+      <rect x="-82" y="0" width="2786" height="4486" fill="white"/>
       <circle cx="413.2" cy="1503.4" r="6.2" fill="black"/>
     </mask>
+    <mask id="r05ec0756-cut-3" maskUnits="userSpaceOnUse" x="-82" y="0" width="2786" height="4486">
+      <rect x="-82" y="0" width="2786" height="4486" fill="white"/>
+      <circle cx="412.76" cy="1405.4" r="6.2" fill="black"/>
+      <circle cx="757.5" cy="2075.6" r="6.2" fill="black"/>
+    </mask>
   </defs>
-  <rect x="-82" y="0" width="2786" height="4212" fill="#ffffff"/>
+  <rect x="-82" y="0" width="2786" height="4486" fill="#ffffff"/>
   <path d="M48 40 H2656 a8 8 0 0 1 8 8 V2131.6 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
   <text x="54" y="68.4" fill="#1f2328" text-anchor="start">Murat Project Engineer</text>
   <path d="M62 83 H388 a8 8 0 0 1 8 8 V2117.6 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V91 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
@@ -289,37 +294,49 @@
   <text x="1352" y="4087" fill="#1f2328" text-anchor="middle">MCC bounded agents / Arena /…</text>
   <text x="1352" y="4106" fill="#1f2328" text-anchor="middle">→ Registration only: do not</text>
   <text x="1352" y="4125" fill="#1f2328" text-anchor="middle">execute, merge, deplo…</text>
-  <path d="M 1211 1185.3 L 1211 1185.3 C 1175.74 1185.3, 1175.74 486.8, 1140.48 486.8 L 437.13 486.8 C 415.17 486.8, 415.17 520, 393.2 520 L 382 520" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r5801275d-arrow-7c83a0)"/>
+  <path d="M1196 4227.6 H1508 a8 8 0 0 1 8 8 V4437.6 a8 8 0 0 1 -8 8 H1196 a8 8 0 0 1 -8 -8 V4235.6 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <text x="1202" y="4256" fill="#1f2328" text-anchor="start">AI Serial Studio</text>
+  <path d="M1210 4270.6 H1494 a8 8 0 0 1 8 8 V4423.6 a8 8 0 0 1 -8 8 H1210 a8 8 0 0 1 -8 -8 V4278.6 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <text x="1216" y="4299" fill="#1f2328" text-anchor="start">PLANNED (1)</text>
+  <path d="M1224 4313.6 H1480 a8 8 0 0 1 8 8 V4409.6 a8 8 0 0 1 -8 8 H1224 a8 8 0 0 1 -8 -8 V4321.6 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="1352" y="4342" fill="#1f2328" text-anchor="middle">EXP-47</text>
+  <text x="1352" y="4361" fill="#1f2328" text-anchor="middle">Skill Multik explainer-video…</text>
+  <text x="1352" y="4380" fill="#1f2328" text-anchor="middle">→ Registration only; obtain</text>
+  <text x="1352" y="4399" fill="#1f2328" text-anchor="middle">separate authorizatio…</text>
+  <path d="M 1211 1185.3 L 1211 1185.3 C 1175.74 1185.3, 1175.74 486.8, 1140.48 486.8 L 437.13 486.8 C 415.17 486.8, 415.17 520, 393.2 520 L 382 520" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r05ec0756-arrow-7c83a0)"/>
   <rect x="759.4" y="477.3" width="78" height="19" fill="#ffffff"/>
   <text x="798.4" y="491.7" fill="#1f2328" text-anchor="middle">waits on</text>
-  <path d="M 68 1090 L 68 1090 C 29.23 1090, -2.2 1143.72, -2.2 1210 L -2.2 1568.8 C -2.2 1635.08, 24.21 1688.8, 56.8 1688.8 L 68 1688.8" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r5801275d-arrow-7c83a0)"/>
+  <path d="M 68 1090 L 68 1090 C 29.23 1090, -2.2 1143.72, -2.2 1210 L -2.2 1568.8 C -2.2 1635.08, 24.21 1688.8, 56.8 1688.8 L 68 1688.8" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r05ec0756-arrow-7c83a0)"/>
   <rect x="-41.2" y="1379.9" width="78" height="19" fill="#ffffff"/>
   <text x="-2.2" y="1394.3" fill="#1f2328" text-anchor="middle">waits on</text>
-  <line x1="225" y1="1256" x2="225" y2="1337.4" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r5801275d-arrow-7c83a0)"/>
+  <line x1="225" y1="1256" x2="225" y2="1337.4" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r05ec0756-arrow-7c83a0)"/>
   <rect x="186" y="1287.2" width="78" height="19" fill="#ffffff"/>
   <text x="225" y="1301.6" fill="#1f2328" text-anchor="middle">waits on</text>
-  <path d="M 1601 1061.8 L 1601 1061.8 C 1547 1061.8, 1547 470.8, 1493 470.8 L 462 470.8 C 450.95 470.8, 442 479.75, 442 490.8 L 442 552.4 C 442 597.47, 420.15 634, 393.2 634 L 382 634" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r5801275d-arrow-7c83a0)" mask="url(#r5801275d-cut-1)"/>
+  <path d="M 1601 1061.8 L 1601 1061.8 C 1547 1061.8, 1547 470.8, 1493 470.8 L 462 470.8 C 450.95 470.8, 442 479.75, 442 490.8 L 442 552.4 C 442 597.47, 420.15 634, 393.2 634 L 382 634" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r05ec0756-arrow-7c83a0)" mask="url(#r05ec0756-cut-1)"/>
   <rect x="966.9" y="461.3" width="78" height="19" fill="#ffffff"/>
   <text x="1005.9" y="475.7" fill="#1f2328" text-anchor="middle">waits on</text>
-  <line x1="225" y1="1636.8" x2="225" y2="1555.4" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r5801275d-arrow-7c83a0)"/>
+  <line x1="225" y1="1636.8" x2="225" y2="1555.4" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r05ec0756-arrow-7c83a0)"/>
   <rect x="186" y="1586.6" width="78" height="19" fill="#ffffff"/>
   <text x="225" y="1601" fill="#1f2328" text-anchor="middle">waits on</text>
-  <path d="M 382 1874.2 L 382 1874.2 C 399.23 1874.2, 413.2 1820.48, 413.2 1754.2 L 413.2 1491.4 C 413.2 1435.07, 404.25 1389.4, 393.2 1389.4 L 382 1389.4" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r5801275d-arrow-7c83a0)"/>
+  <path d="M 382 1874.2 L 382 1874.2 C 399.23 1874.2, 413.2 1820.48, 413.2 1754.2 L 413.2 1409.4 C 413.2 1398.35, 404.25 1389.4, 393.2 1389.4 L 382 1389.4" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r05ec0756-arrow-7c83a0)"/>
   <rect x="374.2" y="1622.3" width="78" height="19" fill="#ffffff"/>
   <text x="413.2" y="1636.7" fill="#1f2328" text-anchor="middle">waits on</text>
-  <path d="M 382 1890.2 L 392.53 1890.2 C 425.49 1890.2, 452.2 1844.53, 452.2 1788.2 L 452.2 1577.1 C 452.2 1536.39, 435.98 1503.4, 415.97 1503.4 L 382 1503.4" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r5801275d-arrow-7c83a0)" mask="url(#r5801275d-cut-2)"/>
+  <path d="M 382 1890.2 L 392.53 1890.2 C 425.49 1890.2, 452.2 1844.53, 452.2 1788.2 L 452.2 1577.1 C 452.2 1536.39, 435.98 1503.4, 415.97 1503.4 L 382 1503.4" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r05ec0756-arrow-7c83a0)" mask="url(#r05ec0756-cut-2)"/>
   <rect x="413.2" y="1687.3" width="78" height="19" fill="#ffffff"/>
   <text x="452.2" y="1701.7" fill="#1f2328" text-anchor="middle">waits on</text>
-  <line x1="225" y1="1822.2" x2="225" y2="1740.8" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r5801275d-arrow-7c83a0)"/>
+  <line x1="225" y1="1822.2" x2="225" y2="1740.8" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r05ec0756-arrow-7c83a0)"/>
   <rect x="186" y="1772" width="78" height="19" fill="#ffffff"/>
   <text x="225" y="1786.4" fill="#1f2328" text-anchor="middle">waits on</text>
-  <path d="M 68 2059.6 L 68 2059.6 C 50.77 2059.6, 36.8 2005.88, 36.8 1939.6 L 36.8 1824.8 C 36.8 1758.52, 45.75 1704.8, 56.8 1704.8 L 68 1704.8" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r5801275d-arrow-7c83a0)"/>
+  <path d="M 68 2059.6 L 68 2059.6 C 50.77 2059.6, 36.8 2005.88, 36.8 1939.6 L 36.8 1824.8 C 36.8 1758.52, 45.75 1704.8, 56.8 1704.8 L 68 1704.8" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r05ec0756-arrow-7c83a0)"/>
   <rect x="-2.2" y="1872.7" width="78" height="19" fill="#ffffff"/>
   <text x="36.8" y="1887.1" fill="#1f2328" text-anchor="middle">waits on</text>
-  <line x1="225" y1="2007.6" x2="225" y2="1926.2" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r5801275d-arrow-7c83a0)"/>
+  <line x1="225" y1="2007.6" x2="225" y2="1926.2" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r05ec0756-arrow-7c83a0)"/>
   <rect x="186" y="1957.4" width="78" height="19" fill="#ffffff"/>
   <text x="225" y="1971.8" fill="#1f2328" text-anchor="middle">waits on</text>
-  <path d="M 847 1517.8 L 847 1517.8 C 761.75 1517.8, 761.75 2075.6, 676.5 2075.6 L 382 2075.6" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r5801275d-arrow-7c83a0)"/>
+  <path d="M 847 1517.8 L 847 1517.8 C 806.02 1517.8, 806.02 2075.6, 765.04 2075.6 L 382 2075.6" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r05ec0756-arrow-7c83a0)"/>
   <rect x="757.5" y="1787.2" width="78" height="19" fill="#ffffff"/>
   <text x="796.5" y="1801.6" fill="#1f2328" text-anchor="middle">waits on</text>
+  <path d="M 1216 4365.6 L 877.5 4365.6 C 811.22 4365.6, 757.5 4311.88, 757.5 4245.6 L 757.5 1525.4 C 757.5 1459.12, 703.78 1405.4, 637.5 1405.4 L 382 1405.4" fill="none" stroke="#7c83a0" stroke-width="1.6" stroke-dasharray="6.4 4.8" marker-end="url(#r05ec0756-arrow-7c83a0)" mask="url(#r05ec0756-cut-3)"/>
+  <rect x="718.5" y="2876" width="78" height="19" fill="#ffffff"/>
+  <text x="757.5" y="2890.4" fill="#1f2328" text-anchor="middle">waits on</text>
 </svg>

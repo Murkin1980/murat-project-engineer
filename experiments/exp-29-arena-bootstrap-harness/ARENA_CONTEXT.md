@@ -14,7 +14,7 @@ Verify freshness before use: `python3 experiments/exp-29-arena-bootstrap-harness
 - Disposition: REUSE_COMPONENT
 - Registry status: PASS (updated 2026-10-29)
 - Nearest action: CP-09 Canonical Closure: reconcile the EXP-29 registry, STATUS.md and RESULTS.md entries so CP-08 reads as accepted and merged (PR #111, merge 94eeed9) and the experiment closes at PASS / REUSE_COMPONENT, then republish and verify a FRESH packet for EXP-29/CP-09. One bounded PR; no merge, deploy or production integration without owner authorization.
-- Generated against (informational): branch `codex/cp-registry-fifo-integration`, head `5457ad83f40a2488fafb944f604b4ae969291362`, base `5457ad83f40a2488fafb944f604b4ae969291362`
+- Generated against (informational): branch `intake/exp-47-skill-multik-20261119`, head `6ca94c878efb1cb87d8fef45ef372e8da9516cd6`, base `e47b87c1e1a78f1cd4aa4c33bc6ad49436432f09`
 
 ## RULES (mandatory)
 
@@ -115,11 +115,11 @@ Graceful handoff minimum (AGENTS.md): STATE, EVIDENCE, CHANGES, RESULT, BLOCKER,
 
 | Path | SHA-256 | Role |
 |---|---|---|
-| `experiments/EXPERIMENT_REGISTRY.json` | `ac5aa19cbc68d4bad9084b06413ee4f1c050ef89020037f1622a24ee93cb5de6` | registry |
+| `experiments/EXPERIMENT_REGISTRY.json` | `16b9dc15bc8e895b776e471da594e58441261f882bda64a37fbfc4c5f0f9cc54` | registry |
 | `experiments/exp-29-arena-bootstrap-harness/ARENA_TASK.md` | `42052fd0c9833988dc325dc75d400594aa2c6c243997b045f17a0610166690b6` | task_instructions |
 | `experiments/exp-29-arena-bootstrap-harness/README.md` | `bbefff6dcf8e12d02435fd97393690a3605707275b6fc2a1b0dfb374a9bec8c2` | task_readme |
 | `experiments/exp-29-arena-bootstrap-harness/RESULTS.md` | `0ee76d970971c99be3870886975f4c94f45e8d564aa716617b507f158224a9be` | experiment_results |
-| `STATUS.md` | `9d74dfe05cfed208eb5447c1ba6a40ead8aec3d50c657501508bbf3eb8a5e40d` | project_status |
+| `STATUS.md` | `c65a2ed39385d6945dd727a56f20218102a443497e704561382bc2f96f13039d` | project_status |
 | `AGENTS.md` | `bb4e5e24858c9725980f83c3ab4c1bb4ff2c3b8d44dbb74ef5edff4edfa179e7` | agents_rules |
 | `docs/governance/SCOPE-CHANGE-CONTROL.md` | `954a9a58fd5d35352b808a8c78600da821893fea078c02aa8b67f46ae593447b` | governance |
 | `experiments/exp-28-agent-workflow-skills-retro/RESULTS.md` | `35a98ee8609a4b0b6dbf712b423d677b91aae70d52f0fd7ccd2a82c8966562a8` | accepted_lessons |

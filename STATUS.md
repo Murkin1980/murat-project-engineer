@@ -1,6 +1,6 @@
 # Murat Project Engineer — Status
 
-Updated: 2026-11-02 (FIFO registry integration: EXP-30–45 registered, EXP-34 remains retired, and EXP-46 HackerTube is planned only)
+Updated: 2026-11-19 (proposed EXP-47 Skill Multik intake on review branch; no execution, merge or deployment)
 
 ## Current version
 
@@ -50,6 +50,7 @@ Implemented and available:
 - EXP-34 — RETIRED_NUMBER: deliberately unallocated; its former standalone self-improvement proposal remains consolidated only in EXP-41 Harness².
 - EXP-38 OpenMuse — PARTIAL: CP-01 read-only audit passed and its unique evidence is preserved; CP-02–CP-05 remain not authorized.
 - EXP-46 HackerTube Evidence-Method Discovery — PLANNED / P2: Business Discovery research-only intake; no scraping, ingestion, service, or research run has started.
+- EXP-47 Skill Multik explainer-video component evaluation — PLANNED / P2: compare reusable components to EXP-24 Remotion and AI Serial Studio; no installation, paid service, experiment run, or integration authorized.
 - EXP-S2C-01 UI reconstruction feedback loop — PASS / REUSE_COMPONENT: 1 initial render + up to 3 targeted correction cycles with early stop
 - portfolio dashboard (read-only static asset, Workers Static Assets, auto-deploy on configured main push)
 
