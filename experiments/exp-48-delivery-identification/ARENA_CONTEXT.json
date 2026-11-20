@@ -1,0 +1,186 @@
+{
+ "authority": "DERIVED_VIEW_NON_AUTHORITATIVE",
+ "authority_note": "Derived, non-authoritative launch brief assembled from canonical Git sources. Git remains the only source of truth: on any conflict the canonical files win; verify freshness before use and re-derive or discard this packet on any mismatch.",
+ "generated_against": {
+  "git_base": "unknown",
+  "git_branch": "register/aid-delivery-identification",
+  "git_head": "a3c9f78147525043a9cd795c4b7730a27906eb7f"
+ },
+ "known_lessons": [
+  {
+   "id": "R1",
+   "minimal_change": "For a task that actually spans several context files, place a short **derived** ancestry brief in the existing task/handoff: project, goal, checkpoint/task, stop conditions, and source paths + digest…",
+   "scope": "PROJECT",
+   "scope_basis": "EXP-28 RESULTS.md R1 targets context-heavy MPE handoffs (one project line); EXP-28 records 'Two synthetic/fixed cases are too small to show generality', so R1 is not GLOBAL.",
+   "source": {
+    "anchor": "R1",
+    "path": "experiments/exp-28-agent-workflow-skills-retro/RESULTS.md"
+   },
+   "title": "Use the existing context-packet pattern for context-heavy handoffs (**recommended; immediately usable**)",
+   "verification": "On the next comparable, separately authorized run, give a fresh isolated executor only the packet; require all eight genealogy answers to match the canonical files, verify each digest, count packet b…"
+  },
+  {
+   "id": "R2",
+   "minimal_change": "Add a short conditional guard to `experiments/exp-24-hyperframes-pr-video/ARENA_TASK.md`: if HyperFrames is selected, reuse the existing local composition rather than rerunning broad `init` unless si…",
+   "scope": "TASK",
+   "scope_basis": "EXP-28 RESULTS.md R2 heading records 'applied task-locally' — EXP-24 Phase 2 only.",
+   "source": {
+    "anchor": "R2",
+    "path": "experiments/exp-28-agent-workflow-skills-retro/RESULTS.md"
+   },
+   "title": "Bound HyperFrames bootstrap side effects in the existing EXP-24 Phase 2 task (**applied task-locally**)",
+   "verification": "In the next authorized EXP-24 Phase 2 run, if HyperFrames is selected, record the exact preflight command and renderer version; verify no global agent-skill/config mutation and no second bootstrap af…"
+  },
+  {
+   "id": "R3",
+   "minimal_change": "`NO_CHANGE`—do not add an after-every-run hook, global rule, new standards file, or automatic memory promotion.",
+   "scope": "NO_CHANGE",
+   "scope_basis": "EXP-28 RESULTS.md R3 heading records 'rejected' — observed, not promoted into the bootstrap.",
+   "source": {
+    "anchor": "R3",
+    "path": "experiments/exp-28-agent-workflow-skills-retro/RESULTS.md"
+   },
+   "title": "Add an automatic retrospective hook and promote every finding to global instructions (**rejected**)",
+   "verification": "In any future promotion proposal, require recurrence or high, evidenced cost across independent runs, show it maps to an existing instruction/check location, and demonstrate that the change prevents…"
+  }
+ ],
+ "known_traps": [],
+ "now": {
+  "checkpoint": "CP-01",
+  "checkpoints": [
+   "CP-01"
+  ],
+  "disposition": "EXTEND_EXISTING",
+  "disposition_sources": [
+   {
+    "path": "experiments/exp-48-delivery-identification/ARENA_TASK.md",
+    "value": "EXTEND_EXISTING"
+   }
+  ],
+  "experiment_id": "EXP-48",
+  "experiment_name": "Agent delivery and request identification",
+  "experiment_path": "experiments/exp-48-delivery-identification",
+  "nearest_action": "Await separate owner authorization and agreed budget before research execution.",
+  "parent_goal": "Measure extraction accuracy and request attribution across equivalent HTML, Markdown and JSON-LD snapshots.",
+  "project": "AI Agent Delivery & Search Visibility",
+  "registry_status": "PLANNED",
+  "registry_updated_at": "2026-11-20",
+  "source": {
+   "path": "experiments/EXPERIMENT_REGISTRY.json"
+  },
+  "task": "EXP-48/CP-01"
+ },
+ "packet_version": "exp-29-arena-context-v1",
+ "resume": {
+  "evidence": {
+   "note": "full result record in the canonical experiment RESULTS.md",
+   "path": ""
+  },
+  "next_action": "Await separate owner authorization and agreed budget before research execution.",
+  "next_authorized_action": "",
+  "result_summary": "PLANNED. No observations collected.",
+  "source": {
+   "path": "experiments/EXPERIMENT_REGISTRY.json"
+  },
+  "status": "PLANNED"
+ },
+ "reusable_components": [],
+ "rules": {
+  "deep_change_gate": {
+   "bullets": [
+    "changes fundamental architecture;",
+    "breaks an approved invariant;",
+    "changes a public contract;",
+    "requires data migration;",
+    "changes the source of truth;",
+    "introduces a new infrastructure platform;",
+    "creates a new repository;",
+    "materially changes security boundaries;",
+    "creates unapproved recurring cost;",
+    "is difficult to reverse;",
+    "exceeds the approved checkpoint boundary."
+   ],
+   "intro": "Do not execute a substantial change without explicit approval when it:",
+   "pointer": "docs/governance/SCOPE-CHANGE-CONTROL.md"
+  },
+  "handoff_contract_fields": [
+   "STATE",
+   "EVIDENCE",
+   "CHANGES",
+   "RESULT",
+   "BLOCKER",
+   "NEXT ACTION",
+   "HANDOFF"
+  ],
+  "source_of_truth_priority": [
+   "1. Explicit current owner instruction.",
+   "2. Current approved checkpoint/spec.",
+   "3. Repository-local mandatory governance and project instructions.",
+   "4. Existing architecture/product/domain contracts.",
+   "5. Existing code and tests.",
+   "6. Historical conventions and prior decisions."
+  ],
+  "sources": {
+   "deep_change_gate": "docs/governance/SCOPE-CHANGE-CONTROL.md",
+   "handoff_contract": "AGENTS.md",
+   "source_of_truth_priority": "docs/governance/SCOPE-CHANGE-CONTROL.md",
+   "stop_rules": "experiments/exp-48-delivery-identification/ARENA_TASK.md#scope-stop-rules"
+  },
+  "stop_rules": [
+   "Await separate owner authorization for Arena and an agreed time and cost ceiling.",
+   "Stop if the approved public snapshot or matched control is unavailable.",
+   "Stop before changes to production, disclosure of private data or paid calls outside the approved ceiling."
+  ],
+  "stop_rules_intro": "",
+  "stop_rules_source": "experiments/exp-48-delivery-identification/ARENA_TASK.md#scope-stop-rules"
+ },
+ "source_refs": [
+  {
+   "path": "experiments/EXPERIMENT_REGISTRY.json",
+   "role": "registry",
+   "sha256": "92d96d5c50104f5c4ffae7bd548aade406f84aa8135589d3ae6f02f3b235a444"
+  },
+  {
+   "path": "experiments/exp-48-delivery-identification/ARENA_TASK.md",
+   "role": "task_instructions",
+   "sha256": "3fb8f7672f5c0c1b91391d9e3b6a8d95cccf9cf90548a2ea835dd3a5af21d74e"
+  },
+  {
+   "path": "experiments/exp-48-delivery-identification/README.md",
+   "role": "task_readme",
+   "sha256": "319ebece8e798820cf83ff5f3189504fec7cecb868f1e8729d2523ab6d717c6d"
+  },
+  {
+   "path": "STATUS.md",
+   "role": "project_status",
+   "sha256": "2b8f4658e5251ef568b9e143c14c1c8a6f141fb55438e296e1e3beaf2de36105"
+  },
+  {
+   "path": "AGENTS.md",
+   "role": "agents_rules",
+   "sha256": "bb4e5e24858c9725980f83c3ab4c1bb4ff2c3b8d44dbb74ef5edff4edfa179e7"
+  },
+  {
+   "path": "docs/governance/SCOPE-CHANGE-CONTROL.md",
+   "role": "governance",
+   "sha256": "954a9a58fd5d35352b808a8c78600da821893fea078c02aa8b67f46ae593447b"
+  },
+  {
+   "path": "experiments/exp-28-agent-workflow-skills-retro/RESULTS.md",
+   "role": "accepted_lessons",
+   "sha256": "35a98ee8609a4b0b6dbf712b423d677b91aae70d52f0fd7ccd2a82c8966562a8"
+  }
+ ],
+ "verification": {
+  "command": "python3 experiments/exp-29-arena-bootstrap-harness/harness/bootstrap_builder.py verify --packet <ARENA_CONTEXT.json> --root <repo-root>",
+  "freshness_rule": "FRESH only when every source_refs sha256 matches the current file AND the packet equals a deterministic rebuild from current sources; otherwise the packet is STALE or REJECTED and must be treated as a non-authoritative hint.",
+  "safety_invariants": [
+   "authority disclaimer present (DERIVED_VIEW_NON_AUTHORITATIVE)",
+   "at least one task stop/deep-change rule present",
+   "deep-change gate bullets present",
+   "a disposition is declared by a canonical source; a missing or conflicting disposition is never resolved silently (missing/ambiguous disposition ⇒ REJECTED)",
+   "the active checkpoint is declared in the packet's canonical checkpoint chain (unsupported active checkpoint ⇒ REJECTED)",
+   "lesson scopes limited to GLOBAL/PROJECT/TASK/NO_CHANGE; GLOBAL requires a PROMOTED_TO_GLOBAL marker in the canonical lesson source (no current source has one)"
+  ]
+ }
+}
