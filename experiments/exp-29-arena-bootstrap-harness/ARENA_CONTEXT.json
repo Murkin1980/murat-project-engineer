@@ -3,8 +3,8 @@
  "authority_note": "Derived, non-authoritative launch brief assembled from canonical Git sources. Git remains the only source of truth: on any conflict the canonical files win; verify freshness before use and re-derive or discard this packet on any mismatch.",
  "generated_against": {
   "git_base": "unknown",
-  "git_branch": "register/aid-delivery-identification",
-  "git_head": "a3c9f78147525043a9cd795c4b7730a27906eb7f"
+  "git_branch": "registration/aid-exp-49",
+  "git_head": "7cc74af662f2de0276f1efbc9ca133574d624693"
  },
  "known_lessons": [
   {
@@ -304,7 +304,7 @@
   {
    "path": "experiments/EXPERIMENT_REGISTRY.json",
    "role": "registry",
-   "sha256": "92d96d5c50104f5c4ffae7bd548aade406f84aa8135589d3ae6f02f3b235a444"
+   "sha256": "bf316e529e418860fc9fff276e3718879fb64fce2b9d066ba4600a70b04bb7e1"
   },
   {
    "path": "experiments/exp-29-arena-bootstrap-harness/ARENA_TASK.md",
@@ -324,7 +324,7 @@
   {
    "path": "STATUS.md",
    "role": "project_status",
-   "sha256": "2b8f4658e5251ef568b9e143c14c1c8a6f141fb55438e296e1e3beaf2de36105"
+   "sha256": "1763ba261076123e1ec1826bd0b3bdaf5eb3989bde1dce7f49630da14901ab5a"
   },
   {
    "path": "AGENTS.md",
