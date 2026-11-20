@@ -54,17 +54,18 @@ node p_murat_project_engineer.retired.exp_qoopia_memory "EXP-QOOPIA-MEMORY / Qoo
 node p_murat_project_engineer.retired.exp_ux_ui_skills "EXP-UX-UI-SKILLS / UX/UI Agent Skills / → Historical fixture remains retired. Reuse the e…" (wrap: 34)  style: st_planned
 node p_murat_project_engineer.retired.exp_16 "EXP-16 / Minimalist Entrepreneur Skill… / → Do not run as a standalone experiment. Revisit…" (wrap: 34)  style: st_planned
 
-node p_business_discovery "Business Discovery"  below p_murat_project_engineer
+node p_ai_agent_delivery_search_visibility "AI Agent Delivery & Search Visibility"  below p_murat_project_engineer
+node p_ai_agent_delivery_search_visibility.planned "PLANNED (3)"  style: col
+node p_ai_agent_delivery_search_visibility.planned.exp_48 "EXP-48 / Agent delivery and request id… / → Await separate owner authorization and agreed b…" (wrap: 34)  style: st_planned
+node p_ai_agent_delivery_search_visibility.planned.exp_49 "EXP-49 / Furniture estimate accuracy a… / → Await separate owner authorization and agreed b…" (wrap: 34)  style: st_planned
+node p_ai_agent_delivery_search_visibility.planned.exp_50 "EXP-50 / Search citation attribution a… / → Await separate owner authorization and agreed b…" (wrap: 34)  style: st_planned
+
+node p_business_discovery "Business Discovery"  below p_ai_agent_delivery_search_visibility
 node p_business_discovery.planned "PLANNED (2)"  style: col
 node p_business_discovery.planned.exp_32 "EXP-32 / Refero Styles Rich Message / → Registration only: do not execute, merge, deplo…" (wrap: 34)  style: st_planned
 node p_business_discovery.planned.exp_46 "EXP-46 / HackerTube Evidence-Method Di… / → Registration only: do not execute, merge, deplo…" (wrap: 34)  style: st_planned
 
-node p_ai_agent_delivery_search_visibility "AI Agent Delivery & Search Visibility"  below p_business_discovery
-node p_ai_agent_delivery_search_visibility.planned "PLANNED (2)"  style: col
-node p_ai_agent_delivery_search_visibility.planned.exp_48 "EXP-48 / Agent delivery and request id… / → Await separate owner authorization and agreed b…" (wrap: 34)  style: st_planned
-node p_ai_agent_delivery_search_visibility.planned.exp_49 "EXP-49 / Furniture estimate accuracy a… / → Await separate owner authorization and agreed b…" (wrap: 34)  style: st_planned
-
-node p_murat_ai_orchestrator "Murat AI Orchestrator"  below p_ai_agent_delivery_search_visibility
+node p_murat_ai_orchestrator "Murat AI Orchestrator"  below p_business_discovery
 node p_murat_ai_orchestrator.planned "PLANNED (1)"  style: col
 node p_murat_ai_orchestrator.planned.exp_alexandria "EXP-ALEXANDRIA / Firecrawl Alexandria source d… / → Execute the isolated five-task comparison and r…" (wrap: 34)  style: st_planned
 

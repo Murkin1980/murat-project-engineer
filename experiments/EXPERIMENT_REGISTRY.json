@@ -1023,6 +1023,25 @@
         "https://github.com/Murkin1980/murat-project-engineer/pull/134"
       ],
       "updated_at": "2026-11-20"
+    },
+    {
+      "experiment_id": "EXP-50",
+      "name": "Search citation attribution and business value",
+      "owning_project": "AI Agent Delivery & Search Visibility",
+      "status": "PLANNED",
+      "why": "Measure attribution accuracy and qualified enquiries across matched RU/KZ queries and control pages.",
+      "date_added": "2026-11-20",
+      "next_action": "Await separate owner authorization and agreed budget before research execution.",
+      "result_summary": "PLANNED. No observations collected.",
+      "repo": "Murkin1980/murat-project-engineer",
+      "experiment_path": "experiments/exp-50-citation-value",
+      "evidence_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/blob/adf7ab95e67edde21a71c8c8acdf37fbff4e8221/docs/ai-agent-delivery/proposal-3.md"
+      ],
+      "pr_or_issue_links": [
+        "https://github.com/Murkin1980/murat-project-engineer/pull/134"
+      ],
+      "updated_at": "2026-11-20"
     }
   ]
 }

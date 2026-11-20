@@ -1,6 +1,6 @@
 # Murat Project Engineer — Status
 
-Updated: 2026-11-20 (EXP-49 · Furniture estimate accuracy and tool access · PLANNED)
+Updated: 2026-11-20 (EXP-50 · Search citation attribution and business value · PLANNED)
 
 ## Current version
 
