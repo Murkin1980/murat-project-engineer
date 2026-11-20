@@ -2,9 +2,9 @@
  "authority": "DERIVED_VIEW_NON_AUTHORITATIVE",
  "authority_note": "Derived, non-authoritative launch brief assembled from canonical Git sources. Git remains the only source of truth: on any conflict the canonical files win; verify freshness before use and re-derive or discard this packet on any mismatch.",
  "generated_against": {
-  "git_base": "5457ad83f40a2488fafb944f604b4ae969291362",
-  "git_branch": "codex/cp-registry-fifo-integration",
-  "git_head": "5457ad83f40a2488fafb944f604b4ae969291362"
+  "git_base": "e47b87c1e1a78f1cd4aa4c33bc6ad49436432f09",
+  "git_branch": "intake/exp-47-skill-multik-20261119",
+  "git_head": "6ca94c878efb1cb87d8fef45ef372e8da9516cd6"
  },
  "known_lessons": [
   {
@@ -304,7 +304,7 @@
   {
    "path": "experiments/EXPERIMENT_REGISTRY.json",
    "role": "registry",
-   "sha256": "ac5aa19cbc68d4bad9084b06413ee4f1c050ef89020037f1622a24ee93cb5de6"
+   "sha256": "16b9dc15bc8e895b776e471da594e58441261f882bda64a37fbfc4c5f0f9cc54"
   },
   {
    "path": "experiments/exp-29-arena-bootstrap-harness/ARENA_TASK.md",
@@ -324,7 +324,7 @@
   {
    "path": "STATUS.md",
    "role": "project_status",
-   "sha256": "9d74dfe05cfed208eb5447c1ba6a40ead8aec3d50c657501508bbf3eb8a5e40d"
+   "sha256": "c65a2ed39385d6945dd727a56f20218102a443497e704561382bc2f96f13039d"
   },
   {
    "path": "AGENTS.md",

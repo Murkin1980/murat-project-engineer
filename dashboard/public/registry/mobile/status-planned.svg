@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="355" height="3072" viewBox="0 0 355 3072" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
+<svg xmlns="http://www.w3.org/2000/svg" width="355" height="3243" viewBox="0 0 355 3243" font-family="'DejaVu Sans Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'Courier New', monospace" font-size="14px">
   <defs>
   </defs>
-  <rect x="0" y="0" width="355" height="3072" fill="#ffffff"/>
-  <path d="M48 40 H307 a8 8 0 0 1 8 8 V3024 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
-  <text x="54" y="68.4" fill="#1f2328" text-anchor="start">PLANNED (18)</text>
+  <rect x="0" y="0" width="355" height="3243" fill="#ffffff"/>
+  <path d="M48 40 H307 a8 8 0 0 1 8 8 V3195 a8 8 0 0 1 -8 8 H48 a8 8 0 0 1 -8 -8 V48 a8 8 0 0 1 8 -8 Z" fill="#f6f7fa" stroke="#dcdfe7"/>
+  <text x="54" y="68.4" fill="#1f2328" text-anchor="start">PLANNED (19)</text>
   <path d="M62 83 H293 a8 8 0 0 1 8 8 V236 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V91 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
   <text x="177.5" y="111.4" fill="#1f2328" text-anchor="middle">EXP-ALEXANDRIA ·</text>
   <text x="177.5" y="130.4" fill="#1f2328" text-anchor="middle">Orchestrator</text>
@@ -141,4 +141,12 @@
   <text x="177.5" y="2961.4" fill="#1f2328" text-anchor="middle">not execute, merge,</text>
   <text x="177.5" y="2980.4" fill="#1f2328" text-anchor="middle">deploy, or change</text>
   <text x="177.5" y="2999.4" fill="#1f2328" text-anchor="middle">productio…</text>
+  <path d="M62 3028 H293 a8 8 0 0 1 8 8 V3181 a8 8 0 0 1 -8 8 H62 a8 8 0 0 1 -8 -8 V3036 a8 8 0 0 1 8 -8 Z" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="177.5" y="3056.4" fill="#1f2328" text-anchor="middle">EXP-47 · AI Serial Studio</text>
+  <text x="177.5" y="3075.4" fill="#1f2328" text-anchor="middle">Skill Multik</text>
+  <text x="177.5" y="3094.4" fill="#1f2328" text-anchor="middle">explainer-video component…</text>
+  <text x="177.5" y="3113.4" fill="#1f2328" text-anchor="middle">→ Registration only;</text>
+  <text x="177.5" y="3132.4" fill="#1f2328" text-anchor="middle">obtain separate</text>
+  <text x="177.5" y="3151.4" fill="#1f2328" text-anchor="middle">authorization for</text>
+  <text x="177.5" y="3170.4" fill="#1f2328" text-anchor="middle">read-only CP-01…</text>
 </svg>
