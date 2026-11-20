@@ -6,7 +6,7 @@ style st_ready    fill: #dbeafe  border: #2563eb
 style st_planned  fill: #f3f4f6  border: #6b7280
 style st_hold     fill: #fef3c7  border: #d97706
 
-node col "PLANNED (21)"  contents: (widths: match)
+node col "PLANNED (22)"  contents: (widths: match)
 node col.exp_alexandria "EXP-ALEXANDRIA · Orchestrator / Firecrawl Alexandria source discovery / → Execute the isolated five-task comparison and record per-run evidence…" (wrap: 26)  style: st_planned
 node col.exp_rankcontrol "EXP-RANKCONTROL · House / RankControl AI visibility / → After owner registration, run and record the first fixed-query baseli…" (wrap: 26)  style: st_planned
 node col.exp_21 "EXP-21 · MebelFlow AI / EasyKitchen \/ SketchUp production backe… / → Perform focused technical reconnaissance of SketchUp Ruby + EasyKitch…" (wrap: 26)  style: st_planned
@@ -28,3 +28,4 @@ node col.exp_46 "EXP-46 · Business Discov… / HackerTube Evidence-Method Disco
 node col.exp_47 "EXP-47 · AI Serial Studio / Skill Multik explainer-video component… / → Registration only; obtain separate authorization for read-only CP-01…" (wrap: 26)  style: st_planned
 node col.exp_48 "EXP-48 · AI Agent Delive… / Agent delivery and request identificati… / → Await separate owner authorization and agreed budget before research…" (wrap: 26)  style: st_planned
 node col.exp_49 "EXP-49 · AI Agent Delive… / Furniture estimate accuracy and tool ac… / → Await separate owner authorization and agreed budget before research…" (wrap: 26)  style: st_planned
+node col.exp_50 "EXP-50 · AI Agent Delive… / Search citation attribution and busines… / → Await separate owner authorization and agreed budget before research…" (wrap: 26)  style: st_planned
