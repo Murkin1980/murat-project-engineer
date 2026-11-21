@@ -14,12 +14,12 @@ Verify freshness before use: `python3 experiments/exp-29-arena-bootstrap-harness
 - Disposition: EXTEND_EXISTING
 - Registry status: PLANNED (updated 2026-11-20)
 - Nearest action: Await separate owner authorization and agreed budget before research execution.
-- Generated against (informational): branch `research/exp-49-benchmark-prep`, head `bea9d7bb10ff098f0dae2f28ee83e7a95a1bb22a`, base `bea9d7bb10ff098f0dae2f28ee83e7a95a1bb22a`
+- Generated against (informational): branch `research/exp-49-benchmark-prep`, head `50bafe6d87219306a4e0af6d84d7830fc69a3edd`, base `unknown`
 
 ## RULES (mandatory)
 
 Stop rules (experiments/exp-49-estimate-tools/ARENA_TASK.md#scope-stop-rules):
-  > 1a6b04ae087f8ee4a843ab2746f516c7f7f380fee2aef8145d67e2072a8939b8  SHA256SUMS
+  > 8b8b8d3d46a92f5546170fd549a5e2e2e3ac681c6ecd100cedb75335399cfa15  SHA256SUMS
 - Перед исполнением требуются утверждённый публичный контракт и сценарии, отдельное разрешение, потолки времени и расходов, сопоставимый контроль, FRESH, подтверждённый сбор исходных ответов и времени для каждой доступной поверхности. Утечка или уверенная вымышленная ставка останавливает эксперимент. Production и платные вызовы вне области задачи.
 
 Deep-change gate (docs/governance/SCOPE-CHANGE-CONTROL.md §6):
@@ -82,7 +82,7 @@ Graceful handoff minimum (AGENTS.md): STATE, EVIDENCE, CHANGES, RESULT, BLOCKER,
 | Path | SHA-256 | Role |
 |---|---|---|
 | `experiments/EXPERIMENT_REGISTRY.json` | `db6f468de9b6ca4c6dc7f757691a1b54b89619b27e884d8b99fbff97bd88eb76` | registry |
-| `experiments/exp-49-estimate-tools/ARENA_TASK.md` | `595b1290e2d034a97819400330e363f0c7008e1ad2bb22926ce5cde18605c1e5` | task_instructions |
+| `experiments/exp-49-estimate-tools/ARENA_TASK.md` | `65aef9635cbf419eef5e7f2d248e8225abc23f49256d798e3a66d43829460817` | task_instructions |
 | `experiments/exp-49-estimate-tools/README.md` | `ef4d3579db12904f44d84e35b81310e8fbed817e114b6d536576816fe3f59eaf` | task_readme |
 | `STATUS.md` | `70926d719c35aec8a0553b1f595c673986a39dd88844e902292412d72e5b4003` | project_status |
 | `AGENTS.md` | `bb4e5e24858c9725980f83c3ab4c1bb4ff2c3b8d44dbb74ef5edff4edfa179e7` | agents_rules |

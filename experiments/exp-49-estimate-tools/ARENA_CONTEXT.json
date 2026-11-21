@@ -2,9 +2,9 @@
  "authority": "DERIVED_VIEW_NON_AUTHORITATIVE",
  "authority_note": "Derived, non-authoritative launch brief assembled from canonical Git sources. Git remains the only source of truth: on any conflict the canonical files win; verify freshness before use and re-derive or discard this packet on any mismatch.",
  "generated_against": {
-  "git_base": "bea9d7bb10ff098f0dae2f28ee83e7a95a1bb22a",
+  "git_base": "unknown",
   "git_branch": "research/exp-49-benchmark-prep",
-  "git_head": "bea9d7bb10ff098f0dae2f28ee83e7a95a1bb22a"
+  "git_head": "50bafe6d87219306a4e0af6d84d7830fc69a3edd"
  },
  "known_lessons": [
   {
@@ -129,7 +129,7 @@
   "stop_rules": [
    "Перед исполнением требуются утверждённый публичный контракт и сценарии, отдельное разрешение, потолки времени и расходов, сопоставимый контроль, FRESH, подтверждённый сбор исходных ответов и времени для каждой доступной поверхности. Утечка или уверенная вымышленная ставка останавливает эксперимент. Production и платные вызовы вне области задачи."
   ],
-  "stop_rules_intro": "1a6b04ae087f8ee4a843ab2746f516c7f7f380fee2aef8145d67e2072a8939b8  SHA256SUMS",
+  "stop_rules_intro": "8b8b8d3d46a92f5546170fd549a5e2e2e3ac681c6ecd100cedb75335399cfa15  SHA256SUMS",
   "stop_rules_source": "experiments/exp-49-estimate-tools/ARENA_TASK.md#scope-stop-rules"
  },
  "source_refs": [
@@ -141,7 +141,7 @@
   {
    "path": "experiments/exp-49-estimate-tools/ARENA_TASK.md",
    "role": "task_instructions",
-   "sha256": "595b1290e2d034a97819400330e363f0c7008e1ad2bb22926ce5cde18605c1e5"
+   "sha256": "65aef9635cbf419eef5e7f2d248e8225abc23f49256d798e3a66d43829460817"
   },
   {
    "path": "experiments/exp-49-estimate-tools/README.md",
