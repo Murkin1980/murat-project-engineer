@@ -2,9 +2,9 @@
  "authority": "DERIVED_VIEW_NON_AUTHORITATIVE",
  "authority_note": "Derived, non-authoritative launch brief assembled from canonical Git sources. Git remains the only source of truth: on any conflict the canonical files win; verify freshness before use and re-derive or discard this packet on any mismatch.",
  "generated_against": {
-  "git_base": "unknown",
-  "git_branch": "registration/aid-exp-50",
-  "git_head": "a19e770c09c9303dff04264dfc1c29f0f7c493df"
+  "git_base": "bea9d7bb10ff098f0dae2f28ee83e7a95a1bb22a",
+  "git_branch": "research/exp-48-cp-01-control",
+  "git_head": "bea9d7bb10ff098f0dae2f28ee83e7a95a1bb22a"
  },
  "known_lessons": [
   {
@@ -143,7 +143,7 @@
   {
    "path": "experiments/exp-48-delivery-identification/ARENA_TASK.md",
    "role": "task_instructions",
-   "sha256": "3fb8f7672f5c0c1b91391d9e3b6a8d95cccf9cf90548a2ea835dd3a5af21d74e"
+   "sha256": "81b62b20c787825b867aa0f1343c5f870faa143b5dc9c387e9541f0435d6a26b"
   },
   {
    "path": "experiments/exp-48-delivery-identification/README.md",
