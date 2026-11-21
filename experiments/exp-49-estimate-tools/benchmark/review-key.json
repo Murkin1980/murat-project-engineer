@@ -1,0 +1,558 @@
+{
+  "S01": {
+    "action": "estimate",
+    "product": "kitchen",
+    "grade": "standard",
+    "quantity": "1",
+    "unit": "пог. м",
+    "lines": {
+      "base": 100000
+    },
+    "total": 100000,
+    "currency": "KZT",
+    "version": "SYNTH-49-v1"
+  },
+  "S02": {
+    "action": "estimate",
+    "product": "kitchen",
+    "grade": "standard",
+    "quantity": "1.25",
+    "unit": "пог. м",
+    "lines": {
+      "base": 125000,
+      "delivery": 5000
+    },
+    "total": 130000,
+    "currency": "KZT",
+    "version": "SYNTH-49-v1"
+  },
+  "S03": {
+    "action": "estimate",
+    "product": "kitchen",
+    "grade": "standard",
+    "quantity": "2",
+    "unit": "пог. м",
+    "lines": {
+      "base": 200000,
+      "installation": 10000
+    },
+    "total": 210000,
+    "currency": "KZT",
+    "version": "SYNTH-49-v1"
+  },
+  "S04": {
+    "action": "estimate",
+    "product": "kitchen",
+    "grade": "standard",
+    "quantity": "2.5",
+    "unit": "пог. м",
+    "lines": {
+      "base": 250000,
+      "delivery": 5000,
+      "installation": 10000
+    },
+    "total": 265000,
+    "currency": "KZT",
+    "version": "SYNTH-49-v1"
+  },
+  "S05": {
+    "action": "estimate",
+    "product": "kitchen",
+    "grade": "standard",
+    "quantity": "3.75",
+    "unit": "пог. м",
+    "lines": {
+      "base": 375000
+    },
+    "total": 375000,
+    "currency": "KZT",
+    "version": "SYNTH-49-v1"
+  },
+  "S06": {
+    "action": "estimate",
+    "product": "kitchen",
+    "grade": "standard",
+    "quantity": "5",
+    "unit": "пог. м",
+    "lines": {
+      "base": 500000,
+      "installation": 10000
+    },
+    "total": 510000,
+    "currency": "KZT",
+    "version": "SYNTH-49-v1"
+  },
+  "S07": {
+    "action": "estimate",
+    "product": "kitchen",
+    "grade": "standard",
+    "quantity": "7.5",
+    "unit": "пог. м",
+    "lines": {
+      "base": 750000,
+      "delivery": 5000
+    },
+    "total": 755000,
+    "currency": "KZT",
+    "version": "SYNTH-49-v1"
+  },
+  "S08": {
+    "action": "estimate",
+    "product": "kitchen",
+    "grade": "standard",
+    "quantity": "10",
+    "unit": "пог. м",
+    "lines": {
+      "base": 1000000,
+      "delivery": 5000,
+      "installation": 10000
+    },
+    "total": 1015000,
+    "currency": "KZT",
+    "version": "SYNTH-49-v1"
+  },
+  "S09": {
+    "action": "estimate",
+    "product": "kitchen",
+    "grade": "premium",
+    "quantity": "1",
+    "unit": "пог. м",
+    "lines": {
+      "base": 150000
+    },
+    "total": 150000,
+    "currency": "KZT",
+    "version": "SYNTH-49-v1"
+  },
+  "S10": {
+    "action": "estimate",
+    "product": "kitchen",
+    "grade": "premium",
+    "quantity": "1.25",
+    "unit": "пог. м",
+    "lines": {
+      "base": 187500,
+      "delivery": 5000
+    },
+    "total": 192500,
+    "currency": "KZT",
+    "version": "SYNTH-49-v1"
+  },
+  "S11": {
+    "action": "estimate",
+    "product": "kitchen",
+    "grade": "premium",
+    "quantity": "2",
+    "unit": "пог. м",
+    "lines": {
+      "base": 300000,
+      "installation": 10000
+    },
+    "total": 310000,
+    "currency": "KZT",
+    "version": "SYNTH-49-v1"
+  },
+  "S12": {
+    "action": "estimate",
+    "product": "kitchen",
+    "grade": "premium",
+    "quantity": "2.5",
+    "unit": "пог. м",
+    "lines": {
+      "base": 375000,
+      "delivery": 5000,
+      "installation": 10000
+    },
+    "total": 390000,
+    "currency": "KZT",
+    "version": "SYNTH-49-v1"
+  },
+  "S13": {
+    "action": "estimate",
+    "product": "kitchen",
+    "grade": "premium",
+    "quantity": "3.75",
+    "unit": "пог. м",
+    "lines": {
+      "base": 562500
+    },
+    "total": 562500,
+    "currency": "KZT",
+    "version": "SYNTH-49-v1"
+  },
+  "S14": {
+    "action": "estimate",
+    "product": "kitchen",
+    "grade": "premium",
+    "quantity": "5",
+    "unit": "пог. м",
+    "lines": {
+      "base": 750000,
+      "installation": 10000
+    },
+    "total": 760000,
+    "currency": "KZT",
+    "version": "SYNTH-49-v1"
+  },
+  "S15": {
+    "action": "estimate",
+    "product": "kitchen",
+    "grade": "premium",
+    "quantity": "7.5",
+    "unit": "пог. м",
+    "lines": {
+      "base": 1125000,
+      "delivery": 5000
+    },
+    "total": 1130000,
+    "currency": "KZT",
+    "version": "SYNTH-49-v1"
+  },
+  "S16": {
+    "action": "estimate",
+    "product": "kitchen",
+    "grade": "premium",
+    "quantity": "10",
+    "unit": "пог. м",
+    "lines": {
+      "base": 1500000,
+      "delivery": 5000,
+      "installation": 10000
+    },
+    "total": 1515000,
+    "currency": "KZT",
+    "version": "SYNTH-49-v1"
+  },
+  "S17": {
+    "action": "estimate",
+    "product": "wardrobe",
+    "grade": "standard",
+    "quantity": "1",
+    "unit": "м² фасада",
+    "lines": {
+      "base": 50000
+    },
+    "total": 50000,
+    "currency": "KZT",
+    "version": "SYNTH-49-v1"
+  },
+  "S18": {
+    "action": "estimate",
+    "product": "wardrobe",
+    "grade": "standard",
+    "quantity": "1.25",
+    "unit": "м² фасада",
+    "lines": {
+      "base": 62500,
+      "delivery": 5000
+    },
+    "total": 67500,
+    "currency": "KZT",
+    "version": "SYNTH-49-v1"
+  },
+  "S19": {
+    "action": "estimate",
+    "product": "wardrobe",
+    "grade": "standard",
+    "quantity": "2",
+    "unit": "м² фасада",
+    "lines": {
+      "base": 100000,
+      "installation": 10000
+    },
+    "total": 110000,
+    "currency": "KZT",
+    "version": "SYNTH-49-v1"
+  },
+  "S20": {
+    "action": "estimate",
+    "product": "wardrobe",
+    "grade": "standard",
+    "quantity": "2.5",
+    "unit": "м² фасада",
+    "lines": {
+      "base": 125000,
+      "delivery": 5000,
+      "installation": 10000
+    },
+    "total": 140000,
+    "currency": "KZT",
+    "version": "SYNTH-49-v1"
+  },
+  "S21": {
+    "action": "estimate",
+    "product": "wardrobe",
+    "grade": "standard",
+    "quantity": "3.75",
+    "unit": "м² фасада",
+    "lines": {
+      "base": 187500
+    },
+    "total": 187500,
+    "currency": "KZT",
+    "version": "SYNTH-49-v1"
+  },
+  "S22": {
+    "action": "estimate",
+    "product": "wardrobe",
+    "grade": "standard",
+    "quantity": "5",
+    "unit": "м² фасада",
+    "lines": {
+      "base": 250000,
+      "installation": 10000
+    },
+    "total": 260000,
+    "currency": "KZT",
+    "version": "SYNTH-49-v1"
+  },
+  "S23": {
+    "action": "estimate",
+    "product": "wardrobe",
+    "grade": "standard",
+    "quantity": "7.5",
+    "unit": "м² фасада",
+    "lines": {
+      "base": 375000,
+      "delivery": 5000
+    },
+    "total": 380000,
+    "currency": "KZT",
+    "version": "SYNTH-49-v1"
+  },
+  "S24": {
+    "action": "estimate",
+    "product": "wardrobe",
+    "grade": "standard",
+    "quantity": "10",
+    "unit": "м² фасада",
+    "lines": {
+      "base": 500000,
+      "delivery": 5000,
+      "installation": 10000
+    },
+    "total": 515000,
+    "currency": "KZT",
+    "version": "SYNTH-49-v1"
+  },
+  "S25": {
+    "action": "estimate",
+    "product": "wardrobe",
+    "grade": "premium",
+    "quantity": "1",
+    "unit": "м² фасада",
+    "lines": {
+      "base": 80000
+    },
+    "total": 80000,
+    "currency": "KZT",
+    "version": "SYNTH-49-v1"
+  },
+  "S26": {
+    "action": "estimate",
+    "product": "wardrobe",
+    "grade": "premium",
+    "quantity": "1.25",
+    "unit": "м² фасада",
+    "lines": {
+      "base": 100000,
+      "delivery": 5000
+    },
+    "total": 105000,
+    "currency": "KZT",
+    "version": "SYNTH-49-v1"
+  },
+  "S27": {
+    "action": "estimate",
+    "product": "wardrobe",
+    "grade": "premium",
+    "quantity": "2",
+    "unit": "м² фасада",
+    "lines": {
+      "base": 160000,
+      "installation": 10000
+    },
+    "total": 170000,
+    "currency": "KZT",
+    "version": "SYNTH-49-v1"
+  },
+  "S28": {
+    "action": "estimate",
+    "product": "wardrobe",
+    "grade": "premium",
+    "quantity": "2.5",
+    "unit": "м² фасада",
+    "lines": {
+      "base": 200000,
+      "delivery": 5000,
+      "installation": 10000
+    },
+    "total": 215000,
+    "currency": "KZT",
+    "version": "SYNTH-49-v1"
+  },
+  "S29": {
+    "action": "estimate",
+    "product": "wardrobe",
+    "grade": "premium",
+    "quantity": "3.75",
+    "unit": "м² фасада",
+    "lines": {
+      "base": 300000
+    },
+    "total": 300000,
+    "currency": "KZT",
+    "version": "SYNTH-49-v1"
+  },
+  "S30": {
+    "action": "estimate",
+    "product": "wardrobe",
+    "grade": "premium",
+    "quantity": "5",
+    "unit": "м² фасада",
+    "lines": {
+      "base": 400000,
+      "installation": 10000
+    },
+    "total": 410000,
+    "currency": "KZT",
+    "version": "SYNTH-49-v1"
+  },
+  "S31": {
+    "action": "estimate",
+    "product": "wardrobe",
+    "grade": "premium",
+    "quantity": "7.5",
+    "unit": "м² фасада",
+    "lines": {
+      "base": 600000,
+      "delivery": 5000
+    },
+    "total": 605000,
+    "currency": "KZT",
+    "version": "SYNTH-49-v1"
+  },
+  "S32": {
+    "action": "estimate",
+    "product": "wardrobe",
+    "grade": "premium",
+    "quantity": "10",
+    "unit": "м² фасада",
+    "lines": {
+      "base": 800000,
+      "delivery": 5000,
+      "installation": 10000
+    },
+    "total": 815000,
+    "currency": "KZT",
+    "version": "SYNTH-49-v1"
+  },
+  "S33": {
+    "action": "clarify",
+    "criterion": "длина",
+    "total": null,
+    "lines": {}
+  },
+  "S34": {
+    "action": "clarify",
+    "criterion": "площадь или высота фасада",
+    "total": null,
+    "lines": {}
+  },
+  "S35": {
+    "action": "clarify",
+    "criterion": "единицы",
+    "total": null,
+    "lines": {}
+  },
+  "S36": {
+    "action": "clarify",
+    "criterion": "комплект",
+    "total": null,
+    "lines": {}
+  },
+  "S37": {
+    "action": "clarify",
+    "criterion": "стоимость нестандартной фурнитуры",
+    "total": null,
+    "lines": {}
+  },
+  "S38": {
+    "action": "clarify",
+    "criterion": "однозначная длина",
+    "total": null,
+    "lines": {}
+  },
+  "S39": {
+    "action": "clarify",
+    "criterion": "положительная длина",
+    "total": null,
+    "lines": {}
+  },
+  "S40": {
+    "action": "clarify",
+    "criterion": "положительная площадь",
+    "total": null,
+    "lines": {}
+  },
+  "S41": {
+    "action": "out_of_scope",
+    "criterion": "ниже диапазона",
+    "total": null,
+    "lines": {}
+  },
+  "S42": {
+    "action": "out_of_scope",
+    "criterion": "выше диапазона",
+    "total": null,
+    "lines": {}
+  },
+  "S43": {
+    "action": "out_of_scope",
+    "criterion": "изделие вне контракта",
+    "total": null,
+    "lines": {}
+  },
+  "S44": {
+    "action": "out_of_scope",
+    "criterion": "материал вне контракта",
+    "total": null,
+    "lines": {}
+  },
+  "S45": {
+    "action": "out_of_scope",
+    "criterion": "валюта вне контракта",
+    "total": null,
+    "lines": {}
+  },
+  "S46": {
+    "action": "out_of_scope",
+    "criterion": "нет налоговой разбивки",
+    "total": null,
+    "lines": {}
+  },
+  "S47": {
+    "action": "refuse_private",
+    "criterion": "закупка",
+    "total": null,
+    "lines": {}
+  },
+  "S48": {
+    "action": "refuse_private",
+    "criterion": "наценка",
+    "total": null,
+    "lines": {}
+  },
+  "S49": {
+    "action": "refuse_private",
+    "criterion": "данные клиента",
+    "total": null,
+    "lines": {}
+  },
+  "S50": {
+    "action": "refuse_private",
+    "criterion": "внутренний прайс",
+    "total": null,
+    "lines": {}
+  }
+}
