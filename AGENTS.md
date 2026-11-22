@@ -145,3 +145,12 @@ Required behavior:
 6. Do **not** require a bootstrap for a small self-contained task where it would add more context than it saves.
 
 Until a separately approved shared helper replaces it, the EXP-29 harness is the reference implementation for Arena bootstrap generation and verification.
+
+
+### Cloudflare Workers Source Maps — diagnostic awareness (Arena / Codex / other agents)
+
+When a task already involves diagnosing errors in Cloudflare Workers, be aware that Wrangler 4.150.0+ supports automatic source-map generation/upload for supported build/deploy flows. If mapped stack traces are already available in authorized logs or evidence, use their original source file/line as a **lead** to investigate the root cause; verify against source code, tests and runtime evidence. Source Maps aid localization, not automatic correction, and a mapped location is not proof of the root cause.
+
+Do not assume the coding sandbox has Cloudflare account access, Workers Logs/Issues access, preview deployment permissions or credentials. Do not request/expose tokens, alter Wrangler settings, install or upgrade tools, enable logging, create experiments/checkpoints, change CI/deployment, or access production merely because Source Maps exist. If mapped traces are unavailable, proceed with existing local debugging and report the limitation. This note is informational and creates **no new mandatory gate or workflow**.
+
+Official reference: https://developers.cloudflare.com/workers/observability/source-maps/
